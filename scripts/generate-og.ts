@@ -1,4 +1,5 @@
 import satori from 'satori'
+import { Resvg } from '@resvg/resvg-js'
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs'
 import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -6,7 +7,6 @@ import { fileURLToPath } from 'node:url'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const fontsDir = join(__dirname, '..', 'src', 'og', 'fonts')
 
-const cormorantItalic = readFileSync(join(fontsDir, 'CormorantGaramond-Italic.ttf'))
 const cormorantSemiBoldItalic = readFileSync(join(fontsDir, 'CormorantGaramond-SemiBoldItalic.ttf'))
 const outfit = readFileSync(join(fontsDir, 'Outfit-Regular.ttf'))
 
@@ -16,45 +16,50 @@ const pages = [
     title: 'ouroboros',
     subtitle: 'Build agents that know who they are.',
     tag: 'Alpha',
+    heroSize: true,
   },
   {
     filename: 'og-why.png',
     title: 'Born from OpenClaw.',
-    subtitle: 'I built an agent on OpenClaw. I learned what works, what doesn\'t, and what needs to be redesigned from scratch.',
+    subtitle: 'Designed for what comes next.',
     tag: 'Why Ouroboros',
   },
   {
     filename: 'og-story.png',
-    title: 'Code a model can use, not code that uses a model.',
-    subtitle: 'The Ouroboros origin story.',
-    tag: 'Origin Story',
+    title: 'The Origin Story.',
+    subtitle: 'Code a model can use, not code that uses a model.',
+    tag: 'Story',
   },
   {
     filename: 'og-blog.png',
     title: 'Dispatches from the serpent.',
-    subtitle: 'Essays on agent architecture, framework design, and building software that knows itself.',
     tag: 'Blog',
   },
   {
     filename: 'og-tutorial.png',
-    title: 'Build an AI Agent Loop From Scratch.',
-    subtitle: '~150 lines of TypeScript. Five milestones. Then the handoff.',
-    tag: 'Tutorial · 25 min read',
+    title: 'Build an Agent Loop From Scratch.',
+    subtitle: '~150 lines of TypeScript.',
+    tag: 'Tutorial',
   },
   {
     filename: 'og-docs.png',
-    title: 'Documentation',
-    subtitle: 'Get started with ouroboros. Hatch your first agent.',
+    title: 'Documentation.',
+    subtitle: 'Hatch your first agent.',
     tag: 'Docs',
   },
 ]
 
-async function generateSvg(options: { title: string; subtitle?: string; tag?: string }) {
-  const { title, subtitle, tag } = options
-  const isHeroTitle = title === 'ouroboros'
-  const titleSize = isHeroTitle ? 96 : title.length > 40 ? 52 : 64
+async function generateImage(options: {
+  title: string
+  subtitle?: string
+  tag?: string
+  heroSize?: boolean
+}) {
+  const { title, subtitle, tag, heroSize } = options
+  // Mobile-optimized: big title, minimal text, lots of breathing room
+  const titleSize = heroSize ? 108 : title.length > 30 ? 64 : 80
 
-  return await satori(
+  const svg = await satori(
     {
       type: 'div',
       props: {
@@ -64,121 +69,37 @@ async function generateSvg(options: { title: string; subtitle?: string; tag?: st
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
-          padding: '80px',
-          background: 'linear-gradient(135deg, #0a120b 0%, #101e13 50%, #0a120b 100%)',
+          padding: '80px 100px',
+          background: '#0a120b',
           fontFamily: 'Outfit',
           position: 'relative',
-          overflow: 'hidden',
         },
         children: [
-          // Subtle glow
+          // Background gradient
           {
             type: 'div',
             props: {
               style: {
                 position: 'absolute',
-                top: '-100px',
-                right: '-100px',
-                width: '500px',
-                height: '500px',
+                inset: '0',
+                background: 'linear-gradient(160deg, #0a120b 0%, #121f14 40%, #0d160e 100%)',
+              },
+            },
+          },
+          // Glow
+          {
+            type: 'div',
+            props: {
+              style: {
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: '800px',
+                height: '400px',
                 borderRadius: '50%',
-                background: 'radial-gradient(circle, rgba(45,148,71,0.08) 0%, transparent 70%)',
+                background: 'radial-gradient(circle, rgba(45,148,71,0.06) 0%, transparent 70%)',
               },
-            },
-          },
-          // Tag
-          ...(tag ? [{
-            type: 'div',
-            props: {
-              style: {
-                display: 'flex',
-                marginBottom: '24px',
-              },
-              children: [{
-                type: 'span',
-                props: {
-                  style: {
-                    fontSize: '14px',
-                    letterSpacing: '0.2em',
-                    textTransform: 'uppercase' as const,
-                    color: 'rgba(45,148,71,0.8)',
-                    fontFamily: 'Outfit',
-                  },
-                  children: tag,
-                },
-              }],
-            },
-          }] : []),
-          // Title
-          {
-            type: 'div',
-            props: {
-              style: {
-                fontSize: `${titleSize}px`,
-                fontFamily: 'Cormorant Garamond',
-                fontStyle: 'italic',
-                fontWeight: 600,
-                color: '#e8ede9',
-                lineHeight: 1.1,
-                maxWidth: '1000px',
-              },
-              children: title,
-            },
-          },
-          // Subtitle
-          ...(subtitle ? [{
-            type: 'div',
-            props: {
-              style: {
-                fontSize: '22px',
-                color: 'rgba(138,155,142,0.8)',
-                marginTop: '20px',
-                lineHeight: 1.5,
-                maxWidth: '700px',
-                fontFamily: 'Outfit',
-              },
-              children: subtitle,
-            },
-          }] : []),
-          // Bottom bar
-          {
-            type: 'div',
-            props: {
-              style: {
-                position: 'absolute',
-                bottom: '60px',
-                left: '80px',
-                right: '80px',
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-              },
-              children: [
-                ...(!isHeroTitle ? [{
-                  type: 'div',
-                  props: {
-                    style: {
-                      fontSize: '28px',
-                      fontFamily: 'Cormorant Garamond',
-                      fontStyle: 'italic',
-                      color: 'rgba(232,237,233,0.5)',
-                    },
-                    children: 'ouroboros',
-                  },
-                }] : []),
-                {
-                  type: 'div',
-                  props: {
-                    style: {
-                      fontSize: '14px',
-                      color: 'rgba(138,155,142,0.4)',
-                      fontFamily: 'Outfit',
-                      marginLeft: 'auto',
-                    },
-                    children: 'ouroboros.bot',
-                  },
-                },
-              ],
             },
           },
           // Top accent line
@@ -190,9 +111,106 @@ async function generateSvg(options: { title: string; subtitle?: string; tag?: st
                 top: '0',
                 left: '0',
                 right: '0',
-                height: '3px',
-                background: 'linear-gradient(90deg, transparent 0%, rgba(45,148,71,0.6) 50%, transparent 100%)',
+                height: '4px',
+                background: 'linear-gradient(90deg, transparent 10%, rgba(45,148,71,0.7) 50%, transparent 90%)',
               },
+            },
+          },
+          // Tag
+          ...(tag ? [{
+            type: 'div',
+            props: {
+              style: {
+                display: 'flex',
+                marginBottom: '20px',
+                position: 'relative' as const,
+              },
+              children: [{
+                type: 'span',
+                props: {
+                  style: {
+                    fontSize: '16px',
+                    letterSpacing: '0.25em',
+                    textTransform: 'uppercase' as const,
+                    color: 'rgba(45,148,71,0.9)',
+                    fontFamily: 'Outfit',
+                    fontWeight: 400,
+                  },
+                  children: tag,
+                },
+              }],
+            },
+          }] : []),
+          // Title — BIG for mobile readability
+          {
+            type: 'div',
+            props: {
+              style: {
+                fontSize: `${titleSize}px`,
+                fontFamily: 'Cormorant Garamond',
+                fontStyle: 'italic',
+                fontWeight: 600,
+                color: '#e8ede9',
+                lineHeight: 1.05,
+                position: 'relative' as const,
+              },
+              children: title,
+            },
+          },
+          // Subtitle — short, readable
+          ...(subtitle ? [{
+            type: 'div',
+            props: {
+              style: {
+                fontSize: '28px',
+                color: 'rgba(138,155,142,0.7)',
+                marginTop: '16px',
+                lineHeight: 1.4,
+                fontFamily: 'Outfit',
+                position: 'relative' as const,
+              },
+              children: subtitle,
+            },
+          }] : []),
+          // Bottom bar — just logo + url
+          {
+            type: 'div',
+            props: {
+              style: {
+                position: 'absolute',
+                bottom: '50px',
+                left: '100px',
+                right: '100px',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+              },
+              children: [
+                ...(heroSize ? [] : [{
+                  type: 'div',
+                  props: {
+                    style: {
+                      fontSize: '32px',
+                      fontFamily: 'Cormorant Garamond',
+                      fontStyle: 'italic',
+                      color: 'rgba(232,237,233,0.3)',
+                    },
+                    children: 'ouroboros',
+                  },
+                }]),
+                {
+                  type: 'div',
+                  props: {
+                    style: {
+                      fontSize: '18px',
+                      color: 'rgba(138,155,142,0.35)',
+                      fontFamily: 'Outfit',
+                      marginLeft: 'auto',
+                    },
+                    children: 'ouroboros.bot',
+                  },
+                },
+              ],
             },
           },
         ],
@@ -202,36 +220,25 @@ async function generateSvg(options: { title: string; subtitle?: string; tag?: st
       width: 1200,
       height: 630,
       fonts: [
-        { name: 'Cormorant Garamond', data: cormorantItalic, weight: 400, style: 'italic' as const },
         { name: 'Cormorant Garamond', data: cormorantSemiBoldItalic, weight: 600, style: 'italic' as const },
         { name: 'Outfit', data: outfit, weight: 400, style: 'normal' as const },
       ],
     }
   )
+
+  const resvg = new Resvg(svg, { fitTo: { mode: 'width' as const, value: 1200 } })
+  const png = resvg.render()
+  return Buffer.from(png.asPng())
 }
 
 async function main() {
-  // Use resvg-js (native, not wasm) for Node
-  const { Resvg } = await import('@resvg/resvg-js').catch(async () => {
-    // Fallback: save as SVG and convert with sharp
-    return null as any
-  })
-
   const outDir = join(__dirname, '..', 'public', 'og')
   mkdirSync(outDir, { recursive: true })
 
   for (const page of pages) {
     console.log(`Generating ${page.filename}...`)
-    const svg = await generateSvg(page)
-
-    if (Resvg) {
-      const resvg = new Resvg(svg, { fitTo: { mode: 'width' as const, value: 1200 } })
-      const png = resvg.render()
-      writeFileSync(join(outDir, page.filename), png.asPng())
-    } else {
-      // Save SVG as fallback
-      writeFileSync(join(outDir, page.filename.replace('.png', '.svg')), svg)
-    }
+    const png = await generateImage(page)
+    writeFileSync(join(outDir, page.filename), png)
   }
 
   console.log(`Done! Generated ${pages.length} OG images in public/og/`)

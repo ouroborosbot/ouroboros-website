@@ -18,6 +18,7 @@ jobs:
           node-version: 22
 
       - run: npm ci
+      - run: npx tsx scripts/generate-og.ts
       - run: npx astro build
 
       - name: Deploy to Cloudflare Workers

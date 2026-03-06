@@ -35,11 +35,11 @@ const organs = [
         ouroboros
       </h1>
 
-      <p class="text-xl md:text-2xl text-bone/90 font-light mt-8 animate-fade-up stagger-2 tracking-wide">
+      <p class="text-2xl md:text-3xl text-bone/90 font-light mt-8 animate-fade-up stagger-2 tracking-wide">
         Build agents that know who they are.
       </p>
 
-      <p class="text-sm text-mist/90 mt-5 max-w-md mx-auto leading-relaxed animate-fade-up stagger-3">
+      <p class="text-base text-mist/80 mt-6 max-w-lg mx-auto leading-relaxed animate-fade-up stagger-3">
         A zero-dependency TypeScript harness for AI agents that self-modify,
         remember, and grow. Born from a lobster's molt. Open source.
       </p>
@@ -160,6 +160,8 @@ const organs = [
   </section>
 
 
+  <div class="section-divider"></div>
+
   <!-- ═══════════════ THE PSYCHE ═══════════════ -->
   <section class="relative px-6 py-28 md:py-36 reveal">
     <!-- Radial glow from top-left -->
@@ -210,12 +212,14 @@ const organs = [
         ))}
       </div>
 
-      <p class="text-xs text-mist/80 mt-8 italic tracking-wide">
+      <p class="text-xs text-mist/80 mt-10 italic tracking-wide text-center md:text-left">
         "Partner, not user." — <span class="text-scale/80 font-mono">FRIENDS.md</span> replaces USER.md.
       </p>
     </div>
   </section>
 
+
+  <div class="section-divider"></div>
 
   <!-- ═══════════════ THE BODY ═══════════════ -->
   <section class="relative px-6 py-28 md:py-36 reveal overflow-hidden">
@@ -275,6 +279,8 @@ const organs = [
   </section>
 
 
+  <div class="section-divider"></div>
+
   <!-- ═══════════════ SELF-PERPETUATION ═══════════════ -->
   <section class="relative px-6 py-28 md:py-36 reveal overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-b from-transparent via-undergrowth/40 to-transparent pointer-events-none"></div>
@@ -296,12 +302,53 @@ const organs = [
         </p>
       </div>
 
-      <!-- The loop — continuous flow -->
+      <!-- The loop — circular on desktop, vertical on mobile -->
       <div class="relative max-w-4xl mx-auto">
-        <!-- Connecting line -->
-        <div class="absolute top-5 sm:top-8 left-[10%] right-[10%] h-px bg-gradient-to-r from-scale/20 via-scale/60 to-scale/20 hidden sm:block"></div>
+        <!-- Desktop: circular ring layout -->
+        <div class="hidden sm:block relative w-[480px] h-[480px] mx-auto">
+          <!-- Connecting ring -->
+          <svg class="absolute inset-0 w-full h-full" viewBox="0 0 480 480" fill="none">
+            <circle cx="240" cy="240" r="180" stroke="var(--color-canopy)" stroke-width="1" stroke-dasharray="6 8" opacity="0.6" />
+            <!-- Animated progress arc -->
+            <circle cx="240" cy="240" r="180" stroke="url(#loopGrad)" stroke-width="2" stroke-dasharray="280 850" stroke-linecap="round" style="animation: spin 12s linear infinite;" transform-origin="240 240" />
+            <defs>
+              <linearGradient id="loopGrad" x1="60" y1="60" x2="420" y2="420">
+                <stop offset="0%" stop-color="var(--color-scale)" />
+                <stop offset="100%" stop-color="var(--color-glow)" stop-opacity="0.3" />
+              </linearGradient>
+            </defs>
+          </svg>
+          {(['Reflect', 'Plan', 'Build', 'Merge', 'Repeat'] as const).map((label, i) => {
+            const descs = [
+              'Read its own architecture. Find what\'s missing.',
+              'Concrete steps. Not vague ideas.',
+              'Write code. Run tests. Fix what breaks.',
+              'PR. CI green. Land on main.',
+              'Loop back. The snake is bigger now.',
+            ]
+            // Position 5 items around a circle (top-center start, clockwise)
+            const angle = (i * 72 - 90) * (Math.PI / 180)
+            const radius = 180
+            const cx = 240 + radius * Math.cos(angle)
+            const cy = 240 + radius * Math.sin(angle)
+            return (
+              <div class="absolute group" style={`left: ${cx}px; top: ${cy}px; transform: translate(-50%, -50%);`}>
+                <div class="flex flex-col items-center text-center">
+                  <div class="relative z-10 w-14 h-14 rounded-full border border-canopy bg-undergrowth/90 flex items-center justify-center group-hover:border-scale/60 transition-all duration-300 group-hover:shadow-[0_0_30px_rgba(45,148,71,0.3)]" style={`animation: step-glow 4s ease-in-out infinite ${i * 0.8}s`}>
+                    <span class="font-mono text-sm text-scale group-hover:text-glow transition-colors">{String(i + 1).padStart(2, '0')}</span>
+                  </div>
+                  <p class="font-display text-lg italic text-bone mt-2 whitespace-nowrap">{label}</p>
+                  <p class="text-[11px] text-mist mt-1 leading-snug max-w-[130px]">{descs[i]}</p>
+                </div>
+              </div>
+            )
+          })}
+        </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-5 gap-6 sm:gap-2">
+        <!-- Mobile: vertical flow -->
+        <div class="sm:hidden space-y-6">
+          <!-- Vertical connecting line -->
+          <div class="absolute left-7 top-0 bottom-0 w-px bg-gradient-to-b from-scale/20 via-scale/40 to-scale/20"></div>
           {(['Reflect', 'Plan', 'Build', 'Merge', 'Repeat'] as const).map((label, i) => {
             const descs = [
               'Read its own architecture. Find what\'s missing.',
@@ -311,14 +358,13 @@ const organs = [
               'Loop back. The snake is bigger now.',
             ]
             return (
-              <div class="relative group flex sm:flex-col items-center sm:items-center gap-4 sm:gap-0 sm:text-center">
-                <!-- Step circle -->
-                <div class="relative z-10 w-14 h-14 sm:w-16 sm:h-16 shrink-0 rounded-full border border-canopy bg-undergrowth/70 flex items-center justify-center group-hover:border-scale/60 transition-all duration-300 group-hover:shadow-[0_0_30px_rgba(45,148,71,0.3)] group-hover:bg-undergrowth" style={`animation: step-glow 4s ease-in-out infinite ${i * 0.8}s`}>
-                  <span class="font-mono text-sm text-scale group-hover:text-glow transition-colors">{String(i + 1).padStart(2, '0')}</span>
+              <div class="relative flex items-start gap-5 group">
+                <div class="relative z-10 w-14 h-14 shrink-0 rounded-full border border-canopy bg-undergrowth/90 flex items-center justify-center" style={`animation: step-glow 4s ease-in-out infinite ${i * 0.8}s`}>
+                  <span class="font-mono text-sm text-scale">{String(i + 1).padStart(2, '0')}</span>
                 </div>
-                <div class="sm:mt-5">
+                <div class="pt-2">
                   <p class="font-display text-xl italic text-bone">{label}</p>
-                  <p class="text-xs text-mist mt-1.5 sm:mt-2.5 leading-relaxed max-w-[160px] mx-auto">{descs[i]}</p>
+                  <p class="text-xs text-mist mt-1 leading-relaxed">{descs[i]}</p>
                 </div>
               </div>
             )
@@ -332,6 +378,8 @@ const organs = [
     </div>
   </section>
 
+
+  <div class="section-divider"></div>
 
   <!-- ═══════════════ HATCHING ═══════════════ -->
   <section class="relative px-6 py-28 md:py-36 reveal">

@@ -21,6 +21,37 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Section divider — organic wave */
+.section-divider {
+  height: 80px;
+  position: relative;
+  overflow: hidden;
+}
+.section-divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-scale), transparent);
+  opacity: 0.4;
+}
+.section-divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-scale);
+  opacity: 0.5;
+  box-shadow: 0 0 20px var(--color-scale);
+}
+
 ::selection {
   background: color-mix(in srgb, var(--color-scale) 30%, transparent);
   color: var(--color-bone);

@@ -66,12 +66,15 @@ const timeline = [
     date: 'Late February 2026',
     label: 'The Moment',
     color: 'glow',
+    motif: 'molt',
     content: `
       <p>I built the 150-line bootstrap. Ran it. Started talking to it. And something shifted.</p>
       <p>This thing was clean. No legacy. No lifecycle hooks I didn't understand. No plugin system fighting my intentions. Every line of code existed because I put it there, and the model could read and modify every line.</p>
       <p>I wasn't building code that uses a model. <strong>I was building code a model can use.</strong></p>
       <p>That's the distinction that changes everything. When you build a traditional framework, you're writing code for humans to configure. The model is a service you call. But when you build a harness for the model to inhabit — where the model reads its own source code, understands its own architecture, and can modify itself — the design constraints invert.</p>
       <p>File structure matters because the model needs to navigate it. Naming matters because the model uses names to understand purpose. Documentation matters because it IS the model's self-awareness.</p>
+      <p>OpenClaw's mascot is a lobster. Clawdbot. The interim name was Moltbot — the lobster shedding its shell. But what emerged from Slugger's molt wasn't another crustacean. It was a snake, eating its own tail.</p>
+      <p class="note">The lobster molts to grow. The snake consumes itself to survive. Different metaphors, different architectures, different futures.</p>
     `
   },
   {
@@ -124,7 +127,7 @@ const timeline = [
         <!-- The spine -->
         <div class="absolute left-4 md:left-6 top-0 bottom-0 w-px bg-gradient-to-b from-canopy/40 via-scale/30 to-canopy/40"></div>
 
-        {timeline.map(({ date, label, color, content }, i) => (
+        {timeline.map(({ date, label, color, content, motif }, i) => (
           <div class="relative pl-14 md:pl-20 pb-20 last:pb-0 reveal">
             <!-- Timeline dot -->
             <div class={`absolute left-2.5 md:left-4.5 top-1 w-3 h-3 rounded-full border-2 border-${color} bg-void z-10`}></div>
@@ -139,6 +142,45 @@ const timeline = [
 
             <!-- Content -->
             <div class="prose-ouro story-content" set:html={content} />
+
+            {/* Molting motif — the visual metamorphosis between lobster and snake */}
+            {motif === 'molt' && (
+              <div class="molt-transition mt-12 mb-4 relative rounded-2xl border border-canopy/30 bg-gradient-to-r from-deep via-undergrowth/20 to-deep overflow-hidden p-8 md:p-12">
+                <div class="flex items-center justify-between gap-8">
+                  <!-- Lobster (shedding) -->
+                  <div class="flex-1 text-center opacity-40">
+                    <div class="w-20 h-20 md:w-28 md:h-28 mx-auto rounded-full border border-fang/30 bg-fang/5 flex items-center justify-center">
+                      {/* TODO: Replace with illustrated lobster shell SVG — cracking, translucent, being shed */}
+                      <span class="text-4xl md:text-5xl opacity-60">🦞</span>
+                    </div>
+                    <p class="font-mono text-[9px] text-shadow/50 uppercase tracking-[0.2em] mt-4">the shell</p>
+                    <p class="font-display text-sm italic text-mist/30 mt-1">Clawdbot → Moltbot</p>
+                  </div>
+
+                  <!-- The transformation arrow -->
+                  <div class="flex flex-col items-center gap-2 px-4">
+                    <div class="w-px h-8 bg-gradient-to-b from-fang/30 to-scale/30"></div>
+                    {/* TODO: Replace with animated SVG — shell fragments dissolving into scales */}
+                    <span class="font-display text-xl italic text-mist/40">→</span>
+                    <div class="w-px h-8 bg-gradient-to-b from-scale/30 to-scale/50"></div>
+                  </div>
+
+                  <!-- Snake (emerging) -->
+                  <div class="flex-1 text-center">
+                    <div class="w-20 h-20 md:w-28 md:h-28 mx-auto rounded-full border border-scale/40 bg-scale/5 flex items-center justify-center" style="animation: spin 60s linear infinite;">
+                      {/* TODO: Replace with illustrated ouroboros SVG — snake consuming its tail, scales forming */}
+                      <span class="text-4xl md:text-5xl" style="animation: spin 60s linear infinite reverse;">🐍</span>
+                    </div>
+                    <p class="font-mono text-[9px] text-scale/60 uppercase tracking-[0.2em] mt-4">what emerged</p>
+                    <p class="font-display text-sm italic text-bone mt-1">Ouroboros</p>
+                  </div>
+                </div>
+
+                <p class="text-center text-xs text-shadow/40 italic mt-8">
+                  The lobster molts to grow larger. The snake consumes itself to stay alive.
+                </p>
+              </div>
+            )}
           </div>
         ))}
       </div>

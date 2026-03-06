@@ -170,15 +170,18 @@ const organs = [
   <section class="relative px-6 py-28 md:py-36 reveal">
     <!-- Lifted background for section distinction -->
     <div class="absolute inset-0 bg-deep pointer-events-none"></div>
+    <!-- Scale pattern — diamond tessellation -->
+    <div class="absolute inset-0 opacity-[0.04] pointer-events-none" style="background-image: url(&quot;data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0 L40 20 L20 40 L0 20Z' fill='none' stroke='%232D9447' stroke-width='0.5'/%3E%3C/svg%3E&quot;); background-size: 40px 40px;"></div>
     <!-- Radial glow from top-left -->
     <div class="absolute top-0 left-0 w-[500px] h-[500px] rounded-full bg-scale/15 blur-[200px] pointer-events-none"></div>
     <!-- Radial glow from bottom-right for depth -->
     <div class="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-glow/8 blur-[200px] pointer-events-none"></div>
-    <!-- Diagonal accent stripe -->
-    <div class="absolute -left-32 top-1/4 w-[600px] h-px bg-gradient-to-r from-transparent via-canopy/40 to-transparent rotate-[25deg] pointer-events-none"></div>
+    <!-- Fade edges of scale pattern -->
+    <div class="absolute inset-0 bg-gradient-to-b from-void/60 via-transparent to-void/60 pointer-events-none"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-void/40 via-transparent to-void/40 pointer-events-none"></div>
     <!-- Subtle left accent bar -->
     <div class="absolute left-0 top-[15%] bottom-[15%] w-[2px] bg-gradient-to-b from-transparent via-scale/40 to-transparent hidden lg:block"></div>
-    <div class="max-w-6xl mx-auto">
+    <div class="max-w-6xl mx-auto relative">
       <!-- Header — offset left -->
       <div class="max-w-xl mb-14">
         <span class="font-mono text-[10px] text-scale/80 uppercase tracking-[0.3em] block mb-6">The Psyche</span>
@@ -378,9 +381,19 @@ const organs = [
         </div>
       </div>
 
-      <p class="text-center text-sm text-mist mt-12 tracking-wide">
-        <span class="text-scale font-mono">1730</span> tests · <span class="text-scale font-mono">100%</span> coverage · every improvement ships verified
-      </p>
+      <div class="flex flex-wrap items-center justify-center gap-6 mt-14">
+        <div class="flex items-center gap-2 px-4 py-2 rounded-lg border border-canopy/50 bg-undergrowth/30">
+          <span class="w-2 h-2 rounded-full bg-glow animate-pulse"></span>
+          <span class="font-mono text-sm text-scale">1,730</span>
+          <span class="text-xs text-mist">tests</span>
+        </div>
+        <div class="flex items-center gap-2 px-4 py-2 rounded-lg border border-canopy/50 bg-undergrowth/30">
+          <span class="w-2 h-2 rounded-full bg-glow animate-pulse" style="animation-delay: 0.5s"></span>
+          <span class="font-mono text-sm text-scale">100%</span>
+          <span class="text-xs text-mist">coverage</span>
+        </div>
+        <span class="text-xs text-mist/60 italic">every improvement ships verified</span>
+      </div>
     </div>
   </section>
 
@@ -428,7 +441,7 @@ const organs = [
     <span class="text-glow/70">LORE.md</span>          <span class="text-mist/60"># where you come from</span>
     <span class="text-glow/70">FRIENDS.md</span>       <span class="text-mist/60"># who you know</span>
 
-<span class="text-mist">$</span> <span class="text-bone">npm run dev -- --agent my-agent</span></code></pre>
+<span class="text-mist">$</span> <span class="text-bone terminal-cursor">npm run dev -- --agent my-agent</span></code></pre>
       </div>
 
       <!-- CTAs -->
@@ -453,5 +466,17 @@ const organs = [
   @keyframes step-glow {
     0%, 100% { border-color: var(--color-canopy); box-shadow: none; }
     50% { border-color: color-mix(in srgb, var(--color-scale) 40%, transparent); box-shadow: 0 0 16px rgba(45,148,71,0.15); }
+  }
+  @keyframes blink-cursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  .terminal-cursor::after {
+    content: '▊';
+    color: var(--color-scale);
+    opacity: 0.7;
+    animation: blink-cursor 1.2s step-end infinite;
+    margin-left: 2px;
+    font-size: 0.85em;
   }
 </style>

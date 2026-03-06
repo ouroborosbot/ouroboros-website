@@ -23,9 +23,12 @@ html {
 
 /* Section divider — organic wave */
 .section-divider {
-  height: 80px;
+  height: 100px;
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .section-divider::before {
   content: '';
@@ -33,23 +36,22 @@ html {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 200px;
+  width: 400px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--color-scale), transparent);
-  opacity: 0.4;
+  background: linear-gradient(90deg, transparent 0%, var(--color-canopy) 20%, var(--color-scale) 50%, var(--color-canopy) 80%, transparent 100%);
+  opacity: 0.5;
 }
 .section-divider::after {
-  content: '';
+  content: '◆';
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--color-scale);
-  opacity: 0.5;
-  box-shadow: 0 0 20px var(--color-scale);
+  font-size: 10px;
+  color: var(--color-scale);
+  opacity: 0.6;
+  text-shadow: 0 0 16px var(--color-scale), 0 0 40px rgba(45, 148, 71, 0.2);
+  letter-spacing: 0.5em;
 }
 
 ::selection {

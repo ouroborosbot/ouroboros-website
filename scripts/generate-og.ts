@@ -19,7 +19,7 @@ const pages = [
   },
   {
     filename: 'og-why.png',
-    title: 'Born from OpenClaw.',
+    title: 'Hatched from OpenClaw.',
     tag: 'Why Ouroboros',
   },
   {

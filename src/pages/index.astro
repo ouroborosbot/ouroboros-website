@@ -8,6 +8,7 @@ const psycheFiles = [
   { file: 'IDENTITY.md', role: 'How you show up.', desc: 'Tone, voice, self-awareness. The face your agent wears in every conversation.', accentClass: 'bg-glow' },
   { file: 'LORE.md', role: 'Where you come from.', desc: 'Origin story and philosophical context. The narrative that gives purpose to action.', accentClass: 'bg-scale' },
   { file: 'FRIENDS.md', role: 'Who you know.', desc: 'Relationships and social context. Not user IDs — friends. Partner, not user.', accentClass: 'bg-glow' },
+  { file: 'TACIT.md', role: 'What you\'ve learned.', desc: 'Preferences, patterns, lessons absorbed over time. The knowledge you can\'t explain — you just know.', accentClass: 'bg-scale' },
 ]
 
 const organs = [
@@ -19,7 +20,7 @@ const organs = [
 ]
 ---
 
-<Layout title="Ouroboros — Build agents that know who they are">
+<Layout title="Ouroboros — Build agents that know who they are" description="A zero-dependency TypeScript framework for AI agents that self-modify, remember, and grow. Psyche files, sliding context windows, and creature-body architecture.">
 
   <!-- ═══════════════ HERO ═══════════════ -->
   <section class="relative min-h-[90vh] flex flex-col items-center justify-center px-6 overflow-hidden">
@@ -162,17 +163,22 @@ const organs = [
         </p>
       </div>
 
-      <!-- Cards — 2x2 grid, feel like journal pages -->
+      <!-- Cards — 2x2 + spanning 5th card -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-        {psycheFiles.map(({ file, role, desc, accentClass }) => (
-          <div class="group relative rounded-xl border border-canopy/40 bg-gradient-to-br from-deep/90 to-undergrowth/30 p-7 transition-all duration-500 hover:border-scale/30 hover:translate-y-[-3px] hover:shadow-[0_8px_40px_rgba(45,148,71,0.08)]">
+        {psycheFiles.map(({ file, role, desc, accentClass }, i) => (
+          <div class:list={[
+            'group relative rounded-xl border border-canopy/40 bg-gradient-to-br from-deep/90 to-undergrowth/30 p-7 transition-all duration-500 hover:border-scale/30 hover:translate-y-[-3px] hover:shadow-[0_8px_40px_rgba(45,148,71,0.08)]',
+            i === 4 ? 'md:col-span-2 md:flex md:items-center md:gap-8' : ''
+          ]}>
             <!-- File tab -->
-            <div class="flex items-center gap-2 mb-4">
-              <div class:list={['w-1.5 h-1.5 rounded-full', accentClass]}></div>
-              <span class="font-mono text-xs text-scale/70">{file}</span>
+            <div class={i === 4 ? 'md:flex-shrink-0' : ''}>
+              <div class="flex items-center gap-2 mb-4">
+                <div class:list={['w-1.5 h-1.5 rounded-full', accentClass]}></div>
+                <span class="font-mono text-xs text-scale/70">{file}</span>
+              </div>
+              <p class="font-display text-2xl italic text-bone leading-snug">{role}</p>
             </div>
-            <p class="font-display text-2xl italic text-bone leading-snug">{role}</p>
-            <p class="text-sm text-mist/60 mt-3 leading-relaxed">{desc}</p>
+            <p class="text-sm text-mist/60 mt-3 md:mt-0 leading-relaxed">{desc}</p>
           </div>
         ))}
       </div>

@@ -34,6 +34,13 @@ const {
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="/images/ouroboros.png" />
+    <meta property="og:url" content={`https://ouroboros.bot${Astro.url.pathname}`} />
+    <meta property="og:site_name" content="Ouroboros" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://ouroboros.bot/images/ouroboros.png" />
+    <link rel="canonical" href={`https://ouroboros.bot${Astro.url.pathname}`} />
     <slot name="head" />
 
     <!-- PostHog Analytics -->

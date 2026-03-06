@@ -35,11 +35,11 @@ const organs = [
         ouroboros
       </h1>
 
-      <p class="text-xl md:text-2xl text-mist/80 font-light mt-8 animate-fade-up stagger-2 tracking-wide">
+      <p class="text-xl md:text-2xl text-bone/90 font-light mt-8 animate-fade-up stagger-2 tracking-wide">
         Build agents that know who they are.
       </p>
 
-      <p class="text-sm text-mist mt-5 max-w-md mx-auto leading-relaxed animate-fade-up stagger-3">
+      <p class="text-sm text-mist/90 mt-5 max-w-md mx-auto leading-relaxed animate-fade-up stagger-3">
         A zero-dependency TypeScript harness for AI agents that self-modify,
         remember, and grow. Born from a lobster's molt. Open source.
       </p>
@@ -65,9 +65,9 @@ const organs = [
 
 
   <!-- Scroll indicator -->
-  <div class="relative h-16 flex items-center justify-center">
+  <div class="relative h-10 flex items-center justify-center -mt-8">
     <div class="animate-float">
-      <svg class="w-5 h-5 text-scale/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7" /></svg>
+      <svg class="w-5 h-5 text-scale/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7" /></svg>
     </div>
   </div>
 
@@ -97,16 +97,16 @@ const organs = [
           </h2>
 
           <div class="mt-10 space-y-5">
-            <p class="text-lg text-bone/80 leading-relaxed max-w-lg">
+            <p class="text-lg text-bone/90 leading-relaxed max-w-lg">
               When the conversation grows too long, the agent trims its oldest messages.
               Context window consuming itself.
             </p>
-            <p class="text-base text-bone/70 leading-relaxed max-w-lg">
+            <p class="text-base text-bone/80 leading-relaxed max-w-lg">
               But nothing is truly lost. Facts are extracted to memory before they're
               consumed. Identity doesn't live in the tokens — it lives in the psyche files.
               The snake eats its tail to stay alive.
             </p>
-            <p class="text-sm text-scale/90 italic mt-6 border-l-2 border-scale/60 pl-4">
+            <p class="text-sm text-scale italic mt-6 border-l-2 border-scale/70 pl-4">
               The metaphor isn't decorative. It's the architecture.
             </p>
           </div>
@@ -177,10 +177,10 @@ const organs = [
         <h2 class="font-display text-5xl md:text-6xl italic text-bone leading-tight">
           Your agent isn't a<br />stateless function.
         </h2>
-        <p class="font-display text-4xl md:text-5xl italic text-scale/70 mt-1">
+        <p class="font-display text-4xl md:text-5xl italic text-scale mt-1">
           It has a mind.
         </p>
-        <p class="text-base text-bone/70 mt-6 leading-relaxed">
+        <p class="text-base text-bone/80 mt-6 leading-relaxed">
           Personality assembled from five markdown files. Loaded every turn.
           And it develops over time — the psyche grows with the agent.
         </p>
@@ -194,24 +194,24 @@ const organs = [
             i === 4 ? 'md:col-span-2 md:flex md:items-center md:gap-8' : ''
           ]}>
             <!-- Left accent bar -->
-            <div class:list={['absolute left-0 top-4 bottom-4 w-[2px] rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-500', accentClass]}></div>
+            <div class:list={['absolute left-0 top-4 bottom-4 w-[3px] rounded-full opacity-70 group-hover:opacity-100 transition-opacity duration-500', accentClass]}></div>
             <!-- Corner glow -->
             <div class="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-scale/5 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
             <!-- File tab -->
             <div class={i === 4 ? 'md:flex-shrink-0' : ''}>
               <div class="flex items-center gap-2 mb-4">
                 <div class:list={['w-1.5 h-1.5 rounded-full', accentClass]}></div>
-                <span class="font-mono text-xs text-scale/70">{file}</span>
+                <span class="font-mono text-xs text-scale">{file}</span>
               </div>
               <p class="font-display text-2xl italic text-bone leading-snug">{role}</p>
             </div>
-            <p class="text-sm text-mist/85 mt-3 md:mt-0 leading-relaxed">{desc}</p>
+            <p class="text-sm text-mist mt-3 md:mt-0 leading-relaxed">{desc}</p>
           </div>
         ))}
       </div>
 
-      <p class="text-xs text-mist/60 mt-8 italic tracking-wide">
-        "Partner, not user." — FRIENDS.md replaces USER.md.
+      <p class="text-xs text-mist/80 mt-8 italic tracking-wide">
+        "Partner, not user." — <span class="text-scale/80 font-mono">FRIENDS.md</span> replaces USER.md.
       </p>
     </div>
   </section>
@@ -233,7 +233,7 @@ const organs = [
         <h2 class="font-display text-5xl md:text-6xl italic text-bone leading-tight">
           Every module<br />is an organ.
         </h2>
-        <p class="text-base text-bone/70 mt-6 leading-relaxed">
+        <p class="text-base text-bone/80 mt-6 leading-relaxed">
           The codebase is a creature. A heart that beats, a mind that thinks,
           senses that perceive. The naming isn't whimsy — it's how the model
           understands its own body.
@@ -245,31 +245,31 @@ const organs = [
         {organs.map(({ name, desc, icon }) => (
           <div class="relative rounded-lg border border-canopy/60 bg-undergrowth/50 p-6 hover:border-scale/40 hover:bg-undergrowth/80 transition-all duration-300 group/organ">
             <div class="flex items-baseline gap-3 mb-3">
-              <span class="text-scale/70 text-base group-hover/organ:text-scale transition-colors">{icon}</span>
+              <span class="text-scale text-lg group-hover/organ:text-glow transition-colors">{icon}</span>
               <span class="font-mono text-sm text-bone tracking-wide">{name}/</span>
             </div>
-            <p class="text-sm text-mist/85 leading-relaxed">{desc}</p>
+            <p class="text-sm text-mist leading-relaxed">{desc}</p>
           </div>
         ))}
         <!-- Extra cell: the daemon -->
         <div class="rounded-lg border border-canopy/60 bg-undergrowth/50 p-6 hover:border-scale/40 hover:bg-undergrowth/80 transition-all duration-300 sm:col-span-2 lg:col-span-1">
           <div class="flex items-baseline gap-3 mb-3">
-            <span class="text-scale/70 text-base">⚙</span>
+            <span class="text-scale text-lg">⚙</span>
             <span class="font-mono text-sm text-bone tracking-wide">daemon/</span>
           </div>
-          <p class="text-sm text-mist/85 leading-relaxed">Process manager, cron scheduler, health monitor. The nervous system that keeps agents alive. <code class="text-scale/80 text-xs">ouro status</code></p>
+          <p class="text-sm text-mist leading-relaxed">Process manager, cron scheduler, health monitor. The nervous system that keeps agents alive. <code class="text-scale text-xs">ouro status</code></p>
         </div>
       </div>
 
       <!-- Providers -->
       <div class="mt-10 flex flex-wrap items-center gap-3">
-        <span class="font-mono text-[10px] text-mist/60 uppercase tracking-[0.2em] mr-2">Providers</span>
+        <span class="font-mono text-[10px] text-mist/70 uppercase tracking-[0.2em] mr-2">Providers</span>
         {providers.map(name => (
-          <span class="text-xs text-mist/80 border border-canopy/50 rounded-full px-4 py-1.5 transition-colors duration-200 hover:border-scale/40 hover:text-bone">
+          <span class="text-xs text-mist border border-canopy/60 rounded-full px-4 py-1.5 transition-colors duration-200 hover:border-scale/40 hover:text-bone">
             {name}
           </span>
         ))}
-        <span class="text-xs text-mist/60 italic">+ extensible</span>
+        <span class="text-xs text-mist/70 italic">+ extensible</span>
       </div>
     </div>
   </section>
@@ -290,7 +290,7 @@ const organs = [
         <h2 class="font-display text-5xl md:text-6xl lg:text-7xl italic text-bone leading-tight">
           Your agent<br />improves itself.
         </h2>
-        <p class="text-base text-bone/70 mt-6 leading-relaxed max-w-lg mx-auto">
+        <p class="text-base text-bone/80 mt-6 leading-relaxed max-w-lg mx-auto">
           The reflection engine reads the agent's own architecture. Finds gaps.
           Writes code. Tests pass. PR merges. The snake grows. Then it does it again.
         </p>
@@ -299,7 +299,7 @@ const organs = [
       <!-- The loop — continuous flow -->
       <div class="relative max-w-4xl mx-auto">
         <!-- Connecting line -->
-        <div class="absolute top-5 sm:top-7 left-[10%] right-[10%] h-px bg-gradient-to-r from-scale/10 via-scale/50 to-scale/10 hidden sm:block"></div>
+        <div class="absolute top-5 sm:top-8 left-[10%] right-[10%] h-px bg-gradient-to-r from-scale/20 via-scale/60 to-scale/20 hidden sm:block"></div>
 
         <div class="grid grid-cols-1 sm:grid-cols-5 gap-6 sm:gap-2">
           {(['Reflect', 'Plan', 'Build', 'Merge', 'Repeat'] as const).map((label, i) => {
@@ -313,12 +313,12 @@ const organs = [
             return (
               <div class="relative group flex sm:flex-col items-center sm:items-center gap-4 sm:gap-0 sm:text-center">
                 <!-- Step circle -->
-                <div class="relative z-10 w-12 h-12 sm:w-14 sm:h-14 shrink-0 rounded-full border border-canopy/60 bg-undergrowth/50 flex items-center justify-center group-hover:border-scale/60 transition-all duration-300 group-hover:shadow-[0_0_24px_rgba(45,148,71,0.25)] group-hover:bg-undergrowth/80" style={`animation: step-glow 4s ease-in-out infinite ${i * 0.8}s`}>
-                  <span class="font-mono text-xs text-scale group-hover:text-glow transition-colors">{String(i + 1).padStart(2, '0')}</span>
+                <div class="relative z-10 w-14 h-14 sm:w-16 sm:h-16 shrink-0 rounded-full border border-canopy bg-undergrowth/70 flex items-center justify-center group-hover:border-scale/60 transition-all duration-300 group-hover:shadow-[0_0_30px_rgba(45,148,71,0.3)] group-hover:bg-undergrowth" style={`animation: step-glow 4s ease-in-out infinite ${i * 0.8}s`}>
+                  <span class="font-mono text-sm text-scale group-hover:text-glow transition-colors">{String(i + 1).padStart(2, '0')}</span>
                 </div>
                 <div class="sm:mt-5">
                   <p class="font-display text-xl italic text-bone">{label}</p>
-                  <p class="text-xs text-mist/85 mt-1.5 sm:mt-2.5 leading-relaxed max-w-[160px] mx-auto">{descs[i]}</p>
+                  <p class="text-xs text-mist mt-1.5 sm:mt-2.5 leading-relaxed max-w-[160px] mx-auto">{descs[i]}</p>
                 </div>
               </div>
             )
@@ -326,8 +326,8 @@ const organs = [
         </div>
       </div>
 
-      <p class="text-center text-xs text-mist/60 mt-12 tracking-wide">
-        1730 tests · 100% coverage · every improvement ships verified
+      <p class="text-center text-sm text-mist/80 mt-12 tracking-wide">
+        <span class="text-scale font-mono">1730</span> tests · <span class="text-scale font-mono">100%</span> coverage · every improvement ships verified
       </p>
     </div>
   </section>
@@ -346,7 +346,7 @@ const organs = [
         <h2 class="font-display text-4xl md:text-6xl italic text-bone leading-tight">
           Hatch your first agent.
         </h2>
-        <p class="text-sm text-mist/85 mt-4">
+        <p class="text-sm text-mist mt-4">
           Every agent starts as an egg. A directory with a psyche and a purpose.
         </p>
       </div>

@@ -21,26 +21,31 @@ const pages = [
   {
     filename: 'og-why.png',
     title: 'Hatched from OpenClaw.',
+    subtitle: 'What we learned. What we rebuilt.',
     tag: 'WHY OUROBOROS',
   },
   {
     filename: 'og-story.png',
     title: 'The Origin Story.',
+    subtitle: 'From plugin hell to a fresh architecture.',
     tag: 'OUROBOROS',
   },
   {
     filename: 'og-blog.png',
     title: 'Dispatches from the serpent.',
+    subtitle: 'Essays, tutorials, and build logs.',
     tag: 'BLOG',
   },
   {
     filename: 'og-tutorial.png',
     title: 'Build an Agent Loop.',
+    subtitle: 'From scratch. No frameworks. Just code.',
     tag: 'TUTORIAL',
   },
   {
     filename: 'og-docs.png',
-    title: 'Documentation.',
+    title: 'Under the hood.',
+    subtitle: 'Architecture, APIs, and getting started.',
     tag: 'DOCS',
   },
 ]

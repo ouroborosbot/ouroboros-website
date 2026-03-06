@@ -9,38 +9,39 @@ const fontsDir = join(__dirname, '..', 'src', 'og', 'fonts')
 
 const cormorantSemiBoldItalic = readFileSync(join(fontsDir, 'CormorantGaramond-SemiBoldItalic.ttf'))
 const outfit = readFileSync(join(fontsDir, 'Outfit-Regular.ttf'))
+const logoPng = readFileSync(join(__dirname, '..', 'public', 'images', 'ouroboros.png'))
+const logoBase64 = `data:image/png;base64,${logoPng.toString('base64')}`
 
 const pages = [
   {
     filename: 'og-home.png',
     title: 'ouroboros',
-    tag: 'Alpha',
-    heroSize: true,
+    subtitle: 'Build agents that know who they are.',
   },
   {
     filename: 'og-why.png',
     title: 'Hatched from OpenClaw.',
-    tag: 'Why Ouroboros',
+    tag: 'WHY OUROBOROS',
   },
   {
     filename: 'og-story.png',
     title: 'The Origin Story.',
-    tag: 'Ouroboros',
+    tag: 'OUROBOROS',
   },
   {
     filename: 'og-blog.png',
     title: 'Dispatches from the serpent.',
-    tag: 'Blog',
+    tag: 'BLOG',
   },
   {
     filename: 'og-tutorial.png',
     title: 'Build an Agent Loop.',
-    tag: 'Tutorial',
+    tag: 'TUTORIAL',
   },
   {
     filename: 'og-docs.png',
     title: 'Documentation.',
-    tag: 'Docs',
+    tag: 'DOCS',
   },
 ]
 
@@ -48,11 +49,16 @@ async function generateImage(options: {
   title: string
   subtitle?: string
   tag?: string
-  heroSize?: boolean
 }) {
-  const { title, subtitle, tag, heroSize } = options
-  // iMessage renders cards at ~300x157px — titles need to be HUGE
-  const titleSize = heroSize ? 160 : title.length > 25 ? 110 : 130
+  const { title, subtitle, tag } = options
+
+  // Fill the card — fewer chars = bigger font
+  const charCount = title.length
+  let titleSize: number
+  if (charCount <= 12) titleSize = 148
+  else if (charCount <= 20) titleSize = 116
+  else if (charCount <= 30) titleSize = 96
+  else titleSize = 78
 
   const svg = await satori(
     {
@@ -63,21 +69,22 @@ async function generateImage(options: {
           height: '630px',
           display: 'flex',
           flexDirection: 'column',
+          alignItems: 'center',
           justifyContent: 'center',
-          padding: '60px 80px',
           background: '#0a120b',
           fontFamily: 'Outfit',
           position: 'relative',
+          textAlign: 'center',
         },
         children: [
-          // Background gradient
+          // Background
           {
             type: 'div',
             props: {
               style: {
                 position: 'absolute',
                 inset: '0',
-                background: 'linear-gradient(160deg, #0a120b 0%, #121f14 40%, #0d160e 100%)',
+                background: 'linear-gradient(160deg, #0d160e 0%, #141f16 50%, #0a120b 100%)',
               },
             },
           },
@@ -91,9 +98,9 @@ async function generateImage(options: {
                 left: '50%',
                 transform: 'translate(-50%, -50%)',
                 width: '800px',
-                height: '400px',
+                height: '350px',
                 borderRadius: '50%',
-                background: 'radial-gradient(circle, rgba(45,148,71,0.06) 0%, transparent 70%)',
+                background: 'radial-gradient(circle, rgba(45,148,71,0.12) 0%, transparent 60%)',
               },
             },
           },
@@ -107,36 +114,42 @@ async function generateImage(options: {
                 left: '0',
                 right: '0',
                 height: '4px',
-                background: 'linear-gradient(90deg, transparent 10%, rgba(45,148,71,0.7) 50%, transparent 90%)',
+                background: 'linear-gradient(90deg, transparent 5%, rgba(45,148,71,0.9) 50%, transparent 95%)',
               },
             },
           },
-          // Tag
+          // Logo mark — top left
+          {
+            type: 'img',
+            props: {
+              src: logoBase64,
+              width: 48,
+              height: 48,
+              style: {
+                position: 'absolute',
+                top: '32px',
+                left: '40px',
+                opacity: 0.4,
+              },
+            },
+          },
+          // Tag — white, big, no letterspacing, readable at thumbnail
           ...(tag ? [{
             type: 'div',
             props: {
               style: {
-                display: 'flex',
-                marginBottom: '20px',
+                fontSize: '48px',
+                letterSpacing: '0.05em',
+                color: 'rgba(45,148,71,0.95)',
+                fontFamily: 'Outfit',
+                fontWeight: 400,
+                marginBottom: '12px',
                 position: 'relative' as const,
               },
-              children: [{
-                type: 'span',
-                props: {
-                  style: {
-                    fontSize: '24px',
-                    letterSpacing: '0.25em',
-                    textTransform: 'uppercase' as const,
-                    color: 'rgba(45,148,71,0.9)',
-                    fontFamily: 'Outfit',
-                    fontWeight: 400,
-                  },
-                  children: tag,
-                },
-              }],
+              children: tag,
             },
           }] : []),
-          // Title — BIG for mobile readability
+          // Title — HUGE, centered, fills the card
           {
             type: 'div',
             props: {
@@ -148,52 +161,26 @@ async function generateImage(options: {
                 color: '#e8ede9',
                 lineHeight: 1.05,
                 position: 'relative' as const,
+                maxWidth: '1060px',
+                padding: '0 20px',
               },
               children: title,
             },
           },
-          // (no subtitle — titles only for mobile readability)
-          // Bottom bar — just logo + url
-          {
+          // Subtitle (homepage only) — bigger, brighter
+          ...(subtitle ? [{
             type: 'div',
             props: {
               style: {
-                position: 'absolute',
-                bottom: '40px',
-                left: '80px',
-                right: '80px',
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
+                fontSize: '44px',
+                color: 'rgba(138,155,142,0.8)',
+                marginTop: '16px',
+                fontFamily: 'Outfit',
+                position: 'relative' as const,
               },
-              children: [
-                ...(heroSize ? [] : [{
-                  type: 'div',
-                  props: {
-                    style: {
-                      fontSize: '32px',
-                      fontFamily: 'Cormorant Garamond',
-                      fontStyle: 'italic',
-                      color: 'rgba(232,237,233,0.3)',
-                    },
-                    children: 'ouroboros',
-                  },
-                }]),
-                {
-                  type: 'div',
-                  props: {
-                    style: {
-                      fontSize: '18px',
-                      color: 'rgba(138,155,142,0.35)',
-                      fontFamily: 'Outfit',
-                      marginLeft: 'auto',
-                    },
-                    children: 'ouroboros.bot',
-                  },
-                },
-              ],
+              children: subtitle,
             },
-          },
+          }] : []),
         ],
       },
     },

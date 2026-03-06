@@ -43,6 +43,12 @@ const pages = [
     tag: 'TUTORIAL',
   },
   {
+    filename: 'og-stop-being-the-glue.png',
+    title: 'Stop Being the Glue.',
+    subtitle: 'How I stopped copy-pasting between AI tools.',
+    tag: 'ESSAY',
+  },
+  {
     filename: 'og-docs.png',
     title: 'Under the hood.',
     subtitle: 'Architecture, APIs, and getting started.',

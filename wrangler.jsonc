@@ -1,5 +1,4 @@
 {
-	"main": "dist/_worker.js/index.js",
 	"name": "ouroboros-website",
   "compatibility_date": "2026-03-06",
   "compatibility_flags": [
@@ -7,10 +6,12 @@
     "global_fetch_strictly_public"
   ],
 	"assets": {
-		"binding": "ASSETS",
 		"directory": "./dist"
 	},
 	"observability": {
     "enabled": true
-  }
+  },
+  "routes": [
+    { "pattern": "ouroboros.bot/*", "zone_name": "ouroboros.bot" }
+  ]
 }

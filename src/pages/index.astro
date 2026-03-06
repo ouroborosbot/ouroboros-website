@@ -73,6 +73,8 @@ const organs = [
     </div>
   </div>
 
+  <div class="section-divider" aria-hidden="true"></div>
+
   <!-- ═══════════════ THE METAPHOR ═══════════════ -->
   <section class="relative px-6 py-28 md:py-40 reveal overflow-hidden">
     <!-- Background — darker base with controlled glow -->
@@ -163,16 +165,18 @@ const organs = [
 
 
 
+  <div class="section-divider" aria-hidden="true"></div>
+
   <!-- ═══════════════ THE PSYCHE ═══════════════ -->
   <section class="relative px-6 py-28 md:py-36 reveal">
-    <!-- Lifted background for section distinction -->
-    <div class="absolute inset-0 bg-deep pointer-events-none"></div>
+    <!-- Slightly lifted background — distinguishable from Metaphor -->
+    <div class="absolute inset-0 bg-gradient-to-br from-deep via-undergrowth/40 to-deep pointer-events-none"></div>
     <!-- Scale pattern — diamond tessellation -->
     <div class="absolute inset-0 opacity-[0.04] pointer-events-none" style="background-image: url(&quot;data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0 L40 20 L20 40 L0 20Z' fill='none' stroke='%232D9447' stroke-width='0.5'/%3E%3C/svg%3E&quot;); background-size: 40px 40px;"></div>
     <!-- Radial glow from top-left -->
-    <div class="absolute top-0 left-0 w-[500px] h-[500px] rounded-full bg-scale/15 blur-[200px] pointer-events-none"></div>
+    <div class="absolute top-0 left-0 w-[500px] h-[500px] rounded-full bg-scale/12 blur-[200px] pointer-events-none"></div>
     <!-- Radial glow from bottom-right for depth -->
-    <div class="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-glow/8 blur-[200px] pointer-events-none"></div>
+    <div class="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-glow/6 blur-[200px] pointer-events-none"></div>
     <!-- Fade edges of scale pattern -->
     <div class="absolute inset-0 bg-gradient-to-b from-void/60 via-transparent to-void/60 pointer-events-none"></div>
     <div class="absolute inset-0 bg-gradient-to-r from-void/40 via-transparent to-void/40 pointer-events-none"></div>
@@ -225,6 +229,8 @@ const organs = [
   </section>
 
 
+
+  <div class="section-divider" aria-hidden="true"></div>
 
   <!-- ═══════════════ THE BODY ═══════════════ -->
   <section class="relative px-6 py-28 md:py-36 reveal overflow-hidden">
@@ -285,11 +291,16 @@ const organs = [
 
 
 
+  <div class="section-divider" aria-hidden="true"></div>
+
   <!-- ═══════════════ SELF-PERPETUATION ═══════════════ -->
   <section class="relative px-6 py-28 md:py-36 reveal overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-deep/50 via-undergrowth/80 to-deep/50 pointer-events-none"></div>
-    <!-- Central convergence glow -->
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] rounded-full bg-glow/12 blur-[200px] pointer-events-none"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-void via-deep to-void pointer-events-none"></div>
+    <!-- Central convergence glow — warmer, more distinct -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] rounded-full bg-glow/10 blur-[200px] pointer-events-none"></div>
+    <!-- Top border glow -->
+    <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-glow/20 to-transparent"></div>
+    <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-glow/20 to-transparent"></div>
     <!-- Decorative ring -->
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-scale/8 pointer-events-none hidden sm:block"></div>
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-scale/4 pointer-events-none hidden sm:block"></div>
@@ -393,6 +404,8 @@ const organs = [
   </section>
 
 
+
+  <div class="section-divider" aria-hidden="true"></div>
 
   <!-- ═══════════════ HATCHING ═══════════════ -->
   <section class="relative px-6 py-28 md:py-36 reveal">

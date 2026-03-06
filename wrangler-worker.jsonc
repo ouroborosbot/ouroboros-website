@@ -1,0 +1,14 @@
+{
+  "name": "ouroboros-website",
+  "compatibility_date": "2026-03-06",
+  "main": "src/worker/index.ts",
+  "assets": {
+    "directory": "./dist"
+  },
+  "routes": [
+    {
+      "pattern": "ouroboros.bot/*",
+      "zone_name": "ouroboros.bot"
+    }
+  ]
+}

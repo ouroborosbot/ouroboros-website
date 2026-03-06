@@ -6,15 +6,15 @@
   --font-mono: "JetBrains Mono", monospace;
 
   --color-void: #050A07;
-  --color-deep: #0A1A0F;
-  --color-undergrowth: #122318;
-  --color-canopy: #1A3322;
+  --color-deep: #0D1F13;
+  --color-undergrowth: #152A1C;
+  --color-canopy: #1E3D28;
   --color-scale: #2D9447;
   --color-glow: #4AE36C;
   --color-fang: #D3483D;
-  --color-bone: #E8EDE9;
-  --color-mist: #8A9B8E;
-  --color-shadow: #5A6B5E;
+  --color-bone: #EDF2EE;
+  --color-mist: #9AAE9F;
+  --color-shadow: #6A7E6F;
 }
 
 html {

@@ -6,11 +6,13 @@ import Footer from '../components/Footer.astro'
 interface Props {
   title: string
   description?: string
+  ogImage?: string
 }
 
 const {
   title,
-  description = 'A multi-agent harness for building AI agents that know who they are.'
+  description = 'A multi-agent harness for building AI agents that know who they are.',
+  ogImage = '/og/og-home.png',
 } = Astro.props
 ---
 
@@ -33,13 +35,13 @@ const {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="/images/ouroboros.png" />
+    <meta property="og:image" content={`https://ouroboros.bot${ogImage}`} />
     <meta property="og:url" content={`https://ouroboros.bot${Astro.url.pathname}`} />
     <meta property="og:site_name" content="Ouroboros" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content="https://ouroboros.bot/images/ouroboros.png" />
+    <meta name="twitter:image" content={`https://ouroboros.bot${ogImage}`} />
     <meta name="twitter:site" content="@arimendelow" />
     <meta name="twitter:creator" content="@arimendelow" />
     <link rel="canonical" href={`https://ouroboros.bot${Astro.url.pathname}`} />

@@ -14,21 +14,18 @@ const pages = [
   {
     filename: 'og-home.png',
     title: 'ouroboros',
-    subtitle: 'Build agents that know who they are.',
     tag: 'Alpha',
     heroSize: true,
   },
   {
     filename: 'og-why.png',
     title: 'Born from OpenClaw.',
-    subtitle: 'Designed for what comes next.',
     tag: 'Why Ouroboros',
   },
   {
     filename: 'og-story.png',
     title: 'The Origin Story.',
-    subtitle: 'Code a model can use, not code that uses a model.',
-    tag: 'Story',
+    tag: 'Ouroboros',
   },
   {
     filename: 'og-blog.png',
@@ -37,14 +34,12 @@ const pages = [
   },
   {
     filename: 'og-tutorial.png',
-    title: 'Build an Agent Loop From Scratch.',
-    subtitle: '~150 lines of TypeScript.',
+    title: 'Build an Agent Loop.',
     tag: 'Tutorial',
   },
   {
     filename: 'og-docs.png',
     title: 'Documentation.',
-    subtitle: 'Hatch your first agent.',
     tag: 'Docs',
   },
 ]
@@ -56,8 +51,8 @@ async function generateImage(options: {
   heroSize?: boolean
 }) {
   const { title, subtitle, tag, heroSize } = options
-  // Mobile-optimized: big title, minimal text, lots of breathing room
-  const titleSize = heroSize ? 108 : title.length > 30 ? 64 : 80
+  // Mobile-optimized: massive title, nothing else
+  const titleSize = heroSize ? 128 : title.length > 25 ? 80 : 96
 
   const svg = await satori(
     {
@@ -129,7 +124,7 @@ async function generateImage(options: {
                 type: 'span',
                 props: {
                   style: {
-                    fontSize: '16px',
+                    fontSize: '20px',
                     letterSpacing: '0.25em',
                     textTransform: 'uppercase' as const,
                     color: 'rgba(45,148,71,0.9)',
@@ -157,21 +152,7 @@ async function generateImage(options: {
               children: title,
             },
           },
-          // Subtitle — short, readable
-          ...(subtitle ? [{
-            type: 'div',
-            props: {
-              style: {
-                fontSize: '28px',
-                color: 'rgba(138,155,142,0.7)',
-                marginTop: '16px',
-                lineHeight: 1.4,
-                fontFamily: 'Outfit',
-                position: 'relative' as const,
-              },
-              children: subtitle,
-            },
-          }] : []),
+          // (no subtitle — titles only for mobile readability)
           // Bottom bar — just logo + url
           {
             type: 'div',

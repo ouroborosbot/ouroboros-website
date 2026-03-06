@@ -80,15 +80,22 @@ html {
 
 /* ── Scroll reveal ── */
 
+/* Default: visible. JS adds .reveal-ready to <html> to enable animations. */
 .reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-
-.reveal.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html.reveal-ready .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  html.reveal-ready .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .reveal.visible .reveal-child {
@@ -96,10 +103,12 @@ html {
   transform: translateY(0);
 }
 
-.reveal-child {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+@media (prefers-reduced-motion: no-preference) {
+  html.reveal-ready .reveal-child {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
 }
 
 .reveal-child:nth-child(1) { transition-delay: 0ms; }

@@ -82,10 +82,14 @@ const {
     <Footer />
 
     <script is:inline>
-      // Reveal sections on scroll — must be is:inline so Astro keeps it at end of body
+      // Reveal sections on scroll — progressive enhancement
+      // Sections default to visible; we add reveal-ready to enable animations only when JS + observer are available
       (function() {
         var reveals = document.querySelectorAll('.reveal');
-        if (!reveals.length) return;
+        if (!reveals.length || !('IntersectionObserver' in window)) return;
+
+        // Enable animations now that we know JS works
+        document.documentElement.classList.add('reveal-ready');
 
         var observer = new IntersectionObserver(
           function(entries) {
@@ -96,7 +100,7 @@ const {
               }
             });
           },
-          { threshold: 0, rootMargin: '0px 0px -20px 0px' }
+          { threshold: 0.05, rootMargin: '0px 0px -60px 0px' }
         );
         reveals.forEach(function(el) { observer.observe(el); });
       })();

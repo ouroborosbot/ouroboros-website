@@ -8,6 +8,8 @@ const posts = [
     href: '/blog/build-ai-agent-from-scratch',
     date: '2026-03-01',
     tag: 'Tutorial',
+    readTime: '25 min read',
+    author: 'Ari Mendelow',
   },
 ]
 ---
@@ -33,11 +35,13 @@ const posts = [
           <div class="flex items-center gap-3 mb-4">
             <span class="font-mono text-[10px] text-scale/60 uppercase tracking-[0.2em] border border-scale/20 rounded-full px-3 py-1">{post.tag}</span>
             <span class="font-mono text-[10px] text-shadow/50">{post.date}</span>
+            <span class="font-mono text-[10px] text-shadow/50">{post.readTime}</span>
           </div>
           <h2 class="font-display text-2xl md:text-3xl italic text-bone leading-snug group-hover:text-glow transition-colors duration-300">
             {post.title}
           </h2>
           <p class="text-sm text-mist/60 mt-3 leading-relaxed">{post.description}</p>
+          <p class="text-xs text-shadow/50 mt-4">By {post.author}</p>
         </a>
       ))}
     </div>

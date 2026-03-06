@@ -39,7 +39,7 @@ const organs = [
         Build agents that know who they are.
       </p>
 
-      <p class="text-sm text-shadow mt-5 max-w-md mx-auto leading-relaxed animate-fade-up stagger-3">
+      <p class="text-sm text-mist/70 mt-5 max-w-md mx-auto leading-relaxed animate-fade-up stagger-3">
         A zero-dependency TypeScript harness for AI agents that self-modify,
         remember, and grow. Born from a lobster's molt. Open source.
       </p>
@@ -65,9 +65,9 @@ const organs = [
   <!-- ═══════════════ THE METAPHOR ═══════════════ -->
   <section class="relative px-6 py-28 md:py-40 reveal overflow-hidden">
     <!-- Lifted background for visual separation -->
-    <div class="absolute inset-0 bg-undergrowth/50 pointer-events-none"></div>
-    <div class="absolute inset-0 bg-gradient-to-b from-void/80 via-transparent to-void/80 pointer-events-none"></div>
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-scale/6 blur-[250px] pointer-events-none"></div>
+    <div class="absolute inset-0 bg-undergrowth/70 pointer-events-none"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-void/60 via-transparent to-void/60 pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-scale/10 blur-[250px] pointer-events-none"></div>
     <!-- Vertical accent -->
     <div class="absolute right-12 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-scale/20 to-transparent hidden lg:block"></div>
 
@@ -88,12 +88,12 @@ const organs = [
               When the conversation grows too long, the agent trims its oldest messages.
               Context window consuming itself.
             </p>
-            <p class="text-base text-mist/80 leading-relaxed max-w-lg">
+            <p class="text-base text-mist leading-relaxed max-w-lg">
               But nothing is truly lost. Facts are extracted to memory before they're
               consumed. Identity doesn't live in the tokens — it lives in the psyche files.
               The snake eats its tail to stay alive.
             </p>
-            <p class="text-sm text-shadow italic mt-6 border-l-2 border-scale/30 pl-4">
+            <p class="text-sm text-mist/70 italic mt-6 border-l-2 border-scale/40 pl-4">
               The metaphor isn't decorative. It's the architecture.
             </p>
           </div>
@@ -153,7 +153,7 @@ const organs = [
   <!-- ═══════════════ THE PSYCHE ═══════════════ -->
   <section class="relative px-6 py-28 md:py-36 reveal">
     <!-- Radial glow from top-left -->
-    <div class="absolute top-0 left-0 w-[500px] h-[500px] rounded-full bg-scale/4 blur-[200px] pointer-events-none"></div>
+    <div class="absolute top-0 left-0 w-[500px] h-[500px] rounded-full bg-scale/8 blur-[200px] pointer-events-none"></div>
     <!-- Diagonal accent stripe -->
     <div class="absolute -left-32 top-1/4 w-[600px] h-px bg-gradient-to-r from-transparent via-canopy/30 to-transparent rotate-[25deg] pointer-events-none"></div>
     <!-- Subtle left accent bar -->
@@ -178,7 +178,7 @@ const organs = [
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
         {psycheFiles.map(({ file, role, desc, accentClass }, i) => (
           <div class:list={[
-            'group relative rounded-xl border border-canopy/60 bg-gradient-to-br from-undergrowth/70 to-deep/90 p-7 transition-all duration-500 hover:border-scale/50 hover:translate-y-[-3px] hover:shadow-[0_8px_40px_rgba(45,148,71,0.15)] overflow-hidden',
+            'group relative rounded-xl border border-canopy/80 bg-gradient-to-br from-undergrowth to-deep p-7 transition-all duration-500 hover:border-scale/50 hover:translate-y-[-3px] hover:shadow-[0_8px_40px_rgba(45,148,71,0.15)] overflow-hidden',
             i === 4 ? 'md:col-span-2 md:flex md:items-center md:gap-8' : ''
           ]}>
             <!-- Corner glow -->
@@ -191,12 +191,12 @@ const organs = [
               </div>
               <p class="font-display text-2xl italic text-bone leading-snug">{role}</p>
             </div>
-            <p class="text-sm text-mist/75 mt-3 md:mt-0 leading-relaxed">{desc}</p>
+            <p class="text-sm text-mist/85 mt-3 md:mt-0 leading-relaxed">{desc}</p>
           </div>
         ))}
       </div>
 
-      <p class="text-xs text-shadow/70 mt-8 italic tracking-wide">
+      <p class="text-xs text-mist/60 mt-8 italic tracking-wide">
         "Partner, not user." — FRIENDS.md replaces USER.md.
       </p>
     </div>
@@ -212,9 +212,9 @@ const organs = [
   <!-- ═══════════════ THE BODY ═══════════════ -->
   <section class="relative px-6 py-28 md:py-36 reveal overflow-hidden">
     <!-- Lifted background -->
-    <div class="absolute inset-0 bg-undergrowth/40 pointer-events-none"></div>
+    <div class="absolute inset-0 bg-undergrowth/60 pointer-events-none"></div>
     <!-- Blueprint grid background -->
-    <div class="absolute inset-0 opacity-[0.06]" style="background-image: linear-gradient(var(--color-scale) 1px, transparent 1px), linear-gradient(90deg, var(--color-scale) 1px, transparent 1px); background-size: 60px 60px;"></div>
+    <div class="absolute inset-0 opacity-[0.08]" style="background-image: linear-gradient(var(--color-scale) 1px, transparent 1px), linear-gradient(90deg, var(--color-scale) 1px, transparent 1px); background-size: 60px 60px;"></div>
     <!-- Fade edges of grid -->
     <div class="absolute inset-0 bg-gradient-to-b from-void/90 via-transparent to-void/90 pointer-events-none"></div>
     <div class="absolute inset-0 bg-gradient-to-r from-void/60 via-transparent to-void/60 pointer-events-none"></div>
@@ -233,14 +233,14 @@ const organs = [
       </div>
 
       <!-- Organ specimens -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-canopy/30 rounded-xl overflow-hidden">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-canopy/50 rounded-xl overflow-hidden">
         {organs.map(({ name, desc, icon }) => (
           <div class="relative bg-deep p-6 hover:bg-undergrowth/60 transition-all duration-300 group/organ">
             <div class="flex items-baseline gap-3 mb-3">
               <span class="text-scale/60 text-base group-hover/organ:text-scale/90 transition-colors">{icon}</span>
               <span class="font-mono text-sm text-bone tracking-wide">{name}/</span>
             </div>
-            <p class="text-sm text-mist/75 leading-relaxed">{desc}</p>
+            <p class="text-sm text-mist/85 leading-relaxed">{desc}</p>
           </div>
         ))}
         <!-- Extra cell: the daemon -->
@@ -249,19 +249,19 @@ const organs = [
             <span class="text-scale/60 text-base">⚙</span>
             <span class="font-mono text-sm text-bone tracking-wide">daemon/</span>
           </div>
-          <p class="text-sm text-mist/75 leading-relaxed">Process manager, cron scheduler, health monitor. The nervous system that keeps agents alive. <code class="text-scale/70 text-xs">ouro status</code></p>
+          <p class="text-sm text-mist/85 leading-relaxed">Process manager, cron scheduler, health monitor. The nervous system that keeps agents alive. <code class="text-scale/80 text-xs">ouro status</code></p>
         </div>
       </div>
 
       <!-- Providers -->
       <div class="mt-10 flex flex-wrap items-center gap-3">
-        <span class="font-mono text-[10px] text-shadow/70 uppercase tracking-[0.2em] mr-2">Providers</span>
+        <span class="font-mono text-[10px] text-mist/60 uppercase tracking-[0.2em] mr-2">Providers</span>
         {providers.map(name => (
-          <span class="text-xs text-mist/70 border border-canopy/30 rounded-full px-4 py-1.5 transition-colors duration-200 hover:border-scale/30 hover:text-mist/80">
+          <span class="text-xs text-mist/80 border border-canopy/50 rounded-full px-4 py-1.5 transition-colors duration-200 hover:border-scale/40 hover:text-bone">
             {name}
           </span>
         ))}
-        <span class="text-xs text-shadow/70 italic">+ extensible</span>
+        <span class="text-xs text-mist/60 italic">+ extensible</span>
       </div>
     </div>
   </section>
@@ -312,7 +312,7 @@ const organs = [
                 </div>
                 <div class="sm:mt-5">
                   <p class="font-display text-xl italic text-bone">{label}</p>
-                  <p class="text-xs text-mist/75 mt-1.5 sm:mt-2.5 leading-relaxed max-w-[160px] mx-auto">{descs[i]}</p>
+                  <p class="text-xs text-mist/85 mt-1.5 sm:mt-2.5 leading-relaxed max-w-[160px] mx-auto">{descs[i]}</p>
                 </div>
               </div>
             )
@@ -320,7 +320,7 @@ const organs = [
         </div>
       </div>
 
-      <p class="text-center text-xs text-shadow/70 mt-12 tracking-wide">
+      <p class="text-center text-xs text-mist/60 mt-12 tracking-wide">
         1730 tests · 100% coverage · every improvement ships verified
       </p>
     </div>
@@ -343,7 +343,7 @@ const organs = [
         <h2 class="font-display text-4xl md:text-6xl italic text-bone leading-tight">
           Hatch your first agent.
         </h2>
-        <p class="text-sm text-mist/75 mt-4">
+        <p class="text-sm text-mist/85 mt-4">
           Every agent starts as an egg. A directory with a psyche and a purpose.
         </p>
       </div>
@@ -354,22 +354,22 @@ const organs = [
           <span class="w-2.5 h-2.5 rounded-full bg-fang/50"></span>
           <span class="w-2.5 h-2.5 rounded-full bg-scale/30"></span>
           <span class="w-2.5 h-2.5 rounded-full bg-canopy/40"></span>
-          <span class="font-mono text-[10px] text-shadow/70 ml-3">~/agents</span>
+          <span class="font-mono text-[10px] text-mist/50 ml-3">~/agents</span>
         </div>
-        <pre class="p-6 text-sm font-mono leading-loose overflow-x-auto"><code><span class="text-shadow/70"># hatch your agent</span>
+        <pre class="p-6 text-sm font-mono leading-loose overflow-x-auto"><code><span class="text-mist/60"># hatch your agent</span>
 <span class="text-mist">$</span> <span class="text-bone">ouro hatch my-agent</span>
 <span class="inline-block px-2 py-0.5 text-[9px] uppercase tracking-wider border border-scale/25 rounded text-scale/50">coming soon</span>
 
-<span class="text-shadow/70"># or create by hand</span>
+<span class="text-mist/60"># or create by hand</span>
 <span class="text-mist">$</span> <span class="text-bone">mkdir -p my-agent/psyche</span>
 
 <span class="text-bone">my-agent/</span>
-  <span class="text-mist">agent.json</span>         <span class="text-shadow/70"># name, provider, config</span>
+  <span class="text-mist">agent.json</span>         <span class="text-mist/60"># name, provider, config</span>
   <span class="text-mist">psyche/</span>
-    <span class="text-glow/70">SOUL.md</span>          <span class="text-shadow/70"># what you are</span>
-    <span class="text-glow/70">IDENTITY.md</span>      <span class="text-shadow/70"># how you show up</span>
-    <span class="text-glow/70">LORE.md</span>          <span class="text-shadow/70"># where you come from</span>
-    <span class="text-glow/70">FRIENDS.md</span>       <span class="text-shadow/70"># who you know</span>
+    <span class="text-glow/70">SOUL.md</span>          <span class="text-mist/60"># what you are</span>
+    <span class="text-glow/70">IDENTITY.md</span>      <span class="text-mist/60"># how you show up</span>
+    <span class="text-glow/70">LORE.md</span>          <span class="text-mist/60"># where you come from</span>
+    <span class="text-glow/70">FRIENDS.md</span>       <span class="text-mist/60"># who you know</span>
 
 <span class="text-mist">$</span> <span class="text-bone">npm run dev -- --agent my-agent</span></code></pre>
       </div>

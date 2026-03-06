@@ -64,9 +64,10 @@ const organs = [
 
   <!-- ═══════════════ THE METAPHOR ═══════════════ -->
   <section class="relative px-6 py-28 md:py-40 reveal overflow-hidden">
-    <!-- Atmospheric radial glow behind the section -->
-    <div class="absolute inset-0 bg-gradient-to-b from-undergrowth/40 via-deep/60 to-void pointer-events-none"></div>
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-scale/4 blur-[250px] pointer-events-none"></div>
+    <!-- Lifted background for visual separation -->
+    <div class="absolute inset-0 bg-undergrowth/50 pointer-events-none"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-void/80 via-transparent to-void/80 pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-scale/6 blur-[250px] pointer-events-none"></div>
     <!-- Vertical accent -->
     <div class="absolute right-12 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-scale/20 to-transparent hidden lg:block"></div>
 
@@ -153,6 +154,8 @@ const organs = [
   <section class="relative px-6 py-28 md:py-36 reveal">
     <!-- Diagonal accent stripe -->
     <div class="absolute -left-32 top-1/4 w-[600px] h-px bg-gradient-to-r from-transparent via-canopy/30 to-transparent rotate-[25deg] pointer-events-none"></div>
+    <!-- Subtle left accent bar -->
+    <div class="absolute left-0 top-[15%] bottom-[15%] w-[2px] bg-gradient-to-b from-transparent via-scale/20 to-transparent hidden lg:block"></div>
     <div class="max-w-6xl mx-auto">
       <!-- Header — offset left -->
       <div class="max-w-xl mb-14">
@@ -173,7 +176,7 @@ const organs = [
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
         {psycheFiles.map(({ file, role, desc, accentClass }, i) => (
           <div class:list={[
-            'group relative rounded-xl border border-canopy/40 bg-gradient-to-br from-deep/90 to-undergrowth/30 p-7 transition-all duration-500 hover:border-scale/30 hover:translate-y-[-3px] hover:shadow-[0_8px_40px_rgba(45,148,71,0.08)] overflow-hidden',
+            'group relative rounded-xl border border-canopy/50 bg-gradient-to-br from-undergrowth/60 to-deep/80 p-7 transition-all duration-500 hover:border-scale/40 hover:translate-y-[-3px] hover:shadow-[0_8px_40px_rgba(45,148,71,0.12)] overflow-hidden',
             i === 4 ? 'md:col-span-2 md:flex md:items-center md:gap-8' : ''
           ]}>
             <!-- Corner glow -->
@@ -206,11 +209,13 @@ const organs = [
 
   <!-- ═══════════════ THE BODY ═══════════════ -->
   <section class="relative px-6 py-28 md:py-36 reveal overflow-hidden">
-    <!-- Blueprint grid background — more visible -->
-    <div class="absolute inset-0 opacity-[0.04]" style="background-image: linear-gradient(var(--color-scale) 1px, transparent 1px), linear-gradient(90deg, var(--color-scale) 1px, transparent 1px); background-size: 60px 60px;"></div>
+    <!-- Lifted background -->
+    <div class="absolute inset-0 bg-undergrowth/40 pointer-events-none"></div>
+    <!-- Blueprint grid background -->
+    <div class="absolute inset-0 opacity-[0.06]" style="background-image: linear-gradient(var(--color-scale) 1px, transparent 1px), linear-gradient(90deg, var(--color-scale) 1px, transparent 1px); background-size: 60px 60px;"></div>
     <!-- Fade edges of grid -->
-    <div class="absolute inset-0 bg-gradient-to-b from-void via-transparent to-void pointer-events-none"></div>
-    <div class="absolute inset-0 bg-gradient-to-r from-void via-transparent to-void pointer-events-none"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-void/90 via-transparent to-void/90 pointer-events-none"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-void/60 via-transparent to-void/60 pointer-events-none"></div>
 
     <div class="max-w-6xl mx-auto relative">
       <div class="max-w-xl mb-14">
@@ -226,9 +231,9 @@ const organs = [
       </div>
 
       <!-- Organ specimens -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-canopy/20 rounded-xl overflow-hidden">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-canopy/30 rounded-xl overflow-hidden">
         {organs.map(({ name, desc, icon }) => (
-          <div class="relative bg-deep/95 p-6 hover:bg-undergrowth/40 transition-all duration-300 group/organ">
+          <div class="relative bg-deep p-6 hover:bg-undergrowth/60 transition-all duration-300 group/organ">
             <div class="flex items-baseline gap-3 mb-3">
               <span class="text-scale/60 text-base group-hover/organ:text-scale/90 transition-colors">{icon}</span>
               <span class="font-mono text-sm text-bone tracking-wide">{name}/</span>
@@ -237,7 +242,7 @@ const organs = [
           </div>
         ))}
         <!-- Extra cell: the daemon -->
-        <div class="bg-deep/95 p-6 hover:bg-undergrowth/40 transition-colors duration-300 sm:col-span-2 lg:col-span-1">
+        <div class="bg-deep p-6 hover:bg-undergrowth/60 transition-colors duration-300 sm:col-span-2 lg:col-span-1">
           <div class="flex items-baseline gap-3 mb-3">
             <span class="text-scale/60 text-base">⚙</span>
             <span class="font-mono text-sm text-bone tracking-wide">daemon/</span>
@@ -286,7 +291,7 @@ const organs = [
       <!-- The loop — continuous flow -->
       <div class="relative max-w-4xl mx-auto">
         <!-- Connecting line -->
-        <div class="absolute top-5 sm:top-6 left-[10%] right-[10%] h-px bg-gradient-to-r from-scale/5 via-scale/30 to-scale/5 hidden sm:block"></div>
+        <div class="absolute top-5 sm:top-6 left-[10%] right-[10%] h-px bg-gradient-to-r from-scale/5 via-scale/40 to-scale/5 hidden sm:block"></div>
 
         <div class="grid grid-cols-1 sm:grid-cols-5 gap-6 sm:gap-2">
           {(['Reflect', 'Plan', 'Build', 'Merge', 'Repeat'] as const).map((label, i) => {
@@ -300,8 +305,8 @@ const organs = [
             return (
               <div class="relative group flex sm:flex-col items-center sm:items-center gap-4 sm:gap-0 sm:text-center">
                 <!-- Step circle -->
-                <div class="relative z-10 w-12 h-12 sm:w-14 sm:h-14 shrink-0 rounded-full border border-canopy/50 bg-deep/80 flex items-center justify-center group-hover:border-scale/50 transition-all duration-300 group-hover:shadow-[0_0_24px_rgba(45,148,71,0.2)] group-hover:bg-undergrowth/60">
-                  <span class="font-mono text-xs text-scale/70 group-hover:text-scale transition-colors">{String(i + 1).padStart(2, '0')}</span>
+                <div class="relative z-10 w-12 h-12 sm:w-14 sm:h-14 shrink-0 rounded-full border border-canopy/60 bg-undergrowth/50 flex items-center justify-center group-hover:border-scale/60 transition-all duration-300 group-hover:shadow-[0_0_24px_rgba(45,148,71,0.25)] group-hover:bg-undergrowth/80">
+                  <span class="font-mono text-xs text-scale/80 group-hover:text-scale transition-colors">{String(i + 1).padStart(2, '0')}</span>
                 </div>
                 <div class="sm:mt-5">
                   <p class="font-display text-xl italic text-bone">{label}</p>
@@ -342,7 +347,7 @@ const organs = [
       </div>
 
       <!-- Terminal -->
-      <div class="max-w-2xl mx-auto rounded-xl border border-canopy/40 bg-deep/90 overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.4),0_0_80px_rgba(45,148,71,0.05)]">
+      <div class="max-w-2xl mx-auto rounded-xl border border-canopy/50 bg-undergrowth/40 overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.5),0_0_80px_rgba(45,148,71,0.08)]">
         <div class="flex items-center gap-2 px-5 py-3 border-b border-canopy/30 bg-undergrowth/30">
           <span class="w-2.5 h-2.5 rounded-full bg-fang/50"></span>
           <span class="w-2.5 h-2.5 rounded-full bg-scale/30"></span>

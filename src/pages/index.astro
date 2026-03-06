@@ -29,7 +29,7 @@ const organs = [
     <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-canopy/40 to-transparent"></div>
 
     <div class="relative z-10 text-center">
-      <h1 class="font-display text-[5.5rem] md:text-[8rem] lg:text-[12rem] font-light italic tracking-tight text-bone leading-[0.85] animate-fade-up">
+      <h1 class="font-display text-[4rem] sm:text-[5.5rem] md:text-[8rem] lg:text-[12rem] font-light italic tracking-tight text-bone leading-[0.85] animate-fade-up">
         ouroboros
       </h1>
 
@@ -226,7 +226,7 @@ const organs = [
         <!-- Connecting line -->
         <div class="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-canopy/40 to-transparent -translate-y-1/2 hidden sm:block"></div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-5 gap-4 sm:gap-2">
+        <div class="grid grid-cols-1 sm:grid-cols-5 gap-6 sm:gap-2">
           {(['Reflect', 'Plan', 'Build', 'Merge', 'Repeat'] as const).map((label, i) => {
             const descs = [
               'Read its own architecture. Find what\'s missing.',
@@ -236,13 +236,15 @@ const organs = [
               'Loop back. The snake is bigger now.',
             ]
             return (
-              <div class="relative text-center group">
+              <div class="relative group flex sm:flex-col items-center sm:items-center gap-4 sm:gap-0 sm:text-center">
                 <!-- Step circle -->
-                <div class="relative z-10 w-12 h-12 mx-auto rounded-full border border-canopy/50 bg-deep flex items-center justify-center group-hover:border-scale/50 transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(45,148,71,0.15)]">
+                <div class="relative z-10 w-10 h-10 sm:w-12 sm:h-12 shrink-0 rounded-full border border-canopy/50 bg-deep flex items-center justify-center group-hover:border-scale/50 transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(45,148,71,0.15)]">
                   <span class="font-mono text-[10px] text-scale/60">{String(i + 1).padStart(2, '0')}</span>
                 </div>
-                <p class="font-display text-lg italic text-bone mt-4">{label}</p>
-                <p class="text-[11px] text-mist/50 mt-2 leading-relaxed px-1">{descs[i]}</p>
+                <div class="sm:mt-4">
+                  <p class="font-display text-lg italic text-bone">{label}</p>
+                  <p class="text-[11px] text-mist/50 mt-1 sm:mt-2 leading-relaxed">{descs[i]}</p>
+                </div>
               </div>
             )
           })}
@@ -261,7 +263,7 @@ const organs = [
     <div class="max-w-6xl mx-auto">
       <div class="max-w-2xl mx-auto text-center mb-12">
         <span class="font-mono text-[10px] text-scale/80 uppercase tracking-[0.3em] block mb-6">Begin</span>
-        <h2 class="font-display text-5xl md:text-6xl italic text-bone leading-tight">
+        <h2 class="font-display text-4xl md:text-6xl italic text-bone leading-tight">
           Hatch your first agent.
         </h2>
         <p class="text-sm text-mist/60 mt-4">
@@ -278,7 +280,8 @@ const organs = [
           <span class="font-mono text-[10px] text-shadow/40 ml-3">~/agents</span>
         </div>
         <pre class="p-6 text-sm font-mono leading-loose overflow-x-auto"><code><span class="text-shadow/50"># hatch your agent</span>
-<span class="text-mist">$</span> <span class="text-bone">ouro hatch my-agent</span>  <span class="inline-block ml-2 px-2 py-0.5 text-[9px] uppercase tracking-wider border border-scale/25 rounded text-scale/50 align-middle">coming soon</span>
+<span class="text-mist">$</span> <span class="text-bone">ouro hatch my-agent</span>
+<span class="inline-block px-2 py-0.5 text-[9px] uppercase tracking-wider border border-scale/25 rounded text-scale/50">coming soon</span>
 
 <span class="text-shadow/50"># or create by hand</span>
 <span class="text-mist">$</span> <span class="text-bone">mkdir -p my-agent/psyche</span>

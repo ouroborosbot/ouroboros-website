@@ -118,21 +118,7 @@ async function generateImage(options: {
               },
             },
           },
-          // Logo mark — top left
-          {
-            type: 'img',
-            props: {
-              src: logoBase64,
-              width: 48,
-              height: 48,
-              style: {
-                position: 'absolute',
-                top: '32px',
-                left: '40px',
-                opacity: 0.4,
-              },
-            },
-          },
+          // (logo removed — too small at thumbnail)
           // Tag — white, big, no letterspacing, readable at thumbnail
           ...(tag ? [{
             type: 'div',

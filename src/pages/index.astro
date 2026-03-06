@@ -31,11 +31,11 @@ const organs = [
     <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-canopy/40 to-transparent"></div>
 
     <div class="relative z-10 text-center">
-      <h1 class="font-display text-[4rem] sm:text-[5.5rem] md:text-[8rem] lg:text-[12rem] font-light italic tracking-tight text-bone leading-[0.85] animate-fade-up">
+      <h1 class="font-display text-[3rem] sm:text-[5.5rem] md:text-[8rem] lg:text-[12rem] font-light italic tracking-tight text-bone leading-[0.85] animate-fade-up">
         ouroboros
       </h1>
 
-      <p class="text-xl md:text-2xl text-mist/80 font-light mt-8 animate-fade-up stagger-2 tracking-wide">
+      <p class="text-lg sm:text-xl md:text-2xl text-mist/80 font-light mt-6 sm:mt-8 animate-fade-up stagger-2 tracking-wide">
         Build agents that know who they are.
       </p>
 
@@ -80,7 +80,7 @@ const organs = [
         <div class="lg:col-span-3">
           <span class="font-mono text-[10px] text-scale/80 uppercase tracking-[0.3em] block mb-6">The Metaphor</span>
 
-          <h2 class="font-display text-5xl md:text-6xl lg:text-7xl italic text-bone leading-[1.05]">
+          <h2 class="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl italic text-bone leading-[1.05]">
             The snake eats<br />
             <span class="text-mist/80">its own tail.</span>
           </h2>
@@ -166,10 +166,10 @@ const organs = [
       <!-- Header — offset left -->
       <div class="max-w-xl mb-14">
         <span class="font-mono text-[10px] text-scale/80 uppercase tracking-[0.3em] block mb-6">The Psyche</span>
-        <h2 class="font-display text-5xl md:text-6xl italic text-bone leading-tight">
+        <h2 class="font-display text-3xl sm:text-5xl md:text-6xl italic text-bone leading-tight">
           Your agent isn't a<br />stateless function.
         </h2>
-        <p class="font-display text-4xl md:text-5xl italic text-scale/70 mt-1">
+        <p class="font-display text-2xl sm:text-4xl md:text-5xl italic text-scale/70 mt-1">
           It has a mind.
         </p>
         <p class="text-base text-mist/80 mt-6 leading-relaxed">
@@ -228,7 +228,7 @@ const organs = [
     <div class="max-w-6xl mx-auto relative">
       <div class="max-w-xl mb-14">
         <span class="font-mono text-[10px] text-scale/80 uppercase tracking-[0.3em] block mb-6">Architecture</span>
-        <h2 class="font-display text-5xl md:text-6xl italic text-bone leading-tight">
+        <h2 class="font-display text-3xl sm:text-5xl md:text-6xl italic text-bone leading-tight">
           Every module<br />is an organ.
         </h2>
         <p class="text-base text-mist/80 mt-6 leading-relaxed">
@@ -290,7 +290,7 @@ const organs = [
     <div class="max-w-6xl mx-auto relative">
       <div class="text-center max-w-2xl mx-auto mb-16">
         <span class="font-mono text-[10px] text-scale/80 uppercase tracking-[0.3em] block mb-6">The Seed</span>
-        <h2 class="font-display text-5xl md:text-6xl lg:text-7xl italic text-bone leading-tight">
+        <h2 class="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl italic text-bone leading-tight">
           Your agent<br />improves itself.
         </h2>
         <p class="text-base text-mist/80 mt-6 leading-relaxed max-w-lg mx-auto">
@@ -304,7 +304,7 @@ const organs = [
         <!-- Connecting line -->
         <div class="absolute top-5 sm:top-7 left-[10%] right-[10%] h-px bg-gradient-to-r from-scale/10 via-scale/50 to-scale/10 hidden sm:block"></div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-5 gap-6 sm:gap-2">
+        <div class="grid grid-cols-1 sm:grid-cols-5 gap-4 sm:gap-2">
           {(['Reflect', 'Plan', 'Build', 'Merge', 'Repeat'] as const).map((label, i) => {
             const descs = [
               'Read its own architecture. Find what\'s missing.',
@@ -314,14 +314,14 @@ const organs = [
               'Loop back. The snake is bigger now.',
             ]
             return (
-              <div class="relative group flex sm:flex-col items-center sm:items-center gap-4 sm:gap-0 sm:text-center">
+              <div class="relative group flex sm:flex-col items-center sm:items-center gap-3 sm:gap-0 sm:text-center">
                 <!-- Step circle -->
-                <div class="relative z-10 w-12 h-12 sm:w-14 sm:h-14 shrink-0 rounded-full border border-canopy/60 bg-undergrowth/50 flex items-center justify-center group-hover:border-scale/60 transition-all duration-300 group-hover:shadow-[0_0_24px_rgba(45,148,71,0.25)] group-hover:bg-undergrowth/80" style={`animation: step-glow 4s ease-in-out infinite ${i * 0.8}s`}>
+                <div class="relative z-10 w-10 h-10 sm:w-14 sm:h-14 shrink-0 rounded-full border border-canopy/60 bg-undergrowth/50 flex items-center justify-center group-hover:border-scale/60 transition-all duration-300 group-hover:shadow-[0_0_24px_rgba(45,148,71,0.25)] group-hover:bg-undergrowth/80" style={`animation: step-glow 4s ease-in-out infinite ${i * 0.8}s`}>
                   <span class="font-mono text-xs text-scale group-hover:text-glow transition-colors">{String(i + 1).padStart(2, '0')}</span>
                 </div>
                 <div class="sm:mt-5">
-                  <p class="font-display text-xl italic text-bone">{label}</p>
-                  <p class="text-xs text-mist/85 mt-1.5 sm:mt-2.5 leading-relaxed max-w-[160px] mx-auto">{descs[i]}</p>
+                  <p class="font-display text-lg sm:text-xl italic text-bone">{label}</p>
+                  <p class="text-xs text-mist/85 mt-1 sm:mt-2.5 leading-relaxed max-w-[160px] sm:mx-auto">{descs[i]}</p>
                 </div>
               </div>
             )
@@ -350,7 +350,7 @@ const organs = [
     <div class="max-w-6xl mx-auto">
       <div class="max-w-2xl mx-auto text-center mb-12">
         <span class="font-mono text-[10px] text-scale/80 uppercase tracking-[0.3em] block mb-6">Begin</span>
-        <h2 class="font-display text-4xl md:text-6xl italic text-bone leading-tight">
+        <h2 class="font-display text-3xl sm:text-4xl md:text-6xl italic text-bone leading-tight">
           Hatch your first agent.
         </h2>
         <p class="text-sm text-mist/85 mt-4">
@@ -366,7 +366,7 @@ const organs = [
           <span class="w-2.5 h-2.5 rounded-full bg-canopy/40"></span>
           <span class="font-mono text-[10px] text-mist/50 ml-3">~/agents</span>
         </div>
-        <pre class="p-6 text-sm font-mono leading-loose overflow-x-auto"><code><span class="text-mist/60"># hatch your agent</span>
+        <pre class="p-4 sm:p-6 text-xs sm:text-sm font-mono leading-loose overflow-x-auto"><code><span class="text-mist/60"># hatch your agent</span>
 <span class="text-mist">$</span> <span class="text-bone">ouro hatch my-agent</span>
 <span class="inline-block px-2 py-0.5 text-[9px] uppercase tracking-wider border border-scale/25 rounded text-scale/50">coming soon</span>
 

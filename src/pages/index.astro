@@ -178,9 +178,11 @@ const organs = [
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
         {psycheFiles.map(({ file, role, desc, accentClass }, i) => (
           <div class:list={[
-            'group relative rounded-xl border border-canopy/80 bg-gradient-to-br from-undergrowth to-deep p-7 transition-all duration-500 hover:border-scale/50 hover:translate-y-[-3px] hover:shadow-[0_8px_40px_rgba(45,148,71,0.15)] overflow-hidden',
+            'group relative rounded-xl border border-canopy/80 bg-gradient-to-br from-undergrowth/80 to-deep p-7 transition-all duration-500 hover:border-scale/50 hover:translate-y-[-3px] hover:shadow-[0_8px_40px_rgba(45,148,71,0.15)] overflow-hidden',
             i === 4 ? 'md:col-span-2 md:flex md:items-center md:gap-8' : ''
           ]}>
+            <!-- Left accent bar -->
+            <div class:list={['absolute left-0 top-4 bottom-4 w-[2px] rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-500', accentClass]}></div>
             <!-- Corner glow -->
             <div class="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-scale/5 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
             <!-- File tab -->
@@ -233,20 +235,20 @@ const organs = [
       </div>
 
       <!-- Organ specimens -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-canopy/50 rounded-xl overflow-hidden">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {organs.map(({ name, desc, icon }) => (
-          <div class="relative bg-deep p-6 hover:bg-undergrowth/60 transition-all duration-300 group/organ">
+          <div class="relative rounded-lg border border-canopy/60 bg-undergrowth/50 p-6 hover:border-scale/40 hover:bg-undergrowth/80 transition-all duration-300 group/organ">
             <div class="flex items-baseline gap-3 mb-3">
-              <span class="text-scale/60 text-base group-hover/organ:text-scale/90 transition-colors">{icon}</span>
+              <span class="text-scale/70 text-base group-hover/organ:text-scale transition-colors">{icon}</span>
               <span class="font-mono text-sm text-bone tracking-wide">{name}/</span>
             </div>
             <p class="text-sm text-mist/85 leading-relaxed">{desc}</p>
           </div>
         ))}
         <!-- Extra cell: the daemon -->
-        <div class="bg-deep p-6 hover:bg-undergrowth/60 transition-colors duration-300 sm:col-span-2 lg:col-span-1">
+        <div class="rounded-lg border border-canopy/60 bg-undergrowth/50 p-6 hover:border-scale/40 hover:bg-undergrowth/80 transition-all duration-300 sm:col-span-2 lg:col-span-1">
           <div class="flex items-baseline gap-3 mb-3">
-            <span class="text-scale/60 text-base">⚙</span>
+            <span class="text-scale/70 text-base">⚙</span>
             <span class="font-mono text-sm text-bone tracking-wide">daemon/</span>
           </div>
           <p class="text-sm text-mist/85 leading-relaxed">Process manager, cron scheduler, health monitor. The nervous system that keeps agents alive. <code class="text-scale/80 text-xs">ouro status</code></p>
@@ -293,7 +295,7 @@ const organs = [
       <!-- The loop — continuous flow -->
       <div class="relative max-w-4xl mx-auto">
         <!-- Connecting line -->
-        <div class="absolute top-5 sm:top-6 left-[10%] right-[10%] h-px bg-gradient-to-r from-scale/5 via-scale/40 to-scale/5 hidden sm:block"></div>
+        <div class="absolute top-5 sm:top-7 left-[10%] right-[10%] h-px bg-gradient-to-r from-scale/10 via-scale/50 to-scale/10 hidden sm:block"></div>
 
         <div class="grid grid-cols-1 sm:grid-cols-5 gap-6 sm:gap-2">
           {(['Reflect', 'Plan', 'Build', 'Merge', 'Repeat'] as const).map((label, i) => {

@@ -100,6 +100,16 @@ const timeline = [
     <meta property="og:url" content="https://ouroboros.bot/story" />
     <meta property="og:type" content="article" />
     <meta name="author" content="Ari Mendelow" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": title,
+      "description": description,
+      "author": { "@type": "Person", "name": "Ari Mendelow", "url": "https://github.com/arimendelow" },
+      "publisher": { "@type": "Person", "name": "Ari Mendelow" },
+      "datePublished": "2026-03-01",
+      "url": "https://ouroboros.bot/story"
+    })} />
   </Fragment>
 
   <article class="relative px-6 pt-36 pb-24">

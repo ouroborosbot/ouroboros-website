@@ -15,7 +15,7 @@ const {
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="overflow-x-hidden">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -81,15 +81,15 @@ const {
     </main>
     <Footer />
 
-    <script>
-      // Reveal sections on scroll (or immediately if already in viewport)
-      function initReveal() {
-        const reveals = document.querySelectorAll('.reveal');
+    <script is:inline>
+      // Reveal sections on scroll — must be is:inline so Astro keeps it at end of body
+      (function() {
+        var reveals = document.querySelectorAll('.reveal');
         if (!reveals.length) return;
 
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
+        var observer = new IntersectionObserver(
+          function(entries) {
+            entries.forEach(function(entry) {
               if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
                 observer.unobserve(entry.target);
@@ -98,25 +98,8 @@ const {
           },
           { threshold: 0, rootMargin: '0px 0px -20px 0px' }
         );
-        reveals.forEach((el) => observer.observe(el));
-
-        // Fallback: reveal anything already in viewport on load
-        requestAnimationFrame(() => {
-          reveals.forEach((el) => {
-            const rect = el.getBoundingClientRect();
-            if (rect.top < window.innerHeight && rect.bottom > 0) {
-              el.classList.add('visible');
-              observer.unobserve(el);
-            }
-          });
-        });
-      }
-
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initReveal);
-      } else {
-        initReveal();
-      }
+        reveals.forEach(function(el) { observer.observe(el); });
+      })();
     </script>
   </body>
 </html>

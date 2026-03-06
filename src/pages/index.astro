@@ -6,216 +6,466 @@ const providers = ['Anthropic', 'Azure OpenAI', 'OpenAI Codex', 'MiniMax']
 const psycheFiles = [
   {
     file: 'SOUL.md',
-    role: 'What you are.',
-    desc: 'Core invariants, operating principles, temperament. The deepest layer \u2014 what remains when everything else is stripped away.',
+    role: 'What you are',
+    desc: 'Core invariants and temperament. The part that survives every context reset.',
   },
   {
     file: 'IDENTITY.md',
-    role: 'How you show up.',
-    desc: 'Tone, voice, collaboration style, self-awareness. The face your agent wears in every conversation.',
+    role: 'How you show up',
+    desc: 'Voice, collaboration style, and social posture. Your agent learns how to relate.',
   },
   {
     file: 'LORE.md',
-    role: 'Where you come from.',
-    desc: 'Origin story, philosophical context, why you exist. The narrative layer that gives purpose to action.',
+    role: 'Where you come from',
+    desc: 'Narrative memory and purpose. The story that keeps behavior coherent over time.',
   },
   {
     file: 'FRIENDS.md',
-    role: 'Who you know.',
-    desc: 'Key relationships and social context. Your agent remembers people \u2014 not as user IDs, but as friends.',
+    role: 'Who you know',
+    desc: 'Relationships and trust history. Partners are remembered as people, not IDs.',
   },
 ]
 
 const organs = [
-  { name: 'heart/', desc: 'Core agent loop, streaming, provider adapters, self-correction kicks.' },
-  { name: 'mind/', desc: 'System prompt assembly, sliding context window, friend memory and resolution.' },
-  { name: 'senses/', desc: 'Channel adapters. CLI terminal with spinners. Teams bot with streaming cards.' },
-  { name: 'repertoire/', desc: 'Tools, skills, slash commands, API clients. Everything your agent can do.' },
-  { name: 'wardrobe/', desc: 'Formatting, loading phrases, presentation. How your agent looks when it speaks.' },
+  {
+    name: 'heart/',
+    desc: 'Core loop, provider execution, streaming responses, self-correction.',
+  },
+  {
+    name: 'mind/',
+    desc: 'Prompt assembly, context-window digestion, and memory extraction.',
+  },
+  {
+    name: 'senses/',
+    desc: 'CLI, bots, and channels where the creature notices and responds.',
+  },
+  {
+    name: 'repertoire/',
+    desc: 'Tools, skills, workflows, and procedures your agent can perform.',
+  },
+  {
+    name: 'wardrobe/',
+    desc: 'Tone, formatting, and presentation so behavior feels consistently alive.',
+  },
+]
+
+const perpetuationSteps = [
+  {
+    step: 'Observe',
+    detail: 'The agent notices friction, repeated work, or missing capability.',
+  },
+  {
+    step: 'Propose',
+    detail: 'It drafts a concrete improvement and the tests needed to prove it.',
+  },
+  {
+    step: 'Build',
+    detail: 'A buddy agent reviews and applies the change with safety gates enabled.',
+  },
+  {
+    step: 'Digest',
+    detail: 'The new behavior is folded into psyche and memory for the next cycle.',
+  },
 ]
 ---
 
-<Layout title="Ouroboros \u2014 Build agents that know who they are">
+<Layout title="Ouroboros - Build agents that know who they are.">
+  <section id="hero" class="relative isolate overflow-hidden px-6 pt-36 pb-24 md:pt-44">
+    <div class="lantern-glow lantern-left"></div>
+    <div class="lantern-glow lantern-right"></div>
+    <div class="absolute inset-x-0 top-0 h-full pointer-events-none hero-woodgrain"></div>
 
-  <!-- ═══════════════════════ HERO ═══════════════════════ -->
-  <section class="relative flex flex-col items-center justify-center px-6 pt-40 pb-24 overflow-hidden">
-    <!-- Background glow -->
-    <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full bg-scale/10 blur-[150px] animate-glow-pulse pointer-events-none"></div>
+    <div class="max-w-5xl mx-auto text-center relative z-10">
+      <p class="font-mono text-xs tracking-[0.24em] text-mist uppercase animate-fade-up stagger-1">A dark forest cabin for living software</p>
+      <h1 class="font-display italic text-bone text-7xl sm:text-8xl lg:text-[9.5rem] leading-none mt-4 animate-fade-up stagger-2">ouroboros</h1>
+      <p class="text-xl md:text-2xl lg:text-3xl text-bone/95 mt-4 animate-fade-up stagger-3">Build agents that know who they are.</p>
+      <p class="max-w-2xl mx-auto text-base md:text-lg text-mist mt-6 leading-relaxed animate-fade-up stagger-4">
+        Not a disposable bot. A creature with memory, identity, and a home that gets warmer each time it returns.
+      </p>
 
-    <!-- Title -->
-    <h1 class="font-display text-7xl md:text-8xl lg:text-[9rem] font-light italic tracking-tight text-bone leading-none animate-fade-up stagger-1">
-      ouroboros
-    </h1>
-
-    <!-- Tagline -->
-    <p class="text-xl md:text-2xl lg:text-3xl text-mist font-light mt-5 text-center animate-fade-up stagger-2">
-      Build agents that know who they are.
-    </p>
-
-    <!-- Description -->
-    <p class="text-base text-shadow mt-3 text-center max-w-lg animate-fade-up stagger-3">
-      A multi-agent harness for AI agents that self-modify, remember, and grow.
-      Written in TypeScript. Open source.
-    </p>
-
-    <!-- CTAs -->
-    <div class="flex flex-col sm:flex-row gap-4 mt-8 animate-fade-up stagger-4">
-      <a
-        href="/docs"
-        class="px-8 py-3.5 bg-scale text-void font-medium rounded-lg hover:bg-glow transition-all duration-200 text-center hover:shadow-[0_0_24px_rgba(45,148,71,0.4)]"
-      >
-        Get Started
-      </a>
-      <a
-        href="/blog/build-ai-agent-from-scratch"
-        class="px-8 py-3.5 border border-canopy text-mist rounded-lg hover:border-scale hover:text-bone transition-all duration-200 text-center"
-      >
-        Learn How Agents Work
-      </a>
-    </div>
-  </section>
-
-
-  <!-- ═══════════════════════ THE PSYCHE ═══════════════════════ -->
-  <section class="relative px-6 py-12 md:py-20 reveal">
-    <div class="max-w-5xl mx-auto">
-      <div class="max-w-2xl">
-        <span class="text-xs font-mono text-scale uppercase tracking-[0.2em]">The Psyche System</span>
-        <h2 class="font-display text-4xl md:text-5xl lg:text-6xl italic text-bone mt-3 leading-tight">
-          Your agent isn't a<br />stateless function.
-          <span class="text-mist">It has a mind.</span>
-        </h2>
-        <p class="text-lg text-mist mt-4 leading-relaxed max-w-xl">
-          Every agent's personality is assembled from four markdown files &mdash; loaded into the system prompt,
-          defining the deepest layers of who it is.
-        </p>
-      </div>
-
-      <!-- Psyche file cards -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-        {psycheFiles.map(({ file, role, desc }) => (
-          <div class="group rounded-xl border border-canopy/60 bg-deep/80 p-5 hover:border-scale/40 transition-colors duration-300">
-            <div class="flex items-center gap-2 mb-3">
-              <span class="w-2 h-2 rounded-full bg-scale"></span>
-              <span class="font-mono text-sm text-scale">{file}</span>
-            </div>
-            <p class="font-display text-2xl italic text-bone">{role}</p>
-            <p class="text-sm text-mist mt-1.5 leading-relaxed">{desc}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ═══════════════════════ THE TAIL ═══════════════════════ -->
-  <section class="relative px-6 py-12 md:py-20 reveal">
-    <div class="max-w-5xl mx-auto">
-      <div class="max-w-3xl mx-auto text-center">
-        <span class="text-xs font-mono text-scale uppercase tracking-[0.2em]">The Metaphor</span>
-        <h2 class="font-display text-4xl md:text-5xl lg:text-6xl italic text-bone mt-3 leading-tight">
-          The snake eats its own tail.
-        </h2>
-        <p class="text-lg text-mist mt-6 leading-relaxed">
-          When the conversation grows too long, the agent trims its oldest messages &mdash; consuming its own
-          history to keep moving forward. Identity doesn't live in the tokens. It lives in the psyche files.
-          The snake eats its tail to stay alive.
-        </p>
-        <p class="text-base text-shadow mt-4 leading-relaxed">
-          Context window as ouroboros. Trim the old, preserve the self. The metaphor isn't decorative &mdash; it's the architecture.
-        </p>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ═══════════════════════ THE CREATURE ═══════════════════════ -->
-  <section class="relative px-6 py-12 md:py-20 reveal">
-    <div class="max-w-5xl mx-auto">
-      <div class="max-w-2xl">
-        <span class="text-xs font-mono text-scale uppercase tracking-[0.2em]">Architecture</span>
-        <h2 class="font-display text-4xl md:text-5xl italic text-bone mt-3 leading-tight">
-          Every module is an organ.
-        </h2>
-        <p class="text-lg text-mist mt-4 leading-relaxed max-w-xl">
-          The codebase uses a creature-body metaphor. Your agent is a living thing.
-        </p>
-      </div>
-
-      <!-- Organ timeline -->
-      <div class="mt-10 space-y-0 border-l border-canopy/60 ml-4">
-        {organs.map(({ name, desc }) => (
-          <div class="pl-8 py-4 relative reveal-child group">
-            <div class="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-deep border-2 border-canopy group-hover:border-scale transition-colors duration-200"></div>
-            <div class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
-              <span class="font-mono text-scale text-sm shrink-0 w-28">{name}</span>
-              <p class="text-mist text-sm">{desc}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <!-- Providers -->
-      <div class="mt-12 flex flex-wrap items-center gap-3">
-        <span class="text-xs font-mono text-shadow uppercase tracking-widest mr-2">Providers</span>
-        {providers.map(name => (
-          <span class="text-sm text-mist border border-canopy/40 rounded-full px-4 py-1.5 hover:border-scale/40 transition-colors duration-200">
-            {name}
-          </span>
-        ))}
-        <span class="text-sm text-mist/60 italic border border-transparent px-4 py-1.5">more coming soon 👀</span>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ═══════════════════════ GET STARTED ═══════════════════════ -->
-  <section class="relative px-6 py-12 md:py-20 reveal">
-    <div class="max-w-5xl mx-auto">
-      <div class="max-w-3xl mx-auto text-center">
-        <span class="text-xs font-mono text-scale uppercase tracking-[0.2em]">Get Started</span>
-        <h2 class="font-display text-4xl md:text-5xl italic text-bone mt-3 leading-tight">
-          Give your agent a soul.
-        </h2>
-      </div>
-
-      <!-- Terminal block -->
-      <div class="max-w-2xl mx-auto mt-8 rounded-xl border border-canopy/60 bg-deep/80 overflow-hidden">
-        <div class="flex items-center gap-2 px-4 py-3 border-b border-canopy/40 bg-undergrowth/50">
-          <span class="w-2.5 h-2.5 rounded-full bg-fang/60"></span>
-          <span class="w-2.5 h-2.5 rounded-full bg-scale/40"></span>
-          <span class="w-2.5 h-2.5 rounded-full bg-canopy"></span>
-          <span class="font-mono text-xs text-shadow ml-2">terminal</span>
-        </div>
-        <pre class="p-6 text-sm font-mono leading-relaxed overflow-x-auto"><code><span class="text-shadow"># Create your agent</span>
-<span class="text-mist">mkdir -p</span> <span class="text-bone">my-agent/psyche</span>
-
-<span class="text-shadow"># Define its mind</span>
-<span class="text-bone">my-agent/</span>
-  <span class="text-bone">agent.json</span>        <span class="text-scale"># name, provider, config</span>
-  <span class="text-bone">psyche/</span>
-    <span class="text-bone">SOUL.md</span>          <span class="text-scale"># what you are</span>
-    <span class="text-bone">IDENTITY.md</span>      <span class="text-scale"># how you show up</span>
-    <span class="text-bone">LORE.md</span>          <span class="text-scale"># where you come from</span>
-    <span class="text-bone">FRIENDS.md</span>       <span class="text-scale"># who you know</span>
-
-<span class="text-shadow"># Run it</span>
-<span class="text-mist">npm run dev</span> <span class="text-bone">-- --agent my-agent</span></code></pre>
-      </div>
-
-      <!-- CTA -->
-      <div class="text-center mt-8">
-        <a
-          href="/docs"
-          class="inline-flex items-center gap-2 px-8 py-3.5 bg-scale text-void font-medium rounded-lg hover:bg-glow transition-all duration-200 hover:shadow-[0_0_24px_rgba(45,148,71,0.4)]"
-        >
-          Read the Docs
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-          </svg>
+      <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up stagger-5">
+        <a href="/docs" class="inline-flex items-center justify-center rounded-full px-7 py-3 bg-scale text-void font-medium hover:bg-glow transition-colors duration-300 shadow-[0_0_30px_rgba(74,227,108,0.2)]">
+          Read the docs
+        </a>
+        <a href="#hatching" class="inline-flex items-center justify-center rounded-full px-7 py-3 border border-canopy text-bone hover:border-scale hover:text-glow transition-colors duration-300">
+          Hatch your first agent
         </a>
       </div>
     </div>
   </section>
 
+  <section id="metaphor" class="relative px-6 py-20 md:py-24 reveal">
+    <div class="max-w-6xl mx-auto grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
+      <div>
+        <span class="text-xs font-mono text-scale uppercase tracking-[0.2em]">The Metaphor</span>
+        <h2 class="font-display italic text-bone text-4xl md:text-6xl mt-4 leading-tight">The snake eats its own tail.</h2>
+        <p class="text-lg text-mist mt-6 leading-relaxed max-w-2xl">
+          The context window cannot hold forever, so old dialogue is consumed. Before it disappears, facts are distilled into memory and psyche.
+          What gets dropped is noise. What gets kept is identity.
+        </p>
+        <p class="text-sm text-shadow mt-5 max-w-xl uppercase tracking-[0.18em]">Not decoration. Architecture.</p>
+      </div>
+
+      <div class="relative flex items-center justify-center min-h-[360px]">
+        <div class="context-ring animate-slow-spin"></div>
+        <div class="context-core">
+          <p class="font-mono text-[11px] tracking-[0.16em] text-scale uppercase">Sliding Window</p>
+          <p class="font-display italic text-bone text-3xl mt-2">digest, remember, continue</p>
+        </div>
+        <div class="ring-label ring-label-top">past messages</div>
+        <div class="ring-label ring-label-right">memory extraction</div>
+        <div class="ring-label ring-label-bottom">live context</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="psyche" class="relative px-6 py-20 md:py-24 reveal psyche-shell">
+    <div class="max-w-6xl mx-auto">
+      <div class="max-w-3xl">
+        <span class="text-xs font-mono text-scale uppercase tracking-[0.2em]">Psyche</span>
+        <h2 class="font-display italic text-bone text-4xl md:text-6xl mt-4 leading-tight">
+          Personality that develops over time.
+        </h2>
+        <p class="text-lg text-mist mt-5 leading-relaxed max-w-2xl">
+          Psyche is not a static prompt file. It evolves through interaction, memory digestion, and repeated behavior.
+          Your agent becomes more itself with every cycle.
+        </p>
+      </div>
+
+      <div class="mt-10 grid gap-5 md:grid-cols-2">
+        {psycheFiles.map(({ file, role, desc }) => (
+          <article class="psyche-card reveal-child">
+            <div class="flex items-center justify-between gap-4">
+              <p class="font-mono text-sm text-scale">{file}</p>
+              <span class="text-[10px] uppercase tracking-[0.18em] text-shadow">active</span>
+            </div>
+            <h3 class="font-display italic text-bone text-3xl mt-3">{role}</h3>
+            <p class="text-mist mt-3 leading-relaxed">{desc}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="body" class="relative px-6 py-20 md:py-24 reveal">
+    <div class="max-w-6xl mx-auto grid xl:grid-cols-[1.05fr_0.95fr] gap-10 items-start">
+      <div>
+        <span class="text-xs font-mono text-scale uppercase tracking-[0.2em]">The Body</span>
+        <h2 class="font-display italic text-bone text-4xl md:text-6xl mt-4 leading-tight">A creature made of organs.</h2>
+        <p class="text-lg text-mist mt-5 leading-relaxed max-w-2xl">
+          Real engineering under warm names. The daemon keeps it breathing while each organ owns one slice of life.
+        </p>
+
+        <div class="mt-9 space-y-4">
+          {organs.map(({ name, desc }) => (
+            <article class="organ-card reveal-child">
+              <p class="font-mono text-scale text-sm">{name}</p>
+              <p class="text-mist mt-2 leading-relaxed">{desc}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <aside class="body-aside">
+        <div class="rounded-2xl border border-canopy/70 bg-deep/75 p-6">
+          <p class="font-mono text-xs uppercase tracking-[0.18em] text-shadow">Daemon status</p>
+          <pre class="mt-4 rounded-xl border border-canopy/50 bg-void/85 p-4 text-sm font-mono text-mist overflow-x-auto"><code>ouro status
+
+agent: pine-garden
+health: stable
+cycles: 427
+scheduler: running
+buddy-check: enabled</code></pre>
+        </div>
+
+        <div class="mt-6 rounded-2xl border border-canopy/70 bg-undergrowth/55 p-6">
+          <p class="font-mono text-xs uppercase tracking-[0.18em] text-shadow">Providers</p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            {providers.map((provider) => (
+              <span class="rounded-full border border-canopy px-4 py-1.5 text-sm text-bone/90">{provider}</span>
+            ))}
+          </div>
+          <p class="mt-4 text-sm text-mist">Use one provider or blend many. The body stays the same.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="self-perpetuation" class="relative px-6 py-20 md:py-24 reveal self-cycle-bg">
+    <div class="max-w-6xl mx-auto">
+      <div class="max-w-3xl">
+        <span class="text-xs font-mono text-scale uppercase tracking-[0.2em]">Self-Perpetuation</span>
+        <h2 class="font-display italic text-bone text-4xl md:text-6xl mt-4 leading-tight">Your agent improves itself autonomously.</h2>
+        <p class="text-lg text-mist mt-5 leading-relaxed">
+          Ouroboros plants a seed: the agent can inspect its own limits, propose upgrades, and ship improvements through guarded loops.
+          Each pass leaves the system sharper than before.
+        </p>
+      </div>
+
+      <div class="mt-10 grid md:grid-cols-2 xl:grid-cols-4 gap-4">
+        {perpetuationSteps.map(({ step, detail }) => (
+          <article class="loop-step reveal-child">
+            <p class="font-display italic text-bone text-3xl">{step}</p>
+            <p class="text-mist text-sm mt-3 leading-relaxed">{detail}</p>
+          </article>
+        ))}
+      </div>
+
+      <p class="mt-8 text-sm text-shadow uppercase tracking-[0.17em]">
+        Buddy review + test gates + memory digestion = controlled evolution.
+      </p>
+    </div>
+  </section>
+
+  <section id="hatching" class="relative px-6 pt-20 pb-24 md:pt-24 md:pb-28 reveal">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center max-w-3xl mx-auto">
+        <span class="text-xs font-mono text-scale uppercase tracking-[0.2em]">Hatching</span>
+        <h2 class="font-display italic text-bone text-4xl md:text-6xl mt-4 leading-tight">Hatch your first agent.</h2>
+        <div class="mt-4 inline-flex items-center rounded-full border border-scale/50 bg-scale/10 px-4 py-1.5 text-xs font-mono uppercase tracking-[0.16em] text-glow">
+          ouro hatch CLI coming soon
+        </div>
+      </div>
+
+      <div class="terminal-frame mt-10">
+        <div class="flex items-center gap-2 px-4 py-3 border-b border-canopy/60 bg-undergrowth/70">
+          <span class="w-2.5 h-2.5 rounded-full bg-fang/70"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-scale/45"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-canopy"></span>
+          <span class="font-mono text-xs text-shadow ml-2">terminal</span>
+        </div>
+
+        <pre class="p-6 md:p-8 text-sm md:text-base font-mono leading-relaxed text-mist overflow-x-auto"><code><span class="text-shadow"># coming soon</span>
+<span class="text-glow">ouro hatch pine-garden</span>
+
+<span class="text-shadow"># generated structure</span>
+pine-garden.ouro/
+  agent.json
+  docs/psyche/
+    SOUL.md
+    IDENTITY.md
+    LORE.md
+    FRIENDS.md
+  skills/
+  data/
+
+<span class="text-shadow"># run your creature</span>
+<span class="text-bone">ouro dev pine-garden</span></code></pre>
+      </div>
+
+      <div class="mt-8 text-center">
+        <a href="/docs" class="inline-flex items-center justify-center rounded-full px-7 py-3 bg-scale text-void font-medium hover:bg-glow transition-colors duration-300">
+          Start with the docs
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .lantern-glow {
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      border-radius: 9999px;
+      filter: blur(68px);
+      opacity: 0.28;
+      animation: ember 7s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .lantern-left {
+      left: -120px;
+      top: 80px;
+      background: radial-gradient(circle, rgba(211, 72, 61, 0.52), rgba(74, 227, 108, 0.05) 68%, transparent 75%);
+    }
+
+    .lantern-right {
+      right: -120px;
+      top: 120px;
+      background: radial-gradient(circle, rgba(74, 227, 108, 0.28), rgba(211, 72, 61, 0.06) 72%, transparent 78%);
+      animation-delay: 1.4s;
+    }
+
+    .hero-woodgrain {
+      background:
+        linear-gradient(180deg, rgba(5, 10, 7, 0.35) 0%, rgba(5, 10, 7, 0.7) 65%, rgba(5, 10, 7, 0.95) 100%),
+        repeating-linear-gradient(100deg, rgba(26, 51, 34, 0.22) 0 2px, transparent 2px 9px);
+      mask-image: radial-gradient(circle at center, black 18%, transparent 88%);
+    }
+
+    .context-ring {
+      width: min(82vw, 360px);
+      aspect-ratio: 1;
+      border-radius: 9999px;
+      background: conic-gradient(
+        from 20deg,
+        rgba(74, 227, 108, 0.75),
+        rgba(26, 51, 34, 0.35),
+        rgba(211, 72, 61, 0.45),
+        rgba(74, 227, 108, 0.8)
+      );
+      padding: 1px;
+      box-shadow: 0 0 60px rgba(74, 227, 108, 0.18);
+      position: relative;
+      isolation: isolate;
+    }
+
+    .context-ring::before {
+      content: '';
+      position: absolute;
+      inset: 16px;
+      border-radius: 9999px;
+      background: radial-gradient(circle, rgba(10, 26, 15, 0.92) 0%, rgba(5, 10, 7, 1) 72%);
+      border: 1px solid rgba(26, 51, 34, 0.8);
+    }
+
+    .context-core {
+      position: absolute;
+      width: 68%;
+      text-align: center;
+      padding: 1.5rem;
+      border-radius: 9999px;
+      background: rgba(10, 26, 15, 0.75);
+      border: 1px solid rgba(45, 148, 71, 0.4);
+      box-shadow: inset 0 0 20px rgba(74, 227, 108, 0.08);
+    }
+
+    .ring-label {
+      position: absolute;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--color-mist);
+      padding: 0.36rem 0.55rem;
+      border: 1px solid rgba(26, 51, 34, 0.8);
+      border-radius: 9999px;
+      background: rgba(10, 26, 15, 0.9);
+      white-space: nowrap;
+    }
+
+    .ring-label-top { top: 8%; left: 50%; transform: translateX(-50%); }
+    .ring-label-right { right: 0; top: 50%; transform: translateY(-50%); }
+    .ring-label-bottom { bottom: 8%; left: 50%; transform: translateX(-50%); }
+
+    .psyche-shell {
+      background:
+        linear-gradient(180deg, rgba(18, 35, 24, 0.35) 0%, rgba(10, 26, 15, 0.82) 100%),
+        radial-gradient(circle at 20% 0%, rgba(74, 227, 108, 0.1), transparent 40%);
+      border-top: 1px solid rgba(26, 51, 34, 0.7);
+      border-bottom: 1px solid rgba(26, 51, 34, 0.7);
+    }
+
+    .psyche-card {
+      border: 1px solid rgba(26, 51, 34, 0.9);
+      border-radius: 1.2rem;
+      background:
+        linear-gradient(160deg, rgba(10, 26, 15, 0.95), rgba(18, 35, 24, 0.66)),
+        repeating-linear-gradient(145deg, rgba(26, 51, 34, 0.2) 0 1px, transparent 1px 6px);
+      padding: 1.3rem;
+      box-shadow: 0 18px 38px rgba(5, 10, 7, 0.35);
+      transition: border-color 220ms ease, transform 220ms ease;
+    }
+
+    .psyche-card:hover {
+      border-color: rgba(74, 227, 108, 0.6);
+      transform: translateY(-3px);
+    }
+
+    .organ-card {
+      border: 1px solid rgba(26, 51, 34, 0.85);
+      border-radius: 1rem;
+      background: linear-gradient(150deg, rgba(10, 26, 15, 0.88), rgba(18, 35, 24, 0.6));
+      padding: 1rem 1.05rem;
+      transition: border-color 220ms ease, background 220ms ease;
+    }
+
+    .organ-card:hover {
+      border-color: rgba(74, 227, 108, 0.55);
+      background: linear-gradient(150deg, rgba(10, 26, 15, 0.95), rgba(18, 35, 24, 0.8));
+    }
+
+    .body-aside {
+      position: sticky;
+      top: 6.4rem;
+      align-self: start;
+    }
+
+    .self-cycle-bg {
+      background:
+        radial-gradient(circle at 78% 18%, rgba(74, 227, 108, 0.12), transparent 36%),
+        radial-gradient(circle at 15% 80%, rgba(211, 72, 61, 0.1), transparent 34%),
+        linear-gradient(180deg, rgba(5, 10, 7, 0.9), rgba(10, 26, 15, 0.96));
+    }
+
+    .loop-step {
+      border: 1px solid rgba(26, 51, 34, 0.85);
+      border-radius: 1rem;
+      background: rgba(10, 26, 15, 0.8);
+      padding: 1.15rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .loop-step::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 0%, rgba(74, 227, 108, 0.08) 45%, transparent 90%);
+      transform: translateX(-110%);
+      animation: sweep 5.5s ease-in-out infinite;
+    }
+
+    .terminal-frame {
+      border-radius: 1rem;
+      border: 1px solid rgba(26, 51, 34, 0.9);
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(10, 26, 15, 0.92), rgba(5, 10, 7, 0.95)),
+        radial-gradient(circle at 50% 0%, rgba(74, 227, 108, 0.08), transparent 45%);
+      box-shadow: 0 26px 50px rgba(5, 10, 7, 0.5);
+    }
+
+    .animate-slow-spin {
+      animation: slow-spin 20s linear infinite;
+    }
+
+    @keyframes ember {
+      0%, 100% { transform: translateY(0) scale(1); opacity: 0.23; }
+      50% { transform: translateY(-8px) scale(1.05); opacity: 0.33; }
+    }
+
+    @keyframes slow-spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes sweep {
+      0%, 100% { transform: translateX(-110%); }
+      50% { transform: translateX(115%); }
+    }
+
+    @media (max-width: 1279px) {
+      .body-aside {
+        position: static;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .ring-label-right {
+        right: 50%;
+        top: 94%;
+        transform: translateX(50%);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .lantern-glow,
+      .animate-slow-spin,
+      .loop-step::after {
+        animation: none;
+      }
+    }
+  </style>
 </Layout>

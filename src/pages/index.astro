@@ -23,7 +23,7 @@ const organs = [
 <Layout title="Ouroboros — Build agents that know who they are" description="A zero-dependency TypeScript framework for AI agents that self-modify, remember, and grow. Psyche files, sliding context windows, and creature-body architecture.">
 
   <!-- ═══════════════ HERO ═══════════════ -->
-  <section class="relative min-h-[90vh] flex flex-col items-center justify-center px-6 overflow-hidden">
+  <section class="relative min-h-screen flex flex-col items-center justify-center px-6 pt-16 overflow-hidden">
     <!-- Atmospheric layers -->
     <div class="absolute inset-0 bg-gradient-to-b from-void via-deep to-void"></div>
     <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] rounded-full bg-scale/6 blur-[200px] animate-glow-pulse pointer-events-none"></div>
@@ -39,7 +39,7 @@ const organs = [
         Build agents that know who they are.
       </p>
 
-      <p class="text-sm text-mist/70 mt-5 max-w-md mx-auto leading-relaxed animate-fade-up stagger-3">
+      <p class="text-sm text-mist mt-5 max-w-md mx-auto leading-relaxed animate-fade-up stagger-3">
         A zero-dependency TypeScript harness for AI agents that self-modify,
         remember, and grow. Born from a lobster's molt. Open source.
       </p>
@@ -73,38 +73,40 @@ const organs = [
 
   <!-- ═══════════════ THE METAPHOR ═══════════════ -->
   <section class="relative px-6 py-28 md:py-40 reveal overflow-hidden">
-    <!-- Lifted background for visual separation -->
-    <div class="absolute inset-0 bg-undergrowth pointer-events-none"></div>
-    <div class="absolute inset-0 bg-gradient-to-b from-void/50 via-transparent to-void/50 pointer-events-none"></div>
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-scale/12 blur-[250px] pointer-events-none"></div>
-    <!-- Horizontal line texture -->
-    <div class="absolute inset-0 opacity-[0.04] pointer-events-none" style="background-image: repeating-linear-gradient(0deg, var(--color-scale) 0px, var(--color-scale) 1px, transparent 1px, transparent 80px);"></div>
-    <!-- Vertical accent -->
-    <div class="absolute right-12 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-scale/25 to-transparent hidden lg:block"></div>
+    <!-- Background — darker base with controlled glow -->
+    <div class="absolute inset-0 bg-deep pointer-events-none"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-void via-transparent to-void pointer-events-none"></div>
+    <!-- Subtle central glow — not overwhelming -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-scale/8 blur-[200px] pointer-events-none"></div>
+    <!-- Horizontal scan lines for texture -->
+    <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: repeating-linear-gradient(0deg, var(--color-scale) 0px, var(--color-scale) 1px, transparent 1px, transparent 80px);"></div>
+    <!-- Top/bottom border glow -->
+    <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-scale/30 to-transparent"></div>
+    <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-scale/30 to-transparent"></div>
 
-    <div class="max-w-6xl mx-auto">
+    <div class="max-w-6xl mx-auto relative">
       <div class="grid grid-cols-1 lg:grid-cols-5 gap-16 lg:gap-24 items-center">
 
         <!-- Text: 3 cols -->
         <div class="lg:col-span-3">
-          <span class="font-mono text-[10px] text-scale/80 uppercase tracking-[0.3em] block mb-6">The Metaphor</span>
+          <span class="font-mono text-[10px] text-scale uppercase tracking-[0.3em] block mb-6">The Metaphor</span>
 
           <h2 class="font-display text-5xl md:text-6xl lg:text-7xl italic text-bone leading-[1.05]">
             The snake eats<br />
-            <span class="text-mist/80">its own tail.</span>
+            <span class="text-mist">its own tail.</span>
           </h2>
 
           <div class="mt-10 space-y-5">
-            <p class="text-lg text-mist leading-relaxed max-w-lg">
+            <p class="text-lg text-bone/80 leading-relaxed max-w-lg">
               When the conversation grows too long, the agent trims its oldest messages.
               Context window consuming itself.
             </p>
-            <p class="text-base text-mist leading-relaxed max-w-lg">
+            <p class="text-base text-bone/70 leading-relaxed max-w-lg">
               But nothing is truly lost. Facts are extracted to memory before they're
               consumed. Identity doesn't live in the tokens — it lives in the psyche files.
               The snake eats its tail to stay alive.
             </p>
-            <p class="text-sm text-mist/70 italic mt-6 border-l-2 border-scale/40 pl-4">
+            <p class="text-sm text-scale/90 italic mt-6 border-l-2 border-scale/60 pl-4">
               The metaphor isn't decorative. It's the architecture.
             </p>
           </div>
@@ -113,21 +115,23 @@ const organs = [
         <!-- Visual: 2 cols — ouroboros SVG -->
         <div class="lg:col-span-2 flex items-center justify-center">
           <div class="relative w-72 h-72 md:w-80 md:h-80">
+            <!-- Ambient glow behind the ring -->
+            <div class="absolute inset-[-20%] rounded-full bg-scale/10 blur-[80px] pointer-events-none"></div>
             <!-- Animated ouroboros ring -->
             <svg class="absolute inset-0 w-full h-full" viewBox="0 0 200 200" fill="none">
               <!-- Outer glow ring -->
-              <circle cx="100" cy="100" r="90" stroke="url(#ringGrad)" stroke-width="0.5" opacity="0.3" style="animation: spin 80s linear infinite;" transform-origin="100 100" />
+              <circle cx="100" cy="100" r="90" stroke="url(#ringGrad)" stroke-width="0.5" opacity="0.4" style="animation: spin 80s linear infinite;" transform-origin="100 100" />
               <!-- Main snake ring — dashed to suggest segments being consumed -->
-              <circle cx="100" cy="100" r="72" stroke="url(#snakeGrad)" stroke-width="2.5" stroke-dasharray="8 4 20 4 40 4" stroke-linecap="round" style="animation: spin 25s linear infinite;" transform-origin="100 100" />
+              <circle cx="100" cy="100" r="72" stroke="url(#snakeGrad)" stroke-width="3" stroke-dasharray="8 4 20 4 40 4" stroke-linecap="round" style="animation: spin 25s linear infinite;" transform-origin="100 100" />
               <!-- Inner consumption ring — reverse spin -->
-              <circle cx="100" cy="100" r="55" stroke="var(--color-canopy)" stroke-width="0.8" stroke-dasharray="3 12" opacity="0.4" style="animation: spin 40s linear infinite reverse;" transform-origin="100 100" />
+              <circle cx="100" cy="100" r="55" stroke="var(--color-canopy)" stroke-width="1" stroke-dasharray="3 12" opacity="0.5" style="animation: spin 40s linear infinite reverse;" transform-origin="100 100" />
               <!-- Snake head dot -->
-              <circle cx="100" cy="28" r="4" fill="var(--color-scale)" opacity="0.9" style="animation: spin 25s linear infinite;" transform-origin="100 100">
+              <circle cx="100" cy="28" r="5" fill="var(--color-glow)" opacity="0.9" style="animation: spin 25s linear infinite;" transform-origin="100 100">
                 <animate attributeName="opacity" values="0.9;0.5;0.9" dur="2s" repeatCount="indefinite" />
               </circle>
               <!-- Tail fade dots -->
-              <circle cx="100" cy="28" r="2.5" fill="var(--color-scale)" opacity="0.3" style="animation: spin 25s linear infinite; animation-delay: -0.8s;" transform-origin="100 100" />
-              <circle cx="100" cy="28" r="1.5" fill="var(--color-scale)" opacity="0.15" style="animation: spin 25s linear infinite; animation-delay: -1.6s;" transform-origin="100 100" />
+              <circle cx="100" cy="28" r="3" fill="var(--color-scale)" opacity="0.4" style="animation: spin 25s linear infinite; animation-delay: -0.8s;" transform-origin="100 100" />
+              <circle cx="100" cy="28" r="2" fill="var(--color-scale)" opacity="0.2" style="animation: spin 25s linear infinite; animation-delay: -1.6s;" transform-origin="100 100" />
               <defs>
                 <linearGradient id="snakeGrad" x1="0" y1="0" x2="200" y2="200">
                   <stop offset="0%" stop-color="var(--color-scale)" />
@@ -141,12 +145,12 @@ const organs = [
               </defs>
             </svg>
             <!-- Inner glow -->
-            <div class="absolute inset-12 rounded-full bg-gradient-to-br from-scale/6 to-glow/3 blur-xl"></div>
+            <div class="absolute inset-12 rounded-full bg-gradient-to-br from-scale/8 to-glow/4 blur-xl"></div>
             <!-- Core text -->
             <div class="absolute inset-0 flex flex-col items-center justify-center text-center gap-1">
-              <span class="font-mono text-[9px] text-scale/60 uppercase tracking-[0.3em]">context window</span>
+              <span class="font-mono text-[9px] text-scale/80 uppercase tracking-[0.3em]">context window</span>
               <span class="font-display text-3xl italic text-bone mt-2 leading-tight">Consume.</span>
-              <span class="font-display text-3xl italic text-mist/70 leading-tight">Extract.</span>
+              <span class="font-display text-3xl italic text-mist leading-tight">Extract.</span>
               <span class="font-display text-3xl italic text-bone leading-tight">Survive.</span>
             </div>
           </div>
@@ -155,11 +159,6 @@ const organs = [
     </div>
   </section>
 
-
-  <!-- Section divider -->
-  <div class="relative h-24 flex items-center justify-center">
-    <div class="absolute inset-x-0 top-1/2 h-px bg-gradient-to-r from-transparent via-canopy/40 to-transparent"></div>
-  </div>
 
   <!-- ═══════════════ THE PSYCHE ═══════════════ -->
   <section class="relative px-6 py-28 md:py-36 reveal">
@@ -181,7 +180,7 @@ const organs = [
         <p class="font-display text-4xl md:text-5xl italic text-scale/70 mt-1">
           It has a mind.
         </p>
-        <p class="text-base text-mist/80 mt-6 leading-relaxed">
+        <p class="text-base text-bone/70 mt-6 leading-relaxed">
           Personality assembled from five markdown files. Loaded every turn.
           And it develops over time — the psyche grows with the agent.
         </p>
@@ -218,11 +217,6 @@ const organs = [
   </section>
 
 
-  <!-- Section divider -->
-  <div class="relative h-24 flex items-center justify-center">
-    <div class="absolute inset-x-0 top-1/2 h-px bg-gradient-to-r from-transparent via-scale/25 to-transparent"></div>
-  </div>
-
   <!-- ═══════════════ THE BODY ═══════════════ -->
   <section class="relative px-6 py-28 md:py-36 reveal overflow-hidden">
     <!-- Lifted background -->
@@ -239,7 +233,7 @@ const organs = [
         <h2 class="font-display text-5xl md:text-6xl italic text-bone leading-tight">
           Every module<br />is an organ.
         </h2>
-        <p class="text-base text-mist/80 mt-6 leading-relaxed">
+        <p class="text-base text-bone/70 mt-6 leading-relaxed">
           The codebase is a creature. A heart that beats, a mind that thinks,
           senses that perceive. The naming isn't whimsy — it's how the model
           understands its own body.
@@ -281,11 +275,6 @@ const organs = [
   </section>
 
 
-  <!-- Section divider -->
-  <div class="relative h-24 flex items-center justify-center">
-    <div class="absolute inset-x-0 top-1/2 h-px bg-gradient-to-r from-transparent via-canopy/40 to-transparent"></div>
-  </div>
-
   <!-- ═══════════════ SELF-PERPETUATION ═══════════════ -->
   <section class="relative px-6 py-28 md:py-36 reveal overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-b from-transparent via-undergrowth/40 to-transparent pointer-events-none"></div>
@@ -301,7 +290,7 @@ const organs = [
         <h2 class="font-display text-5xl md:text-6xl lg:text-7xl italic text-bone leading-tight">
           Your agent<br />improves itself.
         </h2>
-        <p class="text-base text-mist/80 mt-6 leading-relaxed max-w-lg mx-auto">
+        <p class="text-base text-bone/70 mt-6 leading-relaxed max-w-lg mx-auto">
           The reflection engine reads the agent's own architecture. Finds gaps.
           Writes code. Tests pass. PR merges. The snake grows. Then it does it again.
         </p>
@@ -343,11 +332,6 @@ const organs = [
     </div>
   </section>
 
-
-  <!-- Section divider -->
-  <div class="relative h-24 flex items-center justify-center">
-    <div class="absolute inset-x-0 top-1/2 h-px bg-gradient-to-r from-transparent via-scale/25 to-transparent"></div>
-  </div>
 
   <!-- ═══════════════ HATCHING ═══════════════ -->
   <section class="relative px-6 py-28 md:py-36 reveal">

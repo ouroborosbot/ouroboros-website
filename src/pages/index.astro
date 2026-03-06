@@ -30,12 +30,21 @@ const organs = [
     <div class="absolute top-1/4 left-1/3 w-[400px] h-[400px] rounded-full bg-glow/3 blur-[250px] animate-drift pointer-events-none"></div>
     <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-canopy/40 to-transparent"></div>
 
+    <!-- Large ouroboros watermark -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[700px] md:h-[700px] pointer-events-none animate-fade-up opacity-[0.04]">
+      <svg viewBox="0 0 200 200" fill="none" class="w-full h-full" style="animation: spin 120s linear infinite;" aria-hidden="true">
+        <circle cx="100" cy="100" r="85" stroke="var(--color-scale)" stroke-width="1.5" stroke-dasharray="12 6 30 6" />
+        <circle cx="100" cy="100" r="70" stroke="var(--color-glow)" stroke-width="0.8" stroke-dasharray="4 8 16 8" />
+        <circle cx="100" cy="100" r="55" stroke="var(--color-scale)" stroke-width="0.5" stroke-dasharray="3 12" />
+      </svg>
+    </div>
+
     <div class="relative z-10 text-center">
-      <h1 class="font-display text-[3rem] sm:text-[5.5rem] md:text-[8rem] lg:text-[12rem] font-light italic tracking-tight text-bone leading-[0.85] animate-fade-up">
+      <h1 class="font-display text-[4rem] sm:text-[5.5rem] md:text-[8rem] lg:text-[12rem] font-light italic tracking-tight text-bone leading-[0.85] animate-fade-up">
         ouroboros
       </h1>
 
-      <p class="text-lg sm:text-xl md:text-2xl text-mist/80 font-light mt-6 sm:mt-8 animate-fade-up stagger-2 tracking-wide">
+      <p class="text-xl md:text-2xl text-mist/80 font-light mt-8 animate-fade-up stagger-2 tracking-wide">
         Build agents that know who they are.
       </p>
 
@@ -52,14 +61,28 @@ const organs = [
           How Agents Work
         </a>
       </div>
+
+      <!-- GitHub badge -->
+      <div class="mt-8 animate-fade-up stagger-5">
+        <a href="https://github.com/arimendelow/ouroboros-agent-harness" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-xs text-shadow hover:text-mist transition-colors duration-200">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          Star on GitHub
+        </a>
+      </div>
     </div>
   </section>
 
 
+  <!-- Scroll indicator -->
+  <div class="relative h-16 flex items-center justify-center">
+    <div class="animate-float">
+      <svg class="w-5 h-5 text-scale/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7" /></svg>
+    </div>
+  </div>
+
   <!-- Section divider -->
-  <div class="relative h-24 flex items-center justify-center">
+  <div class="relative h-12 flex items-center justify-center">
     <div class="absolute inset-x-0 top-1/2 h-px bg-gradient-to-r from-transparent via-scale/25 to-transparent"></div>
-    <div class="w-2 h-2 rounded-full bg-scale/40 relative z-10 shadow-[0_0_12px_rgba(45,148,71,0.3)]"></div>
   </div>
 
   <!-- ═══════════════ THE METAPHOR ═══════════════ -->
@@ -80,7 +103,7 @@ const organs = [
         <div class="lg:col-span-3">
           <span class="font-mono text-[10px] text-scale/80 uppercase tracking-[0.3em] block mb-6">The Metaphor</span>
 
-          <h2 class="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl italic text-bone leading-[1.05]">
+          <h2 class="font-display text-5xl md:text-6xl lg:text-7xl italic text-bone leading-[1.05]">
             The snake eats<br />
             <span class="text-mist/80">its own tail.</span>
           </h2>
@@ -166,10 +189,10 @@ const organs = [
       <!-- Header — offset left -->
       <div class="max-w-xl mb-14">
         <span class="font-mono text-[10px] text-scale/80 uppercase tracking-[0.3em] block mb-6">The Psyche</span>
-        <h2 class="font-display text-3xl sm:text-5xl md:text-6xl italic text-bone leading-tight">
+        <h2 class="font-display text-5xl md:text-6xl italic text-bone leading-tight">
           Your agent isn't a<br />stateless function.
         </h2>
-        <p class="font-display text-2xl sm:text-4xl md:text-5xl italic text-scale/70 mt-1">
+        <p class="font-display text-4xl md:text-5xl italic text-scale/70 mt-1">
           It has a mind.
         </p>
         <p class="text-base text-mist/80 mt-6 leading-relaxed">
@@ -228,7 +251,7 @@ const organs = [
     <div class="max-w-6xl mx-auto relative">
       <div class="max-w-xl mb-14">
         <span class="font-mono text-[10px] text-scale/80 uppercase tracking-[0.3em] block mb-6">Architecture</span>
-        <h2 class="font-display text-3xl sm:text-5xl md:text-6xl italic text-bone leading-tight">
+        <h2 class="font-display text-5xl md:text-6xl italic text-bone leading-tight">
           Every module<br />is an organ.
         </h2>
         <p class="text-base text-mist/80 mt-6 leading-relaxed">
@@ -290,7 +313,7 @@ const organs = [
     <div class="max-w-6xl mx-auto relative">
       <div class="text-center max-w-2xl mx-auto mb-16">
         <span class="font-mono text-[10px] text-scale/80 uppercase tracking-[0.3em] block mb-6">The Seed</span>
-        <h2 class="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl italic text-bone leading-tight">
+        <h2 class="font-display text-5xl md:text-6xl lg:text-7xl italic text-bone leading-tight">
           Your agent<br />improves itself.
         </h2>
         <p class="text-base text-mist/80 mt-6 leading-relaxed max-w-lg mx-auto">
@@ -304,7 +327,7 @@ const organs = [
         <!-- Connecting line -->
         <div class="absolute top-5 sm:top-7 left-[10%] right-[10%] h-px bg-gradient-to-r from-scale/10 via-scale/50 to-scale/10 hidden sm:block"></div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-5 gap-4 sm:gap-2">
+        <div class="grid grid-cols-1 sm:grid-cols-5 gap-6 sm:gap-2">
           {(['Reflect', 'Plan', 'Build', 'Merge', 'Repeat'] as const).map((label, i) => {
             const descs = [
               'Read its own architecture. Find what\'s missing.',
@@ -314,14 +337,14 @@ const organs = [
               'Loop back. The snake is bigger now.',
             ]
             return (
-              <div class="relative group flex sm:flex-col items-center sm:items-center gap-3 sm:gap-0 sm:text-center">
+              <div class="relative group flex sm:flex-col items-center sm:items-center gap-4 sm:gap-0 sm:text-center">
                 <!-- Step circle -->
-                <div class="relative z-10 w-10 h-10 sm:w-14 sm:h-14 shrink-0 rounded-full border border-canopy/60 bg-undergrowth/50 flex items-center justify-center group-hover:border-scale/60 transition-all duration-300 group-hover:shadow-[0_0_24px_rgba(45,148,71,0.25)] group-hover:bg-undergrowth/80" style={`animation: step-glow 4s ease-in-out infinite ${i * 0.8}s`}>
+                <div class="relative z-10 w-12 h-12 sm:w-14 sm:h-14 shrink-0 rounded-full border border-canopy/60 bg-undergrowth/50 flex items-center justify-center group-hover:border-scale/60 transition-all duration-300 group-hover:shadow-[0_0_24px_rgba(45,148,71,0.25)] group-hover:bg-undergrowth/80" style={`animation: step-glow 4s ease-in-out infinite ${i * 0.8}s`}>
                   <span class="font-mono text-xs text-scale group-hover:text-glow transition-colors">{String(i + 1).padStart(2, '0')}</span>
                 </div>
                 <div class="sm:mt-5">
-                  <p class="font-display text-lg sm:text-xl italic text-bone">{label}</p>
-                  <p class="text-xs text-mist/85 mt-1 sm:mt-2.5 leading-relaxed max-w-[160px] sm:mx-auto">{descs[i]}</p>
+                  <p class="font-display text-xl italic text-bone">{label}</p>
+                  <p class="text-xs text-mist/85 mt-1.5 sm:mt-2.5 leading-relaxed max-w-[160px] mx-auto">{descs[i]}</p>
                 </div>
               </div>
             )
@@ -345,12 +368,14 @@ const organs = [
   <!-- ═══════════════ HATCHING ═══════════════ -->
   <section class="relative px-6 py-28 md:py-36 reveal">
     <!-- Warm egg-like glow behind terminal -->
-    <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[500px] rounded-[50%] bg-scale/6 blur-[150px] pointer-events-none"></div>
-    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] rounded-full bg-glow/3 blur-[150px] pointer-events-none"></div>
+    <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[500px] rounded-[50%] bg-scale/8 blur-[150px] pointer-events-none"></div>
+    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] rounded-full bg-glow/4 blur-[150px] pointer-events-none"></div>
+    <!-- Subtle radial pattern -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-scale/5 pointer-events-none"></div>
     <div class="max-w-6xl mx-auto">
       <div class="max-w-2xl mx-auto text-center mb-12">
         <span class="font-mono text-[10px] text-scale/80 uppercase tracking-[0.3em] block mb-6">Begin</span>
-        <h2 class="font-display text-3xl sm:text-4xl md:text-6xl italic text-bone leading-tight">
+        <h2 class="font-display text-4xl md:text-6xl italic text-bone leading-tight">
           Hatch your first agent.
         </h2>
         <p class="text-sm text-mist/85 mt-4">
@@ -366,7 +391,7 @@ const organs = [
           <span class="w-2.5 h-2.5 rounded-full bg-canopy/40"></span>
           <span class="font-mono text-[10px] text-mist/50 ml-3">~/agents</span>
         </div>
-        <pre class="p-4 sm:p-6 text-xs sm:text-sm font-mono leading-loose overflow-x-auto"><code><span class="text-mist/60"># hatch your agent</span>
+        <pre class="p-6 text-sm font-mono leading-loose overflow-x-auto"><code><span class="text-mist/60"># hatch your agent</span>
 <span class="text-mist">$</span> <span class="text-bone">ouro hatch my-agent</span>
 <span class="inline-block px-2 py-0.5 text-[9px] uppercase tracking-wider border border-scale/25 rounded text-scale/50">coming soon</span>
 

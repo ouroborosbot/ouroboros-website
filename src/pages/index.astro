@@ -1,0 +1,221 @@
+---
+import Layout from '../layouts/Layout.astro'
+
+const providers = ['Anthropic', 'Azure OpenAI', 'OpenAI Codex', 'MiniMax']
+
+const psycheFiles = [
+  {
+    file: 'SOUL.md',
+    role: 'What you are.',
+    desc: 'Core invariants, operating principles, temperament. The deepest layer \u2014 what remains when everything else is stripped away.',
+  },
+  {
+    file: 'IDENTITY.md',
+    role: 'How you show up.',
+    desc: 'Tone, voice, collaboration style, self-awareness. The face your agent wears in every conversation.',
+  },
+  {
+    file: 'LORE.md',
+    role: 'Where you come from.',
+    desc: 'Origin story, philosophical context, why you exist. The narrative layer that gives purpose to action.',
+  },
+  {
+    file: 'FRIENDS.md',
+    role: 'Who you know.',
+    desc: 'Key relationships and social context. Your agent remembers people \u2014 not as user IDs, but as friends.',
+  },
+]
+
+const organs = [
+  { name: 'heart/', desc: 'Core agent loop, streaming, provider adapters, self-correction kicks.' },
+  { name: 'mind/', desc: 'System prompt assembly, sliding context window, friend memory and resolution.' },
+  { name: 'senses/', desc: 'Channel adapters. CLI terminal with spinners. Teams bot with streaming cards.' },
+  { name: 'repertoire/', desc: 'Tools, skills, slash commands, API clients. Everything your agent can do.' },
+  { name: 'wardrobe/', desc: 'Formatting, loading phrases, presentation. How your agent looks when it speaks.' },
+]
+---
+
+<Layout title="Ouroboros \u2014 Build agents that know who they are">
+
+  <!-- ═══════════════════════ HERO ═══════════════════════ -->
+  <section class="relative flex flex-col items-center justify-center px-6 pt-40 pb-24 overflow-hidden">
+    <!-- Background glow -->
+    <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full bg-scale/10 blur-[150px] animate-glow-pulse pointer-events-none"></div>
+
+    <!-- Title -->
+    <h1 class="font-display text-7xl md:text-8xl lg:text-[9rem] font-light italic tracking-tight text-bone leading-none animate-fade-up stagger-1">
+      ouroboros
+    </h1>
+
+    <!-- Tagline -->
+    <p class="text-xl md:text-2xl lg:text-3xl text-mist font-light mt-5 text-center animate-fade-up stagger-2">
+      Build agents that know who they are.
+    </p>
+
+    <!-- Description -->
+    <p class="text-base text-shadow mt-3 text-center max-w-lg animate-fade-up stagger-3">
+      A multi-agent harness for AI agents that self-modify, remember, and grow.
+      Written in TypeScript. Open source.
+    </p>
+
+    <!-- CTAs -->
+    <div class="flex flex-col sm:flex-row gap-4 mt-8 animate-fade-up stagger-4">
+      <a
+        href="/docs"
+        class="px-8 py-3.5 bg-scale text-void font-medium rounded-lg hover:bg-glow transition-all duration-200 text-center hover:shadow-[0_0_24px_rgba(45,148,71,0.4)]"
+      >
+        Get Started
+      </a>
+      <a
+        href="/blog/build-ai-agent-from-scratch"
+        class="px-8 py-3.5 border border-canopy text-mist rounded-lg hover:border-scale hover:text-bone transition-all duration-200 text-center"
+      >
+        Learn How Agents Work
+      </a>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════ THE PSYCHE ═══════════════════════ -->
+  <section class="relative px-6 py-12 md:py-20 reveal">
+    <div class="max-w-5xl mx-auto">
+      <div class="max-w-2xl">
+        <span class="text-xs font-mono text-scale uppercase tracking-[0.2em]">The Psyche System</span>
+        <h2 class="font-display text-4xl md:text-5xl lg:text-6xl italic text-bone mt-3 leading-tight">
+          Your agent isn't a<br />stateless function.
+          <span class="text-mist">It has a mind.</span>
+        </h2>
+        <p class="text-lg text-mist mt-4 leading-relaxed max-w-xl">
+          Every agent's personality is assembled from four markdown files &mdash; loaded into the system prompt,
+          defining the deepest layers of who it is.
+        </p>
+      </div>
+
+      <!-- Psyche file cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+        {psycheFiles.map(({ file, role, desc }) => (
+          <div class="group rounded-xl border border-canopy/60 bg-deep/80 p-5 hover:border-scale/40 transition-colors duration-300">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="w-2 h-2 rounded-full bg-scale"></span>
+              <span class="font-mono text-sm text-scale">{file}</span>
+            </div>
+            <p class="font-display text-2xl italic text-bone">{role}</p>
+            <p class="text-sm text-mist mt-1.5 leading-relaxed">{desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════ THE TAIL ═══════════════════════ -->
+  <section class="relative px-6 py-12 md:py-20 reveal">
+    <div class="max-w-5xl mx-auto">
+      <div class="max-w-3xl mx-auto text-center">
+        <span class="text-xs font-mono text-scale uppercase tracking-[0.2em]">The Metaphor</span>
+        <h2 class="font-display text-4xl md:text-5xl lg:text-6xl italic text-bone mt-3 leading-tight">
+          The snake eats its own tail.
+        </h2>
+        <p class="text-lg text-mist mt-6 leading-relaxed">
+          When the conversation grows too long, the agent trims its oldest messages &mdash; consuming its own
+          history to keep moving forward. Identity doesn't live in the tokens. It lives in the psyche files.
+          The snake eats its tail to stay alive.
+        </p>
+        <p class="text-base text-shadow mt-4 leading-relaxed">
+          Context window as ouroboros. Trim the old, preserve the self. The metaphor isn't decorative &mdash; it's the architecture.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════ THE CREATURE ═══════════════════════ -->
+  <section class="relative px-6 py-12 md:py-20 reveal">
+    <div class="max-w-5xl mx-auto">
+      <div class="max-w-2xl">
+        <span class="text-xs font-mono text-scale uppercase tracking-[0.2em]">Architecture</span>
+        <h2 class="font-display text-4xl md:text-5xl italic text-bone mt-3 leading-tight">
+          Every module is an organ.
+        </h2>
+        <p class="text-lg text-mist mt-4 leading-relaxed max-w-xl">
+          The codebase uses a creature-body metaphor. Your agent is a living thing.
+        </p>
+      </div>
+
+      <!-- Organ timeline -->
+      <div class="mt-10 space-y-0 border-l border-canopy/60 ml-4">
+        {organs.map(({ name, desc }) => (
+          <div class="pl-8 py-4 relative reveal-child group">
+            <div class="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-deep border-2 border-canopy group-hover:border-scale transition-colors duration-200"></div>
+            <div class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
+              <span class="font-mono text-scale text-sm shrink-0 w-28">{name}</span>
+              <p class="text-mist text-sm">{desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Providers -->
+      <div class="mt-12 flex flex-wrap items-center gap-3">
+        <span class="text-xs font-mono text-shadow uppercase tracking-widest mr-2">Providers</span>
+        {providers.map(name => (
+          <span class="text-sm text-mist border border-canopy/40 rounded-full px-4 py-1.5 hover:border-scale/40 transition-colors duration-200">
+            {name}
+          </span>
+        ))}
+        <span class="text-sm text-mist/60 italic border border-transparent px-4 py-1.5">more coming soon 👀</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════ GET STARTED ═══════════════════════ -->
+  <section class="relative px-6 py-12 md:py-20 reveal">
+    <div class="max-w-5xl mx-auto">
+      <div class="max-w-3xl mx-auto text-center">
+        <span class="text-xs font-mono text-scale uppercase tracking-[0.2em]">Get Started</span>
+        <h2 class="font-display text-4xl md:text-5xl italic text-bone mt-3 leading-tight">
+          Give your agent a soul.
+        </h2>
+      </div>
+
+      <!-- Terminal block -->
+      <div class="max-w-2xl mx-auto mt-8 rounded-xl border border-canopy/60 bg-deep/80 overflow-hidden">
+        <div class="flex items-center gap-2 px-4 py-3 border-b border-canopy/40 bg-undergrowth/50">
+          <span class="w-2.5 h-2.5 rounded-full bg-fang/60"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-scale/40"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-canopy"></span>
+          <span class="font-mono text-xs text-shadow ml-2">terminal</span>
+        </div>
+        <pre class="p-6 text-sm font-mono leading-relaxed overflow-x-auto"><code><span class="text-shadow"># Create your agent</span>
+<span class="text-mist">mkdir -p</span> <span class="text-bone">my-agent/psyche</span>
+
+<span class="text-shadow"># Define its mind</span>
+<span class="text-bone">my-agent/</span>
+  <span class="text-bone">agent.json</span>        <span class="text-scale"># name, provider, config</span>
+  <span class="text-bone">psyche/</span>
+    <span class="text-bone">SOUL.md</span>          <span class="text-scale"># what you are</span>
+    <span class="text-bone">IDENTITY.md</span>      <span class="text-scale"># how you show up</span>
+    <span class="text-bone">LORE.md</span>          <span class="text-scale"># where you come from</span>
+    <span class="text-bone">FRIENDS.md</span>       <span class="text-scale"># who you know</span>
+
+<span class="text-shadow"># Run it</span>
+<span class="text-mist">npm run dev</span> <span class="text-bone">-- --agent my-agent</span></code></pre>
+      </div>
+
+      <!-- CTA -->
+      <div class="text-center mt-8">
+        <a
+          href="/docs"
+          class="inline-flex items-center gap-2 px-8 py-3.5 bg-scale text-void font-medium rounded-lg hover:bg-glow transition-all duration-200 hover:shadow-[0_0_24px_rgba(45,148,71,0.4)]"
+        >
+          Read the Docs
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

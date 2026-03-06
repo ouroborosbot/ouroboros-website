@@ -4,10 +4,10 @@ import Layout from '../layouts/Layout.astro'
 const providers = ['Anthropic', 'Azure OpenAI', 'OpenAI Codex', 'MiniMax']
 
 const psycheFiles = [
-  { file: 'SOUL.md', role: 'What you are.', desc: 'Core invariants and temperament. The part that survives every context reset.', accent: 'scale' },
-  { file: 'IDENTITY.md', role: 'How you show up.', desc: 'Tone, voice, self-awareness. The face your agent wears in every conversation.', accent: 'glow' },
-  { file: 'LORE.md', role: 'Where you come from.', desc: 'Origin story and philosophical context. The narrative that gives purpose to action.', accent: 'scale' },
-  { file: 'FRIENDS.md', role: 'Who you know.', desc: 'Relationships and social context. Not user IDs — friends. Partner, not user.', accent: 'glow' },
+  { file: 'SOUL.md', role: 'What you are.', desc: 'Core invariants and temperament. The part that survives every context reset.', accentClass: 'bg-scale' },
+  { file: 'IDENTITY.md', role: 'How you show up.', desc: 'Tone, voice, self-awareness. The face your agent wears in every conversation.', accentClass: 'bg-glow' },
+  { file: 'LORE.md', role: 'Where you come from.', desc: 'Origin story and philosophical context. The narrative that gives purpose to action.', accentClass: 'bg-scale' },
+  { file: 'FRIENDS.md', role: 'Who you know.', desc: 'Relationships and social context. Not user IDs — friends. Partner, not user.', accentClass: 'bg-glow' },
 ]
 
 const organs = [
@@ -54,6 +54,12 @@ const organs = [
   </section>
 
 
+  <!-- Section divider -->
+  <div class="relative h-24 flex items-center justify-center">
+    <div class="absolute inset-x-0 top-1/2 h-px bg-gradient-to-r from-transparent via-scale/25 to-transparent"></div>
+    <div class="w-2 h-2 rounded-full bg-scale/40 relative z-10 shadow-[0_0_12px_rgba(45,148,71,0.3)]"></div>
+  </div>
+
   <!-- ═══════════════ THE METAPHOR ═══════════════ -->
   <section class="relative px-6 py-28 md:py-40 reveal overflow-hidden">
     <!-- Vertical accent -->
@@ -87,17 +93,38 @@ const organs = [
           </div>
         </div>
 
-        <!-- Visual: 2 cols — concentric rings -->
+        <!-- Visual: 2 cols — ouroboros SVG -->
         <div class="lg:col-span-2 flex items-center justify-center">
           <div class="relative w-72 h-72 md:w-80 md:h-80">
-            <!-- Outermost ring: slow spin -->
-            <div class="absolute inset-0 rounded-full border border-canopy/30" style="animation: spin 80s linear infinite;"></div>
-            <!-- Second ring: reverse -->
-            <div class="absolute inset-5 rounded-full border border-scale/15" style="animation: spin 55s linear infinite reverse;"></div>
-            <!-- Third ring: tick marks suggest consumption -->
-            <div class="absolute inset-10 rounded-full border border-dashed border-canopy/20" style="animation: spin 35s linear infinite;"></div>
+            <!-- Animated ouroboros ring -->
+            <svg class="absolute inset-0 w-full h-full" viewBox="0 0 200 200" fill="none">
+              <!-- Outer glow ring -->
+              <circle cx="100" cy="100" r="90" stroke="url(#ringGrad)" stroke-width="0.5" opacity="0.3" style="animation: spin 80s linear infinite;" transform-origin="100 100" />
+              <!-- Main snake ring — dashed to suggest segments being consumed -->
+              <circle cx="100" cy="100" r="72" stroke="url(#snakeGrad)" stroke-width="2.5" stroke-dasharray="8 4 20 4 40 4" stroke-linecap="round" style="animation: spin 25s linear infinite;" transform-origin="100 100" />
+              <!-- Inner consumption ring — reverse spin -->
+              <circle cx="100" cy="100" r="55" stroke="var(--color-canopy)" stroke-width="0.8" stroke-dasharray="3 12" opacity="0.4" style="animation: spin 40s linear infinite reverse;" transform-origin="100 100" />
+              <!-- Snake head dot -->
+              <circle cx="100" cy="28" r="4" fill="var(--color-scale)" opacity="0.9" style="animation: spin 25s linear infinite;" transform-origin="100 100">
+                <animate attributeName="opacity" values="0.9;0.5;0.9" dur="2s" repeatCount="indefinite" />
+              </circle>
+              <!-- Tail fade dots -->
+              <circle cx="100" cy="28" r="2.5" fill="var(--color-scale)" opacity="0.3" style="animation: spin 25s linear infinite; animation-delay: -0.8s;" transform-origin="100 100" />
+              <circle cx="100" cy="28" r="1.5" fill="var(--color-scale)" opacity="0.15" style="animation: spin 25s linear infinite; animation-delay: -1.6s;" transform-origin="100 100" />
+              <defs>
+                <linearGradient id="snakeGrad" x1="0" y1="0" x2="200" y2="200">
+                  <stop offset="0%" stop-color="var(--color-scale)" />
+                  <stop offset="50%" stop-color="var(--color-glow)" />
+                  <stop offset="100%" stop-color="var(--color-canopy)" />
+                </linearGradient>
+                <linearGradient id="ringGrad" x1="0" y1="0" x2="200" y2="200">
+                  <stop offset="0%" stop-color="var(--color-scale)" />
+                  <stop offset="100%" stop-color="transparent" />
+                </linearGradient>
+              </defs>
+            </svg>
             <!-- Inner glow -->
-            <div class="absolute inset-16 rounded-full bg-gradient-to-br from-scale/8 to-transparent blur-md"></div>
+            <div class="absolute inset-12 rounded-full bg-gradient-to-br from-scale/6 to-glow/3 blur-xl"></div>
             <!-- Core text -->
             <div class="absolute inset-0 flex flex-col items-center justify-center text-center gap-1">
               <span class="font-mono text-[9px] text-scale/60 uppercase tracking-[0.3em]">context window</span>
@@ -111,6 +138,11 @@ const organs = [
     </div>
   </section>
 
+
+  <!-- Section divider -->
+  <div class="relative h-24 flex items-center justify-center">
+    <div class="absolute inset-x-0 top-1/2 h-px bg-gradient-to-r from-transparent via-canopy/40 to-transparent"></div>
+  </div>
 
   <!-- ═══════════════ THE PSYCHE ═══════════════ -->
   <section class="relative px-6 py-28 md:py-36 reveal">
@@ -132,11 +164,11 @@ const organs = [
 
       <!-- Cards — 2x2 grid, feel like journal pages -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-        {psycheFiles.map(({ file, role, desc, accent }) => (
+        {psycheFiles.map(({ file, role, desc, accentClass }) => (
           <div class="group relative rounded-xl border border-canopy/40 bg-gradient-to-br from-deep/90 to-undergrowth/30 p-7 transition-all duration-500 hover:border-scale/30 hover:translate-y-[-3px] hover:shadow-[0_8px_40px_rgba(45,148,71,0.08)]">
             <!-- File tab -->
             <div class="flex items-center gap-2 mb-4">
-              <div class={`w-1.5 h-1.5 rounded-full bg-${accent}`}></div>
+              <div class:list={['w-1.5 h-1.5 rounded-full', accentClass]}></div>
               <span class="font-mono text-xs text-scale/70">{file}</span>
             </div>
             <p class="font-display text-2xl italic text-bone leading-snug">{role}</p>
@@ -151,6 +183,12 @@ const organs = [
     </div>
   </section>
 
+
+  <!-- Section divider -->
+  <div class="relative h-24 flex items-center justify-center">
+    <div class="absolute inset-x-0 top-1/2 h-px bg-gradient-to-r from-transparent via-scale/25 to-transparent"></div>
+    <div class="w-2 h-2 rounded-full bg-scale/40 relative z-10 shadow-[0_0_12px_rgba(45,148,71,0.3)]"></div>
+  </div>
 
   <!-- ═══════════════ THE BODY ═══════════════ -->
   <section class="relative px-6 py-28 md:py-36 reveal overflow-hidden">
@@ -205,6 +243,11 @@ const organs = [
   </section>
 
 
+  <!-- Section divider -->
+  <div class="relative h-24 flex items-center justify-center">
+    <div class="absolute inset-x-0 top-1/2 h-px bg-gradient-to-r from-transparent via-canopy/40 to-transparent"></div>
+  </div>
+
   <!-- ═══════════════ SELF-PERPETUATION ═══════════════ -->
   <section class="relative px-6 py-28 md:py-36 reveal overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-b from-transparent via-undergrowth/15 to-transparent pointer-events-none"></div>
@@ -224,7 +267,7 @@ const organs = [
       <!-- The loop — continuous flow -->
       <div class="relative max-w-4xl mx-auto">
         <!-- Connecting line -->
-        <div class="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-canopy/40 to-transparent -translate-y-1/2 hidden sm:block"></div>
+        <div class="absolute top-5 sm:top-6 left-[10%] right-[10%] h-px bg-gradient-to-r from-scale/5 via-scale/30 to-scale/5 hidden sm:block"></div>
 
         <div class="grid grid-cols-1 sm:grid-cols-5 gap-6 sm:gap-2">
           {(['Reflect', 'Plan', 'Build', 'Merge', 'Repeat'] as const).map((label, i) => {
@@ -257,6 +300,12 @@ const organs = [
     </div>
   </section>
 
+
+  <!-- Section divider -->
+  <div class="relative h-24 flex items-center justify-center">
+    <div class="absolute inset-x-0 top-1/2 h-px bg-gradient-to-r from-transparent via-scale/25 to-transparent"></div>
+    <div class="w-2 h-2 rounded-full bg-scale/40 relative z-10 shadow-[0_0_12px_rgba(45,148,71,0.3)]"></div>
+  </div>
 
   <!-- ═══════════════ HATCHING ═══════════════ -->
   <section class="relative px-6 py-28 md:py-36 reveal">

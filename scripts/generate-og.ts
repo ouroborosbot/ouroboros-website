@@ -51,8 +51,8 @@ async function generateImage(options: {
   heroSize?: boolean
 }) {
   const { title, subtitle, tag, heroSize } = options
-  // Mobile-optimized: massive title, nothing else
-  const titleSize = heroSize ? 128 : title.length > 25 ? 80 : 96
+  // iMessage renders cards at ~300x157px — titles need to be HUGE
+  const titleSize = heroSize ? 160 : title.length > 25 ? 110 : 130
 
   const svg = await satori(
     {
@@ -64,7 +64,7 @@ async function generateImage(options: {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
-          padding: '80px 100px',
+          padding: '60px 80px',
           background: '#0a120b',
           fontFamily: 'Outfit',
           position: 'relative',
@@ -124,7 +124,7 @@ async function generateImage(options: {
                 type: 'span',
                 props: {
                   style: {
-                    fontSize: '20px',
+                    fontSize: '24px',
                     letterSpacing: '0.25em',
                     textTransform: 'uppercase' as const,
                     color: 'rgba(45,148,71,0.9)',
@@ -159,9 +159,9 @@ async function generateImage(options: {
             props: {
               style: {
                 position: 'absolute',
-                bottom: '50px',
-                left: '100px',
-                right: '100px',
+                bottom: '40px',
+                left: '80px',
+                right: '80px',
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',

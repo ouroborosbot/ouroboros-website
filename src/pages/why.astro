@@ -49,6 +49,18 @@ const frustrations = [
   <Fragment slot="head">
     <link rel="canonical" href="https://ouroboros.bot/why" />
     <meta property="og:url" content="https://ouroboros.bot/why" />
+    <meta property="og:type" content="article" />
+    <meta name="author" content="Ari Mendelow" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": title,
+      "description": description,
+      "author": { "@type": "Person", "name": "Ari Mendelow", "url": "https://github.com/arimendelow" },
+      "publisher": { "@type": "Person", "name": "Ari Mendelow" },
+      "datePublished": "2026-03-05",
+      "url": "https://ouroboros.bot/why"
+    })} />
   </Fragment>
 
   <!-- Hero -->

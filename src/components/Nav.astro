@@ -7,6 +7,7 @@ const links = [
   { href: '/blog', label: 'Blog' },
 ]
 const currentPath = Astro.url.pathname
+const isActive = (href: string) => href === '/' ? currentPath === '/' : currentPath.startsWith(href)
 ---
 
 <nav class="fixed top-0 inset-x-0 z-40">
@@ -29,7 +30,7 @@ const currentPath = Astro.url.pathname
             href={link.href}
             class:list={[
               'text-sm font-medium tracking-wide transition-colors duration-200',
-              currentPath === link.href ? 'text-scale' : 'text-mist hover:text-bone'
+              isActive(link.href) ? 'text-scale' : 'text-mist hover:text-bone'
             ]}
           >
             {link.label}
@@ -73,7 +74,7 @@ const currentPath = Astro.url.pathname
           href={link.href}
           class:list={[
             'text-3xl font-display italic tracking-wide transition-colors duration-200',
-            currentPath === link.href ? 'text-scale' : 'text-mist hover:text-bone'
+            isActive(link.href) ? 'text-scale' : 'text-mist hover:text-bone'
           ]}
         >
           {link.label}

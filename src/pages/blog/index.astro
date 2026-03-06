@@ -4,7 +4,7 @@ import Layout from '../../layouts/Layout.astro'
 const posts = [
   {
     title: 'How to Build an AI Agent from Scratch',
-    description: 'Learn what an agent loop is and how AI agents actually work. A practical guide from first principles to production.',
+    description: 'Build a working AI agent in ~150 lines of TypeScript. Five milestones: first API call, streaming, multi-turn conversation, tools, and the agentic loop.',
     href: '/blog/build-ai-agent-from-scratch',
     date: '2026-03-01',
     tag: 'Tutorial',
@@ -14,7 +14,20 @@ const posts = [
 ]
 ---
 
-<Layout title="Blog — Ouroboros" description="Essays, tutorials, and dispatches from the ouroboros project.">
+<Layout title="Blog — Ouroboros" description="Essays on agent architecture, framework design, and building software that knows itself.">
+
+  <Fragment slot="head">
+    <link rel="canonical" href="https://ouroboros.bot/blog" />
+    <meta property="og:url" content="https://ouroboros.bot/blog" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "Ouroboros Blog",
+      "description": "Essays on agent architecture, framework design, and building software that knows itself.",
+      "url": "https://ouroboros.bot/blog",
+      "publisher": { "@type": "Person", "name": "Ari Mendelow", "url": "https://x.com/arimendelow" }
+    })} />
+  </Fragment>
 
   <section class="relative pt-40 pb-20 px-6">
     <div class="max-w-3xl mx-auto">

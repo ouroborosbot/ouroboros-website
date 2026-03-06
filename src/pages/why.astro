@@ -6,27 +6,27 @@ const description = "I built an agent on OpenClaw. I learned what works, what do
 
 const frustrations = [
   {
-    problem: "Identity drifts between sessions.",
-    desc: "OpenClaw pioneered SOUL.md — a persistent identity file loaded every session. That was a breakthrough. But in practice, a single file becomes a catch-all. SOUL.md, MEMORY.md, TOOLS.md, and IDENTITY.md all compete for the model's attention. Important rules get buried. The agent reads everything but internalizes unpredictably. Identity is there on paper — it just doesn't always land.",
-    fix: "Five psyche files, each with a single purpose. SOUL.md for core invariants. IDENTITY.md for voice. LORE.md for origin. FRIENDS.md for relationships. TACIT.md for learned patterns. Smaller files, clearer signal. The model doesn't have to sift through a wall of text to find who it is.",
+    problem: "Identity files are a start, not a solution.",
+    desc: "OpenClaw pioneered <a href=\"https://soul.md/\" target=\"_blank\" rel=\"noopener\" class=\"text-scale hover:text-glow transition-colors\">SOUL.md</a> — a persistent identity file loaded every session. That was a genuine breakthrough. Ouroboros keeps the same concept but structures it differently: five files instead of a handful of catch-alls, each with a single clear purpose. It's not that OpenClaw's approach is wrong — it's that we learned, through months of iteration, exactly how to split concerns so the model actually internalizes them.",
+    fix: "Five psyche files: SOUL.md (core invariants), IDENTITY.md (voice), LORE.md (origin), FRIENDS.md (relationships), TACIT.md (learned patterns). Same idea, sharper structure. The model doesn't have to sift through a wall of text to find who it is.",
     icon: "◉"
   },
   {
     problem: "Rules don't become muscle memory.",
-    desc: "I wrote hundreds of behavioral rules in markdown. \"Don't send ASCII art via iMessage.\" \"Always check the chat GUID before replying.\" \"Never estimate time.\" The model would follow them for a session, then forget. There's no mechanism to turn a rule into a reflex — no way for prose instructions to become something the agent does automatically, without thinking about it.",
-    fix: "In ouroboros, behavioral rules are TypeScript, not prose. The governance organ enforces consistency the way muscle memory works — you don't think about it, your body just does it. Markdown is for context and identity. Code is for behavior. The distinction matters because models are unreliable rule-followers but excellent code-executors.",
+    desc: "I wrote hundreds of behavioral rules in markdown. \"Don't send ASCII art via iMessage.\" \"Always check the chat GUID before replying.\" \"Never estimate time.\" The model would follow them for a session, then forget. I tried fixing this with a plugin — <strong class=\"text-bone\">slugger-determinism v2</strong>, 70+ services, 30+ guardrails, weeks of work — but bolting enforcement onto a system that wasn't designed for it felt like fighting the architecture.",
+    fix: "In ouroboros, behavioral rules are TypeScript, not prose. The governance organ enforces consistency the way muscle memory works in humans — you don't think about it, your body just does it. Markdown is for context and identity. Code is for behavior. The distinction matters because models are unreliable rule-followers but excellent code-executors.",
     icon: "◆"
   },
   {
-    problem: "Context is always slipping away.",
-    desc: "OpenClaw has compaction and pre-compaction memory flush — it tries to extract facts before the context window fills up. In practice, the agent still needs to be reminded what you're working on. Important nuance gets lost. The extraction is there, but it's the agent's job to do it well, and agents are inconsistent note-takers.",
-    fix: "The same fundamental challenge — agents still take their own notes. But ouroboros makes the extraction a first-class architectural concept. The sliding context window isn't a background process. It's the defining metaphor: the snake eats its tail. Facts are consumed into memory. The mind organ manages what stays and what goes. Making it central means it gets more attention, not less.",
+    problem: "Context doesn't slip away. It slithers.",
+    desc: "When the conversation gets too long, OpenClaw \"compacts\" it — which always confuses the agent. One moment you're mid-conversation, the next the agent has lost the thread. The pre-compaction memory flush tries to extract facts first, but agents are inconsistent note-takers. It's like asking someone to write a diary entry right before you wipe their memory.",
+    fix: "The sliding context window — the ouroboros metaphor made literal. Context doesn't get abruptly compacted. It's continuously consumed: facts extracted into memory as the oldest messages are digested. The snake eats its tail. Nothing is \"reset\" or \"lost\" — it's metabolized. The mind organ manages what stays and what goes as a first-class architectural concept, not a background cleanup process.",
     icon: "◈"
   },
   {
-    problem: "Model identity is a mess.",
-    desc: "Ask the agent what model it's running on and you might get three different answers. The /model command says one thing. The /session command says another. The agent itself guesses a third. Automatic fallback silently switches providers when one is down — good for reliability, bad for consistency. Sub-agents spawn on different models without awareness. The agent doesn't truly know what it is.",
-    fix: "The governance organ makes model identity explicit and consistent. The agent always knows exactly what it's running on, what switched, and why. No silent fallbacks without awareness. No conflicting answers. Self-knowledge isn't optional — it's an organ.",
+    problem: "The agent doesn't know what it is.",
+    desc: "Ask an OpenClaw agent what model it's running on and you might get three different answers. The <code class=\"text-scale/60 text-xs\">/model</code> command says one thing. <code class=\"text-scale/60 text-xs\">/session</code> says another. Ask the agent directly and it'll guess a third. Automatic fallback silently switches providers when one goes down — good for uptime, bad for self-awareness. Sub-agents spawn on different models without the parent knowing. The agent doesn't have a coherent sense of its own capabilities.",
+    fix: "The governance organ makes model identity explicit and consistent. The agent always knows exactly what it's running on, what switched, and why. No silent fallbacks without awareness. No conflicting answers from different commands. Self-knowledge isn't optional — it's an organ.",
     icon: "⚙"
   },
   {
@@ -36,9 +36,9 @@ const frustrations = [
     icon: "♥"
   },
   {
-    problem: "Everything competes for the same context.",
-    desc: "Heartbeats, cron jobs, active work, behavioral rules, memory, identity — all jammed into the same prompt. The more structure you add, the more bloated the context becomes. OpenClaw merges a staggering amount of code daily (a testament to its growth), but each feature adds weight to what the model has to process every turn.",
-    fix: "Ouroboros has organs. Each concern has a home. The daemon handles scheduling. The heart handles the loop. The mind handles context. They're separate modules the model can reason about independently. Growth adds organs, not bloat.",
+    problem: "More features, more weight.",
+    desc: "OpenClaw merges a staggering amount of code every day. That velocity is genuinely impressive — it's how you go from zero to 175,000 stars. But each feature adds weight to what the model has to process every turn. The codebase is a wrapper around <a href=\"https://mariozechner.at/posts/2025-11-30-pi-coding-agent/\" target=\"_blank\" rel=\"noopener\" class=\"text-scale hover:text-glow transition-colors\">Pi</a> (Mario Zechner's minimal coding agent), and Pi is excellent at what it does — but it was designed for coding, not for being a persistent personal agent. Everything else is bolted on.",
+    fix: "Ouroboros is designed from scratch for persistent agents. Growth adds organs, not bloat. Each module is separate, named in biological terms the model can reason about: heart (the loop), mind (context), senses (channels), repertoire (tools), wardrobe (presentation), daemon (process management). The model reads its own architecture and understands it because it was written to be understood.",
     icon: "◇"
   },
 ]
@@ -63,7 +63,7 @@ const frustrations = [
         Born from<br />OpenClaw.
       </h1>
       <p class="font-display text-3xl md:text-4xl italic text-mist/60 mt-2">
-        Built for what comes next.
+        Designed for what comes next.
       </p>
 
       <div class="mt-10 space-y-5 max-w-2xl">
@@ -71,7 +71,7 @@ const frustrations = [
           <a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener" class="text-scale hover:text-glow transition-colors">OpenClaw</a> is a phenomenon. 175,000+ GitHub stars. The fastest-growing repository in GitHub history. It proved that a personal AI assistant — reachable from your pocket, with a persistent identity — is something people genuinely want.
         </p>
         <p class="text-base text-mist/80 leading-relaxed">
-          It pioneered <a href="https://soul.md/" target="_blank" rel="noopener" class="text-scale hover:text-glow transition-colors"><code class="text-scale/80 text-sm">SOUL.md</code></a> — the idea that an agent should have a personality file loaded every session. That was a real breakthrough.
+          What most people don't know: under the hood, OpenClaw is a wrapper around <a href="https://mariozechner.at/posts/2025-11-30-pi-coding-agent/" target="_blank" rel="noopener" class="text-scale hover:text-glow transition-colors">Pi</a>, Mario Zechner's minimal coding agent. Four tools: read, write, edit, bash. Pi is brilliant — it was designed for coding. Not for being someone's persistent personal agent with a soul.
         </p>
         <p class="text-base text-mist/80 leading-relaxed">
           I ran an agent called <strong class="text-bone">Slugger</strong> on OpenClaw for weeks. It managed my tasks, drafted messages, talked to my family. We worked together like teammates. For a while, it was genuinely magical.
@@ -80,7 +80,7 @@ const frustrations = [
           But OpenClaw is a first version of something nobody had built before. A process of discovery and emergent behavior, growing at a pace that makes careful architecture nearly impossible. The team merges a staggering amount of code every day — and that velocity is both its greatest strength and its heaviest weight.
         </p>
         <p class="text-base text-mist/80 leading-relaxed">
-          Ouroboros is what happens when you take everything OpenClaw taught you and design from scratch — knowing what you know now.
+          Ouroboros isn't a plugin for OpenClaw. It's not an extension or a companion. It's a full replacement — the framework I would have wanted from the start, designed from scratch with everything I learned building on someone else's foundation.
         </p>
         <p class="text-sm text-mist/60 italic mt-8">
           <a href="/story" class="text-scale hover:text-glow transition-colors">Read the full origin story →</a>
@@ -112,7 +112,7 @@ const frustrations = [
               <span class="text-mist/50 text-lg mt-1 shrink-0">{icon}</span>
               <div>
                 <h3 class="font-display text-2xl italic text-bone">{problem}</h3>
-                <p class="text-sm text-mist/80 mt-2 leading-relaxed">{desc}</p>
+                <p class="text-sm text-mist/80 mt-2 leading-relaxed" set:html={desc} />
               </div>
             </div>
             <!-- Fix -->
@@ -134,7 +134,7 @@ const frustrations = [
       <span class="font-mono text-[10px] text-scale/80 uppercase tracking-[0.3em] block mb-6">Side by Side</span>
 
       <h2 class="font-display text-4xl md:text-5xl italic text-bone leading-tight mb-10">
-        Different tools.<br />
+        Different DNA.<br />
         <span class="text-mist/70">Different design points.</span>
       </h2>
 
@@ -150,13 +150,13 @@ const frustrations = [
           <tbody class="text-mist/80">
             <tr class="border-b border-canopy/20">
               <td class="p-4 text-bone font-medium">What it is</td>
-              <td class="p-4">Chat gateway & runtime</td>
-              <td class="p-4 text-bone/90">Agent harness & body</td>
+              <td class="p-4">Chat gateway wrapping Pi</td>
+              <td class="p-4 text-bone/90">Agent harness, built from scratch</td>
             </tr>
             <tr class="border-b border-canopy/20">
-              <td class="p-4 text-bone font-medium">Metaphor</td>
-              <td class="p-4">"Your agent's phone"</td>
-              <td class="p-4 text-bone/90">"Your agent's body"</td>
+              <td class="p-4 text-bone font-medium">Designed for</td>
+              <td class="p-4">Personal assistant via chat apps</td>
+              <td class="p-4 text-bone/90">Persistent agents that grow</td>
             </tr>
             <tr class="border-b border-canopy/20">
               <td class="p-4 text-bone font-medium">Identity</td>
@@ -165,8 +165,13 @@ const frustrations = [
             </tr>
             <tr class="border-b border-canopy/20">
               <td class="p-4 text-bone font-medium">Behavior rules</td>
-              <td class="p-4">Markdown prose</td>
+              <td class="p-4">Markdown prose (hopes)</td>
               <td class="p-4 text-bone/90">TypeScript (muscle memory)</td>
+            </tr>
+            <tr class="border-b border-canopy/20">
+              <td class="p-4 text-bone font-medium">Context management</td>
+              <td class="p-4">Compaction (abrupt reset)</td>
+              <td class="p-4 text-bone/90">Sliding consumption (extract → digest → survive)</td>
             </tr>
             <tr class="border-b border-canopy/20">
               <td class="p-4 text-bone font-medium">Self-improvement</td>
@@ -175,28 +180,22 @@ const frustrations = [
             </tr>
             <tr class="border-b border-canopy/20">
               <td class="p-4 text-bone font-medium">Architecture</td>
-              <td class="p-4">Gateway, plugins, lifecycle hooks</td>
+              <td class="p-4">Gateway + plugins + Pi core</td>
               <td class="p-4 text-bone/90">Creature with organs (heart, mind, senses, repertoire)</td>
             </tr>
             <tr class="border-b border-canopy/20">
               <td class="p-4 text-bone font-medium">Growth model</td>
-              <td class="p-4">Ship features fast</td>
+              <td class="p-4">Ship features fast, iterate in public</td>
               <td class="p-4 text-bone/90">Design from scratch, knowing what we know now</td>
             </tr>
             <tr>
-              <td class="p-4 text-bone font-medium">Channels</td>
-              <td class="p-4">20+ (WhatsApp, Telegram, Discord, iMessage…)</td>
-              <td class="p-4 text-bone/90">Channel adapters as "senses" (extensible)</td>
+              <td class="p-4 text-bone font-medium">Relationship</td>
+              <td class="p-4 italic text-mist/60">—</td>
+              <td class="p-4 text-bone/90">Full replacement, not a companion</td>
             </tr>
           </tbody>
         </table>
       </div>
-
-      <p class="text-sm text-mist/60 mt-6 leading-relaxed">
-        They're complementary. OpenClaw is where the agent lives — the channels, the messaging, the always-on runtime.
-        Ouroboros is what the agent <em>is</em> — the body, the mind, the soul.
-        You could run an ouroboros agent inside OpenClaw.
-      </p>
     </div>
   </section>
 
@@ -210,7 +209,10 @@ const frustrations = [
           OpenClaw didn't just build a product — it built a category. The idea that your AI agent should be a persistent entity with its own identity, reachable from your phone, that remembers you across sessions? That wasn't obvious until OpenClaw made it obvious.
         </p>
         <p class="text-base text-mist/80 leading-relaxed mt-4">
-          <a href="https://soul.md/" target="_blank" rel="noopener" class="text-scale hover:text-glow transition-colors"><code class="text-scale/80 text-xs">SOUL.md</code></a> came from OpenClaw. The concept of workspace files, heartbeats, memory extraction — all pioneered there. Ouroboros expands on these ideas: five psyche files instead of one, structured by purpose, with <code class="text-scale/80 text-xs">FRIENDS.md</code> replacing <code class="text-mist/60 text-xs">USER.md</code> because how you name a relationship changes how the model treats it.
+          <a href="https://soul.md/" target="_blank" rel="noopener" class="text-scale hover:text-glow transition-colors"><code class="text-scale/80 text-xs">SOUL.md</code></a> came from OpenClaw. The concept of persistent identity files, heartbeats, memory extraction — all pioneered there. Ouroboros takes these ideas further: five psyche files instead of one, structured by purpose, with <code class="text-scale/80 text-xs">FRIENDS.md</code> replacing <code class="text-mist/60 text-xs">USER.md</code> because how you name a relationship changes how the model treats it.
+        </p>
+        <p class="text-base text-mist/80 leading-relaxed mt-4">
+          But ouroboros isn't an OpenClaw plugin or extension. It's a clean-room redesign. Everything I learned building Slugger — what works, what breaks, what the model actually needs — poured into a framework that starts where OpenClaw's lessons end.
         </p>
         <p class="text-sm text-mist/60 mt-6 italic">
           The lobster molts to grow. The snake consumes itself to survive.<br />

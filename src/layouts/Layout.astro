@@ -88,7 +88,16 @@ const {
         var reveals = document.querySelectorAll('.reveal');
         if (!reveals.length || !('IntersectionObserver' in window)) return;
 
-        // Enable animations now that we know JS works
+        // Mark sections already in viewport as visible BEFORE enabling animations
+        // This prevents the flash-of-invisible-content on page navigation
+        reveals.forEach(function(el) {
+          var rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
+            el.classList.add('visible');
+          }
+        });
+
+        // Now enable animations (only hides sections not yet marked visible)
         document.documentElement.classList.add('reveal-ready');
 
         var observer = new IntersectionObserver(
@@ -100,9 +109,11 @@ const {
               }
             });
           },
-          { threshold: 0.05, rootMargin: '0px 0px -60px 0px' }
+          { threshold: 0, rootMargin: '0px 0px -20px 0px' }
         );
-        reveals.forEach(function(el) { observer.observe(el); });
+        reveals.forEach(function(el) {
+          if (!el.classList.contains('visible')) observer.observe(el);
+        });
       })();
     </script>
   </body>

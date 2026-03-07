@@ -17,9 +17,9 @@ const sections = [
     },
     prompt: 'Create a new Ouroboros agent bundle called "my-agent" with an anthropic provider, 80k context window, and psyche files for a helpful coding assistant.',
     details: [
-      { label: 'agent.json', desc: 'The manifest: name, provider, context limits, loading phrases.' },
-      { label: 'psyche/', desc: 'Five markdown files that define who your agent is.' },
-      { label: 'ouro chat', desc: 'Start talking. The daemon handles the rest.' },
+      { label: 'npx ouro.bot', desc: 'First run starts the Adoption Specialist. She guides you through setup.' },
+      { label: 'psyche/', desc: 'Five markdown files that define who your agent is. Populated by the Specialist.' },
+      { label: 'ouro', desc: 'Start talking. Smart routing: no agents = hatch, one = chat, many = pick.' },
     ],
   },
   {
@@ -33,12 +33,11 @@ const sections = [
       url: 'https://ouroboros.bot/skills/understand-architecture.md',
     },
     organs: [
-      { name: 'heart/', desc: 'The agent loop. Streaming, provider adapters, self-correction.' },
-      { name: 'mind/', desc: 'System prompt assembly. Sliding context window. Memory extraction.' },
-      { name: 'senses/', desc: 'Channel adapters. CLI. Teams. How the agent perceives.' },
-      { name: 'repertoire/', desc: 'Tools, skills, tasks, coding orchestration.' },
-      { name: 'daemon/', desc: 'Process manager, scheduler, health monitor.' },
-      { name: 'nerves/', desc: 'Runtime observability. Event-based logging.' },
+      { name: 'heart/', desc: 'The agent loop, daemon, providers, config. Streaming, process management, scheduling.' },
+      { name: 'mind/', desc: 'System prompt assembly. Sliding context window. Memory, friends, associative recall.' },
+      { name: 'senses/', desc: 'Channel adapters. CLI. Teams. Inner dialog. How the agent perceives.' },
+      { name: 'repertoire/', desc: 'Tools, skills, tasks, coding orchestration. Everything the agent can reach for.' },
+      { name: 'nerves/', desc: 'Runtime observability. Structured logging, configurable sinks, coverage audit.' },
     ],
   },
   {
@@ -56,15 +55,15 @@ const sections = [
       { name: 'SOUL.md', role: 'What you are', color: 'scale' },
       { name: 'IDENTITY.md', role: 'How you show up', color: 'glow' },
       { name: 'LORE.md', role: 'Where you come from', color: 'scale' },
-      { name: 'FRIENDS.md', role: 'Who you know', color: 'glow' },
-      { name: 'TACIT.md', role: 'What you\'ve learned', color: 'scale' },
+      { name: 'TACIT.md', role: 'What you\'ve learned', color: 'glow' },
+      { name: 'ASPIRATIONS.md', role: 'Where you\'re going', color: 'scale' },
     ],
   },
   {
     id: 'context',
     label: 'Context Window',
     title: 'The snake eats its tail.',
-    description: 'When conversation grows too long, the oldest messages are consumed. But facts are extracted to memory first. Nothing is truly lost — it\'s metabolized.',
+    description: 'When conversation grows too long, the oldest messages are consumed. But the agent saves what matters to persistent memory first. Nothing is truly lost — it\'s metabolized.',
     skill: {
       id: 'use-sliding-context',
       name: 'Use the Sliding Context Window',
@@ -82,7 +81,7 @@ const sections = [
       url: 'https://ouroboros.bot/skills/build-tools.md',
     },
     prompt: 'List your available skills, then load the one most relevant to my current task.',
-    baseTools: ['read_file', 'write_file', 'shell', 'git_commit', 'gh_cli', 'list_skills', 'load_skill', 'claude', 'web_search', 'save_friend_note'],
+    baseTools: ['read_file', 'write_file', 'shell', 'git_commit', 'gh_cli', 'list_skills', 'load_skill', 'claude', 'web_search', 'save_friend_note', 'get_friend_note', 'memory_save', 'memory_search'],
   },
   {
     id: 'dream-cycle',
@@ -315,7 +314,7 @@ const sections = [
       </div>
 
       <div class="flex flex-col sm:flex-row justify-center gap-4 mt-12">
-        <a href="https://github.com/arimendelow/ouroboros-agent-harness" target="_blank" rel="noopener" class="group inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-scale text-void font-medium rounded-lg transition-all duration-300 hover:bg-glow hover:shadow-[0_0_40px_rgba(45,148,71,0.3)]">
+        <a href="https://github.com/ouroborosbot/ouroboros" target="_blank" rel="noopener" class="group inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-scale text-void font-medium rounded-lg transition-all duration-300 hover:bg-glow hover:shadow-[0_0_40px_rgba(45,148,71,0.3)]">
           Browse the Source
           <svg class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
         </a>

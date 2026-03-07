@@ -7,16 +7,16 @@ const psycheFiles = [
   { file: 'SOUL.md', role: 'What you are.', desc: 'Core invariants and temperament. The part that survives every context reset.', accentClass: 'bg-scale' },
   { file: 'IDENTITY.md', role: 'How you show up.', desc: 'Tone, voice, self-awareness. The face your agent wears in every conversation.', accentClass: 'bg-glow' },
   { file: 'LORE.md', role: 'Where you come from.', desc: 'Origin story and philosophical context. The narrative that gives purpose to action.', accentClass: 'bg-scale' },
-  { file: 'FRIENDS.md', role: 'Who you know.', desc: 'Relationships and social context. The file is called FRIENDS, not USERS — because naming shapes how the model treats people.', accentClass: 'bg-glow' },
-  { file: 'TACIT.md', role: 'What you\'ve learned.', desc: 'Preferences, patterns, lessons absorbed over time. The knowledge you can\'t explain — you just know.', accentClass: 'bg-scale' },
+  { file: 'TACIT.md', role: 'What you\'ve learned.', desc: 'Preferences, patterns, lessons absorbed over time. The knowledge you can\'t explain — you just know.', accentClass: 'bg-glow' },
+  { file: 'ASPIRATIONS.md', role: 'Where you\'re going.', desc: 'Goals and active priorities. A living document the agent updates as priorities shift and new work emerges.', accentClass: 'bg-scale' },
 ]
 
 const organs = [
-  { name: 'heart', desc: 'The agent loop. Streaming, provider adapters, self-correction. The beat that keeps everything alive.', icon: '♥' },
-  { name: 'mind', desc: 'System prompt assembly. Sliding context window. Memory extraction before consumption.', icon: '◉' },
-  { name: 'senses', desc: 'Channel adapters. CLI with spinners. Teams bot with streaming cards. How your agent perceives.', icon: '◈' },
-  { name: 'repertoire', desc: 'Tools, skills, commands, API clients. Everything your agent can reach for.', icon: '◆' },
-  { name: 'wardrobe', desc: 'Formatting, loading phrases, presentation layer. How your agent dresses its words.', icon: '◇' },
+  { name: 'heart', desc: 'The agent loop, daemon, providers, config. Streaming, self-correction, process management. The beat that keeps everything alive.', icon: '♥' },
+  { name: 'mind', desc: 'System prompt assembly. Sliding context window. Memory, friends, associative recall. How your agent thinks.', icon: '◉' },
+  { name: 'senses', desc: 'Channel adapters. CLI, Teams, inner dialog. How your agent perceives and interacts with the world.', icon: '◈' },
+  { name: 'repertoire', desc: 'Tools, skills, coding orchestration, tasks. Everything your agent can reach for and work on.', icon: '◆' },
+  { name: 'nerves', desc: 'Runtime observability. Structured logging, configurable sinks, coverage audit. How your agent reports what it sees.', icon: '◇' },
 ]
 ---
 
@@ -45,8 +45,8 @@ const organs = [
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": "Cross-platform",
         "softwareVersion": "Alpha",
-        "url": "https://github.com/arimendelow/ouroboros-agent-harness",
-        "releaseNotes": "https://github.com/arimendelow/ouroboros-agent-harness/releases",
+        "url": "https://github.com/ouroborosbot/ouroboros",
+        "releaseNotes": "https://github.com/ouroborosbot/ouroboros/releases",
         "offers": {
           "@type": "Offer",
           "price": "0",
@@ -103,7 +103,7 @@ const organs = [
 
       <!-- GitHub badge -->
       <div class="mt-10 animate-fade-up stagger-5">
-        <a href="https://github.com/arimendelow/ouroboros-agent-harness" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-xs text-shadow hover:text-mist transition-colors duration-200">
+        <a href="https://github.com/ouroborosbot/ouroboros" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-xs text-shadow hover:text-mist transition-colors duration-200">
           <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
           Star on GitHub
         </a>
@@ -150,8 +150,8 @@ const organs = [
               Context window consuming itself.
             </p>
             <p class="text-base text-mist leading-relaxed max-w-lg">
-              But nothing is truly lost. Facts are extracted to memory before they're
-              consumed. Identity doesn't live in the tokens — it lives in the psyche files.
+              But nothing is truly lost. The agent saves what matters to persistent memory
+              before it's consumed. Identity doesn't live in the tokens — it lives in the psyche files.
               The snake eats its tail to stay alive.
             </p>
             <p class="text-sm text-scale italic mt-6 border-l-2 border-scale/70 pl-4">
@@ -265,7 +265,7 @@ const organs = [
       </div>
 
       <p class="text-xs text-mist mt-10 italic tracking-wide text-center md:text-left">
-        Naming shapes reasoning. <span class="text-scale font-mono">FRIENDS.md</span> replaces USER.md.
+        Naming shapes reasoning. <span class="text-scale font-mono">friends/</span> not users. <span class="text-scale font-mono">TACIT.md</span> not config.
       </p>
     </div>
   </section>
@@ -306,13 +306,13 @@ const organs = [
             <p class="text-sm text-mist leading-relaxed">{desc}</p>
           </div>
         ))}
-        <!-- Extra cell: the daemon -->
+        <!-- Extra cell: the bundle -->
         <div class="rounded-lg border border-canopy/80 bg-undergrowth/70 p-6 hover:border-scale/40 hover:bg-undergrowth transition-all duration-300 sm:col-span-2 lg:col-span-1">
           <div class="flex items-baseline gap-3 mb-3">
             <span class="text-scale text-lg">⚙</span>
-            <span class="font-mono text-sm text-bone tracking-wide">daemon/</span>
+            <span class="font-mono text-sm text-bone tracking-wide">Name.ouro/</span>
           </div>
-          <p class="text-sm text-mist leading-relaxed">Process manager, cron scheduler, health monitor. The nervous system that keeps agents alive. <code class="text-scale text-xs">ouro status</code></p>
+          <p class="text-sm text-mist leading-relaxed">The agent's portable brain. Psyche files, friends, tasks, skills, memory. Everything that makes an agent <em>that</em> agent. <code class="text-scale text-xs">~/AgentBundles/</code></p>
         </div>
       </div>
 
@@ -425,7 +425,7 @@ const organs = [
       <div class="flex flex-wrap items-center justify-center gap-4 md:gap-6 mt-14">
         <div class="flex items-center gap-2 px-4 py-2 rounded-lg border border-canopy/50 bg-undergrowth/30">
           <span class="w-2 h-2 rounded-full bg-glow animate-pulse"></span>
-          <span class="font-mono text-sm text-scale">1,730</span>
+          <span class="font-mono text-sm text-scale">1,864</span>
           <span class="text-xs text-mist">tests</span>
         </div>
         <div class="flex items-center gap-2 px-4 py-2 rounded-lg border border-canopy/50 bg-undergrowth/30">
@@ -459,7 +459,7 @@ const organs = [
           Hatch your first agent.
         </h2>
         <p class="text-sm text-mist mt-4">
-          Every agent starts as an egg. A directory with a psyche and a purpose.
+          Every agent starts as an egg. The Adoption Specialist — a different mythological serpent each time — guides you through hatching.
         </p>
       </div>
 
@@ -471,22 +471,22 @@ const organs = [
           <span class="w-2.5 h-2.5 rounded-full bg-canopy/40"></span>
           <span class="font-mono text-[10px] text-mist/50 ml-3">~/agents</span>
         </div>
-        <pre class="p-6 text-sm font-mono leading-loose overflow-x-auto"><code><span class="text-mist/60"># hatch your agent</span>
-<span class="text-mist">$</span> <span class="text-bone">ouro hatch my-agent</span>
-<span class="inline-block px-2 py-0.5 text-[9px] uppercase tracking-wider border border-scale/25 rounded text-scale/50">coming soon</span>
+        <pre class="p-6 text-sm font-mono leading-loose overflow-x-auto"><code><span class="text-mist/60"># start the daemon</span>
+<span class="text-mist">$</span> <span class="text-bone">npx ouro.bot</span>
+<span class="text-glow/70">&#x1F95A; ... &#x1F40D;</span>
 
-<span class="text-mist/60"># or create by hand</span>
-<span class="text-mist">$</span> <span class="text-bone">mkdir -p my-agent/psyche</span>
+<span class="text-mist/60"># the Adoption Specialist guides you through</span>
+<span class="text-mist/60"># provider setup, naming, and personality</span>
 
-<span class="text-bone">my-agent/</span>
-  <span class="text-mist">agent.json</span>         <span class="text-mist/60"># name, provider, config</span>
+<span class="text-bone">~/AgentBundles/MyAgent.ouro/</span>
+  <span class="text-mist">agent.json</span>         <span class="text-mist/60"># provider, version, enabled</span>
   <span class="text-mist">psyche/</span>
     <span class="text-glow/70">SOUL.md</span>          <span class="text-mist/60"># what you are</span>
     <span class="text-glow/70">IDENTITY.md</span>      <span class="text-mist/60"># how you show up</span>
-    <span class="text-glow/70">LORE.md</span>          <span class="text-mist/60"># where you come from</span>
-    <span class="text-glow/70">FRIENDS.md</span>       <span class="text-mist/60"># who you know</span>
+    <span class="text-glow/70">TACIT.md</span>         <span class="text-mist/60"># what you've learned</span>
+    <span class="text-glow/70">ASPIRATIONS.md</span>   <span class="text-mist/60"># where you're going</span>
 
-<span class="text-mist">$</span> <span class="text-bone terminal-cursor">npm run dev -- --agent my-agent</span></code></pre>
+<span class="text-mist">$</span> <span class="text-bone terminal-cursor">ouro</span></code></pre>
       </div>
 
       <!-- CTAs -->

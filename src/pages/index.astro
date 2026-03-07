@@ -60,8 +60,8 @@ const organs = [
   <section class="relative overflow-hidden min-h-screen flex flex-col items-center justify-center px-6 pt-16 overflow-hidden">
     <!-- Atmospheric layers -->
     <div class="absolute inset-0 bg-gradient-to-b from-void via-deep to-void"></div>
-    <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] rounded-full bg-scale/6 blur-[200px] animate-glow-pulse pointer-events-none"></div>
-    <div class="absolute top-1/4 left-1/3 w-[400px] h-[400px] rounded-full bg-glow/3 blur-[250px] animate-drift pointer-events-none"></div>
+    <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] rounded-full bg-scale/6 blur-[120px] animate-glow-pulse pointer-events-none"></div>
+    <div class="absolute top-1/4 left-1/3 w-[400px] h-[400px] rounded-full bg-glow/3 blur-[120px] animate-drift pointer-events-none"></div>
     <div class="relative z-10 text-center">
       <h1 class="font-display text-[4rem] sm:text-[5.5rem] md:text-[8rem] lg:text-[12rem] font-light italic tracking-tight text-bone leading-[0.85] animate-fade-up">
         ouroboros
@@ -125,7 +125,7 @@ const organs = [
     <div class="absolute inset-0 bg-deep pointer-events-none"></div>
     <div class="absolute inset-0 bg-gradient-to-b from-void via-transparent to-void pointer-events-none"></div>
     <!-- Subtle central glow — not overwhelming -->
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-scale/8 blur-[200px] pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-scale/8 blur-[120px] pointer-events-none"></div>
     <!-- Horizontal scan lines for texture -->
     <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: repeating-linear-gradient(0deg, var(--color-scale) 0px, var(--color-scale) 1px, transparent 1px, transparent 80px);"></div>
     <!-- Top/bottom border glow -->
@@ -216,9 +216,9 @@ const organs = [
     <!-- Scale pattern — diamond tessellation -->
     <div class="absolute inset-0 opacity-[0.04] pointer-events-none" style="background-image: url(&quot;data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0 L40 20 L20 40 L0 20Z' fill='none' stroke='%232D9447' stroke-width='0.5'/%3E%3C/svg%3E&quot;); background-size: 40px 40px;"></div>
     <!-- Radial glow from top-left -->
-    <div class="absolute top-0 left-0 w-[500px] h-[500px] rounded-full bg-scale/15 blur-[200px] pointer-events-none"></div>
+    <div class="absolute top-0 left-0 w-[500px] h-[500px] rounded-full bg-scale/15 blur-[120px] pointer-events-none"></div>
     <!-- Radial glow from bottom-right for depth -->
-    <div class="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-glow/8 blur-[200px] pointer-events-none"></div>
+    <div class="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-glow/8 blur-[120px] pointer-events-none"></div>
     <!-- Fade edges of scale pattern -->
     <div class="absolute inset-0 bg-gradient-to-b from-void/60 via-transparent to-void/60 pointer-events-none"></div>
     <div class="absolute inset-0 bg-gradient-to-r from-void/40 via-transparent to-void/40 pointer-events-none"></div>
@@ -335,7 +335,7 @@ const organs = [
   <section class="relative overflow-hidden px-6 py-28 md:py-36 reveal overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-b from-deep/50 via-undergrowth/80 to-deep/50 pointer-events-none"></div>
     <!-- Central convergence glow -->
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] rounded-full bg-glow/12 blur-[200px] pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] rounded-full bg-glow/12 blur-[120px] pointer-events-none"></div>
     <!-- Decorative ring -->
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-scale/8 pointer-events-none hidden sm:block"></div>
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-scale/4 pointer-events-none hidden sm:block"></div>
@@ -448,8 +448,8 @@ const organs = [
   <!-- ═══════════════ HATCHING ═══════════════ -->
   <section class="relative overflow-hidden px-6 py-28 md:py-36 reveal overflow-hidden">
     <!-- Warm egg-like glow behind terminal -->
-    <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[500px] rounded-[50%] bg-scale/8 blur-[150px] pointer-events-none"></div>
-    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] rounded-full bg-glow/4 blur-[150px] pointer-events-none"></div>
+    <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[500px] rounded-[50%] bg-scale/8 blur-[100px] pointer-events-none"></div>
+    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] rounded-full bg-glow/4 blur-[100px] pointer-events-none"></div>
     <!-- Subtle radial pattern -->
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-scale/5 pointer-events-none"></div>
     <div class="max-w-6xl mx-auto">

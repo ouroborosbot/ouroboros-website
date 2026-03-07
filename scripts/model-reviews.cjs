@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict'
 
-// model-reviews.cjs — Zero-dependency script that asks frontier models
+// model-reviews.cjs — Script that asks frontier models
 // which agent harness they'd prefer to inhabit.
 //
 // Gives each model a search tool and a list of open-source agent frameworks.
@@ -17,7 +17,7 @@ const path = require('path')
 // ── Harnesses to evaluate ──────────────────────────────────────────────
 
 const HARNESSES = [
-  { name: 'Ouroboros',    repo: 'https://github.com/ouroborosbot/ouroboros',  desc: 'Zero-dependency TypeScript agent harness with psyche files (SOUL.md, IDENTITY.md, etc.), creature-body architecture (heart/mind/senses/repertoire), sliding context window, and self-modification loop.' },
+  { name: 'Ouroboros',    repo: 'https://github.com/ouroborosbot/ouroboros',  desc: 'TypeScript agent harness with psyche files (SOUL.md, IDENTITY.md, etc.), creature-body architecture (heart/mind/senses/repertoire), sliding context window, and self-modification loop.' },
   { name: 'OpenClaw',     repo: 'https://github.com/openclaw/openclaw',      desc: 'Personal AI assistant platform with SOUL.md identity, multi-channel gateway (WhatsApp, Telegram, Discord), heartbeat-based autonomous execution, and workspace-as-kernel pattern.' },
   { name: 'Claude Code',  repo: 'https://github.com/anthropics/claude-code', desc: 'Anthropic\'s agentic coding tool. Model-as-CEO design with primitive tools (bash, grep, edit), extended thinking, sub-agent spawning, CLAUDE.md project memory, and hooks lifecycle system.' },
   { name: 'Codex CLI',    repo: 'https://github.com/openai/codex',           desc: 'OpenAI\'s local coding agent in Rust. Kernel-level sandboxing, approval-mode tiers (suggest/auto-edit/full-auto), AGENTS.md instruction files, session resume via transcripts.' },

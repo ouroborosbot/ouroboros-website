@@ -26,3 +26,17 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           command: deploy --config wrangler-worker.jsonc
+
+      - name: Notify search engines (IndexNow)
+        run: |
+          URLS=$(curl -s https://ouroboros.bot/sitemap-0.xml \
+            | grep -oP '(?<=<loc>)[^<]+' \
+            | jq -R . | jq -s .)
+          curl -s -X POST "https://api.indexnow.org/IndexNow" \
+            -H "Content-Type: application/json" \
+            -d "{
+              \"host\": \"ouroboros.bot\",
+              \"key\": \"11939a2530214da79d49b3a8908b8c9c\",
+              \"keyLocation\": \"https://ouroboros.bot/11939a2530214da79d49b3a8908b8c9c.txt\",
+              \"urlList\": $URLS
+            }"

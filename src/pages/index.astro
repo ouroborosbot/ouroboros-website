@@ -20,7 +20,41 @@ const organs = [
 ]
 ---
 
-<Layout title="Ouroboros — Build agents that know who they are" description="A zero-dependency TypeScript framework for AI agents that self-modify, remember, and grow. Psyche files, sliding context windows, and creature-body architecture.">
+<Layout 
+  title="Ouroboros — Build agents that know who they are" 
+  description="A zero-dependency TypeScript framework for AI agents that self-modify, remember, and grow. Psyche files, sliding context windows, and creature-body architecture."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Ouroboros — Build agents that know who they are",
+      "url": "https://ouroboros.bot/",
+      "description": "A zero-dependency TypeScript framework for AI agents that self-modify, remember, and grow.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "url": "https://ouroboros.bot"
+      },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://ouroboros.bot/og/og-home.png"
+      },
+      "about": {
+        "@type": "SoftwareApplication",
+        "name": "Ouroboros",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Cross-platform",
+        "softwareVersion": "Alpha",
+        "url": "https://github.com/arimendelow/ouroboros-agent-harness",
+        "releaseNotes": "https://github.com/arimendelow/ouroboros-agent-harness/releases",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    })} />
+  </Fragment>
 
   <!-- ═══════════════ HERO ═══════════════ -->
   <section class="relative overflow-hidden min-h-screen flex flex-col items-center justify-center px-6 pt-16 overflow-hidden">

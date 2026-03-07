@@ -18,5 +18,9 @@
   "devDependencies": {
     "@resvg/resvg-js": "^2.6.2",
     "satori": "^0.25.0"
+  },
+  "overrides": {
+    "wrangler": "^4.59.1",
+    "undici": "^7.18.2"
   }
 }

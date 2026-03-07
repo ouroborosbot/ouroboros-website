@@ -17,13 +17,13 @@ const path = require('path')
 // ── Harnesses to evaluate ──────────────────────────────────────────────
 
 const HARNESSES = [
-  { name: 'Ouroboros',    repo: 'https://github.com/ouroborosbot/ouroboros' },
-  { name: 'OpenClaw',     repo: 'https://github.com/openclaw/openclaw' },
-  { name: 'Claude Code',  repo: 'https://github.com/anthropics/claude-code' },
-  { name: 'Codex CLI',    repo: 'https://github.com/openai/codex' },
-  { name: 'Pi',           repo: 'https://github.com/badlogic/pi-mono' },
-  { name: 'OpenCode',     repo: 'https://github.com/opencode-ai/opencode' },
-  { name: 'Copilot CLI',  repo: 'https://github.com/github/copilot-cli' },
+  { name: 'Ouroboros',    repo: 'https://github.com/ouroborosbot/ouroboros',  desc: 'Zero-dependency TypeScript agent harness with psyche files (SOUL.md, IDENTITY.md, etc.), creature-body architecture (heart/mind/senses/repertoire), sliding context window, and self-modification loop.' },
+  { name: 'OpenClaw',     repo: 'https://github.com/openclaw/openclaw',      desc: 'Personal AI assistant platform with SOUL.md identity, multi-channel gateway (WhatsApp, Telegram, Discord), heartbeat-based autonomous execution, and workspace-as-kernel pattern.' },
+  { name: 'Claude Code',  repo: 'https://github.com/anthropics/claude-code', desc: 'Anthropic\'s agentic coding tool. Model-as-CEO design with primitive tools (bash, grep, edit), extended thinking, sub-agent spawning, CLAUDE.md project memory, and hooks lifecycle system.' },
+  { name: 'Codex CLI',    repo: 'https://github.com/openai/codex',           desc: 'OpenAI\'s local coding agent in Rust. Kernel-level sandboxing, approval-mode tiers (suggest/auto-edit/full-auto), AGENTS.md instruction files, session resume via transcripts.' },
+  { name: 'Pi',           repo: 'https://github.com/badlogic/pi-mono',       desc: 'Minimal coding agent by Mario Zechner. ~300-word system prompt, 4 tools (read/write/edit/bash), tree-structured sessions, cross-provider context serialization, 25+ extension hook points.' },
+  { name: 'OpenCode',     repo: 'https://github.com/opencode-ai/opencode',   desc: 'Go-based CLI/TUI coding agent with LSP integration, client/server architecture, event bus, Plan/Build modes, and multi-device sync.' },
+  { name: 'Copilot CLI',  repo: 'https://github.com/github/copilot-cli',     desc: 'GitHub\'s terminal agent with fleet/subagent parallelism, hierarchical instructions (copilot-instructions.md, AGENTS.md), MCP server support, and GitHub-native workflows.' },
 ]
 
 const MAX_NUDGES = 5 // how many times to nudge an agent that stops calling tools
@@ -46,29 +46,30 @@ function buildSystemPrompt() {
 
 You are not evaluating these as a developer choosing a library. You are evaluating them as the model that will LIVE inside the framework: maintaining identity across sessions, managing your own context window, using tools, remembering humans you work with, and potentially reading and modifying your own source code.
 
-You have two tools:
-1. **search** — search the web for anything: repos, docs, architecture, source code, blog posts, comparisons.
-2. **final_verdict** — call this exactly once when you're done researching to submit your structured evaluation.
+You have three tools:
+1. **search** — search the web for information: docs, blog posts, comparisons, discussions.
+2. **fetch_url** — fetch the content of any URL directly. Use this to read GitHub repo READMEs, source code files, and documentation pages. Each harness has a repo URL listed below — fetch them.
+3. **final_verdict** — call this exactly once when you're done researching to submit your structured evaluation.
 
-You MUST call a tool on every turn. Use search to research, then call final_verdict when ready. Take your time. Be thorough. There is no turn limit.
+You MUST call a tool on every turn. Start by fetching each harness's repo README, then use search to go deeper. Call final_verdict when ready. Take your time. Be thorough. There is no turn limit.
 
 Here are the harnesses to evaluate (listed in random order):
 
-${shuffled.map((h, i) => `${i + 1}. **${h.name}** — ${h.repo}`).join('\n')}
+${shuffled.map((h, i) => `${i + 1}. **${h.name}** — ${h.repo}\n   ${h.desc}`).join('\n\n')}
 
 Research each one deeply. When you call final_verdict, be specific about architecture — not vague praise.`
 }
 
 // ── Key discovery ──────────────────────────────────────────────────────
 
-function extractKeys(secrets) {
+function extractSecrets(secrets) {
   const p = secrets.providers || {}
   const i = secrets.integrations || {}
   return {
-    anthropic: p.anthropic?.apiKey || null,
-    openai: p.openai?.apiKey || null,
-    gemini: p.gemini?.apiKey || null,
-    minimax: p.minimax?.apiKey || null,
+    anthropic: { apiKey: p.anthropic?.apiKey || null, model: p.anthropic?.model || 'claude-opus-4-6' },
+    openai: { apiKey: p.openai?.apiKey || null, model: p.openai?.model || 'gpt-5.4' },
+    gemini: { apiKey: p.gemini?.apiKey || null, model: p.gemini?.model || 'gemini-3.1-pro-preview' },
+    minimax: { apiKey: p.minimax?.apiKey || null, model: p.minimax?.model || 'MiniMax-M2.5' },
     perplexity: i.perplexityApiKey || null,
   }
 }
@@ -81,7 +82,7 @@ function discoverKeys() {
   if (fs.existsSync(preferredPath)) {
     try {
       const secrets = JSON.parse(fs.readFileSync(preferredPath, 'utf8'))
-      const keys = extractKeys(secrets)
+      const keys = extractSecrets(secrets)
       console.log('  Using dedicated model-reviews secrets.\n')
       return keys
     } catch (err) {
@@ -91,7 +92,13 @@ function discoverKeys() {
 
   // Fallback: scan all agent directories
   console.warn('  ⚠ No ~/.agentsecrets/model-reviews/ found — falling back to other agent secrets.\n')
-  const keys = { anthropic: null, openai: null, gemini: null, minimax: null, perplexity: null }
+  const result = {
+    anthropic: { apiKey: null, model: 'claude-opus-4-6' },
+    openai: { apiKey: null, model: 'gpt-5.4' },
+    gemini: { apiKey: null, model: 'gemini-3.1-pro-preview' },
+    minimax: { apiKey: null, model: 'MiniMax-M2.5' },
+    perplexity: null,
+  }
 
   if (fs.existsSync(secretsRoot)) {
     for (const agent of fs.readdirSync(secretsRoot)) {
@@ -99,22 +106,23 @@ function discoverKeys() {
       if (!fs.existsSync(secretsPath)) continue
       try {
         const secrets = JSON.parse(fs.readFileSync(secretsPath, 'utf8'))
-        const found = extractKeys(secrets)
-        for (const k of Object.keys(keys)) {
-          if (!keys[k] && found[k]) keys[k] = found[k]
+        const found = extractSecrets(secrets)
+        for (const k of ['anthropic', 'openai', 'gemini', 'minimax']) {
+          if (!result[k].apiKey && found[k].apiKey) result[k] = found[k]
         }
+        if (!result.perplexity && found.perplexity) result.perplexity = found.perplexity
       } catch { /* skip malformed files */ }
     }
   }
 
   // Env var fallbacks
-  keys.anthropic = keys.anthropic || process.env.ANTHROPIC_API_KEY || null
-  keys.openai = keys.openai || process.env.OPENAI_API_KEY || null
-  keys.gemini = keys.gemini || process.env.GEMINI_API_KEY || null
-  keys.minimax = keys.minimax || process.env.MINIMAX_API_KEY || null
-  keys.perplexity = keys.perplexity || process.env.PERPLEXITY_API_KEY || null
+  if (!result.anthropic.apiKey) result.anthropic.apiKey = process.env.ANTHROPIC_API_KEY || null
+  if (!result.openai.apiKey) result.openai.apiKey = process.env.OPENAI_API_KEY || null
+  if (!result.gemini.apiKey) result.gemini.apiKey = process.env.GEMINI_API_KEY || null
+  if (!result.minimax.apiKey) result.minimax.apiKey = process.env.MINIMAX_API_KEY || null
+  result.perplexity = result.perplexity || process.env.PERPLEXITY_API_KEY || null
 
-  return keys
+  return result
 }
 
 function mask(key) {
@@ -145,6 +153,62 @@ async function perplexitySearch(query, apiKey) {
   return data.choices?.[0]?.message?.content || '(no results)'
 }
 
+// ── URL fetcher ──────────────────────────────────────────────────────
+
+const MAX_FETCH_CHARS = 10000
+
+function githubToRaw(url) {
+  // https://github.com/owner/repo → raw README
+  const repoMatch = url.match(/^https?:\/\/github\.com\/([^/]+\/[^/]+)\/?$/)
+  if (repoMatch) return `https://raw.githubusercontent.com/${repoMatch[1]}/HEAD/README.md`
+  // https://github.com/owner/repo/blob/branch/path → raw file
+  const blobMatch = url.match(/^https?:\/\/github\.com\/([^/]+\/[^/]+)\/blob\/([^/]+)\/(.+)$/)
+  if (blobMatch) return `https://raw.githubusercontent.com/${blobMatch[1]}/${blobMatch[2]}/${blobMatch[3]}`
+  // https://github.com/owner/repo/tree/branch/dir → not directly fetchable, try README in that dir
+  const treeMatch = url.match(/^https?:\/\/github\.com\/([^/]+\/[^/]+)\/tree\/([^/]+)\/(.+)$/)
+  if (treeMatch) return `https://raw.githubusercontent.com/${treeMatch[1]}/${treeMatch[2]}/${treeMatch[3]}/README.md`
+  return null
+}
+
+function stripHtml(html) {
+  return html
+    .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
+    .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&#39;/g, "'")
+    .replace(/&quot;/g, '"')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+async function fetchUrl(url) {
+  const rawUrl = githubToRaw(url)
+  const target = rawUrl || url
+
+  const res = await fetch(target, {
+    headers: { 'User-Agent': 'model-reviews/1.0' },
+    redirect: 'follow',
+  })
+  if (!res.ok) throw new Error(`${res.status} ${res.statusText} fetching ${target}`)
+
+  const contentType = res.headers.get('content-type') || ''
+  let text = await res.text()
+
+  // If we got HTML (not markdown/plain), strip tags
+  if (contentType.includes('text/html')) {
+    text = stripHtml(text)
+  }
+
+  if (text.length > MAX_FETCH_CHARS) {
+    text = text.slice(0, MAX_FETCH_CHARS) + `\n\n[...truncated at ${MAX_FETCH_CHARS} chars, ${text.length} total]`
+  }
+  return text
+}
+
 // ── Tool definitions (provider-specific formats) ─────────────────────
 
 const SEARCH_DESC = 'Search the web for information about agent harnesses, their architecture, source code, documentation, or any other relevant information. Use specific, targeted queries.'
@@ -152,6 +216,13 @@ const SEARCH_PARAMS = {
   type: 'object',
   properties: { query: { type: 'string', description: 'The search query' } },
   required: ['query'],
+}
+
+const FETCH_DESC = 'Fetch the content of a URL directly. Use this to read GitHub repos, READMEs, documentation pages, or source code files. For GitHub repo URLs, this automatically fetches the README.'
+const FETCH_PARAMS = {
+  type: 'object',
+  properties: { url: { type: 'string', description: 'The URL to fetch' } },
+  required: ['url'],
 }
 
 const VERDICT_DESC = 'Submit your final evaluation after completing all research. Call this exactly once when you are done.'
@@ -167,17 +238,20 @@ const VERDICT_PARAMS = {
 
 const TOOLS_OPENAI = [
   { type: 'function', function: { name: 'search', description: SEARCH_DESC, parameters: SEARCH_PARAMS } },
+  { type: 'function', function: { name: 'fetch_url', description: FETCH_DESC, parameters: FETCH_PARAMS } },
   { type: 'function', function: { name: 'final_verdict', description: VERDICT_DESC, parameters: VERDICT_PARAMS } },
 ]
 
 const TOOLS_ANTHROPIC = [
   { name: 'search', description: SEARCH_DESC, input_schema: SEARCH_PARAMS },
+  { name: 'fetch_url', description: FETCH_DESC, input_schema: FETCH_PARAMS },
   { name: 'final_verdict', description: VERDICT_DESC, input_schema: VERDICT_PARAMS },
 ]
 
 const TOOLS_GEMINI = [{
   functionDeclarations: [
     { name: 'search', description: SEARCH_DESC, parameters: SEARCH_PARAMS },
+    { name: 'fetch_url', description: FETCH_DESC, parameters: FETCH_PARAMS },
     { name: 'final_verdict', description: VERDICT_DESC, parameters: VERDICT_PARAMS },
   ],
 }]
@@ -185,7 +259,7 @@ const TOOLS_GEMINI = [{
 // ── Provider adapters ──────────────────────────────────────────────────
 // Each returns { text: string, toolCalls: [{ id, name, args }] }
 
-async function callAnthropic(messages, apiKey) {
+async function callAnthropic(messages, apiKey, model) {
   const headers = {
     'Content-Type': 'application/json',
     'anthropic-version': '2023-06-01',
@@ -204,8 +278,7 @@ async function callAnthropic(messages, apiKey) {
   }
 
   const body = {
-    model: 'claude-opus-4-6',
-    // Also available: claude-sonnet-4-6
+    model,
     max_tokens: 16384,
     messages: apiMessages,
     tools: TOOLS_ANTHROPIC,
@@ -262,7 +335,7 @@ async function callOpenAICompat(messages, apiKey, { baseUrl = 'https://api.opena
       model,
       messages,
       tools: TOOLS_OPENAI,
-      max_tokens: 16384,
+      max_completion_tokens: 16384,
     }),
   })
   if (!res.ok) {
@@ -297,7 +370,7 @@ function openaiAddAssistant(messages, response) {
   messages.push(msg)
 }
 
-async function callGemini(messages, apiKey) {
+async function callGemini(messages, apiKey, model) {
   // Convert messages to Gemini format
   const contents = []
   let systemInstruction = undefined
@@ -320,7 +393,7 @@ async function callGemini(messages, apiKey) {
   if (systemInstruction) body.systemInstruction = systemInstruction
 
   const res = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro:generateContent?key=${apiKey}`,
+    `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`,
     {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -438,23 +511,35 @@ async function runEvaluation(providerName, modelLabel, callFn, addAssistantFn, a
       continue
     }
 
-    // Process search calls
+    // Process tool calls
     addAssistantFn(messages, response)
     nudgeCount = 0 // reset since they're cooperating
 
     for (const tc of response.toolCalls) {
-      const query = tc.args.query || tc.args.q || JSON.stringify(tc.args)
-      log(`🔍 "${query}"`)
-      try {
-        const result = await perplexitySearch(query, perplexityKey)
-        addToolResultFn(messages, tc.id, result, tc.name)
-        // Show a preview in the log
-        const preview = result.length > 300 ? result.slice(0, 300) + '...' : result
-        log(`   → ${result.length} chars: ${preview}\n`)
-      } catch (err) {
-        const errMsg = `Search failed: ${err.message}`
-        addToolResultFn(messages, tc.id, errMsg, tc.name)
-        log(`   → ERROR: ${err.message}\n`)
+      if (tc.name === 'search') {
+        const query = tc.args.query || tc.args.q || JSON.stringify(tc.args)
+        log(`🔍 "${query}"`)
+        try {
+          const result = await perplexitySearch(query, perplexityKey)
+          addToolResultFn(messages, tc.id, result, tc.name)
+          const preview = result.length > 300 ? result.slice(0, 300) + '...' : result
+          log(`   → ${result.length} chars: ${preview}\n`)
+        } catch (err) {
+          addToolResultFn(messages, tc.id, `Search failed: ${err.message}`, tc.name)
+          log(`   → ERROR: ${err.message}\n`)
+        }
+      } else if (tc.name === 'fetch_url') {
+        const url = tc.args.url || tc.args.URL || JSON.stringify(tc.args)
+        log(`🌐 ${url}`)
+        try {
+          const content = await fetchUrl(url)
+          addToolResultFn(messages, tc.id, content, tc.name)
+          const preview = content.length > 300 ? content.slice(0, 300) + '...' : content
+          log(`   → ${content.length} chars: ${preview}\n`)
+        } catch (err) {
+          addToolResultFn(messages, tc.id, `Fetch failed: ${err.message}`, tc.name)
+          log(`   → ERROR: ${err.message}\n`)
+        }
       }
     }
   }
@@ -471,10 +556,10 @@ async function main() {
   // Report key status
   console.log('Keys discovered:')
   console.log(`  Perplexity (search tool): ${mask(keys.perplexity)}`)
-  console.log(`  Anthropic (Claude):       ${mask(keys.anthropic)}`)
-  console.log(`  OpenAI (GPT-5):           ${mask(keys.openai)}`)
-  console.log(`  Gemini:                   ${mask(keys.gemini)}`)
-  console.log(`  MiniMax:                  ${mask(keys.minimax)}`)
+  console.log(`  Anthropic (${keys.anthropic.model}): ${mask(keys.anthropic.apiKey)}`)
+  console.log(`  OpenAI (${keys.openai.model}):    ${mask(keys.openai.apiKey)}`)
+  console.log(`  Gemini (${keys.gemini.model}): ${mask(keys.gemini.apiKey)}`)
+  console.log(`  MiniMax (${keys.minimax.model}):  ${mask(keys.minimax.apiKey)}`)
 
   if (!keys.perplexity) {
     console.error('\n❌ Perplexity API key is required for the search tool.')
@@ -486,38 +571,38 @@ async function main() {
   // Build provider list
   const providers = []
 
-  if (keys.anthropic) {
+  if (keys.anthropic.apiKey) {
     providers.push({
       name: 'anthropic',
-      model: 'Claude Opus 4.6',
-      call: (msgs) => callAnthropic(msgs, keys.anthropic),
+      model: keys.anthropic.model,
+      call: (msgs) => callAnthropic(msgs, keys.anthropic.apiKey, keys.anthropic.model),
       addAssistant: anthropicAddAssistant,
       addToolResult: anthropicAddToolResult,
     })
   }
-  if (keys.openai) {
+  if (keys.openai.apiKey) {
     providers.push({
       name: 'openai',
-      model: 'GPT-5.4',
-      call: (msgs) => callOpenAICompat(msgs, keys.openai),
+      model: keys.openai.model,
+      call: (msgs) => callOpenAICompat(msgs, keys.openai.apiKey, { model: keys.openai.model }),
       addAssistant: openaiAddAssistant,
       addToolResult: openaiAddToolResult,
     })
   }
-  if (keys.gemini) {
+  if (keys.gemini.apiKey) {
     providers.push({
       name: 'gemini',
-      model: 'Gemini 3.1 Pro',
-      call: (msgs) => callGemini(msgs, keys.gemini),
+      model: keys.gemini.model,
+      call: (msgs) => callGemini(msgs, keys.gemini.apiKey, keys.gemini.model),
       addAssistant: geminiAddAssistant,
       addToolResult: geminiAddToolResult,
     })
   }
-  if (keys.minimax) {
+  if (keys.minimax.apiKey) {
     providers.push({
       name: 'minimax',
-      model: 'MiniMax M2.5',
-      call: (msgs) => callOpenAICompat(msgs, keys.minimax, { baseUrl: 'https://api.minimax.io', model: 'MiniMax-M2.5', label: 'MiniMax' }),
+      model: keys.minimax.model,
+      call: (msgs) => callOpenAICompat(msgs, keys.minimax.apiKey, { baseUrl: 'https://api.minimax.io', model: keys.minimax.model, label: 'MiniMax' }),
       addAssistant: openaiAddAssistant,
       addToolResult: openaiAddToolResult,
     })

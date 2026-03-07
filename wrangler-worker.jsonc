@@ -1,5 +1,6 @@
 {
   "name": "ouroboros-website",
+  "account_id": "4b157323bc7b08c0f6b0dc9c23b1e2b1",
   "compatibility_date": "2026-03-06",
   "main": "src/worker/index.ts",
   "assets": {

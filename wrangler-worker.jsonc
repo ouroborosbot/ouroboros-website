@@ -3,7 +3,8 @@
   "compatibility_date": "2026-03-06",
   "main": "src/worker/index.ts",
   "assets": {
-    "directory": "./dist"
+    "directory": "./dist",
+    "binding": "ASSETS"
   },
   "routes": [
     {

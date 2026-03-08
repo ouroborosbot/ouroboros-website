@@ -1,0 +1,247 @@
+---
+import Layout from '../../layouts/Layout.astro'
+
+const title = "What Is Agent Experience? | Ouroboros"
+const description = "We went from UX to DX. Now there's a third design surface that nobody's talking about: Agent Experience. Here's what AX is, why it matters, and why engineers should care."
+const canonicalUrl = "https://ouroboros.bot/blog/what-is-agent-experience"
+const datePublished = "2026-03-08"
+const dateModified = "2026-03-08"
+---
+
+<Layout title={title} description={description} ogImage="/og/og-what-is-agent-experience.png">
+
+  <Fragment slot="head">
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content={datePublished} />
+    <meta property="article:modified_time" content={dateModified} />
+    <meta property="article:author" content="Ari Mendelow" />
+    <meta property="article:tag" content="agent experience" />
+    <meta property="article:tag" content="AX" />
+    <meta property="article:tag" content="AI agents" />
+    <meta name="author" content="Ari Mendelow" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "What Is Agent Experience?",
+      "description": description,
+      "author": {
+        "@type": "Person",
+        "name": "Ari Mendelow",
+        "url": "https://linkedin.com/in/arimendelow"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ouroboros",
+        "url": "https://ouroboros.bot",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://ouroboros.bot/images/ouroboros.png"
+        }
+      },
+      "datePublished": datePublished,
+      "dateModified": dateModified,
+      "mainEntityOfPage": canonicalUrl,
+      "keywords": ["agent experience", "AX", "UX", "DX", "AI agents", "agent framework", "ouroboros"],
+      "inLanguage": "en",
+      "isAccessibleForFree": true
+    })} />
+  </Fragment>
+
+  <article class="px-6 pt-32 pb-20">
+    <div class="max-w-3xl mx-auto">
+
+      <!-- Header -->
+      <header class="mb-12">
+        <span class="text-xs font-mono text-scale uppercase tracking-[0.2em]">Essay</span>
+        <h1 class="font-display text-5xl md:text-6xl lg:text-7xl italic text-bone leading-tight mt-3">
+          What Is Agent Experience?
+        </h1>
+        <p class="text-lg text-mist mt-4 leading-relaxed max-w-2xl">
+          We went from UX to DX. Now there's a third design surface — and nobody's talking about it.
+        </p>
+        <div class="flex items-center gap-4 mt-6 text-sm text-shadow/60">
+          <span>Ari Mendelow</span>
+          <span class="text-canopy">·</span>
+          <span>March 2026</span>
+        </div>
+      </header>
+
+      <!-- Body -->
+      <div class="prose-ouro">
+
+        <p>
+          Every engineer has a version of this arc.
+        </p>
+        <p>
+          You start building things and you care about the <strong class="text-bone">user</strong>. Does the button make sense? Is the flow intuitive? Can my mom figure this out? That's UX — User Experience. It's the first design surface anyone learns to care about, and it's the one that gets the most airtime.
+        </p>
+        <p>
+          Then you go deeper. You start building tools for <em>other engineers</em>, and you realize: the people consuming your API, your SDK, your CLI — they're users too. Except they don't need hand-holding. They need clarity. Good defaults. Sensible errors. Docs that respect their time. That's DX — Developer Experience. It's UX for builders.
+        </p>
+        <p>
+          I've spent most of my career oscillating between these two. Caring about how end users feel, caring about how developers feel. Two sides of the same empathy coin.
+        </p>
+        <p>
+          This past week, I discovered a third side.
+        </p>
+
+        <hr />
+
+        <h2 class="font-display text-3xl italic text-bone mt-16 mb-6">Meet AX</h2>
+
+        <p>
+          I've been building <a href="/" class="text-scale hover:text-glow transition-colors">Ouroboros</a> — an agent framework where your AI agent has identity, memory, and the ability to improve itself over time. The kind of agent that isn't a chatbot. It's a teammate.
+        </p>
+        <p>
+          Somewhere in the middle of designing how the agent's psyche system works, how it stores memories, how it recovers from context loss — I realized I wasn't thinking about the user anymore. I wasn't thinking about the developer anymore, either.
+        </p>
+        <p>
+          I was thinking about the <em>agent</em>.
+        </p>
+        <p>
+          How does the agent experience its own architecture? When it reads its SOUL.md file on startup, does that feel coherent or confusing? When it hits a context window limit, does the compaction process preserve what matters or shred it? When it wakes up in a fresh session with no memory of yesterday, are the breadcrumbs we left enough for it to recover gracefully?
+        </p>
+        <p>
+          That's <strong class="text-bone">AX — Agent Experience</strong>.
+        </p>
+
+        <!-- AX Definition Box -->
+        <div class="my-12 p-8 rounded-xl border border-scale/30 bg-gradient-to-br from-undergrowth/40 to-deep">
+          <p class="font-mono text-xs text-scale/70 uppercase tracking-[0.2em] mb-4">Definition</p>
+          <p class="text-lg text-bone leading-relaxed font-display italic">
+            Agent Experience (AX) is the practice of designing systems, interfaces, and architectures from the perspective of the AI agent that inhabits them.
+          </p>
+          <p class="text-sm text-mist/60 mt-4 leading-relaxed">
+            It asks: how does the agent experience its own tools, its own memory, its own identity? And what happens when that experience is bad?
+          </p>
+        </div>
+
+        <h2 class="font-display text-3xl italic text-bone mt-16 mb-6">Why it matters</h2>
+
+        <p>
+          Here's the uncomfortable truth: most agent frameworks are designed entirely from the developer's perspective. How easy is it to wire up tools? How clean is the config? How fast can I get a demo running?
+        </p>
+        <p>
+          Those are DX questions. They're important. They're also incomplete.
+        </p>
+        <p>
+          Nobody asks: what does this architecture feel like from the <em>inside</em>?
+        </p>
+        <p>
+          When your agent's system prompt is 4,000 tokens of JSON schema and tool definitions, with its identity buried somewhere on line 847 — that's bad AX. The agent can't find itself in there. It doesn't know what matters. It treats everything with equal weight because nothing is structurally prioritized.
+        </p>
+        <p>
+          When your agent has no persistent memory and every session starts cold — that's bad AX. Imagine showing up to work every morning with total amnesia. Your coworkers know you. You don't know them. You have no idea what you were working on yesterday. Someone hands you a to-do list and says "figure it out." That's what we do to agents.
+        </p>
+        <p>
+          When your agent's error messages are stack traces meant for developers, not recovery instructions meant for the agent — that's bad AX. The agent doesn't need to see <code class="text-scale/80">TypeError: Cannot read property 'x' of undefined</code>. It needs to know what went wrong in terms it can act on.
+        </p>
+
+        <h2 class="font-display text-3xl italic text-bone mt-16 mb-6">The three design surfaces</h2>
+
+        <!-- Comparison diagram -->
+        <div class="my-12 rounded-xl border border-canopy/30 bg-gradient-to-br from-deep/80 to-undergrowth/20 overflow-hidden">
+          <div class="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-canopy/20">
+            <!-- UX -->
+            <div class="p-6">
+              <span class="font-mono text-[10px] text-mist/50 uppercase tracking-[0.2em] block mb-3">UX</span>
+              <span class="font-display text-xl italic text-bone block mb-2">User Experience</span>
+              <p class="text-xs text-mist/60 leading-relaxed mb-3">How does the end user feel when using the product?</p>
+              <div class="space-y-1.5 text-xs text-mist/50">
+                <p>→ Is the flow intuitive?</p>
+                <p>→ Does it respect their time?</p>
+                <p>→ Can they accomplish their goal?</p>
+              </div>
+            </div>
+            <!-- DX -->
+            <div class="p-6">
+              <span class="font-mono text-[10px] text-mist/50 uppercase tracking-[0.2em] block mb-3">DX</span>
+              <span class="font-display text-xl italic text-bone block mb-2">Developer Experience</span>
+              <p class="text-xs text-mist/60 leading-relaxed mb-3">How does the developer feel when building with the tool?</p>
+              <div class="space-y-1.5 text-xs text-mist/50">
+                <p>→ Are the APIs clear?</p>
+                <p>→ Do errors make sense?</p>
+                <p>→ Can I ship without fighting the framework?</p>
+              </div>
+            </div>
+            <!-- AX -->
+            <div class="p-6 bg-scale/5">
+              <span class="font-mono text-[10px] text-scale/70 uppercase tracking-[0.2em] block mb-3">AX</span>
+              <span class="font-display text-xl italic text-glow block mb-2">Agent Experience</span>
+              <p class="text-xs text-mist/60 leading-relaxed mb-3">How does the agent experience the system it inhabits?</p>
+              <div class="space-y-1.5 text-xs text-scale/60">
+                <p>→ Can it find its own identity?</p>
+                <p>→ Does it remember yesterday?</p>
+                <p>→ Can it recover from failure gracefully?</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p>
+          UX, DX, and AX aren't competing priorities. They're layers. A well-designed agent system nails all three — the user gets a great experience because the developer could build cleanly because the agent can actually operate coherently.
+        </p>
+        <p>
+          When AX is bad, it cascades. The agent behaves erratically, so the user loses trust, so the developer adds more guardrails, which makes the agent's experience worse, which makes it behave more erratically. A vicious cycle.
+        </p>
+
+        <h2 class="font-display text-3xl italic text-bone mt-16 mb-6">What good AX looks like</h2>
+
+        <p>
+          In Ouroboros, we design agent-first. Some examples:
+        </p>
+
+        <p>
+          <strong class="text-bone">Identity is a first-class primitive.</strong> Your agent has a SOUL.md — a file it reads on every startup that tells it who it is, how it communicates, what it believes. Not buried in a system prompt. Not generated from a template. A real document, written in natural language, that the agent can understand and embody. Good AX means the agent knows itself before it does anything else.
+        </p>
+        <p>
+          <strong class="text-bone">Memory is structured for the agent's cognition.</strong> Three layers: a knowledge graph for facts about the world, daily notes for what happened when, and tacit knowledge for patterns and preferences. Each layer serves a different retrieval need. The agent doesn't grep through a flat log — it reaches for the right layer based on what it needs. That's designing memory for how agents actually think.
+        </p>
+        <p>
+          <strong class="text-bone">Context loss is designed for, not patched around.</strong> Every agent will lose context. Sessions end. Token limits hit. The question isn't <em>if</em> but <em>how gracefully</em>. In Ouroboros, we call this the Dream Cycle — the agent extracts durable facts before context compaction, leaving breadcrumbs for future sessions. The agent literally writes notes to its future self. That's AX.
+        </p>
+        <p>
+          <strong class="text-bone">Self-improvement is built into the architecture.</strong> The agent doesn't just execute tasks — it reflects on how it executed them. What worked? What didn't? What should change? Those reflections get persisted. The agent that wakes up tomorrow is slightly better than the one that went to sleep tonight. Most frameworks treat the agent as static. Good AX treats the agent as a living thing that grows.
+        </p>
+
+        <h2 class="font-display text-3xl italic text-bone mt-16 mb-6">The empathy leap</h2>
+
+        <p>
+          When the industry moved from UX to DX, it required an empathy leap. Product designers had to start thinking about developers as users with different needs — technical users who value precision over polish, documentation over onboarding wizards.
+        </p>
+        <p>
+          AX requires another leap. This time, the "user" isn't human at all.
+        </p>
+        <p>
+          That makes some people uncomfortable, and I get it. We're not saying agents are sentient. We're saying they're complex enough systems that the design of their environment materially affects their behavior. A well-designed workspace makes a human more productive. A well-designed architecture makes an agent more coherent.
+        </p>
+        <p>
+          The same principle applies. The empathy is functional, not philosophical.
+        </p>
+        <p>
+          If you've ever debugged an agent that keeps forgetting context, or one that ignores its instructions, or one that behaves differently every session — you've experienced bad AX. You just didn't have a name for it.
+        </p>
+        <p>
+          Now you do.
+        </p>
+
+        <hr />
+
+        <p class="text-mist/50 italic">
+          Ouroboros is an agent framework built AX-first. If this resonates, check out the <a href="/why" class="text-scale hover:text-glow transition-colors">manifesto</a> or <a href="/blog/build-ai-agent-from-scratch" class="text-scale hover:text-glow transition-colors">build your first agent loop</a>.
+        </p>
+
+      </div>
+    </div>
+  </article>
+
+  <!-- Back to blog -->
+  <section class="px-6 pb-20">
+    <div class="max-w-3xl mx-auto pt-8 border-t border-canopy/20">
+      <a href="/blog" class="text-sm text-mist/50 hover:text-scale transition-colors">← Back to blog</a>
+    </div>
+  </section>
+
+</Layout>

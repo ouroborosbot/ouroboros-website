@@ -267,7 +267,7 @@ const termSkills = `<span class="text-scale">You:</span> <span class="text-bone"
 
         <p>What you need:</p>
         <ul>
-          <li><strong>Node.js 18+</strong> running in a bash terminal (if you're on Windows, just use WSL)</li>
+          <li><strong>Node.js 20 LTS or later</strong> running in a bash terminal (if you're on Windows, just use WSL)</li>
           <li><strong>A coding agent</strong> (Claude Code, Copilot CLI &mdash; whatever you use)</li>
           <li><strong>Access to a SOTA reasoning model</strong> &mdash; and importantly, you can't just use any model. Use the latest, most powerful reasoning model you can get. You can't just use any ol' model and then be like "nuh uh AI is dumb"</li>
         </ul>
@@ -285,8 +285,8 @@ const termSkills = `<span class="text-scale">You:</span> <span class="text-bone"
 
         <aside class="rounded-xl border border-scale/20 bg-scale/5 px-5 py-4 my-6">
           <p class="!text-bone !mb-0 italic">
-            "Set up a new TypeScript project called BestAgentEver. Use the openai npm package &mdash; it has built-in
-            Azure support. Create an empty agent.ts file to start. Make this a git repo, and when done, commit."
+            "Set up a new TypeScript project called BestAgentEver. Use the openai npm package. If we choose Azure,
+            use the AzureOpenAI client. Create an empty agent.ts file to start. Make this a git repo, and when done, commit."
           </p>
         </aside>
 
@@ -307,10 +307,9 @@ const termSkills = `<span class="text-scale">You:</span> <span class="text-bone"
         <aside class="rounded-xl border border-canopy/40 bg-undergrowth/30 px-5 py-4 my-6 text-sm text-mist">
           <p class="!mb-2 !text-sm"><strong class="text-bone">A note on APIs:</strong></p>
           <p class="!mb-0 !text-sm">
-            If you're using an open-source model, it likely uses the Chat Completions API. Newer closed-source
-            models (like GPT 5.2) probably use the Responses API. Anything that uses Responses can also use
-            Chat Completions, but will only output reasoning blocks via Responses. If you don't know what this
-            means &mdash; that's ok, just ignore this note!
+            The current OpenAI SDK treats the Responses API as primary, while Chat Completions remains supported.
+            Other providers may still map more naturally to chat-style calls. If you are not sure which one fits your model,
+            have your coding agent read the current provider docs before it scaffolds the first call.
           </p>
         </aside>
 
@@ -722,11 +721,11 @@ const termSkills = `<span class="text-scale">You:</span> <span class="text-bone"
       <div class="mt-20 pt-12 border-t border-canopy/30">
         <div class="rounded-xl border border-canopy/40 bg-gradient-to-br from-deep/90 to-undergrowth/30 p-8 md:p-10">
           <p class="font-display text-3xl md:text-4xl italic text-bone leading-snug">
-            This tutorial became a framework.
+            This tutorial became a harness.
           </p>
           <p class="text-base text-mist/70 mt-4 leading-relaxed max-w-lg">
-            The 150-line bootstrap grew into ouroboros — a TypeScript harness
-            for agents that self-modify, remember, and grow.
+            The 150-line bootstrap grew into ouroboros — a TypeScript agent harness
+            for persistent agents with identity, continuity, and shared momentum.
           </p>
           <div class="flex flex-col sm:flex-row gap-4 mt-8">
             <a href="/" class="group inline-flex items-center justify-center gap-2.5 px-7 py-3 bg-scale text-void font-medium rounded-lg transition-all duration-300 hover:bg-glow hover:shadow-[0_0_40px_rgba(45,148,71,0.3)]">

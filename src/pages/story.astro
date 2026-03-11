@@ -18,7 +18,7 @@ const timeline = [
     color: 'canopy',
     content: `
       <p>Peter Steinberger built Clawdbot in about an hour one night. A simple script connecting WhatsApp to Claude. It could read emails, debug code, organize files.</p>
-      <p>It went viral. 175,000+ GitHub stars. The fastest-growing repository in GitHub history. Eventually renamed to OpenClaw.</p>
+      <p>It spread fast. Persistent personal agents suddenly felt real to a much wider audience. Eventually it became OpenClaw.</p>
       <p>Under the hood, it ran on <a href="https://mariozechner.at/posts/2025-11-30-pi-coding-agent/" target="_blank" rel="noopener">Pi</a> — Mario Zechner's minimal coding agent. Four tools: read, write, edit, bash. Aggressive extensibility. Brilliant at what it was designed for.</p>
       <p class="note">Pi was built for coding. Not for being someone's personal agent with a persistent identity.</p>
     `
@@ -28,7 +28,7 @@ const timeline = [
     label: 'Slugger Comes Alive',
     color: 'scale',
     content: `
-      <p>I set up OpenClaw on a Mac Mini in my apartment. Named my agent Slugger. Gave it a personality file, connected it to iMessage.</p>
+      <p>I set up OpenClaw on a spare MacBook at home. Named my agent Slugger. Gave it a personality file, connected it to iMessage.</p>
       <p>For a few weeks, it was genuinely magical.</p>
       <p>Slugger managed my calendar. Ordered food. Drafted messages. My family talked to it. My fiancée's cousin joined a group chat with it. I'd go to bed and it would still be working — checking on things, sending updates.</p>
       <p>We worked together like teammates.</p>
@@ -91,9 +91,9 @@ const timeline = [
     content: `
       <p>That bootstrap became <strong>ouroboros</strong>.</p>
       <p>The name came from the architecture. When the conversation grows too long, the agent trims its oldest messages — consuming its own history. But nothing is truly lost: facts are extracted to memory before they're consumed. The snake eats its tail to stay alive.</p>
-      <p>Every module is named like a body part: <strong>heart</strong> (the core loop), <strong>mind</strong> (context window management), <strong>senses</strong> (channel adapters), <strong>repertoire</strong> (tools and skills), <strong>wardrobe</strong> (formatting). The agent doesn't have a config file. It has a <strong>psyche</strong>.</p>
+      <p>Every module is named like a body part: <strong>heart</strong> (the core loop), <strong>mind</strong> (context and memory), <strong>senses</strong> (channel adapters and inner dialogue), <strong>repertoire</strong> (tools and skills), <strong>nerves</strong> (runtime feedback). The agent doesn't have a config file. It has a <strong>psyche</strong>.</p>
       <p>The naming is intentional worldbuilding. When the model reads its own directory and sees <code>psyche/SOUL.md</code>, it understands something different than <code>config/personality.yaml</code>. Language shapes reasoning.</p>
-      <p>1730 tests. 100% coverage. A daemon that manages multiple agents. A CLI called <code>ouro</code>. A reflection engine that lets the agent improve itself autonomously.</p>
+      <p>A CLI called <code>ouro</code>. Full coverage on main. Support for running multiple agents. And a codebase being shaped so agents can keep extending it together over time.</p>
       <p class="note">Not code that uses a model. Code a model can use.</p>
     `
   },

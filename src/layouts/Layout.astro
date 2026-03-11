@@ -11,7 +11,7 @@ interface Props {
 
 const {
   title,
-  description = 'A multi-agent harness for building AI agents that know who they are.',
+  description = 'A TypeScript agent harness for persistent agents with identity, continuity, and shared momentum.',
   ogImage = '/og/og-home.png',
 } = Astro.props
 ---
@@ -25,7 +25,7 @@ const {
     <link rel="icon" type="image/svg+xml" href="/images/ouroboros.svg" />
     <title>{title}</title>
 
-    <!-- Fonts self-hosted in /fonts/ — no external dependency -->
+    <!-- Fonts self-hosted in /fonts/ - no external dependency -->
 
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -48,7 +48,7 @@ const {
       "@type": "WebSite",
       "name": "Ouroboros",
       "url": "https://ouroboros.bot",
-      "description": "A TypeScript framework for AI agents that self-modify, remember, and grow.",
+      "description": "A TypeScript agent harness for persistent agents with identity, continuity, and shared momentum.",
       "publisher": {
         "@type": "Person",
         "name": "Ari Mendelow",
@@ -58,7 +58,7 @@ const {
 
   </head>
   <body class="bg-void text-bone font-body antialiased overflow-x-hidden">
-    <!-- Grain overlay — static tiled PNG instead of live SVG filter (Safari perf) -->
+    <!-- Grain overlay - static tiled PNG instead of live SVG filter (Safari perf) -->
     <div class="fixed inset-0 pointer-events-none z-50" style="background-image: url('/images/grain.png'); background-repeat: repeat; opacity: 0.03;" aria-hidden="true"></div>
 
     <Nav />
@@ -68,7 +68,7 @@ const {
     <Footer />
 
     <script is:inline>
-      // Reveal sections on scroll — progressive enhancement
+      // Reveal sections on scroll - progressive enhancement
       // Sections default to visible; we add reveal-ready to enable animations only when JS + observer are available
       (function() {
         var reveals = document.querySelectorAll('.reveal');

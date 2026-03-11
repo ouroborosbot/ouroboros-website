@@ -1,48 +1,41 @@
 {
   "name": "ouroboros-skills",
-  "version": "1.0.0",
-  "description": "Core skills for the Ouroboros agent harness. Each skill is a markdown file your agent can consume directly.",
+  "version": "2.0.0",
+  "description": "Public skills for the Ouroboros agent harness. Each skill should inspect the latest local install, repo, or bundle before answering or acting.",
   "baseUrl": "https://ouroboros.bot/skills",
   "skills": [
     {
       "id": "understand-psyche",
       "name": "Understand the Psyche System",
-      "description": "Teaches an agent about the five psyche files (SOUL, IDENTITY, LORE, FRIENDS, TACIT) and how to internalize them.",
+      "description": "Inspect the current bundle and explain how the agent's self-model is organized right now.",
       "url": "https://ouroboros.bot/skills/understand-psyche.md",
       "category": "identity"
     },
     {
-      "id": "use-dream-cycle",
-      "name": "Use the Dream Cycle",
-      "description": "Teaches an agent about overnight self-improvement: memory synthesis, task grooming, and self-reflection.",
-      "url": "https://ouroboros.bot/skills/use-dream-cycle.md",
-      "category": "lifecycle"
-    },
-    {
       "id": "bootstrap-agent",
       "name": "Bootstrap a New Agent",
-      "description": "Step-by-step instructions for creating an agent bundle from scratch: directory structure, agent.json, psyche files, and first run.",
+      "description": "Walk a human through current setup by inspecting the latest local environment and bundle conventions first.",
       "url": "https://ouroboros.bot/skills/bootstrap-agent.md",
       "category": "quickstart"
     },
     {
       "id": "understand-architecture",
       "name": "Understand the Body Architecture",
-      "description": "Explains the organ-based module structure: heart, mind, senses, repertoire, wardrobe, daemon. How to navigate and modify the codebase.",
+      "description": "Inspect the current source tree and explain the current body architecture in live terms.",
       "url": "https://ouroboros.bot/skills/understand-architecture.md",
       "category": "architecture"
     },
     {
       "id": "use-sliding-context",
       "name": "Use the Sliding Context Window",
-      "description": "How the context consumption system works: token budgeting, memory extraction before trimming, and how to write code that plays well with it.",
+      "description": "Inspect the current continuity and context behavior before explaining how the harness keeps the thread.",
       "url": "https://ouroboros.bot/skills/use-sliding-context.md",
       "category": "architecture"
     },
     {
       "id": "build-tools",
       "name": "Build Custom Tools",
-      "description": "How to create new tools for the repertoire: the tool schema, registration, channel-aware routing, and confirmation gates.",
+      "description": "Inspect the current tool APIs and explain how to extend the repertoire without relying on stale examples.",
       "url": "https://ouroboros.bot/skills/build-tools.md",
       "category": "extensibility"
     }

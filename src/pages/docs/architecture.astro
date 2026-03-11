@@ -1,0 +1,43 @@
+---
+import DocsPageShell from '../../components/DocsPageShell.astro'
+import PromptCard from '../../components/PromptCard.astro'
+---
+
+<DocsPageShell
+  title="Architecture"
+  description="Ouroboros uses a body metaphor because naming and structure affect how an agent navigates the code it has to inhabit."
+  eyebrow="Operator Guide"
+  canonical="https://ouroboros.bot/docs/architecture"
+  intro="This page explains how to think about the body. Your agent should inspect the live repo or install for the current directory structure and implementation details."
+  noteTitle="Recommended handoff"
+  noteBody="For a deeper walk-through, point your agent at /skills/understand-architecture.md and tell it to use the current local source as the truth."
+>
+  <section class="grid gap-5 md:grid-cols-2">
+    <PromptCard
+      prompt={`Inspect the current Ouroboros codebase and explain the main body parts to me in plain English. Tell me what each top-level area does and why the naming matters.`}
+      footnote="Best for orientation before you ask for line-level implementation details."
+    />
+    <PromptCard
+      prompt={`Open the current local Ouroboros source and trace the path for this question: [replace with the part you care about]. Tell me which files matter and why.`}
+      footnote="Best for live architecture questions tied to a concrete behavior."
+    />
+  </section>
+
+  <section class="grid gap-5 lg:grid-cols-[0.95fr_1.05fr]">
+    <div class="rounded-[26px] border border-canopy/40 bg-undergrowth/20 p-7">
+      <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-scale/70">Evergreen truth</p>
+      <p class="mt-5 text-sm leading-7 text-mist">
+        The body metaphor is not decorative. It is an attempt to make the runtime easier for the agent to place, traverse, and modify from the inside.
+      </p>
+    </div>
+
+    <div class="rounded-[26px] border border-scale/20 bg-[linear-gradient(180deg,rgba(45,148,71,0.08),rgba(5,10,7,0.9))] p-7">
+      <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-scale/70">What to ask next</p>
+      <ul class="mt-5 space-y-3 text-sm leading-7 text-mist">
+        <li>Which part of the body owns this behavior right now?</li>
+        <li>What does the current runtime do when the agent loses the thread?</li>
+        <li>If I want to extend this safely, where should the change live?</li>
+      </ul>
+    </div>
+  </section>
+</DocsPageShell>

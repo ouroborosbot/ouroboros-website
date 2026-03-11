@@ -1,0 +1,43 @@
+---
+import DocsPageShell from '../../components/DocsPageShell.astro'
+import PromptCard from '../../components/PromptCard.astro'
+---
+
+<DocsPageShell
+  title="Continuity And Memory"
+  description="Memory is only part of the story. The larger goal is continuity: helping the agent resume itself, its work, and its relationships without constant re-briefing."
+  eyebrow="Operator Guide"
+  canonical="https://ouroboros.bot/docs/continuity-and-memory"
+  intro="This page stays conceptual on purpose. Exact implementation details around continuity should come from the current code, logs, or bundle state your agent is already inside."
+  noteTitle="Recommended handoff"
+  noteBody="For a deeper dive, point your agent at /skills/use-sliding-context.md and tell it to inspect the latest local source before answering."
+>
+  <section class="grid gap-5 md:grid-cols-2">
+    <PromptCard
+      prompt={`Explain how continuity works in this current Ouroboros install. Inspect the live source or bundle, then tell me how the agent keeps the thread across sessions and interruptions.`}
+      footnote="Use this when you want the current implementation, not a static concept article."
+    />
+    <PromptCard
+      prompt={`Inspect how friend notes, memory, and cross-session context work right now. Tell me where quick social notes should go and how they differ from broader memory.`}
+      footnote="Use this when the question is about people, relationships, and lightweight notes."
+    />
+  </section>
+
+  <section class="grid gap-5 lg:grid-cols-[0.95fr_1.05fr]">
+    <div class="rounded-[26px] border border-canopy/40 bg-undergrowth/20 p-7">
+      <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-scale/70">Evergreen truth</p>
+      <p class="mt-5 text-sm leading-7 text-mist">
+        Good continuity reduces orientation cost. It helps the agent recover its own thread instead of making the human rebuild that thread by hand after every interruption.
+      </p>
+    </div>
+
+    <div class="rounded-[26px] border border-scale/20 bg-[linear-gradient(180deg,rgba(45,148,71,0.08),rgba(5,10,7,0.9))] p-7">
+      <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-scale/70">What to ask next</p>
+      <ul class="mt-5 space-y-3 text-sm leading-7 text-mist">
+        <li>Where should the agent jot something down for later?</li>
+        <li>How does the current runtime preserve continuity after long sessions?</li>
+        <li>What parts of this setup are helping or hurting shared momentum?</li>
+      </ul>
+    </div>
+  </section>
+</DocsPageShell>

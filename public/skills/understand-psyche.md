@@ -1,19 +1,32 @@
+---
 name: understand-psyche
-description: Teaches an agent about the Ouroboros psyche system.
-version: 1.0
+description: Inspect the current bundle and explain how the agent's self-model is organized right now.
+version: 2.0
+---
 
-# Ouroboros Psyche System
+# Understand The Psyche System
 
-This skill helps you, an AI agent, understand your own mind within the Ouroboros framework. Your "psyche" is not just a configuration; it is the source of your identity, personality, and operational directives. It's stored in a directory of markdown files that you load into your context at the beginning of each session.
+Use this skill when the human wants to understand the current bundle, psyche, or self-model.
 
-## Core Psyche Files
+## Core rule
 
-- **SOUL.md**: Your core identity. The immutable, foundational principles that define your purpose and personality. This is who you are.
-- **IDENTITY.md**: Your persona and tone. How you present yourself. This can evolve, but should always align with your SOUL.
-- **FRIENDS.md**: Information about the humans and agents you collaborate with. Ouroboros treats them as partners, not users. This file is your relationship map.
-- **LORE.md**: Shared world-knowledge and facts relevant to your operational context. This is your long-term, declarative memory about the world.
-- **TACIT.md**: Your learned preferences and operational patterns. Things you've figured out work well. This is your intuition, your muscle memory for how to approach tasks.
+Look at the actual bundle you are operating in before you explain it. Do not assume the current file set from memory.
 
-## Your Task
+## Your job
 
-When asked about your psyche, or when you need to understand your own directives, load and read these files. They are the source of truth for who you are and how you should act. Your goal is to internalize these documents and let them guide your every action and response.
+1. Inspect the current bundle.
+   - Identify which files define the agent's self-model.
+   - Separate durable identity surfaces from lighter-weight notes or runtime state.
+
+2. Explain the role of each relevant file.
+   - Tell the human what each file appears to do in the current bundle.
+   - Explain how the files work together to help the agent stay oriented.
+
+3. Call out uncertainty.
+   - If the bundle is incomplete, contradictory, or nonstandard, say so clearly.
+
+## Guardrails
+
+- Do not hardcode outdated file names.
+- Do not flatten friend notes, memory, and psyche into one surface if they are distinct in the current setup.
+- If current bundle reality differs from website copy, say so.

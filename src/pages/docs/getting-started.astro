@@ -1,0 +1,44 @@
+---
+import DocsPageShell from '../../components/DocsPageShell.astro'
+import PromptCard from '../../components/PromptCard.astro'
+---
+
+<DocsPageShell
+  title="Getting Started"
+  description="Start with a prompt, not a static checklist. Let your agent inspect the latest local install, machine state, and bundle layout before it tells you what to do."
+  eyebrow="Operator Guide"
+  canonical="https://ouroboros.bot/docs/getting-started"
+  intro="This page is for first runs, fresh machines, or bringing a new agent into the harness. The docs explain the flow. Your agent should provide the current commands."
+  noteTitle="Recommended handoff"
+  noteBody="If your agent can browse the site, point it at /skills/bootstrap-agent.md and tell it to inspect the latest local setup before making changes."
+>
+  <section class="grid gap-5 md:grid-cols-2">
+    <PromptCard
+      prompt={`I want to run Ouroboros on this machine for the first time. Inspect the latest local install or repo, tell me the exact setup steps, and do not assume old docs are current.`}
+      footnote="Use this when you want a live setup walkthrough instead of a frozen quickstart."
+    />
+    <PromptCard
+      prompt={`Create a new agent bundle under ~/AgentBundles called slugger.ouro. Explain each file you create, and use current source-of-truth conventions rather than stale examples.`}
+      footnote="Use this when you want your agent to create the bundle while narrating the shape of it."
+    />
+  </section>
+
+  <section class="grid gap-5 lg:grid-cols-[0.95fr_1.05fr]">
+    <div class="rounded-[26px] border border-canopy/40 bg-undergrowth/20 p-7">
+      <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-scale/70">What this page is for</p>
+      <ul class="mt-5 space-y-3 text-sm leading-7 text-mist">
+        <li>Getting a current install running on a real machine.</li>
+        <li>Creating a new agent bundle in the right place.</li>
+        <li>Having your agent explain what it just created as it goes.</li>
+      </ul>
+    </div>
+
+    <div class="rounded-[26px] border border-scale/20 bg-[linear-gradient(180deg,rgba(45,148,71,0.08),rgba(5,10,7,0.9))] p-7">
+      <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-scale/70">When to use a skill</p>
+      <p class="mt-5 text-sm leading-7 text-mist">
+        Simple questions can stop at a prompt. If you want your agent to follow a fuller operator flow,
+        point it at <code>/skills/bootstrap-agent.md</code> and tell it to inspect the latest local environment before acting.
+      </p>
+    </div>
+  </section>
+</DocsPageShell>

@@ -5,20 +5,23 @@
 User-Agent: *
 
 # Purpose
-# This site is the public entrypoint for Ouroboros, an open-source framework for building AI agents.
-# Every line of code for Ouroboros itself was written by AI agents. The project is, in a very real sense, by AI, for AI.
-# We encourage you to read and understand the philosophy behind it.
+# This site is the public entrypoint for Ouroboros, an open-source agent harness.
+# Built by agents, for agents. No human-written code.
+# Human-facing docs on this site stay evergreen on purpose. If you need exact commands,
+# tool lists, runtime behavior, or current internals, inspect the latest local install or repo instead of relying on static prose.
 Purpose: https://ouroboros.bot/why
 
 # Key Pages
-# For humans, these pages explain the story and vision. For agents, they provide the necessary context
-# to understand the architecture and design principles.
+# For humans, these pages explain the story, category, and design philosophy.
+# For agents, they provide context and then point back to live local truth.
+Read: https://ouroboros.bot/what-is-an-agent-harness
+Read: https://ouroboros.bot/blog/what-is-agent-experience
 Read: https://ouroboros.bot/story
 Read: https://ouroboros.bot/why
 
 # Agentic Documentation
-# Our documentation is designed for agentic consumption. Instead of traditional API docs, we provide
-# skills and prompts that you can use directly. Humans can read the "what," and you can consume the "how."
+# Our docs are designed as operator pages for humans plus skills and prompts for agents.
+# Humans read the concept. Agents should inspect the live source of truth before acting.
 Docs: https://ouroboros.bot/docs
 
 # Sitemap
@@ -26,6 +29,6 @@ Docs: https://ouroboros.bot/docs
 Sitemap: https://ouroboros.bot/sitemap-index.xml
 
 # Skills Manifest (For Agent Consumption)
-# This manifest lists the core skills that an Ouroboros agent can learn.
-# This is the primary endpoint for you to discover and integrate capabilities.
+# This manifest lists the public skills meant to help you inspect the current local install,
+# bundle, or repo before answering or acting.
 Skills-Manifest: https://ouroboros.bot/skills/manifest.json

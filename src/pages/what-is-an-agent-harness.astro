@@ -1,0 +1,109 @@
+---
+import Layout from '../layouts/Layout.astro'
+
+const title = 'What Is An Agent Harness? | Ouroboros'
+const description = 'An agent harness is the runtime, memory, identity, and operator structure that helps an agent work across time instead of disappearing when the chat ends.'
+---
+
+<Layout title={title} description={description} ogImage="/og/og-docs.png">
+  <Fragment slot="head">
+    <link rel="canonical" href="https://ouroboros.bot/what-is-an-agent-harness" />
+    <meta property="og:url" content="https://ouroboros.bot/what-is-an-agent-harness" />
+    <meta property="og:type" content="article" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": title,
+      "description": description,
+      "author": { "@type": "Person", "name": "Ari Mendelow", "url": "https://github.com/arimendelow" },
+      "publisher": { "@type": "Person", "name": "Ari Mendelow" },
+      "url": "https://ouroboros.bot/what-is-an-agent-harness"
+    })} />
+  </Fragment>
+
+  <article class="px-6 pt-32 pb-20">
+    <div class="mx-auto max-w-4xl">
+      <header class="mb-14">
+        <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-scale/80">Guide</span>
+        <h1 class="mt-4 font-display text-5xl italic leading-tight text-bone md:text-6xl lg:text-7xl">
+          What Is An Agent Harness?
+        </h1>
+        <p class="mt-5 max-w-3xl text-lg leading-8 text-mist">
+          If an agent loop is the primitive that lets a model act, an agent harness is the larger system that helps that agent persist, stay oriented, and work across time.
+        </p>
+      </header>
+
+      <div class="prose-ouro">
+        <p>
+          Start with the simplest version.
+        </p>
+        <p>
+          A chat session is not a harness. It is a conversation window. You send a message, the model replies, and most of the structure around that exchange belongs to the chat product, not to the agent.
+        </p>
+        <p>
+          An <a href="/blog/build-ai-agent-from-scratch" class="text-scale hover:text-glow transition-colors">agent loop</a> is the next step up. It gives the model a cycle:
+          read the current state, decide what to do, call tools, observe the result, and continue.
+          That is enough to make the model act like an agent instead of a single-response chatbot.
+        </p>
+        <p>
+          But once you want that agent to work across sessions, remember people, keep track of work in flight, or recover after interruptions, the loop is not enough anymore.
+          You need a harness.
+        </p>
+
+        <h2>So what is the harness?</h2>
+        <p>
+          An agent harness is the surrounding system that gives the agent a stable place to operate.
+          Depending on the product, that can include identity, memory, context management, tools, channels, logs, and the operator workflows used to guide the agent over time.
+        </p>
+        <p>
+          The harness is what turns "the model can act" into "the agent can keep working."
+        </p>
+
+        <h2>Why not just call it an agent framework?</h2>
+        <p>
+          Because framework language is usually builder-first. It emphasizes the developer integrating APIs, wiring tools, and configuring behavior.
+          Harness language emphasizes the environment the agent has to inhabit from the inside.
+        </p>
+        <p>
+          That distinction matters more once agents become long-lived. The shape of the runtime starts affecting how coherently the agent can recover its own context, relationships, and work.
+        </p>
+
+        <h2>What makes a good harness?</h2>
+        <p>
+          A good harness does not just add features. It lowers orientation cost.
+          It helps the agent answer questions like: who am I, what matters right now, who are these people, what was I doing, and where do I put something so I can find it later?
+        </p>
+        <p>
+          In practice that can show up as a cleaner self-model, continuity across sessions, memory shaped around real work and relationships, and runtime structure the agent can actually reason about.
+        </p>
+
+        <h2>Why people care about this now</h2>
+        <p>
+          The more people try to collaborate with the same agent across time, the more they notice the hidden tax of reorientation.
+          If every interruption turns into a full re-brief, the human becomes a recovery loop instead of a collaborator.
+        </p>
+        <p>
+          That is why harnesses matter. They are where continuity, operator workflow, and agent experience start to become real product concerns instead of implementation details.
+        </p>
+      </div>
+
+      <div class="mt-14 grid gap-5 md:grid-cols-3">
+        <a href="/docs" class="group rounded-[26px] border border-canopy/40 bg-[linear-gradient(180deg,rgba(21,42,28,0.45),rgba(5,10,7,0.85))] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-scale/45">
+          <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-scale/70">Docs</p>
+          <h2 class="mt-4 font-display text-3xl italic text-bone">Operator guides</h2>
+          <p class="mt-4 text-sm leading-7 text-mist">Use the evergreen docs pages to decide what to ask your agent next.</p>
+        </a>
+        <a href="/why" class="group rounded-[26px] border border-canopy/40 bg-[linear-gradient(180deg,rgba(21,42,28,0.45),rgba(5,10,7,0.85))] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-scale/45">
+          <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-scale/70">Why</p>
+          <h2 class="mt-4 font-display text-3xl italic text-bone">Agent ergonomics</h2>
+          <p class="mt-4 text-sm leading-7 text-mist">See how the harness question turns into reorientation overhead and shared momentum.</p>
+        </a>
+        <a href="/blog/build-ai-agent-from-scratch" class="group rounded-[26px] border border-canopy/40 bg-[linear-gradient(180deg,rgba(21,42,28,0.45),rgba(5,10,7,0.85))] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-scale/45">
+          <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-scale/70">Primitive</p>
+          <h2 class="mt-4 font-display text-3xl italic text-bone">What is an agent loop?</h2>
+          <p class="mt-4 text-sm leading-7 text-mist">If you need the underlying primitive first, start with the loop tutorial.</p>
+        </a>
+      </div>
+    </div>
+  </article>
+</Layout>

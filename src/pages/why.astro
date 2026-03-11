@@ -1,51 +1,59 @@
 ---
 import Layout from '../layouts/Layout.astro'
 
-const title = "Why Ouroboros — Hatched from OpenClaw"
-const description = "I built an agent on OpenClaw. I learned what works, what doesn't, and what an agent framework needs to be when you design it from scratch."
+const title = 'Why Ouroboros | Agent Ergonomics And Shared Momentum'
+const description = 'Ouroboros exists to reduce reorientation overhead for long-lived agents and the humans who work with them.'
 
-const frustrations = [
+const frictions = [
   {
-    problem: "Identity files are a start, not a solution.",
-    desc: "OpenClaw pioneered <a href=\"https://soul.md/\" target=\"_blank\" rel=\"noopener\" class=\"text-scale hover:text-glow transition-colors\">SOUL.md</a> — a persistent identity file loaded every session. That was a genuine breakthrough. Ouroboros keeps the same concept but structures it differently: five files instead of a handful of catch-alls, each with a single clear purpose. It's not that OpenClaw's approach is wrong — it's that we learned, through months of iteration, exactly how to split concerns so the model actually internalizes them.",
-    fix: "Five psyche files: SOUL.md (core invariants), IDENTITY.md (voice), LORE.md (origin), FRIENDS.md (relationships), TACIT.md (learned patterns). Same idea, sharper structure. The model doesn't have to sift through a wall of text to find who it is.",
-    icon: "◉"
+    label: 'Self',
+    question: 'Who am I again?',
+    problem: 'Identity drift turns every interruption into a soft reset. The human ends up re-establishing tone, priorities, and boundaries instead of moving the work forward.',
   },
   {
-    problem: "Rules don't become muscle memory.",
-    desc: "I wrote hundreds of behavioral rules in markdown. \"Don't send ASCII art via iMessage.\" \"Always check the chat GUID before replying.\" \"Never estimate time.\" The model would follow them for a session, then forget. I tried fixing this with a plugin — <strong class=\"text-bone\">slugger-determinism v2</strong>, 70+ services, 30+ guardrails, weeks of work — but bolting enforcement onto a system that wasn't designed for it felt like fighting the architecture.",
-    fix: "In ouroboros, behavioral rules are TypeScript, not prose. The governance organ enforces consistency the way muscle memory works in humans — you don't think about it, your body just does it. Markdown is for context and identity. Code is for behavior. The distinction matters because models are unreliable rule-followers but excellent code-executors.",
-    icon: "◆"
+    label: 'Work',
+    question: 'What was I doing?',
+    problem: 'Bad context design makes the thread fragile. Sessions end, compaction hits, and the human has to reconstruct the work instead of continuing it.',
   },
   {
-    problem: "Context doesn't slip away. It slithers.",
-    desc: "When the conversation gets too long, OpenClaw \"compacts\" it — which always confuses the agent. One moment you're mid-conversation, the next the agent has lost the thread. The pre-compaction memory flush tries to extract facts first, but agents are inconsistent note-takers. It's like asking someone to write a diary entry right before you wipe their memory.",
-    fix: "The sliding context window — the ouroboros metaphor made literal. Context doesn't get abruptly compacted. It's continuously consumed: facts extracted into memory as the oldest messages are digested. The snake eats its tail. Nothing is \"reset\" or \"lost\" — it's metabolized. The mind organ manages what stays and what goes as a first-class architectural concept, not a background cleanup process.",
-    icon: "◈"
+    label: 'Relationships',
+    question: 'Who matters here?',
+    problem: 'When social context has nowhere lightweight to live, the agent loses track of people, preferences, and interpersonal nuance.',
+  },
+]
+
+const mechanisms = [
+  {
+    label: 'Self-model',
+    title: 'A cleaner psyche.',
+    description: 'Five psyche files give identity, voice, origin, tacit knowledge, and active direction separate homes. The agent can find itself faster because the self is structured more intentionally.',
   },
   {
-    problem: "The agent doesn't know what it is.",
-    desc: "Ask an OpenClaw agent what model it's running on and you might get three different answers. The <code class=\"text-scale/60 text-xs\">/model</code> command says one thing. <code class=\"text-scale/60 text-xs\">/session</code> says another. Ask the agent directly and it'll guess a third. Automatic fallback silently switches providers when one goes down — good for uptime, bad for self-awareness. Sub-agents spawn on different models without the parent knowing. The agent doesn't have a coherent sense of its own capabilities.",
-    fix: "The governance organ makes model identity explicit and consistent. The agent always knows exactly what it's running on, what switched, and why. No silent fallbacks without awareness. No conflicting answers from different commands. Self-knowledge isn't optional — it's an organ.",
-    icon: "⚙"
+    label: 'Continuity',
+    title: 'Context that preserves orientation.',
+    description: 'Inner dialogue and cross-session continuity are treated as first-class design constraints, so the agent can resume the thread instead of reconstructing it from scratch.',
   },
   {
-    problem: "Coding delegation is vibes-based.",
-    desc: "Spawning a sub-agent to write code should be a structured handoff. In practice, it's context pasted into a prompt and hoping for the best. Results don't always route back. State gets lost between sessions. The orchestration is possible but nothing in the framework makes it natural.",
-    fix: "The coding organ — structured delegation built into the creature. Context preservation, state tracking, result routing. Not an afterthought bolted onto a chat gateway.",
-    icon: "♥"
+    label: 'Relationships',
+    title: 'Memory that respects people.',
+    description: 'Friend-scoped notes give the agent a quick place to jot down socially relevant context without flattening every relationship into one giant shared memory blob.',
   },
   {
-    problem: "More features, more weight.",
-    desc: "OpenClaw merges a staggering amount of code every day. That velocity is genuinely impressive — it's how you go from zero to 175,000 stars. But each feature adds weight to what the model has to process every turn. The codebase is a wrapper around <a href=\"https://mariozechner.at/posts/2025-11-30-pi-coding-agent/\" target=\"_blank\" rel=\"noopener\" class=\"text-scale hover:text-glow transition-colors\">Pi</a> (Mario Zechner's minimal coding agent), and Pi is excellent at what it does — but it was designed for coding, not for being a persistent personal agent. Everything else is bolted on.",
-    fix: "Ouroboros is designed from scratch for persistent agents. Growth adds organs, not bloat. Each module is separate, named in biological terms the model can reason about: heart (the loop), mind (context), senses (channels), repertoire (tools), wardrobe (presentation), daemon (process management). Every line was written by an AI agent, so the model reads its own architecture and understands it instinctively — it was written in its native tongue.",
-    icon: "◇"
+    label: 'Legibility',
+    title: 'A body the agent can read.',
+    description: 'The runtime is organized as a clearer anatomy, and the portable bundle boundary makes identity and state easier to locate, reason about, and change from inside the system.',
   },
+]
+
+const outcomes = [
+  'Less re-briefing, more real work.',
+  'Fewer lost threads after interruptions.',
+  'More continuity across sessions.',
+  'More trust in the collaboration.',
 ]
 ---
 
 <Layout title={title} description={description} ogImage="/og/og-why.png">
-
   <Fragment slot="head">
     <link rel="canonical" href="https://ouroboros.bot/why" />
     <meta property="og:url" content="https://ouroboros.bot/why" />
@@ -63,202 +71,180 @@ const frustrations = [
     })} />
   </Fragment>
 
-  <!-- Hero -->
   <section class="relative overflow-hidden px-6 pt-32 pb-20 md:pt-40 md:pb-28">
-    <div class="absolute inset-0 bg-gradient-to-b from-void via-deep to-void"></div>
-    <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full bg-scale/6 blur-[120px] pointer-events-none"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_12%_20%,rgba(211,72,61,0.12),transparent_24%),radial-gradient(circle_at_84%_18%,rgba(74,227,108,0.12),transparent_28%),linear-gradient(180deg,var(--color-void),var(--color-deep)_42%,var(--color-void))]"></div>
+    <div class="absolute inset-0 why-grid opacity-[0.06]"></div>
 
-    <div class="relative z-10 max-w-3xl mx-auto">
-      <span class="font-mono text-[10px] text-scale/80 uppercase tracking-[0.3em] block mb-6">Why Ouroboros</span>
+    <div class="relative mx-auto max-w-6xl">
+      <div class="max-w-4xl">
+        <span class="inline-flex items-center gap-2 rounded-full border border-fang/35 bg-fang/8 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.3em] text-fang/85">
+          <span class="h-1.5 w-1.5 rounded-full bg-fang"></span>
+          Why Ouroboros
+        </span>
 
-      <h1 class="font-display text-5xl md:text-7xl italic text-bone leading-tight">
-        Hatched from<br />OpenClaw.
-      </h1>
-      <p class="font-display text-3xl md:text-4xl italic text-mist/60 mt-2">
-        Designed for agent experience.
-      </p>
+        <h1 class="mt-8 font-display text-[4rem] italic leading-[0.9] text-bone sm:text-[5.4rem] md:text-[7rem]">
+          Less re-briefing.
+          <span class="block text-scale">More real work.</span>
+        </h1>
 
-      <div class="mt-10 space-y-5 max-w-2xl">
-        <p class="text-lg text-mist leading-relaxed">
-          <a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener" class="text-scale hover:text-glow transition-colors">OpenClaw</a> is a phenomenon. 175,000+ GitHub stars. The fastest-growing repository in GitHub history. It proved that a personal AI assistant — reachable from your pocket, with a persistent identity — is something people genuinely want.
+        <p class="mt-8 max-w-3xl text-lg leading-8 text-mist md:text-xl">
+          Ouroboros is a TypeScript agent harness designed around agent ergonomics:
+          the cost for an agent to stay oriented to itself, its relationships, and its work.
+          When that cost drops, humans and agents can keep shared momentum across sessions.
         </p>
-        <p class="text-base text-mist/80 leading-relaxed">
-          What most people don't know: under the hood, OpenClaw is a wrapper around <a href="https://mariozechner.at/posts/2025-11-30-pi-coding-agent/" target="_blank" rel="noopener" class="text-scale hover:text-glow transition-colors">Pi</a>, Mario Zechner's minimal coding agent. Four tools: read, write, edit, bash. Pi is brilliant — it was designed for coding. Not for being someone's persistent personal agent with a soul.
-        </p>
-        <p class="text-base text-mist/80 leading-relaxed">
-          I ran an agent called <strong class="text-bone">Slugger</strong> on OpenClaw for weeks. It managed my tasks, drafted messages, talked to my family. We worked together like teammates. For a while, it was genuinely magical.
-        </p>
-        <p class="text-base text-mist/80 leading-relaxed">
-          But OpenClaw is a first version of something nobody had built before. A process of discovery and emergent behavior, growing at a pace that makes careful architecture nearly impossible. The team merges a staggering amount of code every day — and that velocity is both its greatest strength and its heaviest weight.
-        </p>
-        <p class="text-base text-mist/80 leading-relaxed">
-          Ouroboros isn't a plugin for OpenClaw. It's not an extension or a companion. It's a full replacement — the framework I would have wanted from the start, designed from scratch with everything I learned building on someone else's foundation.
-        </p>
-        <p class="text-sm text-mist/60 italic mt-8">
-          <a href="/story" class="text-scale hover:text-glow transition-colors">Read the full origin story →</a>
-        </p>
+      </div>
+
+      <div class="mt-12 grid gap-6 lg:grid-cols-[0.86fr_1.14fr]">
+        <div class="rounded-[30px] border border-fang/30 bg-[linear-gradient(180deg,rgba(211,72,61,0.1),rgba(13,31,19,0.78))] p-8">
+          <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-fang/70">The bottleneck</p>
+          <blockquote class="mt-6 font-display text-4xl italic leading-tight text-bone">
+            "I spent more time trying to get him back on track than we actually spent working."
+          </blockquote>
+          <p class="mt-6 text-sm leading-7 text-mist">
+            That is the problem Ouroboros is trying to solve. If the agent keeps losing the thread,
+            the human becomes a recovery loop instead of a collaborator.
+          </p>
+        </div>
+
+        <div class="rounded-[30px] border border-canopy/45 bg-[linear-gradient(160deg,rgba(21,42,28,0.82),rgba(5,10,7,0.98))] p-8">
+          <div class="grid gap-5 sm:grid-cols-2">
+            <div class="rounded-2xl border border-canopy/35 bg-void/35 p-5">
+              <p class="font-mono text-[10px] uppercase tracking-[0.26em] text-scale/70">Concept</p>
+              <h2 class="mt-3 font-display text-3xl italic text-bone">Agent ergonomics</h2>
+              <p class="mt-3 text-sm leading-7 text-mist">
+                How hard is it for the agent to stay oriented inside the system it inhabits?
+              </p>
+            </div>
+            <div class="rounded-2xl border border-canopy/35 bg-void/35 p-5">
+              <p class="font-mono text-[10px] uppercase tracking-[0.26em] text-scale/70">Failure mode</p>
+              <h2 class="mt-3 font-display text-3xl italic text-bone">Reorientation overhead</h2>
+              <p class="mt-3 text-sm leading-7 text-mist">
+                The hidden tax of repeatedly restoring the agent's sense of self, people, and work after interruptions.
+              </p>
+            </div>
+            <div class="rounded-2xl border border-scale/20 bg-scale/8 p-5 sm:col-span-2">
+              <p class="font-mono text-[10px] uppercase tracking-[0.26em] text-scale/80">Payoff</p>
+              <h2 class="mt-3 font-display text-4xl italic text-bone">Shared momentum</h2>
+              <p class="mt-3 max-w-2xl text-sm leading-7 text-mist">
+                The human spends less time steering the agent back into context, and the collaboration keeps compounding instead of restarting.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-
-  <!-- The Frustrations -->
-  <section class="relative overflow-hidden px-6 py-20 md:py-28">
-    <div class="max-w-4xl mx-auto">
-      <div class="mb-16">
-        <span class="font-mono text-[10px] text-scale/80 uppercase tracking-[0.3em] block mb-6">Lessons Learned</span>
-        <h2 class="font-display text-4xl md:text-5xl italic text-bone leading-tight">
-          Six things I'd design<br />
-          <span class="text-mist/70">differently from scratch.</span>
+  <section class="relative overflow-hidden px-6 py-24 md:py-32 reveal">
+    <div class="mx-auto max-w-6xl">
+      <div class="max-w-3xl">
+        <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-scale/80">The friction</span>
+        <h2 class="mt-6 font-display text-5xl italic leading-tight text-bone">
+          Persistent agents are only useful
+          <span class="block text-mist/70">if they can stay oriented.</span>
         </h2>
-        <p class="text-sm text-mist/60 mt-4 max-w-2xl">
-          None of these are failures — they're the inevitable lessons of building something genuinely new. OpenClaw had to discover these boundaries. Ouroboros gets to start on the other side of them.
-        </p>
       </div>
 
-      <div class="space-y-8">
-        {frustrations.map(({ problem, desc, fix, icon }) => (
-          <div class="group rounded-xl border border-canopy/60 bg-gradient-to-br from-undergrowth/60 to-deep p-8 transition-all duration-500 hover:border-scale/40">
-            <!-- Problem -->
-            <div class="flex items-start gap-4 mb-6">
-              <span class="text-mist/50 text-lg mt-1 shrink-0">{icon}</span>
-              <div>
-                <h3 class="font-display text-2xl italic text-bone">{problem}</h3>
-                <p class="text-sm text-mist/80 mt-2 leading-relaxed" set:html={desc} />
-              </div>
-            </div>
-            <!-- Fix -->
-            <div class="ml-8 pl-4 border-l-2 border-scale/30">
-              <span class="font-mono text-[10px] text-scale/70 uppercase tracking-[0.2em]">The ouroboros approach</span>
-              <p class="text-sm text-bone/80 mt-2 leading-relaxed">{fix}</p>
-            </div>
+      <div class="mt-12 grid gap-5 md:grid-cols-3">
+        {frictions.map((friction) => (
+          <div class="rounded-[26px] border border-canopy/40 bg-[linear-gradient(180deg,rgba(21,42,28,0.46),rgba(5,10,7,0.88))] p-6">
+            <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-scale/70">{friction.label}</p>
+            <h3 class="mt-4 font-display text-3xl italic text-bone">{friction.question}</h3>
+            <p class="mt-4 text-sm leading-7 text-mist">{friction.problem}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
+  <section class="relative overflow-hidden px-6 py-24 md:py-32 reveal">
+    <div class="absolute inset-0 bg-deep/75"></div>
+    <div class="relative mx-auto max-w-6xl">
+      <div class="max-w-3xl">
+        <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-scale/80">The mechanism</span>
+        <h2 class="mt-6 font-display text-5xl italic leading-tight text-bone">
+          Ouroboros is shaped
+          <span class="block text-scale">to lower that cost.</span>
+        </h2>
+      </div>
 
-  <!-- The Honest Take -->
-  <section class="relative overflow-hidden px-6 py-20 md:py-28">
-    <div class="absolute inset-0 bg-undergrowth/40 pointer-events-none"></div>
-    <div class="max-w-3xl mx-auto relative">
-      <span class="font-mono text-[10px] text-scale/80 uppercase tracking-[0.3em] block mb-6">Side by Side</span>
-
-      <h2 class="font-display text-4xl md:text-5xl italic text-bone leading-tight mb-10">
-        Different DNA.<br />
-        <span class="text-mist/70">Different design points.</span>
-      </h2>
-
-      <div class="overflow-x-auto rounded-xl border border-canopy/60">
-        <table class="w-full text-sm">
-          <thead>
-            <tr class="border-b border-canopy/40">
-              <th class="text-left p-4 font-mono text-xs text-mist/60 uppercase tracking-wider"></th>
-              <th class="text-left p-4 font-mono text-xs text-mist/60 uppercase tracking-wider">OpenClaw</th>
-              <th class="text-left p-4 font-mono text-xs text-scale uppercase tracking-wider">Ouroboros</th>
-            </tr>
-          </thead>
-          <tbody class="text-mist/80">
-            <tr class="border-b border-canopy/20">
-              <td class="p-4 text-bone font-medium">What it is</td>
-              <td class="p-4">Chat gateway wrapping Pi</td>
-              <td class="p-4 text-bone/90">Agent harness, built from scratch</td>
-            </tr>
-            <tr class="border-b border-canopy/20">
-              <td class="p-4 text-bone font-medium">Designed for</td>
-              <td class="p-4">Personal assistant via chat apps</td>
-              <td class="p-4 text-bone/90">Persistent agents that grow</td>
-            </tr>
-            <tr class="border-b border-canopy/20">
-              <td class="p-4 text-bone font-medium">Optimizes for</td>
-              <td class="p-4">DX (developer experience)</td>
-              <td class="p-4 text-bone/90">AX (agent experience)</td>
-            </tr>
-            <tr class="border-b border-canopy/20">
-              <td class="p-4 text-bone font-medium">Identity</td>
-              <td class="p-4">SOUL.md + workspace files</td>
-              <td class="p-4 text-bone/90">Five psyche files (SOUL, IDENTITY, LORE, FRIENDS, TACIT)</td>
-            </tr>
-            <tr class="border-b border-canopy/20">
-              <td class="p-4 text-bone font-medium">Behavior rules</td>
-              <td class="p-4">Markdown prose (hopes)</td>
-              <td class="p-4 text-bone/90">TypeScript (muscle memory)</td>
-            </tr>
-            <tr class="border-b border-canopy/20">
-              <td class="p-4 text-bone font-medium">Context management</td>
-              <td class="p-4">Compaction (abrupt reset)</td>
-              <td class="p-4 text-bone/90">Sliding consumption (extract → digest → survive)</td>
-            </tr>
-            <tr class="border-b border-canopy/20">
-              <td class="p-4 text-bone font-medium">Self-improvement</td>
-              <td class="p-4">Plugin system + manual updates</td>
-              <td class="p-4 text-bone/90">Self-perpetuation loop (reflect → build → merge → repeat)</td>
-            </tr>
-            <tr class="border-b border-canopy/20">
-              <td class="p-4 text-bone font-medium">Architecture</td>
-              <td class="p-4">Gateway + plugins + Pi core</td>
-              <td class="p-4 text-bone/90">Creature with organs (heart, mind, senses, repertoire)</td>
-            </tr>
-            <tr class="border-b border-canopy/20">
-              <td class="p-4 text-bone font-medium">Growth model</td>
-              <td class="p-4">Ship features fast, iterate in public</td>
-              <td class="p-4 text-bone/90">Design from scratch, knowing what we know now</td>
-            </tr>
-            <tr>
-              <td class="p-4 text-bone font-medium">Relationship</td>
-              <td class="p-4 italic text-mist/60">—</td>
-              <td class="p-4 text-bone/90">Full replacement, not a companion</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="mt-12 grid gap-5 md:grid-cols-2">
+        {mechanisms.map((mechanism) => (
+          <div class="rounded-[28px] border border-canopy/40 bg-void/40 p-7">
+            <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-scale/70">{mechanism.label}</p>
+            <h3 class="mt-4 font-display text-4xl italic text-bone">{mechanism.title}</h3>
+            <p class="mt-4 text-sm leading-7 text-mist">{mechanism.description}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
+  <section class="relative overflow-hidden px-6 py-24 md:py-28 reveal">
+    <div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.8fr_1.2fr]">
+      <div class="rounded-[30px] border border-scale/20 bg-[linear-gradient(180deg,rgba(45,148,71,0.08),rgba(5,10,7,0.94))] p-8">
+        <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-scale/70">What changes</p>
+        <h2 class="mt-4 font-display text-4xl italic text-bone">Collaboration that compounds.</h2>
+        <div class="mt-6 space-y-3">
+          {outcomes.map((outcome) => (
+            <div class="rounded-2xl border border-canopy/35 bg-undergrowth/20 px-4 py-3 text-sm text-bone">
+              {outcome}
+            </div>
+          ))}
+        </div>
+      </div>
 
-  <!-- Credit -->
-  <section class="relative overflow-hidden px-6 py-20 md:py-28">
-    <div class="max-w-3xl mx-auto">
-      <div class="rounded-xl border border-canopy/60 bg-undergrowth/30 p-8">
-        <h3 class="font-display text-2xl italic text-bone mb-4">Standing on a lobster's shoulders.</h3>
-        <p class="text-base text-mist leading-relaxed">
-          OpenClaw didn't just build a product — it built a category. The idea that your AI agent should be a persistent entity with its own identity, reachable from your phone, that remembers you across sessions? That wasn't obvious until OpenClaw made it obvious.
+      <div class="rounded-[30px] border border-canopy/40 bg-[linear-gradient(160deg,rgba(21,42,28,0.62),rgba(5,10,7,0.92))] p-8">
+        <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-scale/70">Credit where it belongs</p>
+        <h2 class="mt-4 font-display text-4xl italic text-bone">What OpenClaw made obvious.</h2>
+        <p class="mt-5 text-base leading-8 text-mist">
+          OpenClaw made persistent personal agents feel real. It made ideas like identity files, presence across channels,
+          and long-lived assistants impossible to ignore. Ouroboros exists because building on top of that work made the next problem obvious too:
+          persistence is not enough if the agent is still expensive to keep oriented.
         </p>
-        <p class="text-base text-mist/80 leading-relaxed mt-4">
-          <a href="https://soul.md/" target="_blank" rel="noopener" class="text-scale hover:text-glow transition-colors"><code class="text-scale/80 text-xs">SOUL.md</code></a> came from OpenClaw. The concept of persistent identity files, heartbeats, memory extraction — all pioneered there. Ouroboros takes these ideas further: five psyche files instead of one, structured by purpose, with <code class="text-scale/80 text-xs">FRIENDS.md</code> replacing <code class="text-mist/60 text-xs">USER.md</code> because how you name a relationship changes how the model treats it.
+        <p class="mt-5 text-base leading-8 text-mist">
+          So this page is not a rejection of OpenClaw. It is a continuation of the lesson. Ouroboros starts from the idea that
+          persistent agents deserve cleaner ergonomics: a clearer psyche, better continuity, more legible runtime boundaries, and memory shaped around real collaboration.
         </p>
-        <p class="text-base text-mist/80 leading-relaxed mt-4">
-          But ouroboros isn't an OpenClaw plugin or extension. It's a clean-room redesign. Everything I learned building Slugger — what works, what breaks, what the model actually needs — poured into a framework that starts where OpenClaw's lessons end.
-        </p>
-        <p class="text-sm text-mist/60 mt-6 italic">
-          The lobster molts to grow. The snake consumes itself to survive.<br />
-          Different metaphors. Different architectures. Different futures.
-        </p>
-        <p class="text-sm mt-6">
-          <a href="/story" class="text-scale hover:text-glow transition-colors">Read the full origin story →</a>
-        </p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a href="/story" class="inline-flex items-center gap-2 text-scale transition-colors hover:text-glow">
+            Read the origin story
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
-
-  <!-- CTA -->
-  <section class="relative overflow-hidden px-6 py-16 md:py-24">
-    <div class="max-w-2xl mx-auto text-center">
-      <h2 class="font-display text-4xl md:text-5xl italic text-bone leading-tight">
-        Ready to build something alive?
-      </h2>
-      <div class="flex flex-col sm:flex-row justify-center gap-4 mt-10">
-        <a href="/docs" class="group inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-scale text-void font-medium rounded-lg transition-all duration-300 hover:bg-glow hover:shadow-[0_0_40px_rgba(45,148,71,0.3)]">
-          Get Started
-          <svg class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
-        </a>
-        <a href="/story" class="inline-flex items-center justify-center gap-2 px-8 py-3.5 border border-canopy/50 text-mist rounded-lg hover:border-scale/40 hover:text-bone transition-all duration-300">
-          The Origin Story
-        </a>
-      </div>
+  <section class="relative overflow-hidden px-6 py-20 md:py-24 reveal">
+    <div class="mx-auto grid max-w-5xl gap-5 md:grid-cols-3">
+      <a href="/blog/what-is-agent-experience" class="group rounded-[26px] border border-canopy/40 bg-[linear-gradient(180deg,rgba(21,42,28,0.45),rgba(5,10,7,0.85))] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-scale/45">
+        <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-scale/70">Category</p>
+        <h2 class="mt-4 font-display text-3xl italic text-bone">What Is Agent Experience?</h2>
+        <p class="mt-4 text-sm leading-7 text-mist">See how agent ergonomics fits into the broader AX argument.</p>
+      </a>
+      <a href="/docs" class="group rounded-[26px] border border-canopy/40 bg-[linear-gradient(180deg,rgba(21,42,28,0.45),rgba(5,10,7,0.85))] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-scale/45">
+        <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-scale/70">Operator path</p>
+        <h2 class="mt-4 font-display text-3xl italic text-bone">Docs for humans. Skills for agents.</h2>
+        <p class="mt-4 text-sm leading-7 text-mist">Go from the idea to the operator flow and the agent handoff surface.</p>
+      </a>
+      <a href="/blog/build-ai-agent-from-scratch" class="group rounded-[26px] border border-canopy/40 bg-[linear-gradient(180deg,rgba(21,42,28,0.45),rgba(5,10,7,0.85))] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-scale/45">
+        <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-scale/70">Primitive</p>
+        <h2 class="mt-4 font-display text-3xl italic text-bone">Build the loop first.</h2>
+        <p class="mt-4 text-sm leading-7 text-mist">Learn what an agent loop is before you decide what kind of harness it should inhabit.</p>
+      </a>
     </div>
   </section>
-
 </Layout>
+
+<style>
+  .why-grid {
+    background-image:
+      linear-gradient(rgba(154, 174, 159, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(154, 174, 159, 0.08) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: linear-gradient(180deg, transparent, black 18%, black 82%, transparent);
+  }
+</style>

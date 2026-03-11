@@ -1,0 +1,78 @@
+---
+import DocsPageShell from '../../components/DocsPageShell.astro'
+
+const pages = [
+  {
+    href: '/docs/getting-started',
+    label: 'Getting Started',
+    title: 'Prompt your way into the harness.',
+    description: 'Use your agent as the operator from the first run instead of following a stale checklist by hand.',
+  },
+  {
+    href: '/docs/bundles-and-psyche',
+    label: 'Bundles And Psyche',
+    title: 'Your agent has a portable self.',
+    description: 'Learn what lives in a bundle, what the psyche files are for, and how to ask your agent to inspect them live.',
+  },
+  {
+    href: '/docs/continuity-and-memory',
+    label: 'Continuity And Memory',
+    title: 'Keep the thread.',
+    description: 'Ask your agent how continuity, notes, and memory work in the current install or repo instead of trusting fixed prose.',
+  },
+  {
+    href: '/docs/architecture',
+    label: 'Architecture',
+    title: 'Understand the body.',
+    description: 'Use the docs to place the parts, then have your agent inspect the live codebase for the exact answers.',
+  },
+  {
+    href: '/docs/skills-and-prompts',
+    label: 'Skills And Prompts',
+    title: 'Hand work off cleanly.',
+    description: 'Use prompts for simple questions and skill handoffs for deeper tasks that need the latest local truth.',
+  },
+  {
+    href: '/what-is-an-agent-harness',
+    label: 'What Is An Agent Harness?',
+    title: 'Start from first principles.',
+    description: 'Use the evergreen explainer if you need to place the category before you touch the operator docs.',
+  },
+]
+---
+
+<DocsPageShell
+  title="Docs for humans. Skills for agents."
+  description="These docs stay evergreen on purpose. For live commands, current internals, or implementation details, ask your agent to inspect the latest local install or repo."
+  eyebrow="Documentation"
+  canonical="https://ouroboros.bot/docs"
+  intro="The website should help you place the object and choose the next question. Your agent should fetch the real-time answer from the code, the local install, or the bundle it is actually working inside."
+  noteTitle="Operator rule"
+  noteBody="If you need exact commands, tool lists, file names, or runtime behavior, ask your agent for the live answer instead of trusting a static page."
+>
+  <section class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+    {pages.map((page) => (
+      <a href={page.href} class="group rounded-[26px] border border-canopy/40 bg-[linear-gradient(180deg,rgba(21,42,28,0.5),rgba(5,10,7,0.84))] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-scale/45 hover:shadow-[0_18px_50px_rgba(0,0,0,0.26)]">
+        <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-scale/70">{page.label}</p>
+        <h2 class="mt-4 font-display text-3xl italic leading-tight text-bone">{page.title}</h2>
+        <p class="mt-4 text-sm leading-7 text-mist">{page.description}</p>
+      </a>
+    ))}
+  </section>
+
+  <section class="grid gap-5 lg:grid-cols-[0.95fr_1.05fr]">
+    <div class="rounded-[28px] border border-fang/25 bg-[linear-gradient(180deg,rgba(211,72,61,0.08),rgba(13,31,19,0.76))] p-7">
+      <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-fang/75">How to use this section</p>
+      <ol class="mt-5 space-y-3 text-sm leading-7 text-mist">
+        <li>Use the page to understand the concept and pick your next question.</li>
+        <li>Paste the sample prompt into your agent for the current, machine-specific answer.</li>
+        <li>If the job is deeper, point your agent at the matching skill and tell it to inspect the live code or bundle before acting.</li>
+      </ol>
+    </div>
+
+    <div class="rounded-[28px] border border-scale/20 bg-[linear-gradient(180deg,rgba(45,148,71,0.08),rgba(5,10,7,0.94))] p-7">
+      <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-scale/75">Default prompt</p>
+      <pre class="mt-5 whitespace-pre-wrap font-mono text-sm leading-7 text-bone/85">Inspect the latest local Ouroboros install or repo on this machine and answer this using the current source of truth, not cached assumptions: [replace with your question]. If there is any ambiguity, tell me what you checked.</pre>
+    </div>
+  </section>
+</DocsPageShell>

@@ -43,29 +43,23 @@ const {
     <div class="relative mx-auto max-w-6xl">
       <div class="max-w-3xl mb-10">
         <span class="text-xs text-mist/40 uppercase tracking-wider">{eyebrow}</span>
-        <h1 class="mt-5 font-display text-5xl italic leading-tight text-bone md:text-6xl lg:text-7xl">
+        <h1 class="mt-5 font-display text-4xl italic leading-tight text-bone md:text-5xl">
           {title}
         </h1>
         <p class="mt-6 text-lg leading-8 text-mist md:text-xl">
           {description}
         </p>
+        {intro && (
+          <p class="mt-4 text-sm leading-7 text-mist/70 max-w-3xl">{intro}</p>
+        )}
       </div>
 
-      {(noteTitle || noteBody || intro) && (
-        <div class="grid gap-5 lg:grid-cols-2 mb-16">
-          {intro && (
-            <div class="rounded-2xl border border-canopy bg-undergrowth/30 p-7">
-              <p class="text-sm leading-7 text-mist">{intro}</p>
-            </div>
-          )}
-          {(noteTitle || noteBody) && (
-            <aside class="rounded-2xl border border-canopy bg-undergrowth/30 p-7">
-              {noteTitle && <p class="font-display text-xl italic text-bone">{noteTitle}</p>}
-              {noteBody && <p class="mt-3 text-sm leading-7 text-mist">{noteBody}</p>}
-              <slot name="aside" />
-            </aside>
-          )}
-        </div>
+      {(noteTitle || noteBody) && (
+        <aside class="mt-8 border-l-[3px] border-scale/40 pl-6 max-w-2xl mb-16">
+          {noteTitle && <p class="font-display text-xl italic text-bone">{noteTitle}</p>}
+          {noteBody && <p class="mt-3 text-sm leading-7 text-mist">{noteBody}</p>}
+          <slot name="aside" />
+        </aside>
       )}
 
       <div class="relative space-y-14">

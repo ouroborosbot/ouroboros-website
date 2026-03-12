@@ -50,26 +50,31 @@ const pages = [
   noteTitle="Operator rule"
   noteBody="If you need exact commands, tool lists, file names, or runtime behavior, ask your agent for the live answer instead of trusting a static page."
 >
-  <section class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-    {pages.map((page) => (
-      <a href={page.href} class="group rounded-2xl border border-canopy bg-gradient-to-br from-undergrowth to-deep/80 p-5 transition-all duration-300 hover:border-scale/50 hover:translate-y-[-2px] hover:shadow-[0_6px_30px_rgba(45,148,71,0.12)]">
-        <h2 class="font-display text-2xl italic leading-tight text-bone">{page.title}</h2>
-        <p class="mt-3 text-sm leading-relaxed text-mist/60">{page.description}</p>
-      </a>
-    ))}
+  <section>
+    <div class="divide-y divide-canopy/30">
+      {pages.map((page, i) => (
+        <a href={page.href} class="group grid grid-cols-[3rem_1fr] gap-4 py-8 first:pt-0 last:pb-0 items-start">
+          <span class="font-mono text-sm text-mist/30 group-hover:text-scale transition-colors">{String(i + 1).padStart(2, '0')}</span>
+          <div>
+            <h2 class="font-display text-2xl italic text-bone group-hover:text-scale transition-colors">{page.title}</h2>
+            <p class="mt-2 text-sm text-mist/60 leading-relaxed">{page.description}</p>
+          </div>
+        </a>
+      ))}
+    </div>
   </section>
 
-  <section class="grid gap-5 lg:grid-cols-[0.95fr_1.05fr]">
-    <div class="rounded-2xl border border-canopy bg-undergrowth/30 p-7">
+  <section class="grid gap-12 lg:grid-cols-2">
+    <div>
       <p class="font-display text-xl italic text-bone">How to use this section</p>
-      <ol class="mt-4 space-y-3 text-sm leading-7 text-mist">
+      <ol class="mt-4 space-y-3 text-sm leading-7 text-mist list-decimal pl-5">
         <li>Use the page to understand the concept and pick your next question.</li>
         <li>Paste the sample prompt into your agent for the current, machine-specific answer.</li>
         <li>If the job is deeper, point your agent at the matching skill and tell it to inspect the live code or bundle before acting.</li>
       </ol>
     </div>
 
-    <div class="rounded-2xl border border-canopy bg-undergrowth/30 p-7">
+    <div>
       <p class="font-display text-xl italic text-bone">Default prompt</p>
       <pre class="mt-4 whitespace-pre-wrap font-mono text-sm leading-7 text-bone/85">Inspect the latest local Ouroboros install or repo on this machine and answer this using the current source of truth, not cached assumptions: [replace with your question]. If there is any ambiguity, tell me what you checked.</pre>
     </div>

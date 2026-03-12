@@ -108,19 +108,21 @@ const tutorial = {
   <section class="px-6 pb-12">
     <div class="max-w-3xl mx-auto">
       <span class="text-xs text-mist/40 uppercase tracking-wider block mb-6">Essays</span>
-      {essays.map(post => (
-        <a href={post.href} class="group block rounded-xl border border-canopy bg-gradient-to-br from-undergrowth to-deep/80 p-6 transition-all duration-300 hover:border-scale/40">
-          <h2 class="font-display text-xl italic text-bone leading-snug">
-            {post.title}
-          </h2>
-          <p class="text-xs text-mist/60 mt-2 leading-relaxed">{post.description}</p>
-          <div class="flex items-center gap-2 mt-4">
-            <span class="text-xs text-mist/40">By {post.author}</span>
-            <span class="text-xs text-mist/30">·</span>
-            <span class="text-xs text-mist/40">{post.date}</span>
-          </div>
-        </a>
-      ))}
+      <div class="space-y-5">
+        {essays.map(post => (
+          <a href={post.href} class="group block rounded-xl border border-canopy bg-gradient-to-br from-undergrowth to-deep/80 p-6 transition-all duration-300 hover:border-scale/40">
+            <h2 class="font-display text-xl italic text-bone leading-snug">
+              {post.title}
+            </h2>
+            <p class="text-xs text-mist/60 mt-2 leading-relaxed">{post.description}</p>
+            <div class="flex items-center gap-2 mt-4">
+              <span class="text-xs text-mist/40">By {post.author}</span>
+              <span class="text-xs text-mist/30">·</span>
+              <span class="text-xs text-mist/40">{post.date}</span>
+            </div>
+          </a>
+        ))}
+      </div>
     </div>
   </section>
 

@@ -10,27 +10,27 @@ const currentPath = Astro.url.pathname
 const isActive = (href: string) => href === '/' ? currentPath === '/' : currentPath.startsWith(href)
 ---
 
-<nav class="fixed top-0 inset-x-0 z-40">
-  <div class="backdrop-blur-xl bg-void/80 border-b border-canopy/40">
-    <div class="max-w-6xl mx-auto flex items-center justify-between h-16 px-6">
+<nav class="fixed top-0 inset-x-0 z-40 px-4 pt-4 md:px-6">
+  <div class="mx-auto max-w-6xl rounded-full border border-canopy/45 bg-[rgba(7,12,8,0.76)] shadow-[0_10px_40px_rgba(0,0,0,0.16)] backdrop-blur-md">
+    <div class="flex h-16 items-center justify-between px-5 md:px-6">
       <!-- Logo -->
       <a href="/" class="flex items-center gap-3 group">
         <img
           src="/images/ouroboros.png"
           alt="Ouroboros logo"
-          class="w-9 h-9 transition-transform duration-300 group-hover:rotate-12"
+          class="w-9 h-9 transition-transform duration-300 group-hover:rotate-6"
         />
-        <span class="font-display text-xl text-bone tracking-wide italic">ouroboros</span>
+        <span class="font-display text-[1.35rem] text-bone tracking-[0.04em] italic">ouroboros</span>
       </a>
 
       <!-- Desktop links -->
-      <div class="hidden md:flex items-center gap-8">
+      <div class="hidden md:flex items-center gap-6">
         {links.map(link => (
           <a
             href={link.href}
             class:list={[
-              'text-sm font-medium tracking-wide transition-colors duration-200',
-              isActive(link.href) ? 'text-scale' : 'text-mist hover:text-bone'
+              'text-[0.82rem] uppercase tracking-[0.24em] transition-colors duration-200',
+              isActive(link.href) ? 'text-bone' : 'text-mist hover:text-bone'
             ]}
           >
             {link.label}
@@ -40,7 +40,7 @@ const isActive = (href: string) => href === '/' ? currentPath === '/' : currentP
           href="https://github.com/ouroborosbot/ouroboros"
           target="_blank"
           rel="noopener"
-          class="text-mist hover:text-bone transition-colors duration-200"
+          class="inline-flex items-center gap-2 rounded-full border border-canopy/45 px-3 py-2 text-mist hover:text-bone transition-colors duration-200"
           aria-label="GitHub"
         >
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -67,14 +67,14 @@ const isActive = (href: string) => href === '/' ? currentPath === '/' : currentP
   </div>
 
   <!-- Mobile menu -->
-  <div id="mobile-menu" class="hidden md:hidden fixed inset-0 top-16 bg-void/95 backdrop-blur-2xl z-30">
-    <div class="flex flex-col items-center gap-8 pt-24">
+  <div id="mobile-menu" class="hidden md:hidden mx-auto mt-3 max-w-6xl rounded-[1.4rem] border border-canopy/40 bg-[rgba(7,12,8,0.94)] px-6 py-8 shadow-[0_24px_70px_rgba(0,0,0,0.26)] backdrop-blur-xl">
+    <div class="flex flex-col gap-6">
       {links.map(link => (
         <a
           href={link.href}
           class:list={[
-            'text-3xl font-display italic tracking-wide transition-colors duration-200',
-            isActive(link.href) ? 'text-scale' : 'text-mist hover:text-bone'
+            'font-display text-3xl italic tracking-wide transition-colors duration-200',
+            isActive(link.href) ? 'text-bone' : 'text-mist hover:text-bone'
           ]}
         >
           {link.label}
@@ -84,9 +84,10 @@ const isActive = (href: string) => href === '/' ? currentPath === '/' : currentP
         href="https://github.com/ouroborosbot/ouroboros"
         target="_blank"
         rel="noopener"
-        class="text-mist hover:text-bone transition-colors duration-200 mt-4 font-display italic text-xl"
+        class="mt-2 inline-flex items-center gap-2 text-mist hover:text-bone transition-colors duration-200 font-mono text-xs uppercase tracking-[0.24em]"
       >
-        GitHub &rarr;
+        GitHub
+        <span aria-hidden="true">&rarr;</span>
       </a>
     </div>
   </div>
@@ -106,8 +107,6 @@ const isActive = (href: string) => href === '/' ? currentPath === '/' : currentP
         iconOpen.classList.toggle('hidden');
         iconClose.classList.toggle('hidden');
         toggle.setAttribute('aria-expanded', String(!isOpen));
-        // Prevent body scroll when menu is open
-        document.body.style.overflow = isOpen ? '' : 'hidden';
       });
     }
 
@@ -119,7 +118,6 @@ const isActive = (href: string) => href === '/' ? currentPath === '/' : currentP
           iconOpen.classList.remove('hidden');
           iconClose.classList.add('hidden');
           toggle.setAttribute('aria-expanded', 'false');
-          document.body.style.overflow = '';
         });
       });
     }

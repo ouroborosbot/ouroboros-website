@@ -12,14 +12,14 @@ const {
 } = Astro.props
 ---
 
-<div class="rounded-[24px] border border-canopy/35 bg-[linear-gradient(180deg,rgba(21,42,28,0.46),rgba(5,10,7,0.88))] overflow-hidden">
-  <div class="flex items-center gap-2 border-b border-canopy/20 px-5 py-3">
+<div class="surface-card">
+  <div class="surface-rule flex items-center gap-3 px-5 py-4">
     <span class="h-1.5 w-1.5 rounded-full bg-scale/70"></span>
-    <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-scale/75">{label}</span>
+    <span class="rule-label">{label}</span>
   </div>
-  <pre class="whitespace-pre-wrap px-5 py-5 font-mono text-sm leading-7 text-bone/85">{prompt}</pre>
+  <pre class="whitespace-pre-wrap px-5 py-5 font-mono text-sm leading-7 text-bone/88">{prompt}</pre>
   {footnote && (
-    <div class="border-t border-canopy/20 px-5 py-3 text-xs leading-6 text-mist/60">
+    <div class="surface-rule px-5 py-3 text-xs leading-6 text-mist/60">
       {footnote}
     </div>
   )}

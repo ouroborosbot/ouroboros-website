@@ -52,8 +52,8 @@ const pages = [
 >
   <section class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
     {pages.map((page) => (
-      <a href={page.href} class="group rounded-[26px] border border-canopy/40 bg-[linear-gradient(180deg,rgba(21,42,28,0.5),rgba(5,10,7,0.84))] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-scale/45 hover:shadow-[0_18px_50px_rgba(0,0,0,0.26)]">
-        <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-scale/70">{page.label}</p>
+      <a href={page.href} class="surface-link group p-6">
+        <p class="rule-label">{page.label}</p>
         <h2 class="mt-4 font-display text-3xl italic leading-tight text-bone">{page.title}</h2>
         <p class="mt-4 text-sm leading-7 text-mist">{page.description}</p>
       </a>
@@ -61,8 +61,8 @@ const pages = [
   </section>
 
   <section class="grid gap-5 lg:grid-cols-[0.95fr_1.05fr]">
-    <div class="rounded-[28px] border border-fang/25 bg-[linear-gradient(180deg,rgba(211,72,61,0.08),rgba(13,31,19,0.76))] p-7">
-      <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-fang/75">How to use this section</p>
+    <div class="surface-note p-7">
+      <p class="rule-label text-fang/75">How to use this section</p>
       <ol class="mt-5 space-y-3 text-sm leading-7 text-mist">
         <li>Use the page to understand the concept and pick your next question.</li>
         <li>Paste the sample prompt into your agent for the current, machine-specific answer.</li>
@@ -70,8 +70,8 @@ const pages = [
       </ol>
     </div>
 
-    <div class="rounded-[28px] border border-scale/20 bg-[linear-gradient(180deg,rgba(45,148,71,0.08),rgba(5,10,7,0.94))] p-7">
-      <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-scale/75">Default prompt</p>
+    <div class="surface-card p-7">
+      <p class="rule-label">Default prompt</p>
       <pre class="mt-5 whitespace-pre-wrap font-mono text-sm leading-7 text-bone/85">Inspect the latest local Ouroboros install or repo on this machine and answer this using the current source of truth, not cached assumptions: [replace with your question]. If there is any ambiguity, tell me what you checked.</pre>
     </div>
   </section>

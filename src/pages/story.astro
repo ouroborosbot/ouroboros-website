@@ -208,28 +208,17 @@ const timeline = [
                     <p class="font-display text-sm italic text-mist/30 mt-1">Clawdbot → Moltbot</p>
                   </div>
 
-                  <!-- The transformation — dissolving fragments becoming scales -->
-                  <div class="flex flex-col items-center gap-1 px-2 molt-center">
-                    <svg viewBox="0 0 40 120" class="w-8 h-24 md:w-10 md:h-28" aria-hidden="true">
+                  <!-- The transformation arrow -->
+                  <div class="flex flex-col items-center justify-center px-4 molt-center">
+                    <svg viewBox="0 0 60 24" class="w-16 md:w-24" aria-hidden="true">
                       <defs>
-                        <linearGradient id="transGrad" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="0%" stop-color="var(--color-fang)" stop-opacity="0.4" />
-                          <stop offset="50%" stop-color="var(--color-shadow)" stop-opacity="0.3" />
-                          <stop offset="100%" stop-color="var(--color-scale)" stop-opacity="0.5" />
+                        <linearGradient id="transGrad" x1="0" y1="0" x2="1" y2="0">
+                          <stop offset="0%" stop-color="var(--color-fang)" stop-opacity="0.5" />
+                          <stop offset="100%" stop-color="var(--color-scale)" stop-opacity="0.7" />
                         </linearGradient>
                       </defs>
-                      {/* Scattered shell fragments at top dissolving into scale shapes at bottom */}
-                      <rect x="12" y="6" width="4" height="3" rx="0.5" fill="var(--color-fang)" opacity="0.3" transform="rotate(15, 14, 7)" class="molt-particle-2" />
-                      <rect x="22" y="10" width="3" height="2.5" rx="0.5" fill="var(--color-fang)" opacity="0.25" transform="rotate(-10, 23, 11)" class="molt-particle-3" />
-                      <rect x="16" y="18" width="3.5" height="2.5" rx="0.5" fill="var(--color-fang)" opacity="0.2" transform="rotate(5, 18, 19)" class="molt-particle-1" />
-                      {/* Central flow line */}
-                      <path d="M20 28 C20 45, 20 65, 20 85" stroke="url(#transGrad)" stroke-width="0.8" fill="none" stroke-dasharray="3 4" />
-                      {/* Arrow head */}
-                      <path d="M16 78 L20 88 L24 78" stroke="var(--color-scale)" stroke-width="1" fill="none" opacity="0.4" />
-                      {/* Scale-shaped diamonds forming at bottom */}
-                      <path d="M18 95 L20 90 L22 95 L20 100 Z" fill="var(--color-scale)" opacity="0.2" />
-                      <path d="M12 102 L14 97 L16 102 L14 107 Z" fill="var(--color-scale)" opacity="0.15" />
-                      <path d="M24 102 L26 97 L28 102 L26 107 Z" fill="var(--color-scale)" opacity="0.15" />
+                      <line x1="4" y1="12" x2="44" y2="12" stroke="url(#transGrad)" stroke-width="1.5" stroke-dasharray="4 3" />
+                      <path d="M42 6 L54 12 L42 18" fill="none" stroke="var(--color-scale)" stroke-width="1.5" opacity="0.6" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                   </div>
 

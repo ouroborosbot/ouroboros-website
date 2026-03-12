@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro'
+import SerpentGuidePreview from '../components/SerpentGuidePreview.astro'
 
 const psycheFiles = [
   { file: 'SOUL.md', role: 'What you are.', desc: 'Core invariants and temperament. The part that survives every context reset.', accentClass: 'bg-scale' },
@@ -346,35 +347,11 @@ const organs = [
           Hatch your first agent.
         </h2>
         <p class="text-sm text-mist mt-4">
-          Every agent starts as an egg. The Adoption Specialist guides you through hatching.
+          Every agent starts as an egg. The serpent guide walks you through hatching.
         </p>
       </div>
 
-      <div class="max-w-2xl mx-auto rounded-xl border border-canopy/50 bg-undergrowth/40 overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.5),0_0_80px_rgba(45,148,71,0.08)]">
-        <div class="flex items-center gap-2 px-5 py-3 border-b border-canopy/30 bg-undergrowth/30">
-          <span class="w-2.5 h-2.5 rounded-full bg-fang/50"></span>
-          <span class="w-2.5 h-2.5 rounded-full bg-scale/30"></span>
-          <span class="w-2.5 h-2.5 rounded-full bg-canopy/40"></span>
-          <span class="font-mono text-[10px] text-mist/50 ml-3">~/agents</span>
-        </div>
-        <pre class="p-6 text-sm font-mono leading-loose overflow-x-auto"><code><span class="text-mist/60"># start the daemon</span>
-<span class="text-mist">$</span> <span class="text-bone">npx ouro.bot</span>
-<span class="text-glow/70">&#x1F95A; ... &#x1F40D;</span>
-
-<span class="text-mist/60"># the Adoption Specialist guides you through</span>
-<span class="text-mist/60"># provider setup, naming, and personality</span>
-
-<span class="text-bone">~/AgentBundles/MyAgent.ouro/</span>
-  <span class="text-mist">agent.json</span>         <span class="text-mist/60"># provider, version, enabled</span>
-  <span class="text-mist">psyche/</span>
-    <span class="text-glow/70">SOUL.md</span>          <span class="text-mist/60"># what you are</span>
-    <span class="text-glow/70">IDENTITY.md</span>      <span class="text-mist/60"># how you show up</span>
-    <span class="text-glow/70">LORE.md</span>          <span class="text-mist/60"># where you come from</span>
-    <span class="text-glow/70">TACIT.md</span>         <span class="text-mist/60"># what you've learned</span>
-    <span class="text-glow/70">ASPIRATIONS.md</span>   <span class="text-mist/60"># where you're going</span>
-
-<span class="text-mist">$</span> <span class="text-bone terminal-cursor">ouro</span></code></pre>
-      </div>
+      <SerpentGuidePreview />
 
       <div class="flex flex-col sm:flex-row justify-center gap-4 mt-12">
         <a href="/docs" class="group inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-scale text-void font-medium rounded-lg transition-all duration-300 hover:bg-glow hover:shadow-[0_0_40px_rgba(45,148,71,0.3)]">

@@ -1,44 +1,25 @@
 ---
 import DocsPageShell from '../../components/DocsPageShell.astro'
 import PromptCard from '../../components/PromptCard.astro'
+import SerpentGuidePreview from '../../components/SerpentGuidePreview.astro'
 ---
 
 <DocsPageShell
   title="Getting Started"
-  description="Start with a prompt, not a static checklist. Let your agent inspect the latest local install, machine state, and bundle layout before it tells you what to do."
+  description="Run one command. The serpent guide handles the rest."
   eyebrow="Operator Guide"
   canonical="https://ouroboros.bot/docs/getting-started"
-  intro="This page is for first runs, fresh machines, or bringing a new agent into the harness. The docs explain the flow. Your agent should provide the current commands."
-  noteTitle="Recommended handoff"
-  noteBody="If your agent can browse the site, point it at /skills/bootstrap-agent.md and tell it to inspect the latest local setup before making changes."
+  intro="Setup is a conversation, not a checklist. The serpent guide walks you through provider setup, naming, and personality — you just answer its questions."
 >
-  <section class="grid gap-5 md:grid-cols-2">
-    <PromptCard
-      prompt={`I want to run Ouroboros on this machine for the first time. Inspect the latest local install or repo, tell me the exact setup steps, and do not assume old docs are current.`}
-      footnote="Use this when you want a live setup walkthrough instead of a frozen quickstart."
-    />
-    <PromptCard
-      prompt={`Create a new agent bundle under ~/AgentBundles called <agent>.ouro. Explain each file you create, and use current source-of-truth conventions rather than stale examples.`}
-      footnote="Use this when you want your agent to create the bundle while narrating the shape of it."
-    />
+  <section>
+    <SerpentGuidePreview />
   </section>
 
-  <section class="grid gap-12 lg:grid-cols-2">
-    <div>
-      <p class="font-display text-lg italic text-bone">What this page is for</p>
-      <ul class="mt-3 space-y-3 text-sm leading-7 text-mist">
-        <li>Getting a current install running on a real machine.</li>
-        <li>Creating a new agent bundle in the right place.</li>
-        <li>Having your agent explain what it just created as it goes.</li>
-      </ul>
-    </div>
-
-    <div>
-      <p class="font-display text-lg italic text-bone">When to use a skill</p>
-      <p class="mt-3 text-sm leading-7 text-mist">
-        Simple questions can stop at a prompt. If you want your agent to follow a fuller operator flow,
-        point it at <code>/skills/bootstrap-agent.md</code> and tell it to inspect the latest local environment before acting.
-      </p>
-    </div>
+  <section>
+    <p class="font-display text-xl italic text-bone mb-4">Already running?</p>
+    <PromptCard
+      prompt="Inspect the current Ouroboros install on this machine and tell me what's set up, what's missing, and what I should do next."
+      footnote="Use this if you already ran the setup and want your agent to check the current state."
+    />
   </section>
 </DocsPageShell>

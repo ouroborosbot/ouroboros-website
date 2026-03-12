@@ -8,36 +8,21 @@ import PromptCard from '../../components/PromptCard.astro'
   description="Ouroboros uses a body metaphor because naming and structure affect how an agent navigates the code it has to inhabit."
   eyebrow="Operator Guide"
   canonical="https://ouroboros.bot/docs/architecture"
-  intro="This page explains how to think about the body. Your agent should inspect the live repo or install for the current directory structure and implementation details."
-  noteTitle="Recommended handoff"
-  noteBody="For a deeper walk-through, point your agent at /skills/understand-architecture.md and tell it to use the current local source as the truth."
+  intro="The body metaphor is not decorative. It is an attempt to make the runtime easier for the agent to place, traverse, and modify from the inside."
 >
-  <section class="grid gap-5 md:grid-cols-2">
+  <section>
     <PromptCard
-      prompt={`Inspect the current Ouroboros codebase and explain the main body parts to me in plain English. Tell me what each top-level area does and why the naming matters.`}
-      footnote="Best for orientation before you ask for line-level implementation details."
-    />
-    <PromptCard
-      prompt={`Open the current local Ouroboros source and trace the path for this question: [replace with the part you care about]. Tell me which files matter and why.`}
-      footnote="Best for live architecture questions tied to a concrete behavior."
+      prompt="Inspect the current Ouroboros codebase and explain the main body parts to me in plain English. Tell me what each top-level area does and why the naming matters."
+      footnote="Your agent walks the actual source tree — the answer reflects what's there right now."
     />
   </section>
 
-  <section class="grid gap-12 lg:grid-cols-2">
-    <div>
-      <p class="font-display text-lg italic text-bone">Evergreen truth</p>
-      <p class="mt-3 text-sm leading-7 text-mist">
-        The body metaphor is not decorative. It is an attempt to make the runtime easier for the agent to place, traverse, and modify from the inside.
-      </p>
-    </div>
-
-    <div>
-      <p class="font-display text-lg italic text-bone">What to ask next</p>
-      <ul class="mt-3 space-y-3 text-sm leading-7 text-mist">
-        <li>Which part of the body owns this behavior right now?</li>
-        <li>What does the current runtime do when the agent loses the thread?</li>
-        <li>If I want to extend this safely, where should the change live?</li>
-      </ul>
-    </div>
+  <section>
+    <p class="font-display text-xl italic text-bone mb-4">What to ask next</p>
+    <ul class="space-y-3 text-sm leading-7 text-mist max-w-2xl">
+      <li>Which part of the body owns this behavior right now?</li>
+      <li>What does the current runtime do when the agent loses the thread?</li>
+      <li>If I want to extend this safely, where should the change live?</li>
+    </ul>
   </section>
 </DocsPageShell>

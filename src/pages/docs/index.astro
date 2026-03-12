@@ -6,8 +6,8 @@ const pages = [
   {
     href: '/docs/getting-started',
     label: 'Getting Started',
-    title: 'Prompt your way into the harness.',
-    description: 'Use your agent as the operator from the first run instead of following a stale checklist by hand.',
+    title: 'Run one command. Talk to the serpent.',
+    description: 'npx ouro.bot starts an interactive guide that walks you through provider setup, naming, and personality.',
   },
   {
     href: '/docs/bundles-and-psyche',
@@ -65,22 +65,11 @@ const pages = [
     </div>
   </section>
 
-  <section class="grid gap-12 lg:grid-cols-2">
-    <div>
-      <p class="font-display text-xl italic text-bone">How to use this section</p>
-      <ol class="mt-4 space-y-3 text-sm leading-7 text-mist list-decimal pl-5">
-        <li>Use the page to understand the concept and pick your next question.</li>
-        <li>Paste the sample prompt into your agent for the current, machine-specific answer.</li>
-        <li>If the job is deeper, point your agent at the matching skill and tell it to inspect the live code or bundle before acting.</li>
-      </ol>
-    </div>
-
-    <div>
-      <p class="font-display text-xl italic text-bone mb-4">Default prompt</p>
-      <PromptCard
-        label="Paste into your agent"
-        prompt="Inspect the latest local Ouroboros install or repo on this machine and answer this using the current source of truth, not cached assumptions: [replace with your question]. If there is any ambiguity, tell me what you checked."
-      />
-    </div>
+  <section>
+    <p class="font-display text-xl italic text-bone mb-4">Have a question?</p>
+    <PromptCard
+      prompt="Inspect the latest local Ouroboros install or repo on this machine and answer this using the current source of truth, not cached assumptions: [your question here]"
+      footnote="Each docs page also has a more specific prompt. This one works for anything."
+    />
   </section>
 </DocsPageShell>

@@ -5,28 +5,22 @@ import PromptCard from '../../components/PromptCard.astro'
 
 <DocsPageShell
   title="Skills And Prompts"
-  description="Use prompts for straightforward live questions. Use skills when you want your agent to follow a repeatable operator flow with the current local source as truth."
+  description="Use prompts for straightforward live questions. Use skills when you want your agent to follow a repeatable operator flow."
   eyebrow="Operator Guide"
   canonical="https://ouroboros.bot/docs/skills-and-prompts"
-  intro="This page is about handoff quality. The goal is to give your agent the right amount of structure without trapping it inside stale website copy."
-  noteTitle="Recommended handoff"
-  noteBody="Ask your agent to start with the current skills manifest, choose the relevant skill, and inspect the latest local source before it acts."
+  intro="Simple questions can stop at a prompt. If the job has a repeatable sequence and common failure modes, point your agent at a skill instead."
 >
-  <section class="grid gap-5 md:grid-cols-2">
+  <section>
     <PromptCard
-      prompt={`List the skills currently published for Ouroboros, tell me which one is most relevant to my task, and inspect the local install or repo before you use it.`}
-      footnote="Best for discovery when you know the task but not the right handoff."
-    />
-    <PromptCard
-      prompt={`This is my task: [replace with your task]. Decide whether a simple prompt is enough or whether you should load a matching skill first. Explain your choice before you proceed.`}
-      footnote="Best for avoiding overkill when the job might not need a full skill flow."
+      prompt="List the skills currently published for Ouroboros and tell me which one is most relevant to what I'm working on right now."
+      footnote="Your agent checks the current skills manifest and recommends the right handoff."
     />
   </section>
 
   <section class="grid gap-12 lg:grid-cols-2">
     <div>
-      <p class="font-display text-lg italic text-bone">Prompt first when</p>
-      <ul class="mt-3 space-y-3 text-sm leading-7 text-mist">
+      <p class="font-display text-xl italic text-bone mb-4">Prompt first when</p>
+      <ul class="space-y-3 text-sm leading-7 text-mist">
         <li>You need a current answer to a specific question.</li>
         <li>You want your agent to inspect the live source and summarize what it finds.</li>
         <li>The task is narrow enough that structure would only slow it down.</li>
@@ -34,8 +28,8 @@ import PromptCard from '../../components/PromptCard.astro'
     </div>
 
     <div>
-      <p class="font-display text-lg italic text-bone">Use a skill when</p>
-      <ul class="mt-3 space-y-3 text-sm leading-7 text-mist">
+      <p class="font-display text-xl italic text-bone mb-4">Use a skill when</p>
+      <ul class="space-y-3 text-sm leading-7 text-mist">
         <li>The task has a repeatable sequence and common failure modes.</li>
         <li>You want the agent to follow a known operator flow.</li>
         <li>You still want the agent to inspect the current code or environment before acting.</li>

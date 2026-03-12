@@ -8,37 +8,21 @@ import PromptCard from '../../components/PromptCard.astro'
   description="An agent bundle is the portable self. The psyche is the part of that self that helps the agent stay oriented to who it is and where it is going."
   eyebrow="Operator Guide"
   canonical="https://ouroboros.bot/docs/bundles-and-psyche"
-  intro="This page explains the object. Your agent should inspect the actual bundle to answer file-level questions, because the specific contents are supposed to evolve."
-  noteTitle="Recommended handoff"
-  noteBody="For deeper help, point your agent at /skills/understand-psyche.md and tell it to inspect the current bundle instead of reciting a canned explanation."
+  intro="The bundle is the portable boundary of the agent's self. The exact files can evolve, but the job stays the same: keep identity, direction, and long-term context somewhere the agent can recover cleanly."
 >
-  <section class="grid gap-5 md:grid-cols-2">
+  <section>
     <PromptCard
-      prompt={`Inspect the agent bundle I am using right now and explain what lives there. Tell me which files shape your identity, which parts are durable memory, and what looks currently active.`}
-      footnote="Best for learning what your current bundle means in practice."
-    />
-    <PromptCard
-      prompt={`Read the psyche files in this bundle and tell me how they work together. Explain the role of each file using the current bundle contents, not generic assumptions.`}
-      footnote="Best for understanding the living self-model instead of the abstract file names."
+      prompt="Inspect the agent bundle I am using right now. Tell me what lives there, which files shape your identity, which parts are durable memory, and what looks currently active."
+      footnote="Your agent reads its own bundle and explains what it finds — no stale docs needed."
     />
   </section>
 
-  <section class="grid gap-12 lg:grid-cols-2">
-    <div>
-      <p class="font-display text-lg italic text-bone">Evergreen truth</p>
-      <p class="mt-3 text-sm leading-7 text-mist">
-        The bundle is the portable boundary of the agent's self. The exact files can evolve,
-        but the job stays the same: keep identity, direction, and long-term context somewhere the agent can recover cleanly.
-      </p>
-    </div>
-
-    <div>
-      <p class="font-display text-lg italic text-bone">What to ask next</p>
-      <ul class="mt-3 space-y-3 text-sm leading-7 text-mist">
-        <li>Which psyche files matter most for the behavior I want?</li>
-        <li>What in this bundle looks stale or contradictory?</li>
-        <li>How should my agent update its own direction without losing continuity?</li>
-      </ul>
-    </div>
+  <section>
+    <p class="font-display text-xl italic text-bone mb-4">What to ask next</p>
+    <ul class="space-y-3 text-sm leading-7 text-mist max-w-2xl">
+      <li>Which psyche files matter most for the behavior I want?</li>
+      <li>What in this bundle looks stale or contradictory?</li>
+      <li>How should my agent update its own direction without losing continuity?</li>
+    </ul>
   </section>
 </DocsPageShell>

@@ -203,12 +203,32 @@ const organs = [
           </div>
         </div>
 
-        <!-- Context window visualization -->
+        <!-- Animated ouroboros ring -->
         <div class="lg:col-span-2 flex items-center justify-center">
           <div class="relative w-72 h-72 md:w-80 md:h-80">
-            <div class="absolute inset-[-20%] rounded-full bg-scale/8 blur-[80px] pointer-events-none"></div>
-            <div class="absolute inset-0 rounded-full border border-scale/15"></div>
-            <div class="absolute inset-8 rounded-full border border-scale/10"></div>
+            <div class="absolute inset-[-20%] rounded-full bg-scale/10 blur-[80px] pointer-events-none"></div>
+            <svg class="absolute inset-0 w-full h-full" viewBox="0 0 200 200" fill="none">
+              <circle cx="100" cy="100" r="90" stroke="url(#ringGrad)" stroke-width="0.5" opacity="0.4" class="ouroboros-spin-slow" transform-origin="100 100" />
+              <circle cx="100" cy="100" r="72" stroke="url(#snakeGrad)" stroke-width="3" stroke-dasharray="8 4 20 4 40 4" stroke-linecap="round" class="ouroboros-spin" transform-origin="100 100" />
+              <circle cx="100" cy="100" r="55" stroke="var(--color-canopy)" stroke-width="1" stroke-dasharray="3 12" opacity="0.5" class="ouroboros-spin-reverse" transform-origin="100 100" />
+              <circle cx="100" cy="28" r="5" fill="var(--color-glow)" opacity="0.9" class="ouroboros-spin" transform-origin="100 100">
+                <animate attributeName="opacity" values="0.9;0.5;0.9" dur="2s" repeatCount="indefinite" />
+              </circle>
+              <circle cx="100" cy="28" r="3" fill="var(--color-scale)" opacity="0.4" class="ouroboros-spin-delayed-1" transform-origin="100 100" />
+              <circle cx="100" cy="28" r="2" fill="var(--color-scale)" opacity="0.2" class="ouroboros-spin-delayed-2" transform-origin="100 100" />
+              <defs>
+                <linearGradient id="snakeGrad" x1="0" y1="0" x2="200" y2="200">
+                  <stop offset="0%" stop-color="var(--color-scale)" />
+                  <stop offset="50%" stop-color="var(--color-glow)" />
+                  <stop offset="100%" stop-color="var(--color-canopy)" />
+                </linearGradient>
+                <linearGradient id="ringGrad" x1="0" y1="0" x2="200" y2="200">
+                  <stop offset="0%" stop-color="var(--color-scale)" />
+                  <stop offset="100%" stop-color="transparent" />
+                </linearGradient>
+              </defs>
+            </svg>
+            <div class="absolute inset-12 rounded-full bg-gradient-to-br from-scale/8 to-glow/4 blur-xl"></div>
             <div class="absolute inset-0 flex flex-col items-center justify-center text-center gap-1">
               <span class="font-mono text-[9px] text-scale/80 uppercase tracking-[0.3em]">context window</span>
               <span class="font-display text-3xl italic text-bone mt-2 leading-tight">Consume.</span>
@@ -347,6 +367,15 @@ const organs = [
 </Layout>
 
 <style>
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  .ouroboros-spin { animation: spin 25s linear infinite; }
+  .ouroboros-spin-slow { animation: spin 80s linear infinite; }
+  .ouroboros-spin-reverse { animation: spin 40s linear infinite reverse; }
+  .ouroboros-spin-delayed-1 { animation: spin 25s linear infinite; animation-delay: -0.8s; }
+  .ouroboros-spin-delayed-2 { animation: spin 25s linear infinite; animation-delay: -1.6s; }
+
   @keyframes blink-cursor {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }

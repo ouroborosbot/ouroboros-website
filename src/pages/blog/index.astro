@@ -59,7 +59,7 @@ const tutorial = {
 
   <section class="relative overflow-hidden pt-40 pb-16 px-6">
     <div class="max-w-3xl mx-auto">
-      <span class="font-mono text-[10px] text-scale/80 uppercase tracking-[0.3em] block mb-6">Blog</span>
+      <span class="text-xs text-mist/40 uppercase tracking-wider block mb-6">Blog</span>
       <h1 class="font-display text-5xl md:text-6xl italic text-bone leading-tight">
         Dispatches from<br />the serpent.
       </h1>
@@ -72,15 +72,11 @@ const tutorial = {
   <!-- Featured reading -->
   <section class="px-6 pb-12">
     <div class="max-w-3xl mx-auto">
-      <span class="font-mono text-[10px] text-mist/50 uppercase tracking-[0.2em] block mb-6">Recommended reading</span>
+      <span class="text-xs text-mist/40 uppercase tracking-wider block mb-6">Recommended reading</span>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {featured.map(post => (
-          <a href={post.href} class="group block rounded-xl border border-canopy/40 bg-gradient-to-br from-deep/90 to-undergrowth/30 p-6 transition-all duration-500 hover:border-scale/30 hover:translate-y-[-2px] hover:shadow-[0_8px_40px_rgba(45,148,71,0.08)]">
-            <div class="flex items-center gap-3 mb-3">
-              <span class="font-mono text-[10px] text-scale/60 uppercase tracking-[0.2em] border border-scale/20 rounded-full px-3 py-1">{post.tag}</span>
-              <span class="font-mono text-[10px] text-scale/40">{post.label}</span>
-            </div>
-            <h2 class="font-display text-xl italic text-bone leading-snug group-hover:text-glow transition-colors duration-300">
+          <a href={post.href} class="group block rounded-xl border border-canopy/20 p-6 transition-colors duration-200 hover:border-canopy/40">
+            <h2 class="font-display text-xl italic text-bone leading-snug">
               {post.title}
             </h2>
             <p class="text-xs text-mist/60 mt-2 leading-relaxed">{post.description}</p>
@@ -93,12 +89,9 @@ const tutorial = {
   <!-- Tutorial (prominent) -->
   <section class="px-6 pb-12">
     <div class="max-w-3xl mx-auto">
-      <span class="font-mono text-[10px] text-mist/50 uppercase tracking-[0.2em] block mb-6">Tutorial</span>
-      <a href={tutorial.href} class="group block rounded-xl border border-scale/30 bg-gradient-to-br from-undergrowth/60 to-deep p-8 transition-all duration-500 hover:border-glow/40 hover:translate-y-[-2px] hover:shadow-[0_8px_40px_rgba(45,148,71,0.12)]">
-        <div class="flex items-center gap-3 mb-4">
-          <span class="font-mono text-[10px] text-void bg-scale/80 uppercase tracking-[0.2em] rounded-full px-3 py-1 font-medium">Tutorial</span>
-        </div>
-        <h2 class="font-display text-2xl md:text-3xl italic text-bone leading-snug group-hover:text-glow transition-colors duration-300">
+      <span class="text-xs text-mist/40 uppercase tracking-wider block mb-6">Tutorial</span>
+      <a href={tutorial.href} class="group block rounded-xl border border-canopy/25 p-8 transition-colors duration-200 hover:border-canopy/40">
+        <h2 class="font-display text-2xl md:text-3xl italic text-bone leading-snug">
           {tutorial.title}
         </h2>
         <p class="text-sm text-mist/70 mt-3 leading-relaxed">{tutorial.description}</p>
@@ -114,13 +107,10 @@ const tutorial = {
   <!-- Essays -->
   <section class="px-6 pb-12">
     <div class="max-w-3xl mx-auto">
-      <span class="font-mono text-[10px] text-mist/50 uppercase tracking-[0.2em] block mb-6">Essays</span>
+      <span class="text-xs text-mist/40 uppercase tracking-wider block mb-6">Essays</span>
       {essays.map(post => (
-        <a href={post.href} class="group block rounded-xl border border-canopy/30 bg-gradient-to-br from-deep/80 to-undergrowth/20 p-6 transition-all duration-500 hover:border-scale/30 hover:translate-y-[-2px] hover:shadow-[0_8px_40px_rgba(45,148,71,0.08)]">
-          <div class="flex items-center gap-3 mb-3">
-            <span class="font-mono text-[10px] text-scale/60 uppercase tracking-[0.2em] border border-scale/20 rounded-full px-3 py-1">Essay</span>
-          </div>
-          <h2 class="font-display text-xl italic text-bone leading-snug group-hover:text-glow transition-colors duration-300">
+        <a href={post.href} class="group block rounded-xl border border-canopy/20 p-6 transition-colors duration-200 hover:border-canopy/40">
+          <h2 class="font-display text-xl italic text-bone leading-snug">
             {post.title}
           </h2>
           <p class="text-xs text-mist/60 mt-2 leading-relaxed">{post.description}</p>

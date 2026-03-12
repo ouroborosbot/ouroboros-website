@@ -1,5 +1,6 @@
 ---
 import DocsPageShell from '../../components/DocsPageShell.astro'
+import PromptCard from '../../components/PromptCard.astro'
 
 const pages = [
   {
@@ -75,8 +76,11 @@ const pages = [
     </div>
 
     <div>
-      <p class="font-display text-xl italic text-bone">Default prompt</p>
-      <pre class="mt-4 whitespace-pre-wrap font-mono text-sm leading-7 text-bone/85">Inspect the latest local Ouroboros install or repo on this machine and answer this using the current source of truth, not cached assumptions: [replace with your question]. If there is any ambiguity, tell me what you checked.</pre>
+      <p class="font-display text-xl italic text-bone mb-4">Default prompt</p>
+      <PromptCard
+        label="Paste into your agent"
+        prompt="Inspect the latest local Ouroboros install or repo on this machine and answer this using the current source of truth, not cached assumptions: [replace with your question]. If there is any ambiguity, tell me what you checked."
+      />
     </div>
   </section>
 </DocsPageShell>

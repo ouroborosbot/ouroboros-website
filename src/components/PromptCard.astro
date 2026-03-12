@@ -12,10 +12,25 @@ const {
 } = Astro.props
 ---
 
-<div class="rounded-2xl border border-canopy/20 bg-undergrowth/20 overflow-hidden">
-  <div class="flex items-center gap-2 border-b border-canopy/20 px-5 py-3">
-    <span class="h-1.5 w-1.5 rounded-full bg-scale/70"></span>
-    <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-scale/75">{label}</span>
+<div class="prompt-card rounded-2xl border border-canopy/20 bg-undergrowth/20 overflow-hidden">
+  <div class="flex items-center justify-between border-b border-canopy/20 px-5 py-3">
+    <div class="flex items-center gap-2">
+      <span class="h-1.5 w-1.5 rounded-full bg-scale/70"></span>
+      <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-scale/75">{label}</span>
+    </div>
+    <button
+      class="copy-btn group flex items-center gap-1.5 text-mist/40 hover:text-scale transition-colors cursor-pointer"
+      data-prompt={prompt}
+      aria-label="Copy prompt to clipboard"
+    >
+      <span class="copy-label font-mono text-[10px] uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">Copy</span>
+      <svg class="w-4 h-4 copy-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9.75a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" />
+      </svg>
+      <svg class="w-4 h-4 check-icon hidden text-scale" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+      </svg>
+    </button>
   </div>
   <pre class="whitespace-pre-wrap px-5 py-5 font-mono text-sm leading-7 text-bone/85">{prompt}</pre>
   {footnote && (
@@ -24,3 +39,35 @@ const {
     </div>
   )}
 </div>
+
+<script>
+  document.addEventListener('click', (e) => {
+    const btn = (e.target as HTMLElement).closest('.copy-btn') as HTMLElement | null;
+    if (!btn) return;
+
+    const prompt = btn.getAttribute('data-prompt');
+    if (!prompt) return;
+
+    navigator.clipboard.writeText(prompt).then(() => {
+      const copyIcon = btn.querySelector('.copy-icon');
+      const checkIcon = btn.querySelector('.check-icon');
+      const copyLabel = btn.querySelector('.copy-label');
+
+      if (copyIcon) copyIcon.classList.add('hidden');
+      if (checkIcon) checkIcon.classList.remove('hidden');
+      if (copyLabel) {
+        copyLabel.textContent = 'Copied';
+        copyLabel.classList.remove('opacity-0', 'group-hover:opacity-100');
+      }
+
+      setTimeout(() => {
+        if (copyIcon) copyIcon.classList.remove('hidden');
+        if (checkIcon) checkIcon.classList.add('hidden');
+        if (copyLabel) {
+          copyLabel.textContent = 'Copy';
+          copyLabel.classList.add('opacity-0', 'group-hover:opacity-100');
+        }
+      }, 2000);
+    });
+  });
+</script>

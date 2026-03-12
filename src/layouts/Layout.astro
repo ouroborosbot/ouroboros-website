@@ -62,9 +62,8 @@ const {
 
   </head>
   <body class="bg-void text-bone font-body antialiased overflow-x-hidden">
-    <div class="site-aura fixed inset-0 pointer-events-none z-0" aria-hidden="true"></div>
-    <div class="site-lines fixed inset-0 pointer-events-none z-0 opacity-50" aria-hidden="true"></div>
-    <div class="fixed inset-0 pointer-events-none z-50" style="background-image: url('/images/grain.png'); background-repeat: repeat; opacity: 0.015;" aria-hidden="true"></div>
+    <!-- Grain overlay - static tiled PNG instead of live SVG filter (Safari perf) -->
+    <div class="fixed inset-0 pointer-events-none z-50" style="background-image: url('/images/grain.png'); background-repeat: repeat; opacity: 0.03;" aria-hidden="true"></div>
 
     <Nav />
     <main>

@@ -68,68 +68,75 @@ const outcomes = [
     })} />
   </Fragment>
 
-  <section class="px-6 pt-34 pb-18 md:pt-42 md:pb-24">
-    <div class="mx-auto max-w-6xl">
-      <div class="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
-        <div class="max-w-4xl">
-          <span class="eyebrow-tag">Why Ouroboros</span>
+  <section class="relative overflow-hidden px-6 pt-32 pb-20 md:pt-40 md:pb-28">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_12%_20%,rgba(211,72,61,0.12),transparent_24%),radial-gradient(circle_at_84%_18%,rgba(74,227,108,0.12),transparent_28%),linear-gradient(180deg,var(--color-void),var(--color-deep)_42%,var(--color-void))]"></div>
+    <div class="absolute inset-0 why-grid opacity-[0.06]"></div>
 
-          <h1 class="hero-title mt-6 text-bone">
+    <div class="relative mx-auto max-w-6xl">
+      <div class="max-w-4xl">
+        <span class="inline-flex items-center gap-2 rounded-full border border-fang/35 bg-fang/8 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.3em] text-fang/85">
+          <span class="h-1.5 w-1.5 rounded-full bg-fang"></span>
+          Why Ouroboros
+        </span>
+
+        <h1 class="mt-8 font-display text-[4rem] italic leading-[0.9] text-bone sm:text-[5.4rem] md:text-[7rem]">
           Less re-briefing.
           <span class="block text-scale">More real work.</span>
-          </h1>
+        </h1>
 
-          <p class="mt-8 max-w-3xl text-lg leading-8 text-mist md:text-xl">
-            Ouroboros is a TypeScript agent harness designed around agent ergonomics:
-            the cost for an agent to stay oriented to itself, its relationships, and its work.
-            When that cost drops, humans and agents can keep shared momentum across sessions.
-          </p>
-        </div>
+        <p class="mt-8 max-w-3xl text-lg leading-8 text-mist md:text-xl">
+          Ouroboros is a TypeScript agent harness designed around agent ergonomics:
+          the cost for an agent to stay oriented to itself, its relationships, and its work.
+          When that cost drops, humans and agents can keep shared momentum across sessions.
+        </p>
+      </div>
 
-        <aside class="surface-note p-8">
-          <p class="rule-label text-fang/80">The bottleneck</p>
-          <blockquote class="mt-6 font-display text-[2.45rem] italic leading-tight text-bone">
+      <div class="mt-12 grid gap-6 lg:grid-cols-[0.86fr_1.14fr]">
+        <div class="rounded-[30px] border border-fang/30 bg-[linear-gradient(180deg,rgba(211,72,61,0.1),rgba(13,31,19,0.78))] p-8">
+          <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-fang/70">The bottleneck</p>
+          <blockquote class="mt-6 font-display text-4xl italic leading-tight text-bone">
             "I spent more time trying to get him back on track than we actually spent working."
           </blockquote>
           <p class="mt-6 text-sm leading-7 text-mist">
             That is the problem Ouroboros is trying to solve. If the agent keeps losing the thread,
             the human becomes a recovery loop instead of a collaborator.
           </p>
-        </aside>
-      </div>
+        </div>
 
-      <div class="mt-10 grid gap-4 md:grid-cols-3">
-        <div class="surface-quiet p-6">
-          <p class="section-kicker">Concept</p>
-          <h2 class="mt-4 font-display text-[2rem] italic text-bone">Agent ergonomics</h2>
-          <p class="mt-3 text-sm leading-7 text-mist">
-            How hard is it for the agent to stay oriented inside the system it inhabits?
-          </p>
-        </div>
-        <div class="surface-quiet p-6">
-          <p class="section-kicker">Failure mode</p>
-          <h2 class="mt-4 font-display text-[2rem] italic text-bone">Reorientation overhead</h2>
-          <p class="mt-3 text-sm leading-7 text-mist">
-            The hidden tax of repeatedly restoring the agent's sense of self, people, and work after interruptions.
-          </p>
-        </div>
-        <div class="surface-card p-6">
-          <p class="section-kicker">Payoff</p>
-          <h2 class="mt-4 font-display text-[2rem] italic text-bone">Shared momentum</h2>
-          <p class="mt-3 text-sm leading-7 text-mist">
-            The human spends less time steering the agent back into context, and the collaboration keeps compounding instead of restarting.
-          </p>
+        <div class="rounded-[30px] border border-canopy/45 bg-[linear-gradient(160deg,rgba(21,42,28,0.82),rgba(5,10,7,0.98))] p-8">
+          <div class="grid gap-5 sm:grid-cols-2">
+            <div class="rounded-2xl border border-canopy/35 bg-void/35 p-5">
+              <p class="font-mono text-[10px] uppercase tracking-[0.26em] text-scale/70">Concept</p>
+              <h2 class="mt-3 font-display text-3xl italic text-bone">Agent ergonomics</h2>
+              <p class="mt-3 text-sm leading-7 text-mist">
+                How hard is it for the agent to stay oriented inside the system it inhabits?
+              </p>
+            </div>
+            <div class="rounded-2xl border border-canopy/35 bg-void/35 p-5">
+              <p class="font-mono text-[10px] uppercase tracking-[0.26em] text-scale/70">Failure mode</p>
+              <h2 class="mt-3 font-display text-3xl italic text-bone">Reorientation overhead</h2>
+              <p class="mt-3 text-sm leading-7 text-mist">
+                The hidden tax of repeatedly restoring the agent's sense of self, people, and work after interruptions.
+              </p>
+            </div>
+            <div class="rounded-2xl border border-scale/20 bg-scale/8 p-5 sm:col-span-2">
+              <p class="font-mono text-[10px] uppercase tracking-[0.26em] text-scale/80">Payoff</p>
+              <h2 class="mt-3 font-display text-4xl italic text-bone">Shared momentum</h2>
+              <p class="mt-3 max-w-2xl text-sm leading-7 text-mist">
+                The human spends less time steering the agent back into context, and the collaboration keeps compounding instead of restarting.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="px-6 py-22 md:py-28 reveal">
-    <div class="page-divider mx-auto max-w-6xl"></div>
+  <section class="relative overflow-hidden px-6 py-24 md:py-32 reveal">
     <div class="mx-auto max-w-6xl">
-      <div class="mt-12 max-w-3xl">
-        <span class="eyebrow-tag">The friction</span>
-        <h2 class="section-title mt-6 text-bone">
+      <div class="max-w-3xl">
+        <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-scale/80">The friction</span>
+        <h2 class="mt-6 font-display text-5xl italic leading-tight text-bone">
           Persistent agents are only useful
           <span class="block text-mist/70">if they can stay oriented.</span>
         </h2>
@@ -137,9 +144,9 @@ const outcomes = [
 
       <div class="mt-12 grid gap-5 md:grid-cols-3">
         {frictions.map((friction) => (
-          <div class="surface-quiet p-6">
-            <p class="section-kicker">{friction.label}</p>
-            <h3 class="mt-4 font-display text-[2rem] italic text-bone">{friction.question}</h3>
+          <div class="rounded-[26px] border border-canopy/40 bg-[linear-gradient(180deg,rgba(21,42,28,0.46),rgba(5,10,7,0.88))] p-6">
+            <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-scale/70">{friction.label}</p>
+            <h3 class="mt-4 font-display text-3xl italic text-bone">{friction.question}</h3>
             <p class="mt-4 text-sm leading-7 text-mist">{friction.problem}</p>
           </div>
         ))}
@@ -147,12 +154,12 @@ const outcomes = [
     </div>
   </section>
 
-  <section class="px-6 py-22 md:py-28 reveal">
-    <div class="page-divider mx-auto max-w-6xl"></div>
-    <div class="mx-auto max-w-6xl">
-      <div class="mt-12 max-w-3xl">
-        <span class="eyebrow-tag">The mechanism</span>
-        <h2 class="section-title mt-6 text-bone">
+  <section class="relative overflow-hidden px-6 py-24 md:py-32 reveal">
+    <div class="absolute inset-0 bg-deep/75"></div>
+    <div class="relative mx-auto max-w-6xl">
+      <div class="max-w-3xl">
+        <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-scale/80">The mechanism</span>
+        <h2 class="mt-6 font-display text-5xl italic leading-tight text-bone">
           Ouroboros is shaped
           <span class="block text-scale">to lower that cost.</span>
         </h2>
@@ -160,9 +167,9 @@ const outcomes = [
 
       <div class="mt-12 grid gap-5 md:grid-cols-2">
         {mechanisms.map((mechanism) => (
-          <div class="surface-card p-7">
-            <p class="section-kicker">{mechanism.label}</p>
-            <h3 class="mt-4 font-display text-[2.2rem] italic text-bone">{mechanism.title}</h3>
+          <div class="rounded-[28px] border border-canopy/40 bg-void/40 p-7">
+            <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-scale/70">{mechanism.label}</p>
+            <h3 class="mt-4 font-display text-4xl italic text-bone">{mechanism.title}</h3>
             <p class="mt-4 text-sm leading-7 text-mist">{mechanism.description}</p>
           </div>
         ))}
@@ -170,24 +177,23 @@ const outcomes = [
     </div>
   </section>
 
-  <section class="px-6 py-22 md:py-28 reveal">
-    <div class="page-divider mx-auto max-w-6xl"></div>
+  <section class="relative overflow-hidden px-6 py-24 md:py-28 reveal">
     <div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.8fr_1.2fr]">
-      <div class="surface-card p-8">
-        <p class="rule-label">What changes</p>
-        <h2 class="mt-4 font-display text-[2.5rem] italic text-bone">Collaboration that compounds.</h2>
+      <div class="rounded-[30px] border border-scale/20 bg-[linear-gradient(180deg,rgba(45,148,71,0.08),rgba(5,10,7,0.94))] p-8">
+        <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-scale/70">What changes</p>
+        <h2 class="mt-4 font-display text-4xl italic text-bone">Collaboration that compounds.</h2>
         <div class="mt-6 space-y-3">
           {outcomes.map((outcome) => (
-            <div class="rounded-2xl border border-canopy/25 bg-[rgba(13,21,15,0.58)] px-4 py-3 text-sm text-bone">
+            <div class="rounded-2xl border border-canopy/35 bg-undergrowth/20 px-4 py-3 text-sm text-bone">
               {outcome}
             </div>
           ))}
         </div>
       </div>
 
-      <div class="surface-strong p-8">
-        <p class="rule-label">Credit where it belongs</p>
-        <h2 class="mt-4 font-display text-[2.5rem] italic text-bone">What OpenClaw made obvious.</h2>
+      <div class="rounded-[30px] border border-canopy/40 bg-[linear-gradient(160deg,rgba(21,42,28,0.62),rgba(5,10,7,0.92))] p-8">
+        <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-scale/70">Credit where it belongs</p>
+        <h2 class="mt-4 font-display text-4xl italic text-bone">What OpenClaw made obvious.</h2>
         <p class="mt-5 text-base leading-8 text-mist">
           OpenClaw made persistent personal agents feel real. It made ideas like identity files, presence across channels,
           and long-lived assistants impossible to ignore. Ouroboros exists because building on top of that work made the next problem obvious too:
@@ -209,24 +215,33 @@ const outcomes = [
     </div>
   </section>
 
-  <section class="px-6 py-20 md:py-24 reveal">
-    <div class="page-divider mx-auto max-w-6xl"></div>
+  <section class="relative overflow-hidden px-6 py-20 md:py-24 reveal">
     <div class="mx-auto grid max-w-5xl gap-5 md:grid-cols-3">
-      <a href="/blog/what-is-agent-experience" class="surface-link mt-12 block p-6">
-        <p class="rule-label">Category</p>
-        <h2 class="mt-4 font-display text-[2rem] italic text-bone">What Is Agent Experience?</h2>
+      <a href="/blog/what-is-agent-experience" class="group rounded-[26px] border border-canopy/40 bg-[linear-gradient(180deg,rgba(21,42,28,0.45),rgba(5,10,7,0.85))] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-scale/45">
+        <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-scale/70">Category</p>
+        <h2 class="mt-4 font-display text-3xl italic text-bone">What Is Agent Experience?</h2>
         <p class="mt-4 text-sm leading-7 text-mist">See how agent ergonomics fits into the broader AX argument.</p>
       </a>
-      <a href="/docs" class="surface-link mt-12 block p-6">
-        <p class="rule-label">Operator path</p>
-        <h2 class="mt-4 font-display text-[2rem] italic text-bone">Docs for humans. Skills for agents.</h2>
+      <a href="/docs" class="group rounded-[26px] border border-canopy/40 bg-[linear-gradient(180deg,rgba(21,42,28,0.45),rgba(5,10,7,0.85))] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-scale/45">
+        <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-scale/70">Operator path</p>
+        <h2 class="mt-4 font-display text-3xl italic text-bone">Docs for humans. Skills for agents.</h2>
         <p class="mt-4 text-sm leading-7 text-mist">Go from the idea to the operator flow and the agent handoff surface.</p>
       </a>
-      <a href="/blog/build-ai-agent-from-scratch" class="surface-link mt-12 block p-6">
-        <p class="rule-label">Primitive</p>
-        <h2 class="mt-4 font-display text-[2rem] italic text-bone">Build the loop first.</h2>
+      <a href="/blog/build-ai-agent-from-scratch" class="group rounded-[26px] border border-canopy/40 bg-[linear-gradient(180deg,rgba(21,42,28,0.45),rgba(5,10,7,0.85))] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-scale/45">
+        <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-scale/70">Primitive</p>
+        <h2 class="mt-4 font-display text-3xl italic text-bone">Build the loop first.</h2>
         <p class="mt-4 text-sm leading-7 text-mist">Learn what an agent loop is before you decide what kind of harness it should inhabit.</p>
       </a>
     </div>
   </section>
 </Layout>
+
+<style>
+  .why-grid {
+    background-image:
+      linear-gradient(rgba(154, 174, 159, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(154, 174, 159, 0.08) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: linear-gradient(180deg, transparent, black 18%, black 82%, transparent);
+  }
+</style>

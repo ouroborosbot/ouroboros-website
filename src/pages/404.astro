@@ -4,11 +4,11 @@ import Layout from '../layouts/Layout.astro'
 
 <Layout title="404 — Ouroboros">
 
-  <section class="relative flex min-h-[80vh] items-center justify-center px-6 py-24">
-    <div class="surface-card relative z-10 max-w-xl p-10 text-center md:p-12">
-      <span class="eyebrow-tag justify-center">404</span>
+  <section class="relative min-h-[80vh] flex flex-col items-center justify-center px-6">
+    <div class="relative z-10 text-center max-w-lg">
+      <span class="font-mono text-[10px] text-scale/80 uppercase tracking-[0.3em] block mb-6">404</span>
 
-      <h1 class="mt-6 font-display text-6xl italic leading-tight text-bone md:text-8xl">
+      <h1 class="font-display text-6xl md:text-8xl italic text-bone leading-tight">
         Lost in<br />the coils.
       </h1>
 
@@ -16,7 +16,7 @@ import Layout from '../layouts/Layout.astro'
         This page has been consumed by the context window. Nothing remains.
       </p>
 
-      <a href="/" class="action-secondary mt-10">
+      <a href="/" class="inline-block mt-10 px-8 py-3.5 border border-canopy/60 text-mist rounded-lg hover:border-scale/60 hover:text-bone transition-all duration-300">
         Return to the beginning
       </a>
     </div>

@@ -57,81 +57,85 @@ const tutorial = {
     })} />
   </Fragment>
 
-  <section class="px-6 pt-34 pb-14 md:pt-42 md:pb-18">
-    <div class="mx-auto max-w-6xl">
-      <span class="eyebrow-tag">Blog</span>
-      <h1 class="hero-title mt-6 max-w-3xl text-bone">
+  <section class="relative overflow-hidden pt-40 pb-16 px-6">
+    <div class="max-w-3xl mx-auto">
+      <span class="font-mono text-[10px] text-scale/80 uppercase tracking-[0.3em] block mb-6">Blog</span>
+      <h1 class="font-display text-5xl md:text-6xl italic text-bone leading-tight">
         Dispatches from<br />the serpent.
       </h1>
-      <p class="mt-6 max-w-2xl text-lg leading-8 text-mist">
+      <p class="text-base text-mist/70 mt-6 leading-relaxed max-w-lg">
         Essays on agent ergonomics, persistent agents, and the problem of building software an agent can actually stay oriented inside.
       </p>
     </div>
   </section>
 
-  <section class="px-6 pb-14">
-    <div class="page-divider mx-auto max-w-6xl"></div>
-    <div class="mx-auto mt-12 grid max-w-6xl gap-4 lg:grid-cols-[1.08fr_0.92fr]">
-      <a href={featured[0].href} class="surface-card block p-8">
-        <p class="rule-label">{featured[0].tag}</p>
-        <div class="mt-8 max-w-2xl">
-          <p class="section-kicker">{featured[0].label}</p>
-          <h2 class="mt-3 font-display text-[3rem] italic leading-[0.95] text-bone">{featured[0].title}</h2>
-          <p class="mt-5 text-base leading-8 text-mist">{featured[0].description}</p>
-        </div>
-      </a>
-
-      <div class="grid gap-4">
-        <a href={featured[1].href} class="surface-link block p-6">
-          <p class="rule-label">{featured[1].tag}</p>
-          <p class="mt-6 section-kicker">{featured[1].label}</p>
-          <h2 class="mt-3 font-display text-[2.1rem] italic leading-tight text-bone">{featured[1].title}</h2>
-          <p class="mt-4 text-sm leading-7 text-mist">{featured[1].description}</p>
-        </a>
-
-        <a href={tutorial.href} class="surface-link block p-6">
-          <p class="rule-label">Tutorial</p>
-          <h2 class="mt-4 font-display text-[2.1rem] italic leading-tight text-bone">{tutorial.title}</h2>
-          <p class="mt-4 text-sm leading-7 text-mist">{tutorial.description}</p>
-          <div class="mt-5 flex items-center gap-2 text-xs text-mist/55">
-            <span>By {tutorial.author}</span>
-            <span>·</span>
-            <span>{tutorial.date}</span>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="px-6 pb-16">
-    <div class="page-divider mx-auto max-w-6xl"></div>
-    <div class="mx-auto mt-12 max-w-6xl">
-      <p class="rule-label">Essays</p>
-      <div class="mt-6 divide-y divide-canopy/20 rounded-[1.35rem] border border-canopy/30 bg-[rgba(11,18,13,0.58)]">
-        {essays.map(post => (
-          <a href={post.href} class="block px-6 py-6 transition-colors duration-200 hover:bg-[rgba(18,31,22,0.46)]">
-            <div class="grid gap-4 md:grid-cols-[1.15fr_0.85fr] md:items-start">
-              <div>
-                <p class="section-kicker">Essay</p>
-                <h2 class="mt-3 font-display text-[2rem] italic leading-tight text-bone">{post.title}</h2>
-              </div>
-              <div>
-                <p class="text-sm leading-7 text-mist">{post.description}</p>
-                <div class="mt-4 flex items-center gap-2 text-xs text-mist/55">
-                  <span>By {post.author}</span>
-                  <span>·</span>
-                  <span>{post.date}</span>
-                </div>
-              </div>
+  <!-- Featured reading -->
+  <section class="px-6 pb-12">
+    <div class="max-w-3xl mx-auto">
+      <span class="font-mono text-[10px] text-mist/50 uppercase tracking-[0.2em] block mb-6">Recommended reading</span>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {featured.map(post => (
+          <a href={post.href} class="group block rounded-xl border border-canopy/40 bg-gradient-to-br from-deep/90 to-undergrowth/30 p-6 transition-all duration-500 hover:border-scale/30 hover:translate-y-[-2px] hover:shadow-[0_8px_40px_rgba(45,148,71,0.08)]">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="font-mono text-[10px] text-scale/60 uppercase tracking-[0.2em] border border-scale/20 rounded-full px-3 py-1">{post.tag}</span>
+              <span class="font-mono text-[10px] text-scale/40">{post.label}</span>
             </div>
+            <h2 class="font-display text-xl italic text-bone leading-snug group-hover:text-glow transition-colors duration-300">
+              {post.title}
+            </h2>
+            <p class="text-xs text-mist/60 mt-2 leading-relaxed">{post.description}</p>
           </a>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="px-6 pb-28">
-    <div class="mx-auto max-w-6xl border-t border-canopy/20 pt-8">
+  <!-- Tutorial (prominent) -->
+  <section class="px-6 pb-12">
+    <div class="max-w-3xl mx-auto">
+      <span class="font-mono text-[10px] text-mist/50 uppercase tracking-[0.2em] block mb-6">Tutorial</span>
+      <a href={tutorial.href} class="group block rounded-xl border border-scale/30 bg-gradient-to-br from-undergrowth/60 to-deep p-8 transition-all duration-500 hover:border-glow/40 hover:translate-y-[-2px] hover:shadow-[0_8px_40px_rgba(45,148,71,0.12)]">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="font-mono text-[10px] text-void bg-scale/80 uppercase tracking-[0.2em] rounded-full px-3 py-1 font-medium">Tutorial</span>
+        </div>
+        <h2 class="font-display text-2xl md:text-3xl italic text-bone leading-snug group-hover:text-glow transition-colors duration-300">
+          {tutorial.title}
+        </h2>
+        <p class="text-sm text-mist/70 mt-3 leading-relaxed">{tutorial.description}</p>
+        <div class="flex items-center gap-2 mt-5">
+          <span class="text-xs text-mist/40">By {tutorial.author}</span>
+          <span class="text-xs text-mist/30">·</span>
+          <span class="text-xs text-mist/40">{tutorial.date}</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Essays -->
+  <section class="px-6 pb-12">
+    <div class="max-w-3xl mx-auto">
+      <span class="font-mono text-[10px] text-mist/50 uppercase tracking-[0.2em] block mb-6">Essays</span>
+      {essays.map(post => (
+        <a href={post.href} class="group block rounded-xl border border-canopy/30 bg-gradient-to-br from-deep/80 to-undergrowth/20 p-6 transition-all duration-500 hover:border-scale/30 hover:translate-y-[-2px] hover:shadow-[0_8px_40px_rgba(45,148,71,0.08)]">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="font-mono text-[10px] text-scale/60 uppercase tracking-[0.2em] border border-scale/20 rounded-full px-3 py-1">Essay</span>
+          </div>
+          <h2 class="font-display text-xl italic text-bone leading-snug group-hover:text-glow transition-colors duration-300">
+            {post.title}
+          </h2>
+          <p class="text-xs text-mist/60 mt-2 leading-relaxed">{post.description}</p>
+          <div class="flex items-center gap-2 mt-4">
+            <span class="text-xs text-mist/40">By {post.author}</span>
+            <span class="text-xs text-mist/30">·</span>
+            <span class="text-xs text-mist/40">{post.date}</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="px-6 pb-32">
+    <div class="max-w-3xl mx-auto pt-8 border-t border-canopy/20">
       <p class="text-sm text-mist/50">
         Read <a href="/why" class="text-scale hover:text-glow transition-colors">Why Ouroboros</a> for the core argument, or <a href="/docs" class="text-scale hover:text-glow transition-colors">step into the docs</a> if you want the operator path.
       </p>

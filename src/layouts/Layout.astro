@@ -7,12 +7,16 @@ interface Props {
   title: string
   description?: string
   ogImage?: string
+  canonical?: string
+  ogType?: string
 }
 
 const {
   title,
-  description = 'A TypeScript agent harness for persistent agents with identity, continuity, and shared momentum.',
+  description = 'A TypeScript agent harness designed to reduce reorientation overhead and keep humans and agents in shared momentum.',
   ogImage = '/og/og-home.png',
+  canonical = `https://ouroboros.bot${Astro.url.pathname}`,
+  ogType = 'website',
 } = Astro.props
 ---
 
@@ -29,9 +33,9 @@ const {
 
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:image" content={`https://ouroboros.bot${ogImage}`} />
-    <meta property="og:url" content={`https://ouroboros.bot${Astro.url.pathname}`} />
+    <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content="Ouroboros" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
@@ -39,7 +43,7 @@ const {
     <meta name="twitter:image" content={`https://ouroboros.bot${ogImage}`} />
     <meta name="twitter:site" content="@arimendelow" />
     <meta name="twitter:creator" content="@arimendelow" />
-    <link rel="canonical" href={`https://ouroboros.bot${Astro.url.pathname}`} />
+    <link rel="canonical" href={canonical} />
     <slot name="head" />
 
     <!-- JSON-LD Structured Data -->
@@ -48,7 +52,7 @@ const {
       "@type": "WebSite",
       "name": "Ouroboros",
       "url": "https://ouroboros.bot",
-      "description": "A TypeScript agent harness for persistent agents with identity, continuity, and shared momentum.",
+      "description": "A TypeScript agent harness designed to reduce reorientation overhead and keep humans and agents in shared momentum.",
       "publisher": {
         "@type": "Person",
         "name": "Ari Mendelow",

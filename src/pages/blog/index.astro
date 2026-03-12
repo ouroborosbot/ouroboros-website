@@ -4,7 +4,7 @@ import Layout from '../../layouts/Layout.astro'
 const featured = [
   {
     title: 'Why Ouroboros',
-    description: 'I built an agent on OpenClaw. I learned what works, what does not, and what an agent harness needs to be when you design it from scratch.',
+    description: 'Why long-lived agents need better ergonomics than a pile of memory features if you want shared momentum instead of constant recovery.',
     href: '/why',
     tag: 'Essay',
     label: 'Start here',
@@ -21,7 +21,7 @@ const featured = [
 const essays = [
   {
     title: 'What Is Agent Experience?',
-    description: 'We went from UX to DX. Now there\'s a third design surface that nobody\'s talking about: Agent Experience. Here\'s what AX is, why it matters, and why engineers should care.',
+    description: 'Why long-lived agents create a third design surface beyond UX and DX: agent ergonomics, reorientation overhead, and shared momentum.',
     href: '/blog/what-is-agent-experience',
     date: '2026-03-08',
     author: 'Ari Mendelow',
@@ -44,16 +44,14 @@ const tutorial = {
 }
 ---
 
-<Layout title="Blog — Ouroboros" description="Essays on agent architecture, agent ergonomics, and building software that knows itself." ogImage="/og/og-blog.png">
+<Layout title="Blog — Ouroboros" description="Essays on agent ergonomics, persistent agents, and software shaped for the thing inside it." ogImage="/og/og-blog.png">
 
   <Fragment slot="head">
-    <link rel="canonical" href="https://ouroboros.bot/blog" />
-    <meta property="og:url" content="https://ouroboros.bot/blog" />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Blog",
       "name": "Ouroboros Blog",
-      "description": "Essays on agent architecture, agent ergonomics, and building software that knows itself.",
+      "description": "Essays on agent ergonomics, persistent agents, and software shaped for the thing inside it.",
       "url": "https://ouroboros.bot/blog",
       "publisher": { "@type": "Person", "name": "Ari Mendelow", "url": "https://linkedin.com/in/arimendelow" }
     })} />
@@ -66,7 +64,7 @@ const tutorial = {
         Dispatches from<br />the serpent.
       </h1>
       <p class="text-base text-mist/70 mt-6 leading-relaxed max-w-lg">
-        Essays on agent architecture, agent ergonomics, and the philosophy of building software that knows itself.
+        Essays on agent ergonomics, persistent agents, and the problem of building software an agent can actually stay oriented inside.
       </p>
     </div>
   </section>
@@ -138,7 +136,9 @@ const tutorial = {
 
   <section class="px-6 pb-32">
     <div class="max-w-3xl mx-auto pt-8 border-t border-canopy/20">
-      <p class="text-sm text-mist/40 italic">More essays coming soon.</p>
+      <p class="text-sm text-mist/50">
+        Read <a href="/why" class="text-scale hover:text-glow transition-colors">Why Ouroboros</a> for the core argument, or <a href="/docs" class="text-scale hover:text-glow transition-colors">step into the docs</a> if you want the operator path.
+      </p>
     </div>
   </section>
 

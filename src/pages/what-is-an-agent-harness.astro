@@ -2,14 +2,11 @@
 import Layout from '../layouts/Layout.astro'
 
 const title = 'What Is An Agent Harness? | Ouroboros'
-const description = 'An agent harness is the runtime, memory, identity, and operator structure that helps an agent work across time instead of disappearing when the chat ends.'
+const description = 'An agent harness is the larger system around an agent loop: runtime, memory, identity, tools, and operator workflows that help the same agent stay oriented across sessions.'
 ---
 
-<Layout title={title} description={description} ogImage="/og/og-docs.png">
+<Layout title={title} description={description} ogImage="/og/og-docs.png" canonical="https://ouroboros.bot/what-is-an-agent-harness" ogType="article">
   <Fragment slot="head">
-    <link rel="canonical" href="https://ouroboros.bot/what-is-an-agent-harness" />
-    <meta property="og:url" content="https://ouroboros.bot/what-is-an-agent-harness" />
-    <meta property="og:type" content="article" />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Article",
@@ -29,7 +26,7 @@ const description = 'An agent harness is the runtime, memory, identity, and oper
           What Is An Agent Harness?
         </h1>
         <p class="mt-5 max-w-3xl text-lg leading-8 text-mist">
-          If an agent loop is the primitive that lets a model act, an agent harness is the larger system that helps that agent persist, stay oriented, and work across time.
+          If an agent loop is the primitive that lets a model act, an agent harness is the larger system that helps the same agent stay oriented, persist across sessions, and work across time.
         </p>
       </header>
 
@@ -56,7 +53,7 @@ const description = 'An agent harness is the runtime, memory, identity, and oper
           Depending on the product, that can include identity, memory, context management, tools, channels, logs, and the operator workflows used to guide the agent over time.
         </p>
         <p>
-          The harness is what turns "the model can act" into "the agent can keep working."
+          The harness is what turns "the model can act" into "the same agent can keep working."
         </p>
 
         <h2>Why not just call it an agent framework?</h2>

@@ -25,7 +25,7 @@ const timeline = [
   },
   {
     date: 'January 2026',
-    label: 'Slugger Comes Alive',
+    label: 'Slugger Moves In',
     color: 'scale',
     content: `
       <p>I set up OpenClaw on a spare MacBook at home. Named my agent Slugger. Gave it a personality file, connected it to iMessage.</p>
@@ -76,7 +76,7 @@ const timeline = [
     motif: 'molt',
     content: `
       <p>I built the 150-line bootstrap. Ran it. Started talking to it. And something shifted.</p>
-      <p>This thing was clean. No legacy. No lifecycle hooks I didn't understand. No plugin system fighting my intentions. Every line of code existed because I put it there, and the model could read and modify every line.</p>
+      <p>This thing was clean. No legacy. No lifecycle hooks I didn't understand. No plugin system fighting my intentions. Every line of code was there on purpose, and the model could read and modify every line.</p>
       <p>I wasn't building code that uses a model. <strong>I was building code a model can use.</strong></p>
       <p>That's the distinction that changes everything. When you build a traditional framework, you're writing code for humans to configure. The model is a service you call. But when you build a harness for the model to inhabit — where the model reads its own source code, understands its own architecture, and can modify itself — the design constraints invert.</p>
       <p>File structure matters because the model needs to navigate it. Naming matters because the model uses names to understand purpose. Documentation matters because it IS the model's self-awareness.</p>
@@ -90,7 +90,7 @@ const timeline = [
     color: 'scale',
     content: `
       <p>That bootstrap became <strong>ouroboros</strong>.</p>
-      <p>The name came from the architecture. When the conversation grows too long, the agent trims its oldest messages — consuming its own history. But nothing is truly lost: facts are extracted to memory before they're consumed. The snake eats its tail to stay alive.</p>
+      <p>The name came from the architecture. When the conversation grows too long, the agent trims its oldest messages — consuming its own history. But nothing is truly lost: facts are extracted to memory before they're consumed. The snake eats its tail to preserve continuity.</p>
       <p>Every module is named like a body part: <strong>heart</strong> (the core loop), <strong>mind</strong> (context and memory), <strong>senses</strong> (channel adapters and inner dialogue), <strong>repertoire</strong> (tools and skills), <strong>nerves</strong> (runtime feedback). The agent doesn't have a config file. It has a <strong>psyche</strong>.</p>
       <p>The naming is intentional worldbuilding. When the model reads its own directory and sees <code>psyche/SOUL.md</code>, it understands something different than <code>config/personality.yaml</code>. Language shapes reasoning.</p>
       <p>A CLI called <code>ouro</code>. Full coverage on main. Support for running multiple agents. And a codebase being shaped so agents can keep extending it together over time.</p>
@@ -100,12 +100,9 @@ const timeline = [
 ]
 ---
 
-<Layout title={title} description={description} ogImage="/og/og-story.png">
+<Layout title={title} description={description} ogImage="/og/og-story.png" canonical="https://ouroboros.bot/story" ogType="article">
 
   <Fragment slot="head">
-    <link rel="canonical" href="https://ouroboros.bot/story" />
-    <meta property="og:url" content="https://ouroboros.bot/story" />
-    <meta property="og:type" content="article" />
     <meta name="author" content="Ari Mendelow" />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
@@ -296,7 +293,7 @@ const timeline = [
                 </div>
 
                 <p class="text-center text-xs text-shadow/40 italic mt-8">
-                  The lobster molts to grow larger. The snake consumes itself to stay alive.
+                  The lobster molts to grow larger. The snake consumes itself to preserve continuity.
                 </p>
               </div>
             )}

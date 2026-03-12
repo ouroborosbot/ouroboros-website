@@ -24,10 +24,8 @@ const {
 } = Astro.props
 ---
 
-<Layout title={title} description={description} ogImage={ogImage}>
+<Layout title={title} description={description} ogImage={ogImage} canonical={canonical} ogType="article">
   <Fragment slot="head">
-    <link rel="canonical" href={canonical} />
-    <meta property="og:url" content={canonical} />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "TechArticle",

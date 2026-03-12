@@ -53,11 +53,8 @@ const outcomes = [
 ]
 ---
 
-<Layout title={title} description={description} ogImage="/og/og-why.png">
+<Layout title={title} description={description} ogImage="/og/og-why.png" canonical="https://ouroboros.bot/why" ogType="article">
   <Fragment slot="head">
-    <link rel="canonical" href="https://ouroboros.bot/why" />
-    <meta property="og:url" content="https://ouroboros.bot/why" />
-    <meta property="og:type" content="article" />
     <meta name="author" content="Ari Mendelow" />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",

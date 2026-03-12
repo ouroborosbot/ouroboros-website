@@ -8,12 +8,9 @@ const datePublished = "2026-02-02"
 const dateModified = "2026-03-06"
 ---
 
-<Layout title={title} description={description} ogImage="/og/og-stop-being-the-glue.png">
+<Layout title={title} description={description} ogImage="/og/og-stop-being-the-glue.png" canonical={canonicalUrl} ogType="article">
 
   <Fragment slot="head">
-    <link rel="canonical" href={canonicalUrl} />
-    <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:type" content="article" />
     <meta property="article:published_time" content={datePublished} />
     <meta property="article:modified_time" content={dateModified} />
     <meta property="article:author" content="Ari Mendelow" />
@@ -153,7 +150,7 @@ const dateModified = "2026-03-06"
           That all changed when Peter Steinberger wanted to be able to WhatsApp his computer to see how Claude Code was doing on a long-running task. Instead of a simple chat bot, he discovered that models had become capable enough that we no longer needed a human in the loop. That if you give a model access to your terminal and send it a voice note, it will, without direction, find the tools it needs lying around and <a href="https://youtu.be/AcwK1Uuwc0U?t=217" class="text-scale hover:text-glow transition-colors" target="_blank" rel="noopener">build itself the capability to transcribe it and respond to you</a>.
         </p>
         <p>
-          OpenClaw was born. Like ChatGPT before it: <a href="https://pitchwall.co/blog/openclaw-explained-the-viral-open-source-ai-agent-with-100k-github-stars" class="text-scale hover:text-glow transition-colors" target="_blank" rel="noopener">record viral growth</a>, latent demand finally met. Officially dubbed as <a href="https://openclaw.ai" class="text-scale hover:text-glow transition-colors" target="_blank" rel="noopener">"the AI that actually does things"</a>, others have written about how it <a href="https://www.macstories.net/stories/clawdbot-showed-me-what-the-future-of-personal-ai-assistants-looks-like/" class="text-scale hover:text-glow transition-colors" target="_blank" rel="noopener">"Showed (them) What the Future of Personal AI Assistants Looks Like"</a>.
+          OpenClaw was born. It made the personal-agent future feel concrete instead of hypothetical, and it gave a lot of people their first real taste of collaborating with the same agent across time.
         </p>
         <p>
           That article captures the moment we finally got what Siri promised, and the unlock goes deeper — the same capability that handles simple tasks opens a door we never had: sustained collaboration on complex work. Vibe-coding is <em>not</em> the same as agentic engineering.
@@ -183,7 +180,7 @@ const dateModified = "2026-03-06"
           This is why collaborative planning isn't just nice to have. It's essential. We're building an artifact together, one that persists beyond either of our context windows.
         </p>
         <p>
-          What we actually want is One Agent to Rule Them All — a chief of staff to our army of specialized agents, capable of delegating on our behalf without us micromanaging every step. We want to be able to bark a whole bunch of unrelated orders as we think of them, truly operating at what Peter calls <a href="https://steipete.me/posts/2025/shipping-at-inference-speed" class="text-scale hover:text-glow transition-colors" target="_blank" rel="noopener">"inference speed."</a>
+          What we actually want is one agent that can coordinate the rest — a chief of staff to an eventual army of specialized agents, capable of delegating on our behalf without us micromanaging every step. We want to be able to toss it unrelated orders as we think of them, truly operating at what Peter calls <a href="https://steipete.me/posts/2025/shipping-at-inference-speed" class="text-scale hover:text-glow transition-colors" target="_blank" rel="noopener">"inference speed."</a>
         </p>
         <p>
           This unlock was always going to come from an indie dev. Big companies would never — too much liability, too much risk. Peter just gave his model access and let it figure things out. And it did.

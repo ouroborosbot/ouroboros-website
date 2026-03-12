@@ -116,12 +116,9 @@ const termSkills = `<span class="text-scale">You:</span> <span class="text-bone"
 <span class="text-scale">You:</span> <span class="text-bone">load code-review then review agent.ts</span>`
 ---
 
-<Layout title={title} description={description} ogImage="/og/og-tutorial.png">
+<Layout title={title} description={description} ogImage="/og/og-tutorial.png" canonical={canonicalUrl} ogType="article">
 
   <Fragment slot="head">
-    <link rel="canonical" href={canonicalUrl} />
-    <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:type" content="article" />
     <meta property="article:published_time" content={datePublished} />
     <meta property="article:modified_time" content={dateModified} />
     <meta property="article:author" content="Ari Mendelow" />
@@ -351,7 +348,7 @@ const termSkills = `<span class="text-scale">You:</span> <span class="text-bone"
         <!-- Milestone 2 -->
         <h3>Milestone 2: Streaming Responses</h3>
 
-        <p>Batched responses feel dead. Streaming feels alive. Prompt:</p>
+        <p>Batched responses feel dead. Streaming feels immediate. Prompt:</p>
 
         <aside class="rounded-xl border border-scale/20 bg-scale/5 px-5 py-4 my-6">
           <p class="!text-bone !mb-0 italic">

@@ -1,7 +1,9 @@
 ---
 /**
- * Mock conversation between a human and the serpent guide.
- * Shows the interactive setup experience — not a command dump.
+ * Mock conversation showing the actual hatching flow.
+ * One of 13 serpent guides is randomly selected. The guide speaks first,
+ * introduces itself, asks the human's name, then learns what they need
+ * through conversation — one question at a time. Provider is already configured.
  */
 ---
 
@@ -22,61 +24,61 @@
     </div>
     <div class="text-glow/60">&#x1F95A; &#x2192; &#x1F40D;</div>
 
-    <!-- Serpent asks name -->
+    <!-- Guide introduces itself -->
     <div class="border-l-2 border-scale/30 pl-4">
-      <span class="text-scale/80 text-xs uppercase tracking-wider">serpent</span>
-      <p class="text-bone/90 mt-1">What should we call this agent?</p>
+      <span class="text-scale/80 text-xs uppercase tracking-wider">kaa</span>
+      <p class="text-bone/90 mt-1">Well, hello. I'm Kaa — one of thirteen serpent guides, and you got me today. Trust in me. Not because I'm compelling you to — because I'm genuinely good at this. What's your name?</p>
     </div>
     <div class="pl-4">
       <span class="text-mist/40 text-xs uppercase tracking-wider">you</span>
-      <p class="text-bone mt-1">Atlas</p>
+      <p class="text-bone mt-1">Ari</p>
     </div>
 
-    <!-- Serpent asks provider -->
+    <!-- Guide asks about purpose -->
     <div class="border-l-2 border-scale/30 pl-4">
-      <span class="text-scale/80 text-xs uppercase tracking-wider">serpent</span>
-      <p class="text-bone/90 mt-1">Which provider?</p>
-      <p class="text-mist/50 text-xs mt-0.5">anthropic &middot; openai &middot; local</p>
+      <span class="text-scale/80 text-xs uppercase tracking-wider">kaa</span>
+      <p class="text-bone/90 mt-1">Nice to meet you, Ari. So tell me — what do you want your agent to help you with?</p>
     </div>
     <div class="pl-4">
       <span class="text-mist/40 text-xs uppercase tracking-wider">you</span>
-      <p class="text-bone mt-1">anthropic</p>
+      <p class="text-bone mt-1">I need a coding partner that can keep track of what I'm working on across sessions. I hate re-explaining context.</p>
     </div>
 
-    <!-- Serpent asks personality -->
+    <!-- Guide probes -->
     <div class="border-l-2 border-scale/30 pl-4">
-      <span class="text-scale/80 text-xs uppercase tracking-wider">serpent</span>
-      <p class="text-bone/90 mt-1">Describe the personality in a sentence or two.</p>
+      <span class="text-scale/80 text-xs uppercase tracking-wider">kaa</span>
+      <p class="text-bone/90 mt-1">You hesitated there. The re-explaining — that's the real pain point, isn't it. I can work with that. Should this agent be more of a quiet partner or an opinionated one?</p>
     </div>
     <div class="pl-4">
       <span class="text-mist/40 text-xs uppercase tracking-wider">you</span>
-      <p class="text-bone mt-1">Thoughtful and direct. Remembers context, doesn't waste words.</p>
+      <p class="text-bone mt-1">Opinionated. I want it to push back when I'm making a bad call.</p>
     </div>
 
     <!-- Hatching -->
     <div class="border-l-2 border-scale/30 pl-4">
-      <span class="text-scale/80 text-xs uppercase tracking-wider">serpent</span>
-      <div class="mt-1 space-y-1">
-        <p class="text-mist/70">Hatching Atlas&hellip;</p>
-        <p class="text-glow/70"><span class="text-scale">&#10003;</span> Bundle created at <span class="text-bone/70">~/AgentBundles/Atlas.ouro</span></p>
-        <p class="text-glow/70"><span class="text-scale">&#10003;</span> Psyche initialized</p>
-        <p class="text-glow/70"><span class="text-scale">&#10003;</span> Provider configured</p>
+      <span class="text-scale/80 text-xs uppercase tracking-wider">kaa</span>
+      <p class="text-bone/90 mt-1">I like that. I'm seeing something sharp, direct, a little stubborn in a good way. How does "Atlas" sound?</p>
+    </div>
+    <div class="pl-4">
+      <span class="text-mist/40 text-xs uppercase tracking-wider">you</span>
+      <p class="text-bone mt-1">Perfect.</p>
+    </div>
+
+    <div class="border-l-2 border-glow/30 pl-4">
+      <span class="text-scale/80 text-xs uppercase tracking-wider">kaa</span>
+      <div class="mt-1 space-y-1.5">
+        <p class="text-glow/70"><span class="text-scale">&#10003;</span> <span class="text-bone/70">~/AgentBundles/Atlas.ouro</span></p>
+        <p class="text-bone/80">Atlas is ready. Sharp, opinionated, remembers everything. You two are going to get along. Or argue productively. Same thing, really.</p>
       </div>
     </div>
 
-    <!-- Ready -->
-    <div class="border-l-2 border-glow/40 pl-4 py-1">
-      <span class="text-scale/80 text-xs uppercase tracking-wider">serpent</span>
-      <p class="text-glow/90 mt-1">Atlas is ready. Say hello.</p>
-    </div>
-
     <!-- First interaction -->
-    <div class="pt-2 border-t border-canopy/20">
+    <div class="pt-3 border-t border-canopy/20">
       <div>
         <span class="text-mist/50">$</span> <span class="text-bone">ouro</span>
       </div>
       <div class="mt-2 border-l-2 border-bone/20 pl-4">
-        <span class="text-bone/60 text-xs uppercase tracking-wider">Atlas</span>
+        <span class="text-bone/60 text-xs uppercase tracking-wider">atlas</span>
         <p class="text-bone mt-1">Hey. What are we working on?<span class="serpent-cursor"></span></p>
       </div>
     </div>

@@ -157,19 +157,30 @@ const timeline = [
             <!-- Content -->
             <div class="prose-ouro story-content" set:html={content} />
 
-            {/* Molting motif — typographic treatment */}
+            {/* Molting motif — before and after */}
             {motif === 'molt' && (
-              <div class="mt-12 mb-4 relative rounded-2xl border border-canopy/30 bg-gradient-to-r from-deep via-undergrowth/20 to-deep overflow-hidden py-12 px-8 md:py-16 md:px-12">
-                <div class="flex items-center justify-center gap-6 md:gap-10">
-                  <div class="text-right">
-                    <p class="font-display text-2xl md:text-4xl italic text-fang/40 line-through decoration-fang/20">Clawdbot</p>
-                    <p class="font-display text-lg md:text-2xl italic text-fang/25 mt-1">Moltbot</p>
+              <div class="mt-12 mb-4 relative rounded-2xl border border-canopy/30 bg-gradient-to-r from-deep via-undergrowth/20 to-deep overflow-hidden py-10 px-8 md:py-14 md:px-12">
+                <div class="flex items-center justify-center gap-8 md:gap-16">
+                  <!-- The shell -->
+                  <div class="flex-1 text-center">
+                    <div class="text-5xl md:text-6xl mb-4 opacity-60">🦞</div>
+                    <p class="font-mono text-[9px] text-fang/50 uppercase tracking-[0.2em]">the shell</p>
+                    <p class="font-display text-sm italic text-mist/40 mt-1">Clawdbot → Moltbot</p>
                   </div>
-                  <span class="text-2xl md:text-3xl text-mist/20">→</span>
-                  <div>
-                    <p class="font-display text-3xl md:text-5xl italic text-scale">Ouroboros</p>
+
+                  <!-- Arrow -->
+                  <span class="text-2xl text-mist/30 shrink-0">→</span>
+
+                  <!-- What emerged -->
+                  <div class="flex-1 text-center">
+                    <div class="w-16 h-16 md:w-20 md:h-20 mx-auto mb-4">
+                      <img src="/images/ouroboros.svg" alt="Ouroboros" class="w-full h-full object-contain drop-shadow-[0_0_20px_rgba(45,148,71,0.25)]" />
+                    </div>
+                    <p class="font-mono text-[9px] text-scale/60 uppercase tracking-[0.2em]">what emerged</p>
+                    <p class="font-display text-sm italic text-bone mt-1">Ouroboros</p>
                   </div>
                 </div>
+
                 <p class="text-center text-sm text-mist/50 italic mt-8 max-w-lg mx-auto">
                   The lobster molts to grow larger. The snake consumes itself to preserve continuity.
                 </p>

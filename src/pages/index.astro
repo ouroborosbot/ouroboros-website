@@ -203,11 +203,19 @@ const organs = [
           </div>
         </div>
 
-        <!-- Ouroboros illustration -->
+        <!-- Context window visualization -->
         <div class="lg:col-span-2 flex items-center justify-center">
-          <div class="relative w-64 h-64 md:w-72 md:h-72">
+          <div class="relative w-72 h-72 md:w-80 md:h-80">
             <div class="absolute inset-[-20%] rounded-full bg-scale/8 blur-[80px] pointer-events-none"></div>
-            <img src="/images/ouroboros.svg" alt="An ouroboros — a snake consuming its own tail" class="absolute inset-0 w-full h-full object-contain drop-shadow-[0_0_40px_rgba(45,148,71,0.2)]" />
+            <!-- Ouroboros as subtle background watermark -->
+            <img src="/images/ouroboros.svg" alt="" class="absolute inset-6 w-auto h-auto object-contain opacity-15 pointer-events-none" aria-hidden="true" />
+            <!-- Foreground text -->
+            <div class="absolute inset-0 flex flex-col items-center justify-center text-center gap-1">
+              <span class="font-mono text-[9px] text-scale/80 uppercase tracking-[0.3em]">context window</span>
+              <span class="font-display text-3xl italic text-bone mt-2 leading-tight">Consume.</span>
+              <span class="font-display text-3xl italic text-mist leading-tight">Extract.</span>
+              <span class="font-display text-3xl italic text-bone leading-tight">Survive.</span>
+            </div>
           </div>
         </div>
       </div>

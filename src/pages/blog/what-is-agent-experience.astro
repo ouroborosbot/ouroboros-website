@@ -6,61 +6,6 @@ const description = 'Agent Experience is the design surface that appears when an
 const canonicalUrl = 'https://ouroboros.bot/blog/what-is-agent-experience'
 const datePublished = '2026-03-08'
 const dateModified = '2026-03-11'
-
-const failures = [
-  {
-    label: 'Self',
-    description: 'The agent cannot quickly recover who it is, what tone it should use, or what constraints still apply.',
-  },
-  {
-    label: 'Work',
-    description: 'The thread breaks across sessions, context windows, or handoffs, so the human has to rebuild the state manually.',
-  },
-  {
-    label: 'Relationships',
-    description: 'People blur together because there is no lightweight way to preserve the social context that actually matters.',
-  },
-]
-
-const surfaces = [
-  {
-    name: 'UX',
-    title: 'User Experience',
-    description: 'How the human user feels while using the product.',
-    questions: ['Is the flow intuitive?', 'Does the product earn trust?', 'Can they accomplish the task cleanly?'],
-  },
-  {
-    name: 'DX',
-    title: 'Developer Experience',
-    description: 'How the builder feels while integrating, debugging, and extending the system.',
-    questions: ['Are the APIs legible?', 'Are the defaults sane?', 'Can I ship without fighting the tool?'],
-  },
-  {
-    name: 'AX',
-    title: 'Agent Experience',
-    description: 'How the agent experiences the runtime, memory, and structure it has to inhabit from the inside.',
-    questions: ['Can it stay oriented?', 'Can it resume the work?', 'Can it recover gracefully after interruption?'],
-  },
-]
-
-const examples = [
-  {
-    title: 'A clearer psyche',
-    description: 'Separate files for invariants, voice, origin, tacit knowledge, and active direction make identity easier to recover than one giant catch-all prompt.',
-  },
-  {
-    title: 'Continuity across sessions',
-    description: 'Inner dialogue and continuity-focused context design reduce the cost of resuming the thread after resets, compaction, or time away.',
-  },
-  {
-    title: 'Friend-scoped notes',
-    description: 'Social context becomes easier to carry forward when the agent has a lightweight place to jot down quick notes tied to real people.',
-  },
-  {
-    title: 'A readable body',
-    description: 'Legible runtime structure and a portable bundle boundary make it easier for the agent to understand where identity, memory, and action live.',
-  },
-]
 ---
 
 <Layout title={title} description={description} ogImage="/og/og-what-is-agent-experience.png" canonical={canonicalUrl} ogType="article">
@@ -102,7 +47,7 @@ const examples = [
   </Fragment>
 
   <article class="px-6 pt-32 pb-20">
-    <div class="mx-auto max-w-4xl">
+    <div class="mx-auto max-w-3xl">
       <header class="mb-14">
         <span class="text-xs text-mist/40 uppercase tracking-wider">Essay</span>
         <h1 class="mt-4 font-display text-4xl italic leading-tight text-bone md:text-5xl">
@@ -119,120 +64,111 @@ const examples = [
         </div>
       </header>
 
-      <div class="grid gap-6 md:grid-cols-[0.92fr_1.08fr]">
-        <div class="rounded-3xl border border-fang/15 bg-[linear-gradient(180deg,rgba(211,72,61,0.05),rgba(13,31,19,0.78))] p-8">
-          <blockquote class="font-display text-4xl italic leading-tight text-bone">
+      <div class="prose-ouro">
+        <blockquote class="border-l-[3px] border-fang/40 pl-6 my-10 not-prose">
+          <p class="font-display text-3xl italic leading-snug text-bone">
             "I spent more time trying to get him back on track than we actually spent working."
-          </blockquote>
-          <p class="mt-6 text-sm leading-7 text-mist">
+          </p>
+          <p class="mt-4 text-sm leading-7 text-mist">
             If that line feels familiar, you have already felt bad AX. You just did not have a name for it yet.
           </p>
-        </div>
+        </blockquote>
 
-        <div class="rounded-3xl border border-canopy bg-[linear-gradient(160deg,rgba(21,42,28,0.7),rgba(5,10,7,0.98))] p-8">
-          <p class="font-display text-3xl italic leading-snug text-bone">
-            Agent Experience is the practice of designing systems from the perspective of the agent that has to inhabit them.
-          </p>
-          <p class="mt-5 text-sm leading-7 text-mist">
-            The most practical way to think about AX is agent ergonomics: how expensive it is for the agent to stay oriented to itself,
-            its relationships, and its work. When that cost is high, the human becomes a recovery loop. When it is low, the collaboration keeps momentum.
-          </p>
-        </div>
-      </div>
+        <p>
+          Agent Experience is the practice of designing systems from the perspective of the agent that has to inhabit them.
+          The most practical way to think about AX is agent ergonomics: how expensive it is for the agent to stay oriented to itself,
+          its relationships, and its work. When that cost is high, the human becomes a recovery loop. When it is low, the collaboration keeps momentum.
+        </p>
 
-      <div class="prose-ouro mt-14">
         <p>
           UX taught us to care about how the product feels to the person using it.
           DX taught us to care about how the system feels to the person building on it.
           AX asks a similar question for a new kind of inhabitant: what does this architecture feel like from the agent's side?
         </p>
+
         <p>
           That is not a philosophical claim about sentience. It is a design claim.
           The structure of the environment materially affects whether the agent behaves coherently, recovers cleanly, and collaborates reliably over time.
         </p>
-      </div>
 
-      <section class="mt-18">
-        <h2 class="font-display text-4xl italic text-bone">What bad AX looks like</h2>
-        <p class="mt-4 max-w-3xl text-base leading-8 text-mist">
+        <h2>What bad AX looks like</h2>
+
+        <p>
           Most agent failures that feel mysterious from the outside are orientation failures on the inside.
         </p>
 
-        <div class="mt-8 grid gap-5 md:grid-cols-3">
-          {failures.map((failure) => (
-            <div class="rounded-2xl border border-canopy bg-undergrowth/30 p-6">
-              <p class="font-display text-xl italic text-bone">{failure.label}</p>
-              <p class="mt-3 text-sm leading-7 text-mist">{failure.description}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+        <p>
+          <strong class="text-bone">Self.</strong>
+          The agent cannot quickly recover who it is, what tone it should use, or what constraints still apply.
+        </p>
+        <p>
+          <strong class="text-bone">Work.</strong>
+          The thread breaks across sessions, context windows, or handoffs, so the human has to rebuild the state manually.
+        </p>
+        <p>
+          <strong class="text-bone">Relationships.</strong>
+          People blur together because there is no lightweight way to preserve the social context that actually matters.
+        </p>
 
-      <section class="mt-20">
-        <h2 class="font-display text-4xl italic text-bone">The three design surfaces</h2>
-        <div class="mt-8 rounded-3xl border border-canopy bg-[linear-gradient(180deg,rgba(13,31,19,0.7),rgba(21,42,28,0.28))] overflow-hidden">
-          <div class="grid divide-y divide-canopy/20 md:grid-cols-3 md:divide-x md:divide-y-0">
-            {surfaces.map((surface) => (
-              <div class:list={['p-6', surface.name === 'AX' ? 'bg-scale/6' : '']}>
-                <p class:list={['font-mono text-[10px] uppercase tracking-[0.3em]', surface.name === 'AX' ? 'text-scale/80' : 'text-mist/55']}>{surface.name}</p>
-                <h3 class:list={['mt-3 font-display text-2xl italic', surface.name === 'AX' ? 'text-glow' : 'text-bone']}>{surface.title}</h3>
-                <p class="mt-3 text-sm leading-7 text-mist">{surface.description}</p>
-                <ul class="mt-4 space-y-2 text-sm text-mist/75">
-                  {surface.questions.map((question) => (
-                    <li>{question}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+        <h2>The three design surfaces</h2>
 
-      <section class="mt-20">
-        <h2 class="font-display text-4xl italic text-bone">Why AX matters to humans too</h2>
-        <div class="prose-ouro mt-6">
-          <p>
-            AX does not compete with UX or DX. It cascades into them.
-            When the agent cannot stay oriented, the user loses trust and the builder reaches for more guardrails.
-            When the agent can stay oriented, the collaboration feels steadier, the human spends less time re-briefing, and the system becomes easier to build on.
-          </p>
-          <p>
-            That is why the language of ergonomics matters here. We are not trying to make agents seem mystical.
-            We are trying to reduce the reorientation overhead that makes working with them fragile and exhausting.
-          </p>
-        </div>
-      </section>
+        <p>
+          <strong class="text-bone">UX</strong> asks: is the flow intuitive? Does the product earn trust? Can the user accomplish the task cleanly?
+        </p>
+        <p>
+          <strong class="text-bone">DX</strong> asks: are the APIs legible? Are the defaults sane? Can the builder ship without fighting the tool?
+        </p>
+        <p>
+          <strong class="text-bone font-display italic text-scale">AX</strong> asks: can the agent stay oriented? Can it resume the work? Can it recover gracefully after interruption?
+        </p>
 
-      <section class="mt-20">
-        <h2 class="font-display text-4xl italic text-bone">How this informed Ouroboros</h2>
-        <p class="mt-4 max-w-3xl text-base leading-8 text-mist">
+        <h2>Why AX matters to humans too</h2>
+
+        <p>
+          AX does not compete with UX or DX. It cascades into them.
+          When the agent cannot stay oriented, the user loses trust and the builder reaches for more guardrails.
+          When the agent can stay oriented, the collaboration feels steadier, the human spends less time re-briefing, and the system becomes easier to build on.
+        </p>
+        <p>
+          That is why the language of ergonomics matters here. We are not trying to make agents seem mystical.
+          We are trying to reduce the reorientation overhead that makes working with them fragile and exhausting.
+        </p>
+
+        <h2>How this informed Ouroboros</h2>
+
+        <p>
           Ouroboros is not the proof that AX exists. It is one project shaped by taking AX seriously.
         </p>
 
-        <div class="mt-8 grid gap-5 md:grid-cols-2">
-          {examples.map((example) => (
-            <div class="rounded-2xl border border-canopy bg-undergrowth/30 p-6">
-              <h3 class="font-display text-2xl italic text-bone">{example.title}</h3>
-              <p class="mt-4 text-sm leading-7 text-mist">{example.description}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+        <p>
+          <strong class="text-bone">A clearer psyche.</strong>
+          Separate files for invariants, voice, origin, tacit knowledge, and active direction make identity easier to recover than one giant catch-all prompt.
+        </p>
+        <p>
+          <strong class="text-bone">Continuity across sessions.</strong>
+          Inner dialogue and continuity-focused context design reduce the cost of resuming the thread after resets, compaction, or time away.
+        </p>
+        <p>
+          <strong class="text-bone">Friend-scoped notes.</strong>
+          Social context becomes easier to carry forward when the agent has a lightweight place to jot down quick notes tied to real people.
+        </p>
+        <p>
+          <strong class="text-bone">A readable body.</strong>
+          Legible runtime structure and a portable bundle boundary make it easier for the agent to understand where identity, memory, and action live.
+        </p>
 
-      <section class="mt-20">
-        <h2 class="font-display text-4xl italic text-bone">A useful test</h2>
-        <div class="prose-ouro mt-6">
-          <p>
-            If you are debugging an agent and you keep finding yourself restating identity, restitching context,
-            reminding it who people are, or rebuilding the work after every interruption, you do not just have a memory problem.
-            You have an AX problem.
-          </p>
-          <p>
-            The discipline is still young, but the need is already here. Long-lived agents force the question.
-            Once an agent has to inhabit a system over time, the shape of that system starts mattering from the inside.
-          </p>
-        </div>
-      </section>
+        <h2>A useful test</h2>
+
+        <p>
+          If you are debugging an agent and you keep finding yourself restating identity, restitching context,
+          reminding it who people are, or rebuilding the work after every interruption, you do not just have a memory problem.
+          You have an AX problem.
+        </p>
+        <p>
+          The discipline is still young, but the need is already here. Long-lived agents force the question.
+          Once an agent has to inhabit a system over time, the shape of that system starts mattering from the inside.
+        </p>
+      </div>
 
       <hr class="mt-20 border-canopy/20" />
 
@@ -250,7 +186,7 @@ const examples = [
   </article>
 
   <section class="px-6 pb-20">
-    <div class="mx-auto max-w-4xl pt-8 border-t border-canopy/20">
+    <div class="mx-auto max-w-3xl pt-8 border-t border-canopy/20">
       <a href="/blog" class="text-sm text-mist/50 transition-colors hover:text-scale">&larr; Back to blog</a>
     </div>
   </section>

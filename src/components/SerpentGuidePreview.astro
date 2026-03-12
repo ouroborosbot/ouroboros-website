@@ -1,9 +1,7 @@
 ---
 /**
  * Mock conversation showing the actual hatching flow.
- * One of 13 serpent guides is randomly selected. The guide speaks first,
- * introduces itself, asks the human's name, then learns what they need
- * through conversation — one question at a time. Provider is already configured.
+ * npx ouro.bot → credentials → random serpent guide → conversation → hatch → seamless handoff to agent.
  */
 ---
 
@@ -18,11 +16,11 @@
 
   <!-- Conversation -->
   <div class="p-5 md:p-6 space-y-4 font-mono text-sm leading-relaxed">
-    <!-- Command -->
+    <!-- Command + welcome -->
     <div>
       <span class="text-mist/50">$</span> <span class="text-bone">npx ouro.bot</span>
     </div>
-    <div class="text-glow/60">&#x1F95A; &#x2192; &#x1F40D;</div>
+    <div class="text-mist/60">&#x1F40D; welcome to ouroboros! let's hatch your first agent.</div>
 
     <!-- Guide introduces itself -->
     <div class="border-l-2 border-scale/30 pl-4">
@@ -72,12 +70,9 @@
       </div>
     </div>
 
-    <!-- First interaction -->
+    <!-- Seamless handoff to the hatched agent -->
     <div class="pt-3 border-t border-canopy/20">
-      <div>
-        <span class="text-mist/50">$</span> <span class="text-bone">ouro</span>
-      </div>
-      <div class="mt-2 border-l-2 border-bone/20 pl-4">
+      <div class="border-l-2 border-bone/20 pl-4">
         <span class="text-bone/60 text-xs uppercase tracking-wider">atlas</span>
         <p class="text-bone mt-1">Hey. What are we working on?<span class="serpent-cursor"></span></p>
       </div>

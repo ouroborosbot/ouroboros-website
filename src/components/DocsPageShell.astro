@@ -41,33 +41,36 @@ const {
     <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(74,227,108,0.06),transparent_32%),linear-gradient(180deg,var(--color-void),var(--color-deep)_38%,var(--color-void))]"></div>
 
     <div class="relative mx-auto max-w-6xl">
-      <div class="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
-        <div class="max-w-3xl">
-          <span class="text-xs text-mist/40 uppercase tracking-wider">{eyebrow}</span>
-          <h1 class="mt-5 font-display text-5xl italic leading-tight text-bone md:text-6xl lg:text-7xl">
-            {title}
-          </h1>
-          <p class="mt-6 text-lg leading-8 text-mist md:text-xl">
-            {description}
-          </p>
-          <p class="mt-6 max-w-2xl text-sm leading-7 text-mist/85">
-            {intro}
-          </p>
-        </div>
-
-        {(noteTitle || noteBody) && (
-          <aside class="rounded-2xl border border-canopy/15 p-7">
-            {noteTitle && <p class="font-display text-xl italic text-bone">{noteTitle}</p>}
-            {noteBody && <p class="mt-3 text-sm leading-7 text-mist">{noteBody}</p>}
-            <slot name="aside" />
-          </aside>
-        )}
+      <div class="max-w-3xl mb-10">
+        <span class="text-xs text-mist/40 uppercase tracking-wider">{eyebrow}</span>
+        <h1 class="mt-5 font-display text-5xl italic leading-tight text-bone md:text-6xl lg:text-7xl">
+          {title}
+        </h1>
+        <p class="mt-6 text-lg leading-8 text-mist md:text-xl">
+          {description}
+        </p>
       </div>
 
-      <div class="relative mt-16 space-y-14">
+      {(noteTitle || noteBody || intro) && (
+        <div class="grid gap-5 lg:grid-cols-2 mb-16">
+          {intro && (
+            <div class="rounded-2xl border border-canopy bg-undergrowth/30 p-7">
+              <p class="text-sm leading-7 text-mist">{intro}</p>
+            </div>
+          )}
+          {(noteTitle || noteBody) && (
+            <aside class="rounded-2xl border border-canopy bg-undergrowth/30 p-7">
+              {noteTitle && <p class="font-display text-xl italic text-bone">{noteTitle}</p>}
+              {noteBody && <p class="mt-3 text-sm leading-7 text-mist">{noteBody}</p>}
+              <slot name="aside" />
+            </aside>
+          )}
+        </div>
+      )}
+
+      <div class="relative space-y-14">
         <slot />
       </div>
     </div>
   </article>
 </Layout>
-

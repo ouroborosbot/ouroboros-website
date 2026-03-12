@@ -129,7 +129,7 @@ const examples = [
           </p>
         </div>
 
-        <div class="rounded-3xl border border-canopy/20 bg-[linear-gradient(160deg,rgba(21,42,28,0.7),rgba(5,10,7,0.98))] p-8">
+        <div class="rounded-3xl border border-canopy bg-[linear-gradient(160deg,rgba(21,42,28,0.7),rgba(5,10,7,0.98))] p-8">
           <p class="font-display text-3xl italic leading-snug text-bone">
             Agent Experience is the practice of designing systems from the perspective of the agent that has to inhabit them.
           </p>
@@ -160,7 +160,7 @@ const examples = [
 
         <div class="mt-8 grid gap-5 md:grid-cols-3">
           {failures.map((failure) => (
-            <div class="rounded-2xl border border-canopy/15 p-6">
+            <div class="rounded-2xl border border-canopy bg-undergrowth/30 p-6">
               <p class="font-display text-xl italic text-bone">{failure.label}</p>
               <p class="mt-3 text-sm leading-7 text-mist">{failure.description}</p>
             </div>
@@ -170,7 +170,7 @@ const examples = [
 
       <section class="mt-20">
         <h2 class="font-display text-4xl italic text-bone">The three design surfaces</h2>
-        <div class="mt-8 rounded-3xl border border-canopy/20 bg-[linear-gradient(180deg,rgba(13,31,19,0.7),rgba(21,42,28,0.28))] overflow-hidden">
+        <div class="mt-8 rounded-3xl border border-canopy bg-[linear-gradient(180deg,rgba(13,31,19,0.7),rgba(21,42,28,0.28))] overflow-hidden">
           <div class="grid divide-y divide-canopy/20 md:grid-cols-3 md:divide-x md:divide-y-0">
             {surfaces.map((surface) => (
               <div class:list={['p-6', surface.name === 'AX' ? 'bg-scale/6' : '']}>
@@ -211,7 +211,7 @@ const examples = [
 
         <div class="mt-8 grid gap-5 md:grid-cols-2">
           {examples.map((example) => (
-            <div class="rounded-2xl border border-canopy/15 p-6">
+            <div class="rounded-2xl border border-canopy bg-undergrowth/30 p-6">
               <h3 class="font-display text-2xl italic text-bone">{example.title}</h3>
               <p class="mt-4 text-sm leading-7 text-mist">{example.description}</p>
             </div>
@@ -237,11 +237,11 @@ const examples = [
       <hr class="mt-20 border-canopy/20" />
 
       <div class="mt-10 grid gap-4 md:grid-cols-2">
-        <a href="/why" class="group rounded-2xl border border-canopy/20 p-5 transition-colors duration-200 hover:border-canopy/40">
+        <a href="/why" class="group rounded-2xl border border-canopy bg-gradient-to-br from-undergrowth to-deep/80 p-5 transition-all duration-300 hover:border-scale/40">
           <h2 class="font-display text-2xl italic text-bone">Why Ouroboros</h2>
           <p class="mt-3 text-sm text-mist/60">Agent ergonomics and shared momentum.</p>
         </a>
-        <a href="/blog/build-ai-agent-from-scratch" class="group rounded-2xl border border-canopy/20 p-5 transition-colors duration-200 hover:border-canopy/40">
+        <a href="/blog/build-ai-agent-from-scratch" class="group rounded-2xl border border-canopy bg-gradient-to-br from-undergrowth to-deep/80 p-5 transition-all duration-300 hover:border-scale/40">
           <h2 class="font-display text-2xl italic text-bone">Build your first agent loop</h2>
           <p class="mt-3 text-sm text-mist/60">The mechanics, from first principles.</p>
         </a>

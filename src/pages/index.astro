@@ -100,8 +100,8 @@ const organs = [
     </div>
   </section>
 
-  <!-- Scroll indicator (hidden on mobile) -->
-  <div class="relative h-16 hidden md:flex items-center justify-center -mt-24 z-10">
+  <!-- Scroll indicator -->
+  <div class="relative h-16 flex items-center justify-center -mt-24 z-10">
     <button onclick="document.querySelector('section.reveal')?.scrollIntoView({behavior:'smooth'})" class="animate-float cursor-pointer hover:scale-110 transition-transform duration-200" aria-label="Scroll to content">
       <svg class="w-7 h-7 text-scale/40 hover:text-scale/70 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7" /></svg>
     </button>

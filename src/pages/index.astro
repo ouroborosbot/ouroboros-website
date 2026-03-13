@@ -55,7 +55,7 @@ const organs = [
   </Fragment>
 
   <!-- ═══════════════ HERO ═══════════════ -->
-  <section class="relative overflow-hidden min-h-[80vh] md:min-h-screen flex flex-col items-center justify-center px-6 pt-20 pb-10 md:pt-16 md:pb-0">
+  <section class="relative overflow-hidden min-h-screen flex flex-col items-center justify-center px-6 pt-20 md:pt-16">
     <div class="absolute inset-0 bg-gradient-to-b from-void via-deep to-void"></div>
     <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] rounded-full bg-scale/6 blur-[120px] animate-glow-pulse pointer-events-none"></div>
     <div class="absolute top-1/4 left-1/3 w-[400px] h-[400px] rounded-full bg-glow/3 blur-[120px] animate-drift pointer-events-none"></div>
@@ -98,14 +98,14 @@ const organs = [
         </a>
       </div>
     </div>
-  </section>
 
-  <!-- Scroll indicator -->
-  <div class="relative h-16 flex items-center justify-center -mt-24 z-10">
-    <button onclick="document.querySelector('section.reveal')?.scrollIntoView({behavior:'smooth'})" class="animate-float cursor-pointer hover:scale-110 transition-transform duration-200" aria-label="Scroll to content">
-      <svg class="w-7 h-7 text-scale/40 hover:text-scale/70 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7" /></svg>
-    </button>
-  </div>
+    <!-- Scroll indicator pinned to bottom of hero -->
+    <div class="relative z-10 mt-auto pb-6">
+      <button onclick="document.querySelector('section.reveal')?.scrollIntoView({behavior:'smooth'})" class="animate-float cursor-pointer hover:scale-110 transition-transform duration-200" aria-label="Scroll to content">
+        <svg class="w-7 h-7 text-scale/40 hover:text-scale/70 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7" /></svg>
+      </button>
+    </div>
+  </section>
 
   <!-- ═══════════════ THE PROBLEM ═══════════════ -->
   <section class="relative overflow-hidden px-6 py-28 md:py-40 reveal">

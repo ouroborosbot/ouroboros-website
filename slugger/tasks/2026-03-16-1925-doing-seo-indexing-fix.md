@@ -48,7 +48,7 @@ Improve crawler-facing consistency and discovery signals for `https://ouroboros.
 
 **CRITICAL: Every unit header MUST start with status emoji (⬜ for new units).**
 
-### ⬜ Unit 0: Setup/Research
+### ✅ Unit 0: Setup/Research
 **What**: Install dependencies with `npm ci`, build the site once, confirm the current slashless-to-trailing-slash redirect behavior for the target routes, inspect the root token file at `public/11939a2530214da79d49b3a8908b8c9c.txt`, and capture a baseline artifact listing the exact source files, live URLs, redirects, and sitemap entries this task will touch.
 **Output**: `./2026-03-16-1925-doing-seo-indexing-fix/baseline-audit.md`
 **Acceptance**: Dependencies install cleanly, the baseline artifact names the target source files and live URLs, and the token file is explicitly documented as preserved pending verified purpose.
@@ -93,3 +93,4 @@ Improve crawler-facing consistency and discovery signals for `https://ouroboros.
 - 2026-03-16 21:28 Validation pass pinned the exact dist files and confirmed the implementation should stay in page literals unless evidence forces a shared-component change.
 - 2026-03-16 21:29 Ambiguity pass replaced fuzzy audit and handoff language with exact evidence sources and priority URLs.
 - 2026-03-16 21:29 Quality pass confirmed unit format, acceptance coverage, and readiness for execution.
+- 2026-03-16 21:33 Unit 0 complete: installed dependencies, built the site, captured redirect/sitemap baseline, and documented the verification token status.

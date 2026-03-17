@@ -54,17 +54,17 @@ Improve crawler-facing consistency and discovery signals for `https://ouroboros.
 **Acceptance**: Dependencies install cleanly, the baseline artifact names the target source files and live URLs, and the token file is explicitly documented as preserved pending verified purpose.
 
 ### ⬜ Unit 1a: Canonical Metadata Validation — Tests
-**What**: Add a focused metadata validation test at `tests/seo-metadata.test.mjs` using built-in Node tooling plus `astro build` to assert the generated sitemap and selected built pages agree on trailing-slash canonical URLs. Cover at least `/`, `/docs/`, `/docs/architecture/`, `/docs/getting-started/`, `/story/`, `/why/`, `/what-is-an-agent-harness/`, `/blog/build-ai-agent-from-scratch/`, `/blog/stop-being-the-glue/`, and `/blog/what-is-agent-experience/`. Add a `package.json` script so the test can be run repeatably from the repo root.
+**What**: Add a focused metadata validation test at `tests/seo-metadata.test.mjs` using built-in Node tooling plus `astro build` to assert `dist/sitemap-index.xml`, `dist/sitemap-0.xml`, and selected built pages agree on trailing-slash canonical URLs. Cover at least `/`, `/docs/`, `/docs/architecture/`, `/docs/getting-started/`, `/story/`, `/why/`, `/what-is-an-agent-harness/`, `/blog/build-ai-agent-from-scratch/`, `/blog/stop-being-the-glue/`, and `/blog/what-is-agent-experience/`. Add a `package.json` script so the test can be run repeatably from the repo root.
 **Output**: A committed failing metadata test in `tests/seo-metadata.test.mjs` and command wiring in `package.json`.
 **Acceptance**: `npm run test:seo-metadata` exists, runs from the repo root, and fails against the current slashless canonical values before any metadata implementation changes are made.
 
 ### ⬜ Unit 1b: Canonical Metadata Validation — Implementation
-**What**: Update the canonical-bearing source files so their canonical URLs match the trailing-slash live routes and keep any derived JSON-LD or metadata fields aligned. Target the currently hardcoded canonical values in `src/pages/docs/index.astro`, `src/pages/docs/architecture.astro`, `src/pages/docs/getting-started.astro`, `src/pages/docs/skills-and-prompts.astro`, `src/pages/docs/continuity-and-memory.astro`, `src/pages/docs/bundles-and-psyche.astro`, `src/pages/story.astro`, `src/pages/why.astro`, `src/pages/what-is-an-agent-harness.astro`, `src/pages/blog/build-ai-agent-from-scratch.astro`, `src/pages/blog/stop-being-the-glue.astro`, and `src/pages/blog/what-is-agent-experience.astro`.
+**What**: Update the canonical-bearing source files so their canonical URLs match the trailing-slash live routes and keep any derived JSON-LD or metadata fields aligned. Target the currently hardcoded canonical values in `src/pages/docs/index.astro`, `src/pages/docs/architecture.astro`, `src/pages/docs/getting-started.astro`, `src/pages/docs/skills-and-prompts.astro`, `src/pages/docs/continuity-and-memory.astro`, `src/pages/docs/bundles-and-psyche.astro`, `src/pages/story.astro`, `src/pages/why.astro`, `src/pages/what-is-an-agent-harness.astro`, `src/pages/blog/build-ai-agent-from-scratch.astro`, `src/pages/blog/stop-being-the-glue.astro`, and `src/pages/blog/what-is-agent-experience.astro`. Do not refactor `src/layouts/Layout.astro` or `src/components/DocsPageShell.astro` unless a literal URL update proves insufficient.
 **Output**: Canonical metadata updates in the targeted files.
 **Acceptance**: The metadata test from Unit 1a passes, the targeted slashless canonical literals are removed or corrected, and no sampled page emits a canonical URL that disagrees with the redirect target.
 
 ### ⬜ Unit 1c: Canonical Metadata Validation — Coverage & Refactor
-**What**: Re-run `npm run test:seo-metadata` and `npm run build`, inspect generated output in `dist/` to confirm sitemap and page metadata alignment, and keep the new validation code small enough that every branch and error path introduced for the test harness is exercised by the test suite.
+**What**: Re-run `npm run test:seo-metadata` and `npm run build`, inspect `dist/sitemap-index.xml`, `dist/sitemap-0.xml`, and the generated HTML files for the sampled routes to confirm sitemap and page metadata alignment, and keep the new validation code small enough that every branch and error path introduced for the test harness is exercised by the test suite.
 **Output**: `./2026-03-16-1925-doing-seo-indexing-fix/verification-notes.md`
 **Acceptance**: Build and metadata validation both pass, no new warnings are introduced, and the verification artifact records the final checked URLs plus the commands used.
 
@@ -90,3 +90,4 @@ Improve crawler-facing consistency and discovery signals for `https://ouroboros.
 ## Progress Log
 - 2026-03-16 21:27 Created from planning doc
 - 2026-03-16 21:28 Granularity pass tightened the artifact and test-file expectations.
+- 2026-03-16 21:28 Validation pass pinned the exact dist files and confirmed the implementation should stay in page literals unless evidence forces a shared-component change.

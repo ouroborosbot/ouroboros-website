@@ -1,6 +1,6 @@
 # Planning: SEO Indexing Fix
 
-**Status**: NEEDS_REVIEW
+**Status**: approved
 **Created**: 2026-03-16 21:16
 
 ## Goal
@@ -67,3 +67,4 @@ This task is expected to be mostly metadata and content-configuration work.
 
 ## Progress Log
 - 2026-03-16 21:16 Replaced the abandoned `codex/` planning draft with a repo-compliant planning doc on `slugger/seo-indexing-fix`.
+- 2026-03-16 21:25 Approved for doing-doc conversion.

@@ -69,12 +69,12 @@ Improve crawler-facing consistency and discovery signals for `https://ouroboros.
 **Acceptance**: Build and metadata validation both pass, no new warnings are introduced, and the verification artifact records the final checked URLs plus the commands used.
 
 ### ⬜ Unit 2a: Verification Artifact Audit
-**What**: Trace the current role of `public/11939a2530214da79d49b3a8908b8c9c.txt` as far as the repo and live site can support, document whether it appears to be an ownership or IndexNow-style token, and note any follow-up that still requires external dashboard confirmation.
+**What**: Trace the current role of `public/11939a2530214da79d49b3a8908b8c9c.txt` using three concrete checks only: the file contents in-repo, the live response from `https://ouroboros.bot/11939a2530214da79d49b3a8908b8c9c.txt`, and a repo-wide search for the token string or related verification references. Document whether the evidence supports treating it as an ownership or IndexNow-style token and note any follow-up that still requires external dashboard confirmation.
 **Output**: `./2026-03-16-1925-doing-seo-indexing-fix/verification-artifact-audit.md`
 **Acceptance**: The artifact records the file contents, where it is served from, whether it is referenced in-repo, and an explicit decision to keep or change it based on evidence.
 
 ### ⬜ Unit 2b: Search Submission Handoff
-**What**: Prepare a concise operator checklist for post-deploy Google Search Console and Bing Webmaster actions using the current production sitemap entry point and a short list of priority URLs to inspect/request.
+**What**: Prepare a concise operator checklist for post-deploy Google Search Console and Bing Webmaster actions using `https://ouroboros.bot/sitemap-index.xml` and the exact priority URLs `https://ouroboros.bot/`, `https://ouroboros.bot/docs/`, `https://ouroboros.bot/why/`, `https://ouroboros.bot/what-is-an-agent-harness/`, `https://ouroboros.bot/blog/build-ai-agent-from-scratch/`, and `https://ouroboros.bot/blog/what-is-agent-experience/`.
 **Output**: `./2026-03-16-1925-doing-seo-indexing-fix/search-submission-checklist.md`
 **Acceptance**: The checklist includes `https://ouroboros.bot/sitemap-index.xml`, names the priority URLs to inspect, and avoids claiming that external dashboard actions were completed from inside the repo.
 
@@ -91,3 +91,4 @@ Improve crawler-facing consistency and discovery signals for `https://ouroboros.
 - 2026-03-16 21:27 Created from planning doc
 - 2026-03-16 21:28 Granularity pass tightened the artifact and test-file expectations.
 - 2026-03-16 21:28 Validation pass pinned the exact dist files and confirmed the implementation should stay in page literals unless evidence forces a shared-component change.
+- 2026-03-16 21:29 Ambiguity pass replaced fuzzy audit and handoff language with exact evidence sources and priority URLs.

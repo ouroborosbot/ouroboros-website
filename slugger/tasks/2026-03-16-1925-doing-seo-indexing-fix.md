@@ -19,7 +19,7 @@ Improve crawler-facing consistency and discovery signals for `https://ouroboros.
 - [x] All hardcoded canonicals for routes that currently redirect are updated to the final live URL form.
 - [x] Sampled pages emit canonical and matching URL metadata that align with the redirect target and sitemap entries.
 - [x] Repo-owned crawler/indexing artifacts are checked and any repo-fixable inconsistencies are resolved or documented.
-- [ ] The final handoff includes an exact Google Search Console and Bing Webmaster checklist for `https://ouroboros.bot/`, including the current sitemap URL.
+- [x] The final handoff includes an exact Google Search Console and Bing Webmaster checklist for `https://ouroboros.bot/`, including the current sitemap URL.
 - [x] Build-time verification for the changed metadata/pages succeeds.
 - [x] 100% test coverage on all new code
 - [x] All tests pass
@@ -73,7 +73,7 @@ Improve crawler-facing consistency and discovery signals for `https://ouroboros.
 **Output**: `./2026-03-16-1925-doing-seo-indexing-fix/verification-artifact-audit.md`
 **Acceptance**: The artifact records the file contents, where it is served from, whether it is referenced in-repo, and an explicit decision to keep or change it based on evidence.
 
-### ⬜ Unit 2b: Search Submission Handoff
+### ✅ Unit 2b: Search Submission Handoff
 **What**: Prepare a concise operator checklist for post-deploy Google Search Console and Bing Webmaster actions using `https://ouroboros.bot/sitemap-index.xml` and the exact priority URLs `https://ouroboros.bot/`, `https://ouroboros.bot/docs/`, `https://ouroboros.bot/why/`, `https://ouroboros.bot/what-is-an-agent-harness/`, `https://ouroboros.bot/blog/build-ai-agent-from-scratch/`, and `https://ouroboros.bot/blog/what-is-agent-experience/`.
 **Output**: `./2026-03-16-1925-doing-seo-indexing-fix/search-submission-checklist.md`
 **Acceptance**: The checklist includes `https://ouroboros.bot/sitemap-index.xml`, names the priority URLs to inspect, and avoids claiming that external dashboard actions were completed from inside the repo.
@@ -98,3 +98,4 @@ Improve crawler-facing consistency and discovery signals for `https://ouroboros.
 - 2026-03-16 21:36 Unit 1b complete: aligned the in-scope page canonicals with trailing-slash routes and got green metadata validation plus a clean serial build.
 - 2026-03-16 21:38 Unit 1c complete: verified `100%` coverage on the new metadata test harness and recorded the successful build/test evidence.
 - 2026-03-16 21:39 Unit 2a complete: audited the root verification token and documented why it should stay unchanged pending external dashboard confirmation.
+- 2026-03-16 21:40 Unit 2b complete: added the concrete Google/Bing submission checklist and priority URLs for post-deploy inspection.

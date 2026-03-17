@@ -4,6 +4,15 @@ Marketing site for [Ouroboros](https://github.com/ouroborosbot/ouroboros-agent-h
 
 Built with [Astro](https://astro.build), [Tailwind CSS v4](https://tailwindcss.com), and deployed on [Cloudflare Pages](https://pages.cloudflare.com).
 
+## Read The Site
+
+- [Homepage](https://ouroboros.bot/)
+- [Why Ouroboros](https://ouroboros.bot/why/)
+- [Docs](https://ouroboros.bot/docs/)
+- [What Is An Agent Harness?](https://ouroboros.bot/what-is-an-agent-harness/)
+- [Build an AI Agent from Scratch](https://ouroboros.bot/blog/build-ai-agent-from-scratch/)
+- [What Is Agent Experience?](https://ouroboros.bot/blog/what-is-agent-experience/)
+
 ## Development
 
 ```sh

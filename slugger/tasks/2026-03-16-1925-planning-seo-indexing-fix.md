@@ -21,11 +21,11 @@ Improve crawler-facing consistency and discovery signals for `https://ouroboros.
 - New analytics, monitoring, or third-party integrations unless the user asks for them separately.
 
 ## Completion Criteria
-- [ ] All hardcoded canonicals for routes that currently redirect are updated to the final live URL form.
-- [ ] Sampled pages emit canonical and matching URL metadata that align with the redirect target and sitemap entries.
-- [ ] Repo-owned crawler/indexing artifacts are checked and any repo-fixable inconsistencies are resolved or documented.
-- [ ] The final handoff includes an exact Google Search Console and Bing Webmaster checklist for `https://ouroboros.bot/`, including the current sitemap URL.
-- [ ] Build-time verification for the changed metadata/pages succeeds.
+- [x] All hardcoded canonicals for routes that currently redirect are updated to the final live URL form.
+- [x] Sampled pages emit canonical and matching URL metadata that align with the redirect target and sitemap entries.
+- [x] Repo-owned crawler/indexing artifacts are checked and any repo-fixable inconsistencies are resolved or documented.
+- [x] The final handoff includes an exact Google Search Console and Bing Webmaster checklist for `https://ouroboros.bot/`, including the current sitemap URL.
+- [x] Build-time verification for the changed metadata/pages succeeds.
 
 ## Code Coverage Requirements
 This task is expected to be mostly metadata and content-configuration work.
@@ -68,3 +68,4 @@ This task is expected to be mostly metadata and content-configuration work.
 ## Progress Log
 - 2026-03-16 21:16 Replaced the abandoned `codex/` planning draft with a repo-compliant planning doc on `slugger/seo-indexing-fix`.
 - 2026-03-16 21:25 Approved for doing-doc conversion.
+- 2026-03-16 21:41 Completion criteria synced with the finished doing doc.

@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test:seo-metadata": "npm run build && node --test tests/seo-metadata.test.mjs"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.12",

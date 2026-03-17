@@ -29,10 +29,11 @@ jobs:
 
       - name: Notify search engines (IndexNow)
         run: |
-          URLS=$(curl -s https://ouroboros.bot/sitemap-0.xml \
-            | grep -oP '(?<=<loc>)[^<]+' \
+          test -f dist/sitemap-0.xml
+          URLS=$(grep -oP '(?<=<loc>)[^<]+' dist/sitemap-0.xml \
+            | sort -u \
             | jq -R . | jq -s .)
-          curl -s -X POST "https://api.indexnow.org/IndexNow" \
+          curl -sS -X POST "https://api.indexnow.org/IndexNow" \
             -H "Content-Type: application/json" \
             -d "{
               \"host\": \"ouroboros.bot\",

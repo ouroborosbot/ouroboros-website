@@ -16,11 +16,11 @@
 Improve crawler-facing consistency and discovery signals for `https://ouroboros.bot/` by aligning canonical metadata with the live trailing-slash routes, auditing the repo-owned indexing artifacts that can be fixed in code, and preparing the exact manual Google/Bing submission steps that still need to happen outside the repo.
 
 ## Completion Criteria
-- [ ] All hardcoded canonicals for routes that currently redirect are updated to the final live URL form.
-- [ ] Sampled pages emit canonical and matching URL metadata that align with the redirect target and sitemap entries.
+- [x] All hardcoded canonicals for routes that currently redirect are updated to the final live URL form.
+- [x] Sampled pages emit canonical and matching URL metadata that align with the redirect target and sitemap entries.
 - [ ] Repo-owned crawler/indexing artifacts are checked and any repo-fixable inconsistencies are resolved or documented.
 - [ ] The final handoff includes an exact Google Search Console and Bing Webmaster checklist for `https://ouroboros.bot/`, including the current sitemap URL.
-- [ ] Build-time verification for the changed metadata/pages succeeds.
+- [x] Build-time verification for the changed metadata/pages succeeds.
 - [ ] 100% test coverage on all new code
 - [ ] All tests pass
 - [ ] No warnings
@@ -58,7 +58,7 @@ Improve crawler-facing consistency and discovery signals for `https://ouroboros.
 **Output**: A committed failing metadata test in `tests/seo-metadata.test.mjs` and command wiring in `package.json`.
 **Acceptance**: `npm run test:seo-metadata` exists, runs from the repo root, and fails against the current slashless canonical values before any metadata implementation changes are made.
 
-### ⬜ Unit 1b: Canonical Metadata Validation — Implementation
+### ✅ Unit 1b: Canonical Metadata Validation — Implementation
 **What**: Update the canonical-bearing source files so their canonical URLs match the trailing-slash live routes and keep any derived JSON-LD or metadata fields aligned. Target the currently hardcoded canonical values in `src/pages/docs/index.astro`, `src/pages/docs/architecture.astro`, `src/pages/docs/getting-started.astro`, `src/pages/docs/skills-and-prompts.astro`, `src/pages/docs/continuity-and-memory.astro`, `src/pages/docs/bundles-and-psyche.astro`, `src/pages/story.astro`, `src/pages/why.astro`, `src/pages/what-is-an-agent-harness.astro`, `src/pages/blog/build-ai-agent-from-scratch.astro`, `src/pages/blog/stop-being-the-glue.astro`, and `src/pages/blog/what-is-agent-experience.astro`. Do not refactor `src/layouts/Layout.astro` or `src/components/DocsPageShell.astro` unless a literal URL update proves insufficient.
 **Output**: Canonical metadata updates in the targeted files.
 **Acceptance**: The metadata test from Unit 1a passes, the targeted slashless canonical literals are removed or corrected, and no sampled page emits a canonical URL that disagrees with the redirect target.
@@ -95,3 +95,4 @@ Improve crawler-facing consistency and discovery signals for `https://ouroboros.
 - 2026-03-16 21:29 Quality pass confirmed unit format, acceptance coverage, and readiness for execution.
 - 2026-03-16 21:33 Unit 0 complete: installed dependencies, built the site, captured redirect/sitemap baseline, and documented the verification token status.
 - 2026-03-16 21:34 Unit 1a complete: added `npm run test:seo-metadata` and a failing metadata test that exposes the slashless canonical mismatch.
+- 2026-03-16 21:36 Unit 1b complete: aligned the in-scope page canonicals with trailing-slash routes and got green metadata validation plus a clean serial build.

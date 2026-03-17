@@ -21,9 +21,9 @@ Improve crawler-facing consistency and discovery signals for `https://ouroboros.
 - [ ] Repo-owned crawler/indexing artifacts are checked and any repo-fixable inconsistencies are resolved or documented.
 - [ ] The final handoff includes an exact Google Search Console and Bing Webmaster checklist for `https://ouroboros.bot/`, including the current sitemap URL.
 - [x] Build-time verification for the changed metadata/pages succeeds.
-- [ ] 100% test coverage on all new code
-- [ ] All tests pass
-- [ ] No warnings
+- [x] 100% test coverage on all new code
+- [x] All tests pass
+- [x] No warnings
 
 ## Code Coverage Requirements
 **MANDATORY: 100% coverage on all new code.**
@@ -63,7 +63,7 @@ Improve crawler-facing consistency and discovery signals for `https://ouroboros.
 **Output**: Canonical metadata updates in the targeted files.
 **Acceptance**: The metadata test from Unit 1a passes, the targeted slashless canonical literals are removed or corrected, and no sampled page emits a canonical URL that disagrees with the redirect target.
 
-### ⬜ Unit 1c: Canonical Metadata Validation — Coverage & Refactor
+### ✅ Unit 1c: Canonical Metadata Validation — Coverage & Refactor
 **What**: Re-run `npm run test:seo-metadata` and `npm run build`, inspect `dist/sitemap-index.xml`, `dist/sitemap-0.xml`, and the generated HTML files for the sampled routes to confirm sitemap and page metadata alignment, and keep the new validation code small enough that every branch and error path introduced for the test harness is exercised by the test suite.
 **Output**: `./2026-03-16-1925-doing-seo-indexing-fix/verification-notes.md`
 **Acceptance**: Build and metadata validation both pass, no new warnings are introduced, and the verification artifact records the final checked URLs plus the commands used.
@@ -96,3 +96,4 @@ Improve crawler-facing consistency and discovery signals for `https://ouroboros.
 - 2026-03-16 21:33 Unit 0 complete: installed dependencies, built the site, captured redirect/sitemap baseline, and documented the verification token status.
 - 2026-03-16 21:34 Unit 1a complete: added `npm run test:seo-metadata` and a failing metadata test that exposes the slashless canonical mismatch.
 - 2026-03-16 21:36 Unit 1b complete: aligned the in-scope page canonicals with trailing-slash routes and got green metadata validation plus a clean serial build.
+- 2026-03-16 21:38 Unit 1c complete: verified `100%` coverage on the new metadata test harness and recorded the successful build/test evidence.

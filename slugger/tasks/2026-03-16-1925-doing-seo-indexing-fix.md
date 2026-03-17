@@ -53,7 +53,7 @@ Improve crawler-facing consistency and discovery signals for `https://ouroboros.
 **Output**: `./2026-03-16-1925-doing-seo-indexing-fix/baseline-audit.md`
 **Acceptance**: Dependencies install cleanly, the baseline artifact names the target source files and live URLs, and the token file is explicitly documented as preserved pending verified purpose.
 
-### ⬜ Unit 1a: Canonical Metadata Validation — Tests
+### ✅ Unit 1a: Canonical Metadata Validation — Tests
 **What**: Add a focused metadata validation test at `tests/seo-metadata.test.mjs` using built-in Node tooling plus `astro build` to assert `dist/sitemap-index.xml`, `dist/sitemap-0.xml`, and selected built pages agree on trailing-slash canonical URLs. Cover at least `/`, `/docs/`, `/docs/architecture/`, `/docs/getting-started/`, `/story/`, `/why/`, `/what-is-an-agent-harness/`, `/blog/build-ai-agent-from-scratch/`, `/blog/stop-being-the-glue/`, and `/blog/what-is-agent-experience/`. Add a `package.json` script so the test can be run repeatably from the repo root.
 **Output**: A committed failing metadata test in `tests/seo-metadata.test.mjs` and command wiring in `package.json`.
 **Acceptance**: `npm run test:seo-metadata` exists, runs from the repo root, and fails against the current slashless canonical values before any metadata implementation changes are made.
@@ -94,3 +94,4 @@ Improve crawler-facing consistency and discovery signals for `https://ouroboros.
 - 2026-03-16 21:29 Ambiguity pass replaced fuzzy audit and handoff language with exact evidence sources and priority URLs.
 - 2026-03-16 21:29 Quality pass confirmed unit format, acceptance coverage, and readiness for execution.
 - 2026-03-16 21:33 Unit 0 complete: installed dependencies, built the site, captured redirect/sitemap baseline, and documented the verification token status.
+- 2026-03-16 21:34 Unit 1a complete: added `npm run test:seo-metadata` and a failing metadata test that exposes the slashless canonical mismatch.

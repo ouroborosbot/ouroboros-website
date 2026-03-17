@@ -18,7 +18,7 @@ Improve crawler-facing consistency and discovery signals for `https://ouroboros.
 ## Completion Criteria
 - [x] All hardcoded canonicals for routes that currently redirect are updated to the final live URL form.
 - [x] Sampled pages emit canonical and matching URL metadata that align with the redirect target and sitemap entries.
-- [ ] Repo-owned crawler/indexing artifacts are checked and any repo-fixable inconsistencies are resolved or documented.
+- [x] Repo-owned crawler/indexing artifacts are checked and any repo-fixable inconsistencies are resolved or documented.
 - [ ] The final handoff includes an exact Google Search Console and Bing Webmaster checklist for `https://ouroboros.bot/`, including the current sitemap URL.
 - [x] Build-time verification for the changed metadata/pages succeeds.
 - [x] 100% test coverage on all new code
@@ -68,7 +68,7 @@ Improve crawler-facing consistency and discovery signals for `https://ouroboros.
 **Output**: `./2026-03-16-1925-doing-seo-indexing-fix/verification-notes.md`
 **Acceptance**: Build and metadata validation both pass, no new warnings are introduced, and the verification artifact records the final checked URLs plus the commands used.
 
-### ⬜ Unit 2a: Verification Artifact Audit
+### ✅ Unit 2a: Verification Artifact Audit
 **What**: Trace the current role of `public/11939a2530214da79d49b3a8908b8c9c.txt` using three concrete checks only: the file contents in-repo, the live response from `https://ouroboros.bot/11939a2530214da79d49b3a8908b8c9c.txt`, and a repo-wide search for the token string or related verification references. Document whether the evidence supports treating it as an ownership or IndexNow-style token and note any follow-up that still requires external dashboard confirmation.
 **Output**: `./2026-03-16-1925-doing-seo-indexing-fix/verification-artifact-audit.md`
 **Acceptance**: The artifact records the file contents, where it is served from, whether it is referenced in-repo, and an explicit decision to keep or change it based on evidence.
@@ -97,3 +97,4 @@ Improve crawler-facing consistency and discovery signals for `https://ouroboros.
 - 2026-03-16 21:34 Unit 1a complete: added `npm run test:seo-metadata` and a failing metadata test that exposes the slashless canonical mismatch.
 - 2026-03-16 21:36 Unit 1b complete: aligned the in-scope page canonicals with trailing-slash routes and got green metadata validation plus a clean serial build.
 - 2026-03-16 21:38 Unit 1c complete: verified `100%` coverage on the new metadata test harness and recorded the successful build/test evidence.
+- 2026-03-16 21:39 Unit 2a complete: audited the root verification token and documented why it should stay unchanged pending external dashboard confirmation.

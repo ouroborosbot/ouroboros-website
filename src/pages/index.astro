@@ -55,7 +55,7 @@ const organs = [
   </Fragment>
 
   <!-- ═══════════════ HERO ═══════════════ -->
-  <section class="relative overflow-hidden min-h-dvh flex flex-col items-center justify-center px-6 pt-24 pb-8">
+  <section class="relative overflow-hidden min-h-dvh flex items-center justify-center px-6 pt-20">
     <!-- Atmosphere -->
     <div class="absolute inset-0 bg-gradient-to-b from-void via-deep/80 to-void"></div>
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[800px] rounded-full bg-scale/5 blur-[160px] animate-glow-pulse pointer-events-none"></div>
@@ -72,7 +72,7 @@ const organs = [
         Identity. Relationships. Work in flight.
       </p>
 
-      <div class="mt-8 md:mt-14 animate-fade-up stagger-3">
+      <div class="mt-6 md:mt-8 animate-fade-up stagger-3">
         <div class="inline-flex flex-col sm:flex-row items-center gap-1.5 sm:gap-3 px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg border border-scale/25 bg-scale/5">
           <div class="flex items-center gap-1.5">
             <span class="w-2 h-2 rounded-full bg-glow motion-safe:animate-pulse"></span>
@@ -83,7 +83,7 @@ const organs = [
         </div>
       </div>
 
-      <div class="flex flex-col sm:flex-row gap-3 mt-8 md:mt-12 justify-center animate-fade-up stagger-4">
+      <div class="flex flex-col sm:flex-row gap-3 mt-6 md:mt-8 justify-center animate-fade-up stagger-4">
         <a href="/docs" class="group px-6 sm:px-8 py-3 sm:py-3.5 bg-scale text-void font-medium rounded-lg transition-all duration-300 hover:bg-glow hover:shadow-[0_0_40px_rgba(45,148,71,0.3)]">
           Get Started
         </a>
@@ -92,7 +92,7 @@ const organs = [
         </a>
       </div>
 
-      <div class="mt-6 md:mt-10 animate-fade-up stagger-5">
+      <div class="mt-4 md:mt-6 animate-fade-up stagger-5">
         <a href="https://github.com/ouroborosbot/ouroboros" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-xs text-shadow hover:text-mist transition-colors duration-200">
           <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
           Star on GitHub
@@ -100,10 +100,10 @@ const organs = [
       </div>
     </div>
 
-    <!-- Scroll indicator -->
-    <div class="relative z-10 mt-auto pb-6">
+    <!-- Scroll indicator — absolute so it doesn't compete with centering -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
       <button onclick="document.querySelector('section.reveal')?.scrollIntoView({behavior:'smooth'})" class="animate-float cursor-pointer hover:scale-110 transition-transform duration-200" aria-label="Scroll to content">
-        <svg class="w-7 h-7 text-scale/40 hover:text-scale/70 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7" /></svg>
+        <svg class="w-6 h-6 text-scale/40 hover:text-scale/70 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7" /></svg>
       </button>
     </div>
   </section>
@@ -117,10 +117,10 @@ const organs = [
     <div class="max-w-6xl mx-auto relative">
       <div class="max-w-3xl mb-12">
         <span class="font-mono text-[10px] text-fang/80 uppercase tracking-[0.3em] block mb-8">The cost</span>
-        <h2 class="font-display text-[clamp(2.5rem,5vw,5rem)] italic text-bone leading-[1.1]">
+        <h2 class="font-display text-4xl md:text-5xl italic text-bone leading-[1.1]">
           Every conversation has a ceiling.
         </h2>
-        <p class="font-display text-[clamp(1.5rem,3vw,3rem)] italic text-mist mt-2">
+        <p class="font-display text-2xl md:text-3xl italic text-mist mt-2">
           Hit it, and something has to give.
         </p>
       </div>
@@ -228,10 +228,10 @@ const organs = [
       <div class="lg:grid lg:grid-cols-2 lg:gap-24 items-end mb-12">
         <div>
           <span class="font-mono text-[10px] text-scale/80 uppercase tracking-[0.3em] block mb-6">The Psyche</span>
-          <h2 class="font-display text-[clamp(2.5rem,5vw,5rem)] italic text-bone leading-[1.1]">
+          <h2 class="font-display text-4xl md:text-5xl italic text-bone leading-[1.1]">
             Not a stateless function.
           </h2>
-          <p class="font-display text-[clamp(2rem,4vw,4rem)] italic text-scale mt-1">
+          <p class="font-display text-3xl md:text-4xl italic text-scale mt-1">
             A mind.
           </p>
         </div>
@@ -272,7 +272,7 @@ const organs = [
         <!-- Left: header, pinned -->
         <div class="lg:sticky lg:top-32 mb-14 lg:mb-0">
           <span class="font-mono text-[10px] text-scale/80 uppercase tracking-[0.3em] block mb-6">Architecture</span>
-          <h2 class="font-display text-[clamp(2.5rem,5vw,5rem)] italic text-bone leading-[1.1]">
+          <h2 class="font-display text-4xl md:text-5xl italic text-bone leading-[1.1]">
             The codebase is a creature.
           </h2>
           <p class="text-base text-mist mt-6 leading-relaxed">
@@ -313,7 +313,7 @@ const organs = [
         <!-- Left: text -->
         <div class="mb-12 lg:mb-0">
           <span class="font-mono text-[10px] text-scale/80 uppercase tracking-[0.3em] block mb-6">Begin</span>
-          <h2 class="font-display text-[clamp(2.5rem,5vw,4.5rem)] italic text-bone leading-[1.1]">
+          <h2 class="font-display text-4xl md:text-5xl italic text-bone leading-[1.1]">
             One command. A conversation. Your agent.
           </h2>
           <p class="text-base text-mist mt-6 leading-relaxed max-w-md">

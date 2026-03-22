@@ -5,39 +5,39 @@ import PromptCard from '../../components/PromptCard.astro'
 const pages = [
   {
     href: '/docs/getting-started',
-    label: 'Getting Started',
     title: 'Run one command. Talk to the serpent.',
     description: 'npx ouro.bot starts an interactive guide that walks you through provider setup, naming, and personality.',
+    icon: '🐍',
   },
   {
     href: '/docs/bundles-and-psyche',
-    label: 'Bundles And Psyche',
     title: 'Your agent has a portable self.',
-    description: 'Learn what lives in a bundle, what the psyche files are for, and how to ask your agent to inspect them live.',
+    description: 'What lives in a bundle, what the psyche files are for, and how to ask your agent to inspect them.',
+    icon: '◈',
   },
   {
     href: '/docs/continuity-and-memory',
-    label: 'Continuity And Memory',
     title: 'Keep the thread.',
-    description: 'Ask your agent how continuity, notes, and memory work in the current install or repo instead of trusting fixed prose.',
+    description: 'How agent-initiated memory, friend-scoped notes, and associative recall work together.',
+    icon: '◉',
   },
   {
     href: '/docs/architecture',
-    label: 'Architecture',
     title: 'Understand the body.',
-    description: 'Use the docs to place the parts, then have your agent inspect the live codebase for the exact answers.',
+    description: 'Modules named like organs. A runtime the model can read, reason about, and extend.',
+    icon: '♥',
   },
   {
     href: '/docs/skills-and-prompts',
-    label: 'Skills And Prompts',
     title: 'Hand work off cleanly.',
-    description: 'Use prompts for simple questions and skill handoffs for deeper tasks that need the latest local truth.',
+    description: 'Prompts for quick questions. Skill handoffs for tasks that need the latest local truth.',
+    icon: '◆',
   },
   {
     href: '/what-is-an-agent-harness',
-    label: 'What Is An Agent Harness?',
     title: 'Start from first principles.',
-    description: 'Use the evergreen explainer if you need to place the category before you touch the operator docs.',
+    description: 'What an agent harness is, why it matters, and how it differs from a framework.',
+    icon: '◇',
   },
 ]
 ---
@@ -47,18 +47,18 @@ const pages = [
   description="Docs for the Ouroboros TypeScript AI agent harness: setup, continuity, psyche files, architecture, and prompts for humans and agents."
   eyebrow="Documentation"
   canonical="https://ouroboros.bot/docs/"
-  intro="The website should help you place the object and choose the next question. Your agent should fetch the real-time answer from the code, the local install, or the bundle it is actually working inside."
-  noteTitle="Operator rule"
-  noteBody="If you need exact commands, tool lists, file names, or runtime behavior, ask your agent for the live answer instead of trusting a static page."
+  intro="These pages help you place the object and choose the next question. For exact commands, file names, or runtime behavior — ask your agent for the live answer."
+  noteTitle="Docs for humans, skills for agents"
+  noteBody="The website explains the what. Your agent fetches the how from the code, the local install, or the bundle it's working inside."
 >
   <section>
-    <div class="divide-y divide-canopy/30">
-      {pages.map((page, i) => (
-        <a href={page.href} class="group grid grid-cols-[3rem_1fr] gap-4 py-8 first:pt-0 last:pb-0 items-start">
-          <span class="font-mono text-sm text-mist/30 group-hover:text-scale transition-colors">{String(i + 1).padStart(2, '0')}</span>
+    <div class="grid md:grid-cols-2 gap-4">
+      {pages.map((page) => (
+        <a href={page.href} class="group flex items-start gap-5 rounded-xl border border-canopy/30 bg-undergrowth/20 p-6 transition-all duration-300 hover:border-scale/40 hover:bg-undergrowth/40">
+          <span class="text-scale text-lg mt-0.5 shrink-0 group-hover:text-glow transition-colors">{page.icon}</span>
           <div>
-            <h2 class="font-display text-2xl italic text-bone group-hover:text-scale transition-colors">{page.title}</h2>
-            <p class="mt-2 text-sm text-mist/60 leading-relaxed">{page.description}</p>
+            <h2 class="font-display text-xl md:text-2xl italic text-bone group-hover:text-scale transition-colors leading-snug">{page.title}</h2>
+            <p class="mt-2 text-sm text-mist/70 leading-relaxed">{page.description}</p>
           </div>
         </a>
       ))}

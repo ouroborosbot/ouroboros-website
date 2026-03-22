@@ -117,16 +117,16 @@ const timeline = [
   </Fragment>
 
   <article class="relative px-6 pt-36 pb-24">
-    <div class="max-w-3xl mx-auto">
+    <div class="max-w-4xl mx-auto">
 
       <!-- Header -->
-      <header class="mb-20 reveal">
+      <header class="mb-28 reveal">
         <span class="text-xs text-mist/60 uppercase tracking-wider block mb-6">Origin Story</span>
-        <h1 class="font-display text-4xl md:text-5xl lg:text-6xl italic text-bone leading-tight">
+        <h1 class="font-display text-[clamp(2.5rem,6vw,6rem)] italic text-bone leading-[1.08]">
           Code a model can use,<br />
-          <span class="text-mist/70">not code that uses a model.</span>
+          <span class="text-mist/60">not code that uses a model.</span>
         </h1>
-        <p class="text-lg text-mist/70 mt-8 leading-relaxed max-w-xl">
+        <p class="text-lg text-mist mt-10 leading-relaxed max-w-xl">
           How building an AI agent plugin led to building an agent harness from scratch — and why the distinction matters.
         </p>
         <div class="flex items-center gap-4 mt-8 text-sm text-shadow">
@@ -139,20 +139,18 @@ const timeline = [
       <!-- Timeline -->
       <div class="relative">
         <!-- The spine -->
-        <div class="absolute left-4 md:left-6 top-0 bottom-0 w-px bg-gradient-to-b from-canopy/40 via-scale/30 to-canopy/40"></div>
+        <div class="absolute left-4 md:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-canopy/40 via-scale/30 to-canopy/40"></div>
 
         {timeline.map(({ date, label, color, content, motif }, i) => (
-          <div class="relative pl-14 md:pl-20 pb-20 last:pb-0 reveal">
+          <div class="relative pl-14 md:pl-24 pb-24 last:pb-0 reveal">
             <!-- Timeline dot -->
-            <div class="absolute left-2.5 md:left-4.5 top-1 w-3 h-3 rounded-full border-2 bg-void z-10" style={`border-color: ${colorMap[color]}`}></div>
+            <div class="absolute left-2.5 md:left-6.5 top-2 w-3 h-3 rounded-full border-2 bg-void z-10" style={`border-color: ${colorMap[color]}`}></div>
 
-            <!-- Date pill -->
-            <div class="flex items-center gap-3 mb-4">
-              <span class="text-xs text-mist/60 uppercase tracking-wider">{date}</span>
-            </div>
+            <!-- Date -->
+            <span class="font-mono text-[10px] uppercase tracking-[0.2em] block mb-3" style={`color: ${colorMap[color]}`}>{date}</span>
 
-            <!-- Section title -->
-            <h2 class="font-display text-3xl md:text-4xl italic text-bone mb-6">{label}</h2>
+            <!-- Section title — bigger -->
+            <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] italic text-bone mb-8 leading-snug">{label}</h2>
 
             <!-- Content -->
             <div class="prose-ouro story-content" set:html={content} />
@@ -194,7 +192,7 @@ const timeline = [
 
       <!-- Closing -->
       <div class="mt-24 pt-16 border-t border-canopy/30 reveal">
-        <h2 class="font-display text-4xl md:text-5xl italic text-bone leading-tight">
+        <h2 class="font-display text-[clamp(2.5rem,5vw,4.5rem)] italic text-bone leading-[1.1]">
           The Inversion
         </h2>
         <div class="prose-ouro mt-8">

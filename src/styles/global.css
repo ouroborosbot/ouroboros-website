@@ -65,6 +65,38 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ── Typography polish ── */
+
+h1, h2, h3, h4, h5, h6,
+.font-display {
+  text-wrap: balance;
+}
+
+p, li, dd, figcaption {
+  text-wrap: pretty;
+}
+
+/* ── Focus styles ── */
+
+:focus-visible {
+  outline: 2px solid var(--color-scale);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Remove outline for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ── Hover gating ── */
+/* Gate decorative hover transforms behind pointer capability */
+@media (hover: hover) and (pointer: fine) {
+  .hover-lift:hover {
+    transform: translateY(-3px);
+  }
+}
+
 /* Section divider — organic wave */
 .section-divider {
   height: 100px;
@@ -133,10 +165,7 @@ html {
   75% { transform: translate(10px, 30px); }
 }
 
-.animate-drift {
-  animation: drift 20s ease-in-out infinite;
-}
-
+/* One-shot animations play always (they complete and stop) */
 .animate-fade-up {
   animation: fade-up 0.8s ease-out both;
 }
@@ -147,12 +176,17 @@ html {
 .stagger-4 { animation-delay: 550ms; }
 .stagger-5 { animation-delay: 700ms; }
 
-.animate-float {
-  animation: float 5s ease-in-out infinite;
-}
-
-.animate-glow-pulse {
-  animation: glow-pulse 4s ease-in-out infinite;
+/* Continuous/looping animations — only when motion is OK */
+@media (prefers-reduced-motion: no-preference) {
+  .animate-drift {
+    animation: drift 20s ease-in-out infinite;
+  }
+  .animate-float {
+    animation: float 5s ease-in-out infinite;
+  }
+  .animate-glow-pulse {
+    animation: glow-pulse 4s ease-in-out infinite;
+  }
 }
 
 /* ── Scroll reveal ── */
@@ -221,6 +255,7 @@ html {
   margin-top: 3.5rem;
   margin-bottom: 1rem;
   line-height: 1.2;
+  text-wrap: balance;
 }
 
 .prose-ouro h3 {
@@ -232,6 +267,7 @@ html {
   margin-top: 2.5rem;
   margin-bottom: 0.75rem;
   line-height: 1.3;
+  text-wrap: balance;
 }
 
 .prose-ouro ul,

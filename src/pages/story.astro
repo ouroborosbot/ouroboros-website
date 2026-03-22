@@ -121,15 +121,15 @@ const timeline = [
 
       <!-- Header -->
       <header class="mb-20 reveal">
-        <span class="text-xs text-mist/40 uppercase tracking-wider block mb-6">Origin Story</span>
+        <span class="text-xs text-mist/60 uppercase tracking-wider block mb-6">Origin Story</span>
         <h1 class="font-display text-4xl md:text-5xl lg:text-6xl italic text-bone leading-tight">
           Code a model can use,<br />
-          <span class="text-mist/50">not code that uses a model.</span>
+          <span class="text-mist/70">not code that uses a model.</span>
         </h1>
         <p class="text-lg text-mist/70 mt-8 leading-relaxed max-w-xl">
           How building an AI agent plugin led to building an agent harness from scratch — and why the distinction matters.
         </p>
-        <div class="flex items-center gap-4 mt-8 text-sm text-shadow/60">
+        <div class="flex items-center gap-4 mt-8 text-sm text-shadow">
           <span>Ari Mendelow</span>
           <span>·</span>
           <span>March 2026</span>
@@ -148,7 +148,7 @@ const timeline = [
 
             <!-- Date pill -->
             <div class="flex items-center gap-3 mb-4">
-              <span class="text-xs text-mist/40 uppercase tracking-wider">{date}</span>
+              <span class="text-xs text-mist/60 uppercase tracking-wider">{date}</span>
             </div>
 
             <!-- Section title -->
@@ -167,7 +167,7 @@ const timeline = [
                       <img src="/images/openclaw.svg" alt="OpenClaw lobster" class="w-full h-full object-contain" />
                     </div>
                     <p class="font-mono text-[9px] text-fang/50 uppercase tracking-[0.2em]">the shell</p>
-                    <p class="font-display text-sm italic text-mist/40 mt-1">Clawdbot → Moltbot</p>
+                    <p class="font-display text-sm italic text-mist/60 mt-1">Clawdbot → Moltbot</p>
                   </div>
 
                   <!-- Arrow -->
@@ -183,7 +183,7 @@ const timeline = [
                   </div>
                 </div>
 
-                <p class="text-center text-sm text-mist/50 italic mt-8 max-w-lg mx-auto">
+                <p class="text-center text-sm text-mist/70 italic mt-8 max-w-lg mx-auto">
                   The lobster molts to grow larger. The snake consumes itself to preserve continuity.
                 </p>
               </div>
@@ -259,54 +259,43 @@ const timeline = [
   }
   /* ── Molt motif animations ── */
 
-  .ouroboros-spin {
-    animation: spin 60s linear infinite;
-  }
-
   @keyframes spin {
     to { transform: rotate(360deg); }
   }
-
   @keyframes drift-out {
     0%, 100% { transform: translate(0, 0); opacity: 0.15; }
     50% { transform: translate(-3px, -4px); opacity: 0.05; }
   }
-
   @keyframes drift-out-2 {
     0%, 100% { transform: translate(0, 0); opacity: 0.12; }
     50% { transform: translate(4px, -3px); opacity: 0.04; }
   }
-
   @keyframes drift-out-3 {
     0%, 100% { transform: translate(0, 0); opacity: 0.1; }
     50% { transform: translate(-2px, 5px); opacity: 0.03; }
   }
-
-  .molt-particle-1 { animation: drift-out 6s ease-in-out infinite; }
-  .molt-particle-2 { animation: drift-out-2 7s ease-in-out infinite 0.5s; }
-  .molt-particle-3 { animation: drift-out-3 8s ease-in-out infinite 1s; }
-
   @keyframes shell-crack {
     0%, 100% { stroke-dashoffset: 0; }
     50% { stroke-dashoffset: 8; }
   }
-
-  .molt-shell-crack {
-    animation: shell-crack 10s ease-in-out infinite;
-  }
-
   @keyframes fragment-drift-left {
     0%, 100% { transform: translate(0, 0) rotate(0deg); }
     50% { transform: translate(-4px, -2px) rotate(-5deg); }
   }
-
   @keyframes fragment-drift-right {
     0%, 100% { transform: translate(0, 0) rotate(0deg); }
     50% { transform: translate(4px, -2px) rotate(5deg); }
   }
 
-  .molt-fragment-1 { animation: fragment-drift-left 8s ease-in-out infinite; }
-  .molt-fragment-2 { animation: fragment-drift-right 8s ease-in-out infinite 0.3s; }
+  @media (prefers-reduced-motion: no-preference) {
+    .ouroboros-spin { animation: spin 60s linear infinite; }
+    .molt-particle-1 { animation: drift-out 6s ease-in-out infinite; }
+    .molt-particle-2 { animation: drift-out-2 7s ease-in-out infinite 0.5s; }
+    .molt-particle-3 { animation: drift-out-3 8s ease-in-out infinite 1s; }
+    .molt-shell-crack { animation: shell-crack 10s ease-in-out infinite; }
+    .molt-fragment-1 { animation: fragment-drift-left 8s ease-in-out infinite; }
+    .molt-fragment-2 { animation: fragment-drift-right 8s ease-in-out infinite 0.3s; }
+  }
 
   .molt-left { opacity: 0.4; }
   .molt-right { opacity: 1; }

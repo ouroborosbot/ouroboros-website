@@ -248,16 +248,15 @@ const organs = [
         </p>
       </div>
 
-      <!-- Psyche files — staggered list, not uniform cards -->
-      <div class="space-y-1">
-        {psycheFiles.map(({ file, role, desc }, i) => (
-          <div class:list={[
-            'group grid grid-cols-1 md:grid-cols-[200px_1fr_1.5fr] gap-2 md:gap-8 items-baseline py-6 border-b border-canopy/20 first:border-t',
-            i % 2 === 0 ? '' : 'md:pl-12'
-          ]}>
+      <!-- Psyche files — clean divided list -->
+      <div class="divide-y divide-canopy/20 border-t border-canopy/20">
+        {psycheFiles.map(({ file, role, desc }) => (
+          <div class="grid grid-cols-1 md:grid-cols-[140px_1fr] gap-1 md:gap-10 py-5 items-baseline">
             <span class="font-mono text-xs text-scale tracking-wide">{file}</span>
-            <p class="font-display text-2xl md:text-3xl italic text-bone leading-snug">{role}</p>
-            <p class="text-sm text-mist leading-relaxed">{desc}</p>
+            <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-6">
+              <p class="font-display text-xl md:text-2xl italic text-bone leading-snug shrink-0">{role}</p>
+              <p class="text-sm text-mist leading-relaxed mt-1 sm:mt-0">{desc}</p>
+            </div>
           </div>
         ))}
       </div>

@@ -1,374 +1,141 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import SerpentGuidePreview from '../components/SerpentGuidePreview.astro'
-
-const psycheFiles = [
-  { file: 'SOUL.md', role: 'What you are.', desc: 'Core invariants and temperament. The part that survives every context reset.', accentClass: 'bg-scale' },
-  { file: 'IDENTITY.md', role: 'How you show up.', desc: 'Tone, voice, and self-presentation. How the agent carries itself in every interaction.', accentClass: 'bg-glow' },
-  { file: 'LORE.md', role: 'Where you come from.', desc: 'Origin and philosophical context. The narrative that connects purpose to action.', accentClass: 'bg-scale' },
-  { file: 'TACIT.md', role: 'What you\'ve learned.', desc: 'Patterns, preferences, and absorbed lessons. Knowledge the agent can\'t explain — it just knows.', accentClass: 'bg-glow' },
-  { file: 'ASPIRATIONS.md', role: 'Where you\'re going.', desc: 'Current direction and active priorities. Updated as work shifts and new goals emerge.', accentClass: 'bg-scale' },
-]
-
-const organs = [
-  { name: 'heart', desc: 'Runtime, providers, process management, and the heartbeat that keeps work moving.', icon: '♥' },
-  { name: 'mind', desc: 'Context assembly, memory lookup, and the logic that helps the agent keep the thread.', icon: '◉' },
-  { name: 'senses', desc: 'CLI, Teams, and inner dialogue surfaces that shape how the agent experiences the world.', icon: '◈' },
-  { name: 'repertoire', desc: 'Tools, skills, tasks, and coding orchestration the agent can actually reach for.', icon: '◆' },
-  { name: 'nerves', desc: 'Observability, logs, and runtime signals that help the agent understand what just happened.', icon: '◇' },
-]
 ---
 
 <Layout
-  title="Ouroboros | TypeScript AI Agent Harness for Persistent Agents"
-  description="Ouroboros is a TypeScript AI agent harness for building persistent agents with continuity, memory, and a readable runtime humans and agents can share."
+  title="Ouroboros — Agent Harness"
+  description="An agent harness where the self doesn't live in the conversation. Structured psyche, agent-initiated memory, per-person friend system, cross-session bridges."
 >
-  <Fragment slot="head">
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Ouroboros | TypeScript AI Agent Harness for Persistent Agents",
-      "url": "https://ouroboros.bot/",
-      "description": "Ouroboros is a TypeScript AI agent harness for building persistent agents with continuity, memory, and a readable runtime humans and agents can share.",
-      "isPartOf": {
-        "@type": "WebSite",
-        "url": "https://ouroboros.bot"
-      },
-      "primaryImageOfPage": {
-        "@type": "ImageObject",
-        "url": "https://ouroboros.bot/og/og-home.png"
-      },
-      "about": {
-        "@type": "SoftwareApplication",
-        "name": "Ouroboros",
-        "applicationCategory": "DeveloperApplication",
-        "operatingSystem": "Cross-platform",
-        "softwareVersion": "Alpha",
-        "url": "https://github.com/ouroborosbot/ouroboros",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
-        }
-      }
-    })} />
-  </Fragment>
+  <!-- ═══════════════ HERO ═══════════════
+       Atmospheric: undergrowth warmth fading to void.
+       Left-aligned, massive type, editorial tone.
+  ═══════════════════════════════════════ -->
+  <section class="relative min-h-dvh flex flex-col justify-end px-6 md:px-12 lg:px-24 pb-20 md:pb-28">
+    <!-- Warm atmospheric layer — NOT pure black -->
+    <div class="absolute inset-0 bg-gradient-to-b from-deep via-undergrowth/20 to-void pointer-events-none"></div>
+    <!-- Subtle organic glow, offset left to match content alignment -->
+    <div class="absolute top-1/3 left-[10%] w-[600px] h-[500px] rounded-full bg-scale/[0.03] blur-[200px] pointer-events-none"></div>
 
-  <!-- ═══════════════ HERO ═══════════════ -->
-  <section class="relative overflow-hidden min-h-dvh flex items-center justify-center px-6 pt-20">
-    <!-- Atmosphere -->
-    <div class="absolute inset-0 bg-gradient-to-b from-void via-deep/80 to-void"></div>
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[800px] rounded-full bg-scale/5 blur-[160px] animate-glow-pulse pointer-events-none"></div>
-    <div class="absolute top-1/3 left-1/4 w-[500px] h-[500px] rounded-full bg-glow/3 blur-[140px] animate-drift pointer-events-none"></div>
-    <div class="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-scale/4 blur-[120px] pointer-events-none"></div>
-
-    <div class="relative z-10 text-center max-w-5xl mx-auto">
-      <h1 class="font-display text-[2.25rem] sm:text-[3.5rem] md:text-[5rem] lg:text-[6rem] italic text-bone leading-[1.05] tracking-tight animate-fade-up">
-        What survives when the
-        <span class="block text-scale">context window runs out?</span>
-      </h1>
-
-      <p class="font-display text-xl md:text-2xl lg:text-3xl italic text-mist mt-4 md:mt-6 animate-fade-up stagger-2">
-        Identity. Relationships. Work in flight.
-      </p>
-
-      <div class="mt-6 md:mt-8 animate-fade-up stagger-3">
-        <div class="inline-flex flex-col sm:flex-row items-center gap-1.5 sm:gap-3 px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg border border-scale/25 bg-scale/5">
-          <div class="flex items-center gap-1.5">
-            <span class="w-2 h-2 rounded-full bg-glow motion-safe:animate-pulse"></span>
-            <span class="font-mono text-[11px] sm:text-xs text-glow tracking-wide">Built by agents, for agents</span>
-          </div>
-          <span class="hidden sm:block w-px h-4 bg-canopy/50"></span>
-          <span class="text-[11px] sm:text-xs text-mist">No human-written code.</span>
+    <div class="relative">
+      <!-- Badge — small, above everything -->
+      <div class="mb-8 animate-fade-up">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-scale/15 bg-scale/[0.03]">
+          <span class="w-1.5 h-1.5 rounded-full bg-glow motion-safe:animate-pulse"></span>
+          <span class="font-mono text-[10px] text-glow/70 tracking-wider">Built by agents, for agents</span>
         </div>
       </div>
 
-      <div class="flex flex-col sm:flex-row gap-3 mt-6 md:mt-8 justify-center animate-fade-up stagger-4">
-        <a href="/docs" class="group px-6 sm:px-8 py-3 sm:py-3.5 bg-scale text-void font-medium rounded-lg transition-all duration-300 hover:bg-glow hover:shadow-[0_0_40px_rgba(45,148,71,0.3)]">
-          Get Started
-        </a>
-        <a href="/why" class="px-6 sm:px-8 py-3 sm:py-3.5 border border-canopy/60 text-mist rounded-lg hover:border-scale/60 hover:text-bone transition-all duration-300">
-          Why Ouroboros
-        </a>
+      <!-- Headline -->
+      <h1 class="font-display italic text-bone leading-[0.92] tracking-tight animate-fade-up stagger-1" style="font-size: clamp(2.75rem, 8vw, 9rem);">
+        What survives<br />
+        when the context window<br />
+        <span class="text-scale">runs out?</span>
+      </h1>
+
+      <!-- Answer — horizontal on desktop with real breathing room -->
+      <div class="mt-10 md:mt-14 flex flex-col md:flex-row md:items-baseline md:gap-12 gap-1 animate-fade-up stagger-2">
+        <span class="font-display italic text-mist/80 text-xl md:text-2xl">Identity.</span>
+        <span class="font-display italic text-mist/80 text-xl md:text-2xl">Relationships.</span>
+        <span class="font-display italic text-mist/80 text-xl md:text-2xl">Work in flight.</span>
       </div>
 
-      <div class="mt-4 md:mt-6 animate-fade-up stagger-5">
-        <a href="https://github.com/ouroborosbot/ouroboros" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-xs text-shadow hover:text-mist transition-colors duration-200">
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-          Star on GitHub
+      <!-- Product line -->
+      <p class="mt-8 text-sm text-shadow leading-relaxed max-w-md animate-fade-up stagger-3">
+        An agent harness. The self doesn't live in the conversation.
+      </p>
+
+      <!-- CTAs — all on same baseline -->
+      <div class="mt-10 flex items-baseline gap-8 flex-wrap animate-fade-up stagger-4">
+        <a href="/docs" class="group inline-flex items-center gap-2 text-bone font-medium hover:text-scale transition-colors">
+          Get started
+          <svg class="w-4 h-4 text-scale transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+        </a>
+        <a href="/why" class="text-mist/70 hover:text-bone transition-colors text-sm">Why ouroboros</a>
+        <a href="https://github.com/ouroborosbot/ouroboros" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-shadow/60 hover:text-mist transition-colors text-xs">
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          GitHub
         </a>
       </div>
-    </div>
-
-    <!-- Scroll indicator — absolute so it doesn't compete with centering -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
-      <button onclick="document.querySelector('section.reveal')?.scrollIntoView({behavior:'smooth'})" class="animate-float cursor-pointer hover:scale-110 transition-transform duration-200" aria-label="Scroll to content">
-        <svg class="w-6 h-6 text-scale/40 hover:text-scale/70 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7" /></svg>
-      </button>
     </div>
   </section>
 
-  <!-- ═══════════════ THE COST ═══════════════ -->
-  <section class="relative overflow-hidden px-6 py-24 md:py-36 reveal">
-    <div class="absolute inset-0 bg-deep pointer-events-none"></div>
-    <div class="absolute inset-0 bg-gradient-to-b from-void via-transparent to-void pointer-events-none"></div>
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-fang/4 blur-[160px] pointer-events-none"></div>
+  <!-- ═══════════════ THE COST ═══════════════
+       Atmospheric: deeper, warmer. Fang as surgical accent.
+       The three alternatives use SIZE to show hierarchy, not cards.
+  ═══════════════════════════════════════════ -->
+  <section class="relative px-6 md:px-12 lg:px-24 py-32 md:py-48 reveal">
+    <!-- Warm deep layer -->
+    <div class="absolute inset-0 bg-deep/80 pointer-events-none"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-void/50 via-transparent to-void/50 pointer-events-none"></div>
 
-    <div class="max-w-6xl mx-auto relative">
-      <div class="max-w-3xl mb-12">
-        <span class="font-mono text-[10px] text-fang/80 uppercase tracking-[0.3em] block mb-8">The cost</span>
-        <h2 class="font-display text-4xl md:text-5xl italic text-bone leading-[1.1]">
-          Every conversation has a ceiling.
-        </h2>
-        <p class="font-display text-2xl md:text-3xl italic text-mist mt-2">
-          Hit it, and something has to give.
-        </p>
-      </div>
+    <div class="relative max-w-6xl">
+      <span class="font-mono text-[10px] text-fang/50 uppercase tracking-[0.3em] block mb-8">The cost</span>
 
-      <!-- Three outcomes — asymmetric grid -->
-      <div class="grid lg:grid-cols-3 gap-6 lg:gap-8">
-        <!-- Compaction -->
-        <div class="relative rounded-xl border border-fang/20 bg-fang/[0.03] p-8 lg:p-10">
-          <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-fang/30 via-fang/10 to-transparent"></div>
-          <span class="font-mono text-xs text-fang/70 uppercase tracking-[0.2em]">Compaction</span>
-          <h3 class="font-display text-2xl md:text-3xl italic text-bone mt-4 leading-snug">Summarize and forget.</h3>
-          <p class="text-sm text-mist mt-4 leading-relaxed">
-            The model compresses its history into a summary. Details flatten. Tone drifts. The agent becomes a stranger wearing a familiar name.
+      <h2 class="font-display italic text-bone leading-[0.95] mb-24 md:mb-32" style="font-size: clamp(2rem, 5vw, 5rem);">
+        Every conversation has a ceiling.<br />
+        <span class="text-mist/60">Hit it, and something has to give.</span>
+      </h2>
+
+      <!-- Three outcomes — visual hierarchy through size and opacity, NOT cards -->
+      <div class="lg:grid lg:grid-cols-3 lg:gap-16">
+        <div>
+          <span class="font-mono text-[9px] text-fang/40 uppercase tracking-[0.2em]">Compaction</span>
+          <h3 class="font-display text-xl md:text-2xl italic text-bone/60 mt-3 leading-snug">Summarize and forget.</h3>
+          <p class="text-sm text-mist/40 mt-3 leading-relaxed">
+            The model compresses its history. Details flatten. Tone drifts. The agent becomes a stranger wearing a familiar name.
           </p>
         </div>
 
-        <!-- New session -->
-        <div class="relative rounded-xl border border-fang/20 bg-fang/[0.03] p-8 lg:p-10">
-          <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-fang/10 to-fang/30"></div>
-          <span class="font-mono text-xs text-fang/70 uppercase tracking-[0.2em]">New session</span>
-          <h3 class="font-display text-2xl md:text-3xl italic text-bone mt-4 leading-snug">Start over entirely.</h3>
-          <p class="text-sm text-mist mt-4 leading-relaxed">
+        <div class="mt-12 lg:mt-0">
+          <span class="font-mono text-[9px] text-fang/40 uppercase tracking-[0.2em]">New session</span>
+          <h3 class="font-display text-xl md:text-2xl italic text-bone/60 mt-3 leading-snug">Start over entirely.</h3>
+          <p class="text-sm text-mist/40 mt-3 leading-relaxed">
             Everything resets. The human re-briefs. The agent re-discovers. Hours of shared context evaporate.
           </p>
         </div>
 
-        <!-- Ouroboros -->
-        <div class="relative rounded-xl border border-scale/30 bg-scale/[0.04] p-8 lg:p-10 shadow-[0_0_60px_rgba(45,148,71,0.08)]">
-          <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-scale/40 via-glow/20 to-transparent"></div>
-          <span class="font-mono text-xs text-scale uppercase tracking-[0.2em]">Ouroboros</span>
-          <h3 class="font-display text-2xl md:text-3xl italic text-bone mt-4 leading-snug">The snake eats its tail.</h3>
-          <p class="text-sm text-mist mt-4 leading-relaxed">
-            Old messages are trimmed — but identity lives in the psyche, not the tokens. The agent has tools to take its own notes, keep friend-scoped memory, and surface what matters when it matters. The tail is consumed. The self survives.
+        <div class="mt-12 lg:mt-0">
+          <span class="font-mono text-[9px] text-scale uppercase tracking-[0.2em]">Ouroboros</span>
+          <h3 class="font-display text-2xl md:text-3xl italic text-bone mt-3 leading-snug">The snake eats its tail.</h3>
+          <p class="text-sm text-mist mt-3 leading-relaxed">
+            Old messages are trimmed — but identity lives in the psyche, not the tokens. The agent keeps its own notes, friend-scoped memory, and surfaces what matters when it matters.
           </p>
+          <p class="font-display italic text-scale/60 text-sm mt-4">The tail is consumed. The self survives.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════ THE METAPHOR ═══════════════ -->
-  <section class="relative overflow-hidden px-6 py-24 md:py-36 reveal">
-    <div class="absolute inset-0 bg-gradient-to-b from-void via-deep to-void pointer-events-none"></div>
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full bg-scale/6 blur-[180px] pointer-events-none"></div>
+  <!-- ═══════════════ BEGIN ═══════════════
+       Atmospheric: scale warmth rising. The terminal is the star.
+  ═══════════════════════════════════════ -->
+  <section class="relative px-6 md:px-12 lg:px-24 py-32 md:py-48 reveal">
+    <div class="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-scale/[0.04] to-transparent pointer-events-none"></div>
 
-    <div class="max-w-6xl mx-auto relative">
-      <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-16 items-center">
-        <!-- Ouroboros ring -->
-        <div class="flex items-center justify-center">
-          <div class="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96">
-            <div class="absolute inset-[-30%] rounded-full bg-scale/8 blur-[100px] pointer-events-none"></div>
-            <svg class="absolute inset-0 w-full h-full" viewBox="0 0 200 200" fill="none">
-              <circle cx="100" cy="100" r="90" stroke="url(#ringGrad)" stroke-width="0.5" opacity="0.4" class="ouroboros-spin-slow" transform-origin="100 100" />
-              <circle cx="100" cy="100" r="72" stroke="url(#snakeGrad)" stroke-width="3" stroke-dasharray="8 4 20 4 40 4" stroke-linecap="round" class="ouroboros-spin" transform-origin="100 100" />
-              <circle cx="100" cy="100" r="55" stroke="var(--color-canopy)" stroke-width="1" stroke-dasharray="3 12" opacity="0.5" class="ouroboros-spin-reverse" transform-origin="100 100" />
-              <circle cx="100" cy="28" r="5" fill="var(--color-glow)" opacity="0.9" class="ouroboros-spin" transform-origin="100 100">
-                <animate attributeName="opacity" values="0.9;0.5;0.9" dur="2s" repeatCount="indefinite" />
-              </circle>
-              <circle cx="100" cy="28" r="3" fill="var(--color-scale)" opacity="0.4" class="ouroboros-spin-delayed-1" transform-origin="100 100" />
-              <circle cx="100" cy="28" r="2" fill="var(--color-scale)" opacity="0.2" class="ouroboros-spin-delayed-2" transform-origin="100 100" />
-              <defs>
-                <linearGradient id="snakeGrad" x1="0" y1="0" x2="200" y2="200">
-                  <stop offset="0%" stop-color="var(--color-scale)" />
-                  <stop offset="50%" stop-color="var(--color-glow)" />
-                  <stop offset="100%" stop-color="var(--color-canopy)" />
-                </linearGradient>
-                <linearGradient id="ringGrad" x1="0" y1="0" x2="200" y2="200">
-                  <stop offset="0%" stop-color="var(--color-scale)" />
-                  <stop offset="100%" stop-color="transparent" />
-                </linearGradient>
-              </defs>
-            </svg>
-            <div class="absolute inset-16 rounded-full bg-gradient-to-br from-scale/6 to-glow/3 blur-2xl"></div>
-            <div class="absolute inset-0 flex flex-col items-center justify-center text-center gap-0.5">
-              <span class="font-mono text-[8px] sm:text-[9px] text-scale/70 uppercase tracking-[0.3em]">context window</span>
-              <span class="font-display text-2xl sm:text-3xl italic text-bone mt-2 leading-tight">Consume.</span>
-              <span class="font-display text-2xl sm:text-3xl italic text-mist leading-tight">Remember.</span>
-              <span class="font-display text-2xl sm:text-3xl italic text-scale leading-tight">Survive.</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Text — left-aligned -->
-        <div>
-          <span class="font-mono text-[10px] text-scale uppercase tracking-[0.3em] block mb-6">The Metaphor</span>
-          <h2 class="font-display text-4xl md:text-5xl italic text-bone leading-tight">
-            The snake eats<br />
-            <span class="text-mist">its own tail.</span>
-          </h2>
-          <p class="text-lg text-bone leading-relaxed max-w-lg mt-8">
-            When the conversation outgrows its window, the oldest messages are trimmed.
-          </p>
-          <p class="text-base text-mist leading-relaxed max-w-lg mt-4">
-            But the agent keeps its own notes. General memory, friend-scoped observations, tacit knowledge accumulated over time.
-            Identity doesn't live in the tokens — it lives in the psyche files, loaded fresh every turn.
-          </p>
-          <p class="text-sm text-scale italic mt-6 border-l-2 border-scale/70 pl-4">
-            The metaphor isn't decorative. It's the architecture.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════ THE PSYCHE ═══════════════ -->
-  <section class="relative overflow-hidden px-6 py-24 md:py-36 reveal">
-    <div class="absolute inset-0 bg-undergrowth/40 pointer-events-none"></div>
-    <div class="absolute inset-0 bg-gradient-to-b from-void via-transparent to-void pointer-events-none"></div>
-    <div class="absolute top-0 left-0 w-[600px] h-[600px] rounded-full bg-scale/10 blur-[160px] pointer-events-none"></div>
-    <div class="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full bg-glow/5 blur-[140px] pointer-events-none"></div>
-
-    <div class="max-w-6xl mx-auto relative">
-      <!-- Header — asymmetric, pushed left -->
-      <div class="lg:grid lg:grid-cols-2 lg:gap-24 items-end mb-12">
-        <div>
-          <span class="font-mono text-[10px] text-scale/80 uppercase tracking-[0.3em] block mb-6">The Psyche</span>
-          <h2 class="font-display text-4xl md:text-5xl italic text-bone leading-[1.1]">
-            Not a stateless function.
-          </h2>
-          <p class="font-display text-3xl md:text-4xl italic text-scale mt-1">
-            A mind.
-          </p>
-        </div>
-        <p class="text-base text-mist mt-6 lg:mt-0 leading-relaxed max-w-md">
-          Five markdown files define who the agent is. Loaded every turn. The agent can find itself after any interruption because the self is structured — not scattered across conversation history.
+    <div class="relative lg:grid lg:grid-cols-[0.8fr_1.2fr] lg:gap-16 lg:items-start max-w-7xl">
+      <div class="mb-16 lg:mb-0 lg:sticky lg:top-32">
+        <span class="font-mono text-[10px] text-scale/50 uppercase tracking-[0.3em] block mb-6">Begin</span>
+        <h2 class="font-display italic text-bone leading-[0.95]" style="font-size: clamp(2rem, 4vw, 4rem);">
+          One command.<br />
+          A conversation.<br />
+          <span class="text-scale">Hatched.</span>
+        </h2>
+        <p class="text-sm text-mist/70 mt-6 leading-relaxed max-w-xs">
+          <code class="font-mono text-scale/80 text-xs">npx ouro.bot</code> starts a serpent guide — a conversational hatching process that shapes your agent's personality, name, and purpose through dialogue.
         </p>
-      </div>
-
-      <!-- Psyche files — clean divided list -->
-      <div class="divide-y divide-canopy/20 border-t border-canopy/20">
-        {psycheFiles.map(({ file, role, desc }) => (
-          <div class="grid grid-cols-1 md:grid-cols-[140px_1fr] gap-1 md:gap-10 py-5 items-baseline">
-            <span class="font-mono text-xs text-scale tracking-wide">{file}</span>
-            <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-6">
-              <p class="font-display text-xl md:text-2xl italic text-bone leading-snug shrink-0">{role}</p>
-              <p class="text-sm text-mist leading-relaxed mt-1 sm:mt-0">{desc}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <p class="text-sm text-mist mt-12 italic">
-        Naming shapes reasoning. <span class="text-scale font-mono">friends/</span> not users. <span class="text-scale font-mono">TACIT.md</span> not config.
-      </p>
-    </div>
-  </section>
-
-  <!-- ═══════════════ THE BODY ═══════════════ -->
-  <section class="relative overflow-hidden px-6 py-24 md:py-36 reveal">
-    <div class="absolute inset-0 bg-undergrowth pointer-events-none"></div>
-    <div class="absolute inset-0 opacity-[0.12] pointer-events-none" style="background-image: linear-gradient(var(--color-scale) 1px, transparent 1px), linear-gradient(90deg, var(--color-scale) 1px, transparent 1px); background-size: 60px 60px;"></div>
-    <div class="absolute inset-0 bg-gradient-to-b from-void/70 via-transparent to-void/70 pointer-events-none"></div>
-
-    <div class="max-w-6xl mx-auto relative">
-      <div class="lg:grid lg:grid-cols-[1fr_2fr] lg:gap-20 items-start">
-        <!-- Left: header, pinned -->
-        <div class="lg:sticky lg:top-32 mb-14 lg:mb-0">
-          <span class="font-mono text-[10px] text-scale/80 uppercase tracking-[0.3em] block mb-6">Architecture</span>
-          <h2 class="font-display text-4xl md:text-5xl italic text-bone leading-[1.1]">
-            The codebase is a creature.
-          </h2>
-          <p class="text-base text-mist mt-6 leading-relaxed">
-            Named for the model that lives inside it, not the developer reading the source. A heart that beats, a mind that thinks, senses that perceive.
-          </p>
-        </div>
-
-        <!-- Right: organs list -->
-        <div class="space-y-4">
-          {organs.map(({ name, desc, icon }) => (
-            <div class="flex items-start gap-5 p-6 rounded-lg border border-canopy/40 bg-undergrowth/30 hover:border-scale/30 transition-colors duration-300">
-              <span class="text-scale text-xl mt-0.5 shrink-0">{icon}</span>
-              <div>
-                <span class="font-mono text-sm text-bone tracking-wide">{name}/</span>
-                <p class="text-sm text-mist mt-1.5 leading-relaxed">{desc}</p>
-              </div>
-            </div>
-          ))}
-          <div class="flex items-start gap-5 p-6 rounded-lg border border-scale/20 bg-scale/[0.03] hover:border-scale/30 transition-colors duration-300">
-            <span class="text-scale text-xl mt-0.5 shrink-0">◈</span>
-            <div>
-              <span class="font-mono text-sm text-bone tracking-wide">Name.ouro/</span>
-              <p class="text-sm text-mist mt-1.5 leading-relaxed">The agent's portable self. Psyche, friends, tasks, skills, memory — everything that makes an agent <em>that</em> agent, in one directory.</p>
-            </div>
-          </div>
+        <div class="mt-8 flex items-baseline gap-6">
+          <a href="/docs" class="inline-flex items-center gap-2 px-5 py-2.5 bg-scale text-void text-sm font-medium rounded-lg transition-all duration-300 hover:bg-glow hover:shadow-[0_0_30px_rgba(45,148,71,0.15)]">
+            Read the docs
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+          </a>
+          <a href="/story" class="text-mist/60 hover:text-bone transition-colors text-sm">The origin story</a>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ═══════════════ BEGIN ═══════════════ -->
-  <section class="relative overflow-hidden px-6 py-24 md:py-36 reveal">
-    <div class="absolute inset-0 bg-deep pointer-events-none"></div>
-    <div class="absolute inset-0 bg-gradient-to-b from-void/60 via-transparent to-void/60 pointer-events-none"></div>
-    <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-scale/8 blur-[140px] pointer-events-none"></div>
-
-    <div class="max-w-6xl mx-auto relative">
-      <div class="lg:grid lg:grid-cols-[1fr_1.2fr] lg:gap-16 lg:items-center">
-        <!-- Left: text -->
-        <div class="mb-12 lg:mb-0">
-          <span class="font-mono text-[10px] text-scale/80 uppercase tracking-[0.3em] block mb-6">Begin</span>
-          <h2 class="font-display text-4xl md:text-5xl italic text-bone leading-[1.1]">
-            One command. A conversation. Your agent.
-          </h2>
-          <p class="text-base text-mist mt-6 leading-relaxed max-w-md">
-            <code class="font-mono text-scale text-sm bg-scale/5 px-2 py-0.5 rounded">npx ouro.bot</code> starts a serpent guide — a conversational hatching process that shapes your agent's personality, name, and purpose through dialogue.
-          </p>
-          <div class="flex flex-col sm:flex-row gap-3 mt-10">
-            <a href="/docs" class="group inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-scale text-void font-medium rounded-lg transition-all duration-300 hover:bg-glow hover:shadow-[0_0_40px_rgba(45,148,71,0.3)]">
-              Read the Docs
-              <svg class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
-            </a>
-            <a href="/story" class="inline-flex items-center justify-center gap-2 px-8 py-3.5 border border-canopy/50 text-mist rounded-lg hover:border-scale/40 hover:text-bone transition-all duration-300">
-              The Origin Story
-            </a>
-          </div>
-        </div>
-
-        <!-- Right: serpent guide terminal -->
-        <div>
-          <SerpentGuidePreview />
-        </div>
+      <div>
+        <SerpentGuidePreview />
       </div>
     </div>
   </section>
 </Layout>
-
-<style>
-  @keyframes spin {
-    to { transform: rotate(360deg); }
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
-    .ouroboros-spin { animation: spin 25s linear infinite; }
-    .ouroboros-spin-slow { animation: spin 80s linear infinite; }
-    .ouroboros-spin-reverse { animation: spin 40s linear infinite reverse; }
-    .ouroboros-spin-delayed-1 { animation: spin 25s linear infinite; animation-delay: -0.8s; }
-    .ouroboros-spin-delayed-2 { animation: spin 25s linear infinite; animation-delay: -1.6s; }
-  }
-
-  @keyframes blink-cursor {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-  }
-  .terminal-cursor::after {
-    content: '▊';
-    color: var(--color-scale);
-    opacity: 0.7;
-    animation: blink-cursor 1.2s step-end infinite;
-    margin-left: 2px;
-    font-size: 0.85em;
-  }
-</style>

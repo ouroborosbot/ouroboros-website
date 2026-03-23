@@ -13,7 +13,7 @@ interface Props {
 
 const {
   title,
-  description = 'A TypeScript agent harness designed to reduce reorientation overhead and keep humans and agents in shared momentum.',
+  description = 'An agent harness where the self doesn\'t live in the conversation. Structured psyche, agent-initiated memory, per-person relationships, cross-session continuity.',
   ogImage = '/og/og-home.png',
   canonical = `https://ouroboros.bot${Astro.url.pathname}`,
   ogType = 'website',
@@ -29,8 +29,6 @@ const {
     <link rel="icon" type="image/svg+xml" href="/images/ouroboros.svg" />
     <title>{title}</title>
 
-    <!-- Fonts self-hosted in /fonts/ - no external dependency -->
-
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content={ogType} />
@@ -41,69 +39,45 @@ const {
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={`https://ouroboros.bot${ogImage}`} />
-    <meta name="twitter:site" content="@arimendelow" />
-    <meta name="twitter:creator" content="@arimendelow" />
     <link rel="canonical" href={canonical} />
     <slot name="head" />
 
-    <!-- JSON-LD Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "Ouroboros",
       "url": "https://ouroboros.bot",
-      "description": "A TypeScript agent harness designed to reduce reorientation overhead and keep humans and agents in shared momentum.",
-      "publisher": {
-        "@type": "Person",
-        "name": "Ari Mendelow",
-        "url": "https://linkedin.com/in/arimendelow"
-      }
+      "description": "An agent harness where the self doesn't live in the conversation.",
+      "publisher": { "@type": "Person", "name": "Ari Mendelow", "url": "https://linkedin.com/in/arimendelow" }
     })} />
-
   </head>
   <body class="bg-void text-bone font-body antialiased overflow-x-hidden">
-    <!-- Grain overlay - static tiled PNG instead of live SVG filter (Safari perf) -->
+    <!-- Atmospheric base — not pure black, a living dark gradient -->
+    <div class="fixed inset-0 pointer-events-none z-0 bg-gradient-to-b from-void via-deep/50 to-void" aria-hidden="true"></div>
+    <!-- Grain -->
     <div class="fixed inset-0 pointer-events-none z-50" style="background-image: url('/images/grain.png'); background-repeat: repeat; opacity: 0.03;" aria-hidden="true"></div>
 
     <Nav />
-    <main>
+    <main class="relative z-10">
       <slot />
     </main>
     <Footer />
 
     <script is:inline>
-      // Reveal sections on scroll - progressive enhancement
-      // Sections default to visible; we add reveal-ready to enable animations only when JS + observer are available
       (function() {
         var reveals = document.querySelectorAll('.reveal');
         if (!reveals.length || !('IntersectionObserver' in window)) return;
-
-        // Mark sections already in viewport as visible BEFORE enabling animations
-        // This prevents the flash-of-invisible-content on page navigation
         reveals.forEach(function(el) {
           var rect = el.getBoundingClientRect();
-          if (rect.top < window.innerHeight && rect.bottom > 0) {
-            el.classList.add('visible');
-          }
+          if (rect.top < window.innerHeight && rect.bottom > 0) el.classList.add('visible');
         });
-
-        // Now enable animations (only hides sections not yet marked visible)
         document.documentElement.classList.add('reveal-ready');
-
-        var observer = new IntersectionObserver(
-          function(entries) {
-            entries.forEach(function(entry) {
-              if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0, rootMargin: '0px 0px 200px 0px' }
-        );
-        reveals.forEach(function(el) {
-          if (!el.classList.contains('visible')) observer.observe(el);
-        });
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+          });
+        }, { threshold: 0, rootMargin: '0px 0px 200px 0px' });
+        reveals.forEach(function(el) { if (!el.classList.contains('visible')) observer.observe(el); });
       })();
     </script>
   </body>

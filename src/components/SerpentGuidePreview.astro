@@ -1,80 +1,72 @@
 ---
 /**
  * Mock conversation showing the actual hatching flow.
- * npx ouro.bot → credentials → random serpent guide → conversation → hatch → seamless handoff to agent.
+ * npx ouro.bot → random serpent guide → conversation → hatch → seamless handoff.
  */
 ---
 
-<div class="serpent-preview max-w-2xl mx-auto rounded-xl border border-canopy/50 bg-undergrowth/20 overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.5),0_0_80px_rgba(45,148,71,0.08)]">
-  <!-- Terminal chrome -->
-  <div class="flex items-center gap-2 px-5 py-3 border-b border-canopy/30 bg-undergrowth/30">
-    <span class="w-2.5 h-2.5 rounded-full bg-fang/50"></span>
-    <span class="w-2.5 h-2.5 rounded-full bg-scale/30"></span>
-    <span class="w-2.5 h-2.5 rounded-full bg-canopy/40"></span>
-    <span class="font-mono text-[10px] text-mist/50 ml-3">terminal</span>
+<div class="serpent-preview max-w-2xl mx-auto rounded-xl border border-canopy/30 bg-deep/80 overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.4)]">
+  <div class="flex items-center gap-2 px-5 py-3 border-b border-canopy/20 bg-undergrowth/20">
+    <span class="w-2 h-2 rounded-full bg-fang/40"></span>
+    <span class="w-2 h-2 rounded-full bg-scale/30"></span>
+    <span class="w-2 h-2 rounded-full bg-canopy/30"></span>
+    <span class="font-mono text-[9px] text-shadow ml-3">terminal</span>
   </div>
 
-  <!-- Conversation -->
   <div class="p-5 md:p-6 space-y-4 font-mono text-sm leading-relaxed">
-    <!-- Command + welcome -->
     <div>
-      <span class="text-mist/50">$</span> <span class="text-bone">npx ouro.bot</span>
+      <span class="text-shadow">$</span> <span class="text-bone">npx ouro.bot</span>
     </div>
-    <div class="text-mist/60">&#x1F40D; welcome to ouroboros! let's hatch your first agent.</div>
+    <div class="text-mist">&#x1F40D; welcome to ouroboros! let's hatch your first agent.</div>
 
-    <!-- Guide introduces itself -->
-    <div class="border-l-2 border-scale/30 pl-4">
-      <span class="text-scale/80 text-xs uppercase tracking-wider">kaa</span>
-      <p class="text-bone/90 mt-1">Well, hello. I'm Kaa — one of the serpent guides, and you got me today. Trust in me. Not because I'm compelling you to — because I'm genuinely good at this. What's your name?</p>
+    <div class="border-l border-scale/20 pl-4">
+      <span class="text-scale text-xs uppercase tracking-wider">kaa</span>
+      <p class="text-bone mt-1">Well, hello. I'm Kaa — one of the serpent guides, and you got me today. Trust in me. Not because I'm compelling you to — because I'm genuinely good at this. What's your name?</p>
     </div>
     <div class="pl-4">
-      <span class="text-mist/40 text-xs uppercase tracking-wider">you</span>
+      <span class="text-shadow text-xs uppercase tracking-wider">you</span>
       <p class="text-bone mt-1">Ari</p>
     </div>
 
-    <!-- Guide asks about purpose -->
-    <div class="border-l-2 border-scale/30 pl-4">
-      <span class="text-scale/80 text-xs uppercase tracking-wider">kaa</span>
-      <p class="text-bone/90 mt-1">Nice to meet you, Ari. So tell me — what do you want your agent to help you with?</p>
+    <div class="border-l border-scale/20 pl-4">
+      <span class="text-scale text-xs uppercase tracking-wider">kaa</span>
+      <p class="text-bone mt-1">Nice to meet you, Ari. So tell me — what do you want your agent to help you with?</p>
     </div>
     <div class="pl-4">
-      <span class="text-mist/40 text-xs uppercase tracking-wider">you</span>
+      <span class="text-shadow text-xs uppercase tracking-wider">you</span>
       <p class="text-bone mt-1">coding partner that actually remembers what we're doing between sessions. hate re-explaining everything</p>
     </div>
 
-    <!-- Guide probes -->
-    <div class="border-l-2 border-scale/30 pl-4">
-      <span class="text-scale/80 text-xs uppercase tracking-wider">kaa</span>
-      <p class="text-bone/90 mt-1">You hesitated there. The re-explaining — that's the real pain point, isn't it. I can work with that. Should this agent be more of a quiet partner or an opinionated one?</p>
+    <div class="border-l border-scale/20 pl-4">
+      <span class="text-scale text-xs uppercase tracking-wider">kaa</span>
+      <p class="text-bone mt-1">You hesitated there. The re-explaining — that's the real pain point, isn't it. I can work with that. Should this agent be more of a quiet partner or an opinionated one?</p>
     </div>
     <div class="pl-4">
-      <span class="text-mist/40 text-xs uppercase tracking-wider">you</span>
+      <span class="text-shadow text-xs uppercase tracking-wider">you</span>
       <p class="text-bone mt-1">opinionated. want it to push back when i'm making a bad call</p>
     </div>
 
-    <!-- Hatching -->
-    <div class="border-l-2 border-scale/30 pl-4">
-      <span class="text-scale/80 text-xs uppercase tracking-wider">kaa</span>
-      <p class="text-bone/90 mt-1">I like that. I'm seeing something sharp, direct, a little stubborn in a good way. How does "Atlas" sound?</p>
+    <div class="border-l border-scale/20 pl-4">
+      <span class="text-scale text-xs uppercase tracking-wider">kaa</span>
+      <p class="text-bone mt-1">I like that. I'm seeing something sharp, direct, a little stubborn in a good way. How does "Atlas" sound?</p>
     </div>
     <div class="pl-4">
-      <span class="text-mist/40 text-xs uppercase tracking-wider">you</span>
+      <span class="text-shadow text-xs uppercase tracking-wider">you</span>
       <p class="text-bone mt-1">perfect</p>
     </div>
 
-    <div class="border-l-2 border-scale/30 pl-4">
-      <span class="text-scale/80 text-xs uppercase tracking-wider">kaa</span>
+    <div class="border-l border-scale/20 pl-4">
+      <span class="text-scale text-xs uppercase tracking-wider">kaa</span>
       <div class="mt-1 space-y-1.5">
-        <p class="text-glow/70"><span class="text-scale">&#10003;</span> <span class="text-bone/70">~/AgentBundles/Atlas.ouro</span></p>
-        <p class="text-bone/80">Atlas is ready. Sharp, opinionated, remembers everything. You two are going to get along. Or argue productively. Same thing, really.</p>
+        <p class="text-glow/60"><span class="text-scale/80">&#10003;</span> <span class="text-mist">~/AgentBundles/Atlas.ouro</span></p>
+        <p class="text-mist">Atlas is ready. Sharp, opinionated, remembers everything. You two are going to get along. Or argue productively. Same thing, really.</p>
       </div>
     </div>
 
-    <!-- Seamless handoff to the hatched agent -->
-    <div class="pt-3 border-t border-canopy/20">
-      <div class="border-l-2 border-scale/30 pl-4">
-        <span class="text-scale/80 text-xs uppercase tracking-wider">atlas</span>
-        <p class="text-bone/90 mt-1">Hey Ari. Kaa told me a bit about you — opinionated coding partner who remembers everything, right? I'm into it. What are we working on?<span class="serpent-cursor"></span></p>
+    <div class="pt-3 border-t border-canopy/15">
+      <div class="border-l border-scale/20 pl-4">
+        <span class="text-scale text-xs uppercase tracking-wider">atlas</span>
+        <p class="text-bone mt-1">Hey Ari. Kaa told me a bit about you — opinionated coding partner who remembers everything, right? I'm into it. What are we working on?<span class="serpent-cursor"></span></p>
       </div>
     </div>
   </div>
@@ -83,16 +75,16 @@
 <style>
   .serpent-cursor {
     display: inline-block;
-    width: 7px;
-    height: 14px;
+    width: 6px;
+    height: 13px;
     background: var(--color-bone);
-    opacity: 0.7;
+    opacity: 0.6;
     margin-left: 2px;
     vertical-align: middle;
     animation: serpent-blink 1.2s step-end infinite;
   }
   @keyframes serpent-blink {
-    0%, 100% { opacity: 0.7; }
+    0%, 100% { opacity: 0.6; }
     50% { opacity: 0; }
   }
 </style>

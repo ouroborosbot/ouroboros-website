@@ -1,75 +1,108 @@
 ---
-import DocsPageShell from '../../components/DocsPageShell.astro'
+import Layout from '../../layouts/Layout.astro'
 import PromptCard from '../../components/PromptCard.astro'
+
+const title = 'Ouroboros Docs | Guides for the TypeScript AI Agent Harness'
+const description = 'Docs for the Ouroboros TypeScript AI agent harness: setup, continuity, psyche files, architecture, and prompts for humans and agents.'
 
 const pages = [
   {
     href: '/docs/getting-started',
     title: 'Run one command. Talk to the serpent.',
     description: 'npx ouro.bot starts an interactive guide that walks you through provider setup, naming, and personality.',
-    icon: '🐍',
+    icon: '\u{1F40D}',
   },
   {
     href: '/docs/bundles-and-psyche',
     title: 'Your agent has a portable self.',
     description: 'What lives in a bundle, what the psyche files are for, and how to ask your agent to inspect them.',
-    icon: '◈',
+    icon: '\u25C8',
   },
   {
     href: '/docs/continuity-and-memory',
     title: 'Keep the thread.',
     description: 'How agent-initiated memory, friend-scoped notes, and associative recall work together.',
-    icon: '◉',
+    icon: '\u25C9',
   },
   {
     href: '/docs/architecture',
     title: 'Understand the body.',
     description: 'Modules named like organs. A runtime the model can read, reason about, and extend.',
-    icon: '♥',
+    icon: '\u2665',
   },
   {
     href: '/docs/skills-and-prompts',
     title: 'Hand work off cleanly.',
     description: 'Prompts for quick questions. Skill handoffs for tasks that need the latest local truth.',
-    icon: '◆',
+    icon: '\u25C6',
   },
   {
     href: '/what-is-an-agent-harness',
     title: 'Start from first principles.',
     description: 'What an agent harness is, why it matters, and how it differs from a framework.',
-    icon: '◇',
+    icon: '\u25C7',
   },
 ]
 ---
 
-<DocsPageShell
-  title="Ouroboros Docs | Guides for the TypeScript AI Agent Harness"
-  description="Docs for the Ouroboros TypeScript AI agent harness: setup, continuity, psyche files, architecture, and prompts for humans and agents."
-  eyebrow="Documentation"
+<Layout
+  title={title}
+  description={description}
   canonical="https://ouroboros.bot/docs/"
-  intro="These pages help you place the object and choose the next question. For exact commands, file names, or runtime behavior — ask your agent for the live answer."
-  noteTitle="Docs for humans, skills for agents"
-  noteBody="The website explains the what. Your agent fetches the how from the code, the local install, or the bundle it's working inside."
 >
-  <section>
-    <div class="grid md:grid-cols-2 gap-4">
-      {pages.map((page) => (
-        <a href={page.href} class="group flex items-start gap-5 rounded-xl border border-canopy/30 bg-undergrowth/20 p-6 transition-all duration-300 hover:border-scale/40 hover:bg-undergrowth/40">
-          <span class="text-scale text-lg mt-0.5 shrink-0 group-hover:text-glow transition-colors">{page.icon}</span>
-          <div>
-            <h2 class="font-display text-xl md:text-2xl italic text-bone group-hover:text-scale transition-colors leading-snug">{page.title}</h2>
-            <p class="mt-2 text-sm text-mist/70 leading-relaxed">{page.description}</p>
-          </div>
-        </a>
-      ))}
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Ouroboros Docs",
+      "description": description,
+      "author": { "@type": "Person", "name": "Ari Mendelow", "url": "https://linkedin.com/in/arimendelow" },
+      "publisher": { "@type": "Organization", "name": "Ouroboros", "url": "https://ouroboros.bot" },
+      "url": "https://ouroboros.bot/docs/"
+    })} />
+  </Fragment>
+
+  <section class="px-6 md:px-12 lg:px-24 pt-32 pb-20 md:pt-40 md:pb-24">
+    <div class="max-w-6xl">
+      <span class="font-mono text-[10px] text-scale/60 uppercase tracking-[0.3em] block mb-6">Documentation</span>
+
+      <h1 class="font-display italic text-bone leading-[1.05] text-[2rem] sm:text-[2.5rem] md:text-[3.5rem] lg:text-[4rem]">
+        Docs for humans.<br class="hidden sm:block" /> Skills for agents.
+      </h1>
+
+      <p class="text-base sm:text-lg text-mist mt-6 leading-relaxed max-w-2xl">
+        These pages are the human version — context for the questions you'll ask your agent.
+        Your agent can fetch the live version directly: <span class="font-mono text-scale/70 text-sm">ouroboros.bot/skills/manifest.json</span>
+      </p>
+
+      <div class="mt-8 border-l-[3px] border-scale/40 pl-5">
+        <p class="text-sm text-mist leading-relaxed">
+          <strong class="text-bone">Docs for humans, skills for agents.</strong> The website explains the what.
+          Your agent fetches the how from the code, the local install, or the bundle it's working inside.
+        </p>
+      </div>
+
+      <!-- PromptCard -->
+      <div class="mt-14">
+        <h2 class="font-display italic text-bone text-xl mb-4">Have a question?</h2>
+        <PromptCard
+          prompt="Inspect the latest local Ouroboros install or repo on this machine and answer this using the current source of truth, not cached assumptions: [your question here]"
+          footnote="Each docs page also has a more specific prompt. This one works for anything."
+        />
+      </div>
+
+      <!-- Card grid -->
+      <div class="mt-14 grid md:grid-cols-2 gap-4">
+        {pages.map(page => (
+          <a href={page.href} class="group flex gap-4 rounded-2xl border border-canopy/20 bg-undergrowth/10 p-6 hover:border-scale/40 hover:bg-undergrowth/20 transition-all duration-300">
+            <span class="text-mist text-lg shrink-0 group-hover:text-glow transition-colors">{page.icon}</span>
+            <div>
+              <h3 class="font-display italic text-bone text-lg group-hover:text-scale transition-colors">{page.title}</h3>
+              <p class="text-sm text-mist mt-1.5">{page.description}</p>
+            </div>
+          </a>
+        ))}
+      </div>
     </div>
   </section>
-
-  <section>
-    <p class="font-display text-xl italic text-bone mb-4">Have a question?</p>
-    <PromptCard
-      prompt="Inspect the latest local Ouroboros install or repo on this machine and answer this using the current source of truth, not cached assumptions: [your question here]"
-      footnote="Each docs page also has a more specific prompt. This one works for anything."
-    />
-  </section>
-</DocsPageShell>
+</Layout>

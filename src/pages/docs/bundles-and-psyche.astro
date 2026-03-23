@@ -1,0 +1,36 @@
+---
+import DocsPageShell from '../../components/DocsPageShell.astro'
+import PromptCard from '../../components/PromptCard.astro'
+---
+
+<DocsPageShell
+  title="Bundles And Psyche"
+  description="An agent bundle is the portable self. The psyche is the part of that self that helps the agent stay oriented to who it is and where it is going."
+  eyebrow="Operator Guide"
+  canonical="https://ouroboros.bot/docs/bundles-and-psyche/"
+  intro="The bundle is the portable boundary of the agent's self. The exact files can evolve, but the job stays the same: keep identity, direction, and long-term context somewhere the agent can recover cleanly."
+>
+  <PromptCard
+    prompt="Inspect the agent bundle I am using right now. Tell me what lives there, which files shape your identity, which parts are durable memory, and what looks currently active."
+    footnote="Your agent reads its own bundle and explains what it finds — no stale docs needed."
+  />
+
+  <div>
+    <h2 class="font-mono text-[10px] text-scale/60 uppercase tracking-[0.3em] mb-4">What to ask next</h2>
+    <ul class="space-y-3 text-sm text-mist leading-relaxed">
+      <li>Which psyche files matter most for the behavior I want?</li>
+      <li>What in this bundle looks stale or contradictory?</li>
+      <li>How should my agent update its own direction without losing continuity?</li>
+    </ul>
+  </div>
+
+  <!-- Exit links -->
+  <div class="pt-6 border-t border-canopy/15 space-y-3">
+    <a href="/docs/continuity-and-memory" class="group block text-sm text-mist/70 hover:text-bone transition-colors">
+      The psyche is half the story. See how memory completes it. <span class="text-scale/50 group-hover:text-scale transition-colors">&rarr;</span>
+    </a>
+    <a href="/why#identity" class="group block text-sm text-mist/70 hover:text-bone transition-colors">
+      Want the full argument for five files instead of one? <span class="text-scale/50 group-hover:text-scale transition-colors">&rarr;</span>
+    </a>
+  </div>
+</DocsPageShell>

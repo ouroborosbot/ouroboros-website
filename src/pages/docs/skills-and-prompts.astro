@@ -1,0 +1,47 @@
+---
+import DocsPageShell from '../../components/DocsPageShell.astro'
+import PromptCard from '../../components/PromptCard.astro'
+---
+
+<DocsPageShell
+  title="Skills And Prompts"
+  description="Use prompts for straightforward live questions. Use skills when you want your agent to follow a repeatable operator flow."
+  eyebrow="Operator Guide"
+  canonical="https://ouroboros.bot/docs/skills-and-prompts/"
+  intro="Simple questions can stop at a prompt. If the job has a repeatable sequence and common failure modes, point your agent at a skill instead."
+>
+  <PromptCard
+    prompt="List the skills currently published for Ouroboros and tell me which one is most relevant to what I'm working on right now."
+    footnote="Your agent checks the current skills manifest and recommends the right handoff."
+  />
+
+  <!-- Two-column comparison -->
+  <div class="grid gap-12 lg:grid-cols-2">
+    <div>
+      <h2 class="font-mono text-[10px] text-scale/60 uppercase tracking-[0.3em] mb-4">Prompt first when</h2>
+      <ul class="space-y-3 text-sm text-mist leading-relaxed">
+        <li>You need a current answer to a specific question.</li>
+        <li>You want your agent to inspect the live source and summarize what it finds.</li>
+        <li>The task is narrow enough that structure would only slow it down.</li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="font-mono text-[10px] text-scale/60 uppercase tracking-[0.3em] mb-4">Use a skill when</h2>
+      <ul class="space-y-3 text-sm text-mist leading-relaxed">
+        <li>The task has a repeatable sequence and common failure modes.</li>
+        <li>You want the agent to follow a known operator flow.</li>
+        <li>You still want the agent to inspect the current code or environment before acting.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Exit links -->
+  <div class="pt-6 border-t border-canopy/15 space-y-3">
+    <a href="/docs" class="group block text-sm text-mist/70 hover:text-bone transition-colors">
+      See all the guides. <span class="text-scale/50 group-hover:text-scale transition-colors">&rarr;</span>
+    </a>
+    <a href="/blog/build-ai-agent-from-scratch" class="group block text-sm text-mist/70 hover:text-bone transition-colors">
+      Understand the primitive underneath. <span class="text-scale/50 group-hover:text-scale transition-colors">&rarr;</span>
+    </a>
+  </div>
+</DocsPageShell>

@@ -1,0 +1,134 @@
+---
+import Layout from '../../layouts/Layout.astro'
+
+const title = 'Blog — Ouroboros'
+const description = 'Essays on agent ergonomics, persistent agents, and software shaped for the thing inside it.'
+
+const featured = [
+  {
+    title: 'Why Ouroboros',
+    description: 'Why long-lived agents need better ergonomics than a pile of memory features if you want shared momentum instead of constant recovery.',
+    href: '/why',
+    tag: 'Essay',
+    label: 'Start here',
+  },
+  {
+    title: 'The Origin Story',
+    description: 'How building an AI agent plugin led to building an agent harness from scratch — and why the distinction matters.',
+    href: '/story',
+    tag: 'Story',
+    label: 'The timeline',
+  },
+]
+
+const essays = [
+  {
+    title: 'What Is Agent Experience?',
+    description: 'Why long-lived agents create a third design surface beyond UX and DX: agent ergonomics, reorientation overhead, and shared momentum.',
+    href: '/blog/what-is-agent-experience',
+    author: 'Ari Mendelow',
+  },
+  {
+    title: 'Stop Being the Glue',
+    description: 'We were promised an intelligent assistant. Instead, we got a fragmentation of semi-intelligent bots. How I stopped copy-pasting between AI tools and started collaborating.',
+    href: '/blog/stop-being-the-glue',
+    author: 'Ari Mendelow',
+  },
+]
+
+const tutorial = {
+  title: 'Build an AI Agent Loop From Scratch',
+  description: 'A working AI agent in ~150 lines of TypeScript. Five milestones: first API call, streaming, multi-turn conversation, tools, and the agentic loop. Then the handoff — you stop talking to your coding agent and start talking to your creation.',
+  href: '/blog/build-ai-agent-from-scratch',
+  author: 'Ari Mendelow',
+}
+---
+
+<Layout
+  title={title}
+  description={description}
+  ogImage="/og/og-blog.png"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "Ouroboros Blog",
+      "description": description,
+      "url": "https://ouroboros.bot/blog",
+      "publisher": { "@type": "Person", "name": "Ari Mendelow", "url": "https://linkedin.com/in/arimendelow" }
+    })} />
+  </Fragment>
+
+  <section class="px-6 md:px-12 lg:px-24 pt-32 pb-20 md:pt-44 md:pb-28">
+    <div class="max-w-3xl mx-auto">
+      <span class="font-mono text-[10px] text-scale/60 uppercase tracking-[0.3em] block mb-6">Blog</span>
+
+      <h1 class="font-display italic text-bone leading-[1.05] text-[3rem] md:text-[4rem] lg:text-[5rem]">
+        Dispatches from<br />the serpent.
+      </h1>
+
+      <p class="text-base text-mist mt-6 leading-relaxed max-w-xl">
+        Essays on agent ergonomics, persistent agents, and the problem of building software an agent can actually stay oriented inside.
+      </p>
+    </div>
+  </section>
+
+  <!-- Recommended reading -->
+  <section class="px-6 md:px-12 lg:px-24 pb-14 reveal">
+    <div class="max-w-3xl mx-auto">
+      <span class="font-mono text-[10px] text-mist/40 uppercase tracking-[0.3em] block mb-5">Recommended reading</span>
+      <div class="grid sm:grid-cols-2 gap-4">
+        {featured.map(item => (
+          <a href={item.href} class="group block rounded-2xl border border-canopy/20 bg-undergrowth/10 p-6 hover:border-scale/40 transition-all duration-300">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="font-mono text-[9px] text-scale/60 uppercase tracking-wider">{item.tag}</span>
+              <span class="font-mono text-[9px] text-glow/50 uppercase tracking-wider">{item.label}</span>
+            </div>
+            <h2 class="font-display italic text-bone text-xl group-hover:text-scale transition-colors">{item.title}</h2>
+            <p class="text-sm text-mist/60 mt-2 leading-relaxed">{item.description}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Tutorial -->
+  <section class="px-6 md:px-12 lg:px-24 pb-14 reveal">
+    <div class="max-w-3xl mx-auto">
+      <span class="font-mono text-[10px] text-mist/40 uppercase tracking-[0.3em] block mb-5">Tutorial</span>
+      <a href={tutorial.href} class="group block rounded-2xl border border-scale/25 bg-scale/[0.04] p-6 md:p-8 hover:border-scale/50 transition-all duration-300">
+        <span class="font-mono text-[9px] text-scale/70 uppercase tracking-wider">Guide</span>
+        <h2 class="font-display italic text-bone text-2xl md:text-3xl mt-2 group-hover:text-scale transition-colors">{tutorial.title}</h2>
+        <p class="text-sm text-mist/60 mt-3 leading-relaxed max-w-xl">{tutorial.description}</p>
+        <span class="text-sm text-mist/40 mt-3 block">{tutorial.author}</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Essays -->
+  <section class="px-6 md:px-12 lg:px-24 pb-14 reveal">
+    <div class="max-w-3xl mx-auto">
+      <span class="font-mono text-[10px] text-mist/40 uppercase tracking-[0.3em] block mb-5">Essays</span>
+      <div class="space-y-5">
+        {essays.map(essay => (
+          <a href={essay.href} class="group block rounded-2xl border border-canopy/20 bg-undergrowth/10 p-6 hover:border-scale/40 transition-all duration-300">
+            <h2 class="font-display italic text-bone text-xl group-hover:text-scale transition-colors">{essay.title}</h2>
+            <p class="text-sm text-mist/60 mt-2 leading-relaxed">{essay.description}</p>
+            <span class="text-sm text-mist/40 mt-2 block">{essay.author}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer text -->
+  <section class="px-6 md:px-12 lg:px-24 pb-24 md:pb-36 reveal">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-sm text-mist/50 leading-relaxed">
+        Read <a href="/why" class="text-scale/70 hover:text-scale transition-colors">Why Ouroboros</a> for the core argument,
+        or step into <a href="/docs" class="text-scale/70 hover:text-scale transition-colors">the docs</a> if you want the operator path.
+      </p>
+    </div>
+  </section>
+</Layout>

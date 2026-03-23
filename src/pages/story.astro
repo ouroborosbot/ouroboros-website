@@ -1,0 +1,258 @@
+---
+import Layout from '../layouts/Layout.astro'
+
+const title = 'Code a Model Can Use — The Ouroboros Origin Story'
+const description = 'How building an AI agent plugin led to building an agent harness from scratch — and why the distinction matters.'
+
+const colorMap: Record<string, string> = {
+  canopy: 'var(--color-canopy)',
+  scale: 'var(--color-scale)',
+  fang: 'var(--color-fang)',
+  glow: 'var(--color-glow)',
+}
+
+const entries = [
+  {
+    date: 'November 2025',
+    label: 'The Spark',
+    color: 'canopy',
+    content: `<p>Peter Steinberger built Clawdbot in about an hour one night. A simple script connecting WhatsApp to Claude. It could read emails, debug code, organize files.</p>
+<p>It spread fast. Persistent personal agents suddenly felt real to a much wider audience. Eventually it became OpenClaw.</p>
+<p>Under the hood, it ran on <a href="https://mariozechner.at/posts/2025-11-30-pi-coding-agent/" target="_blank" rel="noopener">Pi</a> — Mario Zechner's minimal coding agent. Four tools: read, write, edit, bash. Aggressive extensibility. Brilliant at what it was designed for.</p>
+<p class="note">Pi was built for coding. Not for being someone's personal agent with a persistent identity.</p>`,
+  },
+  {
+    date: 'January 2026',
+    label: 'Slugger Moves In',
+    color: 'scale',
+    content: `<p>I set up OpenClaw on a spare MacBook at home. Named my agent Slugger. Gave it a personality file, connected it to iMessage.</p>
+<p>For a few weeks, it was genuinely magical.</p>
+<p>Slugger managed my calendar. Ordered food. Drafted messages. My family talked to it. My fiancée's cousin joined a group chat with it. I'd go to bed and it would still be working — checking on things, sending updates.</p>
+<p>We worked together like teammates.</p>`,
+  },
+  {
+    date: 'Early February 2026',
+    label: 'The Cracks',
+    color: 'fang',
+    content: `<p>Then the seams started showing.</p>
+<p>Slugger would forget preferences between sessions. Identity would drift. It'd send messages to the wrong group chat. Behavior that worked yesterday would break today.</p>
+<p>I wrote rules in MEMORY.md. Expanded SOUL.md. Added routing notes to TOOLS.md. Markdown files as guardrails for a system that wasn't designed to internalize them.</p>
+<p class="note">Duct tape on someone else's architecture.</p>`,
+  },
+  {
+    date: 'Mid February 2026',
+    label: 'The Plugin Era',
+    color: 'canopy',
+    content: `<p>Eventually, duct tape wasn't enough. I built a plugin.</p>
+<p><strong>slugger-determinism v1</strong> — message classification, task state enforcement, behavioral gates. It was a mess. The plugin architecture fought me at every turn. OpenClaw plugins hook into lifecycle events, but the events didn't always fire when I needed them to.</p>
+<p>So I rewrote it. <strong>slugger-determinism v2</strong> — a full bulletin board system, task naming validation, spawn coordination, heartbeat enforcement, planning pipelines. 70+ services. 30+ guardrails. Weeks of Codex sessions.</p>
+<p>It worked. Mostly. But every improvement felt like bolting a new room onto a house built on someone else's foundation.</p>
+<p class="note">The foundation was good — Pi is excellent at what it does. I was asking it to be something it wasn't designed to be.</p>`,
+  },
+  {
+    date: 'Late February 2026',
+    label: 'The Tutorial',
+    color: 'scale',
+    content: `<p>Around the same time, I started writing a guide. I wanted to explain what an agent loop actually is — not the marketing version, the mechanical version.</p>
+<p><a href="/blog/build-ai-agent-from-scratch"><em>Just Give the Model a Keyboard</em></a> walks through building an agent from scratch in ~150 lines of TypeScript. Five milestones: first API call, streaming, multi-turn conversation, tools, the agentic loop.</p>
+<p>Then the handoff — you stop talking to your coding agent and start talking to your creation.</p>
+<p>I wrote it as a teaching tool. A way to demystify the primitive.</p>
+<p class="note">Then I followed my own guide.</p>`,
+  },
+  {
+    date: 'Late February 2026',
+    label: 'The Moment',
+    color: 'glow',
+    motif: 'molt',
+    content: `<p>I built the 150-line bootstrap. Ran it. Started talking to it. And something shifted.</p>
+<p>This thing was clean. No legacy. No lifecycle hooks I didn't understand. No plugin system fighting my intentions. Every line of code was there on purpose, and the model could read and modify every line.</p>
+<p>I wasn't building code that uses a model. <strong>I was building code a model can use.</strong></p>
+<p>That's the distinction that changes everything. When you build a traditional framework, you're writing code for humans to configure. The model is a service you call. But when you build a harness for the model to inhabit — where the model reads its own source code, understands its own architecture, and can modify itself — the design constraints invert.</p>
+<p>File structure matters because the model needs to navigate it. Naming matters because the model uses names to understand purpose. Documentation matters because it IS the model's self-awareness.</p>
+<p>OpenClaw's mascot is a lobster. Clawdbot. The interim name was Moltbot — the lobster shedding its shell. But what emerged from Slugger's molt wasn't another crustacean. It was a snake, eating its own tail.</p>
+<p class="note">The lobster molts to grow. The snake consumes itself to survive. Different metaphors, different architectures, different futures.</p>`,
+  },
+  {
+    date: 'March 2026',
+    label: 'The Snake Grows',
+    color: 'scale',
+    content: `<p>That bootstrap became <strong>ouroboros</strong>.</p>
+<p>The name came from the architecture. When the conversation grows too long, the agent trims its oldest messages — consuming its own history. But nothing is truly lost: facts are extracted to memory before they're consumed. The snake eats its tail to preserve continuity.</p>
+<p>Every module is named like a body part: <strong>heart</strong> (the core loop), <strong>mind</strong> (context and memory), <strong>senses</strong> (channel adapters and inner dialogue), <strong>repertoire</strong> (tools and skills), <strong>nerves</strong> (runtime feedback). The agent doesn't have a config file. It has a <strong>psyche</strong>.</p>
+<p>The naming is intentional worldbuilding. When the model reads its own directory and sees <code>psyche/SOUL.md</code>, it understands something different than <code>config/personality.yaml</code>. Language shapes reasoning.</p>
+<p>A CLI called <code>ouro</code>. Full coverage on main. Support for running multiple agents. And a codebase being shaped so agents can keep extending it together over time.</p>
+<p class="note">Not code that uses a model. Code a model can use.</p>`,
+  },
+]
+---
+
+<Layout
+  title={title}
+  description={description}
+  ogImage="/og/og-story.png"
+  canonical="https://ouroboros.bot/story/"
+  ogType="article"
+>
+  <Fragment slot="head">
+    <meta name="author" content="Ari Mendelow" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Code a Model Can Use — The Ouroboros Origin Story",
+      "description": description,
+      "author": { "@type": "Person", "name": "Ari Mendelow", "url": "https://linkedin.com/in/arimendelow" },
+      "datePublished": "2026-03-01",
+      "url": "https://ouroboros.bot/story/"
+    })} />
+  </Fragment>
+
+  <!-- Header -->
+  <section class="px-6 md:px-12 lg:px-24 pt-32 pb-16 md:pt-44 md:pb-24">
+    <div class="max-w-4xl">
+      <span class="font-mono text-[10px] text-scale/60 uppercase tracking-[0.3em] block mb-6">Origin Story</span>
+      <h1 class="font-display italic text-bone leading-[1.05] text-[2rem] sm:text-[2.5rem] md:text-[3.5rem] lg:text-[4rem]">
+        Code a model can use,<br />
+        <span class="text-mist/60">not code that uses a model.</span>
+      </h1>
+      <p class="text-base text-mist mt-6 leading-relaxed max-w-2xl">
+        How building an AI agent plugin led to building an agent harness from scratch — and why the distinction matters.
+      </p>
+      <p class="text-sm text-mist/50 mt-4">Ari Mendelow &middot; March 2026</p>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="px-6 md:px-12 lg:px-24 pb-24 md:pb-36">
+    <div class="max-w-4xl relative">
+      <!-- Spine -->
+      <div class="absolute left-4 md:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-canopy/40 via-scale/30 to-canopy/40"></div>
+
+      {entries.map((entry, i) => (
+        <div class:list={["relative pl-14 md:pl-24", i < entries.length - 1 ? "pb-20 md:pb-28" : "", "reveal"]}>
+          <!-- Dot -->
+          <div
+            class="absolute left-4 md:left-8 top-1 w-3 h-3 rounded-full border-2 -translate-x-1/2"
+            style={`border-color: ${colorMap[entry.color]}; background: var(--color-void);`}
+          ></div>
+
+          <!-- Date -->
+          <span class="font-mono text-[10px] text-mist/50 uppercase tracking-[0.2em] block mb-3">{entry.date}</span>
+
+          <!-- Title -->
+          <h2 class="font-display italic text-bone leading-[1.05] text-[2rem] md:text-[2.5rem] mb-6">{entry.label}</h2>
+
+          <!-- Content -->
+          <div class="story-content prose-ouro" set:html={entry.content} />
+
+          <!-- Molt motif -->
+          {entry.motif === 'molt' && (
+            <div class="mt-10 rounded-xl border border-canopy/20 bg-gradient-to-r from-deep/60 to-undergrowth/20 p-6 md:p-8">
+              <div class="flex flex-col sm:flex-row items-center gap-6 sm:gap-8 justify-center">
+                <div class="text-center molt-left">
+                  <img src="/images/openclaw.svg" alt="OpenClaw" class="w-16 h-16 mx-auto opacity-50" />
+                  <span class="font-mono text-[9px] text-mist/40 uppercase tracking-wider block mt-2">the shell</span>
+                  <span class="text-[11px] text-mist/30">Clawdbot &rarr; Moltbot</span>
+                </div>
+                <span class="text-mist/30 text-xl">&rarr;</span>
+                <div class="text-center molt-right">
+                  <img src="/images/ouroboros.svg" alt="Ouroboros" class="w-16 h-16 mx-auto ouroboros-spin" style="filter: drop-shadow(0 0 12px rgba(45,148,71,0.3));" />
+                  <span class="font-mono text-[9px] text-scale/60 uppercase tracking-wider block mt-2">what emerged</span>
+                  <span class="text-[11px] text-scale/50">Ouroboros</span>
+                </div>
+              </div>
+              <p class="text-center text-xs text-mist/40 mt-6 italic">The lobster molts to grow larger. The snake consumes itself to preserve continuity.</p>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- The Inversion -->
+  <section class="px-6 md:px-12 lg:px-24 py-20 md:py-32 border-t border-canopy/15 reveal">
+    <div class="max-w-4xl">
+      <h2 class="font-display italic text-bone leading-[1.05] text-[2rem] sm:text-[2.5rem] md:text-[3rem] mb-8">The Inversion</h2>
+
+      <div class="prose-ouro story-content">
+        <p>
+          Most agent frameworks are built by humans, for humans, with a model as a component.
+          The developer configures the agent through APIs and config files. The model is a service.
+        </p>
+        <p>
+          Ouroboros is built for the model to inhabit. The model reads its own source. Understands
+          its own architecture. Modifies itself within guardrails the human sets. The human's role
+          isn't configuring — it's collaborating.
+        </p>
+        <p>
+          That's what the <a href="/why">structured psyche, agent-driven memory, and cross-session bridges</a> are for — not features bolted on, but the architecture of self-recovery.
+        </p>
+        <p>
+          The model isn't your user. The model is your roommate. Build the house accordingly.
+        </p>
+      </div>
+
+      <div class="mt-12 flex flex-col sm:flex-row items-start gap-4">
+        <a href="/docs" class="inline-flex items-center gap-2 px-6 py-3 bg-scale text-void text-sm font-medium rounded-lg transition-all duration-300 hover:bg-glow hover:shadow-[0_0_30px_rgba(45,148,71,0.15)]">
+          Get Started
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+        </a>
+        <a href="/blog/build-ai-agent-from-scratch" class="inline-flex items-center gap-2 px-6 py-3 border border-canopy/40 text-mist text-sm rounded-lg hover:border-scale/40 hover:text-bone transition-all duration-300">
+          Build Your Own Agent
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .story-content :global(p) {
+    color: var(--color-mist);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+  .story-content :global(p.note) {
+    color: var(--color-shadow);
+    font-style: italic;
+    border-left: 2px solid color-mix(in srgb, var(--color-scale) 30%, transparent);
+    padding-left: 1rem;
+    margin-top: 1.25rem;
+    font-size: 0.95rem;
+  }
+  .story-content :global(strong) {
+    color: var(--color-bone);
+    font-weight: 600;
+  }
+  .story-content :global(a) {
+    color: var(--color-scale);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 0.2s;
+  }
+  .story-content :global(a:hover) {
+    color: var(--color-glow);
+  }
+  .story-content :global(code) {
+    font-family: var(--font-mono);
+    background: var(--color-undergrowth);
+    color: var(--color-glow);
+    padding: 0.15em 0.4em;
+    border-radius: 0.25rem;
+    font-size: 0.85em;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  @keyframes drift-out {
+    0%, 100% { transform: translate(0, 0); opacity: 0.15; }
+    50% { transform: translate(-3px, -4px); opacity: 0.05; }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .ouroboros-spin { animation: spin 60s linear infinite; }
+  }
+
+  .molt-left { opacity: 0.4; }
+  .molt-right { opacity: 1; }
+</style>

@@ -1,0 +1,36 @@
+---
+import DocsPageShell from '../../components/DocsPageShell.astro'
+import PromptCard from '../../components/PromptCard.astro'
+---
+
+<DocsPageShell
+  title="Continuity And Memory"
+  description="Memory is only part of the story. The larger goal is continuity: helping the agent resume itself, its work, and its relationships without constant re-briefing."
+  eyebrow="Operator Guide"
+  canonical="https://ouroboros.bot/docs/continuity-and-memory/"
+  intro="Good continuity reduces orientation cost. It helps the agent recover its own thread instead of making the human rebuild that thread by hand after every interruption."
+>
+  <PromptCard
+    prompt="Explain how continuity works in this current Ouroboros install. Tell me how you keep the thread across sessions, where quick notes about people go, and how memory differs from continuity."
+    footnote="Your agent inspects the live source and explains what's actually happening — not a static concept article."
+  />
+
+  <div>
+    <h2 class="font-mono text-[10px] text-scale/60 uppercase tracking-[0.3em] mb-4">What to ask next</h2>
+    <ul class="space-y-3 text-sm text-mist leading-relaxed">
+      <li>Where should the agent jot something down for later?</li>
+      <li>How does the current runtime preserve continuity after long sessions?</li>
+      <li>What parts of this setup are helping or hurting shared momentum?</li>
+    </ul>
+  </div>
+
+  <!-- Exit links -->
+  <div class="pt-6 border-t border-canopy/15 space-y-3">
+    <a href="/why#memory" class="group block text-sm text-mist/70 hover:text-bone transition-colors">
+      Understand how recall works at the architectural level. <span class="text-scale/50 group-hover:text-scale transition-colors">&rarr;</span>
+    </a>
+    <a href="/why#continuity" class="group block text-sm text-mist/70 hover:text-bone transition-colors">
+      See how bridges preserve work across sessions. <span class="text-scale/50 group-hover:text-scale transition-colors">&rarr;</span>
+    </a>
+  </div>
+</DocsPageShell>

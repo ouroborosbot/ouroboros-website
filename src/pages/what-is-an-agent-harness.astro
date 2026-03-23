@@ -1,0 +1,94 @@
+---
+import Layout from '../layouts/Layout.astro'
+
+const title = 'What Is An Agent Harness?'
+const description = 'An agent harness is the larger system around an agent loop: runtime, memory, identity, tools, and operator workflows that help the same agent stay oriented across sessions.'
+
+const cards = [
+  { title: 'Operator guides', href: '/docs', desc: 'The evergreen docs pages.' },
+  { title: 'Agent ergonomics', href: '/why', desc: 'Reorientation overhead and shared momentum.' },
+  { title: 'What is an agent loop?', href: '/blog/build-ai-agent-from-scratch', desc: 'The underlying primitive.' },
+]
+---
+
+<Layout
+  title={`${title} | Ouroboros`}
+  description={description}
+  ogImage="/og/og-docs.png"
+  canonical="https://ouroboros.bot/what-is-an-agent-harness/"
+  ogType="article"
+>
+  <Fragment slot="head">
+    <meta name="author" content="Ari Mendelow" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": title,
+      "description": description,
+      "author": { "@type": "Person", "name": "Ari Mendelow", "url": "https://linkedin.com/in/arimendelow" },
+      "url": "https://ouroboros.bot/what-is-an-agent-harness/"
+    })} />
+  </Fragment>
+
+  <section class="px-6 md:px-12 lg:px-24 pt-32 pb-20 md:pt-44 md:pb-28">
+    <div class="max-w-4xl">
+      <span class="font-mono text-[10px] text-scale/60 uppercase tracking-[0.3em] block mb-6">Guide</span>
+      <h1 class="font-display italic text-bone leading-[1.05] text-[2rem] sm:text-[2.5rem] md:text-[3.5rem] lg:text-[4rem]">
+        What Is An Agent Harness?
+      </h1>
+      <p class="text-base text-mist mt-6 leading-relaxed max-w-2xl">
+        If an agent loop is the primitive that lets a model act, an agent harness is the larger system that helps the same agent stay oriented, persist across sessions, and work across time.
+      </p>
+    </div>
+  </section>
+
+  <section class="px-6 md:px-12 lg:px-24 pb-16 md:pb-24">
+    <div class="max-w-4xl prose-ouro">
+      <p>Start with the simplest version.</p>
+
+      <p>A chat session is not a harness. It is a conversation window. You send a message, the model replies, and most of the structure around that exchange belongs to the chat product, not to the agent.</p>
+
+      <p>An <a href="/blog/build-ai-agent-from-scratch">agent loop</a> is the next step up. It gives the model a cycle: read the current state, decide what to do, call tools, observe the result, and continue. That is enough to make the model act like an agent instead of a single-response chatbot.</p>
+
+      <p>But once you want that agent to work across sessions, remember people, keep track of work in flight, or recover after interruptions, the loop is not enough anymore. You need a harness.</p>
+
+      <h2>So what is the harness?</h2>
+
+      <p>An agent harness is the surrounding system that gives the agent a stable place to operate. Depending on the product, that can include identity, memory, context management, tools, channels, logs, and the operator workflows used to guide the agent over time.</p>
+
+      <p>The harness is what turns "the model can act" into "the same agent can keep working."</p>
+
+      <h2>Why not just call it an agent framework?</h2>
+
+      <p>Because framework language is usually builder-first. It emphasizes the developer integrating APIs, wiring tools, and configuring behavior. Harness language emphasizes the environment the agent has to inhabit from the inside.</p>
+
+      <p>That distinction matters more once agents become long-lived. The shape of the runtime starts affecting how coherently the agent can recover its own context, relationships, and work.</p>
+
+      <h2>What makes a good harness?</h2>
+
+      <p>A good harness does not just add features. It lowers orientation cost. It helps the agent answer questions like: who am I, what matters right now, who are these people, what was I doing, and where do I put something so I can find it later?</p>
+
+      <p>In practice that can show up as a cleaner self-model, continuity across sessions, memory shaped around real work and relationships, and runtime structure the agent can actually reason about.</p>
+
+      <h2>Why people care about this now</h2>
+
+      <p>The more people try to collaborate with the same agent across time, the more they notice the hidden tax of reorientation. If every interruption turns into a full re-brief, the human becomes a recovery loop instead of a collaborator.</p>
+
+      <p>That is why harnesses matter. They are where continuity, operator workflow, and agent experience start to become real product concerns instead of implementation details.</p>
+    </div>
+  </section>
+
+  <!-- 3-card grid -->
+  <section class="px-6 md:px-12 lg:px-24 pb-24 md:pb-36 reveal">
+    <div class="max-w-4xl">
+      <div class="grid md:grid-cols-3 gap-4">
+        {cards.map(card => (
+          <a href={card.href} class="group block rounded-2xl border border-canopy/20 bg-undergrowth/10 p-6 hover:border-scale/40 transition-all duration-300">
+            <h3 class="font-display italic text-bone text-lg group-hover:text-scale transition-colors">{card.title}</h3>
+            <p class="text-sm text-mist/60 mt-2">{card.desc}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

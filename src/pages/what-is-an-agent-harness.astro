@@ -78,17 +78,11 @@ const cards = [
     </div>
   </section>
 
-  <!-- 3-card grid -->
   <section class="px-6 md:px-12 lg:px-24 pb-24 md:pb-36 reveal">
-    <div class="max-w-4xl">
-      <div class="grid md:grid-cols-3 gap-4">
-        {cards.map(card => (
-          <a href={card.href} class="group block rounded-2xl border border-canopy/20 bg-undergrowth/10 p-6 hover:border-scale/40 transition-all duration-300">
-            <h3 class="font-display italic text-bone text-lg group-hover:text-scale transition-colors">{card.title}</h3>
-            <p class="text-sm text-mist mt-2">{card.desc}</p>
-          </a>
-        ))}
-      </div>
+    <div class="max-w-3xl">
+      <p class="text-sm text-mist leading-relaxed">
+        Ouroboros is <a href="/why" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">one harness shaped by these ideas</a> — structured psyche, agent-initiated memory, cross-session bridges. If you want to see the mechanics, <a href="/blog/build-ai-agent-from-scratch" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">build the loop from scratch</a>. If you want to start using it, <a href="/docs" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">the serpent guide takes three minutes</a>.
+      </p>
     </div>
   </section>
 </Layout>

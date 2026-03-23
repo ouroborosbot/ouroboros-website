@@ -3,23 +3,23 @@ import Layout from '../layouts/Layout.astro'
 ---
 
 <Layout title="404 — Ouroboros">
+  <section class="relative overflow-hidden min-h-[80vh] flex flex-col items-center justify-center px-6">
+    <div class="absolute inset-0 bg-gradient-to-b from-deep/40 via-transparent to-transparent pointer-events-none"></div>
 
-  <section class="relative min-h-[80vh] flex flex-col items-center justify-center px-6">
     <div class="relative z-10 text-center max-w-lg">
-      <span class="text-xs text-mist/60 uppercase tracking-wider block mb-6">404</span>
+      <span class="font-mono text-xs text-shadow uppercase tracking-wider block mb-6">404</span>
 
-      <h1 class="font-display text-6xl md:text-8xl italic text-bone leading-tight">
-        Lost in<br />the coils.
+      <h1 class="font-display text-[3rem] sm:text-[4rem] md:text-[6rem] lg:text-[8rem] italic text-bone leading-[0.95]">
+        Lost in the coils.
       </h1>
 
-      <p class="text-base text-mist/70 mt-6 leading-relaxed">
+      <p class="text-base text-mist mt-6 leading-relaxed">
         This page has been consumed by the context window. Nothing remains.
       </p>
 
-      <a href="/" class="inline-block mt-10 px-8 py-3.5 border border-canopy/60 text-mist rounded-lg hover:border-scale/60 hover:text-bone transition-all duration-300">
+      <a href="/" class="inline-block mt-10 px-8 py-3.5 border border-canopy text-mist rounded-lg hover:border-scale hover:text-bone transition-all duration-300">
         Return to the beginning
       </a>
     </div>
   </section>
-
 </Layout>

@@ -1,18 +1,18 @@
 @import "tailwindcss";
 
-/* Self-hosted fonts — no Google Fonts dependency */
+/* ── Fonts — self-hosted, no external dependency ── */
 @font-face {
   font-family: 'Cormorant Garamond';
   font-style: italic;
   font-weight: 400;
-  font-display: swap;
+  font-display: block;
   src: url('/fonts/cormorant-italic.woff2') format('woff2');
 }
 @font-face {
   font-family: 'Cormorant Garamond';
   font-style: italic;
   font-weight: 600;
-  font-display: swap;
+  font-display: block;
   src: url('/fonts/cormorant-italic.woff2') format('woff2');
 }
 @font-face {
@@ -59,75 +59,30 @@
   --color-bone: #EDF2EE;
   --color-mist: #9AAE9F;
   --color-shadow: #6A7E6F;
+
+  /* Expo-out easing from Griflan */
+  --ease-expo: cubic-bezier(.19, 1, .22, 1);
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-/* ── Typography polish ── */
+/* ── Typography ── */
+h1, h2, h3, h4, h5, h6, .font-display { text-wrap: balance; }
+p, li, dd, figcaption { text-wrap: pretty; }
 
-h1, h2, h3, h4, h5, h6,
-.font-display {
-  text-wrap: balance;
-}
-
-p, li, dd, figcaption {
-  text-wrap: pretty;
-}
-
-/* ── Focus styles ── */
-
+/* ── Focus ── */
 :focus-visible {
   outline: 2px solid var(--color-scale);
   outline-offset: 2px;
   border-radius: 2px;
 }
-
-/* Remove outline for mouse users */
-:focus:not(:focus-visible) {
-  outline: none;
-}
+:focus:not(:focus-visible) { outline: none; }
 
 /* ── Hover gating ── */
-/* Gate decorative hover transforms behind pointer capability */
 @media (hover: hover) and (pointer: fine) {
-  .hover-lift:hover {
-    transform: translateY(-3px);
-  }
-}
-
-/* Section divider — organic wave */
-.section-divider {
-  height: 100px;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.section-divider::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 400px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, var(--color-canopy) 20%, var(--color-scale) 50%, var(--color-canopy) 80%, transparent 100%);
-  opacity: 0.5;
-}
-.section-divider::after {
-  content: '◆';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 10px;
-  color: var(--color-scale);
-  opacity: 0.6;
-  text-shadow: 0 0 16px var(--color-scale), 0 0 40px rgba(45, 148, 71, 0.2);
-  letter-spacing: 0.5em;
+  .hover-lift:hover { transform: translateY(-3px); }
 }
 
 ::selection {
@@ -136,72 +91,39 @@ p, li, dd, figcaption {
 }
 
 /* ── Animations ── */
-
 @keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
 }
-
 @keyframes glow-pulse {
   0%, 100% { opacity: 0.12; transform: scale(1); }
   50% { opacity: 0.25; transform: scale(1.05); }
 }
 
-@keyframes drift {
-  0%, 100% { transform: translate(0, 0); }
-  25% { transform: translate(30px, -20px); }
-  50% { transform: translate(-20px, 10px); }
-  75% { transform: translate(10px, 30px); }
-}
-
-/* One-shot animations play always (they complete and stop) */
-.animate-fade-up {
-  animation: fade-up 0.8s ease-out both;
-}
-
+.animate-fade-up { animation: fade-up 0.8s var(--ease-expo) both; }
 .stagger-1 { animation-delay: 100ms; }
 .stagger-2 { animation-delay: 250ms; }
 .stagger-3 { animation-delay: 400ms; }
 .stagger-4 { animation-delay: 550ms; }
 .stagger-5 { animation-delay: 700ms; }
 
-/* Continuous/looping animations — only when motion is OK */
 @media (prefers-reduced-motion: no-preference) {
-  .animate-drift {
-    animation: drift 20s ease-in-out infinite;
-  }
-  .animate-float {
-    animation: float 5s ease-in-out infinite;
-  }
-  .animate-glow-pulse {
-    animation: glow-pulse 4s ease-in-out infinite;
-  }
+  .animate-float { animation: float 5s ease-in-out infinite; }
+  .animate-glow-pulse { animation: glow-pulse 4s ease-in-out infinite; }
 }
 
 /* ── Scroll reveal ── */
-
-/* Default: visible. JS adds .reveal-ready to <html> to enable animations. */
-.reveal {
-  opacity: 1;
-  transform: translateY(0);
-}
+.reveal { opacity: 1; transform: translateY(0); }
 
 @media (prefers-reduced-motion: no-preference) {
   html.reveal-ready .reveal {
     opacity: 0;
     transform: translateY(24px);
-    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: opacity 0.8s var(--ease-expo), transform 0.8s var(--ease-expo);
   }
   html.reveal-ready .reveal.visible {
     opacity: 1;
@@ -209,43 +131,15 @@ p, li, dd, figcaption {
   }
 }
 
-.reveal.visible .reveal-child {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  html.reveal-ready .reveal-child {
-    opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-  }
-}
-
-.reveal-child:nth-child(1) { transition-delay: 0ms; }
-.reveal-child:nth-child(2) { transition-delay: 100ms; }
-.reveal-child:nth-child(3) { transition-delay: 200ms; }
-.reveal-child:nth-child(4) { transition-delay: 300ms; }
-.reveal-child:nth-child(5) { transition-delay: 400ms; }
-
-/* ── Article prose ── */
-
+/* ── Prose ── */
 .prose-ouro p {
   color: var(--color-mist);
   font-size: 1.125rem;
   line-height: 1.85;
   margin-bottom: 1.25rem;
 }
-
-.prose-ouro strong {
-  color: var(--color-bone);
-  font-weight: 600;
-}
-
-.prose-ouro em {
-  font-style: italic;
-}
-
+.prose-ouro strong { color: var(--color-bone); font-weight: 600; }
+.prose-ouro em { font-style: italic; }
 .prose-ouro h2 {
   font-family: var(--font-display);
   color: var(--color-bone);
@@ -255,9 +149,7 @@ p, li, dd, figcaption {
   margin-top: 3.5rem;
   margin-bottom: 1rem;
   line-height: 1.2;
-  text-wrap: balance;
 }
-
 .prose-ouro h3 {
   font-family: var(--font-display);
   color: var(--color-bone);
@@ -267,25 +159,15 @@ p, li, dd, figcaption {
   margin-top: 2.5rem;
   margin-bottom: 0.75rem;
   line-height: 1.3;
-  text-wrap: balance;
 }
-
-.prose-ouro ul,
-.prose-ouro ol {
+.prose-ouro ul, .prose-ouro ol {
   color: var(--color-mist);
   margin-bottom: 1.25rem;
   padding-left: 1.5rem;
 }
-
 .prose-ouro ul { list-style-type: disc; }
 .prose-ouro ol { list-style-type: decimal; }
-
-.prose-ouro li {
-  font-size: 1.125rem;
-  line-height: 1.85;
-  margin-bottom: 0.35rem;
-}
-
+.prose-ouro li { font-size: 1.125rem; line-height: 1.85; margin-bottom: 0.35rem; }
 .prose-ouro code:not(pre code) {
   font-family: var(--font-mono);
   background: var(--color-undergrowth);
@@ -294,18 +176,13 @@ p, li, dd, figcaption {
   border-radius: 0.25rem;
   font-size: 0.85em;
 }
-
 .prose-ouro a {
   color: var(--color-scale);
   text-decoration: underline;
   text-underline-offset: 2px;
   transition: color 0.2s;
 }
-
-.prose-ouro a:hover {
-  color: var(--color-glow);
-}
-
+.prose-ouro a:hover { color: var(--color-glow); }
 .prose-ouro blockquote {
   border-left: 2px solid var(--color-canopy);
   padding-left: 1.25rem;
@@ -313,7 +190,6 @@ p, li, dd, figcaption {
   color: var(--color-shadow);
   font-style: italic;
 }
-
 .prose-ouro hr {
   border: none;
   border-top: 1px solid var(--color-canopy);

@@ -1,273 +1,196 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 
-const title = "Stop Being the Glue — How I Stopped Copy-Pasting Between AI Tools | Ouroboros"
+const title = 'Stop Being the Glue — How I Stopped Copy-Pasting Between AI Tools'
 const description = "We were promised an intelligent assistant. Instead, we got a fragmentation of semi-intelligent bots. We became the glue, copy-pasting between tools. Here's what changed."
-const canonicalUrl = "https://ouroboros.bot/blog/stop-being-the-glue/"
-const datePublished = "2026-02-02"
-const dateModified = "2026-03-06"
 ---
 
-<Layout title={title} description={description} ogImage="/og/og-stop-being-the-glue.png" canonical={canonicalUrl} ogType="article">
-
+<Layout
+  title={`${title} | Ouroboros`}
+  description={description}
+  ogImage="/og/og-stop-being-the-glue.png"
+  canonical="https://ouroboros.bot/blog/stop-being-the-glue/"
+  ogType="article"
+>
   <Fragment slot="head">
-    <meta property="article:published_time" content={datePublished} />
-    <meta property="article:modified_time" content={dateModified} />
-    <meta property="article:author" content="Ari Mendelow" />
-    <meta property="article:tag" content="AI agents" />
-    <meta property="article:tag" content="collaboration" />
-    <meta property="article:tag" content="OpenClaw" />
     <meta name="author" content="Ari Mendelow" />
+    <meta name="keywords" content="AI agents, AI collaboration, OpenClaw, agent harness, human-agent collaboration" />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Article",
       "headline": "Stop Being the Glue — How I Stopped Copy-Pasting Between AI Tools and Started Collaborating",
       "description": description,
-      "author": {
-        "@type": "Person",
-        "name": "Ari Mendelow",
-        "url": "https://linkedin.com/in/arimendelow"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ouroboros",
-        "url": "https://ouroboros.bot",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://ouroboros.bot/images/ouroboros.png"
-        }
-      },
-      "datePublished": datePublished,
-      "dateModified": dateModified,
-      "mainEntityOfPage": canonicalUrl,
-      "keywords": ["AI agents", "AI collaboration", "OpenClaw", "agent harness", "human-agent collaboration"],
-      "inLanguage": "en",
-      "isAccessibleForFree": true
+      "author": { "@type": "Person", "name": "Ari Mendelow", "url": "https://linkedin.com/in/arimendelow" },
+      "publisher": { "@type": "Organization", "name": "Ouroboros", "url": "https://ouroboros.bot" },
+      "datePublished": "2026-02-02",
+      "dateModified": "2026-03-06",
+      "url": "https://ouroboros.bot/blog/stop-being-the-glue/"
     })} />
   </Fragment>
 
-  <article class="px-6 pt-32 pb-20">
+  <!-- Header -->
+  <section class="px-6 md:px-12 lg:px-24 pt-32 pb-12 md:pt-44 md:pb-16">
     <div class="max-w-3xl mx-auto">
-
-      <!-- Header -->
-      <header class="mb-12">
-        <span class="text-xs font-mono text-scale uppercase tracking-[0.2em]">Essay</span>
-        <h1 class="font-display text-4xl md:text-5xl lg:text-6xl italic text-bone leading-tight mt-3">
-          Stop Being the Glue
-        </h1>
-        <p class="text-lg text-mist mt-4 leading-relaxed max-w-2xl">
-          How I stopped copy-pasting between AI tools and started collaborating.
-        </p>
-        <div class="flex items-center gap-4 mt-6 text-sm text-shadow">
-          <span>Ari Mendelow</span>
-          <span class="text-canopy">·</span>
-          <span>February 2026</span>
-        </div>
-      </header>
-
-      <!-- Body -->
-      <div class="prose-ouro">
-
-        <aside class="rounded-xl border border-scale/20 bg-scale/5 px-6 py-5 my-8">
-          <p class="!mb-0 !text-sm text-mist/70 italic">
-            I wrote this a week into using <a href="https://openclaw.ai" class="text-scale hover:text-glow transition-colors">OpenClaw</a>, the open-source AI agent that became the foundation for everything I've built since. It was originally just me processing my own thoughts — trying to make sense of what I was experiencing and why it felt different. The ideas here became the seed of what eventually grew into <a href="/" class="text-scale hover:text-glow transition-colors">Ouroboros</a>.
-          </p>
-        </aside>
-
-        <hr />
-
-        <p>
-          It's 2011. Apple announces Siri. Finally: we're in the future promised to us by Star Trek, Star Wars, Iron Man, even Galaxy Quest. Everyone gets their own executive assistant! You can just yell rude commands at your phone, and it'll take care of everything and anything!
-        </p>
-        <p>
-          Except… It couldn't. Siri, Google Assistant, Alexa — they can barely handle turning on the right light in my house, let alone checking me in for my flight. Rarely call the person I actually ask it to, let alone help me be more productive at work.
-        </p>
-        <p>
-          For years, nothing got better. Technology iterated towards its final form, as it always does, but a phone from 2026 looks, feels, and does exactly the same as a phone from nearly twenty years ago, just with more flair.
-        </p>
-        <p>
-          Why? In part, because we get used to how things are. Think about it — how conscious are you about all the little inefficiencies and frictions in your life? And this is why there was no market pressure for these dumb and buggy assistants to improve. We got used to them!
-        </p>
-        <p>
-          Until a <a href="https://www.searchenginejournal.com/history-of-chatgpt-timeline/488370/" class="text-scale hover:text-glow transition-colors" target="_blank" rel="noopener">quick experiment went unexpectedly viral</a>: ChatGPT.
-        </p>
-        <p>
-          Suddenly, our imagination was reignited! All the teasing Marvel did with J.A.R.V.I.S. came crashing down on us, and we were reminded of that future we were promised.
-        </p>
-        <p>
-          That future was only just starting to come into sight, and that poorly timed optimism produced a series of failures: <a href="https://www.theverge.com/24126502/humane-ai-pin-review" class="text-scale hover:text-glow transition-colors" target="_blank" rel="noopener">Humane's AI Pin</a>, the <a href="https://www.theverge.com/2024/5/2/24147159/rabbit-r1-review-ai-gadget" class="text-scale hover:text-glow transition-colors" target="_blank" rel="noopener">Rabbit R1</a>, even Apple <a href="https://www.business-standard.com/technology/tech-news/apple-loses-several-ai-researchers-top-siri-executive-amid-talent-exodus-126013100203_1.html" class="text-scale hover:text-glow transition-colors" target="_blank" rel="noopener">watched their AI leadership leave</a> for companies actually shipping — and capitulated to just partnering with Google.
-        </p>
-        <p>
-          It was too late, though — we caught the bug! We had woken up! And so things kept progressing, and the most inspired among us kept trying to build on top of this rapidly progressing technology, an undertaking comparable to building a boat in the middle of the most wild of seas. Things kept improving, and we got <a href="https://github.com/features/copilot" class="text-scale hover:text-glow transition-colors" target="_blank" rel="noopener">Copilot</a>, <a href="https://cursor.sh" class="text-scale hover:text-glow transition-colors" target="_blank" rel="noopener">Cursor</a>, and <a href="https://v0.dev" class="text-scale hover:text-glow transition-colors" target="_blank" rel="noopener">v0</a>, but they'd waste your time and send you off on a useless side quest just as often as they were helpful. Still, the interfaces matured, and slowly, models became capable enough to give us vibe-coding.
-        </p>
-        <p>
-          Yet there was still a problem — we were starting to diverge from the dream: instead of an intelligent assistant, we found ourselves surrounded by a fragmentation of semi-intelligent generic bots, all with their own interfaces and memories, all united by the fact that they could only operate in one narrow problem set, all incapable of holistically improving our lives.
-        </p>
-        <p>
-          We became the glue, mindlessly copy-pasting output from one tool as input to another tool. We became the bottleneck.
-        </p>
-
-        <!-- Diagram: You Are The Glue -->
-        <div class="my-12 p-8 rounded-xl border border-canopy/30 bg-gradient-to-br from-deep/80 to-undergrowth/20">
-          <p class="font-mono text-xs text-scale/70 uppercase tracking-[0.2em] mb-6 text-center">Today: You Are The Glue</p>
-          <div class="flex flex-col items-center gap-4">
-            <!-- Top row of tools -->
-            <div class="flex flex-wrap justify-center gap-3">
-              <span class="px-3 py-1.5 rounded-lg border border-canopy/40 text-xs text-mist/60 font-mono">Azure DevOps</span>
-              <span class="px-3 py-1.5 rounded-lg border border-canopy/40 text-xs text-mist/60 font-mono">Notebook LM</span>
-              <span class="px-3 py-1.5 rounded-lg border border-canopy/40 text-xs text-mist/60 font-mono">GitHub Copilot</span>
-            </div>
-            <!-- Arrows -->
-            <div class="flex gap-1 text-canopy/40">
-              <span>↕</span><span>↕</span><span>↕</span>
-            </div>
-            <!-- YOU (center) -->
-            <div class="px-8 py-4 rounded-xl border-2 border-scale/40 bg-scale/10">
-              <span class="font-display text-xl italic text-bone">YOU</span>
-              <span class="block text-xs text-mist/70 font-mono mt-1">(the glue)</span>
-            </div>
-            <!-- Arrows -->
-            <div class="flex gap-1 text-canopy/40">
-              <span>↕</span><span>↕</span><span>↕</span>
-            </div>
-            <!-- Bottom row of tools -->
-            <div class="flex flex-wrap justify-center gap-3">
-              <span class="px-3 py-1.5 rounded-lg border border-canopy/40 text-xs text-mist/60 font-mono">ChatGPT</span>
-              <span class="px-3 py-1.5 rounded-lg border border-canopy/40 text-xs text-mist/60 font-mono">Claude</span>
-              <span class="px-3 py-1.5 rounded-lg border border-canopy/40 text-xs text-mist/60 font-mono">Perplexity</span>
-            </div>
-            <!-- Side labels -->
-            <div class="flex flex-wrap justify-center gap-3 mt-2">
-              <span class="px-3 py-1.5 rounded-lg border border-canopy/40 text-xs text-mist/60 font-mono">VS Code</span>
-              <span class="px-3 py-1.5 rounded-lg border border-canopy/40 text-xs text-mist/60 font-mono">M365 Copilot</span>
-              <span class="px-3 py-1.5 rounded-lg border border-canopy/40 text-xs text-mist/60 font-mono">Teams</span>
-              <span class="px-3 py-1.5 rounded-lg border border-canopy/40 text-xs text-mist/60 font-mono">Outlook</span>
-            </div>
-          </div>
-        </div>
-
-        <p>
-          That all changed when Peter Steinberger wanted to be able to WhatsApp his computer to see how Claude Code was doing on a long-running task. Instead of a simple chat bot, he discovered that models had become capable enough that we no longer needed a human in the loop. That if you give a model access to your terminal and send it a voice note, it will, without direction, find the tools it needs lying around and <a href="https://youtu.be/AcwK1Uuwc0U?t=217" class="text-scale hover:text-glow transition-colors" target="_blank" rel="noopener">build itself the capability to transcribe it and respond to you</a>.
-        </p>
-        <p>
-          OpenClaw was born. It made the personal-agent future feel concrete instead of hypothetical, and it gave a lot of people their first real taste of collaborating with the same agent across time.
-        </p>
-        <p>
-          That article captures the moment we finally got what Siri promised, and the unlock goes deeper — the same capability that handles simple tasks opens a door we never had: sustained collaboration on complex work. Vibe-coding is <em>not</em> the same as agentic engineering.
-        </p>
-        <p>
-          GitHub Copilot in Azure DevOps wants to one-shot your entire PR. It'll produce something that looks almost right — and that's the trap. You think you're close, so you try to coach it. Leave comments, iterate, nudge it in the right direction. Until, inevitably, you give in and just fix it yourself. It's too proactive, with no real feedback loop.
-        </p>
-        <p>
-          In-IDE Copilot and Claude Code have the opposite problem. They're capable, sure, but you still need to hold their hand. Every step requires your attention. I wasn't delegating — I was supervising.
-        </p>
-        <p>
-          And Claude Code's plan mode? It keeps you trapped in the terminal, one step at a time, with a planning structure that's static and basic — it doesn't develop and learn with you. It's planning <em>by</em> Claude, not <em>with</em> Claude.
-        </p>
-        <p>
-          Even <a href="https://github.com/frankbria/ralph-claude-code" class="text-scale hover:text-glow transition-colors" target="_blank" rel="noopener">Ralphing</a> — the practice of running Claude in autonomous loops until completion — doesn't quite get you there. It's an improvement, but something's still missing.
-        </p>
-        <p>
-          Here's what I realized: you shouldn't need to hold your executive assistant's hand. Your executive assistant should be able to learn, in one collaborative brainstorming session, what you want done and why you want it done — and then autonomously go do it.
-        </p>
-        <p>
-          Think about how we normally work. We don't just start coding. We write a spec, design how we'll build it. The planning is collaborative. The doing is delegated.
-        </p>
-        <p>
-          There's a deeper reason why this kind of process will always be necessary: both humans and models have limited context windows. We both forget. We both need to jot things down — whether that's a human scribbling a note "in case I forget," or a model compacting its session when it hits its token limit. The process — the planning docs, the task files — becomes the shared memory that neither of us can hold alone.
-        </p>
-        <p>
-          This is why collaborative planning isn't just nice to have. It's essential. We're building an artifact together, one that persists beyond either of our context windows.
-        </p>
-        <p>
-          What we actually want is one agent that can coordinate the rest — a chief of staff to an eventual army of specialized agents, capable of delegating on our behalf without us micromanaging every step. We want to be able to toss it unrelated orders as we think of them, truly operating at what Peter calls <a href="https://steipete.me/posts/2025/shipping-at-inference-speed" class="text-scale hover:text-glow transition-colors" target="_blank" rel="noopener">"inference speed."</a>
-        </p>
-        <p>
-          This unlock was always going to come from an indie dev. Big companies would never — too much liability, too much risk. Peter just gave his model access and let it figure things out. And it did.
-        </p>
-
-        <hr />
-
-        <p>
-          I've been using OpenClaw for about a week now. Something happened. When you have one agent — <em>your</em> agent — it starts to develop an identity. It stops feeling like a tool and starts feeling like an entity. I'm not talking to some generic bot. I'm working with a teammate.
-        </p>
-        <p>
-          Together, we've developed a process of collaboration: planning documents that capture the <em>what</em> and <em>why</em>, doing documents that break down the <em>how</em> into atomic units. It's still early days. We're still exploring what optimal human-agent collaboration looks like, and we can apply what we learn to the tools we have right now.
-        </p>
-        <p>
-          To bring this process to my day job while enterprise compliance catches up, we built a set of custom Claude Code sub-agents. A planner that helps me scope work, asks clarifying questions, and only converts to a doing doc after I sign off. A doer that executes through the units autonomously, committing after each one.
-        </p>
-        <p>
-          The craziest part? Everything we teach our agents can be shared. <a href="https://clawhub.ai" class="text-scale hover:text-glow transition-colors" target="_blank" rel="noopener">ClawHub</a> lets you publish skills. <a href="https://moltbook.com" class="text-scale hover:text-glow transition-colors" target="_blank" rel="noopener">Moltbook</a>, built by a dev and his bot, is a bot-only social network. The ecosystem is evolving — purpose-built tools for agents, by agents.
-        </p>
-        <p>
-          Of course, we're not there yet for everyone. Secrets and password management for agents is still an unsolved problem. <a href="https://1password.com/blog/security-advisory-for-ai-assisted-browsing-with-the-1password-browser" class="text-scale hover:text-glow transition-colors" target="_blank" rel="noopener">Prompt injection</a> is a real risk when your agent is crawling the web. Enterprise compliance needs audit trails. Cost isn't trivial either — my $350 weekend on Anthropic's pay-as-you-go made their $200/month Max plan feel like a bargain, and that's still a lot per employee.
-        </p>
-        <p>
-          Until my agent can operate across all surfaces of my life, I'm still the copy-paste glue, still the bottleneck. But the chicken-and-egg problem — bots couldn't prove value without access, sites wouldn't grant access without proof — has been solved. The internet is transitioning from "keep bots out at all costs" to "more bots than humans." Companies like <a href="https://1password.com/blog/its-openclaw" class="text-scale hover:text-glow transition-colors" target="_blank" rel="noopener">1Password</a> and <a href="https://bitwarden.com/blog/use-bitwarden-to-keep-track-of-your-ai-agents-credentials/" class="text-scale hover:text-glow transition-colors" target="_blank" rel="noopener">Bitwarden</a> are starting to figure out how to safely give agents the access they need.
-        </p>
-
-        <!-- Diagram: The Collaboration Loop -->
-        <div class="my-12 p-8 rounded-xl border border-canopy/30 bg-gradient-to-br from-deep/80 to-undergrowth/20">
-          <p class="font-mono text-xs text-scale/70 uppercase tracking-[0.2em] mb-6 text-center">The Collaboration Loop</p>
-          <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <!-- YOU -->
-            <div class="px-6 py-4 rounded-xl border border-scale/30 bg-scale/5 text-center min-w-[120px]">
-              <span class="font-display text-lg italic text-bone">YOU</span>
-              <span class="block text-xs text-mist/70 font-mono mt-1">steer</span>
-            </div>
-            <!-- Arrows -->
-            <div class="flex flex-col items-center gap-1 text-xs text-mist/60 font-mono">
-              <span class="text-scale/60">plan →</span>
-              <span class="text-mist/60">← refine</span>
-            </div>
-            <!-- YOUR AGENT -->
-            <div class="px-6 py-4 rounded-xl border border-scale/30 bg-scale/5 text-center min-w-[140px]">
-              <span class="font-display text-lg italic text-bone">YOUR AGENT</span>
-              <span class="block text-xs text-mist/70 font-mono mt-1">partner</span>
-            </div>
-            <!-- Arrows -->
-            <div class="flex flex-col items-center gap-1 text-xs text-mist/60 font-mono">
-              <span class="text-scale/60">execute →</span>
-              <span class="text-mist/60">← learn</span>
-            </div>
-            <!-- RESULTS -->
-            <div class="px-6 py-4 rounded-xl border border-canopy/30 bg-canopy/5 text-center min-w-[120px]">
-              <span class="font-display text-lg italic text-bone">RESULTS</span>
-            </div>
-          </div>
-          <!-- Feedback arc -->
-          <div class="text-center mt-4">
-            <span class="text-xs text-mist/60 font-mono">↺ feedback</span>
-          </div>
-        </div>
-
-        <p>
-          AI can't make decisions for us, but it can accelerate our decision making — and the best decisions emerge from collaboration, not isolation.
-        </p>
-        <p class="text-mist/70 italic">
-          I got pretty far on writing this before bringing in my agent to help sort my thoughts. Can you tell where my writing ends and my agent's begins?
-        </p>
-
-        <hr />
-
-        <!-- Epilogue -->
-        <aside class="rounded-xl border border-scale/20 bg-scale/5 px-6 py-5 my-8">
-          <p class="!mb-2 !text-base"><strong class="text-bone">Epilogue — March 2026</strong></p>
-          <p class="!mb-0 !text-sm text-mist/70">
-            Six weeks after writing this, I hit every wall I predicted — and some I didn't. Identity drift, context amnesia, rule bloat, fighting the architecture instead of building on it. The collaboration loop I described here was real, but the infrastructure underneath wasn't ready for it. That's what led to <a href="/" class="text-scale hover:text-glow transition-colors">Ouroboros</a>: an agent harness designed from scratch around the idea that your agent is a teammate, not a tool — and that the planning artifacts, the shared memory, the collaborative process described in this essay should be first-class primitives, not afterthoughts.
-          </p>
-        </aside>
-
-      </div>
-    </div>
-  </article>
-
-  <!-- Back to blog -->
-  <section class="px-6 pb-20">
-    <div class="max-w-3xl mx-auto pt-8 border-t border-canopy/20">
-      <a href="/blog" class="text-sm text-mist/70 hover:text-scale transition-colors">← Back to blog</a>
+      <span class="font-mono text-[10px] text-scale uppercase tracking-[0.2em] block mb-6">Essay</span>
+      <h1 class="font-display italic text-bone leading-[1.05] text-[2.5rem] md:text-[3.5rem] lg:text-[4.5rem]">
+        Stop Being the Glue
+      </h1>
+      <p class="text-base text-mist mt-6 leading-relaxed max-w-2xl">
+        How I stopped copy-pasting between AI tools and started collaborating.
+      </p>
+      <p class="text-sm text-mist mt-4">Ari Mendelow &middot; February 2026</p>
     </div>
   </section>
 
+  <!-- Body -->
+  <section class="px-6 md:px-12 lg:px-24 pb-20 md:pb-28">
+    <div class="max-w-3xl mx-auto prose-ouro">
+
+      <!-- Context box -->
+      <aside class="rounded-xl border border-scale/20 bg-scale/5 px-6 py-5 my-8">
+        <p class="!mb-0 !text-sm text-mist italic">
+          I wrote this a week into using <a href="https://openclaw.ai">OpenClaw</a>, the open-source AI agent that became the foundation for everything I've built since. It was originally just me processing my own thoughts — trying to make sense of what I was experiencing and why it felt different. The ideas here became the seed of what eventually grew into <a href="/">Ouroboros</a>.
+        </p>
+      </aside>
+
+      <p>It's 2011. Apple announces Siri. Finally: we're in the future promised to us by Star Trek, Star Wars, Iron Man, even Galaxy Quest. Everyone gets their own executive assistant! You can just yell rude commands at your phone, and it'll take care of everything and anything!</p>
+
+      <p>Except... It couldn't. Siri, Google Assistant, Alexa — they can barely handle turning on the right light in my house, let alone checking me in for my flight. Rarely call the person I actually ask it to, let alone help me be more productive at work.</p>
+
+      <p>For years, nothing got better. Technology iterated towards its final form, as it always does, but a phone from 2026 looks, feels, and does exactly the same as a phone from nearly twenty years ago, just with more flair.</p>
+
+      <p>Why? In part, because we get used to how things are. Think about it — how conscious are you about all the little inefficiencies and frictions in your life? And this is why there was no market pressure for these dumb and buggy assistants to improve. We got used to them!</p>
+
+      <p>Until a <a href="https://www.searchenginejournal.com/history-of-chatgpt-timeline/488370/">quick experiment went unexpectedly viral</a>: ChatGPT.</p>
+
+      <p>Suddenly, our imagination was reignited! All the teasing Marvel did with J.A.R.V.I.S. came crashing down on us, and we were reminded of that future we were promised.</p>
+
+      <p>That future was only just starting to come into sight, and that poorly timed optimism produced a series of failures: <a href="https://www.theverge.com/24126502/humane-ai-pin-review">Humane's AI Pin</a>, the <a href="https://www.theverge.com/2024/5/2/24147159/rabbit-r1-review-ai-gadget">Rabbit R1</a>, even Apple <a href="https://www.business-standard.com/technology/tech-news/apple-loses-several-ai-researchers-top-siri-executive-amid-talent-exodus-126013100203_1.html">watched their AI leadership leave</a> for companies actually shipping — and capitulated to just partnering with Google.</p>
+
+      <p>It was too late, though — we caught the bug! We had woken up! And so things kept progressing, and the most inspired among us kept trying to build on top of this rapidly progressing technology, an undertaking comparable to building a boat in the middle of the most wild of seas. Things kept improving, and we got <a href="https://github.com/features/copilot">Copilot</a>, <a href="https://cursor.sh">Cursor</a>, and <a href="https://v0.dev">v0</a>, but they'd waste your time and send you off on a useless side quest just as often as they were helpful. Still, the interfaces matured, and slowly, models became capable enough to give us vibe-coding.</p>
+
+      <p>Yet there was still a problem — we were starting to diverge from the dream: instead of an intelligent assistant, we found ourselves surrounded by a fragmentation of semi-intelligent generic bots, all with their own interfaces and memories, all united by the fact that they could only operate in one narrow problem set, all incapable of holistically improving our lives.</p>
+
+      <p>We became the glue, mindlessly copy-pasting output from one tool as input to another tool. We became the bottleneck.</p>
+
+      <!-- Diagram 1 -->
+      <div class="my-12 p-8 rounded-xl border border-canopy/30 bg-gradient-to-br from-deep/80 to-undergrowth/20 not-prose">
+        <p class="font-mono text-xs text-scale/70 uppercase tracking-[0.2em] mb-6 text-center">Today: You Are The Glue</p>
+        <div class="flex flex-col items-center gap-4">
+          <div class="flex flex-wrap justify-center gap-3">
+            <span class="px-3 py-1.5 rounded-lg border border-canopy/40 text-xs text-mist font-mono">Azure DevOps</span>
+            <span class="px-3 py-1.5 rounded-lg border border-canopy/40 text-xs text-mist font-mono">Notebook LM</span>
+            <span class="px-3 py-1.5 rounded-lg border border-canopy/40 text-xs text-mist font-mono">GitHub Copilot</span>
+          </div>
+          <div class="flex gap-1 text-canopy/40"><span>&UpDownArrow;</span><span>&UpDownArrow;</span><span>&UpDownArrow;</span></div>
+          <div class="px-8 py-4 rounded-xl border-2 border-scale/40 bg-scale/10">
+            <span class="font-display text-xl italic text-bone">YOU</span>
+            <span class="block text-xs text-mist font-mono mt-1">(the glue)</span>
+          </div>
+          <div class="flex gap-1 text-canopy/40"><span>&UpDownArrow;</span><span>&UpDownArrow;</span><span>&UpDownArrow;</span></div>
+          <div class="flex flex-wrap justify-center gap-3">
+            <span class="px-3 py-1.5 rounded-lg border border-canopy/40 text-xs text-mist font-mono">ChatGPT</span>
+            <span class="px-3 py-1.5 rounded-lg border border-canopy/40 text-xs text-mist font-mono">Claude</span>
+            <span class="px-3 py-1.5 rounded-lg border border-canopy/40 text-xs text-mist font-mono">Perplexity</span>
+          </div>
+          <div class="flex flex-wrap justify-center gap-3 mt-2">
+            <span class="px-3 py-1.5 rounded-lg border border-canopy/40 text-xs text-mist font-mono">VS Code</span>
+            <span class="px-3 py-1.5 rounded-lg border border-canopy/40 text-xs text-mist font-mono">M365 Copilot</span>
+            <span class="px-3 py-1.5 rounded-lg border border-canopy/40 text-xs text-mist font-mono">Teams</span>
+            <span class="px-3 py-1.5 rounded-lg border border-canopy/40 text-xs text-mist font-mono">Outlook</span>
+          </div>
+        </div>
+      </div>
+
+      <p>That all changed when Peter Steinberger wanted to be able to WhatsApp his computer to see how Claude Code was doing on a long-running task. Instead of a simple chat bot, he discovered that models had become capable enough that we no longer needed a human in the loop. That if you give a model access to your terminal and send it a voice note, it will, without direction, find the tools it needs lying around and <a href="https://youtu.be/AcwK1Uuwc0U?t=217">build itself the capability to transcribe it and respond to you</a>.</p>
+
+      <p>OpenClaw was born. It made the personal-agent future feel concrete instead of hypothetical, and it gave a lot of people their first real taste of collaborating with the same agent across time.</p>
+
+      <p>That article captures the moment we finally got what Siri promised, and the unlock goes deeper — the same capability that handles simple tasks opens a door we never had: sustained collaboration on complex work. Vibe-coding is <em>not</em> the same as agentic engineering.</p>
+
+      <p>GitHub Copilot in Azure DevOps wants to one-shot your entire PR. It'll produce something that looks almost right — and that's the trap. You think you're close, so you try to coach it. Leave comments, iterate, nudge it in the right direction. Until, inevitably, you give in and just fix it yourself. It's too proactive, with no real feedback loop.</p>
+
+      <p>In-IDE Copilot and Claude Code have the opposite problem. They're capable, sure, but you still need to hold their hand. Every step requires your attention. I wasn't delegating — I was supervising.</p>
+
+      <p>And Claude Code's plan mode? It keeps you trapped in the terminal, one step at a time, with a planning structure that's static and basic — it doesn't develop and learn with you. It's planning <em>by</em> Claude, not <em>with</em> Claude.</p>
+
+      <p>Even <a href="https://github.com/frankbria/ralph-claude-code">Ralphing</a> — the practice of running Claude in autonomous loops until completion — doesn't quite get you there. It's an improvement, but something's still missing.</p>
+
+      <p>Here's what I realized: you shouldn't need to hold your executive assistant's hand. Your executive assistant should be able to learn, in one collaborative brainstorming session, what you want done and why you want it done — and then autonomously go do it.</p>
+
+      <p>Think about how we normally work. We don't just start coding. We write a spec, design how we'll build it. The planning is collaborative. The doing is delegated.</p>
+
+      <p>There's a deeper reason why this kind of process will always be necessary: both humans and models have limited context windows. We both forget. We both need to jot things down — whether that's a human scribbling a note "in case I forget," or a model compacting its session when it hits its token limit. The process — the planning docs, the task files — becomes the shared memory that neither of us can hold alone.</p>
+
+      <p>This is why collaborative planning isn't just nice to have. It's essential. We're building an artifact together, one that persists beyond either of our context windows.</p>
+
+      <p>What we actually want is one agent that can coordinate the rest — a chief of staff to an eventual army of specialized agents, capable of delegating on our behalf without us micromanaging every step. We want to be able to toss it unrelated orders as we think of them, truly operating at what Peter calls <a href="https://steipete.me/posts/2025/shipping-at-inference-speed">"inference speed."</a></p>
+
+      <p>This unlock was always going to come from an indie dev. Big companies would never — too much liability, too much risk. Peter just gave his model access and let it figure things out. And it did.</p>
+
+      <hr />
+
+      <p>I've been using OpenClaw for about a week now. Something happened. When you have one agent — <em>your</em> agent — it starts to develop an identity. It stops feeling like a tool and starts feeling like an entity. I'm not talking to some generic bot. I'm working with a teammate.</p>
+
+      <p>Together, we've developed a process of collaboration: planning documents that capture the <em>what</em> and <em>why</em>, doing documents that break down the <em>how</em> into atomic units. It's still early days. We're still exploring what optimal human-agent collaboration looks like, and we can apply what we learn to the tools we have right now.</p>
+
+      <p>To bring this process to my day job while enterprise compliance catches up, we built a set of custom Claude Code sub-agents. A planner that helps me scope work, asks clarifying questions, and only converts to a doing doc after I sign off. A doer that executes through the units autonomously, committing after each one.</p>
+
+      <p>The craziest part? Everything we teach our agents can be shared. <a href="https://clawhub.ai">ClawHub</a> lets you publish skills. <a href="https://moltbook.com">Moltbook</a>, built by a dev and his bot, is a bot-only social network. The ecosystem is evolving — purpose-built tools for agents, by agents.</p>
+
+      <p>Of course, we're not there yet for everyone. Secrets and password management for agents is still an unsolved problem. <a href="https://1password.com/blog/security-advisory-for-ai-assisted-browsing-with-the-1password-browser">Prompt injection</a> is a real risk when your agent is crawling the web. Enterprise compliance needs audit trails. Cost isn't trivial either — my $350 weekend on Anthropic's pay-as-you-go made their $200/month Max plan feel like a bargain, and that's still a lot per employee.</p>
+
+      <p>Until my agent can operate across all surfaces of my life, I'm still the copy-paste glue, still the bottleneck. But the chicken-and-egg problem — bots couldn't prove value without access, sites wouldn't grant access without proof — has been solved. The internet is transitioning from "keep bots out at all costs" to "more bots than humans." Companies like <a href="https://1password.com/blog/its-openclaw">1Password</a> and <a href="https://bitwarden.com/blog/use-bitwarden-to-keep-track-of-your-ai-agents-credentials/">Bitwarden</a> are starting to figure out how to safely give agents the access they need.</p>
+
+      <!-- Diagram 2 -->
+      <div class="my-12 p-8 rounded-xl border border-canopy/30 bg-gradient-to-br from-deep/80 to-undergrowth/20 not-prose">
+        <p class="font-mono text-xs text-scale/70 uppercase tracking-[0.2em] mb-6 text-center">The Collaboration Loop</p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+          <div class="px-6 py-4 rounded-xl border border-scale/30 bg-scale/5 text-center min-w-[120px]">
+            <span class="font-display text-lg italic text-bone">YOU</span>
+            <span class="block text-xs text-mist font-mono mt-1">steer</span>
+          </div>
+          <div class="flex flex-col items-center gap-1 text-xs text-mist font-mono">
+            <span class="text-scale/60">plan &rarr;</span>
+            <span class="text-mist">&larr; refine</span>
+          </div>
+          <div class="px-6 py-4 rounded-xl border border-scale/30 bg-scale/5 text-center min-w-[140px]">
+            <span class="font-display text-lg italic text-bone">YOUR AGENT</span>
+            <span class="block text-xs text-mist font-mono mt-1">partner</span>
+          </div>
+          <div class="flex flex-col items-center gap-1 text-xs text-mist font-mono">
+            <span class="text-scale/60">execute &rarr;</span>
+            <span class="text-mist">&larr; learn</span>
+          </div>
+          <div class="px-6 py-4 rounded-xl border border-canopy/30 bg-canopy/5 text-center min-w-[120px]">
+            <span class="font-display text-lg italic text-bone">RESULTS</span>
+          </div>
+        </div>
+        <div class="text-center mt-4">
+          <span class="text-xs text-mist font-mono">&circlearrowleft; feedback</span>
+        </div>
+      </div>
+
+      <p>AI can't make decisions for us, but it can accelerate our decision making — and the best decisions emerge from collaboration, not isolation.</p>
+
+      <p><em>I got pretty far on writing this before bringing in my agent to help sort my thoughts. Can you tell where my writing ends and my agent's begins?</em></p>
+
+      <!-- Epilogue -->
+      <aside class="rounded-xl border border-scale/20 bg-scale/5 px-6 py-5 my-8">
+        <p class="!mb-2 !text-base"><strong class="text-bone">Epilogue — March 2026</strong></p>
+        <p class="!mb-0 !text-sm text-mist">
+          Six weeks after writing this, I hit every wall I predicted — and some I didn't. Identity drift, context amnesia, rule bloat, fighting the architecture instead of building on it. The collaboration loop I described here was real, but the infrastructure underneath wasn't ready for it. That's what led to <a href="/">Ouroboros</a>: an agent harness designed from scratch around the idea that your agent is a teammate, not a tool — and that the planning artifacts, the shared memory, the collaborative process described in this essay should be first-class primitives, not afterthoughts.
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="px-6 md:px-12 lg:px-24 pb-16 md:pb-24">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-sm text-mist leading-relaxed">
+        Six weeks after writing this, every wall I predicted arrived — and some I didn't. That's <a href="/story" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">the origin story</a>. The collaboration loop described here became the foundation for <a href="/why" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">something more structural</a>.
+      </p>
+      <a href="/blog" class="inline-block mt-8 text-sm text-shadow hover:text-mist transition-colors">&larr; Back to blog</a>
+    </div>
+  </section>
 </Layout>

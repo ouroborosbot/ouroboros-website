@@ -1,7 +1,7 @@
 ---
 import DocsPageShell from '../../components/DocsPageShell.astro'
-import PromptCard from '../../components/PromptCard.astro'
 import SerpentGuidePreview from '../../components/SerpentGuidePreview.astro'
+import PromptCard from '../../components/PromptCard.astro'
 ---
 
 <DocsPageShell
@@ -11,15 +11,23 @@ import SerpentGuidePreview from '../../components/SerpentGuidePreview.astro'
   canonical="https://ouroboros.bot/docs/getting-started/"
   intro="Setup is a conversation, not a checklist. The serpent guide walks you through provider setup, naming, and personality — you just answer its questions."
 >
-  <section>
-    <SerpentGuidePreview />
-  </section>
+  <SerpentGuidePreview />
 
-  <section>
-    <p class="font-display text-xl italic text-bone mb-4">Already running?</p>
+  <div>
+    <h2 class="font-mono text-[10px] text-scale/60 uppercase tracking-[0.3em] mb-4">Already running?</h2>
     <PromptCard
       prompt="Inspect the current Ouroboros install on this machine and tell me what's set up, what's missing, and what I should do next."
       footnote="Use this if you already ran the setup and want your agent to check the current state."
     />
-  </section>
+  </div>
+
+  <!-- Exit links -->
+  <div class="pt-6 border-t border-canopy/15 space-y-3">
+    <a href="/what-is-an-agent-harness" class="group block text-sm text-mist hover:text-bone transition-colors">
+      Want to understand the philosophy behind the harness? <span class="text-scale/50 group-hover:text-scale transition-colors">&rarr;</span>
+    </a>
+    <a href="/story" class="group block text-sm text-mist hover:text-bone transition-colors">
+      Curious how we got here? <span class="text-scale/50 group-hover:text-scale transition-colors">&rarr;</span>
+    </a>
+  </div>
 </DocsPageShell>

@@ -95,10 +95,10 @@ const pages = [
       <div class="mt-14 grid md:grid-cols-2 gap-4">
         {pages.map(page => (
           <a href={page.href} class="group flex gap-4 rounded-2xl border border-canopy/20 bg-undergrowth/10 p-6 hover:border-scale/40 hover:bg-undergrowth/20 transition-all duration-300">
-            <span class="text-mist/50 text-lg shrink-0 group-hover:text-glow transition-colors">{page.icon}</span>
+            <span class="text-mist text-lg shrink-0 group-hover:text-glow transition-colors">{page.icon}</span>
             <div>
               <h3 class="font-display italic text-bone text-lg group-hover:text-scale transition-colors">{page.title}</h3>
-              <p class="text-sm text-mist/60 mt-1.5">{page.description}</p>
+              <p class="text-sm text-mist mt-1.5">{page.description}</p>
             </div>
           </a>
         ))}

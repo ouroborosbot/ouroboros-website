@@ -12,7 +12,7 @@ const { label = 'Ask your agent', prompt, footnote } = Astro.props
   <div class="flex items-center justify-between px-5 py-3 border-b border-canopy/15">
     <span class="font-mono text-[10px] text-scale/70 uppercase tracking-[0.2em]">{label}</span>
     <button
-      class="prompt-copy-btn flex items-center gap-1.5 text-[10px] text-mist/50 hover:text-bone transition-colors font-mono uppercase tracking-wider cursor-pointer"
+      class="prompt-copy-btn flex items-center gap-1.5 text-[10px] text-mist hover:text-bone transition-colors font-mono uppercase tracking-wider cursor-pointer"
       data-prompt={prompt}
     >
       <svg class="prompt-copy-icon w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -28,7 +28,7 @@ const { label = 'Ask your agent', prompt, footnote } = Astro.props
   <div class="px-5 py-4">
     <pre class="font-mono text-sm text-mist leading-relaxed whitespace-pre-wrap">{prompt}</pre>
     {footnote && (
-      <p class="text-[11px] text-mist/40 mt-3 italic">{footnote}</p>
+      <p class="text-[11px] text-shadow mt-3 italic">{footnote}</p>
     )}
   </div>
 </div>

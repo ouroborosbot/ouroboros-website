@@ -1,0 +1,60 @@
+---
+interface Props {
+  title: string
+  description: string
+  eyebrow?: string
+  canonical?: string
+  intro?: string
+}
+
+const {
+  title,
+  description,
+  eyebrow = 'Operator Guide',
+  canonical,
+  intro,
+} = Astro.props
+
+import Layout from '../layouts/Layout.astro'
+---
+
+<Layout
+  title={`${title} | Ouroboros Docs`}
+  description={description}
+  canonical={canonical}
+  ogType="article"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": title,
+      "description": description,
+      "author": { "@type": "Person", "name": "Ari Mendelow", "url": "https://linkedin.com/in/arimendelow" },
+      "publisher": { "@type": "Organization", "name": "Ouroboros", "url": "https://ouroboros.bot" },
+      "url": canonical,
+    })} />
+  </Fragment>
+
+  <section class="px-6 md:px-12 lg:px-24 pt-32 pb-20 md:pt-40 md:pb-24">
+    <div class="max-w-4xl">
+      <span class="font-mono text-[10px] text-scale/60 uppercase tracking-[0.3em] block mb-6">{eyebrow}</span>
+
+      <h1 class="font-display italic text-bone leading-[1.05] text-[2rem] sm:text-[2.5rem] md:text-[3.5rem]">
+        {title}
+      </h1>
+
+      <p class="text-base text-mist/70 mt-4 leading-relaxed max-w-2xl">{description}</p>
+
+      {intro && (
+        <div class="mt-8 border-l-[3px] border-scale/40 pl-5">
+          <p class="text-sm text-mist leading-relaxed">{intro}</p>
+        </div>
+      )}
+
+      <div class="mt-14 space-y-14">
+        <slot />
+      </div>
+    </div>
+  </section>
+</Layout>

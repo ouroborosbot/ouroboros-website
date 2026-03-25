@@ -54,6 +54,12 @@ const pages = [
     subtitle: 'Architecture, APIs, and getting started.',
     tag: 'DOCS',
   },
+  {
+    filename: 'og-give-your-agent-a-home.png',
+    title: 'Give Your Agent a Home.',
+    subtitle: 'One folder. One identity. One place to grow.',
+    tag: 'ESSAY',
+  },
 ]
 
 async function generateImage(options: {

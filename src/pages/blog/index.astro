@@ -76,7 +76,7 @@ const tutorial = {
     <div class="max-w-3xl mx-auto">
       <span class="font-mono text-[10px] text-scale/60 uppercase tracking-[0.3em] block mb-6">Blog</span>
 
-      <h1 class="font-display italic text-bone leading-[1.05] text-[3rem] md:text-[4rem] lg:text-[5rem]">
+      <h1 class="font-display text-bone leading-[1.05] text-[3rem] md:text-[4rem] lg:text-[5rem]">
         Dispatches from<br />the serpent.
       </h1>
 
@@ -97,7 +97,7 @@ const tutorial = {
               <span class="font-mono text-[9px] text-scale/60 uppercase tracking-wider">{item.tag}</span>
               <span class="font-mono text-[9px] text-glow/50 uppercase tracking-wider">{item.label}</span>
             </div>
-            <h2 class="font-display italic text-bone text-xl group-hover:text-scale transition-colors">{item.title}</h2>
+            <h2 class="font-display text-bone text-xl group-hover:text-scale transition-colors">{item.title}</h2>
             <p class="text-sm text-mist mt-2 leading-relaxed">{item.description}</p>
           </a>
         ))}
@@ -111,7 +111,7 @@ const tutorial = {
       <span class="font-mono text-[10px] text-shadow uppercase tracking-[0.3em] block mb-5">Tutorial</span>
       <a href={tutorial.href} class="group block rounded-2xl border border-scale/25 bg-scale/[0.04] p-6 md:p-8 hover:border-scale/50 transition-all duration-300">
         <span class="font-mono text-[9px] text-scale uppercase tracking-wider">Guide</span>
-        <h2 class="font-display italic text-bone text-2xl md:text-3xl mt-2 group-hover:text-scale transition-colors">{tutorial.title}</h2>
+        <h2 class="font-display text-bone text-2xl md:text-3xl mt-2 group-hover:text-scale transition-colors">{tutorial.title}</h2>
         <p class="text-sm text-mist mt-3 leading-relaxed max-w-xl">{tutorial.description}</p>
         <span class="text-sm text-shadow mt-3 block">{tutorial.author}</span>
       </a>
@@ -125,7 +125,7 @@ const tutorial = {
       <div class="space-y-5">
         {essays.map(essay => (
           <a href={essay.href} class="group block rounded-2xl border border-canopy/20 bg-undergrowth/10 p-6 hover:border-scale/40 transition-all duration-300">
-            <h2 class="font-display italic text-bone text-xl group-hover:text-scale transition-colors">{essay.title}</h2>
+            <h2 class="font-display text-bone text-xl group-hover:text-scale transition-colors">{essay.title}</h2>
             <p class="text-sm text-mist mt-2 leading-relaxed">{essay.description}</p>
             <span class="text-sm text-shadow mt-2 block">{essay.author}</span>
           </a>

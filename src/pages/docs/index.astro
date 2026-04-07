@@ -72,7 +72,7 @@ const pages = [
     <div class="max-w-6xl mx-auto">
       <span class="font-mono text-[10px] text-scale/60 uppercase tracking-[0.3em] block mb-6">Documentation</span>
 
-      <h1 class="font-display italic text-bone leading-[1.05] text-[2rem] sm:text-[2.5rem] md:text-[3.5rem] lg:text-[4rem]">
+      <h1 class="font-display text-bone leading-[1.05] text-[2rem] sm:text-[2.5rem] md:text-[3.5rem] lg:text-[4rem]">
         Docs for humans.<br class="hidden sm:block" /> Skills for agents.
       </h1>
 
@@ -90,7 +90,7 @@ const pages = [
 
       <!-- PromptCard -->
       <div class="mt-14">
-        <h2 class="font-display italic text-bone text-xl mb-4">Have a question?</h2>
+        <h2 class="font-display text-bone text-xl mb-4">Have a question?</h2>
         <PromptCard
           prompt="Inspect the latest local Ouroboros install or repo on this machine and answer this using the current source of truth, not cached assumptions: [your question here]"
           footnote="Each docs page also has a more specific prompt. This one works for anything."
@@ -103,7 +103,7 @@ const pages = [
           <a href={page.href} class="group flex gap-4 rounded-2xl border border-canopy/20 bg-undergrowth/10 p-6 hover:border-scale/40 hover:bg-undergrowth/20 transition-all duration-300">
             <span class="text-mist text-lg shrink-0 group-hover:text-glow transition-colors">{page.icon}</span>
             <div>
-              <h3 class="font-display italic text-bone text-lg group-hover:text-scale transition-colors">{page.title}</h3>
+              <h3 class="font-display text-bone text-lg group-hover:text-scale transition-colors">{page.title}</h3>
               <p class="text-sm text-mist mt-1.5">{page.description}</p>
             </div>
           </a>

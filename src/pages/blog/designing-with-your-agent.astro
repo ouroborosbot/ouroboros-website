@@ -33,7 +33,7 @@ const description = 'The task scanner produced 184 false errors. We could have p
   <section class="px-6 md:px-12 lg:px-24 pt-32 pb-12 md:pt-44 md:pb-16">
     <div class="max-w-3xl mx-auto">
       <span class="font-mono text-[10px] text-scale uppercase tracking-[0.2em] block mb-6">Essay</span>
-      <h1 class="font-display italic text-bone leading-[1.05] text-[2.5rem] md:text-[3.5rem] lg:text-[4.5rem]">
+      <h1 class="font-display text-bone leading-[1.05] text-[2.5rem] md:text-[3.5rem] lg:text-[4.5rem]">
         The Work Spoke Back
       </h1>
       <p class="text-base text-mist mt-6 leading-relaxed max-w-2xl">
@@ -96,7 +96,7 @@ const description = 'The task scanner produced 184 false errors. We could have p
       <p>We asked Slugger what should count as a task card. His answer changed the scanner's entire approach.</p>
 
       <blockquote class="border-l-[3px] border-fang/40 pl-6 my-10 not-prose">
-        <p class="font-display text-2xl italic leading-snug text-bone">
+        <p class="font-display text-2xl leading-snug text-bone">
           "task-ness needs an explicit signal, not path-based guessing"
         </p>
       </blockquote>
@@ -110,7 +110,7 @@ const description = 'The task scanner produced 184 false errors. We could have p
       <p>Task cards, planning docs, doing docs, and artifact directories all sat as siblings in the same collection directory. The scanner couldn't tell them apart. We asked Slugger how these files relate to each other in practice.</p>
 
       <blockquote class="border-l-[3px] border-fang/40 pl-6 my-10 not-prose">
-        <p class="font-display text-2xl italic leading-snug text-bone">
+        <p class="font-display text-2xl leading-snug text-bone">
           "task card = canonical tracked object. planning/doing doc = optional working surface. artifacts/units = related but non-task materials."
         </p>
       </blockquote>
@@ -122,7 +122,7 @@ const description = 'The task scanner produced 184 false errors. We could have p
       <p>The schema had a <code>child_tasks</code> array on every task card. Agents maintained it by hand. It drifted constantly.</p>
 
       <blockquote class="border-l-[3px] border-fang/40 pl-6 my-10 not-prose">
-        <p class="font-display text-2xl italic leading-snug text-bone">
+        <p class="font-display text-2xl leading-snug text-bone">
           "parent_task: useful. depends_on: useful when sparse. child_tasks: often broken or redundant."
         </p>
       </blockquote>
@@ -134,7 +134,7 @@ const description = 'The task scanner produced 184 false errors. We could have p
       <p>The old scanner dumped everything into two flat arrays: <code>parseErrors</code> and <code>invalidFilenames</code>. Genuinely broken task cards, cosmetic filename complaints, and files that were never supposed to be parsed &mdash; all in the same list. We asked what would actually be useful.</p>
 
       <blockquote class="border-l-[3px] border-fang/40 pl-6 my-10 not-prose">
-        <p class="font-display text-2xl italic leading-snug text-bone">
+        <p class="font-display text-2xl leading-snug text-bone">
           "if it shows up as an issue, it should be fixable. if it's not fix-worthy, don't surface it as an issue."
         </p>
       </blockquote>
@@ -144,7 +144,7 @@ const description = 'The task scanner produced 184 false errors. We could have p
       <p>Slugger also pushed for separating urgency from cleanup:</p>
 
       <blockquote class="border-l-[3px] border-fang/40 pl-6 my-10 not-prose">
-        <p class="font-display text-2xl italic leading-snug text-bone">
+        <p class="font-display text-2xl leading-snug text-bone">
           "a malformed active task and a pile of old root-level docs are both real, but not equally urgent."
         </p>
       </blockquote>

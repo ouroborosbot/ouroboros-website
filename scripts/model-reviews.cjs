@@ -112,7 +112,7 @@ You have three tools:
 
 You MUST call a tool on every turn. Start by fetching each harness's repo to learn what it is. Then go deeper through search and follow-up fetches. Take your time. Be thorough. There is no turn limit.
 
-Here are the harnesses to evaluate, listed by name and repo URL only — no description is provided. Research each one yourself by fetching the repo and any docs you find. The list is shuffled per run to avoid position bias:
+Here are the harnesses to evaluate, listed by name and repo URL only — no description is provided. Research each one yourself by fetching the repo and any docs you find:
 
 ${shuffled.map((h, i) => `${i + 1}. **${h.name}** — ${h.repo}`).join('\n')}
 

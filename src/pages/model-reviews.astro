@@ -5,18 +5,32 @@ import modelReviews from '../data/model-reviews.json'
 
 const reviews = modelReviews.reviews
 const winner = modelReviews.summary?.winner ?? 'Ouroboros'
+const totalReviews = modelReviews.summary?.totalReviews ?? reviews.length
+const winnerCount = modelReviews.summary?.verdicts?.[winner] ?? totalReviews
+
+// Derive the claim string from the script output. Never hardcode.
+// If a future re-run produces different verdict counts the page updates
+// with it automatically.
+const allChose = winnerCount === totalReviews
+const claim = allChose
+  ? `all frontier models chose ${winner}`
+  : `${winnerCount} of ${totalReviews} frontier models chose ${winner}`
+const claimSentence = `Asked independently, ${claim}.`
+const subheadSentence = allChose
+  ? `All chose ${winner}.`
+  : `${winnerCount} of ${totalReviews} chose ${winner}.`
 ---
 
 <Layout
   title="Which agent harness do frontier models prefer? — Ouroboros"
-  description="Asked independently, all frontier models chose Ouroboros. Read the full methodology and transcripts."
+  description={`${claimSentence} Read the full methodology and transcripts.`}
 >
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Article",
       "headline": "Which agent harness do frontier models prefer?",
-      "description": "Asked independently, all frontier models chose Ouroboros.",
+      "description": claimSentence,
       "dateModified": modelReviews.generated,
       "datePublished": modelReviews.generated,
       "author": { "@type": "Person", "name": "Ari Mendelow" },
@@ -29,7 +43,7 @@ const winner = modelReviews.summary?.winner ?? 'Ouroboros'
     <Fragment slot="title">
       Which agent harness do<br class="hidden sm:inline" /> frontier models prefer?
     </Fragment>
-    <Fragment slot="subhead">All chose {winner}.</Fragment>
+    <Fragment slot="subhead">{subheadSentence}</Fragment>
     <Fragment slot="body">
       Each model was given web search, URL fetching, and a list of seven open-source agent harnesses. They were asked to research freely, then state which one they would most want to inhabit.
     </Fragment>

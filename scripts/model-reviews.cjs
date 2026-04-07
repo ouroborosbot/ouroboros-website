@@ -513,6 +513,24 @@ function geminiAddToolResult(messages, _toolCallId, result, toolName) {
 }
 
 function geminiAddAssistant(messages, response) {
+  // IMPORTANT — Gemini's API requires the original `thought_signature`
+  // (and any other internal fields) on `functionCall` parts to be
+  // preserved on continuation turns. If we reconstruct the parts array
+  // from our simplified toolCalls, the signature is lost and Gemini
+  // returns 400 INVALID_ARGUMENT on the next call:
+  //
+  //   "Function call is missing a thought_signature in functionCall
+  //    parts. This is required for tools to work correctly..."
+  //
+  // The fix is to push back the EXACT parts array we got from the API
+  // (response._parts) rather than rebuilding it. callGemini stashes
+  // the raw parts on the response object for exactly this reason.
+  // See https://ai.google.dev/gemini-api/docs/thought-signatures
+  if (response._parts && response._parts.length > 0) {
+    messages.push({ role: 'model', parts: response._parts })
+    return
+  }
+  // Fallback (only used if _parts somehow wasn't captured)
   const parts = []
   if (response.text) parts.push({ text: response.text })
   for (const tc of response.toolCalls) {

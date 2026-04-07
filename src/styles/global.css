@@ -16,6 +16,13 @@
   src: url('/fonts/cormorant-italic.woff2') format('woff2');
 }
 @font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/cormorant-regular.woff2') format('woff2');
+}
+@font-face {
   font-family: 'Outfit';
   font-style: normal;
   font-weight: 300;
@@ -144,7 +151,7 @@ p, li, dd, figcaption { text-wrap: pretty; }
   font-family: var(--font-display);
   color: var(--color-bone);
   font-size: 2.25rem;
-  font-style: italic;
+  font-style: normal;
   font-weight: 400;
   margin-top: 3.5rem;
   margin-bottom: 1rem;
@@ -154,7 +161,7 @@ p, li, dd, figcaption { text-wrap: pretty; }
   font-family: var(--font-display);
   color: var(--color-bone);
   font-size: 1.5rem;
-  font-style: italic;
+  font-style: normal;
   font-weight: 400;
   margin-top: 2.5rem;
   margin-bottom: 0.75rem;
@@ -194,4 +201,57 @@ p, li, dd, figcaption { text-wrap: pretty; }
   border: none;
   border-top: 1px solid var(--color-canopy);
   margin: 3rem 0;
+}
+
+@layer components {
+  /* Hero-scale display headline — the biggest text on a page */
+  .heading-hero {
+    font-family: var(--font-display);
+    color: var(--color-bone);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    font-size: 2.5rem;
+  }
+  @media (min-width: 640px) { .heading-hero { font-size: 3.5rem; } }
+  @media (min-width: 768px) { .heading-hero { font-size: 5rem; } }
+  @media (min-width: 1024px) { .heading-hero { font-size: 6.5rem; } }
+
+  /* Section headline (h2) */
+  .heading-section {
+    font-family: var(--font-display);
+    color: var(--color-bone);
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    font-size: 2rem;
+  }
+  @media (min-width: 640px) { .heading-section { font-size: 2.5rem; } }
+  @media (min-width: 768px) { .heading-section { font-size: 3.5rem; } }
+  @media (min-width: 1024px) { .heading-section { font-size: 4.5rem; } }
+
+  /* Sub-section headline (h3) */
+  .heading-sub {
+    font-family: var(--font-display);
+    color: var(--color-bone);
+    line-height: 1.15;
+    font-size: 1.5rem;
+  }
+  @media (min-width: 768px) { .heading-sub { font-size: 1.875rem; } }
+
+  /* Mono uppercase eyebrow (red accent) */
+  .eyebrow {
+    font-family: var(--font-mono);
+    color: var(--color-fang);
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 0.75rem;
+  }
+
+  /* Smaller mono caption */
+  .caption-mono {
+    font-family: var(--font-mono);
+    color: var(--color-shadow);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.625rem;
+  }
 }

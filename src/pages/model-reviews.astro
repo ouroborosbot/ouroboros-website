@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro'
 import HeroCover from '../components/HeroCover.astro'
 import modelReviews from '../data/model-reviews.json'
+import { ogPathFor } from '../data/og'
 
 const reviews = modelReviews.reviews
 const winner = modelReviews.summary?.winner ?? 'Ouroboros'
@@ -24,6 +25,7 @@ const subheadSentence = allChose
 <Layout
   title="Which agent harness do frontier models prefer? — Ouroboros"
   description={`${claimSentence} Read the full methodology and transcripts.`}
+  ogImage={ogPathFor('/model-reviews')}
 >
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify({

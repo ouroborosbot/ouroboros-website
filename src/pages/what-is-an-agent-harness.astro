@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import HeroCover from '../components/HeroCover.astro'
+import { ogPathFor } from '../data/og'
 
 const title = 'What is an agent harness?'
 const description = 'An agent harness is the larger system around an agent loop: runtime, memory, identity, tools, and operator workflows that help the same agent stay oriented across sessions.'
@@ -16,7 +17,7 @@ const cards = [
 <Layout
   title={`${title} | Ouroboros`}
   description={description}
-  ogImage="/og/og-docs.png"
+  ogImage={ogPathFor('/what-is-an-agent-harness')}
   canonical="https://ouroboros.bot/what-is-an-agent-harness/"
   ogType="article"
 >

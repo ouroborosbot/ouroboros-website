@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro'
 import HeroCover from '../../components/HeroCover.astro'
 import PromptCard from '../../components/PromptCard.astro'
+import { ogPathFor } from '../../data/og'
 
 const title = 'Ouroboros docs — setup, identity, memory, architecture'
 const description = 'Docs for the Ouroboros TypeScript AI agent harness: setup, continuity, psyche files, architecture, and prompts for humans and agents.'
@@ -55,6 +56,7 @@ const pages = [
 <Layout
   title={title}
   description={description}
+  ogImage={ogPathFor('/docs')}
   canonical="https://ouroboros.bot/docs/"
 >
   <Fragment slot="head">

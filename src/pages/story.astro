@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import HeroCover from '../components/HeroCover.astro'
+import { ogPathFor } from '../data/og'
 
 const title = 'Code a model can use — the Ouroboros origin story'
 const description = 'How building an AI agent plugin led to building an agent harness from scratch — and why the distinction matters.'
@@ -90,7 +91,7 @@ const entries = [
 <Layout
   title={title}
   description={description}
-  ogImage="/og/og-story.png"
+  ogImage={ogPathFor('/story')}
   canonical="https://ouroboros.bot/story/"
   ogType="article"
 >

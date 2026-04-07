@@ -8,15 +8,15 @@ const totalReviews = modelReviews.summary?.totalReviews ?? reviews.length
 ---
 
 <Layout
-  title="Model Reviews — Ouroboros"
-  description="We asked four frontier models which agent harness they'd want to inhabit. All four chose Ouroboros. Read the full methodology and transcripts."
+  title="Which agent harness do frontier models prefer? — Ouroboros"
+  description="Asked independently, all frontier models chose Ouroboros. Read the full methodology and transcripts."
 >
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Article",
-      "headline": "The Field Report — Frontier Models Review Agent Harnesses",
-      "description": "Four frontier models tested seven agent harnesses independently. All four chose Ouroboros.",
+      "headline": "Which agent harness do frontier models prefer?",
+      "description": "Asked independently, all frontier models chose Ouroboros.",
       "dateModified": modelReviews.generated,
       "datePublished": modelReviews.generated,
       "author": { "@type": "Person", "name": "Ari Mendelow" },
@@ -33,23 +33,23 @@ const totalReviews = modelReviews.summary?.totalReviews ?? reviews.length
       <!-- Eyebrow -->
       <div class="inline-flex items-center gap-3 mb-10 md:mb-12">
         <span class="h-px w-12 bg-canopy/50"></span>
-        <span class="font-mono text-xs text-fang uppercase tracking-[0.28em]">The Field Report</span>
+        <span class="font-mono text-xs text-fang uppercase tracking-[0.28em]">Reviews</span>
         <span class="h-px w-12 bg-canopy/50"></span>
       </div>
 
-      <!-- Title -->
+      <!-- Title — matches the <title> tag for SEO + H1 consistency -->
       <h1 class="heading-hero tracking-tight mb-6 md:mb-8">
-        Four frontier models,<br class="hidden sm:inline" /> asked independently.
+        Which agent harness do<br class="hidden sm:inline" /> frontier models prefer?
       </h1>
 
-      <!-- Subhead -->
+      <!-- Subhead — the answer, immediately -->
       <p class="text-scale text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] leading-tight font-light">
-        All {totalReviews === 4 ? 'four' : totalReviews} chose {winner}.
+        All chose {winner}.
       </p>
 
       <!-- Body description -->
       <p class="text-mist text-base md:text-lg leading-relaxed mt-12 md:mt-14 max-w-2xl mx-auto">
-        Each model was given web search, URL fetching, and a list of seven open-source agent harnesses. They were asked to research freely, then state which one they would most want to inhabit as a persistent, long-running agent.
+        Each model was given web search, URL fetching, and a list of seven open-source agent harnesses. They were asked to research freely, then state which one they would most want to inhabit.
       </p>
     </div>
   </section>
@@ -132,7 +132,7 @@ const totalReviews = modelReviews.summary?.totalReviews ?? reviews.length
         <div>
           <h3 class="font-display text-bone text-2xl md:text-3xl mb-3">The setup</h3>
           <p class="text-mist text-sm md:text-base leading-relaxed">
-            A single Node script invokes four frontier models in parallel. Each gets the same system prompt, the same list of seven harnesses, and three tools: <code class="font-mono text-scale text-xs">search</code> (web search via Perplexity), <code class="font-mono text-scale text-xs">fetch_url</code> (direct URL retrieval), and <code class="font-mono text-scale text-xs">final_verdict</code> (structured submission).
+            A single Node script invokes the current frontier models in parallel. Each gets the same system prompt, the same list of seven harnesses, and three tools: <code class="font-mono text-scale text-xs">search</code> (web search via Perplexity), <code class="font-mono text-scale text-xs">fetch_url</code> (direct URL retrieval), and <code class="font-mono text-scale text-xs">final_verdict</code> (structured submission).
           </p>
         </div>
 

@@ -1,5 +1,90 @@
 @import "tailwindcss";
 
+/* ═══════════════════════════════════════════════════════════════════════
+   DESIGN SYSTEM RULES — OUROBOROS WEBSITE
+   ───────────────────────────────────────────────────────────────────────
+   These rules were developed iteratively with Ari and exist so the whole
+   site reads as if one designer made it. Future you: respect them, or
+   change them deliberately and document why.
+
+   1. NO ITALIC ANYWHERE.
+      Italic Cormorant is hard to read at any size below true display
+      scale and looks bad. The only allowed italic on the site is:
+        • .prose-ouro em       — HTML semantic <em> emphasis (1-3 words)
+        • .prose-ouro blockquote — intentional editorial styling
+      Cormorant ships in this site as REGULAR (400) only. Do not add
+      italic Cormorant. Even hero H1s use Cormorant non-italic.
+
+   2. CORMORANT IS THE DISPLAY FONT — EVERYWHERE.
+      Headers, nav text, hero claims — all use Cormorant via .heading-*.
+      The site should feel like one designer designed the whole thing,
+      because we did. Use the .heading-hero / .heading-section /
+      .heading-sub utilities below; do NOT inline new font sizes for
+      headings unless you have a reason. If you find yourself writing
+      a one-off heading style, that's a sign the utility classes need a
+      new variant — add it here, then use it.
+
+   3. VERBATIM QUOTES ONLY (for model reviews + any cited content).
+      Model quotes on /, /model-reviews, and /model-reviews/* MUST be
+      exact substrings of the testimonial or evaluations fields in
+      src/data/model-reviews.json. Use editorial ellipsis … for cuts
+      and square brackets [ ] for clarifying inserts. NEVER fabricate
+      a quote. NEVER paraphrase and present as a quote. If a quote
+      doesn't grep in the source data, it doesn't ship.
+
+   4. DECK-SLIDE DENSITY.
+      Each section should land in ~2 seconds at a glance. One main idea
+      per section. Minimal text supporting one clear hierarchy. Generous
+      but bounded whitespace — don't billboard 4 words across a 1000px
+      canvas, and don't smush text into the corner of a max-w container.
+      If a section needs a paragraph of explanation to make sense, the
+      headline isn't doing its job.
+
+   5. MOBILE-FIRST.
+      Every layout must work on a 700px-tall mobile viewport before it
+      works on desktop. Test on mobile sizes first.
+
+   6. NO DUPLICATE TEXT.
+      Don't show the same information twice in different formats
+      (e.g. "Claude Opus 4.6" + "claude-opus-4-6"). Pick one.
+
+   7. LINKS LOOK LIKE LINKS.
+      Color, underline, arrow, or button — links must be visibly
+      clickable. Hover-only affordance is not enough.
+
+   8. EVERGREEN CONTENT, STRUCTURED METADATA.
+      Pages that should stay evergreen (e.g. /model-reviews) do not show
+      visible publish/run dates in the UI. Dates go in JSON-LD structured
+      data via <Fragment slot="head"> for SEO and machine consumers.
+      Click-through to specific runs surfaces dates where relevant.
+
+   9. POSITIONING IS ARCHITECTURAL, NOT GENERIC.
+      Differentiator copy must reference real Ouroboros architecture
+      (5-file structured psyche, automatic associative recall, friend
+      records with trust gating, inner dialog, creature-body layout).
+      "The agent that remembers" is meaningless — every agent has
+      memory. See:
+      ~/.claude/projects/-Users-arimendelow-Projects-ouroboros-website/
+        memory/project_competitive_positioning.md
+
+   10. WRITING STYLE: ARI'S VOICE.
+       Understated > overstated. Short for impact, long for flow.
+       No LinkedIn-speak. No transition filler. End on understated close.
+       See ~/clawd/skills/writing-style/SKILL.md and the project's
+       writing-style.md memory.
+
+   11. SENTENCE CASE FOR ALL TITLES AND HEADLINES.
+       NEVER use Title Case. Page <title> tags, H1s, H2s, H3s, blog post
+       titles, doc titles, nav links, footer links — all sentence case.
+       Capitalize only the first word and proper nouns (Ouroboros,
+       Anthropic, OpenAI, AI, AX, TypeScript, Google, etc.). Title Case
+       reads like clickbait; sentence case reads as editorial. The site
+       should feel like considered editorial work, not a landing page.
+       Eyebrow labels styled ALL CAPS via CSS (uppercase + tracking) are
+       fine — the source text underneath is still sentence case; the
+       transformation is presentational.
+   ═══════════════════════════════════════════════════════════════════════ */
+
 /* ── Fonts — self-hosted, no external dependency ── */
 @font-face {
   font-family: 'Cormorant Garamond';
@@ -203,6 +288,27 @@ p, li, dd, figcaption { text-wrap: pretty; }
   margin: 3rem 0;
 }
 
+/* ═══════════════════════════════════════════════════════════════════════
+   SHARED HEADING UTILITIES — use these everywhere.
+   ───────────────────────────────────────────────────────────────────────
+   Why @apply / utility classes instead of inline Tailwind on each h1/h2?
+   Because the site should feel like one designer designed it. Defining
+   sizes ONCE here means future tweaks (e.g. bumping the hero a notch on
+   xl screens) are a one-line edit, not 15 file edits.
+
+   Rule: if you need a heading, use one of these. If none fit, add a new
+   variant here, then use it. Don't inline new heading sizes in .astro
+   files — that's how the typography rhythm breaks across pages.
+
+     .heading-hero    → biggest text on a page (one per page, max)
+     .heading-section → h2 / section headlines
+     .heading-sub     → h3 / sub-section headlines
+     .eyebrow         → mono uppercase red eyebrow label
+     .caption-mono    → small mono caption / attribution
+
+   All heading utilities use Cormorant non-italic. NEVER add italic here.
+   See the design system rules at the top of this file for the why.
+   ═══════════════════════════════════════════════════════════════════════ */
 @layer components {
   /* Hero-scale display headline — the biggest text on a page */
   .heading-hero {

@@ -9,6 +9,26 @@
 //
 // Run:  node scripts/model-reviews.cjs
 // Keys: reads from ~/.agentsecrets/<agent>/secrets.json, falls back to env vars.
+//
+// ─────────────────────────────────────────────────────────────────────
+// VERBATIM QUOTE RULE — IMPORTANT
+// ─────────────────────────────────────────────────────────────────────
+// The output of this script (src/data/model-reviews.json) is the
+// SOLE SOURCE OF TRUTH for any model quote that appears anywhere on
+// the website. Quotes shown on /, /model-reviews, /model-reviews/*
+// MUST be exact substrings of the testimonial or evaluations fields
+// here. Use editorial ellipsis … for omissions and [ ] for clarifying
+// inserts. NEVER fabricate or paraphrase a quote.
+//
+// When updating the testimonial prompt or schema, remember:
+//   1. The site quotes models verbatim — changing prompts changes copy.
+//   2. Differentiate from OpenClaw — the prompt should encourage models
+//      to cite Ouroboros-specific architecture (5-file psyche, diary/
+//      journal split, friend system, inner dialog, creature-body), not
+//      generic "the agent that remembers" claims.
+//   3. See src/styles/global.css design system rules at the top of
+//      that file for the broader philosophy.
+// ─────────────────────────────────────────────────────────────────────
 
 const fs = require('fs')
 const os = require('os')
@@ -69,7 +89,7 @@ function extractSecrets(secrets) {
     anthropic: { apiKey: p.anthropic?.apiKey || null, model: p.anthropic?.model || 'claude-opus-4-6' },
     openai: { apiKey: p.openai?.apiKey || null, model: p.openai?.model || 'gpt-5.4' },
     gemini: { apiKey: p.gemini?.apiKey || null, model: p.gemini?.model || 'gemini-3.1-pro-preview' },
-    minimax: { apiKey: p.minimax?.apiKey || null, model: p.minimax?.model || 'MiniMax-M2.5' },
+    minimax: { apiKey: p.minimax?.apiKey || null, model: p.minimax?.model || 'MiniMax-M2.7' },
     perplexity: i.perplexityApiKey || null,
   }
 }
@@ -96,7 +116,7 @@ function discoverKeys() {
     anthropic: { apiKey: null, model: 'claude-opus-4-6' },
     openai: { apiKey: null, model: 'gpt-5.4' },
     gemini: { apiKey: null, model: 'gemini-3.1-pro-preview' },
-    minimax: { apiKey: null, model: 'MiniMax-M2.5' },
+    minimax: { apiKey: null, model: 'MiniMax-M2.7' },
     perplexity: null,
   }
 

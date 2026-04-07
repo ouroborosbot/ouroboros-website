@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import { ogPathFor } from '../../data/og'
 
 const title = 'The work spoke back'
 const description = 'The task scanner produced 184 false errors. We could have patched the parser. Instead, we asked the agent living inside the system what was actually broken.'
@@ -8,6 +9,7 @@ const description = 'The task scanner produced 184 false errors. We could have p
 <Layout
   title={`${title} | Ouroboros`}
   description={description}
+  ogImage={ogPathFor('/blog/designing-with-your-agent')}
   canonical="https://ouroboros.bot/blog/designing-with-your-agent/"
   ogType="article"
 >

@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import { ogPathFor } from '../../data/og'
 
 const title = 'What is agent experience (AX)?'
 const description = 'Agent Experience is the design surface that appears when an agent has to stay oriented inside the system it inhabits.'
@@ -8,7 +9,7 @@ const description = 'Agent Experience is the design surface that appears when an
 <Layout
   title={`${title} | Ouroboros`}
   description={description}
-  ogImage="/og/og-what-is-agent-experience.png"
+  ogImage={ogPathFor('/blog/what-is-agent-experience')}
   canonical="https://ouroboros.bot/blog/what-is-agent-experience/"
   ogType="article"
 >

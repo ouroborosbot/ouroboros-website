@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import HeroCover from '../../components/HeroCover.astro'
+import { ogPathFor } from '../../data/og'
 
 const title = 'Agent ergonomics & persistent AI — Ouroboros blog'
 const description = 'Essays on agent ergonomics, persistent agents, and software shaped for the thing inside it.'
@@ -60,7 +61,7 @@ const tutorial = {
 <Layout
   title={title}
   description={description}
-  ogImage="/og/og-blog.png"
+  ogImage={ogPathFor('/blog')}
 >
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify({

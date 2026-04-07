@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro'
 import HeroCover from '../components/HeroCover.astro'
 import OuroborosRing from '../components/OuroborosRing.astro'
 import modelReviews from '../data/model-reviews.json'
+import { ogPathFor } from '../data/og'
 
 const title = "Why persistence isn't enough for AI agents — Ouroboros"
 const description = 'Why persistent agents need structured identity, automatic memory recall, per-person relationships, and cross-session continuity — not just a longer context window.'
@@ -33,7 +34,7 @@ const organs = [
 ]
 ---
 
-<Layout title={title} description={description} ogImage="/og/og-why.png" canonical="https://ouroboros.bot/why/" ogType="article">
+<Layout title={title} description={description} ogImage={ogPathFor('/why')} canonical="https://ouroboros.bot/why/" ogType="article">
   <Fragment slot="head">
     <meta name="author" content="Ari Mendelow" />
     <script type="application/ld+json" set:html={JSON.stringify({

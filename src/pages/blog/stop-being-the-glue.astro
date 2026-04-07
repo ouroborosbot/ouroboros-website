@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import { ogPathFor } from '../../data/og'
 
 const title = 'Stop being the glue between your AI tools'
 const description = "We were promised an intelligent assistant. Instead, we got a fragmentation of semi-intelligent bots. We became the glue, copy-pasting between tools. Here's what changed."
@@ -8,7 +9,7 @@ const description = "We were promised an intelligent assistant. Instead, we got 
 <Layout
   title={`${title} | Ouroboros`}
   description={description}
-  ogImage="/og/og-stop-being-the-glue.png"
+  ogImage={ogPathFor('/blog/stop-being-the-glue')}
   canonical="https://ouroboros.bot/blog/stop-being-the-glue/"
   ogType="article"
 >

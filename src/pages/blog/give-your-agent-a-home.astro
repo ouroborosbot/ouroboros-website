@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import { ogPathFor } from '../../data/og'
 
 const title = 'Give your agent a home'
 const description = 'Most AI agents live as scattered files across your filesystem — impermanent, fragile, forgettable. A bundle changes that. One folder. One identity. One place to back up, move, and grow.'
@@ -8,7 +9,7 @@ const description = 'Most AI agents live as scattered files across your filesyst
 <Layout
   title={`${title} | Ouroboros`}
   description={description}
-  ogImage="/og/og-give-your-agent-a-home.png"
+  ogImage={ogPathFor('/blog/give-your-agent-a-home')}
   canonical="https://ouroboros.bot/blog/give-your-agent-a-home/"
   ogType="article"
 >

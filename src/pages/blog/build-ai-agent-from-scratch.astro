@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import { ogPathFor } from '../../data/og'
 
 const title = "Build an AI agent in 150 lines of TypeScript — Ouroboros"
 const description = "Learn what an agent loop is and how AI agents actually work. A practical guide to building agents that read, think, act, and grow — from first principles to production."
@@ -116,7 +117,7 @@ const termSkills = `<span class="text-scale">You:</span> <span class="text-bone"
 <span class="text-scale">You:</span> <span class="text-bone">load code-review then review agent.ts</span>`
 ---
 
-<Layout title={title} description={description} ogImage="/og/og-tutorial.png" canonical={canonicalUrl} ogType="article">
+<Layout title={title} description={description} ogImage={ogPathFor('/blog/build-ai-agent-from-scratch')} canonical={canonicalUrl} ogType="article">
 
   <Fragment slot="head">
     <meta property="article:published_time" content={datePublished} />

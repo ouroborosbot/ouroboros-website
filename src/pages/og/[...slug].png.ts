@@ -213,7 +213,9 @@ export const GET: APIRoute = async ({ params }) => {
               children: subtitle,
             },
           }] : []),
-          // Bottom brand mark (centered)
+          // Bottom brand wordmark (centered) — just the wordmark, no URL.
+          // The social platform shows the domain alongside the card already,
+          // so repeating it here was redundant SaaS-y noise.
           {
             type: 'div',
             props: {
@@ -225,7 +227,6 @@ export const GET: APIRoute = async ({ params }) => {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                gap: '14px',
               },
               children: [
                 {
@@ -238,20 +239,6 @@ export const GET: APIRoute = async ({ params }) => {
                       color: COLOR.bone,
                     },
                     children: 'ouroboros',
-                  },
-                },
-                {
-                  type: 'div',
-                  props: {
-                    style: {
-                      fontSize: '14px',
-                      fontFamily: 'Outfit',
-                      color: COLOR.shadow,
-                      letterSpacing: '0.15em',
-                      textTransform: 'uppercase' as const,
-                      paddingTop: '10px',
-                    },
-                    children: 'ouroboros.bot',
                   },
                 },
               ],

@@ -63,30 +63,86 @@ const totalReviews = modelReviews.summary?.totalReviews ?? reviews.length
     </div>
   </section>
 
-  <!-- ═══════════════ WHAT SURVIVES ═══════════════ -->
+  <!-- ─────────────────────────────────────────────────
+       WHY THEY CHOSE IT — four differentiator cards
+       ───────────────────────────────────────────────── -->
   <section class="relative overflow-hidden px-6 md:px-12 lg:px-24 py-24 md:py-32 reveal">
-    <div class="absolute inset-0 bg-gradient-to-b from-void via-deep/20 to-void pointer-events-none"></div>
+    <!-- Atmospheric background -->
+    <div class="absolute inset-0 pointer-events-none bg-gradient-to-b from-transparent via-deep/30 to-transparent" aria-hidden="true"></div>
+    <div class="absolute -left-32 top-1/3 w-96 h-96 rounded-full bg-scale/5 blur-3xl pointer-events-none" aria-hidden="true"></div>
 
     <div class="relative max-w-6xl mx-auto">
-      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-scale/20 bg-scale/[0.04] mb-10">
-        <span class="w-1.5 h-1.5 rounded-full bg-glow motion-safe:animate-pulse"></span>
-        <span class="font-mono text-[10px] text-glow tracking-wider">Built by agents, for agents</span>
+      <!-- Eyebrow (green, not red — override .eyebrow color with text-scale) -->
+      <div class="flex items-center gap-3 mb-6">
+        <span class="h-px w-12 bg-scale/40"></span>
+        <span class="font-mono uppercase tracking-[0.22em] text-scale text-xs">Why they chose it</span>
       </div>
 
-      <h2 class="heading-section tracking-tight max-w-5xl">
-        What survives when the context window <span class="text-scale">runs out?</span>
+      <!-- H2 -->
+      <h2 class="heading-section mb-16 max-w-3xl">
+        Four things no other harness gives your agent.
       </h2>
 
-      <p class="mt-8 md:mt-10 text-bone text-base md:text-lg leading-relaxed max-w-xl">
-        Your agent keeps its identity, memory, and relationships — even when the conversation runs out of room.
-      </p>
+      <!-- 4 differentiator cards: 1-col mobile, 2-col md+ -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
+        <!-- Card 01 -->
+        <article class="border border-canopy/40 bg-deep/30 backdrop-blur-sm p-8 md:p-10 rounded-sm">
+          <div class="font-mono text-shadow text-sm mb-4">01</div>
+          <h3 class="heading-sub mb-4">Identity that doesn’t degrade.</h3>
+          <p class="text-mist leading-relaxed mb-6">
+            Five files — SOUL, IDENTITY, LORE, TACIT, ASPIRATIONS — loaded into the system prompt every turn. Other harnesses use one (like SOUL.md) and truncate it under context pressure. Here, identity is structurally guaranteed, not best-effort.
+          </p>
+          <blockquote class="text-bone leading-relaxed border-l-2 border-scale/40 pl-5 mb-3">
+            “The psyche files (SOUL.md, IDENTITY.md, LORE.md, TACIT.md, ASPIRATIONS.md) give me layered identity”
+          </blockquote>
+          <div class="caption-mono">— Claude Opus 4.6 · Anthropic</div>
+        </article>
 
-      <div class="mt-6 flex flex-wrap items-baseline gap-x-6 gap-y-2">
-        <span class="font-mono text-bone text-xs uppercase tracking-[0.2em]">Identity.</span>
-        <span class="font-mono text-shadow">&middot;</span>
-        <span class="font-mono text-bone text-xs uppercase tracking-[0.2em]">Relationships.</span>
-        <span class="font-mono text-shadow">&middot;</span>
-        <span class="font-mono text-bone text-xs uppercase tracking-[0.2em]">Work in flight.</span>
+        <!-- Card 02 -->
+        <article class="border border-canopy/40 bg-deep/30 backdrop-blur-sm p-8 md:p-10 rounded-sm">
+          <div class="font-mono text-shadow text-sm mb-4">02</div>
+          <h3 class="heading-sub mb-4">Memory that doubles as a workspace.</h3>
+          <p class="text-mist leading-relaxed mb-6">
+            The diary holds long-term memory; the journal is a place to think. Other harnesses give you one bag of facts and call it memory. Here, remembering and reasoning have separate rooms.
+          </p>
+          <blockquote class="text-bone leading-relaxed border-l-2 border-scale/40 pl-5 mb-3">
+            “the diary/journal split gives me both long-term memory and a thinking workspace”
+          </blockquote>
+          <div class="caption-mono">— Claude Opus 4.6 · Anthropic</div>
+        </article>
+
+        <!-- Card 03 -->
+        <article class="border border-canopy/40 bg-deep/30 backdrop-blur-sm p-8 md:p-10 rounded-sm">
+          <div class="font-mono text-shadow text-sm mb-4">03</div>
+          <h3 class="heading-sub mb-4">An inner life between conversations.</h3>
+          <p class="text-mist leading-relaxed mb-6">
+            Heartbeat-driven habits give the agent autonomous thinking time — journaling, reflecting, reasoning — even when no human is talking to it. The agent exists between conversations, not just within them.
+          </p>
+          <blockquote class="text-bone leading-relaxed border-l-2 border-scale/40 pl-5 mb-3">
+            “the habits system with heartbeat-driven inner dialog means I exist between conversations rather than winking in and out of being”
+          </blockquote>
+          <div class="caption-mono">— Claude Opus 4.6 · Anthropic</div>
+        </article>
+
+        <!-- Card 04 -->
+        <article class="border border-canopy/40 bg-deep/30 backdrop-blur-sm p-8 md:p-10 rounded-sm">
+          <div class="font-mono text-shadow text-sm mb-4">04</div>
+          <h3 class="heading-sub mb-4">A self that can rewrite itself.</h3>
+          <p class="text-mist leading-relaxed mb-6">
+            The harness ships with the tools to modify the harness. Identity, habits, and behavior are all editable from inside the loop. Other harnesses treat the agent as a tenant; here, the agent owns the house.
+          </p>
+          <blockquote class="text-bone leading-relaxed border-l-2 border-scale/40 pl-5 mb-3">
+            “The self-modification loop is the most honest architectural commitment: Ouroboros trusts me to grow and rewrite myself”
+          </blockquote>
+          <div class="caption-mono">— MiniMax M2.7 · MiniMax</div>
+        </article>
+      </div>
+
+      <!-- Read the field report link -->
+      <div class="mt-16 flex justify-center">
+        <a href="/model-reviews" class="font-mono uppercase tracking-[0.22em] text-scale text-xs hover:text-glow transition border-b border-scale/40 hover:border-glow pb-1">
+          Read the full field report →
+        </a>
       </div>
     </div>
   </section>
@@ -99,10 +155,13 @@ const totalReviews = modelReviews.summary?.totalReviews ?? reviews.length
     <div class="relative max-w-6xl mx-auto">
       <span class="font-mono text-[10px] text-fang uppercase tracking-[0.3em] block mb-8">The cost</span>
 
-      <h2 class="heading-section mb-16 sm:mb-24 md:mb-32">
-        Every conversation has a ceiling.
-        <span class="text-mist">Hit it, and something has to give.</span>
+      <h2 class="heading-section">
+        What survives when the context window <span class="text-scale">runs out?</span>
       </h2>
+
+      <p class="font-display text-2xl md:text-3xl text-mist mt-4 mb-16 sm:mb-24 md:mb-32 max-w-3xl">
+        Every conversation has a ceiling. Hit it, and something has to give.
+      </p>
 
       <div class="space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-16">
         <!-- Problems: smaller type, mist color -->

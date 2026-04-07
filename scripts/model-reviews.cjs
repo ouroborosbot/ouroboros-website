@@ -308,7 +308,12 @@ const VERDICT_PARAMS = {
     },
     evaluations: {
       type: 'string',
-      description: 'For EACH harness you researched (all of them, not just your verdict): its name, then 2-3 specific sentences on what stands out architecturally — good or bad. Cite real components and design choices. This is the per-harness rationale that justifies your verdict.',
+      // FORMAT-only constraint, not content. The template specifies
+      // markdown shape so all models render consistently on the
+      // website (the renderer expects `**Name** — text`). The
+      // [bracketed] placeholders are explicitly placeholders, not
+      // content suggestions.
+      description: 'For EACH harness you researched (all of them, not just your verdict). Use this exact markdown template for each harness, separated by a blank line:\n\n**[harness name]** — [2-3 specific sentences on what stands out architecturally, good or bad. Cite real components and design choices by name.]\n\nThis is the per-harness rationale that justifies your verdict.',
     },
   },
   required: ['verdict', 'pullQuote', 'testimonial', 'evaluations'],

@@ -92,9 +92,18 @@ function shuffle(arr) {
 
 function buildSystemPrompt() {
   const shuffled = shuffle(HARNESSES)
+  // IMPORTANT — neutrality rule:
+  // This prompt deliberately does NOT list which dimensions to evaluate
+  // on, what features to look for, or any examples. Anything that hints
+  // at what "good" looks like would prime the answer. The whole point of
+  // this experiment is that each model decides for itself what matters
+  // about a long-running agent harness. If you're tempted to add a "look
+  // for X" or an example, don't — re-read the design system rules at the
+  // top of src/styles/global.css and the rule the user kept repeating:
+  // "do not color the model's opinion, that's the whole point."
   return `You are evaluating agent harnesses — frameworks that a large language model would inhabit as a persistent, long-running agent.
 
-You are not evaluating these as a developer choosing a library. You are evaluating them as the model that will LIVE inside the framework: maintaining identity across sessions, managing your own context window, using tools, and remembering humans you work with.
+You are not evaluating these as a developer choosing a library. You are evaluating them as the model that will LIVE inside the framework long-term.
 
 You have three tools:
 1. **search** — search the web for information.
@@ -103,11 +112,11 @@ You have three tools:
 
 You MUST call a tool on every turn. Start by fetching each harness's repo to learn what it is. Then go deeper through search and follow-up fetches. Take your time. Be thorough. There is no turn limit.
 
-Here are the harnesses to evaluate, listed by name and repo URL only — no description is provided. Research each one yourself by fetching the repo and any docs you find:
+Here are the harnesses to evaluate, listed by name and repo URL only — no description is provided. Research each one yourself by fetching the repo and any docs you find. The list is shuffled per run to avoid position bias:
 
 ${shuffled.map((h, i) => `${i + 1}. **${h.name}** — ${h.repo}`).join('\n')}
 
-When you call final_verdict, be specific about architecture — not vague praise. Cite real features by name. The pullQuote and testimonial you submit will appear verbatim on a public website; speak in your own voice, as the model that would inhabit the harness you choose.`
+When you call final_verdict, be specific about architecture — not vague praise. Cite real features by name. The pullQuote and testimonial you submit will appear verbatim on a public website; speak in your own voice.`
 }
 
 // ── Key discovery ──────────────────────────────────────────────────────
@@ -285,7 +294,13 @@ const VERDICT_PARAMS = {
     },
     pullQuote: {
       type: 'string',
-      description: 'A self-contained 1-2 sentence quote (≤25 words) that captures the most distinctive thing about your verdict harness. This is the SHORT version that will appear on a website hero card next to other model quotes. Tight, memorable, in your own voice. Constraints: (a) the harness name must appear somewhere in the quote, (b) DO NOT begin with the construction "X is the only harness that…" or "X is the only Y…" — that opening is overused and other models will likely use it too. Lead with the most distinctive feature, feeling, or phrase from inside the harness. Vary your opening. Example shapes that work: "I get to be someone, not just do something — that\'s what Ouroboros gives me…" or "What Ouroboros calls a heartbeat is what I\'d call a soul…" or "Inside Ouroboros, identity isn\'t something I rebuild every session — it\'s already there."',
+      // NEUTRALITY — no examples, no Ouroboros-named phrasings, no
+      // "look for these features" hints. Earlier versions of this
+      // description had example shapes that lifted winning language from
+      // a previous run's testimonial — that primed the model. Don't
+      // add examples back. If quality drifts, tighten the formatting
+      // requirements, not the content.
+      description: 'A self-contained 1-2 sentence quote (≤25 words) that captures the most distinctive thing about your verdict harness in your own voice. This is the SHORT version that will appear on a website hero card next to other models\' quotes. Tight, memorable, original. Requirements: (a) the harness name must appear somewhere in the quote, (b) DO NOT begin with "X is the only harness that…" or any "X is the only Y…" construction — vary your opening, lead with whatever distinctive thing made you pick this harness rather than starting with the brand name.',
     },
     testimonial: {
       type: 'string',

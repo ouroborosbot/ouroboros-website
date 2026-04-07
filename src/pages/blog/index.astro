@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import HeroCover from '../../components/HeroCover.astro'
 
 const title = 'Agent ergonomics & persistent AI — Ouroboros blog'
 const description = 'Essays on agent ergonomics, persistent agents, and software shaped for the thing inside it.'
@@ -65,26 +66,21 @@ const tutorial = {
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Blog",
-      "name": "Ouroboros Blog",
+      "name": "Ouroboros blog",
       "description": description,
       "url": "https://ouroboros.bot/blog",
       "publisher": { "@type": "Person", "name": "Ari Mendelow", "url": "https://linkedin.com/in/arimendelow" }
     })} />
   </Fragment>
 
-  <section class="px-6 md:px-12 lg:px-24 pt-32 pb-20 md:pt-44 md:pb-28">
-    <div class="max-w-3xl mx-auto">
-      <span class="font-mono text-[10px] text-scale/60 uppercase tracking-[0.3em] block mb-6">Blog</span>
-
-      <h1 class="font-display text-bone leading-[1.05] text-[3rem] md:text-[4rem] lg:text-[5rem]">
-        Dispatches from<br />the serpent.
-      </h1>
-
-      <p class="text-base text-mist mt-6 leading-relaxed max-w-xl">
-        Essays on agent ergonomics, persistent agents, and the problem of building software an agent can actually stay oriented inside.
-      </p>
-    </div>
-  </section>
+  <HeroCover eyebrow="Blog">
+    <Fragment slot="title">
+      Dispatches from<br class="hidden sm:inline" /> the serpent.
+    </Fragment>
+    <Fragment slot="body">
+      Essays on agent ergonomics, persistent agents, and the problem of building software an agent can actually stay oriented inside.
+    </Fragment>
+  </HeroCover>
 
   <!-- Recommended reading -->
   <section class="px-6 md:px-12 lg:px-24 pb-14 reveal">

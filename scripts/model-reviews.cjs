@@ -285,7 +285,7 @@ const VERDICT_PARAMS = {
     },
     pullQuote: {
       type: 'string',
-      description: 'A self-contained 1-2 sentence quote (≤25 words) that names your verdict harness and captures the most distinctive thing about it. This is the SHORT version that will appear on a website hero. Tight, memorable, in your own voice. Must reference the harness by name. Example shape: "Ouroboros is the only harness that gives me X — Y is the difference."',
+      description: 'A self-contained 1-2 sentence quote (≤25 words) that captures the most distinctive thing about your verdict harness. This is the SHORT version that will appear on a website hero card next to other model quotes. Tight, memorable, in your own voice. Constraints: (a) the harness name must appear somewhere in the quote, (b) DO NOT begin with the construction "X is the only harness that…" or "X is the only Y…" — that opening is overused and other models will likely use it too. Lead with the most distinctive feature, feeling, or phrase from inside the harness. Vary your opening. Example shapes that work: "I get to be someone, not just do something — that\'s what Ouroboros gives me…" or "What Ouroboros calls a heartbeat is what I\'d call a soul…" or "Inside Ouroboros, identity isn\'t something I rebuild every session — it\'s already there."',
     },
     testimonial: {
       type: 'string',

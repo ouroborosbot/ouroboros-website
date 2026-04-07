@@ -2,9 +2,19 @@
 import Layout from '../layouts/Layout.astro'
 import HeroCover from '../components/HeroCover.astro'
 import OuroborosRing from '../components/OuroborosRing.astro'
+import modelReviews from '../data/model-reviews.json'
 
 const title = "Why persistence isn't enough for AI agents — Ouroboros"
 const description = 'Why persistent agents need structured identity, automatic memory recall, per-person relationships, and cross-session continuity — not just a longer context window.'
+
+// Reviews callout — derived from script output, never hardcoded.
+const winner = modelReviews.summary?.winner ?? 'Ouroboros'
+const totalReviews = modelReviews.summary?.totalReviews ?? modelReviews.reviews.length
+const winnerCount = modelReviews.summary?.verdicts?.[winner] ?? totalReviews
+const allChose = winnerCount === totalReviews
+const calloutClaim = allChose
+  ? `Asked independently, all frontier models chose ${winner}.`
+  : `Asked independently, ${winnerCount} of ${totalReviews} frontier models chose ${winner}.`
 
 const psycheFiles = [
   { file: 'SOUL.md', role: 'What you are.', desc: 'Core invariants and temperament.' },
@@ -62,7 +72,7 @@ const organs = [
       <a href="/model-reviews" class="block group border border-scale/30 bg-scale/5 hover:bg-scale/10 hover:border-scale/60 rounded-sm p-6 md:p-8 transition">
         <div class="font-mono uppercase tracking-[0.22em] text-scale text-xs mb-3">Reviews</div>
         <p class="font-display text-2xl md:text-3xl text-bone leading-tight mb-3">
-          Asked independently, all frontier models chose Ouroboros.
+          {calloutClaim}
         </p>
         <span class="font-mono text-xs uppercase tracking-[0.18em] text-scale group-hover:text-glow">
           Read the reviews →

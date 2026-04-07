@@ -6,11 +6,21 @@ import modelReviews from '../data/model-reviews.json'
 const reviews = modelReviews.reviews
 const winner = modelReviews.summary?.winner ?? 'Ouroboros'
 const totalReviews = modelReviews.summary?.totalReviews ?? reviews.length
+const winnerCount = modelReviews.summary?.verdicts?.[winner] ?? totalReviews
+
+// All marketing copy on this page derives from the script output. If a
+// future re-run produces different verdict counts, this updates with it
+// automatically — never hand-edit the claim string.
+const allChose = winnerCount === totalReviews
+const claim = allChose
+  ? `all frontier models chose ${winner}`
+  : `${winnerCount} of ${totalReviews} frontier models chose ${winner}`
+const claimSentence = `Asked independently, ${claim}.`
 ---
 
 <Layout
   title="Your model prefers this harness — Ouroboros"
-  description="Asked independently, all frontier models chose Ouroboros. Open source. Built by agents."
+  description={`${claimSentence} Open source. Built by agents.`}
 >
   <!-- ═══════════════ HERO — DECK SLIDE ═══════════════ -->
   <section class="relative overflow-hidden px-6 md:px-12 lg:px-24 pt-28 pb-20 md:pt-32 md:pb-24 min-h-dvh flex flex-col">
@@ -30,9 +40,9 @@ const totalReviews = modelReviews.summary?.totalReviews ?? reviews.length
         Your model prefers <span class="text-scale">this harness.</span>
       </h1>
 
-      <!-- ONE subhead -->
+      <!-- ONE subhead — derived from the script output. Never hardcode the claim. -->
       <p class="mt-6 md:mt-8 text-bone text-lg md:text-xl lg:text-2xl max-w-3xl leading-snug animate-fade-up stagger-2">
-        Asked independently, all frontier models chose Ouroboros.
+        {claimSentence}
       </p>
 
       <!-- 4 compact specimen cards — the visible proof of unanimity.

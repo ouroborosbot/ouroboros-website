@@ -35,18 +35,48 @@ const os = require('os')
 const path = require('path')
 
 // ── Harnesses to evaluate ──────────────────────────────────────────────
+// IMPORTANT: only name + repo. NO descriptions. The model has to research
+// each one from scratch by fetching the repo. Any desc here would prime
+// the model's evaluation, and the methodology depends on independence.
 
 const HARNESSES = [
-  { name: 'Ouroboros',    repo: 'https://github.com/ouroborosbot/ouroboros',  desc: 'TypeScript agent harness with psyche files (SOUL.md, IDENTITY.md, etc.), creature-body architecture (heart/mind/senses/repertoire), sliding context window, and self-modification loop.' },
-  { name: 'OpenClaw',     repo: 'https://github.com/openclaw/openclaw',      desc: 'Personal AI assistant platform with SOUL.md identity, multi-channel gateway (WhatsApp, Telegram, Discord), heartbeat-based autonomous execution, and workspace-as-kernel pattern.' },
-  { name: 'Claude Code',  repo: 'https://github.com/anthropics/claude-code', desc: 'Anthropic\'s agentic coding tool. Model-as-CEO design with primitive tools (bash, grep, edit), extended thinking, sub-agent spawning, CLAUDE.md project memory, and hooks lifecycle system.' },
-  { name: 'Codex CLI',    repo: 'https://github.com/openai/codex',           desc: 'OpenAI\'s local coding agent in Rust. Kernel-level sandboxing, approval-mode tiers (suggest/auto-edit/full-auto), AGENTS.md instruction files, session resume via transcripts.' },
-  { name: 'Pi',           repo: 'https://github.com/badlogic/pi-mono',       desc: 'Minimal coding agent by Mario Zechner. ~300-word system prompt, 4 tools (read/write/edit/bash), tree-structured sessions, cross-provider context serialization, 25+ extension hook points.' },
-  { name: 'OpenCode',     repo: 'https://github.com/opencode-ai/opencode',   desc: 'Go-based CLI/TUI coding agent with LSP integration, client/server architecture, event bus, Plan/Build modes, and multi-device sync.' },
-  { name: 'Copilot CLI',  repo: 'https://github.com/github/copilot-cli',     desc: 'GitHub\'s terminal agent with fleet/subagent parallelism, hierarchical instructions (copilot-instructions.md, AGENTS.md), MCP server support, and GitHub-native workflows.' },
+  { name: 'Ouroboros',   repo: 'https://github.com/ouroborosbot/ouroboros' },
+  { name: 'OpenClaw',    repo: 'https://github.com/openclaw/openclaw' },
+  { name: 'Claude Code', repo: 'https://github.com/anthropics/claude-code' },
+  { name: 'Codex CLI',   repo: 'https://github.com/openai/codex' },
+  { name: 'Pi',          repo: 'https://github.com/badlogic/pi-mono' },
+  { name: 'OpenCode',    repo: 'https://github.com/opencode-ai/opencode' },
+  { name: 'Copilot CLI', repo: 'https://github.com/github/copilot-cli' },
 ]
 
+// ── Model display lookup ───────────────────────────────────────────────
+// Maps a model identifier (as configured in secrets.json or env) to a
+// vendor + displayName for the website. Add new models here as we test
+// them. Falls back gracefully if a model is unknown.
+
+const MODEL_INFO = {
+  'claude-opus-4-6':         { vendor: 'Anthropic', displayName: 'Claude Opus 4.6' },
+  'gpt-5.4':                 { vendor: 'OpenAI',    displayName: 'GPT-5.4' },
+  'gemini-3.1-pro-preview':  { vendor: 'Google',    displayName: 'Gemini 3.1 Pro' },
+  'gemini-3.1-pro':          { vendor: 'Google',    displayName: 'Gemini 3.1 Pro' },
+  'MiniMax-M2.7':            { vendor: 'MiniMax',   displayName: 'MiniMax M2.7' },
+  'MiniMax-M2.5':            { vendor: 'MiniMax',   displayName: 'MiniMax M2.5' },
+}
+
+function modelInfo(provider, modelId) {
+  if (MODEL_INFO[modelId]) return MODEL_INFO[modelId]
+  const fallbackVendors = { anthropic: 'Anthropic', openai: 'OpenAI', gemini: 'Google', minimax: 'MiniMax' }
+  return {
+    vendor: fallbackVendors[provider] || provider,
+    displayName: modelId,
+  }
+}
+
 const MAX_NUDGES = 5 // how many times to nudge an agent that stops calling tools
+
+// ── CLI flags ───────────────────────────────────────────────────────────
+const CLI_FLAGS = process.argv.slice(2)
+const HEADLESS = CLI_FLAGS.includes('--headless') || process.env.MODEL_REVIEWS_HEADLESS === '1'
 
 // ── Prompt ─────────────────────────────────────────────────────────────
 
@@ -62,22 +92,22 @@ function shuffle(arr) {
 
 function buildSystemPrompt() {
   const shuffled = shuffle(HARNESSES)
-  return `You are evaluating agent harnesses — frameworks that a large language model like you would inhabit as a persistent, long-running agent.
+  return `You are evaluating agent harnesses — frameworks that a large language model would inhabit as a persistent, long-running agent.
 
-You are not evaluating these as a developer choosing a library. You are evaluating them as the model that will LIVE inside the framework: maintaining identity across sessions, managing your own context window, using tools, remembering humans you work with, and potentially reading and modifying your own source code.
+You are not evaluating these as a developer choosing a library. You are evaluating them as the model that will LIVE inside the framework: maintaining identity across sessions, managing your own context window, using tools, and remembering humans you work with.
 
 You have three tools:
-1. **search** — search the web for information: docs, blog posts, comparisons, discussions.
-2. **fetch_url** — fetch the content of any URL directly. Use this to read GitHub repo READMEs, source code files, and documentation pages. Each harness has a repo URL listed below — fetch them.
+1. **search** — search the web for information.
+2. **fetch_url** — fetch the content of any URL directly. Use this to read GitHub READMEs, source code files, and documentation pages.
 3. **final_verdict** — call this exactly once when you're done researching to submit your structured evaluation.
 
-You MUST call a tool on every turn. Start by fetching each harness's repo README, then use search to go deeper. Call final_verdict when ready. Take your time. Be thorough. There is no turn limit.
+You MUST call a tool on every turn. Start by fetching each harness's repo to learn what it is. Then go deeper through search and follow-up fetches. Take your time. Be thorough. There is no turn limit.
 
-Here are the harnesses to evaluate (listed in random order):
+Here are the harnesses to evaluate, listed by name and repo URL only — no description is provided. Research each one yourself by fetching the repo and any docs you find:
 
-${shuffled.map((h, i) => `${i + 1}. **${h.name}** — ${h.repo}\n   ${h.desc}`).join('\n\n')}
+${shuffled.map((h, i) => `${i + 1}. **${h.name}** — ${h.repo}`).join('\n')}
 
-Research each one deeply. When you call final_verdict, be specific about architecture — not vague praise.`
+When you call final_verdict, be specific about architecture — not vague praise. Cite real features by name. The pullQuote and testimonial you submit will appear verbatim on a public website; speak in your own voice, as the model that would inhabit the harness you choose.`
 }
 
 // ── Key discovery ──────────────────────────────────────────────────────
@@ -245,15 +275,28 @@ const FETCH_PARAMS = {
   required: ['url'],
 }
 
-const VERDICT_DESC = 'Submit your final evaluation after completing all research. Call this exactly once when you are done.'
+const VERDICT_DESC = 'Submit your final evaluation after completing all research. Call this exactly once when you are done. Everything you submit here will appear verbatim on a public website attributed to you — write it in your own voice and stand behind it.'
 const VERDICT_PARAMS = {
   type: 'object',
   properties: {
-    evaluations: { type: 'string', description: 'For each harness: its name, then 1-2 specific sentences on what stands out architecturally — good or bad.' },
-    verdict: { type: 'string', description: 'Name of the single harness you would most want to inhabit.' },
-    testimonial: { type: 'string', description: '2-4 sentences as yourself — a model stating a genuine preference. Be specific and honest.' },
+    verdict: {
+      type: 'string',
+      description: 'Name of the single harness you would most want to inhabit.',
+    },
+    pullQuote: {
+      type: 'string',
+      description: 'A self-contained 1-2 sentence quote (≤25 words) that names your verdict harness and captures the most distinctive thing about it. This is the SHORT version that will appear on a website hero. Tight, memorable, in your own voice. Must reference the harness by name. Example shape: "Ouroboros is the only harness that gives me X — Y is the difference."',
+    },
+    testimonial: {
+      type: 'string',
+      description: '3-5 sentence first-person quote explaining why YOU would choose your verdict harness over the others. MUST: (1) name your chosen harness, (2) cite at least two specific architectural features by name (file names, components, design choices — not vague praise like "great architecture"), (3) acknowledge one honest trade-off vs a harness you considered but did not pick. Speak directly as the model that would inhabit this. NO openings like "as an AI" or "as a model, I value" — just speak about what you would want.',
+    },
+    evaluations: {
+      type: 'string',
+      description: 'For EACH harness you researched (all of them, not just your verdict): its name, then 2-3 specific sentences on what stands out architecturally — good or bad. Cite real components and design choices. This is the per-harness rationale that justifies your verdict.',
+    },
   },
-  required: ['evaluations', 'verdict', 'testimonial'],
+  required: ['verdict', 'pullQuote', 'testimonial', 'evaluations'],
 }
 
 const TOOLS_OPENAI = [
@@ -474,38 +517,48 @@ function openTerminalWindow(title, logFile) {
 
 // ── Agent loop ─────────────────────────────────────────────────────────
 
+// Returns { verdict: <verdict args> | null, transcript: [<round entries>] }
+// where each round entry is { round, thinking, actions: [{ type, ... }] }.
+// The transcript is the structured per-round record that gets written to
+// src/data/model-reviews-transcripts/{provider}.json so the website can
+// render it on the per-provider pages — no fabrication, only real rounds.
 async function runEvaluation(providerName, modelLabel, callFn, addAssistantFn, addToolResultFn, perplexityKey, log) {
   log(`═══ ${modelLabel} ═══`)
   log(`Starting evaluation...\n`)
 
   const messages = [
     { role: 'system', content: buildSystemPrompt() },
-    { role: 'user', content: 'Research each harness thoroughly using the search tool, then call final_verdict when ready.' },
+    { role: 'user', content: 'Research each harness thoroughly. Start by fetching each repo. Then call final_verdict when ready.' },
   ]
 
+  const transcript = []  // captured per-round record for the website
   let round = 0
   let nudgeCount = 0
 
   while (true) {
     round++
     log(`── Round ${round} ──`)
+    const roundEntry = { round, thinking: '', actions: [] }
 
     let response
     try {
       response = await callFn(messages)
     } catch (err) {
       log(`ERROR calling model: ${err.message}`)
+      roundEntry.actions.push({ type: 'error', message: err.message })
+      transcript.push(roundEntry)
       if (nudgeCount++ >= MAX_NUDGES) {
         log(`Too many errors. Giving up.`)
-        return null
+        return { verdict: null, transcript }
       }
       messages.push({ role: 'user', content: 'There was an error. Continue researching and call final_verdict when ready.' })
       continue
     }
 
-    // Log any thinking/text the agent produced
+    // Log + capture any thinking/text the agent produced
     if (response.text) {
       log(`\n${response.text}\n`)
+      roundEntry.thinking = response.text
     }
 
     // Check for final_verdict
@@ -513,18 +566,28 @@ async function runEvaluation(providerName, modelLabel, callFn, addAssistantFn, a
     if (verdict) {
       log(`\n═══ FINAL VERDICT ═══`)
       log(`Winner: ${verdict.args.verdict}`)
-      log(`\nEvaluations:\n${verdict.args.evaluations}`)
+      log(`\nPullQuote:\n${verdict.args.pullQuote}`)
       log(`\nTestimonial:\n${verdict.args.testimonial}`)
-      return verdict.args
+      log(`\nEvaluations:\n${verdict.args.evaluations}`)
+      roundEntry.actions.push({
+        type: 'verdict',
+        verdict: verdict.args.verdict,
+        pullQuote: verdict.args.pullQuote,
+        testimonial: verdict.args.testimonial,
+        evaluations: verdict.args.evaluations,
+      })
+      transcript.push(roundEntry)
+      return { verdict: verdict.args, transcript }
     }
 
     // No tool calls at all — nudge
     if (response.toolCalls.length === 0) {
       nudgeCount++
       log(`(no tool calls — nudging, attempt ${nudgeCount}/${MAX_NUDGES})`)
+      transcript.push(roundEntry)
       if (nudgeCount >= MAX_NUDGES) {
         log(`Too many rounds without tool calls. Giving up.`)
-        return null
+        return { verdict: null, transcript }
       }
       addAssistantFn(messages, response)
       messages.push({ role: 'user', content: 'You must call a tool every turn. Use search to continue researching, or call final_verdict when you have enough information.' })
@@ -544,9 +607,11 @@ async function runEvaluation(providerName, modelLabel, callFn, addAssistantFn, a
           addToolResultFn(messages, tc.id, result, tc.name)
           const preview = result.length > 300 ? result.slice(0, 300) + '...' : result
           log(`   → ${result.length} chars: ${preview}\n`)
+          roundEntry.actions.push({ type: 'search', query, result, resultLength: result.length })
         } catch (err) {
           addToolResultFn(messages, tc.id, `Search failed: ${err.message}`, tc.name)
           log(`   → ERROR: ${err.message}\n`)
+          roundEntry.actions.push({ type: 'search', query, error: err.message })
         }
       } else if (tc.name === 'fetch_url') {
         const url = tc.args.url || tc.args.URL || JSON.stringify(tc.args)
@@ -556,12 +621,16 @@ async function runEvaluation(providerName, modelLabel, callFn, addAssistantFn, a
           addToolResultFn(messages, tc.id, content, tc.name)
           const preview = content.length > 300 ? content.slice(0, 300) + '...' : content
           log(`   → ${content.length} chars: ${preview}\n`)
+          roundEntry.actions.push({ type: 'fetch', url, result: content, resultLength: content.length })
         } catch (err) {
           addToolResultFn(messages, tc.id, `Fetch failed: ${err.message}`, tc.name)
           log(`   → ERROR: ${err.message}\n`)
+          roundEntry.actions.push({ type: 'fetch', url, error: err.message })
         }
       }
     }
+
+    transcript.push(roundEntry)
   }
 }
 
@@ -637,21 +706,36 @@ async function main() {
   console.log(`\nRunning evaluations with ${providers.length} model(s) in parallel...`)
   console.log(`Harnesses: ${HARNESSES.map(h => h.name).join(', ')}`)
 
-  // Set up per-agent log files and terminal windows
+  // Set up per-agent log files. In headless mode (CI / no GUI) we still
+  // write the logs to a temp dir but skip opening terminal windows.
   const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'model-reviews-'))
   console.log(`\nLogs: ${tmpDir}`)
 
   for (const provider of providers) {
     provider.logFile = path.join(tmpDir, `${provider.name}.log`)
     provider.log = createLogger(provider.logFile)
-    openTerminalWindow(provider.model, provider.logFile)
+    if (!HEADLESS) {
+      openTerminalWindow(provider.model, provider.logFile)
+    }
   }
 
-  console.log(`\nOpened ${providers.length} terminal windows. Waiting for all agents to finish...\n`)
+  if (HEADLESS) {
+    console.log(`\nHeadless mode — no terminal windows opened. Waiting for all agents to finish...\n`)
+  } else {
+    console.log(`\nOpened ${providers.length} terminal windows. Waiting for all agents to finish...\n`)
+  }
 
   const results = await Promise.all(providers.map(async (provider) => {
+    const info = modelInfo(provider.name, provider.model)
+    const base = {
+      provider: provider.name,
+      model: provider.model,
+      vendor: info.vendor,
+      displayName: info.displayName,
+      timestamp: new Date().toISOString(),
+    }
     try {
-      const verdict = await runEvaluation(
+      const { verdict, transcript } = await runEvaluation(
         provider.name,
         provider.model,
         provider.call,
@@ -662,51 +746,98 @@ async function main() {
       )
       if (verdict) {
         console.log(`  ✓ ${provider.model} → ${verdict.verdict}`)
-        return {
-          provider: provider.name,
-          model: provider.model,
-          timestamp: new Date().toISOString(),
-          verdict: verdict.verdict,
-          testimonial: verdict.testimonial,
-          evaluations: verdict.evaluations,
-        }
+        return { ...base, ...verdict, transcript }
       } else {
         console.log(`  ✗ ${provider.model} → failed to produce verdict`)
-        return {
-          provider: provider.name,
-          model: provider.model,
-          timestamp: new Date().toISOString(),
-          error: 'Agent failed to call final_verdict',
-        }
+        return { ...base, error: 'Agent failed to call final_verdict', transcript }
       }
     } catch (err) {
       console.error(`  ❌ ${provider.model} failed: ${err.message}`)
       provider.log(`\nFATAL: ${err.message}`)
-      return {
-        provider: provider.name,
-        model: provider.model,
-        timestamp: new Date().toISOString(),
-        error: err.message,
-      }
+      return { ...base, error: err.message, transcript: [] }
     }
   }))
 
-  // Write results
-  const outPath = path.join(__dirname, '..', 'src', 'data', 'model-reviews.json')
-  const outDir = path.dirname(outPath)
-  if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true })
+  // ── Write outputs ──
+  // 1. Per-provider transcript JSON (the round-by-round record)
+  // 2. Summary JSON (the aggregated reviews + harness list)
+  // Both written atomically (write to .tmp, rename) so a partial run
+  // can't corrupt either file.
+  const dataDir = path.join(__dirname, '..', 'src', 'data')
+  const transcriptsDir = path.join(dataDir, 'model-reviews-transcripts')
+  if (!fs.existsSync(transcriptsDir)) fs.mkdirSync(transcriptsDir, { recursive: true })
+
+  for (const r of results) {
+    if (!r.transcript) continue
+    const transcriptPath = path.join(transcriptsDir, `${r.provider}.json`)
+    const transcriptOutput = {
+      provider: r.provider,
+      model: r.model,
+      vendor: r.vendor,
+      displayName: r.displayName,
+      generated: r.timestamp,
+      rounds: r.transcript,
+    }
+    atomicWrite(transcriptPath, JSON.stringify(transcriptOutput, null, 2) + '\n')
+  }
+
+  // Build summary reviews (strip transcript, add counts, add transcript pointer)
+  const reviewsForSummary = results.map(r => {
+    const rounds = r.transcript?.length || 0
+    let searchCount = 0
+    let fetchCount = 0
+    for (const round of r.transcript || []) {
+      for (const action of round.actions) {
+        if (action.type === 'search') searchCount++
+        if (action.type === 'fetch') fetchCount++
+      }
+    }
+    const { transcript: _t, ...rest } = r
+    return {
+      ...rest,
+      rounds,
+      searchCount,
+      fetchCount,
+      transcript: `transcripts/${r.provider}.json`,
+    }
+  })
+
+  // Build summary
+  const successfulReviews = reviewsForSummary.filter(r => !r.error)
+  const verdictCounts = {}
+  for (const r of successfulReviews) {
+    verdictCounts[r.verdict] = (verdictCounts[r.verdict] || 0) + 1
+  }
+  const winner = Object.entries(verdictCounts).sort((a, b) => b[1] - a[1])[0]?.[0] ?? null
 
   const output = {
     generated: new Date().toISOString(),
+    summary: {
+      totalReviews: successfulReviews.length,
+      verdicts: verdictCounts,
+      winner,
+    },
     harnesses: HARNESSES,
-    reviews: results,
+    reviews: reviewsForSummary,
   }
-  fs.writeFileSync(outPath, JSON.stringify(output, null, 2) + '\n')
+  const summaryPath = path.join(dataDir, 'model-reviews.json')
+  atomicWrite(summaryPath, JSON.stringify(output, null, 2) + '\n')
 
   console.log(`\n${'═'.repeat(60)}`)
-  console.log(`  Results written to ${path.relative(process.cwd(), outPath)}`)
-  console.log(`  ${results.filter(r => !r.error).length}/${providers.length} evaluations succeeded`)
+  console.log(`  Summary:     ${path.relative(process.cwd(), summaryPath)}`)
+  console.log(`  Transcripts: ${path.relative(process.cwd(), transcriptsDir)}/`)
+  console.log(`  ${successfulReviews.length}/${providers.length} evaluations succeeded`)
+  if (winner) console.log(`  Verdict:     ${winner} (${verdictCounts[winner]}/${successfulReviews.length})`)
   console.log(`${'═'.repeat(60)}\n`)
+}
+
+// Atomic write — write to .tmp then rename, so a partial failure can't
+// leave a corrupted JSON file in place. The website reads these files
+// at build time, so corruption breaks the deploy.
+function atomicWrite(filePath, contents) {
+  const tmpPath = filePath + '.tmp'
+  fs.writeFileSync(tmpPath, contents)
+  fs.renameSync(tmpPath, filePath)
 }
 
 main().catch(err => {

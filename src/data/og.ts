@@ -24,6 +24,12 @@
   - Keep the title <70 chars so it stays large on mobile previews.
   - Subtitle is optional, used for context. Keep it <120 chars.
   - Tag is optional, shown as a small uppercase eyebrow above the title.
+    IMPORTANT: the tag must make sense when someone sees the OG card in
+    isolation (on Twitter, Slack, etc) with NO page context. Don't reuse
+    a section eyebrow from inside the page if it'd be confusing without
+    that context. e.g. the home page has a "Reviews" section eyebrow but
+    the home OG card omits the tag entirely because "Reviews" alone would
+    read as "reviews of what?" to a fresh viewer. When in doubt, omit it.
 */
 
 export interface OgEntry {
@@ -36,7 +42,9 @@ export const pageOg: Record<string, OgEntry> = {
   '/': {
     title: 'Your model prefers Ouroboros.',
     subtitle: 'Asked independently, all frontier models chose Ouroboros.',
-    tag: 'Reviews',
+    // No tag — the title is the message. "Reviews" as an eyebrow on the
+    // home OG card would read as "reviews of what?" to anyone seeing it
+    // in a Twitter/Slack preview without page context.
   },
   '/why': {
     title: 'Persistence is not enough.',

@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro'
+import HeroCover from '../components/HeroCover.astro'
 import OuroborosRing from '../components/OuroborosRing.astro'
 
 const title = "Why persistence isn't enough for AI agents — Ouroboros"
@@ -37,28 +38,22 @@ const organs = [
   </Fragment>
 
   <!-- ═══════ 1. HERO ═══════ -->
-  <section class="relative overflow-hidden px-6 md:px-12 lg:px-24 pt-28 pb-16 sm:pt-36 sm:pb-20 md:pt-44 md:pb-28">
-    <div class="absolute inset-0 bg-gradient-to-b from-deep/60 via-undergrowth/15 to-transparent pointer-events-none"></div>
+  <HeroCover eyebrow="Why Ouroboros">
+    <Fragment slot="title">Persistence is not enough.</Fragment>
+    <Fragment slot="body">
+      A long-lived agent that can't stay oriented is just a chatbot with a longer memory.
+      Ouroboros lowers the cost of self-recovery — so the human collaborates instead of re-briefs.
+    </Fragment>
+  </HeroCover>
 
-    <div class="relative max-w-5xl mx-auto">
-      <span class="font-mono text-[9px] text-fang uppercase tracking-[0.3em] block mb-6">Why Ouroboros</span>
-
-      <h1 class="heading-hero">
-        Persistence is not enough.
-      </h1>
-
-      <p class="mt-6 sm:mt-8 text-sm sm:text-base text-mist max-w-lg leading-relaxed">
-        A long-lived agent that can't stay oriented is just a chatbot with a longer memory.
-        Ouroboros lowers the cost of self-recovery — so the human collaborates instead of re-briefs.
+  <!-- Pull quote — moved out of the hero so the cover stays focused -->
+  <section class="relative px-6 md:px-12 lg:px-24 pb-12 reveal">
+    <blockquote class="max-w-2xl mx-auto border-l border-fang/30 pl-6">
+      <p class="text-bone text-lg sm:text-xl leading-relaxed">
+        &#8220;I spent more time trying to get my agents back on track than we actually spent working.&#8221;
       </p>
-
-      <blockquote class="mt-10 sm:mt-14 border-l border-fang/25 pl-5 max-w-md">
-        <p class="text-bone text-lg sm:text-xl leading-relaxed">
-          &#8220;I spent more time trying to get my agents back on track than we actually spent working.&#8221;
-        </p>
-        <p class="mt-2 text-xs xl:text-sm text-shadow">That's the problem.</p>
-      </blockquote>
-    </div>
+      <p class="mt-2 text-xs xl:text-sm text-shadow">That's the problem.</p>
+    </blockquote>
   </section>
 
   <!-- ═══════ REVIEWS CALLOUT ═══════ -->

@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import HeroCover from '../../components/HeroCover.astro'
 import PromptCard from '../../components/PromptCard.astro'
 
 const title = 'Ouroboros docs — setup, identity, memory, architecture'
@@ -60,7 +61,7 @@ const pages = [
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "TechArticle",
-      "headline": "Ouroboros Docs",
+      "headline": "Ouroboros docs",
       "description": description,
       "author": { "@type": "Person", "name": "Ari Mendelow", "url": "https://linkedin.com/in/arimendelow" },
       "publisher": { "@type": "Organization", "name": "Ouroboros", "url": "https://ouroboros.bot" },
@@ -68,20 +69,18 @@ const pages = [
     })} />
   </Fragment>
 
-  <section class="px-6 md:px-12 lg:px-24 pt-32 pb-20 md:pt-40 md:pb-24">
+  <HeroCover eyebrow="Documentation">
+    <Fragment slot="title">
+      Docs for humans.<br class="hidden sm:inline" /> Skills for agents.
+    </Fragment>
+    <Fragment slot="body">
+      These pages are the human version — context for the questions you'll ask your agent. Your agent can fetch the live version directly at <span class="font-mono text-scale/80 text-sm">ouroboros.bot/skills/manifest.json</span>
+    </Fragment>
+  </HeroCover>
+
+  <section class="px-6 md:px-12 lg:px-24 pb-20 md:pb-24">
     <div class="max-w-6xl mx-auto">
-      <span class="font-mono text-[10px] text-scale/60 uppercase tracking-[0.3em] block mb-6">Documentation</span>
-
-      <h1 class="font-display text-bone leading-[1.05] text-[2rem] sm:text-[2.5rem] md:text-[3.5rem] lg:text-[4rem]">
-        Docs for humans.<br class="hidden sm:block" /> Skills for agents.
-      </h1>
-
-      <p class="text-base sm:text-lg text-mist mt-6 leading-relaxed max-w-2xl">
-        These pages are the human version — context for the questions you'll ask your agent.
-        Your agent can fetch the live version directly: <span class="font-mono text-scale/70 text-sm">ouroboros.bot/skills/manifest.json</span>
-      </p>
-
-      <div class="mt-8 border-l-[3px] border-scale/40 pl-5">
+      <div class="border-l-[3px] border-scale/40 pl-5 max-w-3xl">
         <p class="text-sm text-mist leading-relaxed">
           <strong class="text-bone">Docs for humans, skills for agents.</strong> The website explains the what.
           Your agent fetches the how from the code, the local install, or the bundle it's working inside.

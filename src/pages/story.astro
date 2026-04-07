@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro'
+import HeroCover from '../components/HeroCover.astro'
 
 const title = 'Code a model can use — the Ouroboros origin story'
 const description = 'How building an AI agent plugin led to building an agent harness from scratch — and why the distinction matters.'
@@ -98,7 +99,7 @@ const entries = [
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Article",
-      "headline": "Code a Model Can Use — The Ouroboros Origin Story",
+      "headline": "Code a model can use — the Ouroboros origin story",
       "description": description,
       "author": { "@type": "Person", "name": "Ari Mendelow", "url": "https://linkedin.com/in/arimendelow" },
       "datePublished": "2026-03-01",
@@ -107,18 +108,19 @@ const entries = [
   </Fragment>
 
   <!-- Header -->
-  <section class="px-6 md:px-12 lg:px-24 pt-32 pb-16 md:pt-44 md:pb-24">
-    <div class="max-w-4xl mx-auto">
-      <span class="font-mono text-[10px] text-scale/60 uppercase tracking-[0.3em] block mb-6">Origin Story</span>
-      <h1 class="font-display text-bone leading-[1.05] text-[2rem] sm:text-[2.5rem] md:text-[3.5rem] lg:text-[4rem]">
-        Code a model can use,<br />
-        <span class="text-mist">not code that uses a model.</span>
-      </h1>
-      <p class="text-base text-mist mt-6 leading-relaxed max-w-2xl">
-        How building an AI agent plugin led to building an agent harness from scratch — and why the distinction matters.
-      </p>
-      <p class="text-sm text-mist mt-4">Ari Mendelow &middot; March 2026</p>
-    </div>
+  <HeroCover eyebrow="Origin story">
+    <Fragment slot="title">
+      Code a model can use,<br />
+      <span class="text-mist">not code that uses a model.</span>
+    </Fragment>
+    <Fragment slot="body">
+      How building an AI agent plugin led to building an agent harness from scratch — and why the distinction matters.
+    </Fragment>
+  </HeroCover>
+
+  <!-- Byline -->
+  <section class="px-6 md:px-12 lg:px-24 -mt-8 md:-mt-12 mb-16 reveal">
+    <p class="text-sm text-shadow text-center">Ari Mendelow &middot; March 2026</p>
   </section>
 
   <!-- Timeline -->

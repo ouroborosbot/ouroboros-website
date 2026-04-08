@@ -18,7 +18,11 @@ jobs:
           node-version: 22
 
       - run: npm ci
-      - run: npx tsx scripts/generate-og.ts
+      # OG cards are now generated dynamically as part of the Astro build
+      # via the [...slug].png.ts endpoint reading src/data/og.ts. There is
+      # no separate generate-og.ts step anymore — the manual script was
+      # removed because it was the antipattern that caused stale OG cards.
+      # See AGENTS.md "OG cards" rule and src/pages/og/[...slug].png.ts.
       - run: npx astro build
 
       - name: Deploy to Cloudflare Workers

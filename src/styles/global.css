@@ -361,3 +361,18 @@ p, li, dd, figcaption { text-wrap: pretty; }
     font-size: 0.625rem;
   }
 }
+
+/* Inline code spans rendered from model output (testimonials, evaluations,
+   transcripts). The parser at src/lib/md.ts emits <code class="model-code">
+   for every backtick-wrapped span. Styled to match prose-ouro code so it
+   reads consistently whether it lands inside prose-ouro or a plain
+   blockquote / transcript card. */
+.model-code {
+  font-family: var(--font-mono);
+  background: var(--color-undergrowth);
+  color: var(--color-glow);
+  padding: 0.15em 0.4em;
+  border-radius: 0.25rem;
+  font-size: 0.85em;
+  white-space: nowrap;
+}

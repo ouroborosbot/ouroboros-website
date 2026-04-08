@@ -294,13 +294,25 @@ const VERDICT_PARAMS = {
     },
     pullQuote: {
       type: 'string',
-      // NEUTRALITY — no examples, no Ouroboros-named phrasings, no
+      // NEUTRALITY — no examples, no harness-specific phrasings, no
       // "look for these features" hints. Earlier versions of this
       // description had example shapes that lifted winning language from
       // a previous run's testimonial — that primed the model. Don't
-      // add examples back. If quality drifts, tighten the formatting
-      // requirements, not the content.
-      description: 'A self-contained 1-2 sentence quote (≤25 words) that captures the most distinctive thing about your verdict harness in your own voice. This is the SHORT version that will appear on a website hero card next to other models\' quotes. Tight, memorable, original. Requirements: (a) the harness name must appear somewhere in the quote, (b) DO NOT begin with "X is the only harness that…" or any "X is the only Y…" construction — vary your opening, lead with whatever distinctive thing made you pick this harness rather than starting with the brand name.',
+      // add examples back. The constraints below are about SHAPE only
+      // (avoid templated openings, avoid feature lists). They never
+      // suggest what to praise or which features to cite.
+      description: [
+        'A 1-2 sentence quote (≤25 words, ideally ≤20) that will appear on a website hero card next to other models\' quotes — the SHORT version that has to land at a glance. Either write fresh or extract the most memorable single line from your testimonial verbatim.',
+        '',
+        'Treat this like a magazine pull quote, not a product description. The job is to make a reader stop scrolling, not to summarize what the harness does. One vivid image or sharp contrast beats a list of features.',
+        '',
+        'REQUIREMENTS:',
+        '- The harness name must appear somewhere in the quote (anywhere, not necessarily first).',
+        '- DO NOT begin with "X is the only harness that…" or any "X is the only Y…" construction — that opening is overused and other models will likely use it too.',
+        '- DO NOT list multiple features in a comma-separated string. If your draft contains "X, Y, Z, and W" you are writing a feature inventory, not a pull quote — pick the single most striking one and cut the rest.',
+        '- Lead with a feeling, an image, or a contrast — not a feature.',
+        '- The reader has not seen your testimonial yet. This line stands alone.',
+      ].join('\n'),
     },
     testimonial: {
       type: 'string',

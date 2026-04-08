@@ -14,8 +14,8 @@ const totalReviews = modelReviews.summary?.totalReviews ?? modelReviews.reviews.
 const winnerCount = modelReviews.summary?.verdicts?.[winner] ?? totalReviews
 const allChose = winnerCount === totalReviews
 const calloutClaim = allChose
-  ? `Asked independently, all frontier models chose ${winner}.`
-  : `Asked independently, ${winnerCount} of ${totalReviews} frontier models chose ${winner}.`
+  ? `Asked independently, all frontier models choose ${winner}.`
+  : `Asked independently, ${winnerCount} of ${totalReviews} frontier models choose ${winner}.`
 
 const psycheFiles = [
   { file: 'SOUL.md', role: 'What you are.', desc: 'Core invariants and temperament.' },

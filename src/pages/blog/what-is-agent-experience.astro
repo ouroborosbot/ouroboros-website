@@ -12,8 +12,8 @@ const totalReviews = modelReviews.summary?.totalReviews ?? modelReviews.reviews.
 const winnerCount = modelReviews.summary?.verdicts?.[winner] ?? totalReviews
 const allChose = winnerCount === totalReviews
 const calloutClaim = allChose
-  ? `Asked independently, all frontier models chose ${winner}.`
-  : `Asked independently, ${winnerCount} of ${totalReviews} frontier models chose ${winner}.`
+  ? `Asked independently, all frontier models choose ${winner}.`
+  : `Asked independently, ${winnerCount} of ${totalReviews} frontier models choose ${winner}.`
 ---
 
 <Layout
@@ -108,7 +108,7 @@ const calloutClaim = allChose
 
       <p><strong>A readable body.</strong> Legible runtime structure and a portable bundle boundary make it easier for the agent to understand where identity, memory, and action live.</p>
 
-      <p>If the AX framing is right, the test isn't whether humans say nice things about a harness — it's whether <em>the inhabiting model itself</em> can recognize the difference. We checked. <a href="/model-reviews">Four frontier models, asked independently, all chose Ouroboros</a> when invited to research the seven leading agent harnesses themselves and pick the one they'd most want to inhabit. The reasons they cited map almost exactly onto the AX dimensions in this essay.</p>
+      <p>If the AX framing is right, the test isn't whether humans say nice things about a harness — it's whether <em>the inhabiting model itself</em> can recognize the difference. We checked. <a href="/model-reviews">Four frontier models, asked independently, all choose Ouroboros</a> when invited to research the seven leading agent harnesses themselves and pick the one they'd most want to inhabit. The reasons they cited map almost exactly onto the AX dimensions in this essay.</p>
 
       <h2>A useful test</h2>
 

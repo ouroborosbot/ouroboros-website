@@ -20,12 +20,12 @@ const harnessCountWord = ['zero','one','two','three','four','five','six','seven'
 // with it automatically.
 const allChose = winnerCount === totalReviews
 const claim = allChose
-  ? `all frontier models chose ${winner}`
-  : `${winnerCount} of ${totalReviews} frontier models chose ${winner}`
+  ? `all frontier models choose ${winner}`
+  : `${winnerCount} of ${totalReviews} frontier models choose ${winner}`
 const claimSentence = `Asked independently, ${claim}.`
 const subheadSentence = allChose
-  ? `All chose ${winner}.`
-  : `${winnerCount} of ${totalReviews} chose ${winner}.`
+  ? `All choose ${winner}.`
+  : `${winnerCount} of ${totalReviews} choose ${winner}.`
 ---
 
 <Layout

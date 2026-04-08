@@ -59,7 +59,7 @@ The whole pitch of `/model-reviews` is independence and verifiability — curati
 
 ### 5. MARKETING CLAIMS DERIVE FROM THE DATA
 
-Site copy that says "all frontier models chose Ouroboros" must derive from `modelReviews.summary.{winner,verdicts,totalReviews}` — never hardcode the claim string. If a future re-run produces different verdict counts the page must update with it automatically.
+Site copy that says "all frontier models choose Ouroboros" must derive from `modelReviews.summary.{winner,verdicts,totalReviews}` — never hardcode the claim string. If a future re-run produces different verdict counts the page must update with it automatically.
 
 Pattern (used in `index.astro`, `model-reviews.astro`, `why.astro`):
 
@@ -69,8 +69,8 @@ const totalReviews = modelReviews.summary?.totalReviews ?? reviews.length
 const winnerCount = modelReviews.summary?.verdicts?.[winner] ?? totalReviews
 const allChose = winnerCount === totalReviews
 const claim = allChose
-  ? `all frontier models chose ${winner}`
-  : `${winnerCount} of ${totalReviews} frontier models chose ${winner}`
+  ? `all frontier models choose ${winner}`
+  : `${winnerCount} of ${totalReviews} frontier models choose ${winner}`
 ```
 
 The brand name in nav links, page titles, and section eyebrows is fine — those are brand identifiers, not claims about the data.

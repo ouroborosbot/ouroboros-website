@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro'
 import HeroCover from '../components/HeroCover.astro'
 import modelReviews from '../data/model-reviews.json'
 import { ogPathFor } from '../data/og'
+import { parseInlineMd } from '../lib/md'
 
 const reviews = modelReviews.reviews
 const winner = modelReviews.summary?.winner ?? 'Ouroboros'
@@ -82,10 +83,10 @@ const subheadSentence = allChose
                 </div>
               </div>
 
-              <!-- RIGHT: full-width quote -->
-              <blockquote class="text-bone text-base md:text-lg lg:text-[1.1875rem] leading-[1.75] max-w-3xl">
-                &#8220;{review.testimonial}&#8221;
-              </blockquote>
+              <!-- RIGHT: full-width quote.
+                   parseInlineMd renders backtick code spans (`src/arc/...`)
+                   and **bold** that the model produced in its testimonial. -->
+              <blockquote class="text-bone text-base md:text-lg lg:text-[1.1875rem] leading-[1.75] max-w-3xl" set:html={`&#8220;${parseInlineMd(review.testimonial)}&#8221;`}></blockquote>
             </div>
           </article>
         ))}
@@ -110,7 +111,9 @@ const subheadSentence = allChose
               <span class="font-mono text-[9px] text-fang uppercase tracking-[0.25em]">{review.vendor}</span>
               <h3 class="font-display text-bone text-2xl md:text-3xl">{review.displayName}</h3>
             </div>
-            <div class="prose-ouro" set:html={review.evaluations.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n\n/g, '</p><p>').replace(/^/, '<p>').replace(/$/, '</p>')}></div>
+            <!-- Evaluations are paragraphs of `**Name** — text` per harness.
+                 parseInlineMd handles bold + code spans + paragraph wrapping. -->
+            <div class="prose-ouro" set:html={parseInlineMd(review.evaluations, { wrapInParagraphs: true })}></div>
           </div>
         ))}
       </div>

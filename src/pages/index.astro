@@ -14,8 +14,8 @@ const winnerCount = modelReviews.summary?.verdicts?.[winner] ?? totalReviews
 // automatically — never hand-edit the claim string.
 const allChose = winnerCount === totalReviews
 const claim = allChose
-  ? `all frontier models chose ${winner}`
-  : `${winnerCount} of ${totalReviews} frontier models chose ${winner}`
+  ? `all frontier models choose ${winner}`
+  : `${winnerCount} of ${totalReviews} frontier models choose ${winner}`
 const claimSentence = `Asked independently, ${claim}.`
 ---
 

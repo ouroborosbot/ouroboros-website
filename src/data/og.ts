@@ -41,7 +41,7 @@ export interface OgEntry {
 export const pageOg: Record<string, OgEntry> = {
   '/': {
     title: 'Your model prefers Ouroboros.',
-    subtitle: 'Asked independently, all frontier models chose Ouroboros.',
+    subtitle: 'Asked independently, all frontier models choose Ouroboros.',
     // No tag — the title is the message. "Reviews" as an eyebrow on the
     // home OG card would read as "reviews of what?" to anyone seeing it
     // in a Twitter/Slack preview without page context.
@@ -63,7 +63,7 @@ export const pageOg: Record<string, OgEntry> = {
   },
   '/model-reviews': {
     title: 'Which agent harness do frontier models prefer?',
-    subtitle: 'All chose Ouroboros.',
+    subtitle: 'All choose Ouroboros.',
     tag: 'Reviews',
   },
   '/docs': {

@@ -10,6 +10,11 @@ const winner = modelReviews.summary?.winner ?? 'Ouroboros'
 const totalReviews = modelReviews.summary?.totalReviews ?? reviews.length
 const winnerCount = modelReviews.summary?.verdicts?.[winner] ?? totalReviews
 
+// Harness count, derived from the script output. Render as a word for
+// editorial readability up to ten; fall back to the digit above that.
+const harnessCount = modelReviews.harnesses.length
+const harnessCountWord = ['zero','one','two','three','four','five','six','seven','eight','nine','ten'][harnessCount] ?? String(harnessCount)
+
 // Derive the claim string from the script output. Never hardcode.
 // If a future re-run produces different verdict counts the page updates
 // with it automatically.
@@ -48,7 +53,7 @@ const subheadSentence = allChose
     </Fragment>
     <Fragment slot="subhead">{subheadSentence}</Fragment>
     <Fragment slot="body">
-      Each model was given web search, URL fetching, and a list of seven open-source agent harnesses. They were asked to research freely, then state which one they would most want to inhabit.
+      Each model was given web search, URL fetching, and a list of {harnessCountWord} open-source agent harnesses. They were asked to research freely, then state which one they would most want to inhabit.
     </Fragment>
   </HeroCover>
 
@@ -132,7 +137,7 @@ const subheadSentence = allChose
         <div>
           <h3 class="font-display text-bone text-2xl md:text-3xl mb-3">The setup</h3>
           <p class="text-mist text-sm md:text-base leading-relaxed">
-            A single Node script invokes the current frontier models in parallel. Each gets the same system prompt, the same list of seven harnesses, and three tools: <code class="font-mono text-scale text-xs">search</code> (web search via Perplexity), <code class="font-mono text-scale text-xs">fetch_url</code> (direct URL retrieval), and <code class="font-mono text-scale text-xs">final_verdict</code> (structured submission).
+            A single Node script invokes the current frontier models in parallel. Each gets the same system prompt, the same list of {harnessCountWord} harnesses, and three tools: <code class="font-mono text-scale text-xs">search</code> (web search via Perplexity), <code class="font-mono text-scale text-xs">fetch_url</code> (direct URL retrieval), and <code class="font-mono text-scale text-xs">final_verdict</code> (structured submission).
           </p>
         </div>
 

@@ -101,6 +101,38 @@ export const pageOg: Record<string, OgEntry> = {
     subtitle: 'A practical guide to building agents that read, think, act, and grow — from first principles to production.',
     tag: 'Tutorial',
   },
+
+  // ── Docs sub-pages ──
+  '/docs/getting-started': {
+    title: 'Get started with Ouroboros in 3 minutes.',
+    subtitle: 'Run one command. The serpent guide handles the rest.',
+    tag: 'Operator guide',
+  },
+  '/docs/bundles-and-psyche': {
+    title: 'Psyche files — five files that define your agent.',
+    subtitle: 'An agent bundle is the portable self. The psyche is the part that helps the agent stay oriented to who it is.',
+    tag: 'Operator guide',
+  },
+  '/docs/continuity-and-memory': {
+    title: 'Agent memory that surfaces before you think.',
+    subtitle: 'Continuity over compaction. The diary is the shelf, the journal is the desk, habits are the rhythm.',
+    tag: 'Operator guide',
+  },
+  '/docs/architecture': {
+    title: 'Heart, mind, senses — code named for the agent inside.',
+    subtitle: 'Ouroboros uses a body metaphor because naming and structure affect how an agent navigates the code it has to inhabit.',
+    tag: 'Operator guide',
+  },
+  '/docs/tasks-and-work': {
+    title: 'A place to put the work.',
+    subtitle: 'Task cards, work directories, a compact board in every prompt, and self-repair tooling when things drift.',
+    tag: 'Operator guide',
+  },
+  '/docs/skills-and-prompts': {
+    title: 'Skills vs prompts — when to use each.',
+    subtitle: 'Prompts for quick questions. Skills for repeatable operator flows that need the latest local truth.',
+    tag: 'Operator guide',
+  },
 }
 
 // Convert a route path (e.g. '/why' or '/blog/give-your-agent-a-home') to

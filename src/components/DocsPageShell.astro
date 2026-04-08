@@ -5,23 +5,26 @@ interface Props {
   eyebrow?: string
   canonical?: string
   intro?: string
+  ogImage?: string
 }
 
 const {
   title,
   description,
-  eyebrow = 'Operator Guide',
+  eyebrow = 'Operator guide',
   canonical,
   intro,
+  ogImage,
 } = Astro.props
 
 import Layout from '../layouts/Layout.astro'
 ---
 
 <Layout
-  title={`${title} | Ouroboros Docs`}
+  title={`${title} — Ouroboros docs`}
   description={description}
   canonical={canonical}
+  ogImage={ogImage}
   ogType="article"
 >
   <Fragment slot="head">

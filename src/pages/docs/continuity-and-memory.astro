@@ -1,12 +1,14 @@
 ---
 import DocsPageShell from '../../components/DocsPageShell.astro'
 import PromptCard from '../../components/PromptCard.astro'
+import { ogPathFor } from '../../data/og'
 ---
 
 <DocsPageShell
   title="Agent memory that surfaces before you think"
   description="Memory is only part of the story. The larger goal is continuity: helping the agent resume itself, its work, and its relationships without constant re-briefing."
   eyebrow="Operator guide"
+  ogImage={ogPathFor('/docs/continuity-and-memory')}
   canonical="https://ouroboros.bot/docs/continuity-and-memory/"
   intro="Good continuity reduces orientation cost. The diary is the shelf — durable facts the agent wants to recall later. The journal is the desk — working notes, thinking-in-progress. Habits are the agent's rhythms — autonomous patterns that fire on their own schedule. Together they help the agent recover its own thread without the human rebuilding it by hand."
 >

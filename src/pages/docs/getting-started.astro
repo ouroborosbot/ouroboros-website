@@ -2,12 +2,14 @@
 import DocsPageShell from '../../components/DocsPageShell.astro'
 import SerpentGuidePreview from '../../components/SerpentGuidePreview.astro'
 import PromptCard from '../../components/PromptCard.astro'
+import { ogPathFor } from '../../data/og'
 ---
 
 <DocsPageShell
   title="Get started with Ouroboros in 3 minutes"
   description="Run one command. The serpent guide handles the rest."
   eyebrow="Operator guide"
+  ogImage={ogPathFor('/docs/getting-started')}
   canonical="https://ouroboros.bot/docs/getting-started/"
   intro="Setup is a conversation, not a checklist. The serpent guide walks you through provider setup, naming, and personality — you just answer its questions."
 >

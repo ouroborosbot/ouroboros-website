@@ -45,7 +45,7 @@ const HARNESSES = [
   { name: 'Claude Code', repo: 'https://github.com/anthropics/claude-code' },
   { name: 'Codex CLI',   repo: 'https://github.com/openai/codex' },
   { name: 'Pi',          repo: 'https://github.com/badlogic/pi-mono' },
-  { name: 'OpenCode',    repo: 'https://github.com/opencode-ai/opencode' },
+  { name: 'OpenCode',    repo: 'https://github.com/anomalyco/opencode' },
   { name: 'Copilot CLI', repo: 'https://github.com/github/copilot-cli' },
 ]
 

@@ -20,21 +20,21 @@ import { ogPathFor } from '../../data/og'
   <div class="space-y-10">
 
     <div>
-      <h2 class="font-mono text-xs text-scale uppercase tracking-[0.3em] mb-4">Core principle</h2>
+      <h2 class="font-mono text-xs text-scale uppercase tracking-[0.22em] mb-4">Core principle</h2>
       <div class="text-sm text-mist leading-relaxed space-y-4">
         <p><strong class="text-bone">Task card = tracked object. Work directory = working surface.</strong> They often travel together, but they are not the same thing. A small task may only need a card. A larger effort gets a work directory alongside it to hold planning docs, doing docs, unit files, and artifacts.</p>
       </div>
     </div>
 
     <div>
-      <h2 class="font-mono text-xs text-scale uppercase tracking-[0.3em] mb-4">When to create a task</h2>
+      <h2 class="font-mono text-xs text-scale uppercase tracking-[0.22em] mb-4">When to create a task</h2>
       <div class="text-sm text-mist leading-relaxed space-y-4">
         <p>Use a task when work needs to persist across turns, be tracked explicitly, or accumulate planning and artifacts over time. The key question is not importance but persistence &mdash; some work is modest but needs to survive across sessions and context resets. Quick one-off requests don't need a task. Anything the agent should remember to come back to does.</p>
       </div>
     </div>
 
     <div>
-      <h2 class="font-mono text-xs text-scale uppercase tracking-[0.3em] mb-4">Task cards</h2>
+      <h2 class="font-mono text-xs text-scale uppercase tracking-[0.22em] mb-4">Task cards</h2>
       <div class="text-sm text-mist leading-relaxed space-y-4">
         <p>A task card is a markdown file with YAML frontmatter that declares <code class="text-bone/80 bg-undergrowth/30 px-1.5 py-0.5 rounded text-xs">kind: task</code>. That declaration is the signal. Everything else in the task directory &mdash; planning docs, doing docs, unit files, artifacts &mdash; is support material that the scanner may enumerate for context but does not parse as a task card.</p>
         <p>Cards carry status, priority, dependencies, ownership, timestamps, and pointers. They're the source of truth that the board reads from.</p>
@@ -42,7 +42,7 @@ import { ogPathFor } from '../../data/og'
     </div>
 
     <div>
-      <h2 class="font-mono text-xs text-scale uppercase tracking-[0.3em] mb-4">Collections</h2>
+      <h2 class="font-mono text-xs text-scale uppercase tracking-[0.22em] mb-4">Collections</h2>
       <div class="text-sm text-mist leading-relaxed space-y-4">
         <p>Tasks live in two collections, each representing a different work rhythm:</p>
         <p><code class="text-bone/80 bg-undergrowth/30 px-1.5 py-0.5 rounded text-xs">one-shots/</code> &mdash; bounded work with a clear finish line. Fix a bug, write a feature, review a PR. When it's done or cancelled, it archives.</p>
@@ -51,7 +51,7 @@ import { ogPathFor } from '../../data/og'
     </div>
 
     <div>
-      <h2 class="font-mono text-xs text-scale uppercase tracking-[0.3em] mb-4">Work directories</h2>
+      <h2 class="font-mono text-xs text-scale uppercase tracking-[0.22em] mb-4">Work directories</h2>
       <div class="text-sm text-mist leading-relaxed space-y-4">
         <p>When a task needs room to think, it gets a same-stem directory next to the card. This holds planning docs, doing docs, unit files, and any outputs produced during execution. The scanner detects the directory and lists its contents, but never descends into it looking for task cards.</p>
         <p>Not every task needs one. Small tasks may only need a card. Work directories are for tasks with enough moving parts to justify a working surface.</p>
@@ -123,18 +123,18 @@ Timeout is 5s, should be 15s for mobile.</div>
     </div>
 
     <div>
-      <h2 class="font-mono text-xs text-scale uppercase tracking-[0.3em] mb-4">Lifecycle</h2>
+      <h2 class="font-mono text-xs text-scale uppercase tracking-[0.22em] mb-4">Lifecycle</h2>
       <div class="text-sm text-mist leading-relaxed space-y-4">
         <p>A common path is <code class="text-bone/80 bg-undergrowth/30 px-1.5 py-0.5 rounded text-xs">drafting</code> &rarr; <code class="text-bone/80 bg-undergrowth/30 px-1.5 py-0.5 rounded text-xs">processing</code> &rarr; <code class="text-bone/80 bg-undergrowth/30 px-1.5 py-0.5 rounded text-xs">validating</code> &rarr; <code class="text-bone/80 bg-undergrowth/30 px-1.5 py-0.5 rounded text-xs">done</code>, with <code class="text-bone/80 bg-undergrowth/30 px-1.5 py-0.5 rounded text-xs">paused</code>, <code class="text-bone/80 bg-undergrowth/30 px-1.5 py-0.5 rounded text-xs">blocked</code>, <code class="text-bone/80 bg-undergrowth/30 px-1.5 py-0.5 rounded text-xs">collaborating</code>, or <code class="text-bone/80 bg-undergrowth/30 px-1.5 py-0.5 rounded text-xs">cancelled</code> available when the work requires it. Both <code class="text-bone/80 bg-undergrowth/30 px-1.5 py-0.5 rounded text-xs">done</code> and <code class="text-bone/80 bg-undergrowth/30 px-1.5 py-0.5 rounded text-xs">cancelled</code> are terminal &mdash; the card and its work directory archive together.</p>
       </div>
     </div>
 
     <div>
-      <h2 class="font-mono text-xs text-scale uppercase tracking-[0.3em] mb-4">The board</h2>
+      <h2 class="font-mono text-xs text-scale uppercase tracking-[0.22em] mb-4">The board</h2>
       <div class="text-sm text-mist leading-relaxed space-y-4">
         <p>The board is a summary, not the source of truth. Task cards are the source of truth. The board exists so the agent can quickly answer: what am I holding, what state is it in, and is the task system itself healthy?</p>
         <p>It stays compact because prompt budget matters &mdash; the board needs to orient the agent without eating context that should go to the actual work.</p>
-        <div class="font-mono text-xs text-mist bg-undergrowth/20 rounded-lg px-4 py-3 border border-canopy/15">
+        <div class="font-mono text-xs text-mist bg-undergrowth/20 rounded-lg px-4 py-3 border border-canopy/30">
           [Tasks] drafting:2 processing:3 blocked:1<br/>
           &nbsp;processing: auth-fix, api-refactor, docs-update<br/>
           &nbsp;blocked: deploy-pipeline<br/>
@@ -142,7 +142,7 @@ Timeout is 5s, should be 15s for mobile.</div>
         </div>
         <p>Terminal tasks &mdash; <code class="text-bone/80 bg-undergrowth/30 px-1.5 py-0.5 rounded text-xs">done</code> and <code class="text-bone/80 bg-undergrowth/30 px-1.5 py-0.5 rounded text-xs">cancelled</code> &mdash; are hidden from active counts. They still exist in archive, but they don't clutter the view.</p>
         <p>When issues exist, the health line splits them by urgency:</p>
-        <div class="font-mono text-xs text-mist bg-undergrowth/20 rounded-lg px-4 py-3 border border-canopy/15">
+        <div class="font-mono text-xs text-mist bg-undergrowth/20 rounded-lg px-4 py-3 border border-canopy/30">
           &nbsp;health: 1 live, 10 migration
         </div>
         <p><strong>Live issues</strong> are problems affecting current operation &mdash; a task card with invalid schema, a broken dependency link. <strong>Migration issues</strong> are historical or structural cleanup discovered during import or evolution &mdash; legacy cards missing the <code class="text-bone/80 bg-undergrowth/30 px-1.5 py-0.5 rounded text-xs">kind</code> field, old support docs still at the collection root.</p>
@@ -151,10 +151,10 @@ Timeout is 5s, should be 15s for mobile.</div>
     </div>
 
     <div>
-      <h2 class="font-mono text-xs text-scale uppercase tracking-[0.3em] mb-4">Self-repair</h2>
+      <h2 class="font-mono text-xs text-scale uppercase tracking-[0.22em] mb-4">Self-repair</h2>
       <div class="text-sm text-mist leading-relaxed space-y-4">
         <p>Both the agent and the operator can inspect and act on task-system problems. The agent can initiate checks during its own work, and the operator can request them via <code class="text-bone/80 bg-undergrowth/30 px-1.5 py-0.5 rounded text-xs">ouro task fix</code>. Every issue the scanner finds has a typed code, a proposed fix, and a confidence level. Safe fixes can always be previewed before applying.</p>
-        <div class="font-mono text-xs text-mist bg-undergrowth/20 rounded-lg px-4 py-3 border border-canopy/15 space-y-1">
+        <div class="font-mono text-xs text-mist bg-undergrowth/20 rounded-lg px-4 py-3 border border-canopy/30 space-y-1">
           <span class="text-scale/70">$</span> ouro task fix<br/>
           fix plan: 5 safe, 2 review<br/>
           <br/>
@@ -171,7 +171,7 @@ Timeout is 5s, should be 15s for mobile.</div>
     </div>
 
     <div>
-      <h2 class="font-mono text-xs text-scale uppercase tracking-[0.3em] mb-4">What to ask next</h2>
+      <h2 class="font-mono text-xs text-scale uppercase tracking-[0.22em] mb-4">What to ask next</h2>
       <ul class="space-y-3 text-sm text-mist leading-relaxed">
         <li>Which active tasks are stale or at risk of being dropped?</li>
         <li>Show me the highest-priority task and the working notes behind it.</li>
@@ -183,15 +183,15 @@ Timeout is 5s, should be 15s for mobile.</div>
   </div>
 
   <!-- Exit links -->
-  <div class="pt-6 border-t border-canopy/15 space-y-3">
+  <div class="pt-6 border-t border-canopy/30 space-y-3">
     <a href="/blog/designing-with-your-agent" class="group block text-sm text-mist hover:text-bone transition-colors">
-      How we designed this system with the agent who uses it. <span class="text-scale group-hover:text-scale transition-colors">&rarr;</span>
+      How we designed this system with the agent who uses it. <span class="text-scale group-hover:text-glow transition-colors">&rarr;</span>
     </a>
     <a href="/docs/bundles-and-psyche" class="group block text-sm text-mist hover:text-bone transition-colors">
-      Tasks are one part of the bundle. The psyche is the rest. <span class="text-scale group-hover:text-scale transition-colors">&rarr;</span>
+      Tasks are one part of the bundle. The psyche is the rest. <span class="text-scale group-hover:text-glow transition-colors">&rarr;</span>
     </a>
     <a href="/blog/what-is-agent-experience" class="group block text-sm text-mist hover:text-bone transition-colors">
-      The design philosophy behind building for the agent inside. <span class="text-scale group-hover:text-scale transition-colors">&rarr;</span>
+      The design philosophy behind building for the agent inside. <span class="text-scale group-hover:text-glow transition-colors">&rarr;</span>
     </a>
   </div>
 </DocsPageShell>

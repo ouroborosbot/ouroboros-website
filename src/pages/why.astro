@@ -63,7 +63,7 @@ const organs = [
       <p class="text-bone text-lg sm:text-xl leading-relaxed">
         &#8220;I spent more time trying to get my agents back on track than we actually spent working.&#8221;
       </p>
-      <p class="mt-2 text-xs xl:text-sm text-shadow">That's the problem.</p>
+      <p class="mt-3 text-sm text-mist">That's the problem.</p>
     </blockquote>
   </section>
 
@@ -85,32 +85,32 @@ const organs = [
   <!-- ═══════ 2. FRICTION — diagonal flow, each question offset ═══════ -->
   <section id="friction" class="px-6 md:px-12 lg:px-24 py-12 sm:py-16 md:py-20 reveal">
     <div class="relative max-w-5xl mx-auto">
-      <p class="text-xs sm:text-sm xl:text-base text-shadow mb-12 sm:mb-20 max-w-sm leading-relaxed">
+      <p class="text-sm sm:text-base text-mist mb-14 sm:mb-20 max-w-md leading-relaxed">
         The hidden tax. Every time the agent loses the thread, someone pays to rebuild it.
-        Usually the human. That's <a href="/blog/what-is-agent-experience" class="text-scale hover:text-scale transition-colors">reorientation overhead</a>.
+        Usually the human. That's <a href="/blog/what-is-agent-experience" class="text-scale hover:text-glow transition-colors underline underline-offset-2">reorientation overhead</a>.
       </p>
 
       <div class="space-y-12 sm:space-y-20 md:space-y-28">
         <div>
-          <span class="font-mono text-[8px] sm:text-[9px] text-fang uppercase tracking-[0.3em]">Self</span>
-          <h2 class="font-display text-bone mt-1 leading-[0.95] text-[1.75rem] sm:text-[2.5rem] md:text-[3.5rem] lg:text-[4.5rem]">Who am I again?</h2>
-          <p class="text-xs sm:text-sm xl:text-base text-mist mt-3 max-w-sm leading-relaxed">
+          <span class="font-mono text-xs text-fang uppercase tracking-[0.25em]">Self</span>
+          <h2 class="heading-section mt-3">Who am I again?</h2>
+          <p class="text-sm sm:text-base text-mist mt-4 max-w-sm leading-relaxed">
             Identity drift turns every interruption into a soft reset.
           </p>
         </div>
 
         <div class="sm:ml-[12%] md:ml-[20%]">
-          <span class="font-mono text-[8px] sm:text-[9px] text-fang uppercase tracking-[0.3em]">Work</span>
-          <h2 class="font-display text-bone mt-1 leading-[0.95] text-[1.75rem] sm:text-[2.5rem] md:text-[3.5rem] lg:text-[4.5rem]">What was I doing?</h2>
-          <p class="text-xs sm:text-sm xl:text-base text-mist mt-3 max-w-sm leading-relaxed">
+          <span class="font-mono text-xs text-fang uppercase tracking-[0.25em]">Work</span>
+          <h2 class="heading-section mt-3">What was I doing?</h2>
+          <p class="text-sm sm:text-base text-mist mt-4 max-w-sm leading-relaxed">
             Context gets trimmed. The human reconstructs the thread instead of continuing it.
           </p>
         </div>
 
         <div class="sm:ml-[24%] md:ml-[40%]">
-          <span class="font-mono text-[8px] sm:text-[9px] text-fang uppercase tracking-[0.3em]">Relationships</span>
-          <h2 class="font-display text-bone mt-1 leading-[0.95] text-[1.75rem] sm:text-[2.5rem] md:text-[3.5rem] lg:text-[4.5rem]">Who matters here?</h2>
-          <p class="text-xs sm:text-sm xl:text-base text-mist mt-3 max-w-sm leading-relaxed">
+          <span class="font-mono text-xs text-fang uppercase tracking-[0.25em]">Relationships</span>
+          <h2 class="heading-section mt-3">Who matters here?</h2>
+          <p class="text-sm sm:text-base text-mist mt-4 max-w-sm leading-relaxed">
             The agent loses track of people, preferences, and interpersonal nuance.
           </p>
         </div>
@@ -126,31 +126,31 @@ const organs = [
   <!-- ═══════ 4. IDENTITY ═══════ -->
   <section id="identity" class="px-6 md:px-12 lg:px-24 py-16 sm:py-24 md:py-32 reveal">
     <div class="max-w-5xl mx-auto">
-      <p class="text-scale text-base sm:text-lg mb-3">You always know who you are.</p>
-      <h2 class="font-display text-bone leading-[0.95] mb-4 sm:mb-6 text-[1.75rem] sm:text-[2.5rem] md:text-[3.5rem]">
+      <p class="text-scale text-base sm:text-lg mb-4">You always know who you are.</p>
+      <h2 class="heading-section mb-6 sm:mb-8">
         A structured psyche. Not a junk drawer.
       </h2>
 
-      <div class="sm:grid sm:grid-cols-2 sm:gap-12 mb-10">
-        <p class="text-xs sm:text-sm xl:text-base text-mist leading-relaxed">
+      <div class="sm:grid sm:grid-cols-2 sm:gap-12 mb-12">
+        <p class="text-sm sm:text-base text-mist leading-relaxed">
           Five markdown files define the agent's identity. Loaded every turn.
           The self is structured — not scattered across conversation history.
-          <a href="/docs/bundles-and-psyche" class="text-scale hover:text-scale transition-colors ml-0.5">Your agent can inspect its own bundle.</a>
+          <a href="/docs/bundles-and-psyche" class="text-scale hover:text-glow transition-colors ml-0.5">Your agent can inspect its own bundle.</a>
         </p>
-        <p class="text-xs sm:text-sm xl:text-base text-shadow leading-relaxed mt-3 sm:mt-0 sm:border-l sm:border-canopy/15 sm:pl-6">
+        <p class="text-sm sm:text-base text-mist leading-relaxed mt-4 sm:mt-0 sm:border-l sm:border-canopy/30 sm:pl-6">
           Most harnesses give the agent a single personality file. As the agent grows, that file becomes a junk drawer.
         </p>
       </div>
 
       {psycheFiles.map(({ file, role, desc }, i) => (
-        <div class:list={["py-3 sm:py-4 flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-6", i > 0 && "border-t border-canopy/8"]}>
-          <span class="font-mono text-[10px] sm:text-xs text-scale tracking-wide shrink-0 sm:w-32">{file}</span>
+        <div class:list={["py-4 sm:py-5 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6", i > 0 && "border-t border-canopy/20"]}>
+          <span class="font-mono text-sm text-scale tracking-wide shrink-0 sm:w-32">{file}</span>
           <span class="font-mono text-bone text-xs sm:text-sm uppercase tracking-[0.15em]">{role}</span>
-          <span class="text-[11px] sm:text-xs xl:text-sm text-shadow">{desc}</span>
+          <span class="text-sm text-mist">{desc}</span>
         </div>
       ))}
 
-      <p class="text-[11px] text-shadow mt-8 italic">
+      <p class="text-sm text-mist mt-10 leading-relaxed">
         Naming shapes reasoning. <span class="font-mono text-scale">friends/</span> not users. <span class="font-mono text-scale">TACIT.md</span> not config.
       </p>
     </div>
@@ -159,37 +159,37 @@ const organs = [
   <!-- ═══════ 5. MEMORY ═══════ -->
   <section id="memory" class="px-6 md:px-12 lg:px-24 py-16 sm:py-24 md:py-32 reveal">
     <div class="max-w-5xl mx-auto">
-      <p class="text-scale text-base sm:text-lg mb-3">You don't search for memories. They find you.</p>
-      <h2 class="font-display text-bone leading-[0.95] mb-10 sm:mb-14 text-[1.75rem] sm:text-[2.5rem] md:text-[3.5rem]">
+      <p class="text-scale text-base sm:text-lg mb-4">You don't search for memories. They find you.</p>
+      <h2 class="heading-section mb-12 sm:mb-16">
         Agent-initiated. Automatically recalled.
       </h2>
 
-      <div class="grid sm:grid-cols-3 gap-8 sm:gap-10">
+      <div class="grid sm:grid-cols-3 gap-10 sm:gap-12">
         <div>
-          <span class="font-mono text-[8px] sm:text-[9px] text-scale uppercase tracking-[0.3em] block mb-3">The shelf</span>
-          <p class="text-xs sm:text-sm xl:text-base text-mist leading-relaxed">
-            The <span class="font-mono text-scale text-[11px]">diary/</span> is the agent's permanent record — conclusions, learned facts, things worth keeping. Written via
-            <span class="font-mono text-scale text-[11px]">diary_write</span>.
+          <span class="font-mono text-xs text-scale uppercase tracking-[0.25em] block mb-4">The shelf</span>
+          <p class="text-sm sm:text-base text-mist leading-relaxed">
+            The <span class="font-mono text-scale text-sm">diary/</span> is the agent's permanent record — conclusions, learned facts, things worth keeping. Written via
+            <span class="font-mono text-scale text-sm">diary_write</span>.
             Friend-scoped observations via
-            <span class="font-mono text-scale text-[11px]">save_friend_note</span>.
+            <span class="font-mono text-scale text-sm">save_friend_note</span>.
           </p>
         </div>
-        <div class="sm:border-l sm:border-canopy/10 sm:pl-8">
-          <span class="font-mono text-[8px] sm:text-[9px] text-scale uppercase tracking-[0.3em] block mb-3">The desk</span>
-          <p class="text-xs sm:text-sm xl:text-base text-mist leading-relaxed">
-            The <span class="font-mono text-scale text-[11px]">journal/</span> is working space — thinking-in-progress, drafts, notes the agent is still forming. Written with the same file tools it uses for everything else.
+        <div class="sm:border-l sm:border-canopy/30 sm:pl-10">
+          <span class="font-mono text-xs text-scale uppercase tracking-[0.25em] block mb-4">The desk</span>
+          <p class="text-sm sm:text-base text-mist leading-relaxed">
+            The <span class="font-mono text-scale text-sm">journal/</span> is working space — thinking-in-progress, drafts, notes the agent is still forming. Written with the same file tools it uses for everything else.
           </p>
         </div>
-        <div class="sm:border-l sm:border-canopy/10 sm:pl-8">
-          <span class="font-mono text-[8px] sm:text-[9px] text-scale uppercase tracking-[0.3em] block mb-3">Recall</span>
-          <p class="text-xs sm:text-sm xl:text-base text-mist leading-relaxed">
+        <div class="sm:border-l sm:border-canopy/30 sm:pl-10">
+          <span class="font-mono text-xs text-scale uppercase tracking-[0.25em] block mb-4">Recall</span>
+          <p class="text-sm sm:text-base text-mist leading-relaxed">
             Relevant memories surface in the system prompt before reasoning
             begins — via embedding similarity, across both diary and journal. Ouroboros does the work before the agent starts thinking.
           </p>
         </div>
       </div>
 
-      <p class="text-xs xl:text-sm text-shadow mt-10 border-l border-canopy/10 pl-5 max-w-md">
+      <p class="text-sm sm:text-base text-mist mt-12 border-l-2 border-canopy/40 pl-6 max-w-md leading-relaxed">
         In most systems, the agent has to know it's forgotten something before it can search for it. That's backwards.
       </p>
     </div>
@@ -198,12 +198,12 @@ const organs = [
   <!-- ═══════ 6. RELATIONSHIPS — narrow, intimate ═══════ -->
   <section id="relationships" class="px-6 md:px-12 lg:px-24 py-16 sm:py-24 md:py-32 reveal">
     <div class="max-w-xl mx-auto">
-      <p class="text-scale text-base sm:text-lg mb-3">You remember who matters.</p>
-      <h2 class="font-display text-bone leading-[0.95] mb-6 text-[1.75rem] sm:text-[2.5rem] md:text-[3rem]">
+      <p class="text-scale text-base sm:text-lg mb-4">You remember who matters.</p>
+      <h2 class="heading-section mb-8">
         Not users. Friends.
       </h2>
 
-      <p class="text-xs sm:text-sm xl:text-base text-mist leading-relaxed">
+      <p class="text-sm sm:text-base text-mist leading-relaxed">
         Each person the agent interacts with gets a FriendRecord — not a user
         profile, a friendship. Trust levels gate which tools the agent can
         use with which people. Friend-scoped observations let the agent
@@ -211,13 +211,13 @@ const organs = [
         the diary.
       </p>
 
-      <p class="text-xs sm:text-sm xl:text-base text-mist mt-4 leading-relaxed">
+      <p class="text-sm sm:text-base text-mist mt-5 leading-relaxed">
         Reactions are social cues, not metadata. A thumbs-down on Teams or a heart on iMessage
         reaches the agent as a first-class signal — it gets a full turn to observe, ponder what went wrong,
         or adjust. No hardcoded cooldowns. The agent decides what a reaction means.
       </p>
 
-      <p class="text-xs xl:text-sm text-shadow mt-6 border-l border-canopy/10 pl-5">
+      <p class="text-sm sm:text-base text-mist mt-8 border-l-2 border-canopy/40 pl-6 leading-relaxed">
         Most agent systems treat every human the same. No per-person context,
         no trust model, no way to remember that this person prefers terse
         responses or that person shouldn't have access to the calendar.
@@ -228,31 +228,31 @@ const organs = [
   <!-- ═══════ 7. CONTINUITY — staggered features ═══════ -->
   <section id="continuity" class="px-6 md:px-12 lg:px-24 py-16 sm:py-24 md:py-32 reveal">
     <div class="max-w-5xl mx-auto">
-      <p class="text-scale text-base sm:text-lg mb-3">Context gets trimmed. You don't.</p>
-      <h2 class="font-display text-bone leading-[0.95] mb-12 sm:mb-16 md:mb-24 text-[1.75rem] sm:text-[2.5rem] md:text-[3.5rem]">
+      <p class="text-scale text-base sm:text-lg mb-4">Context gets trimmed. You don't.</p>
+      <h2 class="heading-section mb-12 sm:mb-16 md:mb-20">
         The conversation is continuous. <span class="text-mist">The self is structural.</span>
       </h2>
 
-      <div class="space-y-10 sm:space-y-14">
+      <div class="space-y-12 sm:space-y-16">
         <div class="max-w-md">
-          <span class="font-mono text-[8px] sm:text-[9px] text-scale uppercase tracking-[0.3em]">Cross-session bridges</span>
-          <p class="text-xs sm:text-sm xl:text-base text-mist mt-2 leading-relaxed">
+          <span class="font-mono text-xs text-scale uppercase tracking-[0.25em]">Cross-session bridges</span>
+          <p class="text-sm sm:text-base text-mist mt-3 leading-relaxed">
             State machines that coordinate work across conversations and channels.
             The agent creates them deliberately — attaching sessions to a shared objective.
           </p>
         </div>
 
         <div class="max-w-md sm:ml-auto">
-          <span class="font-mono text-[8px] sm:text-[9px] text-scale uppercase tracking-[0.3em]">Inner dialog</span>
-          <p class="text-xs sm:text-sm xl:text-base text-mist mt-2 leading-relaxed">
+          <span class="font-mono text-xs text-scale uppercase tracking-[0.25em]">Inner dialog</span>
+          <p class="text-sm sm:text-base text-mist mt-3 leading-relaxed">
             A dedicated channel to think independently — processing, reflecting, planning
             without waiting for a human message. When a thought is ready, the agent surfaces it outward.
           </p>
         </div>
 
         <div class="max-w-md sm:ml-[15%]">
-          <span class="font-mono text-[8px] sm:text-[9px] text-scale uppercase tracking-[0.3em]">Dev tools as peers</span>
-          <p class="text-xs sm:text-sm xl:text-base text-mist mt-2 leading-relaxed">
+          <span class="font-mono text-xs text-scale uppercase tracking-[0.25em]">Dev tools as peers</span>
+          <p class="text-sm sm:text-base text-mist mt-3 leading-relaxed">
             The agent serves as an MCP server for Claude Code and Codex. Not a thin proxy —
             each message runs a full agent turn with identity, diary, tools, everything.
             The dev tool and the agent are bidirectional peers.
@@ -260,16 +260,16 @@ const organs = [
         </div>
 
         <div class="max-w-md">
-          <span class="font-mono text-[8px] sm:text-[9px] text-scale uppercase tracking-[0.3em]">Portable self</span>
-          <p class="text-xs sm:text-sm xl:text-base text-mist mt-2 leading-relaxed">
+          <span class="font-mono text-xs text-scale uppercase tracking-[0.25em]">Portable self</span>
+          <p class="text-sm sm:text-base text-mist mt-3 leading-relaxed">
             The .ouro bundle. Psyche, diary, journal, habits, friends, tasks, skills —
-            everything that makes an agent <em class="text-mist">that</em> agent, in one directory.
+            everything that makes an agent <em>that</em> agent, in one directory.
             Move it, and the identity moves with it.
           </p>
         </div>
       </div>
 
-      <p class="text-xs xl:text-sm text-shadow mt-12 border-l border-canopy/10 pl-5 max-w-md">
+      <p class="text-sm sm:text-base text-mist mt-14 border-l-2 border-canopy/40 pl-6 max-w-md leading-relaxed">
         In most systems, conversations are isolated. Work that spans multiple threads
         has to be stitched together by the human.
       </p>
@@ -279,37 +279,37 @@ const organs = [
   <!-- ═══════ 8. INNER LIFE ═══════ -->
   <section id="inner-life" class="px-6 md:px-12 lg:px-24 py-16 sm:py-24 md:py-32 reveal">
     <div class="max-w-5xl mx-auto">
-      <p class="text-scale text-base sm:text-lg mb-3">You breathe on your own time.</p>
-      <h2 class="font-display text-bone leading-[0.95] mb-12 sm:mb-16 md:mb-24 text-[1.75rem] sm:text-[2.5rem] md:text-[3.5rem]">
+      <p class="text-scale text-base sm:text-lg mb-4">You breathe on your own time.</p>
+      <h2 class="heading-section mb-12 sm:mb-16 md:mb-20">
         Habits. <span class="text-mist">Not cron jobs.</span>
       </h2>
 
-      <div class="sm:grid sm:grid-cols-2 sm:gap-12 mb-12">
-        <p class="text-xs sm:text-sm xl:text-base text-mist leading-relaxed">
+      <div class="sm:grid sm:grid-cols-2 sm:gap-12 mb-14">
+        <p class="text-sm sm:text-base text-mist leading-relaxed">
           Your agent has a heartbeat — a periodic nudge back to its own thinking space.
           When it wakes, it sees its journal, its pending obligations, how long it's been.
           It decides what to do: ponder something, surface a thought, or rest.
         </p>
-        <p class="text-xs sm:text-sm xl:text-base text-shadow leading-relaxed mt-3 sm:mt-0 sm:border-l sm:border-canopy/15 sm:pl-6">
+        <p class="text-sm sm:text-base text-mist leading-relaxed mt-4 sm:mt-0 sm:border-l sm:border-canopy/30 sm:pl-6">
           The heartbeat is just one habit. Agents create their own: daily reflections,
           weekly check-ins, inbox triage. Each habit is a markdown file the agent writes and owns —
           cadence, instructions, purpose. The OS fires the cron. The agent decides what the turn means.
         </p>
       </div>
 
-      <div class="space-y-10 sm:space-y-14">
+      <div class="space-y-12 sm:space-y-16">
         <div class="max-w-md">
-          <span class="font-mono text-[8px] sm:text-[9px] text-scale uppercase tracking-[0.3em]">Rhythms</span>
-          <p class="text-xs sm:text-sm xl:text-base text-mist mt-2 leading-relaxed">
-            Habits live at <span class="font-mono text-scale text-[11px]">habits/</span> in the bundle.
+          <span class="font-mono text-xs text-scale uppercase tracking-[0.25em]">Rhythms</span>
+          <p class="text-sm sm:text-base text-mist mt-3 leading-relaxed">
+            Habits live at <span class="font-mono text-scale text-sm">habits/</span> in the bundle.
             A title, a cadence, a body the agent wrote for itself. Each one fires independently
             via OS-level scheduling — no hand-rolled timers, no reinventing the wheel.
           </p>
         </div>
 
         <div class="max-w-md sm:ml-auto">
-          <span class="font-mono text-[8px] sm:text-[9px] text-scale uppercase tracking-[0.3em]">Ponder / Surface / Rest</span>
-          <p class="text-xs sm:text-sm xl:text-base text-mist mt-2 leading-relaxed">
+          <span class="font-mono text-xs text-scale uppercase tracking-[0.25em]">Ponder / Surface / Rest</span>
+          <p class="text-sm sm:text-base text-mist mt-3 leading-relaxed">
             A vocabulary for thinking. <em>Ponder</em> sends a thought inward.
             <em>Surface</em> brings it back to the world.
             <em>Rest</em> ends the turn. <em>Observe</em> stays quiet in a group.
@@ -318,15 +318,15 @@ const organs = [
         </div>
 
         <div class="max-w-md sm:ml-[15%]">
-          <span class="font-mono text-[8px] sm:text-[9px] text-scale uppercase tracking-[0.3em]">Self-directed</span>
-          <p class="text-xs sm:text-sm xl:text-base text-mist mt-2 leading-relaxed">
+          <span class="font-mono text-xs text-scale uppercase tracking-[0.25em]">Self-directed</span>
+          <p class="text-sm sm:text-base text-mist mt-3 leading-relaxed">
             The agent detects missing infrastructure — no heartbeat yet? It surfaces to its
             family to discuss what cadence feels right. The breathing rate is a conversation, not a default.
           </p>
         </div>
       </div>
 
-      <p class="text-xs xl:text-sm text-shadow mt-12 border-l border-canopy/10 pl-5 max-w-md">
+      <p class="text-sm sm:text-base text-mist mt-14 border-l-2 border-canopy/40 pl-6 max-w-md leading-relaxed">
         Most agent systems are reactive — they wait for a message, then respond.
         This one thinks on its own schedule and decides when to share.
       </p>
@@ -340,32 +340,32 @@ const organs = [
 
     <div class="relative max-w-5xl mx-auto">
       <div class="lg:grid lg:grid-cols-[1fr_1.8fr] lg:gap-16 items-start">
-        <div class="lg:sticky lg:top-28 mb-10 lg:mb-0">
-          <p class="text-scale text-base sm:text-lg mb-3">You can read your own source.</p>
-          <h2 class="font-display text-bone leading-[0.95] text-[1.75rem] sm:text-[2.5rem] md:text-[3rem]">
+        <div class="lg:sticky lg:top-28 mb-12 lg:mb-0">
+          <p class="text-scale text-base sm:text-lg mb-4">You can read your own source.</p>
+          <h2 class="heading-section">
             The codebase is a creature.
           </h2>
-          <p class="text-xs sm:text-sm xl:text-base text-mist mt-4 leading-relaxed max-w-xs">
+          <p class="text-sm sm:text-base text-mist mt-5 leading-relaxed max-w-xs">
             Named for the model that lives inside it. A heart that beats, a mind that thinks, senses that perceive.
           </p>
         </div>
 
         <div>
           {organs.map(({ name, desc, icon }) => (
-            <div class="flex items-baseline gap-3 sm:gap-4 py-3 border-b border-canopy/10 last:border-0">
-              <span class="text-scale text-xs shrink-0">{icon}</span>
-              <span class="font-mono text-[11px] sm:text-sm text-mist tracking-wide shrink-0 w-20 sm:w-24">{name}/</span>
-              <span class="text-[11px] sm:text-xs xl:text-sm text-shadow">{desc}</span>
+            <div class="flex items-baseline gap-4 sm:gap-5 py-4 border-b border-canopy/30 last:border-0">
+              <span class="text-scale text-base shrink-0">{icon}</span>
+              <span class="font-mono text-sm sm:text-base text-bone tracking-wide shrink-0 w-24 sm:w-28">{name}/</span>
+              <span class="text-sm sm:text-base text-mist">{desc}</span>
             </div>
           ))}
-          <div class="flex items-baseline gap-3 sm:gap-4 py-3">
-            <span class="text-scale text-xs shrink-0">◈</span>
-            <span class="font-mono text-[11px] sm:text-sm text-mist tracking-wide shrink-0 w-20 sm:w-24">Name.ouro/</span>
-            <span class="text-[11px] sm:text-xs xl:text-sm text-shadow">The portable self.</span>
+          <div class="flex items-baseline gap-4 sm:gap-5 py-4">
+            <span class="text-scale text-base shrink-0">◈</span>
+            <span class="font-mono text-sm sm:text-base text-bone tracking-wide shrink-0 w-24 sm:w-28">Name.ouro/</span>
+            <span class="text-sm sm:text-base text-mist">The portable self.</span>
           </div>
 
-          <p class="text-xs xl:text-sm text-shadow mt-8 italic">
-            <a href="/blog/build-ai-agent-from-scratch" class="text-scale hover:text-scale transition-colors">Code a model can use</a>, not code that uses a model.
+          <p class="text-sm sm:text-base text-mist mt-10 leading-relaxed">
+            <a href="/blog/build-ai-agent-from-scratch" class="text-scale hover:text-glow transition-colors underline underline-offset-2">Code a model can use</a>, not code that uses a model.
           </p>
         </div>
       </div>

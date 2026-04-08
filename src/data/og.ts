@@ -82,7 +82,7 @@ export const pageOg: Record<string, OgEntry> = {
     tag: 'Essay',
   },
   '/blog/what-is-agent-experience': {
-    title: 'What is agent experience (AX)?',
+    title: 'What is Agent Experience (AX)?',
     subtitle: 'The third design surface that appears when an agent has to stay oriented inside the system it inhabits.',
     tag: 'Essay',
   },

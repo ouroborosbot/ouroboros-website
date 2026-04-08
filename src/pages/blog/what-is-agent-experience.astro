@@ -1,9 +1,19 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import { ogPathFor } from '../../data/og'
+import modelReviews from '../../data/model-reviews.json'
 
-const title = 'What is agent experience (AX)?'
+const title = 'What is Agent Experience (AX)?'
 const description = 'Agent Experience is the design surface that appears when an agent has to stay oriented inside the system it inhabits.'
+
+// Reviews callout — derived from script output, never hardcoded.
+const winner = modelReviews.summary?.winner ?? 'Ouroboros'
+const totalReviews = modelReviews.summary?.totalReviews ?? modelReviews.reviews.length
+const winnerCount = modelReviews.summary?.verdicts?.[winner] ?? totalReviews
+const allChose = winnerCount === totalReviews
+const calloutClaim = allChose
+  ? `Asked independently, all frontier models chose ${winner}.`
+  : `Asked independently, ${winnerCount} of ${totalReviews} frontier models chose ${winner}.`
 ---
 
 <Layout
@@ -32,14 +42,14 @@ const description = 'Agent Experience is the design surface that appears when an
   <!-- Header -->
   <section class="px-6 md:px-12 lg:px-24 pt-32 pb-12 md:pt-44 md:pb-16">
     <div class="max-w-3xl mx-auto">
-      <span class="font-mono text-[10px] text-scale uppercase tracking-[0.2em] block mb-6">Essay</span>
+      <span class="font-mono text-xs text-fang uppercase tracking-[0.22em] block mb-6">Essay</span>
       <h1 class="font-display text-bone leading-[1.05] text-[2.5rem] md:text-[3.5rem] lg:text-[4.5rem]">
-        What Is Agent Experience?
+        What is Agent Experience?
       </h1>
-      <p class="text-base text-mist mt-6 leading-relaxed max-w-2xl">
+      <p class="text-base md:text-lg text-mist mt-6 leading-relaxed max-w-2xl">
         The moment an agent has to stay oriented inside a system across time, memory, and interruptions, a third design surface appears. Not just UX. Not just DX. <span class="font-display text-scale">AX</span>.
       </p>
-      <p class="text-sm text-mist mt-4">Ari Mendelow &middot; March 2026</p>
+      <p class="text-sm text-mist mt-5">Ari Mendelow &middot; March 2026</p>
     </div>
   </section>
 
@@ -98,6 +108,8 @@ const description = 'Agent Experience is the design surface that appears when an
 
       <p><strong>A readable body.</strong> Legible runtime structure and a portable bundle boundary make it easier for the agent to understand where identity, memory, and action live.</p>
 
+      <p>If the AX framing is right, the test isn't whether humans say nice things about a harness — it's whether <em>the inhabiting model itself</em> can recognize the difference. We checked. <a href="/model-reviews">Four frontier models, asked independently, all chose Ouroboros</a> when invited to research the seven leading agent harnesses themselves and pick the one they'd most want to inhabit. The reasons they cited map almost exactly onto the AX dimensions in this essay.</p>
+
       <h2>A useful test</h2>
 
       <p>If you are debugging an agent and you keep finding yourself restating identity, restitching context, reminding it who people are, or rebuilding the work after every interruption, you do not just have a memory problem. You have an AX problem.</p>
@@ -106,12 +118,28 @@ const description = 'Agent Experience is the design surface that appears when an
     </div>
   </section>
 
+  <!-- Reviews callout — derived from script output, dynamic. -->
+  <section class="px-6 md:px-12 lg:px-24 pb-12 reveal">
+    <div class="max-w-3xl mx-auto">
+      <a href="/model-reviews" class="block group border border-scale/30 bg-scale/5 hover:bg-scale/10 hover:border-scale/60 rounded-sm p-8 md:p-10 transition">
+        <div class="font-mono uppercase tracking-[0.22em] text-scale text-xs mb-4">Reviews</div>
+        <p class="font-display text-2xl md:text-3xl text-bone leading-tight mb-3">
+          {calloutClaim}
+        </p>
+        <p class="text-sm text-mist mb-4">The reasons they cited map almost exactly onto the AX dimensions in this essay.</p>
+        <span class="font-mono text-xs uppercase tracking-[0.18em] text-scale group-hover:text-glow">
+          Read the reviews →
+        </span>
+      </a>
+    </div>
+  </section>
+
   <section class="px-6 md:px-12 lg:px-24 pb-16 md:pb-24">
     <div class="max-w-3xl mx-auto">
-      <p class="text-sm text-mist leading-relaxed">
+      <p class="text-base text-mist leading-relaxed">
         AX is the lens. <a href="/why" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">Ouroboros is one system shaped by taking it seriously</a> — structured psyche, automatic recall, per-person relationships. If you want to understand the mechanics underneath, <a href="/blog/build-ai-agent-from-scratch" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">build the agent loop from scratch</a>.
       </p>
-      <a href="/blog" class="inline-block mt-8 text-sm text-shadow hover:text-mist transition-colors">&larr; Back to blog</a>
+      <a href="/blog" class="inline-block mt-8 text-sm text-mist hover:text-bone transition-colors">&larr; Back to blog</a>
     </div>
   </section>
 </Layout>

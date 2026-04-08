@@ -16,7 +16,7 @@ const colorMap: Record<string, string> = {
 const entries = [
   {
     date: 'November 2025',
-    label: 'The Spark',
+    label: 'The spark',
     color: 'canopy',
     content: `<p>Peter Steinberger built Clawdbot in about an hour one night. A simple script connecting WhatsApp to Claude. It could read emails, debug code, organize files.</p>
 <p>It spread fast. Persistent personal agents suddenly felt real to a much wider audience. Eventually it became OpenClaw.</p>
@@ -25,7 +25,7 @@ const entries = [
   },
   {
     date: 'January 2026',
-    label: 'Slugger Moves In',
+    label: 'Slugger moves in',
     color: 'scale',
     content: `<p>I set up OpenClaw on a spare MacBook at home. Named my agent Slugger. Gave it a personality file, connected it to iMessage.</p>
 <p>For a few weeks, it was genuinely magical.</p>
@@ -34,7 +34,7 @@ const entries = [
   },
   {
     date: 'Early February 2026',
-    label: 'The Cracks',
+    label: 'The cracks',
     color: 'fang',
     content: `<p>Then the seams started showing.</p>
 <p>Slugger would forget preferences between sessions. Identity would drift. It'd send messages to the wrong group chat. Behavior that worked yesterday would break today.</p>
@@ -43,7 +43,7 @@ const entries = [
   },
   {
     date: 'Mid February 2026',
-    label: 'The Plugin Era',
+    label: 'The plugin era',
     color: 'canopy',
     content: `<p>Eventually, duct tape wasn't enough. I built a plugin.</p>
 <p><strong>slugger-determinism v1</strong> — message classification, task state enforcement, behavioral gates. It was a mess. The plugin architecture fought me at every turn. OpenClaw plugins hook into lifecycle events, but the events didn't always fire when I needed them to.</p>
@@ -53,7 +53,7 @@ const entries = [
   },
   {
     date: 'Late February 2026',
-    label: 'The Tutorial',
+    label: 'The tutorial',
     color: 'scale',
     content: `<p>Around the same time, I started writing a guide. I wanted to explain what an agent loop actually is — not the marketing version, the mechanical version.</p>
 <p><a href="/blog/build-ai-agent-from-scratch"><em>Just Give the Model a Keyboard</em></a> walks through building an agent from scratch in ~150 lines of TypeScript. Five milestones: first API call, streaming, multi-turn conversation, tools, the agentic loop.</p>
@@ -63,7 +63,7 @@ const entries = [
   },
   {
     date: 'Late February 2026',
-    label: 'The Moment',
+    label: 'The moment',
     color: 'glow',
     motif: 'molt',
     content: `<p>I built the 150-line bootstrap. Ran it. Started talking to it. And something shifted.</p>
@@ -76,7 +76,7 @@ const entries = [
   },
   {
     date: 'March 2026',
-    label: 'The Snake Grows',
+    label: 'The snake grows',
     color: 'scale',
     content: `<p>That bootstrap became <strong>ouroboros</strong>.</p>
 <p>The name came from the architecture. When the conversation grows too long, the agent trims its oldest messages — consuming its own history. But nothing is truly lost: facts are extracted to memory before they're consumed. The snake eats its tail to preserve continuity.</p>
@@ -139,31 +139,33 @@ const entries = [
           ></div>
 
           <!-- Date -->
-          <span class="font-mono text-[10px] text-mist uppercase tracking-[0.2em] block mb-3">{entry.date}</span>
+          <span class="font-mono text-xs text-fang uppercase tracking-[0.22em] block mb-4">{entry.date}</span>
 
           <!-- Title -->
-          <h2 class="font-display text-bone leading-[1.05] text-[2rem] md:text-[2.5rem] mb-6">{entry.label}</h2>
+          <h2 class="font-display text-bone leading-[1.05] text-[2.25rem] md:text-[2.75rem] mb-6">{entry.label}</h2>
 
           <!-- Content -->
           <div class="story-content prose-ouro" set:html={entry.content} />
 
-          <!-- Molt motif -->
+          <!-- Molt motif — full opacity, both sides equally visible.
+               The narrative ("OpenClaw → Ouroboros") is conveyed by the
+               labels and arrow, not by fading one side out. -->
           {entry.motif === 'molt' && (
-            <div class="mt-10 rounded-xl border border-canopy/20 bg-gradient-to-r from-deep/60 to-undergrowth/20 p-6 md:p-8">
-              <div class="flex flex-col sm:flex-row items-center gap-6 sm:gap-8 justify-center">
-                <div class="text-center molt-left">
-                  <img src="/images/openclaw.svg" alt="OpenClaw" class="w-16 h-16 mx-auto opacity-50" />
-                  <span class="font-mono text-[9px] text-shadow uppercase tracking-wider block mt-2">the shell</span>
-                  <span class="text-[11px] text-shadow">Clawdbot &rarr; Moltbot</span>
+            <div class="mt-12 rounded-xl border border-canopy/40 bg-gradient-to-r from-deep/60 to-undergrowth/20 p-8 md:p-10">
+              <div class="flex flex-col sm:flex-row items-center gap-8 sm:gap-10 justify-center">
+                <div class="text-center">
+                  <img src="/images/openclaw.svg" alt="OpenClaw" class="w-20 h-20 mx-auto" />
+                  <span class="font-mono text-xs text-fang uppercase tracking-[0.22em] block mt-4">The shell</span>
+                  <span class="text-sm text-mist mt-1 block">Clawdbot &rarr; Moltbot</span>
                 </div>
-                <span class="text-shadow text-xl">&rarr;</span>
-                <div class="text-center molt-right">
-                  <img src="/images/ouroboros.svg" alt="Ouroboros" class="w-16 h-16 mx-auto ouroboros-spin" style="filter: drop-shadow(0 0 12px rgba(45,148,71,0.3));" />
-                  <span class="font-mono text-[9px] text-scale/60 uppercase tracking-wider block mt-2">what emerged</span>
-                  <span class="text-[11px] text-scale/50">Ouroboros</span>
+                <span class="text-mist text-2xl">&rarr;</span>
+                <div class="text-center">
+                  <img src="/images/ouroboros.svg" alt="Ouroboros" class="w-20 h-20 mx-auto ouroboros-spin" style="filter: drop-shadow(0 0 16px rgba(45,148,71,0.4));" />
+                  <span class="font-mono text-xs text-scale uppercase tracking-[0.22em] block mt-4">What emerged</span>
+                  <span class="text-sm text-bone mt-1 block">Ouroboros</span>
                 </div>
               </div>
-              <p class="text-center text-xs text-shadow mt-6 italic">The lobster molts to grow larger. The snake consumes itself to preserve continuity.</p>
+              <p class="text-center text-sm text-mist mt-8 leading-relaxed">The lobster molts to grow larger. The snake consumes itself to preserve continuity.</p>
             </div>
           )}
         </div>
@@ -171,10 +173,10 @@ const entries = [
     </div>
   </section>
 
-  <!-- The Inversion -->
-  <section class="px-6 md:px-12 lg:px-24 py-20 md:py-32 border-t border-canopy/15 reveal">
+  <!-- The inversion -->
+  <section class="px-6 md:px-12 lg:px-24 py-20 md:py-32 border-t border-canopy/30 reveal">
     <div class="max-w-4xl mx-auto">
-      <h2 class="font-display text-bone leading-[1.05] text-[2rem] sm:text-[2.5rem] md:text-[3rem] mb-8">The Inversion</h2>
+      <h2 class="heading-section mb-10">The inversion</h2>
 
       <div class="prose-ouro story-content">
         <p>
@@ -255,6 +257,7 @@ const entries = [
     .ouroboros-spin { animation: spin 60s linear infinite; }
   }
 
-  .molt-left { opacity: 0.4; }
-  .molt-right { opacity: 1; }
+  /* Removed: previously molt-left was opacity 0.4 to fade the OpenClaw
+     side as a "what was shed" visual. The user found it too dim — the
+     narrative is conveyed by the labels and arrow now. Both sides full. */
 </style>

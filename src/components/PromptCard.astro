@@ -8,27 +8,27 @@ interface Props {
 const { label = 'Ask your agent', prompt, footnote } = Astro.props
 ---
 
-<div class="rounded-2xl border border-canopy/20 bg-undergrowth/20 overflow-hidden">
-  <div class="flex items-center justify-between px-5 py-3 border-b border-canopy/15">
-    <span class="font-mono text-[10px] text-scale/70 uppercase tracking-[0.2em]">{label}</span>
+<div class="rounded-2xl border border-canopy/40 bg-undergrowth/20 overflow-hidden">
+  <div class="flex items-center justify-between px-6 py-4 border-b border-canopy/30">
+    <span class="font-mono text-xs text-scale uppercase tracking-[0.22em]">{label}</span>
     <button
-      class="prompt-copy-btn flex items-center gap-1.5 text-[10px] text-mist hover:text-bone transition-colors font-mono uppercase tracking-wider cursor-pointer"
+      class="prompt-copy-btn flex items-center gap-2 text-xs text-mist hover:text-bone transition-colors font-mono uppercase tracking-[0.18em] cursor-pointer"
       data-prompt={prompt}
     >
-      <svg class="prompt-copy-icon w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg class="prompt-copy-icon w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke-width="2" />
         <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" stroke-width="2" />
       </svg>
-      <svg class="prompt-check-icon w-3.5 h-3.5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg class="prompt-check-icon w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
       </svg>
       <span class="prompt-copy-label">Copy</span>
     </button>
   </div>
-  <div class="px-5 py-4">
+  <div class="px-6 py-5">
     <pre class="font-mono text-sm text-mist leading-relaxed whitespace-pre-wrap">{prompt}</pre>
     {footnote && (
-      <p class="text-[11px] text-shadow mt-3 italic">{footnote}</p>
+      <p class="text-sm text-mist mt-4 leading-relaxed">{footnote}</p>
     )}
   </div>
 </div>

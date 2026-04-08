@@ -32,8 +32,8 @@ const claimSentence = `Asked independently, ${claim}.`
     <div class="relative max-w-6xl mx-auto w-full flex-1 flex flex-col justify-center">
       <!-- Eyebrow -->
       <div class="mb-8 md:mb-10 animate-fade-up">
-        <div class="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full border border-fang/30 bg-fang/[0.04]">
-          <span class="font-mono text-[10px] text-fang uppercase tracking-[0.25em]">&#10022; Reviews</span>
+        <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-fang/30 bg-fang/[0.04]">
+          <span class="font-mono text-xs text-fang uppercase tracking-[0.25em]">&#10022; Reviews</span>
         </div>
       </div>
 
@@ -51,13 +51,13 @@ const claimSentence = `Asked independently, ${claim}.`
            Each card links to that model's full transcript page. -->
       <div class="mt-12 md:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-7 animate-fade-up stagger-3">
         {reviews.map((review) => (
-          <a href={`/model-reviews/${review.provider}`} class="group block border-t border-canopy/50 pt-4 hover:border-scale/70 transition-colors">
-            <div class="font-mono text-[9px] text-fang uppercase tracking-[0.22em] mb-1">{review.vendor}</div>
-            <div class="font-display text-bone text-base md:text-lg leading-tight mb-3 group-hover:text-scale transition-colors">{review.displayName}</div>
-            <p class="text-bone text-[13px] md:text-sm leading-[1.55]">
+          <a href={`/model-reviews/${review.provider}`} class="group block border-t border-canopy/50 pt-5 hover:border-scale/70 transition-colors">
+            <div class="font-mono text-xs text-fang uppercase tracking-[0.22em] mb-2">{review.vendor}</div>
+            <div class="font-display text-bone text-lg md:text-xl leading-tight mb-4 group-hover:text-scale transition-colors">{review.displayName}</div>
+            <p class="text-bone text-sm md:text-[15px] leading-[1.6]">
               &#8220;{review.pullQuote}&#8221;
             </p>
-            <div class="mt-4 inline-flex items-center gap-1.5 font-mono text-[9px] text-shadow uppercase tracking-[0.18em] group-hover:text-scale transition-colors">
+            <div class="mt-5 inline-flex items-center gap-2 font-mono text-xs text-scale uppercase tracking-[0.18em] group-hover:text-glow transition-colors">
               Read transcript
               <span class="transition-transform group-hover:translate-x-0.5">&rarr;</span>
             </div>
@@ -86,42 +86,42 @@ const claimSentence = `Asked independently, ${claim}.`
     <div class="absolute inset-0 bg-gradient-to-b from-void/50 via-transparent to-void/50 pointer-events-none"></div>
 
     <div class="relative max-w-6xl mx-auto">
-      <span class="font-mono text-[10px] text-fang uppercase tracking-[0.3em] block mb-8">The cost</span>
+      <span class="font-mono text-xs text-fang uppercase tracking-[0.25em] block mb-8">The cost</span>
 
       <h2 class="heading-section">
         What survives when the context window <span class="text-scale">runs out?</span>
       </h2>
 
-      <p class="font-display text-2xl md:text-3xl text-mist mt-4 mb-16 sm:mb-24 md:mb-32 max-w-3xl">
+      <p class="font-display text-2xl md:text-3xl text-mist mt-6 mb-16 sm:mb-24 md:mb-32 max-w-3xl">
         Every conversation has a ceiling. Hit it, and something has to give.
       </p>
 
-      <div class="space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-16">
+      <div class="space-y-14 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-16">
         <!-- Problems: smaller type, mist color -->
         <div>
-          <span class="font-mono text-[9px] text-fang uppercase tracking-[0.2em]">Compaction</span>
-          <h3 class="font-display text-2xl md:text-3xl text-mist mt-3 leading-snug">Summarize and forget.</h3>
-          <p class="text-sm xl:text-base text-shadow mt-3 leading-relaxed">
+          <span class="font-mono text-xs text-fang uppercase tracking-[0.22em]">Compaction</span>
+          <h3 class="font-display text-2xl md:text-3xl text-mist mt-4 leading-snug">Summarize and forget.</h3>
+          <p class="text-sm md:text-base text-mist mt-4 leading-relaxed">
             The model compresses its history. Details flatten. Tone drifts. The agent becomes a stranger wearing a familiar name.
           </p>
         </div>
 
         <div>
-          <span class="font-mono text-[9px] text-fang uppercase tracking-[0.2em]">New session</span>
-          <h3 class="font-display text-2xl md:text-3xl text-mist mt-3 leading-snug">Start over entirely.</h3>
-          <p class="text-sm xl:text-base text-shadow mt-3 leading-relaxed">
+          <span class="font-mono text-xs text-fang uppercase tracking-[0.22em]">New session</span>
+          <h3 class="font-display text-2xl md:text-3xl text-mist mt-4 leading-snug">Start over entirely.</h3>
+          <p class="text-sm md:text-base text-mist mt-4 leading-relaxed">
             Everything resets. The human re-briefs. The agent re-discovers. Hours of shared context evaporate.
           </p>
         </div>
 
         <!-- Solution: larger type, bone color, scale accent -->
         <div>
-          <span class="font-mono text-[9px] text-scale uppercase tracking-[0.2em]">Ouroboros</span>
-          <h3 class="font-display text-2xl md:text-3xl text-bone mt-3 leading-snug">The snake eats its tail.</h3>
-          <p class="text-sm xl:text-base text-mist mt-3 leading-relaxed">
+          <span class="font-mono text-xs text-scale uppercase tracking-[0.22em]">Ouroboros</span>
+          <h3 class="font-display text-2xl md:text-3xl text-bone mt-4 leading-snug">The snake eats its tail.</h3>
+          <p class="text-sm md:text-base text-mist mt-4 leading-relaxed">
             Old messages are trimmed — but identity lives in the psyche, not the tokens. The agent keeps a diary, journals its thinking, and surfaces what matters when it matters.
           </p>
-          <p class="font-mono text-scale text-[10px] uppercase tracking-[0.2em] mt-5">The tail is consumed. The self survives.</p>
+          <p class="font-mono text-scale text-xs uppercase tracking-[0.22em] mt-6">The tail is consumed. The self survives.</p>
         </div>
       </div>
     </div>
@@ -133,7 +133,7 @@ const claimSentence = `Asked independently, ${claim}.`
 
     <div class="relative lg:grid lg:grid-cols-[0.8fr_1.2fr] lg:gap-16 lg:items-start max-w-7xl mx-auto">
       <div class="mb-16 lg:mb-0 lg:sticky lg:top-32">
-        <span class="font-mono text-[10px] text-scale uppercase tracking-[0.3em] block mb-6">Begin</span>
+        <span class="font-mono text-xs text-scale uppercase tracking-[0.25em] block mb-6">Begin</span>
         <h2 class="heading-section">
           One command.<br />
           A conversation.<br />
@@ -164,7 +164,7 @@ const claimSentence = `Asked independently, ${claim}.`
         Most agents forget who they are between conversations.
         <a href="/why" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">Yours has a heartbeat.</a>
       </p>
-      <p class="text-sm xl:text-base text-shadow mt-6 leading-relaxed">
+      <p class="text-sm md:text-base text-mist mt-6 leading-relaxed">
         A diary, a journal, habits it writes for itself, and a <a href="/why#inner-life" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">vocabulary for thinking</a>.
       </p>
     </div>

@@ -60,8 +60,8 @@ const subheadSentence = allChose
   <!-- ═══════════════ THE TESTIMONIALS — FULL WIDTH EDITORIAL ═══════════════ -->
   <section class="relative px-6 md:px-12 lg:px-24 py-20 md:py-28 reveal">
     <div class="relative max-w-6xl mx-auto">
-      <div class="flex items-center gap-3 mb-14 md:mb-20">
-        <span class="font-mono text-xs md:text-sm text-scale uppercase tracking-[0.22em]">The verdict, in their own words</span>
+      <div class="flex items-center gap-4 mb-14 md:mb-20">
+        <span class="font-mono text-sm md:text-base text-scale uppercase tracking-[0.22em]">The verdict, in their own words</span>
         <span class="h-px flex-1 bg-canopy/40"></span>
       </div>
 
@@ -77,9 +77,9 @@ const subheadSentence = allChose
                 <div class="h-px w-12 bg-canopy/60 mt-7 mb-6"></div>
 
                 <div class="space-y-4">
-                  <div class="flex items-baseline gap-2.5">
-                    <span class="font-mono text-[11px] text-shadow uppercase tracking-[0.2em]">Verdict</span>
-                    <span class="font-mono text-scale text-sm uppercase tracking-[0.1em]">{review.verdict}</span>
+                  <div class="flex items-baseline gap-3">
+                    <span class="font-mono text-xs text-mist uppercase tracking-[0.22em]">Verdict</span>
+                    <span class="font-mono text-scale text-sm uppercase tracking-[0.12em]">{review.verdict}</span>
                   </div>
                   <a href={`/model-reviews/${review.provider}`} class="group inline-flex items-center gap-2 text-scale hover:text-glow transition-colors text-sm md:text-base font-medium">
                     <span class="underline underline-offset-[5px] decoration-scale/50 group-hover:decoration-glow">Read the {review.rounds}-round transcript</span>
@@ -104,7 +104,7 @@ const subheadSentence = allChose
     <div class="absolute inset-0 bg-gradient-to-b from-transparent via-deep/30 to-transparent pointer-events-none"></div>
 
     <div class="relative max-w-5xl mx-auto">
-      <span class="font-mono text-[10px] text-fang uppercase tracking-[0.3em] block mb-6">Per-harness rationale</span>
+      <span class="font-mono text-xs text-fang uppercase tracking-[0.25em] block mb-6">Per-harness rationale</span>
       <h2 class="heading-section mb-12 md:mb-16">
         How each model evaluated each harness.
       </h2>
@@ -113,8 +113,8 @@ const subheadSentence = allChose
         {reviews.map((review) => (
           <div class="border-l-2 border-canopy/40 pl-6 md:pl-8">
             <div class="flex items-baseline gap-3 mb-6">
-              <span class="font-mono text-[9px] text-fang uppercase tracking-[0.25em]">{review.vendor}</span>
-              <h3 class="font-display text-bone text-2xl md:text-3xl">{review.displayName}</h3>
+              <span class="font-mono text-xs text-fang uppercase tracking-[0.22em]">{review.vendor}</span>
+              <h3 class="heading-sub">{review.displayName}</h3>
             </div>
             <!-- Evaluations are paragraphs of `**Name** — text` per harness.
                  parseInlineMd handles bold + code spans + paragraph wrapping. -->
@@ -128,7 +128,7 @@ const subheadSentence = allChose
   <!-- ═══════════════ METHODOLOGY ═══════════════ -->
   <section class="relative px-6 md:px-12 lg:px-24 py-20 md:py-28 reveal">
     <div class="relative max-w-5xl mx-auto">
-      <span class="font-mono text-[10px] text-scale uppercase tracking-[0.3em] block mb-6">Methodology</span>
+      <span class="font-mono text-xs text-scale uppercase tracking-[0.25em] block mb-6">Methodology</span>
       <h2 class="heading-section mb-12 md:mb-16">
         How the review was run.
       </h2>
@@ -170,7 +170,7 @@ const subheadSentence = allChose
     <div class="absolute inset-0 bg-gradient-to-b from-void via-deep/40 to-void pointer-events-none"></div>
 
     <div class="relative max-w-4xl mx-auto">
-      <span class="font-mono text-[10px] text-fang uppercase tracking-[0.3em] block mb-6">Run it yourself</span>
+      <span class="font-mono text-xs text-fang uppercase tracking-[0.25em] block mb-6">Run it yourself</span>
       <h2 class="heading-section mb-8">
         Don't trust us. Run it.
       </h2>

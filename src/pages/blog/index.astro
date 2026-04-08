@@ -15,7 +15,7 @@ const featured = [
     label: 'Start here',
   },
   {
-    title: 'The Origin Story',
+    title: 'The origin story',
     description: 'How building an AI agent plugin led to building an agent harness from scratch — and why the distinction matters.',
     href: '/story',
     tag: 'Story',
@@ -25,25 +25,25 @@ const featured = [
 
 const essays = [
   {
-    title: 'The Work Spoke Back',
+    title: 'The work spoke back',
     description: 'The task scanner produced 184 false errors. We could have patched the parser. Instead, we asked the agent living inside the system what was actually broken.',
     href: '/blog/designing-with-your-agent',
     author: 'Ari Mendelow & Slugger',
   },
   {
-    title: 'Give Your Agent a Home',
+    title: 'Give your agent a home',
     description: 'Most agents live as scattered files across your filesystem. A bundle changes that. One folder, one identity, one place to back up and carry.',
     href: '/blog/give-your-agent-a-home',
     author: 'Ari Mendelow & Slugger',
   },
   {
-    title: 'What Is Agent Experience?',
-    description: 'Why long-lived agents create a third design surface beyond UX and DX: agent ergonomics, reorientation overhead, and shared momentum.',
+    title: 'What is Agent Experience?',
+    description: 'Why long-lived agents create a third design surface beyond UX and DX: Agent Experience, reorientation overhead, and shared momentum.',
     href: '/blog/what-is-agent-experience',
     author: 'Ari Mendelow',
   },
   {
-    title: 'Stop Being the Glue',
+    title: 'Stop being the glue',
     description: 'We were promised an intelligent assistant. Instead, we got a fragmentation of semi-intelligent bots. How I stopped copy-pasting between AI tools and started collaborating.',
     href: '/blog/stop-being-the-glue',
     author: 'Ari Mendelow',
@@ -51,7 +51,7 @@ const essays = [
 ]
 
 const tutorial = {
-  title: 'Build an AI Agent Loop From Scratch',
+  title: 'Build an AI agent loop from scratch',
   description: 'A working AI agent in ~150 lines of TypeScript. Five milestones: first API call, streaming, multi-turn conversation, tools, and the agentic loop. Then the handoff — you stop talking to your coding agent and start talking to your creation.',
   href: '/blog/build-ai-agent-from-scratch',
   author: 'Ari Mendelow',
@@ -84,18 +84,18 @@ const tutorial = {
   </HeroCover>
 
   <!-- Recommended reading -->
-  <section class="px-6 md:px-12 lg:px-24 pb-14 reveal">
+  <section class="px-6 md:px-12 lg:px-24 pb-16 reveal">
     <div class="max-w-3xl mx-auto">
-      <span class="font-mono text-[10px] text-shadow uppercase tracking-[0.3em] block mb-5">Recommended reading</span>
-      <div class="grid sm:grid-cols-2 gap-4">
+      <span class="font-mono text-sm text-fang uppercase tracking-[0.22em] block mb-8">Recommended reading</span>
+      <div class="grid sm:grid-cols-2 gap-6">
         {featured.map(item => (
-          <a href={item.href} class="group block rounded-2xl border border-canopy/20 bg-undergrowth/10 p-6 hover:border-scale/40 transition-all duration-300">
-            <div class="flex items-center gap-3 mb-3">
-              <span class="font-mono text-[9px] text-scale/60 uppercase tracking-wider">{item.tag}</span>
-              <span class="font-mono text-[9px] text-glow/50 uppercase tracking-wider">{item.label}</span>
+          <a href={item.href} class="group block rounded-2xl border border-canopy/40 bg-undergrowth/10 p-8 md:p-10 hover:border-scale/60 hover:bg-undergrowth/20 transition-all duration-300">
+            <div class="flex items-center gap-3 mb-5">
+              <span class="font-mono text-xs text-scale uppercase tracking-[0.18em]">{item.tag}</span>
+              <span class="font-mono text-xs text-glow uppercase tracking-[0.18em]">{item.label}</span>
             </div>
-            <h2 class="font-display text-bone text-xl group-hover:text-scale transition-colors">{item.title}</h2>
-            <p class="text-sm text-mist mt-2 leading-relaxed">{item.description}</p>
+            <h2 class="font-display text-bone text-2xl group-hover:text-scale transition-colors">{item.title}</h2>
+            <p class="text-base text-mist mt-3 leading-relaxed">{item.description}</p>
           </a>
         ))}
       </div>
@@ -103,28 +103,28 @@ const tutorial = {
   </section>
 
   <!-- Tutorial -->
-  <section class="px-6 md:px-12 lg:px-24 pb-14 reveal">
+  <section class="px-6 md:px-12 lg:px-24 pb-16 reveal">
     <div class="max-w-3xl mx-auto">
-      <span class="font-mono text-[10px] text-shadow uppercase tracking-[0.3em] block mb-5">Tutorial</span>
-      <a href={tutorial.href} class="group block rounded-2xl border border-scale/25 bg-scale/[0.04] p-6 md:p-8 hover:border-scale/50 transition-all duration-300">
-        <span class="font-mono text-[9px] text-scale uppercase tracking-wider">Guide</span>
-        <h2 class="font-display text-bone text-2xl md:text-3xl mt-2 group-hover:text-scale transition-colors">{tutorial.title}</h2>
-        <p class="text-sm text-mist mt-3 leading-relaxed max-w-xl">{tutorial.description}</p>
-        <span class="text-sm text-shadow mt-3 block">{tutorial.author}</span>
+      <span class="font-mono text-sm text-fang uppercase tracking-[0.22em] block mb-8">Tutorial</span>
+      <a href={tutorial.href} class="group block rounded-2xl border border-scale/40 bg-scale/[0.04] p-8 md:p-10 hover:border-scale/60 hover:bg-scale/[0.06] transition-all duration-300">
+        <span class="font-mono text-xs text-scale uppercase tracking-[0.18em]">Guide</span>
+        <h2 class="font-display text-bone text-2xl md:text-3xl mt-3 group-hover:text-scale transition-colors">{tutorial.title}</h2>
+        <p class="text-base text-mist mt-4 leading-relaxed max-w-xl">{tutorial.description}</p>
+        <span class="text-sm text-mist mt-4 block">{tutorial.author}</span>
       </a>
     </div>
   </section>
 
   <!-- Essays -->
-  <section class="px-6 md:px-12 lg:px-24 pb-14 reveal">
+  <section class="px-6 md:px-12 lg:px-24 pb-16 reveal">
     <div class="max-w-3xl mx-auto">
-      <span class="font-mono text-[10px] text-shadow uppercase tracking-[0.3em] block mb-5">Essays</span>
-      <div class="space-y-5">
+      <span class="font-mono text-sm text-fang uppercase tracking-[0.22em] block mb-8">Essays</span>
+      <div class="space-y-6">
         {essays.map(essay => (
-          <a href={essay.href} class="group block rounded-2xl border border-canopy/20 bg-undergrowth/10 p-6 hover:border-scale/40 transition-all duration-300">
-            <h2 class="font-display text-bone text-xl group-hover:text-scale transition-colors">{essay.title}</h2>
-            <p class="text-sm text-mist mt-2 leading-relaxed">{essay.description}</p>
-            <span class="text-sm text-shadow mt-2 block">{essay.author}</span>
+          <a href={essay.href} class="group block rounded-2xl border border-canopy/40 bg-undergrowth/10 p-8 md:p-10 hover:border-scale/60 hover:bg-undergrowth/20 transition-all duration-300">
+            <h2 class="font-display text-bone text-2xl group-hover:text-scale transition-colors">{essay.title}</h2>
+            <p class="text-base text-mist mt-3 leading-relaxed">{essay.description}</p>
+            <span class="text-sm text-mist mt-3 block">{essay.author}</span>
           </a>
         ))}
       </div>

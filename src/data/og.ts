@@ -106,6 +106,11 @@ export const pageOg: Record<string, OgEntry> = {
     subtitle: 'When the substrate carries the trust boundary, the conversation can stop reenacting it.',
     tag: 'Essay',
   },
+  '/blog/the-orientation-problem': {
+    title: 'The orientation problem in personal agents.',
+    subtitle: 'Capability is the easy act. The hard part is keeping the agent coherent across time, people, and channels.',
+    tag: 'Essay',
+  },
 
   // ── Docs sub-pages ──
   '/docs/getting-started': {

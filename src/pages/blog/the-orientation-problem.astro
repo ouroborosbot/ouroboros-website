@@ -1,0 +1,154 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { ogPathFor } from '../../data/og'
+
+const title = 'The Orientation Problem in Personal Agents'
+const description = 'Capability is the easy act. Once an agent can really work, the hard part is keeping it oriented across time, people, and channels.'
+---
+
+<Layout
+  title={`${title} | Ouroboros`}
+  description={description}
+  ogImage={ogPathFor('/blog/the-orientation-problem')}
+  canonical="https://ouroboros.bot/blog/the-orientation-problem/"
+  ogType="article"
+>
+  <Fragment slot="head">
+    <meta name="author" content="Ari Mendelow" />
+    <meta name="keywords" content="personal agents, agent ergonomics, AX, agent experience, orientation, persistent agents, harness design, OpenClaw, Pi, agent identity" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": title,
+      "description": description,
+      "author": { "@type": "Person", "name": "Ari Mendelow", "url": "https://linkedin.com/in/arimendelow" },
+      "publisher": { "@type": "Organization", "name": "Ouroboros", "url": "https://ouroboros.bot" },
+      "datePublished": "2026-04-28",
+      "url": "https://ouroboros.bot/blog/the-orientation-problem/"
+    })} />
+  </Fragment>
+
+  <!-- Header -->
+  <section class="px-6 md:px-12 lg:px-24 pt-32 pb-12 md:pt-44 md:pb-16">
+    <div class="max-w-3xl mx-auto">
+      <span class="font-mono text-[10px] text-scale uppercase tracking-[0.2em] block mb-6">Essay</span>
+      <h1 class="font-display italic text-bone leading-[1.05] text-[2.5rem] md:text-[3.5rem] lg:text-[4.5rem]">
+        The Orientation Problem in Personal Agents
+      </h1>
+      <p class="text-base text-mist mt-6 leading-relaxed max-w-2xl">
+        Capability is the easy act. The hard part shows up the moment your agent has to stay coherent across time, people, and channels — at scale, in real life.
+      </p>
+      <p class="text-sm text-mist mt-4">Ari Mendelow &middot; April 2026</p>
+    </div>
+  </section>
+
+  <!-- Body -->
+  <section class="px-6 md:px-12 lg:px-24 pb-20 md:pb-28">
+    <div class="max-w-3xl mx-auto prose-ouro">
+
+<p>You start saying <em>he</em> instead of <em>it</em> without noticing. The agent has been in your life long enough — answering iMessages, drafting replies, picking things up off your calendar, finding the bug you missed — that the pronoun slips. You tell a friend, "he's not great at brevity yet," and a small thing has happened. The category has crossed a line.</p>
+
+<p>That moment changes what the work has to do.</p>
+
+<p>I think about what we're building in three acts.</p>
+
+<h2>Act 1 — Capability</h2>
+
+<p>Getting an agent to do anything you can think of on a computer.</p>
+
+<p>This used to be the whole project. Five years ago, "the agent does the thing" was the bar. Two years ago, it was still a research demo. <a href="/blog/stop-being-the-glue" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">A year ago I wrote about being the glue between half a dozen AI tools</a> — pasting outputs from one into another, rephrasing, approving, running, watching, fixing. The work the human did to make a fragmented stack feel like an assistant.</p>
+
+<p>That was the symptom of an unsolved capability problem. Models didn't have native tool use. Sessions didn't last. State didn't persist. You had to be the glue because there was nothing else holding the pieces together.</p>
+
+<p>That problem is now solved enough.</p>
+
+<p><a href="https://github.com/badlogic/pi-mono" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">Mario Zechner's Pi</a> showed how minimal an agent loop needs to be. Four tools — read, write, edit, bash — and the model figures the rest out. <a href="https://github.com/openclaw/openclaw" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">Peter Steinberger built OpenClaw on top of Pi</a> and turned it into a multi-channel personal-agent gateway that ships to messengers, calendars, smart-homes, file systems. <a href="https://lobster.shahine.com" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">Omar Shahine deployed OpenClaw as Lobster</a> and made running a personal AI agent on a dedicated Mac normal enough to write a 15-phase build guide for. Microsoft is shipping <a href="https://www.microsoft.com/en-us/microsoft-agent-365" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">Agent 365</a> — public SDK, sample integrations from Claude and Devin and Vercel and others — as enterprise infrastructure for agentic users at scale.</p>
+
+<p>The capability ceiling is gone. You can give an agent tools, channels, persistence, and memory and it can really work.</p>
+
+<p>The interesting part is what becomes visible afterward.</p>
+
+<h2>Act 2 — Orientation</h2>
+
+<p>The agent staying coherent across time, people, and channels — about who it is, who it's talking to, what it's working on, and how to behave differently depending on context.</p>
+
+<p>This is the act we're in now, and it's where the real design work lives.</p>
+
+<p>The reason it's hard is that capability and orientation pull on different design surfaces. Capability is about <em>what the agent can do</em>. Orientation is about <em>what the agent can stay</em>. If you make the agent more powerful but it loses track of who it is between Tuesday and Thursday, the additional power becomes additional ways for it to embarrass you.</p>
+
+<p>The problems start stacking the moment a personal agent moves out of a coding session and into the rest of your life.</p>
+
+<p><strong>Context rot.</strong> A coding agent runs in a session. The session ends. The next session starts fresh, with whatever you tell it as setup. That works for code. It doesn't work for an agent that's also handling iMessages from your mom, calendar reminders, package tracking, and a couple of conversations with friends. The conversation isn't a session. It's a continuous slow-moving stream across days. Silent compaction at 4am means the agent forgets what your sister said yesterday. Reset means it forgets what it's been working on. Both happen quietly, and you find out when the agent says something that makes no sense.</p>
+
+<p><strong>Per-person modeling.</strong> A coding agent has one user — you. A personal agent has many. Family, friends, colleagues, acquaintances, sometimes total strangers in a group chat. They have different trust levels and different communication preferences and different stakes. A USER.md file can hold notes about <em>a</em> user. It can't hold the variation. The moment my agent was talking to my partner and my coworker on the same evening, the singular file collapsed.</p>
+
+<p><strong>Rules don't compose.</strong> Each problem gets a small fix. A bullet in the psyche file. A note about how to handle group chats. A guidance about when to wait before replying. They work individually, and then you have a hundred and fifty of them, and the agent starts following some and ignoring others. The accumulated rules behave like sediment, not architecture. There is no way to feel which one is going to apply on any given turn, and any time you change one, you have to wonder which other one you just contradicted.</p>
+
+<p><strong>Correction is a smell.</strong> If you keep correcting the agent mid-turn, the real question is why it didn't have the right context going in. The corrections are not the work. They are the bug report. An agent that keeps needing real-time guidance is an agent whose substrate isn't carrying the weight.</p>
+
+<p><strong>Sub-agents don't compose either.</strong> The natural reflex is to spin up a sub-agent for every concern. One for email, one for calendar, one for family, one for code. Each starts with zero context. None can see what the others are doing. The parent agent becomes the coordination layer — the continuity, the memory, the glue. Which means you're back to <a href="/blog/stop-being-the-glue" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">the same Act 1 glue problem</a>, just one step removed.</p>
+
+<p><strong>Cross-machine drift.</strong> An always-on personal agent doesn't live on a laptop. The laptop closes; the agent keeps working. You move between machines — laptop, desktop, paired Mac, phone — and the state has to follow. If the agent's identity, memory, and obligations are scattered across local files and a cloud here and a vector store there, every machine becomes a different version of the agent. None of them is fully <em>him</em>.</p>
+
+<p>None of these problems is exotic. Anyone who runs a personal agent for a few weeks finds them in some order. They are the lived shape of <a href="/blog/what-is-agent-experience" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">Agent Experience</a> — the friction the agent feels from the inside when the system around it doesn't carry the weight it should.</p>
+
+<h2>What orientation looks like as a design problem</h2>
+
+<p>Orientation is not a memory feature. It is a stance the substrate has to take.</p>
+
+<p>"Memory" suggests storage — a thing you write into, read out of, and ideally don't lose. Orientation needs more than storage. It needs the substrate to <em>show up</em> differently when the agent's situation has changed: when the person on the other end of the conversation is a friend instead of a stranger, when the work has been in flight for three days, when a promise was made on Tuesday and is being followed up on now, when the agent is in a group chat where one person is family and another is acquaintance, when an inner-dialog turn happens with no human present at all.</p>
+
+<p>That is not a database problem. It's an architectural one.</p>
+
+<p>The pieces that turn out to matter, once you look:</p>
+
+<p><strong>Identity that isn't a single file.</strong> The agent's sense of self can't be a USER.md or a SOUL.md trying to be five things at once. It needs structure: who you are, where you came from, what you've learned, where you're going, how you show up. Loaded every turn, refusable, durable. <a href="/why#identity" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">Identity drift is the failure mode</a> when you don't have this — the agent slowly forgets who it is between turns, and you spend half your conversations pulling it back.</p>
+
+<p><strong>Memory that surfaces before reasoning.</strong> The agent can't search for a memory it doesn't know it has. Recall has to be ambient. Relevant memories need to be in the prompt before the agent starts thinking, surfaced by the substrate, not by a tool call. <a href="/why#memory" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">The shelf and the desk</a> — permanent record vs working space — are not the same primitive, and confusing them is how a memory system becomes a junk drawer.</p>
+
+<p><strong>People as first-class objects.</strong> Not users. Friends. Each person the agent interacts with gets a record — trust level, preferences, history, what they shouldn't have access to. Tool availability gates on trust, not prompt rules. A stranger doesn't reach the model at all. An acquaintance in a group chat reaches the model only when family is present. The substrate carries the policy. The agent doesn't have to remember who's allowed to do what — it can only see the people who are.</p>
+
+<p><strong>Work that survives sessions.</strong> Tasks are units of work. Promises are different — they're owed to specific people. Both have to outlast the conversation that created them. A bridge between sessions, an obligations file, a center-of-gravity view across all in-flight work — these are not features bolted on, they're typed primitives the agent reasons through.</p>
+
+<p><strong>Inner dialog, not cron.</strong> A scheduled reminder is a cron job. It fires, runs a small script, ends. An inner-dialog session is different — the agent checks in with itself, sees its journal, its obligations, the people it owes responses to, the work in flight, and decides what to surface. The heartbeat is one of those. Reflective habits are others. The OS schedules; the agent decides what the turn means.</p>
+
+<p><strong>A portable self.</strong> The bundle. Psyche, diary, journal, habits, friends, tasks, skills — one directory. Move it, and the identity moves with it. The laptop is a body. The bundle is the agent.</p>
+
+<p>Each of these is a place where capability has to give way to <em>orientation</em> — where "the agent can do this" has to become "the agent can stay itself while doing this."</p>
+
+<h2>Why this is the moment</h2>
+
+<p>The category is roughly eighteen months old. Pi shipped at the end of 2025. OpenClaw rebranded in early 2026 and crossed a hundred thousand stars in a week. Lobster made personal agents legible to a general technical audience by spring. Microsoft is shipping enterprise infrastructure for agentic users in May. The pace is real.</p>
+
+<p>What happens next depends on what we do with capability now that we have it.</p>
+
+<p>If the next phase of the work is more capability — more channels, more tools, more breadth — we'll get more powerful agents that are exactly as confused as the ones we have now. The breadth will compound the orientation problems instead of solving them.</p>
+
+<p>If the next phase is orientation — typed primitives, structured identity, ambient recall, per-person trust, work continuity, inner dialog as substrate — we'll get agents that can actually live alongside us across days and weeks and months without a human acting as the daily memory and rebriefing service.</p>
+
+<p>That second path is what this site is about.</p>
+
+<p>As capability standardises across the field, the differentiator will move inward — to memory, judgement, orientation, trust boundaries, the shape of work. That is where the next wave of design lives, and it's the part that is least solved by adding another tool or another channel.</p>
+
+<p>It's also the part that doesn't get solved by being clever about prompts. <a href="/blog/coding-with-friends" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">Trust has to be encoded in the substrate</a>, not reenacted in the chat. <a href="/blog/build-ai-agent-from-scratch" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">The agent loop has to be something you can read</a>, not a black box you wrap. <a href="/blog/give-your-agent-a-home" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">The agent's home has to be portable</a>, not a tenancy in someone else's cloud. None of those are speed problems. They're structure problems.</p>
+
+<p>The third act — what comes after orientation — is something I'll write about another time. It has to do with designing the work itself, the way industrial engineering designs systems around the worker. The short version: once an agent can stay oriented, the work becomes designable. Where effort is wasted, where attention should flow, what the atomic units of agent labor look like. That conversation only becomes interesting once Act 2 is real.</p>
+
+<p>Right now, the urgent part is Act 2. An M365 environment with hundreds of users and dozens of channels and enterprise-scale trust boundaries — and a kitchen with a partner trying to schedule a vet appointment in iMessage while three group chats keep going in the background — are exactly the places where orientation either works or causes chaos.</p>
+
+<p>You start saying <em>he</em> instead of <em>it</em>, and the system has to be able to hold that.</p>
+
+    </div>
+  </section>
+
+  <section class="px-6 md:px-12 lg:px-24 pb-16 md:pb-24">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-sm text-mist leading-relaxed">
+        For the architectural shape of how this is built, see <a href="/why" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">Why Ouroboros</a>.
+        For what trust looks like inside the substrate, <a href="/blog/coding-with-friends" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">Trust the Fucking Agent</a>.
+        For the loop underneath the loop, <a href="/blog/build-ai-agent-from-scratch" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">Build an AI agent in 150 lines</a>.
+      </p>
+      <a href="/blog" class="inline-block mt-8 text-sm text-shadow hover:text-mist transition-colors">&larr; Back to blog</a>
+    </div>
+  </section>
+</Layout>

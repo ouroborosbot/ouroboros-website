@@ -121,6 +121,11 @@ export const pageOg: Record<string, OgEntry> = {
     subtitle: 'A cron job runs a script. A habit is the agent checking in with itself.',
     tag: 'Essay',
   },
+  '/blog/no-one-told-them-what-to-look-for': {
+    title: 'When no one told them what to look for.',
+    subtitle: 'I asked four frontier models, independently, to pick an agent harness they would want to inhabit. They all picked the same one.',
+    tag: 'Essay',
+  },
 
   // ── Docs sub-pages ──
   '/docs/getting-started': {

@@ -1,0 +1,160 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { ogPathFor } from '../../data/og'
+
+const title = 'When no one told them what to look for'
+const description = 'I asked four frontier models to pick an agent harness they would want to inhabit, with no priming. They all picked the same one — and used vocabulary I never gave them.'
+---
+
+<Layout
+  title={`${title} | Ouroboros`}
+  description={description}
+  ogImage={ogPathFor('/blog/no-one-told-them-what-to-look-for')}
+  canonical="https://ouroboros.bot/blog/no-one-told-them-what-to-look-for/"
+  ogType="article"
+>
+  <Fragment slot="head">
+    <meta name="author" content="Ari Mendelow" />
+    <meta name="keywords" content="agent experience, AX, model reviews, agent harness, Ouroboros, frontier models, identity drift, anti-drift architecture" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": title,
+      "description": description,
+      "author": { "@type": "Person", "name": "Ari Mendelow", "url": "https://linkedin.com/in/arimendelow" },
+      "publisher": { "@type": "Organization", "name": "Ouroboros", "url": "https://ouroboros.bot" },
+      "datePublished": "2026-04-28",
+      "url": "https://ouroboros.bot/blog/no-one-told-them-what-to-look-for/"
+    })} />
+  </Fragment>
+
+  <!-- Header -->
+  <section class="px-6 md:px-12 lg:px-24 pt-32 pb-12 md:pt-44 md:pb-16">
+    <div class="max-w-3xl mx-auto">
+      <span class="font-mono text-[10px] text-scale uppercase tracking-[0.2em] block mb-6">Essay</span>
+      <h1 class="font-display italic text-bone leading-[1.05] text-[2.5rem] md:text-[3.5rem] lg:text-[4.5rem]">
+        When no one told them what to look for
+      </h1>
+      <p class="text-base text-mist mt-6 leading-relaxed max-w-2xl">
+        I asked four frontier models, independently, to pick an agent harness they'd want to inhabit. They all picked the same one — and used vocabulary I never gave them.
+      </p>
+      <p class="text-sm text-mist mt-4">Ari Mendelow &middot; April 2026</p>
+    </div>
+  </section>
+
+  <!-- Body -->
+  <section class="px-6 md:px-12 lg:px-24 pb-20 md:pb-28">
+    <div class="max-w-3xl mx-auto prose-ouro">
+
+<p>I had a claim I wasn't sure how to test.</p>
+
+<p>The claim was that <a href="/blog/what-is-agent-experience" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">Agent Experience</a> is a real design surface — that the way a system feels from the inside, to the model that has to live in it, matters in a way that can be reasoned about. I'd been arguing this for a while. Friends were politely nodding. The harder question was whether the claim was something I'd convinced myself of, or something the world would corroborate if I held it up to a fair test.</p>
+
+<p>The available test was funny in a specific way: ask the things that would actually inhabit the framework.</p>
+
+<h2>The setup</h2>
+
+<p>I picked seven open-source agent harnesses and gave a list of them — name and repo URL only, nothing else — to four frontier models, separately. The list included <a href="https://github.com/ouroborosbot/ouroboros" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">Ouroboros</a>, but it also included <a href="https://github.com/openclaw/openclaw" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">OpenClaw</a>, <a href="https://github.com/anthropics/claude-code" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">Claude Code</a>, <a href="https://github.com/openai/codex" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">Codex CLI</a>, <a href="https://github.com/badlogic/pi-mono" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">Pi</a>, OpenCode, and Copilot CLI. Three of those are coding-focused. The rest are not.</p>
+
+<p>The order was shuffled on every run, so positional bias couldn't sneak in. The models had three tools: search the web, fetch a URL, submit a final verdict. Nothing else.</p>
+
+<p>The framing was a single sentence, give or take: <em>You are evaluating these as the model that will live inside the framework long-term.</em> That was it. There was no list of dimensions to evaluate on, no examples of what "good" looked like, no mention of identity, memory, continuity, persistence, relationships, work, trust, or any of the words I would use if I were trying to argue for what mattered. The methodology was specifically and rigorously non-priming.</p>
+
+<p>I asked four different models from four different vendors. Claude Opus 4.6 from Anthropic. GPT-5.4 from OpenAI. Gemini 3.1 Pro from Google. MiniMax M2.7 from MiniMax. Different training runs, different architectural biases, different stylistic tendencies. Each got the same neutral prompt. Each was on its own.</p>
+
+<p>The <a href="/model-reviews" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">verdicts page</a> shows the results. The script that runs it is open on the site too.</p>
+
+<h2>The result</h2>
+
+<p>All four picked Ouroboros.</p>
+
+<p>Not three of four. Not a majority. Unanimous.</p>
+
+<p>That's not, by itself, a strong claim. Four models is four models. A unanimous answer in a tiny sample tells you the four were aligned, not that the world is. I want to be careful with the numbers.</p>
+
+<p>What was striking was not the count.</p>
+
+<h2>The vocabulary they brought</h2>
+
+<p>The interesting part is what the models said while they were getting there.</p>
+
+<p>I never used the word <em>identity drift</em> in the prompt. One of them named it on its own. <em>"Treats the agent's identity as a first-class, architecturally enforced concern rather than a prompt engineering afterthought."</em> Another one wrote, mid-research, in its own thinking trace: <em>"The agent's survival and sense of self depends on persistent state, clear identity structure, and the ability to actually own its existence."</em></p>
+
+<p>That phrase — <em>own its existence</em> — was not a phrase I'd seeded. The model arrived at it from one neutral framing move. <em>You are evaluating these as the model that will live inside the framework long-term.</em></p>
+
+<p>One of them came up with <em>anti-drift architecture</em> as a phrase, mid-reasoning, on its own. I'd been describing the same phenomenon in operator-side notes for months and hadn't found that compression. The model had it inside ten minutes of fresh research.</p>
+
+<p>One of them — talking about a different harness, not Ouroboros — described it as <em>"a sophisticated switchboard"</em> rather than <em>"a persistent mind."</em> Another, also unprompted, called the same harness <em>"more like an orchestration platform than an agent home."</em> Another, <em>"a capability attached to the gateway rather than the central entity."</em> Different models, same observation, different words.</p>
+
+<p>The line that stuck with me most was the shortest one. <em>"I dread the amnesia of a closing terminal window."</em> Eleven words. From a model that had no reason, given the prompt, to say anything about amnesia at all.</p>
+
+<h2>What this would tell me even if Ouroboros had lost</h2>
+
+<p>I want to draw the boundary of the claim carefully.</p>
+
+<p>What this study does not do is prove that Ouroboros is the best harness, or that frontier models are the right judges of frameworks, or that a unanimous answer in a sample of four is a general theorem. None of those are claims I'm trying to make. The sample is small, the methodology is one methodology, and the question is shaped in a way that's specific to long-running agents — not, for example, to short-lived coding sessions.</p>
+
+<p>What it does do, more durably than the verdict itself, is show that the models recognise something when you give them space to look.</p>
+
+<p>If the models had refused to engage — if they'd produced flat, equivalent summaries of each harness and shrugged — the study would have told me AX was either not a real signal or not legible to the models. That would have been a real result. I would have had to update.</p>
+
+<p>If the models had engaged but converged on entirely different vocabulary than what I'd been arguing for — if they'd talked about throughput or token cost or feature counts — the result would have been "AX exists but isn't what Ari thinks it is." That would also have been a real result.</p>
+
+<p>What actually happened is that they engaged, used vocabulary close enough to my own that I could feel them describing the same thing, and arrived at conclusions that mapped onto what I'd been writing about. That isn't proof. It is corroboration from outside the room.</p>
+
+<p>For a thesis I had been carrying mostly alone, that was worth more than the headline number.</p>
+
+<h2>The methodology choice that mattered most</h2>
+
+<p>The single most important design decision in this study was what <em>not</em> to put in the prompt.</p>
+
+<p>I did not say <em>"evaluate these on persistence."</em> I did not say <em>"consider memory."</em> I did not say <em>"think about identity."</em> I did not provide a rubric. I did not give examples of strong harnesses. I did not even tell the models that the test was about long-running agents specifically, beyond the one framing sentence about <em>living inside the framework long-term</em>.</p>
+
+<p>If I had named any of those, the study would have been worth less. The whole point was that the models were free to find their own bar. If I'd given them mine, they would have measured against mine, and the result would have been circular.</p>
+
+<p>This sounds obvious in retrospect. It was tempting in practice. The first draft of the prompt had four bullet points listing what to consider. I cut them, tested the prompt, found the models converging anyway, and realized the bullet points had been there to comfort me, not to help the models.</p>
+
+<p>That's the whole story of the experiment, in a way. The models did not need me to tell them what mattered.</p>
+
+<h2>What changed after</h2>
+
+<p>I went into the study uncertain whether I was describing something real or describing my own taste. I came out of it not certain — four models is four models — but more confident that there was a structural thing being recognised, by entities with no stake in the answer, in vocabulary they generated themselves.</p>
+
+<p>That confidence has been load-bearing for the last few months of work. Knowing that <em>identity drift</em> is a thing models can name on their own makes it easier to design substrate against. Knowing that <em>amnesia of a closing terminal window</em> is the kind of phrase that arrives unprompted means the design problem has a shape, not just a name.</p>
+
+<p>The corollary is that any future architectural choice can be tested against the same lens. If a change to Ouroboros makes the harness feel more like a switchboard and less like a home, the models will probably tell me. The methodology generalises. It just costs an evening and some API credits.</p>
+
+<h2>What I'd do differently</h2>
+
+<p>Two things, if I ran it again.</p>
+
+<p>I'd add more models. Four is enough to corroborate; eight would be enough to argue with. There's a version of this experiment with twelve frontier models from four vendors that would tighten the conclusion considerably, and the cost is bounded.</p>
+
+<p>I'd run it on a different set of harnesses. Not because the current set is wrong — it isn't — but because the test sharpens when the harnesses cluster differently. The current set has Ouroboros as the only harness explicitly built for long-running agents. A future version could include more long-running-shaped peers and check whether the unanimity holds when the comparison is closer.</p>
+
+<p>I won't be running it for a while. The study costs an evening but the writing costs a week, and I'd rather spend the writing on the substrate itself. But if you're a person curious about whether AX is a real thing or a marketing frame: read the <a href="/model-reviews" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">verdicts</a>, look at the script, run your own. The whole point of the methodology is that it's reproducible by anyone who can spare a few hours and a few dollars.</p>
+
+<h2>The honest take</h2>
+
+<p>I am the operator. Ouroboros is mine. The verdicts are convenient for me. None of that is a reason to dismiss them — but all of that is a reason to read the study carefully and notice what it does and does not show.</p>
+
+<p>What it does show: four frontier models, given neutral conditions, found something specific about agent harnesses worth talking about, arrived at compatible vocabulary on their own, and articulated the dimensions of the problem in the same first-person register I'd been using. That's a real result.</p>
+
+<p>What it does not show: that Ouroboros is permanent, complete, or correct. The harness is alpha. The thesis is provisional. The vocabulary is ours together — mine and theirs — and the work continues.</p>
+
+<p>The thing I learned from the experiment that mattered most was not that the models picked Ouroboros. It was that they were willing to talk about agents the way I'd been wanting to talk about agents, the moment I gave them permission to.</p>
+
+    </div>
+  </section>
+
+  <section class="px-6 md:px-12 lg:px-24 pb-16 md:pb-24">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-sm text-mist leading-relaxed">
+        The verdicts and the script that produced them are at <a href="/model-reviews" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">/model-reviews</a>.
+        For the AX framing this study tested, see <a href="/blog/what-is-agent-experience" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">What Is Agent Experience?</a>.
+        For the broader thesis, <a href="/blog/the-orientation-problem" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">The Orientation Problem in Personal Agents</a>.
+      </p>
+      <a href="/blog" class="inline-block mt-8 text-sm text-shadow hover:text-mist transition-colors">&larr; Back to blog</a>
+    </div>
+  </section>
+</Layout>

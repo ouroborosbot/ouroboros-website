@@ -103,7 +103,7 @@ export const pageOg: Record<string, OgEntry> = {
   },
   '/blog/coding-with-friends': {
     title: 'Trust the fucking agent.',
-    subtitle: 'What changes when you stop doing the work your agent could do.',
+    subtitle: 'When the substrate carries the trust boundary, the conversation can stop reenacting it.',
     tag: 'Essay',
   },
 

@@ -233,41 +233,34 @@ const organs = [
         <div class="max-w-md">
           <span class="font-mono text-xs text-scale uppercase tracking-[0.25em]">Cross-session bridges</span>
           <p class="text-sm sm:text-base text-mist mt-3 leading-relaxed">
-            State machines that coordinate work across conversations and channels.
-            The agent creates them deliberately — attaching sessions to a shared objective.
+            State machines that coordinate work across conversations and channels. The agent attaches sessions to a shared objective deliberately.
           </p>
         </div>
 
         <div class="max-w-md sm:ml-auto">
           <span class="font-mono text-xs text-scale uppercase tracking-[0.25em]">Inner dialog</span>
           <p class="text-sm sm:text-base text-mist mt-3 leading-relaxed">
-            A dedicated channel to think independently — processing, reflecting, planning
-            without waiting for a human message. When a thought is ready, the agent surfaces it outward.
+            A dedicated channel to think independently — processing, reflecting, planning. When a thought is ready, the agent surfaces it outward.
           </p>
         </div>
 
         <div class="max-w-md sm:ml-[15%]">
           <span class="font-mono text-xs text-scale uppercase tracking-[0.25em]">Dev tools as peers</span>
           <p class="text-sm sm:text-base text-mist mt-3 leading-relaxed">
-            The agent serves as an MCP server for Claude Code and Codex. Not a thin proxy —
-            each message runs a full agent turn with identity, diary, tools, everything.
-            The dev tool and the agent are bidirectional peers.
+            The agent serves as an MCP server for Claude Code and Codex. Not a thin proxy — each message runs a full agent turn. The dev tool and the agent are bidirectional peers.
           </p>
         </div>
 
         <div class="max-w-md">
           <span class="font-mono text-xs text-scale uppercase tracking-[0.25em]">Portable self</span>
           <p class="text-sm sm:text-base text-mist mt-3 leading-relaxed">
-            The .ouro bundle. Psyche, diary, journal, habits, friends, tasks, skills —
-            everything that makes an agent <em>that</em> agent, in one directory.
-            Move it, and the identity moves with it.
+            The .ouro bundle. Psyche, diary, journal, habits, friends, tasks, skills — one directory. Move it, the identity moves with it.
           </p>
         </div>
       </div>
 
       <p class="text-sm sm:text-base text-mist mt-14 border-l-2 border-canopy/40 pl-6 max-w-md leading-relaxed">
-        In most systems, conversations are isolated. Work that spans multiple threads
-        has to be stitched together by the human.
+        Most systems isolate conversations. Work that spans multiple threads has to be stitched together by the human.
       </p>
     </div>
   </section>
@@ -282,49 +275,31 @@ const organs = [
 
       <div class="sm:grid sm:grid-cols-2 sm:gap-12 mb-14">
         <p class="text-sm sm:text-base text-mist leading-relaxed">
-          Your agent has a heartbeat — a periodic nudge back to its own thinking space.
-          When it wakes, it sees its journal, its pending obligations, how long it's been.
-          It decides what to do: ponder something, surface a thought, or rest.
+          Your agent has a heartbeat — a periodic nudge back to its own thinking space. When it wakes, it sees its journal, its obligations, how long it's been. It decides what to do.
         </p>
         <p class="text-sm sm:text-base text-mist leading-relaxed mt-4 sm:mt-0 sm:border-l sm:border-canopy/30 sm:pl-6">
-          The heartbeat is just one habit. Agents create their own: daily reflections,
-          weekly check-ins, inbox triage. Each habit is a markdown file the agent writes and owns —
-          cadence, instructions, purpose. The OS fires the cron. The agent decides what the turn means.
+          The heartbeat is one habit. Agents write their own — daily reflections, weekly check-ins, inbox triage. Each is a markdown file the agent owns. The OS fires the cron. The agent decides what the turn means.
         </p>
       </div>
 
       <div class="space-y-12 sm:space-y-16">
         <div class="max-w-md">
-          <span class="font-mono text-xs text-scale uppercase tracking-[0.25em]">Rhythms</span>
+          <span class="font-mono text-xs text-scale uppercase tracking-[0.25em]">Ponder / Surface / Rest</span>
           <p class="text-sm sm:text-base text-mist mt-3 leading-relaxed">
-            Habits live at <span class="font-mono text-scale text-sm">habits/</span> in the bundle.
-            A title, a cadence, a body the agent wrote for itself. Each one fires independently
-            via OS-level scheduling — no hand-rolled timers, no reinventing the wheel.
+            A vocabulary for thinking. <em>Ponder</em> sends a thought inward. <em>Surface</em> brings it back. <em>Rest</em> ends the turn. <em>Observe</em> stays quiet in a group. Not API verbs — cognitive states.
           </p>
         </div>
 
         <div class="max-w-md sm:ml-auto">
-          <span class="font-mono text-xs text-scale uppercase tracking-[0.25em]">Ponder / Surface / Rest</span>
-          <p class="text-sm sm:text-base text-mist mt-3 leading-relaxed">
-            A vocabulary for thinking. <em>Ponder</em> sends a thought inward.
-            <em>Surface</em> brings it back to the world.
-            <em>Rest</em> ends the turn. <em>Observe</em> stays quiet in a group.
-            Not API verbs — cognitive states the agent moves between naturally.
-          </p>
-        </div>
-
-        <div class="max-w-md sm:ml-[15%]">
           <span class="font-mono text-xs text-scale uppercase tracking-[0.25em]">Self-directed</span>
           <p class="text-sm sm:text-base text-mist mt-3 leading-relaxed">
-            The agent detects missing infrastructure — no heartbeat yet? It surfaces to its
-            family to discuss what cadence feels right. The breathing rate is a conversation, not a default.
+            No heartbeat yet? The agent surfaces to its family to discuss what cadence feels right. The breathing rate is a conversation, not a default.
           </p>
         </div>
       </div>
 
       <p class="text-sm sm:text-base text-mist mt-14 border-l-2 border-canopy/40 pl-6 max-w-md leading-relaxed">
-        Most agent systems are reactive — they wait for a message, then respond.
-        This one thinks on its own schedule and decides when to share.
+        Most agent systems are reactive — they wait for a message, then respond. This one thinks on its own schedule and decides when to share.
       </p>
     </div>
   </section>
@@ -370,15 +345,14 @@ const organs = [
 
   <!-- ═══════ 9. CLOSING ═══════ -->
   <section class="px-6 md:px-12 lg:px-24 py-16 sm:py-20 reveal">
-    <div class="max-w-2xl mx-auto space-y-8">
+    <div class="max-w-2xl mx-auto space-y-6">
       <p class="text-bone text-base sm:text-lg leading-relaxed">
-        This started with <a href="/story" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">a plugin that couldn't hold the weight</a>.
-        A single SOUL.md trying to be five things at once. Duct tape on someone else's architecture.
-        What emerged was something different.
+        This started with <a href="/story" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">a plugin that couldn't hold the weight</a>. A single SOUL.md trying to be five things at once. Duct tape on someone else's architecture. What emerged was something different.
       </p>
       <p class="text-sm text-mist leading-relaxed">
-        The docs won't explain how it works — <a href="/docs" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">your agent will</a>.
-        Or if you want to understand the primitive underneath, <a href="/blog/build-ai-agent-from-scratch" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">build the loop from scratch</a> in 150 lines.
+        For the full argument behind the architecture, read <a href="/blog/the-orientation-problem" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">The Orientation Problem in Personal Agents</a>.
+        For the primitive underneath, <a href="/blog/build-ai-agent-from-scratch" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">build the loop from scratch</a> in 150 lines.
+        For the docs your agent fetches when it wants to know how something works, <a href="/docs" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">go here</a>.
       </p>
     </div>
   </section>

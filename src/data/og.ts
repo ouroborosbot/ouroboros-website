@@ -116,6 +116,11 @@ export const pageOg: Record<string, OgEntry> = {
     subtitle: 'A personal agent has a set of relationships, not a single user. The substrate has to carry that.',
     tag: 'Essay',
   },
+  '/blog/habits-not-cron': {
+    title: 'Habits, not cron.',
+    subtitle: 'A cron job runs a script. A habit is the agent checking in with itself.',
+    tag: 'Essay',
+  },
 
   // ── Docs sub-pages ──
   '/docs/getting-started': {

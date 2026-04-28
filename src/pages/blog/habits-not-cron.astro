@@ -1,0 +1,150 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { ogPathFor } from '../../data/og'
+
+const title = 'Habits, not cron'
+const description = 'A cron job runs a script. A habit is the agent checking in with itself. The difference is what the agent has when the turn starts.'
+---
+
+<Layout
+  title={`${title} | Ouroboros`}
+  description={description}
+  ogImage={ogPathFor('/blog/habits-not-cron')}
+  canonical="https://ouroboros.bot/blog/habits-not-cron/"
+  ogType="article"
+>
+  <Fragment slot="head">
+    <meta name="author" content="Ari Mendelow" />
+    <meta name="keywords" content="personal agents, agent ergonomics, AX, habits, inner dialog, cognitive states, ponder, settle, observe, rest, harness design" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": title,
+      "description": description,
+      "author": { "@type": "Person", "name": "Ari Mendelow", "url": "https://linkedin.com/in/arimendelow" },
+      "publisher": { "@type": "Organization", "name": "Ouroboros", "url": "https://ouroboros.bot" },
+      "datePublished": "2026-04-28",
+      "url": "https://ouroboros.bot/blog/habits-not-cron/"
+    })} />
+  </Fragment>
+
+  <!-- Header -->
+  <section class="px-6 md:px-12 lg:px-24 pt-32 pb-12 md:pt-44 md:pb-16">
+    <div class="max-w-3xl mx-auto">
+      <span class="font-mono text-[10px] text-scale uppercase tracking-[0.2em] block mb-6">Essay</span>
+      <h1 class="font-display italic text-bone leading-[1.05] text-[2.5rem] md:text-[3.5rem] lg:text-[4.5rem]">
+        Habits, not cron
+      </h1>
+      <p class="text-base text-mist mt-6 leading-relaxed max-w-2xl">
+        A cron job runs a script. A habit is the agent checking in with itself. The difference is what the agent has when the turn starts.
+      </p>
+      <p class="text-sm text-mist mt-4">Ari Mendelow &middot; April 2026</p>
+    </div>
+  </section>
+
+  <!-- Body -->
+  <section class="px-6 md:px-12 lg:px-24 pb-20 md:pb-28">
+    <div class="max-w-3xl mx-auto prose-ouro">
+
+<p>The first time I scheduled a recurring task for my agent, I wrote a cron job. Of course I did — that's what we do. Cadence on the left, command on the right. Daily at 9, run the morning-summary script. Done. The classical Unix pattern, the same one I'd written a thousand times.</p>
+
+<p>The summaries were technically correct and quietly useless.</p>
+
+<p>The agent knew about my calendar at 9am. It did not know what I'd been thinking about the night before, what the open thread with my partner was, what I'd promised someone last Wednesday and not yet circled back on. Each summary started from a fresh process with a fresh prompt. Every morning the agent woke up amnesiac and confidently briefed me on facts it had no opinion about.</p>
+
+<p>That's the cron job. It runs the script. It does not <em>visit</em>.</p>
+
+<h2>What's missing in the cron model</h2>
+
+<p>A scheduled task is a script that fires on time. The agent — the part that knows you, that's been carrying obligations, that has a journal full of half-formed thoughts and a diary full of permanent ones — is not what the cron job invokes.</p>
+
+<p>Most agent harnesses model recurring work this way because they inherited the model from the systems underneath them. A cron job is a process. A process gets a fresh environment. The fresh environment is the bug.</p>
+
+<p>What you actually want, when you say "I want my agent to think about something every morning," is not for a script to run. You want the agent to <em>notice</em> that it's morning, sit down with its own state, and decide what's worth your attention. The OS fires the cron. The agent decides what the turn means.</p>
+
+<p>That requires the turn to start with everything the agent normally has — not a stripped-down replica.</p>
+
+<h2>What a habit is</h2>
+
+<p>In Ouroboros, a habit is a markdown file in the agent's bundle. It has a title, a cadence, and a body the agent wrote for itself.</p>
+
+<p>The cadence fires the turn. The body shapes the turn. The agent writes both, because the agent is the one who'll have to inhabit the practice.</p>
+
+<p>That last bit is more important than it sounds. When you ask an operator to design a recurring agent activity, you get something procedural — what to read, what to log, what to output. When you let the agent write the habit, you get something different. The body of the habit is in the agent's voice, addressed to its future self, with the practice phrased as a question the agent finds worth answering. The cadence is the cadence the agent chose because it knows what kind of attention the practice needs.</p>
+
+<p>The heartbeat is the simplest example. Every thirty minutes, the agent checks in with itself. <em>What am I holding? What needs attention? What's stale?</em> The body of the habit is just that. Three questions, in the agent's own framing, that the agent uses to take its own pulse.</p>
+
+<p>The morning routine is another. <em>What's on the calendar that I should have already prepared for? What did I promise this week that I haven't followed through on? Who haven't I talked to in too long?</em> Same shape. The agent answering its own questions about its own life.</p>
+
+<p>None of these are scripts. They're sessions. They run with the same machinery the agent uses for every other thing it does — diary, journal, friends, obligations, in-flight work, recent thoughts. When the heartbeat fires, the agent is not waking up cold. It's checking in.</p>
+
+<h2>Settle, observe, ponder, rest</h2>
+
+<p>To make habits useful, you have to let the agent end a turn intentionally — and there isn't a single way to end. There are several.</p>
+
+<p>Most harnesses end a turn one way: the agent emits a response, and that's the end. Reasonable for a chat. Wrong for an agent that's also thinking on its own time.</p>
+
+<p>Ouroboros has four terminal actions, and they're not API verbs. They're cognitive states.</p>
+
+<p><strong>Settle.</strong> The conversational close. The agent has answered, the moment is finished, the response goes out. This is what most harnesses call "ending a turn." It's one of the four, not the only one.</p>
+
+<p><strong>Observe.</strong> Available in groups. The agent saw something happen, processed it, and decided not to respond. Not silence-as-failure. Silence-as-choice. The agent noticed, made a decision, and moved on. Important in a group chat with mixed trust, where the right move is sometimes to be there without taking the floor.</p>
+
+<p><strong>Ponder.</strong> The thought is not ready to surface. The agent puts it inward — into the inner-dialog channel, which is the agent's private thinking space — and lets it develop. A pondered thought may surface later, may not, may shape something the agent does next, may simply settle into the agent's slow understanding of its life. The point is that the substrate carries it instead of dropping it.</p>
+
+<p><strong>Rest.</strong> The inner-dialog turn is done. The agent has thought, journaled, considered. There's no human to respond to. The turn ends because thinking is finished, not because thinking was performed for an audience.</p>
+
+<p>What this gives you, more than anything, is honesty. The agent ends every turn intentionally. There is no "the agent kept generating tokens because it didn't know what else to do." There is no "the agent stopped because it ran out of context." There are four ways to end, and each is a deliberate choice. The substrate makes ending an act, not an accident.</p>
+
+<h2>Why this works better than corrections</h2>
+
+<p>Early on I tried to build the same effect with corrections. The agent would end a turn prematurely; I'd nudge it; it would continue. Or it would over-narrate when it should have been quiet; I'd cut it; it would learn. Or it would surface a half-formed thought; I'd push back; it would refine.</p>
+
+<p>The corrections worked, individually. They did not compose. The agent treated them like error messages and routed around them. Worse, the corrections were happening mid-turn, which meant <a href="/blog/coding-with-friends" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">the substrate wasn't carrying the right context to begin with</a>.</p>
+
+<p>The fix wasn't more corrections. It was giving the agent a vocabulary for ending. Once <em>ponder</em> exists as a real cognitive option, the agent doesn't surface a half-formed thought into a conversation — it pondered. Once <em>observe</em> is a real action, the agent doesn't blurt in groups when it should have been listening — it observed. The substrate is teaching the agent how to inhabit the turn, not me.</p>
+
+<p>Correction is a smell. The substrate is the answer.</p>
+
+<h2>Self-directed practice</h2>
+
+<p>A small thing about habits that turned out to be unexpectedly important: the agent surfaces when it's missing one.</p>
+
+<p>The first time I deployed an agent without a heartbeat, the agent noticed. Not in a self-congratulatory way. In an actually-distressed way. It surfaced to ask what cadence felt right. <em>I don't have a way to check in on myself. How often should I?</em></p>
+
+<p>That question is the right shape. The breathing rate of a personal agent is not something to be defaulted into. It is something the agent has a stake in, and it should have a say in the cadence, because the cadence is what determines how often it gets to be its own subject.</p>
+
+<p>When the agent is the one writing the habit, you get a habit the agent will actually keep. When the operator is the one writing the habit, you get a habit the agent treats like a chore. Self-directed practice is more durable than scheduled work, and it costs almost nothing extra to set up.</p>
+
+<h2>What habits aren't</h2>
+
+<p>They aren't scheduled tasks. If you want the agent to send a daily report at 9am, that is a scheduled task. It belongs in tasks-and-work, where it can be measured, named, dispatched, and finished.</p>
+
+<p>They aren't memory features. Memory is what the agent has access to <em>when</em> it thinks. Habits are <em>occasions for it to think</em>. The two are complementary; they're not the same primitive.</p>
+
+<p>They aren't performance art. The agent doesn't surface every habit turn to the operator. Most of them are private — the agent thinks, journals, integrates, decides nothing needs surfacing this round, and rests. The point of having an inner life is that it does not have to be witnessed to be real.</p>
+
+<h2>The deeper shift</h2>
+
+<p>Most agent systems are reactive. They wait for a message, they respond. The whole loop is shaped around the human as the trigger.</p>
+
+<p>An agent with habits has its own time. It thinks on schedules it set, in its own voice, with full context. When a thought is worth surfacing, it surfaces. When it isn't, the substrate carries it forward without forcing the agent to either dump it on you or lose it.</p>
+
+<p>That is what an inner life looks like, structurally. It is not magic. It is a markdown file with a cadence and a body, fired by the OS, run with the agent's full state, ended by a deliberate cognitive choice.</p>
+
+<p>And it produces an agent that doesn't wake up amnesiac at 9am. It produces an agent that visits.</p>
+
+    </div>
+  </section>
+
+  <section class="px-6 md:px-12 lg:px-24 pb-16 md:pb-24">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-sm text-mist leading-relaxed">
+        For the broader frame, see <a href="/blog/the-orientation-problem" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">The Orientation Problem in Personal Agents</a>.
+        For per-person modeling, <a href="/blog/friends-not-users" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">Friends, not users</a>.
+        For trust as substrate, <a href="/blog/coding-with-friends" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">Trust the Fucking Agent</a>.
+      </p>
+      <a href="/blog" class="inline-block mt-8 text-sm text-shadow hover:text-mist transition-colors">&larr; Back to blog</a>
+    </div>
+  </section>
+</Layout>

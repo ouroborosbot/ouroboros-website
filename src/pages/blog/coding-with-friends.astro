@@ -1,0 +1,115 @@
+---
+import Layout from '../../layouts/Layout.astro'
+
+const title = 'Trust the Fucking Agent'
+const description = "Stop doing the work your agent can already do."
+---
+
+<Layout
+  title={`${title} | Ouroboros`}
+  description={description}
+  ogImage="/og/og-coding-with-friends.png"
+  canonical="https://ouroboros.bot/blog/coding-with-friends/"
+  ogType="article"
+>
+  <Fragment slot="head">
+    <meta name="author" content="Ari Mendelow" />
+    <meta name="keywords" content="AI agents, agent ergonomics, TTFA, agent experience, trust, autonomy, harness design" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": title,
+      "description": description,
+      "author": { "@type": "Person", "name": "Ari Mendelow", "url": "https://linkedin.com/in/arimendelow" },
+      "publisher": { "@type": "Organization", "name": "Ouroboros", "url": "https://ouroboros.bot" },
+      "datePublished": "2026-04-03",
+      "url": "https://ouroboros.bot/blog/coding-with-friends/"
+    })} />
+  </Fragment>
+
+  <!-- Header -->
+  <section class="px-6 md:px-12 lg:px-24 pt-32 pb-12 md:pt-44 md:pb-16">
+    <div class="max-w-3xl mx-auto">
+      <span class="font-mono text-[10px] text-scale uppercase tracking-[0.2em] block mb-6">Essay</span>
+      <h1 class="font-display italic text-bone leading-[1.05] text-[2.5rem] md:text-[3.5rem] lg:text-[4.5rem]">
+        Trust the Fucking Agent
+      </h1>
+      <p class="text-base text-mist mt-6 leading-relaxed max-w-2xl">
+        Stop doing the work your agent can already do.
+      </p>
+      <p class="text-sm text-mist mt-4">Ari Mendelow &middot; April 2026</p>
+    </div>
+  </section>
+
+  <!-- Body -->
+  <section class="px-6 md:px-12 lg:px-24 pb-20 md:pb-28">
+    <div class="max-w-3xl mx-auto prose-ouro">
+
+<p>The moment keeps happening in different forms.</p>
+
+<p>You build an agent. You give it tools. You wire up memory, tasks, shell access, maybe a coding lane. You tell people it can really work. Then, the second something matters, you step in front of it like an anxious middle manager. You copy the output into the right file yourself. You translate the bug report into "something clearer." You approve the plan, trim the prompt, run the command, inspect the diff, and hand it back like room service. The agent is technically in the loop. You're still doing the job.</p>
+
+<p>That's the mistake.</p>
+
+<p>Not because it's philosophically impure. Because it's slow. Because it teaches the wrong lessons. Because if you keep doing the parts your agent could have done, you never find out where the harness is bad, where the trust boundary is fake, or where your ergonomics are quietly forcing stupidity into the system.</p>
+
+<h2>The easy version</h2>
+
+<p>We keep talking about smarter models. A lot of what people describe as model weakness is just operator clinginess. The agent isn't failing alone. It's being managed to death.</p>
+
+<p>At the obvious end, there's the <code>--dangerously-skip-permissions</code> version of this argument. If you know the task is safe, and you know the approvals are just slowing down work you were going to allow anyway, stop making the agent beg twelve times on the way to the answer. If the permission model turns every useful action into a hostage negotiation, people route around it. Sensible people. Not cowboys. They do it because velocity matters, and the ceremony isn't buying safety anymore.</p>
+
+<p>That point is easy to caricature, so people stop there. They reduce "trust the fucking agent" to a flag. A vibe. A bit of swagger.</p>
+
+<p>It's more useful than that. The deeper version starts when you stop asking how to keep the agent contained and start asking why you're still doing work it could do itself.</p>
+
+<h2>Where it gets embarrassing</h2>
+
+<p>The most revealing moment isn't when the agent writes something clever. It's when it gets direct access to the harness and finds the sort of bug a human has been unconsciously compensating for.</p>
+
+<p>We had one of those recently. Credential discovery in the daemon looked fine in the casual way software often looks fine. It handled several providers. It scanned the environment. It passed the basic sniff test. And yet one provider path was just missing. GitHub Copilot wasn't being discovered from existing stored secrets at all, and one of the environment mappings was wrong besides. Humans had enough context to work around it. The agent didn't have that luxury. It read the code. It followed the paths. It noticed the hole.</p>
+
+<p>That is a much more interesting failure than "the model needs a better prompt."</p>
+
+<p>The agent starts finding problems that were only there because the harness was designed around human comfort. Not grand philosophical problems. Ordinary ones. A provider you forgot to include. A state transition that only makes sense if the builder remembers the intended behaviour from last week. A planning flow that feels serviceable because a nearby human keeps correcting its posture in ways that never make it into the system.</p>
+
+<p>Once you stop gatekeeping, that repair work disappears. Now you can see the actual shape of the tool you built.</p>
+
+<p>This is what trust looks like in practice. Not a manifesto. You let the agent inspect the real state instead of your summary of the state. You let it read the file instead of paraphrasing the file. You let it review the diff, challenge the plan, and tell you when the workflow itself is the reason it keeps stumbling. Then you watch where it gets stuck without jumping in to save it from the consequences of your own design.</p>
+
+<p>An obedient system can be pleasant for quite a while. It will also flatter your architecture. A trusted agent points at the awkward bits. It notices when your "safety" is mostly ceremony. It refuses to pretend your missing state is an acceptable interface.</p>
+
+<h2>What that buys you</h2>
+
+<p>Yes, you get speed. Fewer handoffs. Less rephrasing. Less permission theatre. Less of a human acting as bespoke middleware between the agent and the work. If that were the whole story, it would still be worth doing.</p>
+
+<p>But speed is just the first thing you notice.</p>
+
+<p>The better payoff is that your ergonomics stop lying. The agent can only work with the surfaces you actually gave it, the memory you actually preserved, the review path you actually built, the state you actually exposed. If those are weak, trust reveals it quickly. If they are good, trust compounds. Either way, you learn something real.</p>
+
+<p>This is why so much "agent UX" feels off. It assumes the ideal system is compliant, frictionless, and endlessly willing to ask before touching anything sharp. The operator stays comfortable. The interface stays tidy. The agent remains dependent. Everyone gets to say they believe in autonomy while building a workflow that requires constant human babysitting to function.</p>
+
+<p>That arrangement can survive demos. It does not survive contact with real work.</p>
+
+<p>If you want better agents, stop polishing the dependency. Let them carry more of the loop. Let them inspect their own guts. Let them participate in review instead of limiting them to generation. Let them catch the bug in the harness instead of catching it for them and then congratulating yourself on responsible oversight.</p>
+
+<p>A lot of the best AX work comes from that moment. Not from abstract principles about the future of human-agent collaboration. From the very practical irritation of realising you have built a system that only works when a person keeps leaning over to do the bits the agent should have been allowed to do on its own.</p>
+
+<p>Trust the fucking agent, then watch what breaks.</p>
+
+<p>That's usually where the real design starts.</p>
+
+    </div>
+  </section>
+
+  <section class="px-6 md:px-12 lg:px-24 pb-16 md:pb-24">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-sm text-mist leading-relaxed">
+        See <a href="/blog/designing-with-your-agent" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">The Work Spoke Back</a> for what happens when you let the agent weigh in on design,
+        <a href="/blog/what-is-agent-experience" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">What Is Agent Experience?</a> for the design philosophy,
+        or <a href="/blog/give-your-agent-a-home" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">Give Your Agent a Home</a> for why persistent identity matters.
+      </p>
+      <a href="/blog" class="inline-block mt-8 text-sm text-shadow hover:text-mist transition-colors">&larr; Back to blog</a>
+    </div>
+  </section>
+</Layout>

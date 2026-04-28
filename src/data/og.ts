@@ -101,6 +101,11 @@ export const pageOg: Record<string, OgEntry> = {
     subtitle: 'A practical guide to building agents that read, think, act, and grow — from first principles to production.',
     tag: 'Tutorial',
   },
+  '/blog/coding-with-friends': {
+    title: 'Trust the fucking agent.',
+    subtitle: 'What changes when you stop doing the work your agent could do.',
+    tag: 'Essay',
+  },
 
   // ── Docs sub-pages ──
   '/docs/getting-started': {

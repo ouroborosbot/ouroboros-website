@@ -67,6 +67,17 @@ const organs = [
     </blockquote>
   </section>
 
+  <!-- ═══════ BRIDGE TO LONG-FORM ═══════ -->
+  <section class="relative px-6 md:px-12 lg:px-24 py-8 md:py-12 reveal">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-sm sm:text-base text-mist leading-relaxed">
+        Capability is the easy act. The hard part shows up the moment your agent has to stay coherent across time, people, and channels.
+        For the full argument, read <a href="/blog/the-orientation-problem" class="text-scale hover:text-glow transition-colors underline underline-offset-2">The Orientation Problem in Personal Agents</a>.
+        The rest of this page is the architectural shape of how Ouroboros answers it.
+      </p>
+    </div>
+  </section>
+
   <!-- ═══════ REVIEWS CALLOUT ═══════ -->
   <section class="relative px-6 md:px-12 lg:px-24 py-12 reveal">
     <div class="max-w-3xl mx-auto">
@@ -86,8 +97,7 @@ const organs = [
   <section id="friction" class="px-6 md:px-12 lg:px-24 py-12 sm:py-16 md:py-20 reveal">
     <div class="relative max-w-5xl mx-auto">
       <p class="text-sm sm:text-base text-mist mb-14 sm:mb-20 max-w-md leading-relaxed">
-        The hidden tax. Every time the agent loses the thread, someone pays to rebuild it.
-        Usually the human. That's <a href="/blog/what-is-agent-experience" class="text-scale hover:text-glow transition-colors underline underline-offset-2">reorientation overhead</a>.
+        Every time the agent loses the thread, someone pays to rebuild it. Usually the human. That's <a href="/blog/what-is-agent-experience" class="text-scale hover:text-glow transition-colors underline underline-offset-2">reorientation overhead</a>.
       </p>
 
       <div class="space-y-12 sm:space-y-20 md:space-y-28">
@@ -133,12 +143,10 @@ const organs = [
 
       <div class="sm:grid sm:grid-cols-2 sm:gap-12 mb-12">
         <p class="text-sm sm:text-base text-mist leading-relaxed">
-          Five markdown files define the agent's identity. Loaded every turn.
-          The self is structured — not scattered across conversation history.
-          <a href="/docs/bundles-and-psyche" class="text-scale hover:text-glow transition-colors ml-0.5">Your agent can inspect its own bundle.</a>
+          Five markdown files. Loaded every turn. The self is structured, not scattered across conversation history. Most harnesses give the agent a single personality file; as the agent grows, that file becomes a junk drawer.
         </p>
         <p class="text-sm sm:text-base text-mist leading-relaxed mt-4 sm:mt-0 sm:border-l sm:border-canopy/30 sm:pl-6">
-          Most harnesses give the agent a single personality file. As the agent grows, that file becomes a junk drawer.
+          <a href="/docs/bundles-and-psyche" class="text-scale hover:text-glow transition-colors">Your agent can inspect its own bundle</a> — these files are written for it, by it, and live in the same directory as the rest of its state.
         </p>
       </div>
 
@@ -168,29 +176,25 @@ const organs = [
         <div>
           <span class="font-mono text-xs text-scale uppercase tracking-[0.25em] block mb-4">The shelf</span>
           <p class="text-sm sm:text-base text-mist leading-relaxed">
-            The <span class="font-mono text-scale text-sm">diary/</span> is the agent's permanent record — conclusions, learned facts, things worth keeping. Written via
-            <span class="font-mono text-scale text-sm">diary_write</span>.
-            Friend-scoped observations via
-            <span class="font-mono text-scale text-sm">save_friend_note</span>.
+            <span class="font-mono text-scale text-sm">diary/</span> — permanent record. Conclusions, learned facts, things worth keeping.
           </p>
         </div>
         <div class="sm:border-l sm:border-canopy/30 sm:pl-10">
           <span class="font-mono text-xs text-scale uppercase tracking-[0.25em] block mb-4">The desk</span>
           <p class="text-sm sm:text-base text-mist leading-relaxed">
-            The <span class="font-mono text-scale text-sm">journal/</span> is working space — thinking-in-progress, drafts, notes the agent is still forming. Written with the same file tools it uses for everything else.
+            <span class="font-mono text-scale text-sm">journal/</span> — working space. Thinking-in-progress, drafts, notes the agent is still forming.
           </p>
         </div>
         <div class="sm:border-l sm:border-canopy/30 sm:pl-10">
           <span class="font-mono text-xs text-scale uppercase tracking-[0.25em] block mb-4">Recall</span>
           <p class="text-sm sm:text-base text-mist leading-relaxed">
-            Relevant memories surface in the system prompt before reasoning
-            begins — via embedding similarity, across both diary and journal. Ouroboros does the work before the agent starts thinking.
+            Relevant memories surface in the system prompt <em>before</em> reasoning begins. The substrate does the work before the agent starts thinking.
           </p>
         </div>
       </div>
 
       <p class="text-sm sm:text-base text-mist mt-12 border-l-2 border-canopy/40 pl-6 max-w-md leading-relaxed">
-        In most systems, the agent has to know it's forgotten something before it can search for it. That's backwards.
+        In most systems, the agent has to know it's forgotten something before it can search for it. <a href="/docs/continuity-and-memory" class="text-scale hover:text-glow transition-colors underline underline-offset-2">That's backwards.</a>
       </p>
     </div>
   </section>
@@ -204,23 +208,15 @@ const organs = [
       </h2>
 
       <p class="text-sm sm:text-base text-mist leading-relaxed">
-        Each person the agent interacts with gets a FriendRecord — not a user
-        profile, a friendship. Trust levels gate which tools the agent can
-        use with which people. Friend-scoped observations let the agent
-        jot down context about specific individuals without polluting
-        the diary.
+        Each person the agent interacts with gets a FriendRecord — not a user profile, a friendship. Trust levels gate which tools the agent can use with which people. The substrate carries the policy; the agent doesn't have to remember who's allowed to do what — it can only see the people who are.
       </p>
 
       <p class="text-sm sm:text-base text-mist mt-5 leading-relaxed">
-        Reactions are social cues, not metadata. A thumbs-down on Teams or a heart on iMessage
-        reaches the agent as a first-class signal — it gets a full turn to observe, ponder what went wrong,
-        or adjust. No hardcoded cooldowns. The agent decides what a reaction means.
+        Reactions are social cues, not metadata. A thumbs-down on Teams or a heart on iMessage reaches the agent as a first-class signal — a full turn to observe, ponder, or adjust. The agent decides what a reaction means.
       </p>
 
       <p class="text-sm sm:text-base text-mist mt-8 border-l-2 border-canopy/40 pl-6 leading-relaxed">
-        Most agent systems treat every human the same. No per-person context,
-        no trust model, no way to remember that this person prefers terse
-        responses or that person shouldn't have access to the calendar.
+        Most agent systems treat every human the same. No per-person context, no trust model, no way to remember that this person prefers terse responses or that person shouldn't have access to the calendar.
       </p>
     </div>
   </section>

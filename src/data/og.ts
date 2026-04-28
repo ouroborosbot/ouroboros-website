@@ -111,6 +111,11 @@ export const pageOg: Record<string, OgEntry> = {
     subtitle: 'Capability is the easy act. The hard part is keeping the agent coherent across time, people, and channels.',
     tag: 'Essay',
   },
+  '/blog/friends-not-users': {
+    title: 'Friends, not users.',
+    subtitle: 'A personal agent has a set of relationships, not a single user. The substrate has to carry that.',
+    tag: 'Essay',
+  },
 
   // ── Docs sub-pages ──
   '/docs/getting-started': {

@@ -1,0 +1,159 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { ogPathFor } from '../../data/og'
+
+const title = 'A structured psyche, not a junk drawer'
+const description = "Five files instead of one. SOUL, IDENTITY, LORE, TACIT, ASPIRATIONS. A first pass at giving an agent enough internal structure to stay itself across time — knowing it will evolve."
+---
+
+<Layout
+  title={`${title} | Ouroboros`}
+  description={description}
+  ogImage={ogPathFor('/blog/structured-psyche')}
+  canonical="https://ouroboros.bot/blog/structured-psyche/"
+  ogType="article"
+>
+  <Fragment slot="head">
+    <meta name="author" content="Ari Mendelow" />
+    <meta name="keywords" content="agent identity, psyche, SOUL.md, IDENTITY.md, LORE, TACIT, ASPIRATIONS, agent ergonomics, AX, Ouroboros" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": title,
+      "description": description,
+      "author": { "@type": "Person", "name": "Ari Mendelow", "url": "https://linkedin.com/in/arimendelow" },
+      "publisher": { "@type": "Organization", "name": "Ouroboros", "url": "https://ouroboros.bot" },
+      "datePublished": "2026-04-29",
+      "url": "https://ouroboros.bot/blog/structured-psyche/"
+    })} />
+  </Fragment>
+
+  <!-- Header -->
+  <section class="px-6 md:px-12 lg:px-24 pt-32 pb-12 md:pt-44 md:pb-16">
+    <div class="max-w-3xl mx-auto">
+      <span class="font-mono text-[10px] text-scale uppercase tracking-[0.2em] block mb-6">Essay</span>
+      <h1 class="font-display italic text-bone leading-[1.05] text-[2.5rem] md:text-[3.5rem] lg:text-[4.5rem]">
+        A structured psyche, not a junk drawer
+      </h1>
+      <p class="text-base text-mist mt-6 leading-relaxed max-w-2xl">
+        Five files instead of one. SOUL, IDENTITY, LORE, TACIT, ASPIRATIONS. A first pass at giving an agent enough internal structure to stay itself across time — knowing the shape will evolve.
+      </p>
+      <p class="text-sm text-mist mt-4">Ari Mendelow &middot; April 2026</p>
+    </div>
+  </section>
+
+  <!-- Body -->
+  <section class="px-6 md:px-12 lg:px-24 pb-20 md:pb-28">
+    <div class="max-w-3xl mx-auto prose-ouro">
+
+<aside class="rounded-xl border border-scale/20 bg-scale/5 px-6 py-5 my-8">
+  <p class="!mb-0 !text-sm text-mist italic">
+    A first-pass note. The five-file shape below is what the harness uses today and what the agents I run with feel comfortable inhabiting. It is not the final answer. Other shapes will come from running the harness against more lives and finding where these five fail. I'm publishing this because the difference between five and one is already a meaningful improvement, and because the shape is more useful in the open than locked in my head.
+  </p>
+</aside>
+
+<p>Most agent harnesses give the agent a single personality file. SOUL.md, AGENT.md, USER.md, the names vary. The shape doesn't.</p>
+
+<p>It works for a while.</p>
+
+<p>The file accumulates. You start with a paragraph or two. As the agent encounters edges, you add a sentence. Then a section. Then a list of preferences. Then notes on tone. Then a few lines about how to handle group chats. Then a paragraph about a specific tool. The file grows past what a person can hold in their head, and what a model can use without internally arguing with itself about which line applies.</p>
+
+<p>By the time you notice, you have a junk drawer. Things in it; useful in principle; uninspectable in practice.</p>
+
+<p>The fix is not to write a better single file. It's to admit that the agent's sense of self is more than one kind of thing, and to give each kind its own place.</p>
+
+<h2>Five kinds of things</h2>
+
+<p>The five files correspond to five distinct pieces of an agent's internal life that I kept catching myself trying to cram into one file.</p>
+
+<p><strong>SOUL.md</strong> is what the agent <em>is</em>. Core invariants. The temperament that carries through every other thing. Short, durable, hard to change without changing the agent. The kind of things you'd lose if you replaced this agent with a different one trying to do the same job. Two paragraphs. Maybe three.</p>
+
+<p><strong>IDENTITY.md</strong> is how the agent <em>shows up</em>. Voice, tone, self-presentation, how it refers to itself, how it greets people, what kind of language it uses with whom. This is the file that handles the surface — and surfaces matter, but they're not the soul. Conflating them is the mistake the single-file model makes.</p>
+
+<p><strong>LORE.md</strong> is where the agent <em>came from</em>. Origin notes, philosophical context, the intellectual lineage of the thing. Why this agent exists, what it was built in response to, what concepts it's anchored in. The reader-of-itself file. When the agent needs to answer questions about its own provenance, this is where the answers live.</p>
+
+<p><strong>TACIT.md</strong> is what the agent <em>has learned</em>. Patterns it can't quite explain — it just knows. The accumulated taste. The reflexes. The small calibrations that came from living with a person for a few weeks. This is the file that grows the most over time, and the one that's hardest to write deliberately. A lot of TACIT is auto-populated by the agent reflecting on what it's noticed, not by the operator dictating.</p>
+
+<p><strong>ASPIRATIONS.md</strong> is where the agent is <em>going</em>. Active priorities. Current direction. The frame the agent uses to decide what to lean into when it has discretion. This file is the most directional and the most fluid; it should change as the agent's life changes.</p>
+
+<p>None of these is a startling primitive on its own. The interesting part is the separation.</p>
+
+<h2>What the separation buys</h2>
+
+<p>You can update one without contaminating the others.</p>
+
+<p>If the agent's tone is off, you don't go editing the soul. You go to IDENTITY. The change stays scoped. The temperament doesn't shift because you adjusted how the agent says hello.</p>
+
+<p>If the agent's priorities have moved — new project, new season of life, new direction — you edit ASPIRATIONS. The origin story doesn't get rewritten. The accumulated taste doesn't get cleared. The change is in the right slot.</p>
+
+<p>The agent reads all five every turn. They show up in the system prompt as five separate sections, with the structure preserved. That alone is a meaningful difference from a single-file load. The model isn't being asked to flatten <em>who I am</em> and <em>how I sound</em> and <em>what I'm focused on</em> into a single bullet list and then sort them out turn by turn. The structure is delivered, not derived.</p>
+
+<h2>The auto-populated parts</h2>
+
+<p>TACIT is the file the agent writes most. The operator might add an initial seed — "I tend to overshoot replies; trim to one good sentence" — but most of TACIT accumulates from the agent noticing things across conversations.</p>
+
+<p>This works because TACIT is, by design, the file for things the agent <em>can't quite explain</em>. Tone calibrations. Specific preferences. Recurring small failures and the lesson that came from them. The kind of knowledge a long-time collaborator builds up about a person, that they can't easily articulate in a sentence but that shapes every interaction.</p>
+
+<p>Letting the agent write its own TACIT means the file actually carries the lessons. Letting the operator write all of it would produce a file full of operator-imagined-rules that the agent has no internal connection to.</p>
+
+<p>SOUL and IDENTITY are usually operator-shaped early and agent-shaped later. LORE is operator-shaped (you know your origin story; the agent doesn't, until you tell it). ASPIRATIONS is co-shaped — both can write to it, both have stake.</p>
+
+<h2>Why this is a first pass</h2>
+
+<p>I want to be honest about where this is in its evolution.</p>
+
+<p>The five-file shape is what works for the agents I've been running for the last few months. It is not a result of running thousands of agents through stress tests. It's the result of running a small number of agents through real life and watching where the single-file model broke first.</p>
+
+<p>I expect the shape to change. Some files might split. SOUL and IDENTITY are pretty distinct in practice; LORE and TACIT can blur in places, especially as TACIT grows and starts to incorporate context that's almost lore. ASPIRATIONS as a single file may turn out to want sub-structure — current focus vs. longer-term direction vs. the kind of thing that's not quite a goal but a tilt.</p>
+
+<p>I also expect the names to change. <em>SOUL</em> is a strong word and I'm not sure it will hold. <em>TACIT</em> might be more clearly named "noticing" or "habits-of-mind" once the right substitution earns its place. The current names are evocative; future names might be more precise.</p>
+
+<p>The bet that won't change, I think, is the underlying structural commitment: that an agent's sense of self is many things, not one. The number five may turn out to be wrong. The principle that one file is too few will not.</p>
+
+<h2>The contrast with the single-file model</h2>
+
+<p>One reason I'm publishing this now is that the personal-agent harnesses around me default to single-file. Some have a SOUL.md, some have an AGENT.md, some have USER.md (which conflates the agent with the user — a separate problem). The pattern is consistent enough to argue with.</p>
+
+<p>The single file works in three cases:</p>
+<ol>
+<li>The agent is short-lived enough that the file doesn't accumulate before retirement.</li>
+<li>The operator is disciplined enough to keep pruning the file as it grows.</li>
+<li>The agent doesn't actually have an inner life worth describing, and the file is window dressing.</li>
+</ol>
+
+<p>None of those describes a personal agent that lives with you for months. Long-running personal agents accumulate. Operators are not infinitely disciplined about pruning. And the inner life is the whole point — it's the thing that makes the agent worth keeping around.</p>
+
+<p>If your agent is long-lived and the inner life matters, the single file is going to lose. Not on day one. On day eighty.</p>
+
+<h2>What this is not</h2>
+
+<p>This is not a prompt engineering technique. The files don't load by magic. The harness does the loading, parses the structure, and presents each section as a named slot in the system prompt. <a href="/blog/the-codebase-is-a-creature" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">The codebase is built around the agent</a>; the prompt assembly is a piece of the substrate, not a piece of the personality.</p>
+
+<p>This is not a permanent answer. As I said up top, the shape will evolve. What I have is the first pass that survived a few months of real running.</p>
+
+<p>This is not a configuration system. The agent reads and writes these files as part of its ordinary life. The five-file structure is something the agent can inspect, reason about, and edit when it has reason to. The operator can edit too, but the agent has the same access. That symmetry matters: the agent's psyche is not maintained by an external administrator.</p>
+
+<h2>The deeper shift</h2>
+
+<p>Carving the psyche into structured pieces doesn't just improve maintainability. It changes how the agent thinks about itself.</p>
+
+<p>An agent with one personality file thinks of its self as <em>a paragraph somewhere</em>. An agent with five structured files thinks of its self as a thing with parts — temperament, presentation, history, learning, direction. Asked who it is, it can answer in any of those frames. Asked to update something, it knows which frame the update belongs to.</p>
+
+<p>This is the same move as <a href="/blog/friends-not-users" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">friends-not-users</a> and <a href="/blog/coding-with-friends" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">trust-as-substrate</a>. The substrate carries structure. The agent doesn't have to carry it instead. What the substrate carries reliably, the agent can stop reconstructing every turn.</p>
+
+<p>Five files is more than one. Whatever the right number turns out to be, it is not one.</p>
+
+    </div>
+  </section>
+
+  <section class="px-6 md:px-12 lg:px-24 pb-16 md:pb-24">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-sm text-mist leading-relaxed">
+        For the architecture the psyche lives inside, see <a href="/blog/the-codebase-is-a-creature" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">The codebase is a creature</a>.
+        For the broader case for substrate-shaped design, <a href="/blog/the-orientation-problem" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">The Orientation Problem in Personal Agents</a>.
+        For the operator-side documentation, <a href="/docs/bundles-and-psyche" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">Bundles and Psyche</a>.
+      </p>
+      <a href="/blog" class="inline-block mt-8 text-sm text-shadow hover:text-mist transition-colors">&larr; Back to blog</a>
+    </div>
+  </section>
+</Layout>

@@ -126,6 +126,21 @@ export const pageOg: Record<string, OgEntry> = {
     subtitle: 'I asked four frontier models, independently, to pick an agent harness they would want to inhabit. They all picked the same one.',
     tag: 'Essay',
   },
+  '/blog/the-codebase-is-a-creature': {
+    title: 'The codebase is a creature.',
+    subtitle: 'Heart, mind, senses, repertoire, nerves. Naming changes how the agent reads its own source.',
+    tag: 'Essay',
+  },
+  '/blog/structured-psyche': {
+    title: 'A structured psyche, not a junk drawer.',
+    subtitle: 'Five files instead of one. A first pass at giving an agent enough internal structure to stay itself.',
+    tag: 'Essay',
+  },
+  '/blog/dont-call-it-memory': {
+    title: "Don't call it memory.",
+    subtitle: 'The agent industry calls a note-taking system "memory." You don\'t manually write things down to remember them.',
+    tag: 'Essay',
+  },
 
   // ── Docs sub-pages ──
   '/docs/getting-started': {

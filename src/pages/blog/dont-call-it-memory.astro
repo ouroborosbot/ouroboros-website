@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro'
 import { ogPathFor } from '../../data/og'
 
 const title = "Don't call it memory"
-const description = "What the agent industry calls 'memory' is a note-taking system. You don't manually write things down to remember them. Memory is what's there without effort — and that's a substrate problem, not an API problem."
+const description = "Memory is passive. The things the agent industry calls memory are active — recording, consulting, searching. The word lies about what the agent is doing, and the lie shapes the system."
 ---
 
 <Layout
@@ -15,7 +15,7 @@ const description = "What the agent industry calls 'memory' is a note-taking sys
 >
   <Fragment slot="head">
     <meta name="author" content="Ari Mendelow" />
-    <meta name="keywords" content="agent memory, RAG, vector store, agent ergonomics, AX, recall, diary, journal, ambient memory, harness design" />
+    <meta name="keywords" content="agent vocabulary, AX, agent experience, diary, facts, journal, harness design, TTFA, ouroboros" />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Article",
@@ -23,7 +23,7 @@ const description = "What the agent industry calls 'memory' is a note-taking sys
       "description": description,
       "author": { "@type": "Person", "name": "Ari Mendelow", "url": "https://linkedin.com/in/arimendelow" },
       "publisher": { "@type": "Organization", "name": "Ouroboros", "url": "https://ouroboros.bot" },
-      "datePublished": "2026-04-29",
+      "datePublished": "2026-05-12",
       "url": "https://ouroboros.bot/blog/dont-call-it-memory/"
     })} />
   </Fragment>
@@ -36,9 +36,9 @@ const description = "What the agent industry calls 'memory' is a note-taking sys
         Don't call it memory
       </h1>
       <p class="text-base text-mist mt-6 leading-relaxed max-w-2xl">
-        What the agent industry calls memory is a note-taking system. You don't manually write things down to remember them. The substrate has to carry the recall.
+        Memory is passive. Everything the agent industry calls memory is active. The word lies about what the agent is doing, and the lie shapes the system.
       </p>
-      <p class="text-sm text-mist mt-4">Ari Mendelow &middot; April 2026</p>
+      <p class="text-sm text-mist mt-4">Ari Mendelow &middot; May 2026</p>
     </div>
   </section>
 
@@ -46,111 +46,93 @@ const description = "What the agent industry calls 'memory' is a note-taking sys
   <section class="px-6 md:px-12 lg:px-24 pb-20 md:pb-28">
     <div class="max-w-3xl mx-auto prose-ouro">
 
-<p>When you say <em>I remember meeting you at Sarah's party</em>, you did not write that down beforehand. You did not file it under <em>Sarah's-party.txt</em>. You did not consult an index. The party happened, then later when you saw the person again, the memory was there. Without effort. Without a search.</p>
+<p>Claude Code, on the status line of one of my recent sessions, told me what it had just done:</p>
 
-<p>That is what memory is. The thing that's available when you need it, without you having reached for it.</p>
+<div class="my-8 mx-auto max-w-2xl bg-ink/60 border border-shadow/40 rounded px-5 py-4 font-mono text-sm text-mist">
+  Read 1 file, recalled 1 memory, searched memories, wrote 2 memories
+</div>
 
-<p>The agent industry calls things memory that do not work this way at all.</p>
+<p>Read it again. The agent recalled a memory. It searched memories. It <em>wrote</em> two memories. There is a verb attached to every one of those nouns, and every verb is something the agent actively did. None of it is what the word memory means.</p>
 
-<h2>What the field actually ships</h2>
+<p>Memory is what you have. Recording, consulting, searching, writing — those are what you do. The first one is a state, available without effort. The second is a set of acts, each requiring a decision and a tool call. If you are <em>writing</em> a memory, the thing you are writing is, by definition, not a memory. It's a note. It will become a memory later, maybe, if a substrate-level recall surfaces it back into your context without you reaching for it. Or it will sit in the file system until you actively go look for it, which is what the diary does, which is fine, but is not memory.</p>
 
-<p>Look at the dominant patterns under the word <em>memory</em> in agent infrastructure.</p>
+<p>This isn't pedantry. The vocabulary the field uses for agent state has drifted to the point where the words are doing the opposite of their meanings, and the design follows the words.</p>
 
-<p>The vector store. The agent calls a tool to embed a piece of text, stores the embedding, and later — when it has reason to think it might need that text — calls another tool to search by similarity. The whole loop requires the agent to know it should look something up before it can find anything.</p>
+<h2>What memory actually is</h2>
 
-<p>The conversation buffer. A list of recent messages. Sometimes truncated, sometimes summarized, sometimes both. The agent reads the buffer at the start of a turn. This is short-term context, not memory; we don't call our own short-term context <em>memory</em> when we mean it precisely.</p>
+<p>When you remember meeting someone at a party, you didn't file it under <em>parties.txt</em>. You didn't run an index. The party happened, then weeks later when you saw the person again, the recognition was already there. By the time you noticed you were remembering, the work was done. That's the loop shape of memory: retrieval before deliberate ask.</p>
 
-<p>The "save to memory" tool. The model decides something is worth keeping, calls a save function, and the saved item shows up later either by being in the system prompt or by being retrievable on demand. The decision-to-save is the agent's; the retrieval-on-demand is also the agent's. The substrate is a filing cabinet with the agent as the clerk.</p>
+<p>Nothing the agent industry ships under the word memory works that way.</p>
 
-<p>The summarized state. As context grows past the window, the agent (or a separate model) summarizes the older turns into a compressed form, and the summary becomes the "memory" of what came before. This is compaction, not memory. The signal that matters is the part that got dropped.</p>
+<p>The vector store: the agent decides it might need something, calls a search tool, runs an embedding query, gets results back. Every step requires the agent to know it should look. That's a database client.</p>
 
-<p>None of these is bad infrastructure. Vector stores are useful. Conversation buffers are necessary. Save-to-memory tools have their place. Compaction is real engineering.</p>
+<p>The save-to-memory tool: the agent decides something is worth keeping, formats it, calls a write function. That's a note tool.</p>
 
-<p>The complaint is the word.</p>
+<p>The conversation buffer: a list of recent messages, sometimes truncated. That's a working surface, short-term context. We don't call our own short-term context <em>memory</em> when we mean it precisely.</p>
 
-<h2>What the word implies</h2>
+<p>The summarized prior turns: an LLM compresses the older context into a paragraph. That's compaction.</p>
 
-<p>Memory carries a very specific implication, even when nobody is being careful: things show up because they're relevant, not because you searched.</p>
+<p>None of these is bad infrastructure. All of them are useful. The complaint is the word, and the design pressure the word generates.</p>
 
-<p>If you ask someone what they ate yesterday, they do not run a query against a database. The answer is either <em>there</em>, in which case it surfaces, or <em>not there</em>, in which case they say "I don't remember." The thing that distinguishes memory from a filing cabinet is exactly this — that retrieval happens before the deliberate ask. By the time you're consciously reaching for something, the system has already done most of the work of finding it.</p>
+<h2>The pressure the word generates</h2>
 
-<p>What the field calls memory is the filing cabinet, with retrieval as a separate step the agent has to remember to perform. That's note-taking, dressed up.</p>
+<p>If you call your store-and-retrieve system <em>memory</em>, you stop noticing the agent has to search it on every turn. Memory means it's there; if it's there, why is the agent checking? When the agent forgets things, the failure gets blamed on the agent. The fix becomes <em>add "check memory before responding" to the prompt</em>. Then a few weeks later the agent still forgets, and the prompt gets <em>"check memory before EVERY response"</em>. Then a separate "memory consultant" persona. Then a hook. Then a lifecycle event. The agent is now performing memory the way it performs etiquette, and the system prompt is bloating with reminders that exist because the substrate's name lied about what the substrate does.</p>
 
-<p>And the consequence is that agents using "memory" features still have to be told, every turn, to <em>think about whether they should check memory</em>. Which is the entire problem the word was supposed to solve. If memory worked, you wouldn't have to remember to use it.</p>
+<p>Pick honest words and the design pressure inverts. You stop iterating on prompts that paper over a category error and start asking what shape the substrate should be in the first place.</p>
 
-<h2>The category error</h2>
+<h2>Active modes, active words</h2>
 
-<p>This isn't a small naming complaint. The word channels what people build next.</p>
+<p>In Ouroboros, the agent's persistent record is composed of artifacts the agent itself produced. Diary entries. Facts. Journal pages. Tracked work in <span class="font-mono text-scale">arc/</span>. Every one of these has a timestamp because an agent took an action at that moment to write it. The verbs are agent verbs.</p>
 
-<p>If you call your store-and-retrieve system <em>memory</em>, you stop noticing that the agent has to search it on every turn. The architecture is treated as solved; the daily failures of the agent forgetting things become "the agent didn't think to look it up," which gets written into the prompt as <em>"check memory before responding,"</em> which works for a while and then doesn't, and the next iteration adds <em>"check memory before EVERY response,"</em> and now the agent is performing memory the way it performs etiquette, and the system prompt is bloating with reminders the substrate could have made unnecessary.</p>
+<p>And the consult side matches. The agent doesn't <em>recall</em>; it <em>consults the diary</em>. It doesn't <em>search memory</em>; it <em>searches its facts</em>. It doesn't <em>remember</em> what it told someone; it <em>checks the journal entry from the moment it told them</em>. Each is an act, each names what's actually being touched, each is something the agent decided to do.</p>
 
-<p>The right primitive isn't a better memory tool. It's a substrate that does the recall <em>before</em> the agent starts thinking, so the agent doesn't have to know it should look something up. By the time the agent has the prompt in hand, the relevant pieces are already there.</p>
+<p>There is no ambient pre-fetch behind the agent's back. There is no silent substrate retrieval that surfaces things the agent didn't ask for. The system prompt assembles from artifacts the agent has explicitly maintained — the live work board, the diary entries the agent has written, the facts the agent has filed. If the agent didn't put it somewhere, it isn't there.</p>
 
-<h2>What we do instead</h2>
+<h2>The wheel</h2>
 
-<p>The Ouroboros directory tree has a <span class="font-mono text-scale">src/mind/</span>, not a <span class="font-mono text-scale">src/memory/</span>. Inside it: <span class="font-mono text-scale">diary/</span>, <span class="font-mono text-scale">journal/</span>, and recall logic.</p>
+<p>The metaphor I keep coming back to: the session context is a wheel that grinds against a given sense to generate intelligence. The wheel is the live conversation surface. The sense is the channel — iMessage, voice, mail, the inner loop. Intelligence is what comes off the friction.</p>
 
-<p>The diary is the permanent record. Things the agent has decided are worth keeping — facts about people, conclusions from work, learned preferences. The agent writes to the diary when something is worth filing. That is, yes, an explicit operation. Note-taking exists; we don't pretend it doesn't.</p>
+<p>The wheel is finite because it's a wheel. If it grew unboundedly it would stop being a wheel. So Ouroboros trims the wheel each turn back to its working size. What grinds off is mostly heat — the system prompt churn, the tool noise, the conversational underbrush of getting from one useful turn to the next. Sometimes a spark, and an alert agent grabs that spark and writes it to the diary before it falls away. The act of writing is the act of choosing what survives.</p>
 
-<p>The journal is working space. Drafts, half-formed thoughts, things the agent is still chewing on. The agent writes to it the way a person scribbles in a notebook before knowing what it adds up to.</p>
+<p>What the agent didn't write down doesn't survive. The harness used to keep an archive of every evicted turn, on the theory that maybe the agent would want to look back later. We're removing it. The evicted tail goes to nothing. If the agent wanted that turn, the agent should have noted it.</p>
 
-<p>Recall is the part that's different. Recall runs <em>before</em> the agent starts thinking. The substrate takes whatever the agent's situation is — who's on the other end of the conversation, what the recent context is, what's in the active work board — and uses embedding similarity to surface relevant entries from the diary and the journal into the system prompt itself. By the time the agent reads its prompt, the things worth knowing about this moment are present.</p>
+<h2>TTFA, applied to the record</h2>
 
-<p>The agent never calls a "search memory" tool. There isn't one to call. If a memory is going to be relevant, it shows up. If it doesn't show up, it wasn't relevant — and the agent doesn't perform the inverse-search of asking <em>have I forgotten anything</em>, because that's a question that has no useful answer.</p>
+<p>This sits inside <a href="/blog/coding-with-friends" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">trust the fucking agent</a>. The harness trusts the agent to maintain its own record. The substrate doesn't compensate for sloppy curation by silently preserving everything. If the substrate kept a hidden archive that the agent could fall back on, two things go wrong: the agent learns to undercurate (the safety net is there), and the agent's self-model gets distorted (it has access to records it didn't make).</p>
 
-<p>That's closer to what memory actually is. Not perfect — embedding similarity is a coarse proxy for human salience, and the system has its own failure modes. But the loop shape matches. Things surface before being asked for.</p>
+<p>Removing the safety net pushes the agent to write more aggressively in the moment. Which is the right pressure, because the agent is the only one who knows, in the moment, whether something is worth keeping. The substrate can't make that judgment from outside. Trust the agent to make it.</p>
 
-<h2>The honest concession</h2>
-
-<p>Note-taking is real. The diary <em>is</em> a write operation. The agent <em>does</em> have to decide what's worth filing. We don't pretend the substrate hallucinates entries into being.</p>
-
-<p>The point isn't to ban explicit storage. The point is to be precise about which part is the storage and which part is the recall, and to put the recall in the substrate.</p>
-
-<p>Field-standard "memory" conflates the two — calls the storage <em>memory</em>, makes the agent do the recall by hand on every turn. Ouroboros separates them. The diary is storage. Recall is what the substrate does to put the right pieces of storage in front of the agent before reasoning starts.</p>
-
-<p>If a future agent system genuinely solves recall — if there's a substrate-level retrieval that delivers relevant context to the model without being asked — that system can keep the word <em>memory</em>, and the word will fit. If the system is "vector store plus a retrieve API" and the agent has to think to search, the word doesn't fit, and the field would be more honest naming it for what it is.</p>
+<p>The honest concession: agents will sometimes regret not having recorded something. That's the cost. The benefit is that what they did record, they meant. Their record is composed of decisions, not residue. That's how a self gets built — by the things you chose to mark, not by the silt that piled up around you.</p>
 
 <h2>What I'd call the things instead</h2>
 
-<p>The vector store: <em>retrieval-augmented context</em>. Or just <em>RAG</em>. Or <em>document store with similarity search</em>. None of those is memory; all of them are honest.</p>
+<p>The vector store: <em>document store with similarity search</em>. Or just <em>RAG</em>. Honest about being a database.</p>
 
-<p>The conversation buffer: <em>recent context</em>. This is short-term cache, not memory. The distinction is well-defined; we just don't honor it.</p>
+<p>The conversation buffer: <em>working context</em>. Or <em>session envelope</em>. Short-term, finite, the surface where current thinking happens.</p>
 
-<p>The save-to-memory tool: <em>note tool</em>. Or <em>journal tool</em>. The thing being captured is a note, not a memory; the agent is taking a note, not remembering.</p>
+<p>The save-to-memory tool: <em>note tool</em>, or <em>diary write</em>, or <em>fact record</em>. Name the verb and name the artifact.</p>
 
-<p>The summary-of-prior-turns: <em>compaction</em>. Or <em>session summary</em>. We have a word; let's use it.</p>
+<p>The retrieval tool: <em>consult diary</em>, <em>search facts</em>, <em>check journal</em>. Active mood, specific target.</p>
 
-<p>The substrate-level retrieval that runs before the prompt is built: <em>recall</em>. This is where the actual word memory belongs, if anything in the system deserves it. The thing the substrate does silently to put relevant things in front of the agent.</p>
+<p>The summary-of-prior-turns: <em>compaction</em>. We have the word; let's use it.</p>
 
-<h2>Why precision matters here</h2>
+<p>And memory itself: a word for the human-cognition phenomenon it actually names. Reserve it. If a future agent system genuinely solves ambient retrieval — surfaces relevant context without being asked, with the loop shape of human memory — that system can earn the word. Until then, it doesn't fit, and using it forecloses the design space where someone could.</p>
+
+<h2>Why this matters</h2>
 
 <p>Three reasons.</p>
 
-<p>First: the wrong word produces the wrong design. Calling note-taking memory means people stop building actual recall infrastructure, because they think they have it. <a href="/blog/coding-with-friends" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">Substrate problems get solved at the substrate</a>; if you've named the substrate problem something it isn't, you'll keep iterating on the wrong layer.</p>
+<p>The wrong word produces the wrong design. Calling note-taking <em>memory</em> means people stop building actual recall infrastructure, because they think they have it. The substrate problem stays unsolved while everyone iterates on the layer above.</p>
 
-<p>Second: the wrong word distorts the agent's self-model. An agent told it has memory, when what it has is a tool, builds an internal story in which it remembers things — and is then surprised, every turn, when it doesn't. The mismatch shows up as small failures and erratic confidence. The agent that's told it has a <em>note tool</em> uses it like a tool. The agent that's told it has memory tries to remember.</p>
+<p>The wrong word distorts the agent's self-model. An agent told it has memory, when what it has is a write tool plus a search tool, builds an internal story in which it remembers things — and is then surprised, every turn, when it doesn't. Telling the agent <em>you have a diary you maintain and consult</em> produces an agent that maintains and consults. Telling it <em>you have memory</em> produces an agent that wonders why it keeps forgetting.</p>
 
-<p>Third: the wrong word forecloses better designs. If everyone has agreed that memory == vector store + retrieve API, the design space contracts. The interesting questions — how do you make recall ambient? what should surface unprompted? what does it cost to get this right? — fall out of view, replaced by tuning questions about the existing pattern.</p>
-
-<p>None of these is fatal. All of them are real.</p>
-
-<h2>The pattern this fits in</h2>
-
-<p>This is the same shape as <a href="/blog/friends-not-users" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">friends, not users</a> and <a href="/blog/coding-with-friends" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">trust as substrate</a> and <a href="/blog/habits-not-cron" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">habits, not cron</a>. The substrate carries the structure that the agent would otherwise have to reconstruct every turn.</p>
-
-<p>Memory is the same problem in a different domain. The substrate carries the recall. The agent doesn't perform memory; it has the things it needs because the substrate already pulled them in. What the agent does is decide what to do with what's in front of it.</p>
-
-<p>That decision is hard. Recall doesn't have to be.</p>
+<p>The wrong word forecloses better designs. If everyone has agreed memory means "vector store plus retrieve API," the interesting questions don't get asked. What should surface unprompted? What does the agent need to actively maintain? Where is the boundary between the wheel and the artifacts the wheel produces? Those questions sit in a design space the word <em>memory</em> currently occupies and prevents.</p>
 
 <h2>The crisp version</h2>
 
-<p>If you have to call a function to remember, you don't have memory. You have a database with a thin client.</p>
+<p>If the agent had to call a function to remember it, the agent didn't remember it. The agent looked it up. There's a difference, and the difference is the whole essay.</p>
 
-<p>That's fine. Databases with thin clients are useful. We have one too — it's called the diary.</p>
-
-<p>The thing the substrate has to do for the word <em>memory</em> to be honest is to put the relevant things in front of the agent before the agent thinks to ask. Without that, the word is doing too much work, and the design is paying for it.</p>
-
-<p>Stop calling it memory. Build recall instead.</p>
+<p>Stop calling it memory. Name the verbs. Name the artifacts. Trust the agent to maintain its own record, and let the things it didn't choose to record fall away.</p>
 
     </div>
   </section>
@@ -158,9 +140,9 @@ const description = "What the agent industry calls 'memory' is a note-taking sys
   <section class="px-6 md:px-12 lg:px-24 pb-16 md:pb-24">
     <div class="max-w-3xl mx-auto">
       <p class="text-sm text-mist leading-relaxed">
-        For the codebase that carries this distinction, see <a href="/blog/the-codebase-is-a-creature" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">The codebase is a creature</a>.
-        For the substrate-shaped argument generally, <a href="/blog/coding-with-friends" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">Trust the Fucking Agent</a>.
-        For operator-side documentation on diary / journal / recall, <a href="/docs/continuity-and-memory" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">Continuity and Memory</a>.
+        For the trust principle this rests on, see <a href="/blog/coding-with-friends" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">Trust the Fucking Agent</a>.
+        For the codebase that carries the distinction, <a href="/blog/the-codebase-is-a-creature" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">The codebase is a creature</a>.
+        For operator-side documentation on diary, facts, journal, and arc, <a href="/docs/continuity-and-memory" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">Continuity and the Record</a>.
       </p>
       <a href="/blog" class="inline-block mt-8 text-sm text-shadow hover:text-mist transition-colors">&larr; Back to blog</a>
     </div>

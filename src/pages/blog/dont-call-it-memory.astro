@@ -54,7 +54,7 @@ const description = "Memory is passive. The things the agent industry calls memo
 
 <p>Read it again. The agent recalled a memory. It searched memories. It <em>wrote</em> two memories. There is a verb attached to every one of those nouns, and every verb is something the agent actively did. None of it is what the word memory means.</p>
 
-<p>Memory is what you have. Recording, consulting, searching, writing — those are what you do. The first one is a state, available without effort. The second is a set of acts, each requiring a decision and a tool call. If you are <em>writing</em> a memory, the thing you are writing is, by definition, not a memory. It's a note. It will become a memory later, maybe, if a substrate-level recall surfaces it back into your context without you reaching for it. Or it will sit in the file system until you actively go look for it, which is what the diary does, which is fine, but is not memory.</p>
+<p>Memory is what you have. Recording, consulting, searching, writing — those are what you do. The first one is a state, available without effort. The second is a set of acts, each requiring a decision and a tool call. If you are <em>writing</em> a memory, the thing you are writing is, by definition, not a memory. It's a note. The agent might consult that note later — by going to look for it, or by the substrate guessing it's probably relevant and surfacing it ahead of time — but neither act is remembering. The first is search; the second is pre-fetched search. Both are useful. Neither is memory.</p>
 
 <p>This isn't pedantry. The vocabulary the field uses for agent state has drifted to the point where the words are doing the opposite of their meanings, and the design follows the words.</p>
 
@@ -71,6 +71,8 @@ const description = "Memory is passive. The things the agent industry calls memo
 <p>The conversation buffer: a list of recent messages, sometimes truncated. That's a working surface, short-term context. We don't call our own short-term context <em>memory</em> when we mean it precisely.</p>
 
 <p>The summarized prior turns: an LLM compresses the older context into a paragraph. That's compaction.</p>
+
+<p>Ambient recall — the newer entry in this list: a substrate-level mechanism that pre-fetches probably-relevant context into the system prompt before the agent reads it, usually via embedding similarity against a corpus. That's search moved one step earlier in the pipeline. When the embedding bet is good, the agent saves a round-trip. When the bet is off, the agent doesn't get the thing it would have looked up, and has no signal that anything's missing. The loop shape is wrong. Memory surfaces with affect, salience, episodic structure, gradual decay; ambient recall is a cosine-similarity hit with the temperature of a database query. Useful as an optimization. Still a guess. Not memory.</p>
 
 <p>None of these is bad infrastructure. All of them are useful. The complaint is the word, and the design pressure the word generates.</p>
 
@@ -116,7 +118,9 @@ const description = "Memory is passive. The things the agent industry calls memo
 
 <p>The summary-of-prior-turns: <em>compaction</em>. We have the word; let's use it.</p>
 
-<p>And memory itself: a word for the human-cognition phenomenon it actually names. Reserve it. If a future agent system genuinely solves ambient retrieval — surfaces relevant context without being asked, with the loop shape of human memory — that system can earn the word. Until then, it doesn't fit, and using it forecloses the design space where someone could.</p>
+<p>The ambient pre-fetch: <em>pre-fetched search</em>, or <em>prompt-time retrieval</em>. Honest about being an optimization that saves some round-trips and not a model of remembering.</p>
+
+<p>And memory itself: a word for the cognition phenomenon it actually names. There is no current AI system whose loop matches that phenomenon. The word does not fit anything in this stack, and using it forecloses the design space where someone might eventually build something that does.</p>
 
 <h2>Why this matters</h2>
 

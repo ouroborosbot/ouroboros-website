@@ -58,7 +58,7 @@ export const pageOg: Record<string, OgEntry> = {
   },
   '/what-is-an-agent-harness': {
     title: 'What is an agent harness?',
-    subtitle: 'The system around the loop — runtime, memory, identity, tools, and the workflows that keep an agent oriented across time.',
+    subtitle: 'The system around the loop — runtime, the diary, identity, tools, and the workflows that keep an agent oriented across time.',
     tag: 'Guide',
   },
   '/model-reviews': {
@@ -138,7 +138,12 @@ export const pageOg: Record<string, OgEntry> = {
   },
   '/blog/dont-call-it-memory': {
     title: "Don't call it memory.",
-    subtitle: 'The agent industry calls a note-taking system "memory." You don\'t manually write things down to remember them.',
+    subtitle: 'Memory is passive. Everything the agent industry calls memory is active — recording, consulting, searching. The word lies about what the agent is doing.',
+    tag: 'Essay',
+  },
+  '/blog/take-the-agents-seat': {
+    title: "Take the agent's seat.",
+    subtitle: "Empathy isn't an ethics question for AI. It's a prompting technique. Read what you wrote as the agent will read it, before sending.",
     tag: 'Essay',
   },
 
@@ -154,7 +159,7 @@ export const pageOg: Record<string, OgEntry> = {
     tag: 'Operator guide',
   },
   '/docs/continuity-and-memory': {
-    title: 'Agent memory that surfaces before you think.',
+    title: 'A record that surfaces before you think.',
     subtitle: 'Continuity over compaction. The diary is the shelf, the journal is the desk, habits are the rhythm.',
     tag: 'Operator guide',
   },

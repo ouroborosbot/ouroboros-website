@@ -1,0 +1,101 @@
+name: Deploy preview
+
+# PR previews — each PR gets its own Cloudflare Worker at
+#   ouroboros-website-pr-<num>.<account>.workers.dev
+# Re-deploys on every push to the PR. Cleanup workflow removes the worker
+# when the PR closes.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+concurrency:
+  group: preview-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write   # for the preview-URL comment
+      deployments: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - run: npm ci
+
+      - run: npx astro build
+
+      - name: Generate preview wrangler config
+        run: |
+          PREVIEW_NAME="ouroboros-website-pr-${{ github.event.pull_request.number }}"
+          cat > wrangler-preview.jsonc <<EOF
+          {
+            "name": "$PREVIEW_NAME",
+            "account_id": "4b157323bc7b08c0f6b0dc9c23b1e2b1",
+            "compatibility_date": "2026-03-06",
+            "main": "src/worker/index.ts",
+            "assets": {
+              "directory": "./dist",
+              "binding": "ASSETS"
+            }
+          }
+          EOF
+          echo "PREVIEW_NAME=$PREVIEW_NAME" >> $GITHUB_ENV
+
+      - name: Deploy preview to Cloudflare Workers
+        id: deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          command: deploy --config wrangler-preview.jsonc
+
+      - name: Comment preview URL on PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prNumber = context.issue.number;
+            const url = `${{ steps.deploy.outputs.deployment-url }}`.trim() ||
+                        `https://${process.env.PREVIEW_NAME}.workers.dev`;
+            const sha = context.sha.substring(0, 7);
+            const body = [
+              '🔍 **Preview deployed**',
+              '',
+              `${url}`,
+              '',
+              `Build from commit \`${sha}\`. Re-deploys on every push to this PR.`,
+              '',
+              '<sub>Preview worker is deleted when this PR closes.</sub>'
+            ].join('\n');
+
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: prNumber,
+            });
+            const existing = comments.find(c =>
+              c.user.type === 'Bot' &&
+              c.body.startsWith('🔍 **Preview deployed**')
+            );
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: prNumber,
+                body,
+              });
+            }

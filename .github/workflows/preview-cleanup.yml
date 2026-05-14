@@ -1,0 +1,56 @@
+name: Cleanup preview
+
+# When a PR closes (merged or not), delete its preview Worker.
+# Best-effort — failure here doesn't block anything.
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write   # to update the preview comment
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Delete preview worker
+        continue-on-error: true
+        run: |
+          PREVIEW_NAME="ouroboros-website-pr-${{ github.event.pull_request.number }}"
+          npx wrangler delete --name "$PREVIEW_NAME" --force
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: 4b157323bc7b08c0f6b0dc9c23b1e2b1
+
+      - name: Update preview comment
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prNumber = context.issue.number;
+            const merged = context.payload.pull_request.merged;
+            const note = merged
+              ? '✅ **Preview cleaned up** — PR merged. Worker deleted.'
+              : '🧹 **Preview cleaned up** — PR closed. Worker deleted.';
+
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: prNumber,
+            });
+            const existing = comments.find(c =>
+              c.user.type === 'Bot' &&
+              c.body.startsWith('🔍 **Preview deployed**')
+            );
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body: note,
+              });
+            }

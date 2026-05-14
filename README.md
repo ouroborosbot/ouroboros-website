@@ -1,6 +1,6 @@
 # ouroboros.bot
 
-Marketing site for [Ouroboros](https://github.com/ouroborosbot/ouroboros-agent-harness) — a multi-agent harness for building AI agents that know who they are.
+Marketing site for [Ouroboros](https://github.com/ourostack/ouroboros-agent-harness) — a multi-agent harness for building AI agents that know who they are.
 
 Built with [Astro](https://astro.build), [Tailwind CSS v4](https://tailwindcss.com), and deployed on [Cloudflare Pages](https://pages.cloudflare.com).
 

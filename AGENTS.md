@@ -8,7 +8,7 @@ This file is the contract. The design system header at the top of `src/styles/gl
 
 `ouroboros.bot` — the marketing + docs + reviews site for the Ouroboros agent harness. Astro 5 + Tailwind v4 + Cloudflare Pages.
 
-- **Sibling repo:** `ouroborosbot/ouroboros` — the actual harness source. Don't import from it; the site is independent.
+- **Sibling repo:** `ourostack/ouroboros` — the actual harness source. Don't import from it; the site is independent.
 - **Deploy:** push to `main` → Cloudflare Pages runs `astro build` → live.
 
 ---

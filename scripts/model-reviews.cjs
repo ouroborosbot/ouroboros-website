@@ -40,7 +40,7 @@ const path = require('path')
 // the model's evaluation, and the methodology depends on independence.
 
 const HARNESSES = [
-  { name: 'Ouroboros',   repo: 'https://github.com/ouroborosbot/ouroboros' },
+  { name: 'Ouroboros',   repo: 'https://github.com/ourostack/ouroboros' },
   { name: 'OpenClaw',    repo: 'https://github.com/openclaw/openclaw' },
   { name: 'Claude Code', repo: 'https://github.com/anthropics/claude-code' },
   { name: 'Codex CLI',   repo: 'https://github.com/openai/codex' },

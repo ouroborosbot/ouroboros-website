@@ -10,7 +10,7 @@
   "harnesses": [
     {
       "name": "Ouroboros",
-      "repo": "https://github.com/ouroborosbot/ouroboros"
+      "repo": "https://github.com/ourostack/ouroboros"
     },
     {
       "name": "OpenClaw",

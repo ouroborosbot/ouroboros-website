@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import modelReviews from '../../data/model-reviews.json'
-import { parseInlineMd } from '../../lib/md'
+import { parseInlineMd } from '../../lib/md.mjs'
 
 import anthropicTranscript from '../../data/model-reviews-transcripts/anthropic.json'
 import openaiTranscript from '../../data/model-reviews-transcripts/openai.json'
@@ -13,6 +13,10 @@ const transcripts: Record<string, any> = {
   openai: openaiTranscript,
   gemini: geminiTranscript,
   minimax: minimaxTranscript,
+}
+
+if (Object.values(transcripts).some((transcript) => transcript.runId !== modelReviews.runId)) {
+  throw new Error('Model review summary and transcript run IDs do not match')
 }
 
 export function getStaticPaths() {
@@ -33,12 +37,8 @@ if (!transcript || !review) {
 }
 
 const generatedDate = new Date(transcript.generated).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
-
-function truncate(s: string, n: number): string {
-  if (!s) return ''
-  if (s.length <= n) return s
-  return s.slice(0, n) + '…'
-}
+const transportLabel = review.transport === 'copilot' ? 'GitHub Copilot inference' : 'Direct API inference'
+const runtimeLabel = `${modelReviews.runtime.name} ${modelReviews.runtime.version}`
 ---
 
 <Layout
@@ -63,7 +63,7 @@ function truncate(s: string, n: number): string {
       <h1 class="font-display text-bone leading-[0.95] text-[2.25rem] sm:text-[3rem] md:text-[4.5rem] mb-3">
         {review.displayName}
       </h1>
-      <div class="font-mono text-sm text-mist tracking-wider mb-12">{review.model}</div>
+      <div class="font-mono text-sm text-mist tracking-wider mb-12">{review.model} · {transportLabel} · {runtimeLabel}</div>
 
       <!-- Stats row -->
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-5 mb-14 max-w-2xl">
@@ -114,7 +114,7 @@ function truncate(s: string, n: number): string {
               {round.thinking && (
                 <div class="mb-6">
                   <div class="font-mono text-xs text-mist uppercase tracking-[0.22em] mb-3">Thinking</div>
-                  <p class="text-mist text-base md:text-lg leading-[1.7]">{round.thinking}</p>
+                  <p class="text-mist text-base md:text-lg leading-[1.7] whitespace-pre-wrap [overflow-wrap:anywhere]">{round.thinking}</p>
                 </div>
               )}
 
@@ -130,7 +130,8 @@ function truncate(s: string, n: number): string {
                             <span class="font-mono text-xs text-mist tracking-wider flex-none">{action.resultLength} chars</span>
                           </summary>
                           <div class="px-5 md:px-6 pb-6 pt-3 border-t border-canopy/30">
-                            <pre class="font-mono text-xs md:text-sm text-mist leading-relaxed whitespace-pre-wrap break-words">{truncate(action.result, 4000)}</pre>
+                            <pre class="font-mono text-xs md:text-sm text-mist leading-relaxed whitespace-pre-wrap break-words">{action.result}</pre>
+                            {action.resultTruncated && <p class="font-mono text-[0.625rem] text-shadow mt-4 break-all">Exact prefix · SHA-256 {action.resultSha256}</p>}
                           </div>
                         </details>
                       )}
@@ -142,7 +143,8 @@ function truncate(s: string, n: number): string {
                             <span class="font-mono text-sm text-bone break-words min-w-0 flex-1">{action.query}</span>
                           </summary>
                           <div class="px-5 md:px-6 pb-6 pt-3 border-t border-canopy/30">
-                            <pre class="font-mono text-xs md:text-sm text-mist leading-relaxed whitespace-pre-wrap break-words">{truncate(action.result, 4000)}</pre>
+                            <pre class="font-mono text-xs md:text-sm text-mist leading-relaxed whitespace-pre-wrap break-words">{action.result}</pre>
+                            {action.resultTruncated && <p class="font-mono text-[0.625rem] text-shadow mt-4 break-all">Exact prefix · SHA-256 {action.resultSha256}</p>}
                           </div>
                         </details>
                       )}

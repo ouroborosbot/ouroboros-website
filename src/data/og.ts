@@ -1,3 +1,6 @@
+import modelReviews from './model-reviews.json'
+import { getModelReviewClaims } from '../lib/model-review-claims.mjs'
+
 /*
   Open Graph metadata — single source of truth for every shareable page.
 
@@ -38,10 +41,12 @@ export interface OgEntry {
   tag?: string
 }
 
+const { winner, claimSentence, shortClaim, heroLead } = getModelReviewClaims(modelReviews)
+
 export const pageOg: Record<string, OgEntry> = {
   '/': {
-    title: 'Your model prefers Ouroboros.',
-    subtitle: 'Asked independently, all frontier models choose Ouroboros.',
+    title: `${heroLead} ${winner}.`,
+    subtitle: claimSentence,
     // No tag — the title is the message. "Reviews" as an eyebrow on the
     // home OG card would read as "reviews of what?" to anyone seeing it
     // in a Twitter/Slack preview without page context.
@@ -63,7 +68,7 @@ export const pageOg: Record<string, OgEntry> = {
   },
   '/model-reviews': {
     title: 'Which agent harness do frontier models prefer?',
-    subtitle: 'All choose Ouroboros.',
+    subtitle: shortClaim,
     tag: 'Reviews',
   },
   '/docs': {

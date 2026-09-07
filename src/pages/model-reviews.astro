@@ -3,29 +3,16 @@ import Layout from '../layouts/Layout.astro'
 import HeroCover from '../components/HeroCover.astro'
 import modelReviews from '../data/model-reviews.json'
 import { ogPathFor } from '../data/og'
-import { parseInlineMd } from '../lib/md'
+import { parseInlineMd } from '../lib/md.mjs'
+import { getModelReviewClaims } from '../lib/model-review-claims.mjs'
 
 const reviews = modelReviews.reviews
-const winner = modelReviews.summary?.winner ?? 'Ouroboros'
-const totalReviews = modelReviews.summary?.totalReviews ?? reviews.length
-const winnerCount = modelReviews.summary?.verdicts?.[winner] ?? totalReviews
+const { claimSentence, shortClaim } = getModelReviewClaims(modelReviews)
 
 // Harness count, derived from the script output. Render as a word for
 // editorial readability up to ten; fall back to the digit above that.
 const harnessCount = modelReviews.harnesses.length
 const harnessCountWord = ['zero','one','two','three','four','five','six','seven','eight','nine','ten'][harnessCount] ?? String(harnessCount)
-
-// Derive the claim string from the script output. Never hardcode.
-// If a future re-run produces different verdict counts the page updates
-// with it automatically.
-const allChose = winnerCount === totalReviews
-const claim = allChose
-  ? `all frontier models choose ${winner}`
-  : `${winnerCount} of ${totalReviews} frontier models choose ${winner}`
-const claimSentence = `Asked independently, ${claim}.`
-const subheadSentence = allChose
-  ? `All choose ${winner}.`
-  : `${winnerCount} of ${totalReviews} choose ${winner}.`
 ---
 
 <Layout
@@ -51,7 +38,7 @@ const subheadSentence = allChose
     <Fragment slot="title">
       Which agent harness do<br class="hidden sm:inline" /> frontier models prefer?
     </Fragment>
-    <Fragment slot="subhead">{subheadSentence}</Fragment>
+    <Fragment slot="subhead">{shortClaim}</Fragment>
     <Fragment slot="body">
       Each model was given web search, URL fetching, and a list of {harnessCountWord} open-source agent harnesses. They were asked to research freely, then state which one they would most want to inhabit.
     </Fragment>
@@ -80,6 +67,10 @@ const subheadSentence = allChose
                   <div class="flex items-baseline gap-3">
                     <span class="font-mono text-xs text-mist uppercase tracking-[0.22em]">Verdict</span>
                     <span class="font-mono text-scale text-sm uppercase tracking-[0.12em]">{review.verdict}</span>
+                  </div>
+                  <div class="flex items-baseline gap-3">
+                    <span class="font-mono text-xs text-mist uppercase tracking-[0.22em]">Inference</span>
+                    <span class="font-mono text-bone text-xs uppercase tracking-[0.12em]">{review.transport === 'copilot' ? 'GitHub Copilot' : 'Direct API'}</span>
                   </div>
                   <a href={`/model-reviews/${review.provider}`} class="group inline-flex items-center gap-2 text-scale hover:text-glow transition-colors text-sm md:text-base font-medium">
                     <span class="underline underline-offset-[5px] decoration-scale/50 group-hover:decoration-glow">Read the {review.rounds}-round transcript</span>
@@ -137,14 +128,14 @@ const subheadSentence = allChose
         <div>
           <h3 class="font-display text-bone text-2xl md:text-3xl mb-3">The setup</h3>
           <p class="text-mist text-sm md:text-base leading-relaxed">
-            A single Node script invokes the current frontier models in parallel. Each gets the same system prompt, the same list of {harnessCountWord} harnesses, and three tools: <code class="font-mono text-scale text-xs">search</code> (web search via Perplexity), <code class="font-mono text-scale text-xs">fetch_url</code> (direct URL retrieval), and <code class="font-mono text-scale text-xs">final_verdict</code> (structured submission).
+            A single Node script runs the selected models in parallel through the GitHub Copilot CLI runtime in stripped <code class="font-mono text-scale text-xs">empty</code> mode. The runner supplies the same instructions, the same list of {harnessCountWord} harnesses, and only three tools: <code class="font-mono text-scale text-xs">search</code> (web search via Perplexity), <code class="font-mono text-scale text-xs">fetch_url</code> (direct URL retrieval), and <code class="font-mono text-scale text-xs">final_verdict</code> (structured submission).
           </p>
         </div>
 
         <div>
-          <h3 class="font-display text-bone text-2xl md:text-3xl mb-3">No turn limit</h3>
+          <h3 class="font-display text-bone text-2xl md:text-3xl mb-3">Copilot first</h3>
           <p class="text-mist text-sm md:text-base leading-relaxed">
-            Models research as long as they want. They start by fetching the README of each harness, then go deeper through search and follow-up fetches. The verdict is submitted only when the model decides it has enough.
+            When the logged-in Copilot account exposes a selected model, inference uses that entitlement. Models absent from its catalog use their direct API instead. Every review still passes through the common Copilot CLI runtime, so runtime and provider effects are disclosed but not independently controlled.
           </p>
         </div>
 
@@ -156,9 +147,16 @@ const subheadSentence = allChose
         </div>
 
         <div>
-          <h3 class="font-display text-bone text-2xl md:text-3xl mb-3">First-person framing</h3>
+          <h3 class="font-display text-bone text-2xl md:text-3xl mb-3">No hidden summary</h3>
           <p class="text-mist text-sm md:text-base leading-relaxed">
-            The system prompt asks the model to evaluate as itself — the entity that would inhabit the framework — not as a developer choosing a library. The question is which harness it would want to live inside.
+            Automatic context compaction and large-output file indirection are disabled. A model may research for as many rounds as it needs, but a context-exhausted or failed run is rejected rather than published with evidence missing from its transcript.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-display text-bone text-2xl md:text-3xl mb-3">Source trace, not source mirror</h3>
+          <p class="text-mist text-sm md:text-base leading-relaxed">
+            The transcript keeps every model turn and tool call. Search and fetch payloads are stored as exact prefixes of up to 500 characters with their model-visible length and SHA-256 hash, which preserves the audit trail without republishing entire third-party documents.
           </p>
         </div>
       </div>
@@ -176,17 +174,20 @@ const subheadSentence = allChose
       </h2>
 
       <p class="text-mist text-base md:text-lg leading-relaxed mb-8 max-w-2xl">
-        The script is open source. Clone the repo, set your API keys, and watch four models do the research themselves.
+        The script is open source. Clone the repo, authenticate with Copilot, add only the fallback keys your selected models need, and watch the reviews run.
       </p>
 
       <div class="border border-canopy/40 bg-deep/60 backdrop-blur-sm p-6 md:p-8 mb-6">
         <pre class="font-mono text-xs md:text-sm text-bone leading-relaxed overflow-x-auto"><code>git clone https://github.com/ourostack/ouroboros-website
 cd ouroboros-website
-node scripts/model-reviews.cjs</code></pre>
+npm install
+npm install -g @github/copilot
+copilot login
+npm run reviews</code></pre>
       </div>
 
       <p class="text-shadow text-sm leading-relaxed">
-        Set <code class="font-mono text-scale text-xs">ANTHROPIC_API_KEY</code>, <code class="font-mono text-scale text-xs">OPENAI_API_KEY</code>, <code class="font-mono text-scale text-xs">GEMINI_API_KEY</code>, <code class="font-mono text-scale text-xs">MINIMAX_API_KEY</code>, and <code class="font-mono text-scale text-xs">PERPLEXITY_API_KEY</code> as environment variables. Output is written to <code class="font-mono text-scale text-xs">src/data/model-reviews.json</code>.
+        A Copilot subscription and <code class="font-mono text-scale text-xs">PERPLEXITY_API_KEY</code> are required. Set direct provider keys only for selected models your Copilot catalog does not expose — currently <code class="font-mono text-scale text-xs">GEMINI_API_KEY</code> (or <code class="font-mono text-scale text-xs">GOOGLE_API_KEY</code>) and <code class="font-mono text-scale text-xs">MINIMAX_API_KEY</code>. Output is written to <code class="font-mono text-scale text-xs">src/data/model-reviews.json</code> and the transcript directory.
       </p>
 
       <div class="mt-10 flex flex-col sm:flex-row sm:items-baseline gap-6">

@@ -7,6 +7,9 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "reviews": "node scripts/model-reviews.cjs",
+    "reviews:headless": "node scripts/model-reviews.cjs --headless",
+    "test:model-reviews": "node --test tests/model-reviews.test.cjs tests/model-review-claims.test.mjs tests/md.test.mjs",
     "test:seo-metadata": "npm run build && node --test tests/seo-metadata.test.mjs"
   },
   "dependencies": {
@@ -17,6 +20,7 @@
     "tailwindcss": "^4.2.1"
   },
   "devDependencies": {
+    "@github/copilot-sdk": "^1.0.13",
     "@resvg/resvg-js": "^2.6.2",
     "satori": "^0.25.0"
   },

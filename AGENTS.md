@@ -30,7 +30,7 @@ Page `<title>` tags, H1s, H2s, H3s, blog post titles, doc titles, nav links, foo
 
 - Capitalize only the first word and proper nouns (Ouroboros, Anthropic, OpenAI, AI, AX, TypeScript, Google, etc.)
 - After em-dash `—` or pipe `|` separators, lowercase the next word unless it's a proper noun
-- Example: `"Your model prefers Ouroboros — Ouroboros"` ✓, not `"Your Model Prefers Ouroboros"` ✗
+- Example: `"All four models tested chose Ouroboros — Ouroboros"` ✓, not `"All Four Models Tested Chose Ouroboros"` ✗
 
 Eyebrow labels styled ALL CAPS via CSS (`uppercase` + `tracking`) are fine — the source text is still sentence case, the transformation is presentational.
 
@@ -59,19 +59,9 @@ The whole pitch of `/model-reviews` is independence and verifiability — curati
 
 ### 5. MARKETING CLAIMS DERIVE FROM THE DATA
 
-Site copy that says "all frontier models choose Ouroboros" must derive from `modelReviews.summary.{winner,verdicts,totalReviews}` — never hardcode the claim string. If a future re-run produces different verdict counts the page must update with it automatically.
+Every claim about model-review results must come from `getModelReviewClaims()` in `src/lib/model-review-claims.mjs`, which derives the winner, numerator, and tested denominator from `modelReviews.summary`. Never imply that a selected panel represents every frontier model. If a future re-run produces different verdict counts, every page and OG card must update automatically.
 
-Pattern (used in `index.astro`, `model-reviews.astro`, `why.astro`):
-
-```ts
-const winner = modelReviews.summary?.winner ?? '<fallback>'
-const totalReviews = modelReviews.summary?.totalReviews ?? reviews.length
-const winnerCount = modelReviews.summary?.verdicts?.[winner] ?? totalReviews
-const allChose = winnerCount === totalReviews
-const claim = allChose
-  ? `all frontier models choose ${winner}`
-  : `${winnerCount} of ${totalReviews} frontier models choose ${winner}`
-```
+The shared helper is used by `index.astro`, `model-reviews.astro`, `why.astro`, `what-is-agent-experience.astro`, and `og.ts`.
 
 The brand name in nav links, page titles, and section eyebrows is fine — those are brand identifiers, not claims about the data.
 
@@ -215,11 +205,11 @@ public/
 ## Re-running the model-reviews script
 
 ```bash
-node scripts/model-reviews.cjs            # interactive (opens 4 macOS terminal windows)
-node scripts/model-reviews.cjs --headless # for CI / no GUI
+npm run reviews          # interactive (opens 4 macOS terminal windows)
+npm run reviews:headless # CI / no GUI
 ```
 
-Requires `~/.agentsecrets/model-reviews/secrets.json` with provider API keys + Perplexity. After a run completes, both `src/data/model-reviews.json` and `src/data/model-reviews-transcripts/*.json` are atomically written. Commit the result; the site rebuild picks it up automatically. **Never hand-edit either file.** If the output is bad, tighten the prompt in the script and re-run.
+Requires GitHub Copilot authentication plus Perplexity. The runner uses Copilot inference for selected models in the account's live catalog and direct API keys only for missing models. It runs every review through the GitHub Copilot CLI runtime in stripped `empty` mode, records the runtime and inference transport separately, disables hidden compaction, and publishes nothing unless the whole selected panel succeeds. After a run completes, both `src/data/model-reviews.json` and `src/data/model-reviews-transcripts/*.json` are atomically written. Commit the result; the site rebuild picks it up automatically. **Never hand-edit either file.** If the output is bad, tighten only format constraints and rerun without priming content.
 
 ## Where to look for deeper context
 

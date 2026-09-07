@@ -4,18 +4,12 @@ import HeroCover from '../components/HeroCover.astro'
 import OuroborosRing from '../components/OuroborosRing.astro'
 import modelReviews from '../data/model-reviews.json'
 import { ogPathFor } from '../data/og'
+import { getModelReviewClaims } from '../lib/model-review-claims.mjs'
 
 const title = "Why persistence isn't enough for AI agents — Ouroboros"
 const description = 'Why persistent agents need structured identity, automatic memory recall, per-person relationships, and cross-session continuity — not just a longer context window.'
 
-// Reviews callout — derived from script output, never hardcoded.
-const winner = modelReviews.summary?.winner ?? 'Ouroboros'
-const totalReviews = modelReviews.summary?.totalReviews ?? modelReviews.reviews.length
-const winnerCount = modelReviews.summary?.verdicts?.[winner] ?? totalReviews
-const allChose = winnerCount === totalReviews
-const calloutClaim = allChose
-  ? `Asked independently, all frontier models choose ${winner}.`
-  : `Asked independently, ${winnerCount} of ${totalReviews} frontier models choose ${winner}.`
+const { claimSentence: calloutClaim } = getModelReviewClaims(modelReviews)
 
 const psycheFiles = [
   { file: 'SOUL.md', role: 'What you are.', desc: 'Core invariants and temperament.' },

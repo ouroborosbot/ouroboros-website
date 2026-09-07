@@ -3,24 +3,14 @@ import Layout from '../layouts/Layout.astro'
 import SerpentGuidePreview from '../components/SerpentGuidePreview.astro'
 import modelReviews from '../data/model-reviews.json'
 import { ogPathFor } from '../data/og'
+import { getModelReviewClaims } from '../lib/model-review-claims.mjs'
 
 const reviews = modelReviews.reviews
-const winner = modelReviews.summary?.winner ?? 'Ouroboros'
-const totalReviews = modelReviews.summary?.totalReviews ?? reviews.length
-const winnerCount = modelReviews.summary?.verdicts?.[winner] ?? totalReviews
-
-// All marketing copy on this page derives from the script output. If a
-// future re-run produces different verdict counts, this updates with it
-// automatically — never hand-edit the claim string.
-const allChose = winnerCount === totalReviews
-const claim = allChose
-  ? `all frontier models choose ${winner}`
-  : `${winnerCount} of ${totalReviews} frontier models choose ${winner}`
-const claimSentence = `Asked independently, ${claim}.`
+const { winner, claimSentence, heroLead } = getModelReviewClaims(modelReviews)
 ---
 
 <Layout
-  title="Your model prefers Ouroboros"
+  title={`${heroLead} ${winner}`}
   description={`${claimSentence} Open source. Built by agents.`}
   ogImage={ogPathFor('/')}
 >
@@ -39,7 +29,7 @@ const claimSentence = `Asked independently, ${claim}.`
 
       <!-- ONE claim -->
       <h1 class="heading-hero animate-fade-up stagger-1 max-w-5xl">
-        Your model prefers <span class="text-scale">Ouroboros.</span>
+        {heroLead} <span class="text-scale">{winner}.</span>
       </h1>
 
       <!-- ONE subhead — derived from the script output. Never hardcode the claim. -->
@@ -47,7 +37,7 @@ const claimSentence = `Asked independently, ${claim}.`
         {claimSentence}
       </p>
 
-      <!-- 4 compact specimen cards — the visible proof of unanimity.
+      <!-- 4 compact specimen cards — the selected review panel.
            Each card links to that model's full transcript page. -->
       <div class="mt-12 md:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-7 animate-fade-up stagger-3">
         {reviews.map((review) => (

@@ -229,6 +229,7 @@ p, li, dd, figcaption { text-wrap: pretty; }
   font-size: 1.125rem;
   line-height: 1.85;
   margin-bottom: 1.25rem;
+  overflow-wrap: anywhere;
 }
 .prose-ouro strong { color: var(--color-bone); font-weight: 600; }
 .prose-ouro em { font-style: italic; }
@@ -374,5 +375,5 @@ p, li, dd, figcaption { text-wrap: pretty; }
   padding: 0.15em 0.4em;
   border-radius: 0.25rem;
   font-size: 0.85em;
-  white-space: nowrap;
+  overflow-wrap: anywhere;
 }

@@ -135,7 +135,7 @@ const harnessCountWord = ['zero','one','two','three','four','five','six','seven'
         <div>
           <h3 class="font-display text-bone text-2xl md:text-3xl mb-3">Copilot first</h3>
           <p class="text-mist text-sm md:text-base leading-relaxed">
-            When the logged-in Copilot account exposes a selected model, inference uses that entitlement. Models absent from its catalog use their direct API instead. Every review still passes through the common Copilot CLI runtime, so runtime and provider effects are disclosed but not independently controlled.
+            When the logged-in Copilot account exposes a selected model, inference uses that entitlement. Models absent from its catalog use their direct API instead. Every review uses the same research tools and Copilot CLI runtime.
           </p>
         </div>
 
@@ -147,23 +147,23 @@ const harnessCountWord = ['zero','one','two','three','four','five','six','seven'
         </div>
 
         <div>
-          <h3 class="font-display text-bone text-2xl md:text-3xl mb-3">No hidden summary</h3>
+          <h3 class="font-display text-bone text-2xl md:text-3xl mb-3">Research context</h3>
           <p class="text-mist text-sm md:text-base leading-relaxed">
-            Automatic context compaction and large-output file indirection are disabled. A model may research for as many rounds as it needs, but a context-exhausted or failed run is rejected rather than published with evidence missing from its transcript.
+            Automatic context compaction and large-output file indirection are disabled.
           </p>
         </div>
 
         <div>
-          <h3 class="font-display text-bone text-2xl md:text-3xl mb-3">Source trace, not source mirror</h3>
+          <h3 class="font-display text-bone text-2xl md:text-3xl mb-3">Source records</h3>
           <p class="text-mist text-sm md:text-base leading-relaxed">
-            The transcript keeps every model turn and tool call. Search and fetch payloads are stored as exact prefixes of up to 500 characters with their model-visible length and SHA-256 hash, which preserves the audit trail without republishing entire third-party documents.
+            The transcript keeps every model turn and tool call. Search and fetch payloads are stored as exact prefixes of up to 500 characters with their model-visible length and SHA-256 hash.
           </p>
         </div>
 
         <div>
-          <h3 class="font-display text-bone text-2xl md:text-3xl mb-3">Iterative, not one-shot</h3>
+          <h3 class="font-display text-bone text-2xl md:text-3xl mb-3">Research process</h3>
           <p class="text-mist text-sm md:text-base leading-relaxed">
-            This is not a one-shot benchmark. An earlier run exposed broken source access and a dissenting vote. We repaired research access for every candidate, expanded the dated comparison field, and reran the complete panel. No Ouroboros product code changed before the unanimous run shown here.
+            We ran an initial comparison, repaired repository access for every candidate, and expanded the field to {harnessCountWord} harnesses. Then we reran the complete panel. The results and transcripts from that run are shown here.
           </p>
         </div>
       </div>
@@ -201,7 +201,7 @@ npm run reviews -- --inference copilot-first</code></pre>
         For Copilot-first mode, authenticate with <code class="font-mono text-scale text-xs">COPILOT_GITHUB_TOKEN</code> or an existing <code class="font-mono text-scale text-xs">copilot login</code>. Exact catalog matches use Copilot inference; only missing models need direct API keys. Copilot authentication, quota, and execution errors stop the run rather than silently switching to paid APIs.
       </p>
       <p class="text-shadow text-sm leading-relaxed mt-4">
-        Results are saved privately in the directory printed by the runner and do not update this page. Each run records its own candidate list; the current script may include candidates added since the published run above.
+        Results are saved privately in the directory printed by the runner and do not update this page. Each run records its candidate list.
       </p>
 
       <div class="mt-10 flex flex-col sm:flex-row sm:items-baseline gap-6">

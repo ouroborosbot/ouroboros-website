@@ -148,15 +148,28 @@ test('review rerun instructions describe private output without relabeling the p
   assert.match(text, /do not update this page/);
   assert.doesNotMatch(text, /Output is written to/);
   assert.match(text, new RegExp(`list of ${count} publicly documented agent harnesses`));
+  assert.match(text, new RegExp(`expanded the field to ${count} harnesses`));
+  assert.doesNotMatch(text, /current script may include candidates added/i);
 });
 
-test('review methodology discloses the iterative comparison context', () => {
+test('review methodology describes the process without editorial disclaimers', () => {
   const html = readDistFile('model-reviews/index.html');
-  const text = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+  const methodology = [...html.matchAll(/<section\b[^>]*>([\s\S]*?)<\/section>/g)]
+    .find(([, section]) => /<span\b[^>]*>Methodology<\/span>/.test(section));
+  assert.ok(methodology, 'Missing methodology section');
+  const text = methodology[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
 
-  assert.match(text, /not a one-shot benchmark/i);
-  assert.match(text, /repaired research access for every candidate/i);
-  assert.match(text, /No Ouroboros product code changed before the unanimous run shown here/i);
+  assert.match(text, /We ran an initial comparison/);
+  assert.match(text, /repaired repository access for every candidate/);
+  assert.match(text, /reran the complete panel/);
+  assert.match(text, /results and transcripts from that run are shown here/i);
+  assert.match(text, /Every review uses the same research tools and Copilot CLI runtime/);
+  assert.match(text, /Research context/);
+  assert.match(text, /Source records/);
+  assert.match(text, /Research process/);
+  assert.match(text, /Automatic context compaction and large-output file indirection are disabled/);
+  assert.match(text, /exact prefixes of up to 500 characters with their model-visible length and SHA-256 hash/);
+  assert.doesNotMatch(text, /one-shot benchmark|not independently controlled|No Ouroboros product code changed|dissenting vote|No hidden summary|not source mirror|rejected rather than published|without republishing/i);
 });
 
 test('rerun instructions offer API-only inference without a required Copilot subscription', () => {

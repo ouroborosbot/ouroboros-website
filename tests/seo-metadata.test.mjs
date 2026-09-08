@@ -94,3 +94,11 @@ test('rerun instructions offer API-only inference without a required Copilot sub
   assert.doesNotMatch(text, /Use Node 22 and authenticate with a Copilot subscription/);
   assert.match(text, /bundled.*runtime/);
 });
+
+test('Agent Experience article derives the reviewed harness count from the accepted data', () => {
+  const html = readDistFile('blog/what-is-agent-experience/index.html');
+  const text = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+  const data = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'src/data/model-reviews.json'), 'utf8'));
+
+  assert.match(text, new RegExp(`research the ${data.harnesses.length} selected agent harnesses`));
+});

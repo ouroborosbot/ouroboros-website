@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
+import { runInNewContext } from 'node:vm';
 
 const distDir = path.join(process.cwd(), 'dist');
 const sitemapPath = path.join(distDir, 'sitemap-0.xml');
@@ -39,6 +40,66 @@ function extractOgUrl(html) {
   assert.ok(match, 'Missing og:url meta tag');
   return match[1];
 }
+
+test('start links lead directly to the setup guide', () => {
+  for (const [filePath, label] of [
+    ['index.html', 'Get started'],
+    ['story/index.html', 'start building'],
+    ['what-is-an-agent-harness/index.html', 'the serpent guide takes three minutes'],
+  ]) {
+    const links = [...readDistFile(filePath).matchAll(/<a\b[^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/g)];
+    const link = links.find(([, , content]) => content.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim() === label);
+    assert.ok(link, `Missing ${label} link on ${filePath}`);
+    assert.equal(link[1], '/docs/getting-started/');
+  }
+});
+
+test('setup guide provides prerequisites and a copyable command before the demo', () => {
+  const html = readDistFile('docs/getting-started/index.html');
+  const text = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+  assert.match(text, /Node\.js 22 or newer/);
+  assert.match(html, /href="https:\/\/nodejs\.org\/en\/download\/?"/);
+  assert.match(html, /<button\b[^>]*data-prompt="npx ouro\.bot"[^>]*>/);
+  assert.match(text, /Open Terminal/i);
+  assert.ok(html.indexOf('data-prompt="npx ouro.bot"') < html.indexOf("welcome to ouroboros"));
+});
+
+test('each prompt card registers one copy handler, including pages with multiple cards', () => {
+  for (const filePath of [
+    'docs/index.html',
+    'docs/architecture/index.html',
+    'docs/bundles-and-psyche/index.html',
+    'docs/continuity-and-memory/index.html',
+    'docs/getting-started/index.html',
+    'docs/skills-and-prompts/index.html',
+    'docs/tasks-and-work/index.html',
+  ]) {
+    const html = readDistFile(filePath);
+    const scripts = [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g)]
+      .map(([, attributes, inline]) => {
+        const source = attributes.match(/\bsrc="\/([^"]+)"/);
+        return source ? readDistFile(source[1]) : inline;
+      })
+      .filter(source => source.includes('.prompt-copy-btn'));
+    assert.equal(scripts.length, 1, `Copy script must appear once on ${filePath}`);
+    const handlers = [...html.matchAll(/class="prompt-copy-btn\b/g)].map(() => []);
+    assert.ok(handlers.length > 0, `Missing prompt cards on ${filePath}`);
+    runInNewContext(scripts[0], {
+      document: {
+        querySelectorAll(selector) {
+          assert.equal(selector, '.prompt-copy-btn');
+          return handlers.map(list => ({
+            addEventListener(event, handler) {
+              assert.equal(event, 'click');
+              list.push(handler);
+            },
+          }));
+        },
+      },
+    });
+    assert.ok(handlers.every(list => list.length === 1), `Copy handlers must not accumulate on ${filePath}`);
+  }
+});
 
 test('sitemap emits trailing-slash URLs for sampled routes', () => {
   const sitemap = fs.readFileSync(sitemapPath, 'utf8');

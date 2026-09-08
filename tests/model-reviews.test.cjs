@@ -48,7 +48,7 @@ test('prefers Copilot and falls back only for a missing catalog model', () => {
   const resolved = resolveTransports(reviews, new Set(['claude-opus-5']), {
     anthropic: null,
     gemini: 'gemini-key',
-  })
+  }, 'copilot-first')
 
   assert.equal(resolved[0].provider, 'anthropic')
   assert.equal(resolved[0].transport, 'copilot')
@@ -66,8 +66,27 @@ test('prefers Copilot and falls back only for a missing catalog model', () => {
 
 test('rejects a model absent from Copilot when no fallback key exists', () => {
   assert.throws(
-    () => resolveTransports(reviews, new Set(['claude-opus-5']), { anthropic: null, gemini: null }),
+    () => resolveTransports(reviews, new Set(['claude-opus-5']), { anthropic: null, gemini: null }, 'copilot-first'),
     /gemini-3\.8-flash.*GEMINI_API_KEY/,
+  )
+})
+
+test('direct API inference ignores Copilot catalog availability and preserves vendor configuration', () => {
+  const keys = { anthropic: 'anthropic-key', gemini: 'gemini-key' }
+  const catalog = new Set(reviews.map(({ model }) => model))
+  for (const mode of [undefined, 'direct-api']) {
+    const resolved = resolveTransports(reviews, catalog, keys, mode)
+    assert.ok(resolved.every(({ transport }) => transport === 'direct-api'))
+    assert.deepEqual(resolved[0].providerConfig, { type: 'anthropic', baseUrl: 'https://api.anthropic.com', apiKey: 'anthropic-key' })
+    assert.equal(resolved[1].providerConfig.wireApi, 'completions')
+    assert.equal(resolved[1].providerConfig.apiKey, 'gemini-key')
+  }
+})
+
+test('direct API inference requires vendor keys even when Copilot could serve the model', () => {
+  assert.throws(
+    () => resolveTransports(reviews, new Set(reviews.map(({ model }) => model)), { anthropic: null, gemini: 'gemini-key' }, 'direct-api'),
+    /claude-opus-5.*ANTHROPIC_API_KEY/,
   )
 })
 

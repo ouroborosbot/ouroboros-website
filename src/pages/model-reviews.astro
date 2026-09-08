@@ -181,20 +181,27 @@ const harnessCountWord = ['zero','one','two','three','four','five','six','seven'
       </h2>
 
       <p class="text-mist text-base md:text-lg leading-relaxed mb-8 max-w-2xl">
-        The script is open source. Clone the repo, authenticate with Copilot, add only the fallback keys your selected models need, and watch the reviews run.
+        The script is open source. Clone the repo and choose direct API keys or a Copilot subscription for inference. Both paths use the same research tools.
       </p>
 
       <div class="border border-canopy/40 bg-deep/60 backdrop-blur-sm p-6 md:p-8 mb-6">
         <pre class="font-mono text-xs md:text-sm text-bone leading-relaxed overflow-x-auto"><code>git clone https://github.com/ourostack/ouroboros-website
 cd ouroboros-website
 npm install
-npm install -g @github/copilot
-copilot login
-npm run reviews</code></pre>
+npm run reviews -- --inference direct-api
+
+# Or use a Copilot subscription:
+npm run reviews -- --inference copilot-first</code></pre>
       </div>
 
       <p class="text-shadow text-sm leading-relaxed">
-        Use Node 22 and authenticate with a Copilot subscription. <code class="font-mono text-scale text-xs">PERPLEXITY_API_KEY</code> is required for search. Set direct provider keys only for selected models your Copilot catalog does not expose — currently <code class="font-mono text-scale text-xs">GEMINI_API_KEY</code> (or <code class="font-mono text-scale text-xs">GOOGLE_API_KEY</code>) and <code class="font-mono text-scale text-xs">MINIMAX_API_KEY</code>. Results are saved privately in the directory printed by the runner and do not update this page. Each run records its own candidate list; the current script may include candidates added since the published run above.
+        Use Node 22. Direct API mode is the default and needs no Copilot account or subscription. For the selected panel, set <code class="font-mono text-scale text-xs">ANTHROPIC_API_KEY</code>, <code class="font-mono text-scale text-xs">OPENAI_API_KEY</code>, <code class="font-mono text-scale text-xs">GEMINI_API_KEY</code> (or <code class="font-mono text-scale text-xs">GOOGLE_API_KEY</code>), and <code class="font-mono text-scale text-xs">MINIMAX_API_KEY</code>. Both modes require <code class="font-mono text-scale text-xs">PERPLEXITY_API_KEY</code> for search and share the bundled SDK research runtime.
+      </p>
+      <p class="text-shadow text-sm leading-relaxed mt-4">
+        For Copilot-first mode, authenticate with <code class="font-mono text-scale text-xs">COPILOT_GITHUB_TOKEN</code> or an existing <code class="font-mono text-scale text-xs">copilot login</code>. Exact catalog matches use Copilot inference; only missing models need direct API keys. Copilot authentication, quota, and execution errors stop the run rather than silently switching to paid APIs.
+      </p>
+      <p class="text-shadow text-sm leading-relaxed mt-4">
+        Results are saved privately in the directory printed by the runner and do not update this page. Each run records its own candidate list; the current script may include candidates added since the published run above.
       </p>
 
       <div class="mt-10 flex flex-col sm:flex-row sm:items-baseline gap-6">

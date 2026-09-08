@@ -10,14 +10,17 @@ import { mock } from 'node:test'
 import * as sdk from '@github/copilot-sdk'
 
 const { root, options, models, harnesses, publicDirectory } = JSON.parse(process.env.MODEL_REVIEWS_TEST_SETUP)
-const counts = { starts: 0, sessions: 0, disconnects: 0, stops: 0, terminals: 0 }
+const counts = { starts: 0, sessions: 0, disconnects: 0, stops: 0, terminals: 0, authChecks: 0, catalogRequests: 0 }
 const requests = []
 const searchRequests = []
+const sessionConfigurations = []
 mock.method(os, 'homedir', () => root)
 for (const key of ['COPILOT_GITHUB_TOKEN', 'ANTHROPIC_API_KEY', 'OPENAI_API_KEY', 'GOOGLE_API_KEY', 'GEMINI_API_KEY', 'MINIMAX_API_KEY', 'PERPLEXITY_API_KEY']) {
   if (options.missingKeys) delete process.env[key]
   else process.env[key] = `fixture-only-${key}`
 }
+if (options.noCopilotToken) delete process.env.COPILOT_GITHUB_TOKEN
+if (options.missingProviderKey) delete process.env[options.missingProviderKey]
 if (options.headlessEnv) process.env.MODEL_REVIEWS_HEADLESS = '1'
 else delete process.env.MODEL_REVIEWS_HEADLESS
 mock.method(childProcess, 'execFileSync', (command) => {
@@ -34,7 +37,7 @@ for (const method of ['existsSync', 'mkdirSync', 'mkdtempSync', 'copyFileSync', 
   const original = fs[method]
   mock.method(fs, method, (...args) => original(...args.map(redirect)))
 }
-process.once('exit', () => fs.writeFileSync(path.join(root, 'runtime-receipt.json'), JSON.stringify({ counts, requests, searchRequests })))
+process.once('exit', () => fs.writeFileSync(path.join(root, 'runtime-receipt.json'), JSON.stringify({ counts, requests, searchRequests, sessionConfigurations })))
 
 mock.method(dns, 'lookup', async () => [{ address: '93.184.216.34', family: 4 }])
 mock.method(https, 'get', (url, config, callback) => {
@@ -63,12 +66,29 @@ mock.method(globalThis, 'fetch', async (url, config) => {
     : new Response(JSON.stringify({ choices: [{ message: { content: 'A fixture search result with public source links.' } }] }), { status: 200 })
 })
 mock.method(sdk.CopilotClient.prototype, 'start', async () => { counts.starts++ })
-mock.method(sdk.CopilotClient.prototype, 'getAuthStatus', async () => ({ isAuthenticated: options.auth !== false, statusMessage: 'fixture authentication denied' }))
+mock.method(sdk.CopilotClient.prototype, 'getAuthStatus', async () => {
+  counts.authChecks++
+  if (options.copilotUnavailable) throw new Error('fixture Copilot unavailable')
+  return { isAuthenticated: options.auth !== false, statusMessage: options.authMessage ?? 'fixture authentication denied' }
+})
 mock.method(sdk.CopilotClient.prototype, 'getStatus', async () => ({ version: 'fixture-runtime', protocolVersion: 3 }))
-mock.method(sdk.CopilotClient.prototype, 'listModels', async () => models.filter(({ provider }) => !options.directGemini || provider !== 'gemini').map(({ model }) => ({ id: model })))
+mock.method(sdk.CopilotClient.prototype, 'listModels', async () => {
+  counts.catalogRequests++
+  if (options.catalogFailure || options.copilotUnavailable) throw new Error('fixture Copilot catalog unavailable')
+  return models.filter(({ provider }) => !options.directGemini || provider !== 'gemini').map(({ model }) => ({ id: model }))
+})
 mock.method(sdk.CopilotClient.prototype, 'stop', async () => { counts.stops++ })
 mock.method(sdk.CopilotClient.prototype, 'createSession', async (configuration) => {
   counts.sessions++
+  sessionConfigurations.push({
+    model: configuration.model,
+    provider: configuration.provider ? {
+      type: configuration.provider.type,
+      baseUrl: configuration.provider.baseUrl,
+      wireApi: configuration.provider.wireApi,
+      apiKeyConfigured: Boolean(configuration.provider.apiKey),
+    } : null,
+  })
   return {
     disconnect: async () => { counts.disconnects++ },
     sendAndWait: async () => {

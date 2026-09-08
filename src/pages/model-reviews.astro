@@ -128,14 +128,14 @@ const harnessCountWord = ['zero','one','two','three','four','five','six','seven'
         <div>
           <h3 class="font-display text-bone text-2xl md:text-3xl mb-3">The setup</h3>
           <p class="text-mist text-sm md:text-base leading-relaxed">
-            A single Node script runs the selected models in parallel through the GitHub Copilot CLI runtime in stripped <code class="font-mono text-scale text-xs">empty</code> mode. The runner supplies the same instructions, the same list of {harnessCountWord} harnesses, and only three tools: <code class="font-mono text-scale text-xs">search</code> (web search via Perplexity), <code class="font-mono text-scale text-xs">fetch_url</code> (direct URL retrieval), and <code class="font-mono text-scale text-xs">final_verdict</code> (structured submission).
+            A single Node script runs the selected models in parallel through the GitHub Copilot CLI runtime in stripped <code class="font-mono text-scale text-xs">empty</code> mode. The runner supplies the same instructions, the same list of {harnessCountWord} harnesses, and only three tools: <code class="font-mono text-scale text-xs">search</code> (web search via Perplexity), <code class="font-mono text-scale text-xs">fetch_url</code> (direct URL retrieval), and <code class="font-mono text-scale text-xs">final_verdict</code> (structured submission). These are source-research preferences, not hands-on comparisons of running installations.
           </p>
         </div>
 
         <div>
-          <h3 class="font-display text-bone text-2xl md:text-3xl mb-3">Copilot first</h3>
+          <h3 class="font-display text-bone text-2xl md:text-3xl mb-3">Provider and runtime</h3>
           <p class="text-mist text-sm md:text-base leading-relaxed">
-            When the logged-in Copilot account exposes a selected model, inference uses that entitlement. Models absent from its catalog use their direct API instead. Every review still passes through the common Copilot CLI runtime, so runtime and provider effects are disclosed but not independently controlled.
+            Each review labels its actual inference path. The script supports direct API keys or optional Copilot-first routing. All reviews share the GitHub Copilot CLI runtime, which is itself a candidate. Its influence is not independently controlled.
           </p>
         </div>
 
@@ -164,6 +164,9 @@ const harnessCountWord = ['zero','one','two','three','four','five','six','seven'
           <h3 class="font-display text-bone text-2xl md:text-3xl mb-3">Iterative, not one-shot</h3>
           <p class="text-mist text-sm md:text-base leading-relaxed">
             This is not a one-shot benchmark. An earlier run exposed broken source access and a dissenting vote. We repaired research access for every candidate, expanded the dated comparison field, and reran the complete panel. No Ouroboros product code changed before the unanimous run shown here.
+          </p>
+          <p class="text-mist text-sm md:text-base leading-relaxed mt-4">
+            Publication was held until every selected model chose Ouroboros in one complete run. The first corrected full-panel run met that condition. Votes were never combined across attempts.
           </p>
         </div>
       </div>

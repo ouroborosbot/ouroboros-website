@@ -82,6 +82,17 @@ test('review methodology discloses the iterative comparison context', () => {
   assert.match(text, /No Ouroboros product code changed before the unanimous run shown here/i);
 });
 
+test('publication selection and the shared runtime are disclosed without requiring Copilot inference', () => {
+  const html = readDistFile('model-reviews/index.html');
+  const text = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+  assert.match(text, /Publication was held until every selected model chose Ouroboros in one complete run/);
+  assert.match(text, /first corrected full-panel run met that condition/);
+  assert.match(text, /Votes were never combined across attempts/);
+  assert.match(text, /optional Copilot-first routing/);
+  assert.match(text, /runtime, which is itself a candidate/);
+  assert.match(text, /source-research preferences, not hands-on comparisons/);
+});
+
 test('rerun instructions offer API-only inference without a required Copilot subscription', () => {
   const html = readDistFile('model-reviews/index.html');
   const text = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');

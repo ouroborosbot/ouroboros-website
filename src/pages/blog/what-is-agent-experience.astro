@@ -8,6 +8,7 @@ const title = 'What is Agent Experience (AX)?'
 const description = 'Agent Experience is the design surface that appears when an agent has to stay oriented inside the system it inhabits.'
 
 const { claimSentence: calloutClaim } = getModelReviewClaims(modelReviews)
+const reviewedHarnessCount = modelReviews.harnesses.length
 ---
 
 <Layout
@@ -28,7 +29,7 @@ const { claimSentence: calloutClaim } = getModelReviewClaims(modelReviews)
       "author": { "@type": "Person", "name": "Ari Mendelow", "url": "https://linkedin.com/in/arimendelow" },
       "publisher": { "@type": "Organization", "name": "Ouroboros", "url": "https://ouroboros.bot" },
       "datePublished": "2026-03-08",
-      "dateModified": "2026-03-11",
+      "dateModified": "2026-09-08",
       "url": "https://ouroboros.bot/blog/what-is-agent-experience/"
     })} />
   </Fragment>
@@ -102,7 +103,7 @@ const { claimSentence: calloutClaim } = getModelReviewClaims(modelReviews)
 
       <p><strong>A readable body.</strong> Legible runtime structure and a portable bundle boundary make it easier for the agent to understand where identity, memory, and action live.</p>
 
-      <p>If the AX framing is right, the test isn't whether humans say nice things about a harness — it's whether <em>the inhabiting model itself</em> can recognize the difference. We checked. <a href="/model-reviews">{calloutClaim}</a> Each was invited to research the seven selected agent harnesses and pick the one it would most want to inhabit. The reasons they cited map almost exactly onto the AX dimensions in this essay.</p>
+      <p>If the AX framing is right, the test isn't whether humans say nice things about a harness — it's whether <em>the inhabiting model itself</em> can recognize the difference. We checked. <a href="/model-reviews">{calloutClaim}</a> Each was invited to research the {reviewedHarnessCount} selected agent harnesses and pick the one it would most want to inhabit. The reasons they cited map almost exactly onto the AX dimensions in this essay.</p>
 
       <h2>A useful test</h2>
 

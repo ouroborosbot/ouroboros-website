@@ -40,7 +40,7 @@ const harnessCountWord = ['zero','one','two','three','four','five','six','seven'
     </Fragment>
     <Fragment slot="subhead">{shortClaim}</Fragment>
     <Fragment slot="body">
-      Each model was given web search, URL fetching, and a list of {harnessCountWord} open-source agent harnesses. They were asked to research freely, then state which one they would most want to inhabit.
+      Each model was given web search, URL fetching, and a list of {harnessCountWord} publicly documented agent harnesses. They were asked to research freely, then state which one they would most want to inhabit.
     </Fragment>
   </HeroCover>
 
@@ -142,7 +142,7 @@ const harnessCountWord = ['zero','one','two','three','four','five','six','seven'
         <div>
           <h3 class="font-display text-bone text-2xl md:text-3xl mb-3">Random order</h3>
           <p class="text-mist text-sm md:text-base leading-relaxed">
-            The list of harnesses is shuffled before each run, so position bias doesn't favor any particular framework. Every model sees a different ordering.
+            The harness list is shuffled independently for each model to reduce position bias. The order is recorded with each transcript.
           </p>
         </div>
 
@@ -187,7 +187,7 @@ npm run reviews</code></pre>
       </div>
 
       <p class="text-shadow text-sm leading-relaxed">
-        A Copilot subscription and <code class="font-mono text-scale text-xs">PERPLEXITY_API_KEY</code> are required. Set direct provider keys only for selected models your Copilot catalog does not expose — currently <code class="font-mono text-scale text-xs">GEMINI_API_KEY</code> (or <code class="font-mono text-scale text-xs">GOOGLE_API_KEY</code>) and <code class="font-mono text-scale text-xs">MINIMAX_API_KEY</code>. Output is written to <code class="font-mono text-scale text-xs">src/data/model-reviews.json</code> and the transcript directory.
+        Use Node 22 and authenticate with a Copilot subscription. <code class="font-mono text-scale text-xs">PERPLEXITY_API_KEY</code> is required for search. Set direct provider keys only for selected models your Copilot catalog does not expose — currently <code class="font-mono text-scale text-xs">GEMINI_API_KEY</code> (or <code class="font-mono text-scale text-xs">GOOGLE_API_KEY</code>) and <code class="font-mono text-scale text-xs">MINIMAX_API_KEY</code>. Results are saved privately in the directory printed by the runner and do not update this page. Each run records its own candidate list; the current script may include candidates added since the published run above.
       </p>
 
       <div class="mt-10 flex flex-col sm:flex-row sm:items-baseline gap-6">

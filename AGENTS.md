@@ -51,7 +51,7 @@ The model-reviews script output (`src/data/model-reviews.json` + `src/data/model
 - **Never list dimensions** to evaluate on (e.g. "consider identity, memory, relationships") — that primes the answer.
 - **Never give the model descriptions** of the things it's evaluating. The script gives only name + repo URL; the model has to research from scratch.
 
-**When the output isn't good enough:** tighten the prompt and re-run. The fix lives in `scripts/model-reviews.cjs`, never in the data.
+**When the output is malformed:** adjust format constraints without steering content. Repair source-access failures symmetrically for all candidates. An undesired verdict is not malformed output; never rewrite it or repeat unchanged inputs just to seek a different vote.
 
 **Format constraints are OK** in the prompt (e.g. "use this markdown shape", "do not begin with X") because they're about shape, not content.
 
@@ -165,7 +165,7 @@ src/
   og/
     fonts/               ← TTFs for Satori OG generation
 scripts/
-  model-reviews.cjs      ← runs frontier models against the harness list, writes src/data/
+  model-reviews.cjs      ← private review runs and separate guarded promotion into src/data/
 public/
   fonts/                 ← woff2 fonts loaded by global.css
   images/
@@ -205,11 +205,19 @@ public/
 ## Re-running the model-reviews script
 
 ```bash
-npm run reviews          # interactive (opens 4 macOS terminal windows)
-npm run reviews:headless # CI / no GUI
+npm run reviews -- --preflight
+npm run reviews -- --output-dir /private/new-run
+npm run reviews:headless -- --output-dir /private/another-new-run
+npm run reviews -- --publish /private/completed-run/run.json
 ```
 
-Requires GitHub Copilot authentication plus Perplexity. The runner uses Copilot inference for selected models in the account's live catalog and direct API keys only for missing models. It runs every review through the GitHub Copilot CLI runtime in stripped `empty` mode, records the runtime and inference transport separately, disables hidden compaction, and publishes nothing unless the whole selected panel succeeds. After a run completes, both `src/data/model-reviews.json` and `src/data/model-reviews-transcripts/*.json` are atomically written. Commit the result; the site rebuild picks it up automatically. **Never hand-edit either file.** If the output is bad, tighten only format constraints and rerun without priming content.
+Requires GitHub Copilot authentication plus Perplexity. The runner uses Copilot inference for selected models in the account's live catalog and direct API keys only for models absent from that catalog, never for Copilot auth, quota, or execution failures. Every review uses the Copilot CLI runtime in stripped `empty` mode with compaction and large-output indirection disabled.
+
+Ordinary runs never modify `src/data`. Choose a fresh output directory outside this repository; without `--output-dir`, the runner creates a private run directory under `~/.local/state/ouroboros-model-reviews/`. Preflight resolves auth, routing, and public source snapshots without an inference turn. Completed and failed runs are preserved privately. The run's `raw/` directory contains uncommitted research captures and runtime logs; never publish or commit it.
+
+Public promotion is separate. Keep the completed run's local `raw/evidence.json` beside `run.json`; promotion requires the full original evidence even though that evidence must never be committed or published. `--publish` validates the originating run IDs, model identities, candidate revisions, prompt hashes, research coverage, timestamps, and transcript/summary agreement, then reconstructs the publication from the original results to compare every quote, prefix, length, and hash. The site's release hold requires every selected reviewer to choose Ouroboros in that one complete run. Valid dissent remains a valid private result, not an incomplete run. Never assemble favorable votes across attempts, rewrite model text, or rerun unchanged inputs solely to seek a preferred outcome.
+
+Promotion stages all files and recoverable originals before replacing `src/data/model-reviews.json` and its transcripts. A replacement failure restores the originals; an incomplete restoration fails loudly and retains its recovery files. Commit only an accepted promoted dataset. **Never hand-edit model quotations.** Source commits, run-specific candidate counts, and methodology must describe that exact run. When publishing results from an iterative product-development cycle, disclose that context rather than presenting them as a one-shot independent benchmark.
 
 ## Where to look for deeper context
 

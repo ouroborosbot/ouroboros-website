@@ -2,14 +2,15 @@
 'use strict'
 
 // model-reviews.cjs — asks selected current models which agent harness they would prefer to inhabit.
-// Run privately: npm run reviews -- --output-dir /private/new-run
+// Run privately with vendor API keys: npm run reviews -- --output-dir /private/new-run
+// Prefer a Copilot subscription: npm run reviews -- --inference copilot-first --output-dir /private/new-run
 // Promote a complete unanimous run: npm run reviews -- --publish /private/new-run/run.json
-// Auth: GitHub Copilot login/token first; direct API keys only for selected models absent from Copilot.
+// Auth: direct vendor API keys by default; Copilot login/token is required only in Copilot-first mode.
 //
 // METHODOLOGY CONTRACT
 // - Give every model only harness names + repo URLs. Never add descriptions or evaluation dimensions.
 // - Use the same caller-supplied instructions and tools; shuffle harness order independently per model.
-// - Run through the Copilot CLI runtime in stripped `empty` mode. Prefer Copilot inference, then use a direct API only when the selected model is unavailable there.
+// - Share the bundled Copilot CLI runtime in stripped `empty` mode. Inference is direct API by default, or explicitly Copilot-first with API fallback only for catalog gaps.
 // - Disable hidden compaction and large-output indirection. Reject incomplete runs.
 // - Keep provider slugs stable across filenames and routes; record runtime and inference transport separately.
 // - Publish tool-result prefixes + hashes, not whole third-party source documents.
@@ -72,6 +73,7 @@ const REVIEW_MODELS = [
   },
 ]
 
+const INFERENCE_MODES = ['direct-api', 'copilot-first']
 const MAX_NUDGES = 5
 const MAX_FETCH_CHARS = 10000
 const MAX_RESPONSE_BYTES = 2_000_000
@@ -208,16 +210,17 @@ function runtimeEnvironment(source = process.env) {
   return environment
 }
 
-function resolveTransports(reviews, availableModelIds, keys) {
+function resolveTransports(reviews, availableModelIds, keys, inferenceMode = 'direct-api') {
+  // TODO: Support other multi-model inference providers here with explicit model mappings and routing policies.
   return reviews.map((review) => {
-    if (availableModelIds.has(review.model)) {
+    if (inferenceMode === 'copilot-first' && availableModelIds.has(review.model)) {
       return { ...review, transport: 'copilot' }
     }
 
     const apiKey = keys[review.fallback.key]
     const envName = review.fallback.env || `${review.fallback.key.toUpperCase()}_API_KEY`
     if (!apiKey) {
-      throw new Error(`${review.model} is unavailable through Copilot and ${envName} is not configured`)
+      throw new Error(`${review.model} requires ${envName} for ${inferenceMode} inference`)
     }
 
     const providerConfig = {
@@ -931,6 +934,12 @@ function validateResult(result, selected, experiment, generated) {
 
 function buildPublication(selected, results, runtime, experiment, generated = new Date().toISOString()) {
   validateExperiment(experiment, generated)
+  if (runtime.inferenceMode !== undefined) {
+    if (!INFERENCE_MODES.includes(runtime.inferenceMode)) throw new Error('Invalid recorded inference mode')
+    if (runtime.inferenceMode === 'direct-api' && results.some(({ transport }) => transport !== 'direct-api')) {
+      throw new Error('direct-api inference mode requires direct-api transport for every reviewer')
+    }
+  }
   if (results.length !== selected.length) throw new Error(`Refusing to publish an incomplete run: expected ${selected.length} results, received ${results.length}`)
 
   const expectedProviders = new Set(selected.map(({ provider }) => provider))
@@ -1113,13 +1122,16 @@ function parseOptions(args) {
       'output-dir': { type: 'string' },
       preflight: { type: 'boolean', default: false },
       publish: { type: 'string' },
+      inference: { type: 'string' },
     },
   })
   for (const option of ['publish', 'output-dir']) {
     if (values[option] !== undefined && values[option].trim().length === 0) throw new Error(`--${option} requires a nonempty path`)
   }
-  if (values.publish && (values.preflight || values['output-dir'] || values.headless)) throw new Error('Do not combine --publish with run options')
-  return { headless: values.headless, outputDir: values['output-dir'], preflight: values.preflight, publishPath: values.publish }
+  const inferenceMode = values.inference ?? 'direct-api'
+  if (!INFERENCE_MODES.includes(inferenceMode)) throw new Error('--inference must be direct-api or copilot-first')
+  if (values.publish && (values.preflight || values['output-dir'] || values.headless || values.inference !== undefined)) throw new Error('Do not combine --publish with run options')
+  return { headless: values.headless, outputDir: values['output-dir'], preflight: values.preflight, publishPath: values.publish, inferenceMode }
 }
 
 function assertPrivateOutputDirectory(directory, repositoryRoots = [path.join(__dirname, '..')]) {
@@ -1217,7 +1229,9 @@ async function main(args = process.argv.slice(2)) {
 
   console.log('\nAgent harness reviews')
   console.log(`  Private run: ${outputDirectory}\n`)
-  const explicitToken = process.env.COPILOT_GITHUB_TOKEN || process.env.GH_TOKEN || process.env.GITHUB_TOKEN
+  console.log(`  Inference mode: ${options.inferenceMode}`)
+  const copilotFirst = options.inferenceMode === 'copilot-first'
+  const explicitToken = copilotFirst ? process.env.COPILOT_GITHUB_TOKEN || process.env.GH_TOKEN || process.env.GITHUB_TOKEN : undefined
   const secrets = [explicitToken]
   const research = { harnesses: [], documents: new Map() }
   let selected = []
@@ -1243,15 +1257,17 @@ async function main(args = process.argv.slice(2)) {
       workingDirectory,
       env: runtimeEnvironment(),
       gitHubToken: explicitToken,
-      useLoggedInUser: !explicitToken,
+      useLoggedInUser: copilotFirst && !explicitToken,
       logLevel: 'error',
     })
     await client.start()
-    const auth = await client.getAuthStatus()
-    if (!auth.isAuthenticated) throw new Error(`GitHub Copilot authentication failed: ${auth.statusMessage || 'run copilot login or set COPILOT_GITHUB_TOKEN'}`)
+    if (copilotFirst) {
+      const auth = await client.getAuthStatus()
+      if (!auth.isAuthenticated) throw new Error(`GitHub Copilot authentication failed: ${auth.statusMessage || 'run copilot login or set COPILOT_GITHUB_TOKEN'}`)
+    }
 
-    const [status, availableModels] = await Promise.all([client.getStatus(), client.listModels()])
-    selected = resolveTransports(REVIEW_MODELS, new Set(availableModels.map(({ id }) => id)), keys)
+    const [status, availableModels] = await Promise.all([client.getStatus(), copilotFirst ? client.listModels() : []])
+    selected = resolveTransports(REVIEW_MODELS, new Set(availableModels.map(({ id }) => id)), keys, options.inferenceMode)
     runtime = {
       name: 'GitHub Copilot CLI',
       version: status.version,
@@ -1259,6 +1275,7 @@ async function main(args = process.argv.slice(2)) {
       sdk: '@github/copilot-sdk',
       sdkVersion: packageVersion('@github/copilot-sdk'),
       mode: 'empty',
+      inferenceMode: options.inferenceMode,
       infiniteSessions: false,
       largeOutputIndirection: false,
       hostEffectsControlled: false,

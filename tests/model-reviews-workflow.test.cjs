@@ -81,6 +81,31 @@ function publicationFixture(winners) {
   return runner.buildPublication(runner.REVIEW_MODELS, resultFixtures(experiment, winners), runtime, experiment, completedAt)
 }
 
+test('inference-mode provenance accepts legacy and valid modes without relabeling transport', () => {
+  const experiment = experimentFixture()
+  const copilotResults = resultFixtures(experiment)
+  const directResults = copilotResults.map((result) => ({ ...result, transport: 'direct-api' }))
+  assert.equal(runner.buildPublication(runner.REVIEW_MODELS, copilotResults, runtime, experiment, completedAt).summary.runtime.inferenceMode, undefined)
+  for (const inferenceMode of ['direct-api', 'copilot-first']) {
+    const publication = runner.buildPublication(runner.REVIEW_MODELS, directResults, { ...runtime, inferenceMode }, experiment, completedAt)
+    assert.equal(publication.summary.runtime.inferenceMode, inferenceMode)
+    assert.equal(runner.validatePublication(publication), publication)
+  }
+})
+
+test('inference-mode provenance rejects unsupported modes', () => {
+  const experiment = experimentFixture()
+  const results = resultFixtures(experiment)
+  for (const inferenceMode of [null, '', 'unknown']) {
+    assert.throws(() => runner.buildPublication(runner.REVIEW_MODELS, results, { ...runtime, inferenceMode }, experiment, completedAt), /inference mode/i)
+  }
+})
+
+test('inference-mode provenance rejects Copilot inference labeled API-only', () => {
+  const experiment = experimentFixture()
+  assert.throws(() => runner.buildPublication(runner.REVIEW_MODELS, resultFixtures(experiment), { ...runtime, inferenceMode: 'direct-api' }, experiment, completedAt), /direct-api.*transport/i)
+})
+
 function publishFixture(publication, directory) {
   const winners = publication.summary.reviews.map(({ verdict }) => verdict)
   return runner.publish(publication, directory, resultFixtures(experimentFixture(), winners))
@@ -96,7 +121,7 @@ test('uses the agreed eleven candidates and current canonical repositories', () 
 })
 
 test('parses explicit private-run, preflight, and promotion modes without inference', () => {
-  assert.deepEqual(runner.parseOptions(['--headless', '--output-dir', '/private/run']), { headless: true, outputDir: '/private/run', preflight: false, publishPath: undefined })
+  assert.deepEqual(runner.parseOptions(['--headless', '--output-dir', '/private/run']), { headless: true, outputDir: '/private/run', preflight: false, publishPath: undefined, inferenceMode: 'direct-api' })
   assert.equal(runner.parseOptions(['--preflight']).preflight, true)
   assert.equal(runner.parseOptions(['--publish', '/private/run/run.json']).publishPath, '/private/run/run.json')
   assert.equal(runner.parseOptions([]).publishPath, undefined)
@@ -106,6 +131,16 @@ test('parses explicit private-run, preflight, and promotion modes without infere
   assert.throws(() => runner.parseOptions(['--unknown']), /unknown/i)
   assert.throws(() => runner.parseOptions(['--publish', '/run.json', '--preflight']), /combine/i)
   assert.throws(() => runner.parseOptions(['--publish', '/run.json', '--output-dir', '/private/run']), /combine/i)
+})
+
+test('inference selection is explicit, validated, and irrelevant to publish-only commands', () => {
+  assert.equal(runner.parseOptions([]).inferenceMode, 'direct-api')
+  assert.equal(runner.parseOptions(['--inference', 'direct-api']).inferenceMode, 'direct-api')
+  assert.equal(runner.parseOptions(['--inference', 'copilot-first']).inferenceMode, 'copilot-first')
+  for (const value of ['', ' ', 'automatic', 'unknown']) {
+    assert.throws(() => runner.parseOptions(['--inference', value]), /inference.*direct-api.*copilot-first/)
+  }
+  assert.throws(() => runner.parseOptions(['--publish', '/run.json', '--inference', 'direct-api']), /combine/i)
 })
 
 test('pins candidate files and directories without guessing a directory README', () => {
@@ -494,11 +529,15 @@ test('the actual run entrypoint saves a complete private dissenting panel withou
   const publicDir = path.join(__dirname, '..', 'src', 'data')
   const before = publicBytes(publicDir)
   const fixtureBefore = publicBytes(fixture.publicDirectory)
-  await fixture.run(['--headless', '--output-dir', directory])
+  await fixture.run(['--headless', '--inference', 'copilot-first', '--output-dir', directory])
   const record = JSON.parse(fs.readFileSync(path.join(directory, 'run.json'), 'utf8'))
   assert.equal(record.status, 'complete')
   assert.equal(record.summary.summary.verdicts.OpenClaw, 1)
   assert.equal(record.summary.reviews.find(({ provider }) => provider === 'gemini').transport, 'direct-api')
+  assert.equal(record.summary.reviews.find(({ provider }) => provider === 'anthropic').transport, 'copilot')
+  assert.equal(record.summary.runtime.inferenceMode, 'copilot-first')
+  assert.equal(fixture.counts.authChecks, 1)
+  assert.equal(fixture.counts.catalogRequests, 1)
   assert.equal(runner.validatePublication(record), record)
   assert.deepEqual(publicBytes(publicDir), before)
   assert.deepEqual(publicBytes(fixture.publicDirectory), fixtureBefore)
@@ -511,13 +550,82 @@ test('the actual run entrypoint saves a complete private dissenting panel withou
 })
 
 test('the actual preflight entrypoint resolves sources without creating an inference session', async (t) => {
-  const fixture = await fakeRuntime(t)
+  const fixture = await fakeRuntime(t, { copilotUnavailable: true })
   const directory = path.join(fixture.root, 'preflight')
   await fixture.run(['--preflight', '--output-dir', directory])
   assert.equal(fixture.counts.sessions, 0)
   assert.equal(fixture.counts.stops, 1)
+  assert.equal(fixture.counts.authChecks, 0)
+  assert.equal(fixture.counts.catalogRequests, 0)
   assert.equal(JSON.parse(fs.readFileSync(path.join(directory, 'run.json'), 'utf8')).status, 'preflight')
   await assert.rejects(() => fixture.run(['--preflight', '--output-dir', directory]), /already exists/)
+})
+
+test('direct API entrypoints do not require Copilot authentication or catalog access', async (t) => {
+  for (const args of [[], ['--inference', 'direct-api']]) {
+    await t.test(args.join(' ') || 'default', async (subtest) => {
+      const fixture = await fakeRuntime(subtest, { copilotUnavailable: true })
+      const directory = path.join(fixture.root, 'direct')
+      await fixture.run(['--headless', '--output-dir', directory, ...args])
+      const record = JSON.parse(fs.readFileSync(path.join(directory, 'run.json'), 'utf8'))
+      assert.equal(record.status, 'complete')
+      assert.equal(record.summary.runtime.inferenceMode, 'direct-api')
+      assert.ok(record.summary.reviews.every(({ transport }) => transport === 'direct-api'))
+      assert.equal(fixture.counts.authChecks, 0)
+      assert.equal(fixture.counts.catalogRequests, 0)
+      assert.equal(fixture.counts.sessions, 4)
+      assert.ok(fixture.sessionConfigurations.every(({ provider }) => provider?.apiKeyConfigured))
+      const anthropic = fixture.sessionConfigurations.find(({ model }) => model === 'claude-opus-5').provider
+      assert.deepEqual(anthropic, { type: 'anthropic', baseUrl: 'https://api.anthropic.com', apiKeyConfigured: true })
+      const openai = fixture.sessionConfigurations.find(({ model }) => model === 'gpt-6-astra').provider
+      assert.deepEqual(openai, { type: 'openai', baseUrl: 'https://api.openai.com/v1', wireApi: 'completions', apiKeyConfigured: true })
+    })
+  }
+})
+
+test('Copilot-first catalog and execution failures never switch to direct API inference', async (t) => {
+  for (const options of [{ catalogFailure: true }, { sessionFailure: true }]) {
+    await t.test(JSON.stringify(options), async (subtest) => {
+      const fixture = await fakeRuntime(subtest, options)
+      const directory = path.join(fixture.root, 'failed')
+      await assert.rejects(() => fixture.run(['--headless', '--inference', 'copilot-first', '--output-dir', directory]))
+      assert.equal(JSON.parse(fs.readFileSync(path.join(directory, 'run.json'), 'utf8')).status, 'failed')
+      assert.ok(fixture.sessionConfigurations.every(({ provider }) => provider === null))
+      assert.equal(fixture.counts.sessions, options.catalogFailure ? 0 : 4)
+    })
+  }
+})
+
+test('Copilot-first preflight supports the logged-in-user path without an explicit token', async (t) => {
+  const fixture = await fakeRuntime(t, { noCopilotToken: true })
+  const directory = path.join(fixture.root, 'copilot-preflight')
+  await fixture.run(['--preflight', '--inference', 'copilot-first', '--output-dir', directory])
+  const record = JSON.parse(fs.readFileSync(path.join(directory, 'run.json'), 'utf8'))
+  assert.equal(record.status, 'preflight')
+  assert.equal(record.runtime.inferenceMode, 'copilot-first')
+  assert.ok(record.reviewers.every(({ transport }) => transport === 'copilot'))
+  assert.equal(fixture.counts.authChecks, 1)
+  assert.equal(fixture.counts.catalogRequests, 1)
+  assert.equal(fixture.counts.sessions, 0)
+})
+
+test('direct API missing-key failures name the vendor requirement without requiring Copilot', async (t) => {
+  const fixture = await fakeRuntime(t, { copilotUnavailable: true, missingProviderKey: 'ANTHROPIC_API_KEY' })
+  const directory = path.join(fixture.root, 'missing-provider')
+  await assert.rejects(() => fixture.run(['--headless', '--output-dir', directory]), /ANTHROPIC_API_KEY/)
+  const record = JSON.parse(fs.readFileSync(path.join(directory, 'run.json'), 'utf8'))
+  assert.equal(record.status, 'failed')
+  assert.equal(fixture.counts.authChecks, 0)
+  assert.equal(fixture.counts.catalogRequests, 0)
+  assert.equal(fixture.counts.sessions, 0)
+})
+
+test('Copilot-first auth failure retains actionable guidance when the SDK message is empty', async (t) => {
+  const fixture = await fakeRuntime(t, { auth: false, authMessage: '' })
+  const directory = path.join(fixture.root, 'missing-auth-message')
+  await assert.rejects(() => fixture.run(['--headless', '--inference', 'copilot-first', '--output-dir', directory]), /run copilot login or set COPILOT_GITHUB_TOKEN/)
+  assert.equal(fixture.counts.catalogRequests, 0)
+  assert.equal(fixture.counts.sessions, 0)
 })
 
 test('the actual default run remains private even when unanimous, and explicit promotion starts no inference', async (t) => {
@@ -588,7 +696,7 @@ test('entrypoint failures remain private failed records with no secret-bearing e
     await t.test(JSON.stringify(options), async (subtest) => {
       const fixture = await fakeRuntime(subtest, options)
       const directory = path.join(fixture.root, 'failed')
-      await assert.rejects(() => fixture.run(['--headless', '--output-dir', directory]))
+      await assert.rejects(() => fixture.run(['--headless', '--inference', options.auth === false ? 'copilot-first' : 'direct-api', '--output-dir', directory]))
       const serialized = fs.readFileSync(path.join(directory, 'run.json'), 'utf8')
       const record = JSON.parse(serialized)
       assert.equal(record.status, 'failed')

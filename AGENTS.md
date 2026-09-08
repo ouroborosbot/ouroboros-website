@@ -207,11 +207,14 @@ public/
 ```bash
 npm run reviews -- --preflight
 npm run reviews -- --output-dir /private/new-run
+npm run reviews -- --inference copilot-first --output-dir /private/copilot-run
 npm run reviews:headless -- --output-dir /private/another-new-run
 npm run reviews -- --publish /private/completed-run/run.json
 ```
 
-Requires GitHub Copilot authentication plus Perplexity. The runner uses Copilot inference for selected models in the account's live catalog and direct API keys only for models absent from that catalog, never for Copilot auth, quota, or execution failures. Every review uses the Copilot CLI runtime in stripped `empty` mode with compaction and large-output indirection disabled.
+Requires Perplexity for search and credentials for the chosen inference path. Direct API mode is the default (`--inference direct-api`): set the selected vendors' API keys, with no Copilot account or subscription required. `--inference copilot-first` is optional and requires Copilot authentication. That mode uses Copilot inference for exact catalog matches and direct API keys only for catalog gaps, never after Copilot auth, quota, or execution failures.
+
+Both inference paths use the bundled Copilot SDK runtime in stripped `empty` mode with compaction and large-output indirection disabled. API-only users do not need a separate interactive Copilot installation or login. Direct mode disables logged-in GitHub identity and token use and skips Copilot auth/catalog calls. Keep runtime identity separate from inference mode and transport in saved evidence. The TODO at `resolveTransports` marks the extension point for other multi-model providers.
 
 Ordinary runs never modify `src/data`. Choose a fresh output directory outside this repository; without `--output-dir`, the runner creates a private run directory under `~/.local/state/ouroboros-model-reviews/`. Preflight resolves auth, routing, and public source snapshots without an inference turn. Completed and failed runs are preserved privately. The run's `raw/` directory contains uncommitted research captures and runtime logs; never publish or commit it.
 

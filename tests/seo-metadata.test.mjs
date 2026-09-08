@@ -81,3 +81,16 @@ test('review methodology discloses the iterative comparison context', () => {
   assert.match(text, /repaired research access for every candidate/i);
   assert.match(text, /No Ouroboros product code changed before the unanimous run shown here/i);
 });
+
+test('rerun instructions offer API-only inference without a required Copilot subscription', () => {
+  const html = readDistFile('model-reviews/index.html');
+  const text = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+  assert.match(text, /--inference direct-api/);
+  assert.match(text, /--inference copilot-first/);
+  assert.match(text, /Direct API mode is the default/);
+  assert.match(text, /no Copilot account or subscription/);
+  assert.match(text, /ANTHROPIC_API_KEY/);
+  assert.match(text, /OPENAI_API_KEY/);
+  assert.doesNotMatch(text, /Use Node 22 and authenticate with a Copilot subscription/);
+  assert.match(text, /bundled.*runtime/);
+});

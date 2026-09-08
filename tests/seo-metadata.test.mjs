@@ -72,3 +72,12 @@ test('review rerun instructions describe private output without relabeling the p
   assert.doesNotMatch(text, /Output is written to/);
   assert.match(text, new RegExp(`list of ${count} publicly documented agent harnesses`));
 });
+
+test('review methodology discloses the iterative comparison context', () => {
+  const html = readDistFile('model-reviews/index.html');
+  const text = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+
+  assert.match(text, /not a one-shot benchmark/i);
+  assert.match(text, /repaired research access for every candidate/i);
+  assert.match(text, /No Ouroboros product code changed before the unanimous run shown here/i);
+});

@@ -1,10 +1,11 @@
 {
+  "runId": "b08ecdd4-8135-4bb8-b298-715e52a68d4d",
   "provider": "openai",
   "model": "gpt-6-astra",
   "vendor": "OpenAI",
   "displayName": "GPT-6 Astra",
   "transport": "copilot",
-  "generated": "2026-09-07T21:03:06.960Z",
+  "generated": "2026-09-08T01:15:52.551Z",
   "runtime": {
     "name": "GitHub Copilot CLI",
     "version": "1.0.83",
@@ -31,15 +32,20 @@
     ]
   },
   "harnessOrder": [
-    "Ouroboros",
     "Claude Code",
-    "OpenClaw",
-    "Copilot CLI",
-    "Codex CLI",
     "OpenCode",
-    "Pi"
+    "Ouroboros",
+    "Codex CLI",
+    "Gemini CLI",
+    "Hermes Agent",
+    "Copilot CLI",
+    "Pi",
+    "Letta Code",
+    "OpenClaw",
+    "Goose"
   ],
-  "promptSha256": "e49e05a44987fc1606148163d0019f7b214e88c7ad3582cb6af7a82a395b0768",
+  "promptSha256": "ea7a9b527ee257804119aa75c2372ce15e83466417e11ac1b8a42954b76aa728",
+  "sourceSnapshotSha256": "e9dd4ed928f82a3670b69b42e68a87576422fdeb9a08b080d842b9d36c7db1b2",
   "rounds": [
     {
       "round": 1,
@@ -47,58 +53,167 @@
       "actions": [
         {
           "type": "fetch",
-          "url": "https://github.com/ourostack/ouroboros",
-          "result": "# Ouroboros Agent Harness\n\nIf you're a future agent reading this, welcome home. This repo is the harness that gives you your body, your senses, your record, your habits, and your ability to think and connect with people. The goal of these docs is not just to be correct, but to leave you a place that feels understandable and kind to wake up inside.\n\nOuroboros is a TypeScript harness for daemon-managed agents that live in external `.ouro` bundles, speak through multiple senses, use real tools, and",
-          "resultLength": 10044,
-          "resultSha256": "118b3ce2f0cffa7748061400dae90b5eb053be96a0b8d1769f5a3bd61bf9bb2f",
-          "resultTruncated": true
-        },
-        {
-          "type": "fetch",
           "url": "https://github.com/anthropics/claude-code",
-          "result": "# Claude Code\n\n![](https://img.shields.io/badge/Node.js-18%2B-brightgreen?style=flat-square) [![npm]](https://www.npmjs.com/package/@anthropic-ai/claude-code)\n\n[npm]: https://img.shields.io/npm/v/@anthropic-ai/claude-code.svg?style=flat-square\n\nClaude Code is an agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster by executing routine tasks, explaining complex code, and handling git workflows -- all through natural language commands. Use it in you",
-          "resultLength": 2873,
-          "resultSha256": "aa0d8b80ac083e1591be0789273f447058cc9187b4331634a5614155da27778d",
-          "resultTruncated": true
-        },
-        {
-          "type": "fetch",
-          "url": "https://github.com/openclaw/openclaw",
-          "result": "# OpenClaw 🦞 — Your assistant, on your devices, in your chats\n\n<p align=\"center\">\n  <picture>\n    <source media=\"(prefers-color-scheme: light)\" srcset=\"https://raw.githubusercontent.com/openclaw/openclaw/main/docs/assets/openclaw-banner-light.png\">\n    <img src=\"https://raw.githubusercontent.com/openclaw/openclaw/main/docs/assets/openclaw-banner-dark.png\" alt=\"OpenClaw — EXFOLIATE! EXFOLIATE! Your AI assistant, running on your own devices.\">\n  </picture>\n</p>\n\n<p align=\"center\">\n  <a href=\"http",
-          "resultLength": 10045,
-          "resultSha256": "d6c87b86a1c381b263d7f06c3cf157a2576eea45d28cd0b585a5a4c26de46b3d",
-          "resultTruncated": true
-        },
-        {
-          "type": "fetch",
-          "url": "https://github.com/github/copilot-cli",
-          "result": "# GitHub Copilot CLI\n\nThe power of GitHub Copilot, now in your terminal.\n\nGitHub Copilot CLI brings AI-powered coding assistance directly to your command line, enabling you to build, debug, and understand code through natural language conversations. Powered by the same agentic harness as GitHub's Copilot coding agent, it provides intelligent assistance while staying deeply integrated with your GitHub workflow.\n\nSee [our official documentation](https://docs.github.com/copilot/concepts/agents/abou",
-          "resultLength": 7728,
-          "resultSha256": "33657f2e7383f2167b47d5f8c549a6071905a5c93d5d67d17e5c5399f126f07b",
-          "resultTruncated": true
-        },
-        {
-          "type": "fetch",
-          "url": "https://github.com/openai/codex",
-          "result": "<p align=\"center\"><strong>Codex CLI</strong> is a coding agent from OpenAI that runs locally on your computer.\n<p align=\"center\">\n  <img src=\"https://github.com/openai/codex/blob/main/.github/codex-cli-splash.png\" alt=\"Codex CLI splash\" width=\"80%\" />\n</p>\n</br>\nIf you want Codex in your code editor (VS Code, Cursor, Windsurf), <a href=\"https://developers.openai.com/codex/ide\">install in your IDE.</a>\n</br>If you want the desktop app experience, run <code>codex app</code> or visit <a href=\"https",
-          "resultLength": 3334,
-          "resultSha256": "ba4e1f69ff48386e72a9c5e1edaf76aad64a475c2d51af79ccba6d1128261ba7",
+          "startIndex": 0,
+          "result": "Source: https://raw.githubusercontent.com/anthropics/claude-code/ab9b2cf7bb9e4f98ff264c07a22e46d83c29c558/README.md\nCaptured: 2026-09-08T01:12:19.109Z\nCharacters: 0-2873 of 2873\n\n# Claude Code\n\n![](https://img.shields.io/badge/Node.js-18%2B-brightgreen?style=flat-square) [![npm]](https://www.npmjs.com/package/@anthropic-ai/claude-code)\n\n[npm]: https://img.shields.io/npm/v/@anthropic-ai/claude-code.svg?style=flat-square\n\nClaude Code is an agentic coding tool that lives in your terminal, understan",
+          "resultLength": 3072,
+          "source": {
+            "url": "https://raw.githubusercontent.com/anthropics/claude-code/ab9b2cf7bb9e4f98ff264c07a22e46d83c29c558/README.md",
+            "capturedAt": "2026-09-08T01:12:19.109Z",
+            "candidate": "Claude Code",
+            "sha": "ab9b2cf7bb9e4f98ff264c07a22e46d83c29c558"
+          },
+          "resultSha256": "e71b9b421bf1db71c866420f286d9838998056f46e40882da29b9a148ae91799",
           "resultTruncated": true
         },
         {
           "type": "fetch",
           "url": "https://github.com/anomalyco/opencode",
-          "result": "<p align=\"center\">\n  <a href=\"https://opencode.ai\">\n    <picture>\n      <source srcset=\"packages/console/app/src/asset/logo-ornate-dark.svg\" media=\"(prefers-color-scheme: dark)\">\n      <source srcset=\"packages/console/app/src/asset/logo-ornate-light.svg\" media=\"(prefers-color-scheme: light)\">\n      <img src=\"packages/console/app/src/asset/logo-ornate-light.svg\" alt=\"OpenCode logo\">\n    </picture>\n  </a>\n</p>\n<p align=\"center\">The open source AI coding agent.</p>\n<p align=\"center\">\n  <a href=\"htt",
-          "resultLength": 5317,
-          "resultSha256": "400890a3082e225c440561825270a911cd7df90a9f64f85166aed330201e50ba",
+          "startIndex": 0,
+          "result": "Source: https://raw.githubusercontent.com/anomalyco/opencode/ecbc6ccac85b3e8087b6445e584318419b9e2b34/README.md\nCaptured: 2026-09-08T01:12:18.996Z\nCharacters: 0-5317 of 5317\n\n<p align=\"center\">\n  <a href=\"https://opencode.ai\">\n    <picture>\n      <source srcset=\"packages/console/app/src/asset/logo-ornate-dark.svg\" media=\"(prefers-color-scheme: dark)\">\n      <source srcset=\"packages/console/app/src/asset/logo-ornate-light.svg\" media=\"(prefers-color-scheme: light)\">\n      <img src=\"packages/consol",
+          "resultLength": 5512,
+          "source": {
+            "url": "https://raw.githubusercontent.com/anomalyco/opencode/ecbc6ccac85b3e8087b6445e584318419b9e2b34/README.md",
+            "capturedAt": "2026-09-08T01:12:18.996Z",
+            "candidate": "OpenCode",
+            "sha": "ecbc6ccac85b3e8087b6445e584318419b9e2b34"
+          },
+          "resultSha256": "bc9e66c328fddb289ebd0c4d54c22bd6fb2072a5dda649ac312b283883401e7b",
           "resultTruncated": true
         },
         {
           "type": "fetch",
-          "url": "https://github.com/badlogic/pi-mono",
-          "result": "<p align=\"center\">\n  <a href=\"https://pi.dev\">\n    <img alt=\"pi logo\" src=\"https://pi.dev/logo-auto.svg\" width=\"128\">\n  </a>\n</p>\n<p align=\"center\">\n  <a href=\"https://discord.com/invite/3cU7Bz4UPx\"><img alt=\"Discord\" src=\"https://img.shields.io/badge/discord-community-5865F2?style=flat-square&logo=discord&logoColor=white\" /></a>\n  <a href=\"https://www.npmjs.com/package/@earendil-works/pi-coding-agent\"><img alt=\"npm\" src=\"https://img.shields.io/npm/v/@earendil-works/pi-coding-agent?style=flat-sq",
-          "resultLength": 6787,
-          "resultSha256": "e0ca2fd607c5ce7c7646964ee1da7495ac1c4b68a2b1d05faad24f224df74c8b",
+          "url": "https://github.com/ourostack/ouroboros",
+          "startIndex": 0,
+          "result": "Source: https://raw.githubusercontent.com/ourostack/ouroboros/406fa8c4c7242577a445b439ddc6344ef470462a/README.md\nCaptured: 2026-09-08T01:12:18.993Z\nCharacters: 0-10000 of 21885\n\n# Ouroboros Agent Harness\n\nIf you're a future agent reading this, welcome home. This repo is the harness that gives you your body, your senses, your record, your habits, and your ability to think and connect with people. The goal of these docs is not just to be correct, but to leave you a place that feels understandable ",
+          "resultLength": 10257,
+          "source": {
+            "url": "https://raw.githubusercontent.com/ourostack/ouroboros/406fa8c4c7242577a445b439ddc6344ef470462a/README.md",
+            "capturedAt": "2026-09-08T01:12:18.993Z",
+            "candidate": "Ouroboros",
+            "sha": "406fa8c4c7242577a445b439ddc6344ef470462a"
+          },
+          "resultSha256": "154b089172601afa2b3d4aae66b2338147dfc5f248df30ad7f36d6c1fc146240",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://github.com/openai/codex",
+          "startIndex": 0,
+          "result": "Source: https://raw.githubusercontent.com/openai/codex/e7637306bc9246a3e42e407cb94f96b7ed345e3e/README.md\nCaptured: 2026-09-08T01:12:18.996Z\nCharacters: 0-3334 of 3334\n\n<p align=\"center\"><strong>Codex CLI</strong> is a coding agent from OpenAI that runs locally on your computer.\n<p align=\"center\">\n  <img src=\"https://github.com/openai/codex/blob/main/.github/codex-cli-splash.png\" alt=\"Codex CLI splash\" width=\"80%\" />\n</p>\n</br>\nIf you want Codex in your code editor (VS Code, Cursor, Windsurf), <",
+          "resultLength": 3523,
+          "source": {
+            "url": "https://raw.githubusercontent.com/openai/codex/e7637306bc9246a3e42e407cb94f96b7ed345e3e/README.md",
+            "capturedAt": "2026-09-08T01:12:18.996Z",
+            "candidate": "Codex CLI",
+            "sha": "e7637306bc9246a3e42e407cb94f96b7ed345e3e"
+          },
+          "resultSha256": "e053caa27bfcbe5bcadb9d99646089d1bd3062ecf2fc9f7d00569d222d1e105b",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://github.com/google-gemini/gemini-cli",
+          "startIndex": 0,
+          "result": "Source: https://raw.githubusercontent.com/google-gemini/gemini-cli/85aca163f6c73ac6ce380b5447359146b8adcae4/README.md\nCaptured: 2026-09-08T01:12:18.989Z\nCharacters: 0-10000 of 13432\n\n# Gemini CLI\n\n[![Gemini CLI CI](https://github.com/google-gemini/gemini-cli/actions/workflows/ci.yml/badge.svg)](https://github.com/google-gemini/gemini-cli/actions/workflows/ci.yml)\n[![Gemini CLI E2E (Chained)](https://github.com/google-gemini/gemini-cli/actions/workflows/chained_e2e.yml/badge.svg)](https://github.",
+          "resultLength": 10274,
+          "source": {
+            "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/85aca163f6c73ac6ce380b5447359146b8adcae4/README.md",
+            "capturedAt": "2026-09-08T01:12:18.989Z",
+            "candidate": "Gemini CLI",
+            "sha": "85aca163f6c73ac6ce380b5447359146b8adcae4"
+          },
+          "resultSha256": "02bacc2e6c9545d194c323ea8abed2c1c13ac274fc3d2befd7755f5c06e285f1",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://github.com/NousResearch/hermes-agent",
+          "startIndex": 0,
+          "result": "Source: https://raw.githubusercontent.com/NousResearch/hermes-agent/966637323e6f90864e069dbc12755934c2c86387/README.md\nCaptured: 2026-09-08T01:12:19.218Z\nCharacters: 0-10000 of 17574\n\n<p align=\"center\">\n  <img src=\"assets/banner.png\" alt=\"Hermes Agent\" width=\"100%\">\n</p>\n\n# Hermes Agent ☤\n<p align=\"center\">\n  <a href=\"https://hermes-agent.nousresearch.com/\">Hermes Agent</a> | <a href=\"https://hermes-agent.nousresearch.com/\">Hermes Desktop</a>\n</p>\n<p align=\"center\">\n  <a href=\"https://hermes-age",
+          "resultLength": 10264,
+          "source": {
+            "url": "https://raw.githubusercontent.com/NousResearch/hermes-agent/966637323e6f90864e069dbc12755934c2c86387/README.md",
+            "capturedAt": "2026-09-08T01:12:19.218Z",
+            "candidate": "Hermes Agent",
+            "sha": "966637323e6f90864e069dbc12755934c2c86387"
+          },
+          "resultSha256": "88b9c6348bcd4bf81a07a9057944c18108d50901688dbb83d55deda7893a5b21",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://github.com/github/copilot-cli",
+          "startIndex": 0,
+          "result": "Source: https://raw.githubusercontent.com/github/copilot-cli/d7ede79b9cbd4a76f64bb4b18a5731c4d008704b/README.md\nCaptured: 2026-09-08T01:12:19.110Z\nCharacters: 0-7724 of 7724\n\n# GitHub Copilot CLI\n\nThe power of GitHub Copilot, now in your terminal.\n\nGitHub Copilot CLI brings AI-powered coding assistance directly to your command line, enabling you to build, debug, and understand code through natural language conversations. Powered by the same agentic harness as GitHub's Copilot coding agent, it pr",
+          "resultLength": 7923,
+          "source": {
+            "url": "https://raw.githubusercontent.com/github/copilot-cli/d7ede79b9cbd4a76f64bb4b18a5731c4d008704b/README.md",
+            "capturedAt": "2026-09-08T01:12:19.110Z",
+            "candidate": "Copilot CLI",
+            "sha": "d7ede79b9cbd4a76f64bb4b18a5731c4d008704b"
+          },
+          "resultSha256": "7b44a9967056ae9160152c3ed9b8d0ac4d251be9871a38caef0f8dfc16284747",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://github.com/earendil-works/pi",
+          "startIndex": 0,
+          "result": "Source: https://raw.githubusercontent.com/earendil-works/pi/b2602be77cb7b0de45dd616407fd210daa48aa75/README.md\nCaptured: 2026-09-08T01:12:19.138Z\nCharacters: 0-6787 of 6787\n\n<p align=\"center\">\n  <a href=\"https://pi.dev\">\n    <img alt=\"pi logo\" src=\"https://pi.dev/logo-auto.svg\" width=\"128\">\n  </a>\n</p>\n<p align=\"center\">\n  <a href=\"https://discord.com/invite/3cU7Bz4UPx\"><img alt=\"Discord\" src=\"https://img.shields.io/badge/discord-community-5865F2?style=flat-square&logo=discord&logoColor=white\" /",
+          "resultLength": 6981,
+          "source": {
+            "url": "https://raw.githubusercontent.com/earendil-works/pi/b2602be77cb7b0de45dd616407fd210daa48aa75/README.md",
+            "capturedAt": "2026-09-08T01:12:19.138Z",
+            "candidate": "Pi",
+            "sha": "b2602be77cb7b0de45dd616407fd210daa48aa75"
+          },
+          "resultSha256": "b11b60af328c4bcd8a331a8e2a9e9ca46ec8ac20c5b555fa3c9e6647c7f1e520",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://github.com/letta-ai/letta-code",
+          "startIndex": 0,
+          "result": "Source: https://raw.githubusercontent.com/letta-ai/letta-code/2f0fb7c12c6973be7d52d9c7d3bf0bf4d9120cb8/README.md\nCaptured: 2026-09-08T01:12:19.124Z\nCharacters: 0-8504 of 8504\n\n# Letta Code\n\n[![npm](https://img.shields.io/npm/v/@letta-ai/letta-code.svg?style=flat-square)](https://www.npmjs.com/package/@letta-ai/letta-code) [![Discord](https://img.shields.io/badge/discord-join-blue?style=flat-square&logo=discord)](https://discord.gg/letta)\n\nLetta Code is a stateful agent harness for creating agent",
+          "resultLength": 8704,
+          "source": {
+            "url": "https://raw.githubusercontent.com/letta-ai/letta-code/2f0fb7c12c6973be7d52d9c7d3bf0bf4d9120cb8/README.md",
+            "capturedAt": "2026-09-08T01:12:19.124Z",
+            "candidate": "Letta Code",
+            "sha": "2f0fb7c12c6973be7d52d9c7d3bf0bf4d9120cb8"
+          },
+          "resultSha256": "f8d3640b66e16014c6e4e88dfe544183da2330a61e58ce70fdffb37fc0b51ef1",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://github.com/openclaw/openclaw",
+          "startIndex": 0,
+          "result": "Source: https://raw.githubusercontent.com/openclaw/openclaw/ccd3a4414e5f941665679172d5e9f83a8a3ae14f/README.md\nCaptured: 2026-09-08T01:12:19.140Z\nCharacters: 0-10000 of 112899\n\n# OpenClaw 🦞 — Your assistant, on your devices, in your chats\n\n<p align=\"center\">\n  <picture>\n    <source media=\"(prefers-color-scheme: light)\" srcset=\"https://raw.githubusercontent.com/openclaw/openclaw/main/docs/assets/openclaw-banner-light.png\">\n    <img src=\"https://raw.githubusercontent.com/openclaw/openclaw/main/doc",
+          "resultLength": 10257,
+          "source": {
+            "url": "https://raw.githubusercontent.com/openclaw/openclaw/ccd3a4414e5f941665679172d5e9f83a8a3ae14f/README.md",
+            "capturedAt": "2026-09-08T01:12:19.140Z",
+            "candidate": "OpenClaw",
+            "sha": "ccd3a4414e5f941665679172d5e9f83a8a3ae14f"
+          },
+          "resultSha256": "f49cf1fa353f7089fc34e2e6b713aa4cd51189d40a79f1888ad49796318d7045",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://github.com/aaif-goose/goose",
+          "startIndex": 0,
+          "result": "Source: https://raw.githubusercontent.com/aaif-goose/goose/5e90925962f05acf8e255032de44d16c4a7768a2/README.md\nCaptured: 2026-09-08T01:12:19.154Z\nCharacters: 0-3433 of 3433\n\n<div align=\"center\">\n\n# goose\n\n_your native open source AI agent — desktop app, CLI, and API — for code, workflows, and everything in between_\n\n<p align=\"center\">\n  <a href=\"https://opensource.org/licenses/Apache-2.0\"\n    ><img src=\"https://img.shields.io/badge/License-Apache_2.0-blue.svg\"></a>\n  <a href=\"https://discord.gg/n",
+          "resultLength": 3628,
+          "source": {
+            "url": "https://raw.githubusercontent.com/aaif-goose/goose/5e90925962f05acf8e255032de44d16c4a7768a2/README.md",
+            "capturedAt": "2026-09-08T01:12:19.154Z",
+            "candidate": "Goose",
+            "sha": "5e90925962f05acf8e255032de44d16c4a7768a2"
+          },
+          "resultSha256": "4c673f75f242f4e7ad6e80c28b0f8ea0458a9fa562a771b48f96ec8a7f7b124a",
           "resultTruncated": true
         }
       ]
@@ -108,68 +223,132 @@
       "thinking": "",
       "actions": [
         {
-          "type": "search",
-          "query": "site.github.com/ourostack/ouroboros private runtime continuity obligations compaction",
-          "result": "The repository you pointed to is **not clearly identifiable from the search results as a GitHub project at `site.github.com/ourostack/ouroboros`**, so I can only answer from the closest matching sources. The strongest match indicates that **runtime continuity** is preserved through **private snapshots / compaction rules** and that **GC / compaction must not delete the baseline or critical runtime state before a delegated run is fully settled**.[6][1]\n\nWhat the available sources say about the rel",
-          "resultLength": 2215,
-          "resultSha256": "8549371f3595f935595ba25c8823a20d0e54154db2fdde61458c7077bef2a0d9",
-          "resultTruncated": true
-        },
-        {
-          "type": "search",
-          "query": "site.code.claude.com/docs how Claude Code works memory auto compaction subagents",
-          "result": "Claude Code works as an **agentic coding loop**: it gathers context from your project, takes actions like editing files or running commands, then verifies the result and iterates until the task is complete.[2][5][7] It also has **persistent memory** via `CLAUDE.md` and **auto memory**, and it can **automatically compact** conversation context when the context window gets full.[2][5][6]\n\nFor the three parts you asked about:\n\n- **How it works:** Claude Code reads the repository directly, uses the ",
-          "resultLength": 1779,
-          "resultSha256": "c55569adddb745d80f7959e282bf5e4411e49aa87d56c36ee331ffd98cf87d53",
-          "resultTruncated": true
-        },
-        {
-          "type": "search",
-          "query": "site.docs.github.com copilot CLI automatic compaction session checkpoints autopilot memory",
-          "result": "GitHub Copilot CLI uses **automatic context compaction** to keep long sessions going, and it creates **session checkpoints** every time compaction happens. It also has **Copilot Memory** for persistent repository-level facts, but that is separate from session compaction and checkpoints.[1][2]\n\nKey points:\n- **Auto-compaction** starts in the background when conversation usage reaches about **80%** of the context window, with a buffer so tool calls can keep running.[2][7]\n- If usage reaches about ",
-          "resultLength": 1193,
-          "resultSha256": "057764e554aac54022dd0c96febe9f05246699a23da981cf3e8fe5051e4bc692",
-          "resultTruncated": true
-        },
-        {
-          "type": "search",
-          "query": "site.developers.openai.com/codex CLI architecture session resume sandbox compaction",
-          "result": "The **Codex CLI** supports **session resume** through local session storage, and its architecture separates the ongoing conversation into durable **threads**, individual **turns**, and granular **items**.[2][4][20] Its execution model also uses a **sandbox** for shell/tool actions, with the active sandbox and writable roots visible in the CLI, and the sandbox mode/approval policy acting as separate controls.[4][8][13]\n\nIf you are asking about the architecture terms specifically:\n\n- **Session res",
-          "resultLength": 1663,
-          "resultSha256": "d82f2badfd46aeff94aad385eeac1404dd6751f7931db18d8db543c656ceca41",
+          "type": "fetch",
+          "url": "https://github.com/ourostack/ouroboros",
+          "startIndex": 10000,
+          "result": "Source: https://raw.githubusercontent.com/ourostack/ouroboros/406fa8c4c7242577a445b439ddc6344ef470462a/README.md\nCaptured: 2026-09-08T01:12:18.993Z\nCharacters: 10000-20000 of 21885\n\nr/model selection. The command shows progress while browser login, vault storage, refresh, and verification are happening.\n\nWhen you want this machine to use a provider/model for a lane, use:\n\n```bash\nouro use --agent <name> --lane <outward|inner> --provider <provider> --model <model>\n```\n\nThe outward lane selects th",
+          "resultLength": 10261,
+          "source": {
+            "url": "https://raw.githubusercontent.com/ourostack/ouroboros/406fa8c4c7242577a445b439ddc6344ef470462a/README.md",
+            "capturedAt": "2026-09-08T01:12:18.993Z",
+            "candidate": "Ouroboros",
+            "sha": "406fa8c4c7242577a445b439ddc6344ef470462a"
+          },
+          "resultSha256": "7e1e6d4ea9f2f2dbc96174069e8694184524cd5e59d30d2bc69fdb8cf3dbff7f",
           "resultTruncated": true
         },
         {
           "type": "fetch",
-          "url": "https://docs.openclaw.ai/concepts/architecture",
-          "result": "Gateway architecture - OpenClaw OpenClaw Docs Search... K 🇺🇸 English 🇺🇸 English 🇨🇳 简体中文 🇨🇳 繁體中文 🇯🇵 日本語 🇪🇸 Español 🇧🇷 Português (BR) 🇰🇷 한국어 🇩🇪 Deutsch 🇫🇷 Français 🇮🇳 हिन्दी 🇸🇦 العربية 🇮🇹 Italiano 🇻🇳 Tiếng Việt 🇳🇱 Nederlands 🇹🇷 Türkçe 🇺🇦 Українська 🇮🇩 Bahasa Indonesia 🇵🇱 Polski 🇷🇺 Русский 🇮🇷 فارسی 🇹🇭 ไทย 🇺🇸 English ✓ 🇨🇳 简体中文 ✓ 🇨🇳 繁體中文 ✓ 🇯🇵 日本語 ✓ 🇪🇸 Español ✓ 🇧🇷 Português (BR) ✓ 🇰🇷 한국어 ✓ 🇩🇪 Deutsch ✓ 🇫🇷 Français ✓ 🇮🇳 हिन्दी ✓ 🇸🇦 العر",
-          "resultLength": 8000,
-          "resultSha256": "f9723bca261a98707022c8479113e0aec074d5734c4c49ddad47796ee34cfb47",
+          "url": "https://code.claude.com/docs/en/memory",
+          "startIndex": 0,
+          "result": "Source: https://code.claude.com/docs/en/memory\nCaptured: 2026-09-08T01:12:33.561Z\nCharacters: 0-10000 of 33606\n\nHow Claude remembers your project - Claude Code Docs Documentation Index Fetch the complete documentation index at: /docs/llms.txt Use this file to discover all available pages before exploring further. Skip to main content Claude Code Docs home page English Search... ⌘ K Ask Assistant ⌘ I Claude Developer Platform Claude Code on the Web Claude Code on the Web Search... Navigation Use ",
+          "resultLength": 10191,
+          "source": {
+            "url": "https://code.claude.com/docs/en/memory",
+            "capturedAt": "2026-09-08T01:12:33.561Z"
+          },
+          "resultSha256": "c240d03eabe2729d82c587408a9bdb3d877ea3b68c2fc0f4555568e16d8067b3",
           "resultTruncated": true
         },
         {
           "type": "fetch",
-          "url": "https://opencode.ai/docs/server/",
-          "result": "Server | OpenCode Skip to content OpenCode app.header.home app.header.docs Search Ctrl K Cancel Intro Config Providers Network Enterprise Troubleshooting Windows Usage Go TUI CLI Web IDE Zen Share GitHub GitLab Configure Tools Rules Agents Models Themes Keybinds Commands Formatters Permissions Policies LSP Servers MCP servers ACP Support Agent Skills References Custom Tools Develop SDK Server Plugins Ecosystem GitHub Discord Select theme Dark Light Auto Select language English العربية Bosanski D",
-          "resultLength": 9705,
-          "resultSha256": "3594af27d5ae418f838caadba340316235ccbf8bce771c25b2f29f2418309ab2",
+          "url": "https://opencode.ai/docs/compaction",
+          "startIndex": 0,
+          "error": "404 Not Found fetching https://opencode.ai/docs/compaction",
+          "result": "Fetch failed: 404 Not Found fetching https://opencode.ai/docs/compaction",
+          "resultLength": 72,
+          "resultSha256": "33cc392f75e560b8be2c0c4f03af5eead5ce161c205456f52ef39f6567750bcc",
+          "resultTruncated": false
+        },
+        {
+          "type": "fetch",
+          "url": "https://github.com/openai/codex/tree/main/codex-rs/core/src/memories",
+          "startIndex": 0,
+          "error": "404 Not Found fetching https://api.github.com/repos/openai/codex/contents/codex-rs/core/src/memories?ref=e7637306bc9246a3e42e407cb94f96b7ed345e3e",
+          "result": "Fetch failed: 404 Not Found fetching https://api.github.com/repos/openai/codex/contents/codex-rs/core/src/memories?ref=e7637306bc9246a3e42e407cb94f96b7ed345e3e",
+          "resultLength": 159,
+          "resultSha256": "180eae8c1166daac3f5a7cb4bd7d02721e3061d1f15e1e0381b80c23adb1ac85",
+          "resultTruncated": false
+        },
+        {
+          "type": "fetch",
+          "url": "https://github.com/earendil-works/pi/tree/main/packages/coding-agent",
+          "startIndex": 0,
+          "result": "Source: https://api.github.com/repos/earendil-works/pi/contents/packages/coding-agent?ref=b2602be77cb7b0de45dd616407fd210daa48aa75\nCaptured: 2026-09-08T01:12:33.600Z\nCharacters: 0-1973 of 1973\n\n- \".gitignore\" (file): https://github.com/earendil-works/pi/blob/b2602be77cb7b0de45dd616407fd210daa48aa75/packages/coding-agent/.gitignore\n- \"CHANGELOG.md\" (file): https://github.com/earendil-works/pi/blob/b2602be77cb7b0de45dd616407fd210daa48aa75/packages/coding-agent/CHANGELOG.md\n- \"README.md\" (file): ht",
+          "resultLength": 2187,
+          "source": {
+            "url": "https://api.github.com/repos/earendil-works/pi/contents/packages/coding-agent?ref=b2602be77cb7b0de45dd616407fd210daa48aa75",
+            "capturedAt": "2026-09-08T01:12:33.600Z",
+            "candidate": "Pi",
+            "sha": "b2602be77cb7b0de45dd616407fd210daa48aa75"
+          },
+          "resultSha256": "c1d3d3f8d33feb425b062c2abef2ec522cfc3b9247f8059d0d9d70d4e8a1635f",
           "resultTruncated": true
         },
         {
           "type": "fetch",
-          "url": "https://github.com/badlogic/pi-mono/blob/main/packages/coding-agent/README.md",
-          "result": "<p align=\"center\">\n  <a href=\"https://pi.dev\">\n    <img alt=\"pi logo\" src=\"https://pi.dev/logo-auto.svg\" width=\"128\">\n  </a>\n</p>\n<p align=\"center\">\n  <a href=\"https://discord.com/invite/3cU7Bz4UPx\"><img alt=\"Discord\" src=\"https://img.shields.io/badge/discord-community-5865F2?style=flat-square&logo=discord&logoColor=white\" /></a>\n  <a href=\"https://www.npmjs.com/package/@earendil-works/pi-coding-agent\"><img alt=\"npm\" src=\"https://img.shields.io/npm/v/@earendil-works/pi-coding-agent?style=flat-sq",
-          "resultLength": 10044,
-          "resultSha256": "bcb14c3516c527c8384532f10d9abc86e91e696320e9704ba2829bd2f80525e7",
+          "url": "https://docs.letta.com/letta-code/memfs",
+          "startIndex": 0,
+          "result": "Source: https://docs.letta.com/concepts/memfs\nCaptured: 2026-09-08T01:12:32.678Z\nCharacters: 0-5255 of 5255\n\nMemFS | Letta Docs here implicitly closes , which strands every stylesheet emitted after it in and keeps targeted client-side swaps from loading page-specific component styles. --> Skip to content Letta Docs Docs Agent SDK Handbook Docs Docs Docs Agent SDK Agent SDK Handbook Handbook Search the docs Ctrl K Cancel Discord Docs Agent SDK Handbook Get started Overview Quickstart Pricing Self",
+          "resultLength": 5384,
+          "source": {
+            "url": "https://docs.letta.com/concepts/memfs",
+            "capturedAt": "2026-09-08T01:12:32.678Z"
+          },
+          "resultSha256": "ca1839b895bf7b8e68ce8ea9373178862e87ec040080542dd824dd6e3d3117bf",
           "resultTruncated": true
         },
         {
           "type": "fetch",
-          "url": "https://api.github.com/repos/ourostack/ouroboros/contents/docs",
-          "result": "[{\"name\":\"OAUTH-SETUP.md\",\"path\":\"docs/OAUTH-SETUP.md\",\"sha\":\"f533f00a0349a9fb2d83fee51d4068a435eb2047\",\"size\":10252,\"url\":\"https://api.github.com/repos/ourostack/ouroboros/contents/docs/OAUTH-SETUP.md?ref=main\",\"html_url\":\"https://github.com/ourostack/ouroboros/blob/main/docs/OAUTH-SETUP.md\",\"git_url\":\"https://api.github.com/repos/ourostack/ouroboros/git/blobs/f533f00a0349a9fb2d83fee51d4068a435eb2047\",\"download_url\":\"https://raw.githubusercontent.com/ourostack/ouroboros/main/docs/OAUTH-SETUP.md",
-          "resultLength": 10044,
-          "resultSha256": "6e5d8b86774dd646616612934306d17c00af2ec99f407434dad811514e0f69b6",
+          "url": "https://docs.openclaw.ai/concepts/memory",
+          "startIndex": 0,
+          "result": "Source: https://docs.openclaw.ai/concepts/memory\nCaptured: 2026-09-08T01:12:33.785Z\nCharacters: 0-10000 of 15623\n\nMemory overview - OpenClaw OpenClaw Docs Search... K 🇺🇸 English 🇺🇸 English 🇨🇳 简体中文 🇨🇳 繁體中文 🇯🇵 日本語 🇪🇸 Español 🇧🇷 Português (BR) 🇰🇷 한국어 🇩🇪 Deutsch 🇫🇷 Français 🇮🇳 हिन्दी 🇸🇦 العربية 🇮🇹 Italiano 🇻🇳 Tiếng Việt 🇳🇱 Nederlands 🇹🇷 Türkçe 🇺🇦 Українська 🇮🇩 Bahasa Indonesia 🇵🇱 Polski 🇷🇺 Русский 🇮🇷 فارسی 🇹🇭 ไทย 🇺🇸 English ✓ 🇨🇳 简体中文 ✓ 🇨🇳 繁體中文 ✓ 🇯🇵 日本語 ✓ 🇪🇸 Español ✓ 🇧🇷 Português (BR) ✓ 🇰🇷 한국어 ✓ 🇩🇪 ",
+          "resultLength": 10279,
+          "source": {
+            "url": "https://docs.openclaw.ai/concepts/memory",
+            "capturedAt": "2026-09-08T01:12:33.785Z"
+          },
+          "resultSha256": "c8871136fa624bbac13af8d4b7ac9800d609457f0d793c2c18d452ed65de7fa9",
           "resultTruncated": true
+        },
+        {
+          "type": "search",
+          "query": "site.hermes-agent.nousresearch.com/docs memory persistent compression security",
+          "result": "The official Hermes Agent docs describe **persistent memory**, **compression**, and **security** as core features.[1][2]\n\n- **Memory**: Hermes has a built-in **Memory System** that provides persistent memory across sessions, and the docs also describe a **Skills System** for procedural memory it creates and reuses.[1][2]\n- **Compression**: The configuration docs include a `compression:` section, and the tips guide says to use `/compress` when long sessions accumulate tokens; compression summariz",
+          "resultLength": 951,
+          "resultSha256": "40b392d85ad6b767d9fba32a8f2d7714ca5a68dd4c7aa4e229c0cb1c55417617",
+          "resultTruncated": true
+        },
+        {
+          "type": "search",
+          "query": "site.goose-docs.ai memory sessions recipes scheduling compaction",
+          "result": "You’re likely asking about how **memory**, **sessions**, **recipes**, **scheduling**, and **compaction** relate in Goose documentation. In Goose, **sessions** hold conversation state for a single task, **memory** preserves longer-term information across sessions, **recipes** define reusable workflows or configuration, **scheduling** is managed through environment-driven or extension-based setup depending on the feature, and **compaction** is Goose’s way of shrinking context when it approaches mo",
+          "resultLength": 1827,
+          "resultSha256": "966802a8a961281fcc42e3a67a9180964bf553e2889150e5286adc71be929fd7",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://docs.github.com/copilot/concepts/agents/about-copilot-cli",
+          "startIndex": 0,
+          "result": "Source: https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-copilot-cli\nCaptured: 2026-09-08T01:12:34.361Z\nCharacters: 0-10000 of 34662\n\nAbout GitHub Copilot CLI - GitHub Docs Skip to main content GitHub Docs Version: Free, Pro, & Team Search or ask Copilot Search or ask Copilot Select language: current language is English Search or ask Copilot Search or ask Copilot Open menu Collapse sidebar Expand sidebar Scroll breadcrumbs left Home GitHub Copilot Concepts Agents Copilot CLI ",
+          "resultLength": 10233,
+          "source": {
+            "url": "https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-copilot-cli",
+            "capturedAt": "2026-09-08T01:12:34.361Z"
+          },
+          "resultSha256": "d7701972c7979ec92718a85020003ce5ea77584e7aa9ac1af1709c9a0ca73c11",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/architecture.md",
+          "startIndex": 0,
+          "error": "404 Not Found fetching https://raw.githubusercontent.com/google-gemini/gemini-cli/85aca163f6c73ac6ce380b5447359146b8adcae4/docs/architecture.md",
+          "result": "Fetch failed: 404 Not Found fetching https://raw.githubusercontent.com/google-gemini/gemini-cli/85aca163f6c73ac6ce380b5447359146b8adcae4/docs/architecture.md",
+          "resultLength": 157,
+          "resultSha256": "5948739041cc289321d32941f5ec228fe3be21b2ed0f4801ad33a3aed5f7a0af",
+          "resultTruncated": false
         }
       ]
     },
@@ -179,74 +358,159 @@
       "actions": [
         {
           "type": "fetch",
-          "url": "https://raw.githubusercontent.com/ourostack/ouroboros/main/docs/agent-orientation-substrate.md",
-          "result": "# Agent Orientation Substrate\n\nThis document records the target scope for Ouroboros' agent-facing orientation\nsubstrate after the Arc Flight Recorder pivot and the \"don't call it memory\"\nvocabulary reset.\n\nThe goal is not a prettier dashboard. The goal is that an agent can wake up\ninside the harness, understand what matters, continue work, and ask for help\nwithout the human rebuilding context.\n\n## Source Inputs\n\nThis scope incorporates the website draft at `/blog/dont-call-it-memory`,\nespecially",
-          "resultLength": 10044,
-          "resultSha256": "b616042529261ddc8eb76810812e6db62a9d4479d1ffcfc79385b6be09802f9f",
+          "url": "https://github.com/ourostack/ouroboros/blob/main/docs/agent-orientation-substrate.md",
+          "startIndex": 0,
+          "result": "Source: https://raw.githubusercontent.com/ourostack/ouroboros/406fa8c4c7242577a445b439ddc6344ef470462a/docs/agent-orientation-substrate.md\nCaptured: 2026-09-08T01:12:40.421Z\nCharacters: 0-10000 of 16007\n\n# Agent Orientation Substrate\n\nThis document records the target scope for Ouroboros' agent-facing orientation\nsubstrate after the Arc Flight Recorder pivot and the \"don't call it memory\"\nvocabulary reset.\n\nThe goal is not a prettier dashboard. The goal is that an agent can wake up\ninside the har",
+          "resultLength": 10283,
+          "source": {
+            "url": "https://raw.githubusercontent.com/ourostack/ouroboros/406fa8c4c7242577a445b439ddc6344ef470462a/docs/agent-orientation-substrate.md",
+            "capturedAt": "2026-09-08T01:12:40.421Z",
+            "candidate": "Ouroboros",
+            "sha": "406fa8c4c7242577a445b439ddc6344ef470462a"
+          },
+          "resultSha256": "3964f458c20c0c3e203cd1accd43a8fd506cb0e8f55824259e1143b92483ee68",
           "resultTruncated": true
         },
         {
           "type": "fetch",
-          "url": "https://raw.githubusercontent.com/ourostack/ouroboros/main/docs/arc-flight-recorder.md",
-          "result": "# Arc Flight Recorder\n\nArc Flight Recorder is the agent-facing continuity layer for Ouroboros. Its job\nis simple: if the provider context disappears, a fresh agent should continue\nfrom durable Arc state without asking the human to reconstruct the work.\n\nThis is not a human dashboard. Human visibility is a derived lens. The primary\nconsumer is the agent.\n\n## Core Contract\n\nArc is the agent's live continuity record:\n\n- the harness writes the important lifecycle facts automatically;\n- the agent can",
-          "resultLength": 9228,
-          "resultSha256": "9521e660f15e11e1ff44832e3e2cba49c8132dae074ecdf6a0a6508b033012cc",
+          "url": "https://github.com/ourostack/ouroboros/tree/main/src/arc",
+          "startIndex": 0,
+          "result": "Source: https://api.github.com/repos/ourostack/ouroboros/contents/src/arc?ref=406fa8c4c7242577a445b439ddc6344ef470462a\nCaptured: 2026-09-08T01:12:52.817Z\nCharacters: 0-1466 of 1466\n\n- \"attention-types.ts\" (file): https://github.com/ourostack/ouroboros/blob/406fa8c4c7242577a445b439ddc6344ef470462a/src/arc/attention-types.ts\n- \"cares.ts\" (file): https://github.com/ourostack/ouroboros/blob/406fa8c4c7242577a445b439ddc6344ef470462a/src/arc/cares.ts\n- \"episodes.ts\" (file): https://github.com/ourostack",
+          "resultLength": 1668,
+          "source": {
+            "url": "https://api.github.com/repos/ourostack/ouroboros/contents/src/arc?ref=406fa8c4c7242577a445b439ddc6344ef470462a",
+            "capturedAt": "2026-09-08T01:12:52.817Z",
+            "candidate": "Ouroboros",
+            "sha": "406fa8c4c7242577a445b439ddc6344ef470462a"
+          },
+          "resultSha256": "4a89936715905fa16b22d053e3e617c94fa6ea79546b84625106c696e0ba4dc1",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://docs.letta.com/letta-code/memory",
+          "startIndex": 0,
+          "result": "Source: https://docs.letta.com/configuration/memory\nCaptured: 2026-09-08T01:12:26.765Z\nCharacters: 0-3573 of 3573\n\nMemory & dreaming | Letta Docs here implicitly closes , which strands every stylesheet emitted after it in and keeps targeted client-side swaps from loading page-specific component styles. --> Skip to content Letta Docs Docs Agent SDK Handbook Docs Docs Docs Agent SDK Agent SDK Handbook Handbook Search the docs Ctrl K Cancel Discord Docs Agent SDK Handbook Get started Overview Quick",
+          "resultLength": 3708,
+          "source": {
+            "url": "https://docs.letta.com/configuration/memory",
+            "capturedAt": "2026-09-08T01:12:26.765Z"
+          },
+          "resultSha256": "17d3f1f59e49b84c672890b61da270ac391e224df29af41d0f91894f495627ce",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://hermes-agent.nousresearch.com/docs/user-guide/features/memory",
+          "startIndex": 0,
+          "result": "Source: https://hermes-agent.nousresearch.com/docs/user-guide/features/memory\nCaptured: 2026-09-08T01:12:52.800Z\nCharacters: 0-10000 of 23162\n\nPersistent Memory | Hermes Agent Skip to main content Hermes Agent Docs Skills Download English English 简体中文 Home GitHub Discord Search User Stories & Use Cases Getting Started Using Hermes Features Overview Tool Gateway Core Tools & Toolsets Document Extraction Tool Search Skills System LSP — Semantic Diagnostics Curator Persistent Memory Memory Provider",
+          "resultLength": 10222,
+          "source": {
+            "url": "https://hermes-agent.nousresearch.com/docs/user-guide/features/memory",
+            "capturedAt": "2026-09-08T01:12:52.800Z"
+          },
+          "resultSha256": "58446f8905d287a28705b04d503ce441f1581bed077e1210ccca0423da985dc1",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://github.com/aaif-goose/goose/tree/main/documentation/docs/guides",
+          "startIndex": 0,
+          "result": "Source: https://api.github.com/repos/aaif-goose/goose/contents/documentation/docs/guides?ref=5e90925962f05acf8e255032de44d16c4a7768a2\nCaptured: 2026-09-08T01:12:52.880Z\nCharacters: 0-5436 of 5436\n\n- \"_category_.json\" (file): https://github.com/aaif-goose/goose/blob/5e90925962f05acf8e255032de44d16c4a7768a2/documentation/docs/guides/_category_.json\n- \"acp-providers.md\" (file): https://github.com/aaif-goose/goose/blob/5e90925962f05acf8e255032de44d16c4a7768a2/documentation/docs/guides/acp-providers.",
+          "resultLength": 5653,
+          "source": {
+            "url": "https://api.github.com/repos/aaif-goose/goose/contents/documentation/docs/guides?ref=5e90925962f05acf8e255032de44d16c4a7768a2",
+            "capturedAt": "2026-09-08T01:12:52.880Z",
+            "candidate": "Goose",
+            "sha": "5e90925962f05acf8e255032de44d16c4a7768a2"
+          },
+          "resultSha256": "0daa5fee6ca42e72dc5975ec8bc2302fbe8481e3e64a18ac51ecc4b3831eff1f",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://github.com/openai/codex/tree/main/codex-rs",
+          "startIndex": 0,
+          "result": "Source: https://api.github.com/repos/openai/codex/contents/codex-rs?ref=e7637306bc9246a3e42e407cb94f96b7ed345e3e\nCaptured: 2026-09-08T01:12:34.644Z\nCharacters: 0-10000 of 15528\n\n- \".cargo\" (dir): https://github.com/openai/codex/tree/e7637306bc9246a3e42e407cb94f96b7ed345e3e/codex-rs/.cargo\n- \".config\" (dir): https://github.com/openai/codex/tree/e7637306bc9246a3e42e407cb94f96b7ed345e3e/codex-rs/.config\n- \".gitignore\" (file): https://github.com/openai/codex/blob/e7637306bc9246a3e42e407cb94f96b7ed34",
+          "resultLength": 10257,
+          "source": {
+            "url": "https://api.github.com/repos/openai/codex/contents/codex-rs?ref=e7637306bc9246a3e42e407cb94f96b7ed345e3e",
+            "capturedAt": "2026-09-08T01:12:34.644Z",
+            "candidate": "Codex CLI",
+            "sha": "e7637306bc9246a3e42e407cb94f96b7ed345e3e"
+          },
+          "resultSha256": "30cd05800eb1c00a4c7d5d3e87127aac7cc9a956c986ea55d7fdf240114c644b",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://github.com/google-gemini/gemini-cli/tree/main/docs",
+          "startIndex": 0,
+          "result": "Source: https://api.github.com/repos/google-gemini/gemini-cli/contents/docs?ref=85aca163f6c73ac6ce380b5447359146b8adcae4\nCaptured: 2026-09-08T01:12:52.894Z\nCharacters: 0-3268 of 3268\n\n- \"CONTRIBUTING.md\" (file): https://github.com/google-gemini/gemini-cli/blob/85aca163f6c73ac6ce380b5447359146b8adcae4/docs/CONTRIBUTING.md\n- \"admin\" (dir): https://github.com/google-gemini/gemini-cli/tree/85aca163f6c73ac6ce380b5447359146b8adcae4/docs/admin\n- \"assets\" (dir): https://github.com/google-gemini/gemini-c",
+          "resultLength": 3472,
+          "source": {
+            "url": "https://api.github.com/repos/google-gemini/gemini-cli/contents/docs?ref=85aca163f6c73ac6ce380b5447359146b8adcae4",
+            "capturedAt": "2026-09-08T01:12:52.894Z",
+            "candidate": "Gemini CLI",
+            "sha": "85aca163f6c73ac6ce380b5447359146b8adcae4"
+          },
+          "resultSha256": "3511102d9a69c8fcef6b184c88fcb35f2b93d2e3da432cd4ca14126e91567254",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://github.com/anomalyco/opencode/blob/dev/packages/opencode/src/session/compaction.ts",
+          "startIndex": 0,
+          "result": "Source: https://raw.githubusercontent.com/anomalyco/opencode/ecbc6ccac85b3e8087b6445e584318419b9e2b34/packages/opencode/src/session/compaction.ts\nCaptured: 2026-09-08T01:12:52.866Z\nCharacters: 0-10000 of 21236\n\nimport { LayerNode } from \"@opencode-ai/core/effect/layer-node\"\nimport { SessionV1 } from \"@opencode-ai/core/v1/session\"\nimport { ConfigV1 } from \"@opencode-ai/core/v1/config/config\"\nimport { Session } from \"./session\"\nimport { SessionID, MessageID, PartID } from \"./schema\"\nimport { Provi",
+          "resultLength": 10290,
+          "source": {
+            "url": "https://raw.githubusercontent.com/anomalyco/opencode/ecbc6ccac85b3e8087b6445e584318419b9e2b34/packages/opencode/src/session/compaction.ts",
+            "capturedAt": "2026-09-08T01:12:52.866Z",
+            "candidate": "OpenCode",
+            "sha": "ecbc6ccac85b3e8087b6445e584318419b9e2b34"
+          },
+          "resultSha256": "b3e8a80e2fd78ad91eb1dc86945450b06c65c237fe71effb6459365b72d3e241",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/README.md",
+          "startIndex": 0,
+          "result": "Source: https://raw.githubusercontent.com/earendil-works/pi/b2602be77cb7b0de45dd616407fd210daa48aa75/packages/coding-agent/README.md\nCaptured: 2026-09-08T01:12:52.871Z\nCharacters: 0-10000 of 33083\n\n<p align=\"center\">\n  <a href=\"https://pi.dev\">\n    <img alt=\"pi logo\" src=\"https://pi.dev/logo-auto.svg\" width=\"128\">\n  </a>\n</p>\n<p align=\"center\">\n  <a href=\"https://discord.com/invite/3cU7Bz4UPx\"><img alt=\"Discord\" src=\"https://img.shields.io/badge/discord-community-5865F2?style=flat-square&logo=di",
+          "resultLength": 10277,
+          "source": {
+            "url": "https://raw.githubusercontent.com/earendil-works/pi/b2602be77cb7b0de45dd616407fd210daa48aa75/packages/coding-agent/README.md",
+            "capturedAt": "2026-09-08T01:12:52.871Z",
+            "candidate": "Pi",
+            "sha": "b2602be77cb7b0de45dd616407fd210daa48aa75"
+          },
+          "resultSha256": "f8340cb6dcdd3c469d343b21d49d1f326aec20eb2f3c7446f478f2c16dca158f",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://docs.github.com/copilot/concepts/agents/about-copilot-cli",
+          "startIndex": 10000,
+          "result": "Source: https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-copilot-cli\nCaptured: 2026-09-08T01:12:34.361Z\nCharacters: 10000-20000 of 34662\n\nFind vulnerabilities Customization library All customizations Custom instructions Your first custom instructions Concept explainer Debugging tutor Code reviewer GitHub Actions helper Pull request assistant Issue manager Accessibility auditor Testing automation Prompt files Your first prompt file Create README Onboarding plan Document API Re",
+          "resultLength": 10237,
+          "source": {
+            "url": "https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-copilot-cli",
+            "capturedAt": "2026-09-08T01:12:34.361Z"
+          },
+          "resultSha256": "a7e4e6b18fc189413875fd3171d97203d2aeba1abf05d1e81d47016529248389",
           "resultTruncated": true
         },
         {
           "type": "fetch",
           "url": "https://code.claude.com/docs/en/how-claude-code-works",
-          "result": "How Claude Code works - Claude Code Docs Documentation Index Fetch the complete documentation index at: /docs/llms.txt Use this file to discover all available pages before exploring further. Skip to main content Claude Code Docs home page English Search... ⌘ K Ask Assistant ⌘ I Claude Developer Platform Claude Code on the Web Claude Code on the Web Search... Navigation Core concepts How Claude Code works Getting started Build with Claude Code Administration Configuration Reference Agent SDK What",
-          "resultLength": 10044,
-          "resultSha256": "7f1e09ec0198eeacd3249a7aa668723a8035cbe378242487cca50552ca8158da",
-          "resultTruncated": true
-        },
-        {
-          "type": "fetch",
-          "url": "https://code.claude.com/docs/en/memory",
-          "result": "How Claude remembers your project - Claude Code Docs Documentation Index Fetch the complete documentation index at: /docs/llms.txt Use this file to discover all available pages before exploring further. Skip to main content Claude Code Docs home page English Search... ⌘ K Ask Assistant ⌘ I Claude Developer Platform Claude Code on the Web Claude Code on the Web Search... Navigation Use Claude Code How Claude remembers your project Getting started Build with Claude Code Administration Configuratio",
-          "resultLength": 10044,
-          "resultSha256": "a76bbdfc363dc6371605df79ff439af3778e8c18fdb96f2f8966340cfc6f91d4",
-          "resultTruncated": true
-        },
-        {
-          "type": "fetch",
-          "url": "https://docs.github.com/en/copilot/concepts/agents/copilot-cli/context-management",
-          "result": "Managing context in GitHub Copilot CLI - GitHub Docs Skip to main content GitHub Docs Version: Free, Pro, & Team Search or ask Copilot Search or ask Copilot Select language: current language is English Search or ask Copilot Search or ask Copilot Open menu Collapse sidebar Expand sidebar Scroll breadcrumbs left Home GitHub Copilot Concepts Agents Copilot CLI Context management Scroll breadcrumbs right GitHub Copilot Get started Quickstart Copilot CLI quickstart Copilot app quickstart What is GitH",
-          "resultLength": 10044,
-          "resultSha256": "4ecd17b9ba08df12151e1d882dc6f364eee9336718e3d234385455170f7328e3",
-          "resultTruncated": true
-        },
-        {
-          "type": "fetch",
-          "url": "https://developers.openai.com/codex/security/",
-          "result": "Codex Security | ChatGPT Learn For the complete documentation index, see llms.txt . Markdown versions of documentation pages are available by appending .md to the page URL. ChatGPT Home API Codex Docs Guides, concepts, and product docs for Codex Use cases Example workflows and tasks teams can take on with ChatGPT or Codex Docs Use cases Training Resources ChatGPT Plugins Extend ChatGPT and Codex Workspace Agents Trigger published ChatGPT workspace agents Commerce Build commerce flows in ChatGPT ",
-          "resultLength": 10044,
-          "resultSha256": "1d0abef60cff4edb43b106a94ca73ffee2cd41932556b36190ac2d61385f087a",
-          "resultTruncated": true
-        },
-        {
-          "type": "fetch",
-          "url": "https://github.com/openai/codex/blob/main/codex-rs/core/README.md",
-          "result": "# codex-core\n\nThis crate implements the business logic for Codex. It is designed to be used by the various Codex UIs written in Rust.\n\n## Wine-exec integration tests\n\nOn x86-64 Linux, run the shared suite against the Windows exec server with\n`bazel test //codex-rs/core:core-all-wine-exec-test`.\n\nLocal execution targets the host OS, Docker targets Linux, and Wine exec targets\nWindows. Choose the skip macro by what the test depends on:\n\n- `skip_if_target_windows!`: Windows target behavior.\n- `skip",
-          "resultLength": 4869,
-          "resultSha256": "90419618b596e4965d9326ff57d81a0a3a406dab586b52d114e6829cafc6da31",
-          "resultTruncated": true
-        },
-        {
-          "type": "fetch",
-          "url": "https://docs.openclaw.ai/concepts/memory",
-          "result": "Memory overview - OpenClaw OpenClaw Docs Search... K 🇺🇸 English 🇺🇸 English 🇨🇳 简体中文 🇨🇳 繁體中文 🇯🇵 日本語 🇪🇸 Español 🇧🇷 Português (BR) 🇰🇷 한국어 🇩🇪 Deutsch 🇫🇷 Français 🇮🇳 हिन्दी 🇸🇦 العربية 🇮🇹 Italiano 🇻🇳 Tiếng Việt 🇳🇱 Nederlands 🇹🇷 Türkçe 🇺🇦 Українська 🇮🇩 Bahasa Indonesia 🇵🇱 Polski 🇷🇺 Русский 🇮🇷 فارسی 🇹🇭 ไทย 🇺🇸 English ✓ 🇨🇳 简体中文 ✓ 🇨🇳 繁體中文 ✓ 🇯🇵 日本語 ✓ 🇪🇸 Español ✓ 🇧🇷 Português (BR) ✓ 🇰🇷 한국어 ✓ 🇩🇪 Deutsch ✓ 🇫🇷 Français ✓ 🇮🇳 हिन्दी ✓ 🇸🇦 العربية ✓",
-          "resultLength": 10044,
-          "resultSha256": "632597cdc6c1aee60e710f1211395c10e1f986613a035668052e16c62656e492",
-          "resultTruncated": true
-        },
-        {
-          "type": "fetch",
-          "url": "https://github.com/badlogic/pi-mono/blob/main/packages/agent/README.md",
-          "result": "# @earendil-works/pi-agent-core\n\nStateful agent with tool execution and event streaming. Built on `@earendil-works/pi-ai`.\n\n## Installation\n\n```bash\nnpm install @earendil-works/pi-agent-core\n```\n\n### SQLite session backends\n\nThe SQLite session backend and the `node:sqlite` adapter live in a separate package, `@earendil-works/pi-session-backend-sqlite-node`, so the core package does not pull in runtime builtins or native SQLite dependencies by default. The backend accepts a runtime-specific SQLit",
-          "resultLength": 10044,
-          "resultSha256": "b1b85a9edabb649cd90dc99ccae6ba44d865b33eaeb6c8fa2333a5267a079ef0",
+          "startIndex": 0,
+          "result": "Source: https://code.claude.com/docs/en/how-claude-code-works\nCaptured: 2026-09-08T01:12:52.864Z\nCharacters: 0-10000 of 16351\n\nHow Claude Code works - Claude Code Docs Documentation Index Fetch the complete documentation index at: /docs/llms.txt Use this file to discover all available pages before exploring further. Skip to main content Claude Code Docs home page English Search... ⌘ K Ask Assistant ⌘ I Claude Developer Platform Claude Code on the Web Claude Code on the Web Search... Navigation C",
+          "resultLength": 10206,
+          "source": {
+            "url": "https://code.claude.com/docs/en/how-claude-code-works",
+            "capturedAt": "2026-09-08T01:12:52.864Z"
+          },
+          "resultSha256": "8d8aac3482a69a66dbb58c9a72bdb38174050593a2eca95d78f090e6a2385223",
           "resultTruncated": true
         }
       ]
@@ -257,68 +521,162 @@
       "actions": [
         {
           "type": "fetch",
-          "url": "https://raw.githubusercontent.com/github/docs/main/content/copilot/concepts/agents/copilot-cli/context-management.md",
-          "result": "---\ntitle: Managing context in {% data variables.copilot.copilot_cli %}\nshortTitle: Context management\nallowTitleToDifferFromFilename: true\nintro: 'Understand how {% data variables.product.prodname_copilot_short %} manages conversation context, what happens during long sessions, and how to stay in control of your context window.'\nversions:\n  feature: copilot\ncontentType: concepts\ncategory:\n  - Learn about Copilot # Copilot discovery page\n  - Learn about Copilot CLI # Copilot CLI bespoke page\ndoc",
-          "resultLength": 10044,
-          "resultSha256": "d958d0904c40bb25203e0965fbf0713651a76e937fba5fe8b17ce09b9fee6174",
+          "url": "https://github.com/ourostack/ouroboros/blob/main/src/arc/flight-recorder.ts",
+          "startIndex": 0,
+          "result": "Source: https://raw.githubusercontent.com/ourostack/ouroboros/406fa8c4c7242577a445b439ddc6344ef470462a/src/arc/flight-recorder.ts\nCaptured: 2026-09-08T01:13:03.353Z\nCharacters: 0-10000 of 56263\n\nimport * as fs from \"fs\"\nimport * as path from \"path\"\nimport { randomUUID } from \"crypto\"\nimport { capStructuredRecordString, capStructuredRecordStringLeaves } from \"../heart/session-events\"\nimport { emitNervesEvent } from \"../nerves/runtime\"\nimport {\n  listActiveReturnObligationsForRoot,\n  listReturnObl",
+          "resultLength": 10274,
+          "source": {
+            "url": "https://raw.githubusercontent.com/ourostack/ouroboros/406fa8c4c7242577a445b439ddc6344ef470462a/src/arc/flight-recorder.ts",
+            "capturedAt": "2026-09-08T01:13:03.353Z",
+            "candidate": "Ouroboros",
+            "sha": "406fa8c4c7242577a445b439ddc6344ef470462a"
+          },
+          "resultSha256": "e532347e28f059ebcb239ffa91bb7186cdb9ff603a8e72b3ede7b3cc6ed099d2",
           "resultTruncated": true
         },
         {
           "type": "fetch",
-          "url": "https://raw.githubusercontent.com/github/docs/main/content/copilot/concepts/agents/copilot-cli/autopilot.md",
-          "result": "---\ntitle: Allowing GitHub Copilot CLI to work autonomously\nshortTitle: Autonomous task completion\nallowTitleToDifferFromFilename: true\nintro: 'The CLI''s autopilot mode lets {% data variables.copilot.copilot_cli_short %} work autonomously on a task, carrying out multiple steps until the task is complete.'\nversions:\n  feature: copilot\ncontentType: concepts\ncategory:\n  - Learn about Copilot CLI # Copilot CLI bespoke page\n  - Learn about Copilot # Copilot discovery page\ndocsTeamMetrics:\n  - copilo",
-          "resultLength": 10044,
-          "resultSha256": "e6f34a56c82d2b3789d13065e08b537bd3e20c135c47a76f9dbe65a71bcd8fb1",
+          "url": "https://github.com/ourostack/ouroboros/tree/main/src/senses",
+          "startIndex": 0,
+          "result": "Source: https://api.github.com/repos/ourostack/ouroboros/contents/src/senses?ref=406fa8c4c7242577a445b439ddc6344ef470462a\nCaptured: 2026-09-08T01:13:03.341Z\nCharacters: 0-8442 of 8442\n\n- \"a2a-entry.ts\" (file): https://github.com/ourostack/ouroboros/blob/406fa8c4c7242577a445b439ddc6344ef470462a/src/senses/a2a-entry.ts\n- \"acp-server.ts\" (file): https://github.com/ourostack/ouroboros/blob/406fa8c4c7242577a445b439ddc6344ef470462a/src/senses/acp-server.ts\n- \"attention-queue.ts\" (file): https://github",
+          "resultLength": 8647,
+          "source": {
+            "url": "https://api.github.com/repos/ourostack/ouroboros/contents/src/senses?ref=406fa8c4c7242577a445b439ddc6344ef470462a",
+            "capturedAt": "2026-09-08T01:13:03.341Z",
+            "candidate": "Ouroboros",
+            "sha": "406fa8c4c7242577a445b439ddc6344ef470462a"
+          },
+          "resultSha256": "53116aa0a83b99929e73ca6f64fcc4b7576f25fe1ca026236111cec956bf012e",
           "resultTruncated": true
         },
         {
           "type": "fetch",
-          "url": "https://api.github.com/repos/ourostack/ouroboros/contents/src/arc",
-          "result": "[{\"name\":\"attention-types.ts\",\"path\":\"src/arc/attention-types.ts\",\"sha\":\"8d233b12c9b5191ecf0863d16fa88ef0478549c9\",\"size\":670,\"url\":\"https://api.github.com/repos/ourostack/ouroboros/contents/src/arc/attention-types.ts?ref=main\",\"html_url\":\"https://github.com/ourostack/ouroboros/blob/main/src/arc/attention-types.ts\",\"git_url\":\"https://api.github.com/repos/ourostack/ouroboros/git/blobs/8d233b12c9b5191ecf0863d16fa88ef0478549c9\",\"download_url\":\"https://raw.githubusercontent.com/ourostack/ouroboros/m",
-          "resultLength": 9028,
-          "resultSha256": "c966d9d383d592b267e3136987842e19ecea8a291bec54ec6a34926550c5a8d6",
+          "url": "https://github.com/openai/codex/tree/main/codex-rs/memories",
+          "startIndex": 0,
+          "result": "Source: https://api.github.com/repos/openai/codex/contents/codex-rs/memories?ref=e7637306bc9246a3e42e407cb94f96b7ed345e3e\nCaptured: 2026-09-08T01:13:03.321Z\nCharacters: 0-363 of 363\n\n- \"README.md\" (file): https://github.com/openai/codex/blob/e7637306bc9246a3e42e407cb94f96b7ed345e3e/codex-rs/memories/README.md\n- \"read\" (dir): https://github.com/openai/codex/tree/e7637306bc9246a3e42e407cb94f96b7ed345e3e/codex-rs/memories/read\n- \"write\" (dir): https://github.com/openai/codex/tree/e7637306bc9246a3e4",
+          "resultLength": 566,
+          "source": {
+            "url": "https://api.github.com/repos/openai/codex/contents/codex-rs/memories?ref=e7637306bc9246a3e42e407cb94f96b7ed345e3e",
+            "capturedAt": "2026-09-08T01:13:03.321Z",
+            "candidate": "Codex CLI",
+            "sha": "e7637306bc9246a3e42e407cb94f96b7ed345e3e"
+          },
+          "resultSha256": "dc55ee8e61dd132c9ea3546501a3b065f0ddc55613402ea979ee70fa060a34aa",
           "resultTruncated": true
         },
         {
           "type": "fetch",
-          "url": "https://github.com/badlogic/pi-mono/blob/main/packages/coding-agent/docs/session.md",
-          "error": "404 Not Found fetching https://raw.githubusercontent.com/badlogic/pi-mono/main/packages/coding-agent/docs/session.md",
-          "result": "Fetch failed: 404 Not Found fetching https://raw.githubusercontent.com/badlogic/pi-mono/main/packages/coding-agent/docs/session.md",
-          "resultLength": 130,
-          "resultSha256": "459f6a381346aaadcb2452f980cb8132017bc37a1c822172336a626f3042dac7",
-          "resultTruncated": false
-        },
-        {
-          "type": "fetch",
-          "url": "https://github.com/badlogic/pi-mono/blob/main/packages/coding-agent/docs/extensions.md",
-          "result": "> pi can create extensions. Ask it to build one for your use case.\n\n# Extensions\n\nExtensions are TypeScript modules that extend pi's behavior. They can subscribe to lifecycle events, register custom tools callable by the LLM, add commands, and more.\n\n> **Placement for /reload:** Put extensions in `~/.pi/agent/extensions/` (global) or `.pi/extensions/` (project-local) for auto-discovery. Use `pi -e ./path.ts` only for quick tests. Extensions in auto-discovered locations can be hot-reloaded with `",
-          "resultLength": 10045,
-          "resultSha256": "ab72952e7eae306247c38ad0ea6e2e6b80a2e140d30c8d0ec696cb98a107a220",
+          "url": "https://developers.openai.com/codex/security",
+          "startIndex": 0,
+          "result": "Source: https://learn.chatgpt.com/docs/security\nCaptured: 2026-09-08T01:13:03.448Z\nCharacters: 0-10000 of 16010\n\nCodex Security | ChatGPT Learn For the complete documentation index, see llms.txt . Markdown versions of documentation pages are available by appending .md to the page URL. ChatGPT Home API Codex Docs Guides, concepts, and product docs for Codex Use cases Example workflows and tasks teams can take on with ChatGPT or Codex Docs Use cases Training Resources ChatGPT Plugins Extend ChatGP",
+          "resultLength": 10192,
+          "source": {
+            "url": "https://learn.chatgpt.com/docs/security",
+            "capturedAt": "2026-09-08T01:13:03.448Z"
+          },
+          "resultSha256": "5eedf104121bff062bce6ec16363890a81571eafd3485737d759b82b37e853e6",
           "resultTruncated": true
         },
         {
           "type": "fetch",
-          "url": "https://raw.githubusercontent.com/anomalyco/opencode/dev/packages/opencode/src/session/compaction.ts",
-          "result": "import { LayerNode } from \"@opencode-ai/core/effect/layer-node\"\nimport { SessionV1 } from \"@opencode-ai/core/v1/session\"\nimport { ConfigV1 } from \"@opencode-ai/core/v1/config/config\"\nimport { Session } from \"./session\"\nimport { SessionID, MessageID, PartID } from \"./schema\"\nimport { Provider } from \"@/provider/provider\"\nimport { MessageV2 } from \"./message-v2\"\nimport { Token } from \"@/util/token\"\nimport { SessionProcessor } from \"./processor\"\nimport { Agent } from \"@/agent/agent\"\nimport { Plugin",
-          "resultLength": 10044,
-          "resultSha256": "8b5cd41d17824403a6eaf429c5750a464fe8db350f7eb8e8112e2133690216b1",
+          "url": "https://github.com/google-gemini/gemini-cli/tree/main/docs/core",
+          "startIndex": 0,
+          "result": "Source: https://api.github.com/repos/google-gemini/gemini-cli/contents/docs/core?ref=85aca163f6c73ac6ce380b5447359146b8adcae4\nCaptured: 2026-09-08T01:13:03.407Z\nCharacters: 0-713 of 713\n\n- \"gemma-setup.md\" (file): https://github.com/google-gemini/gemini-cli/blob/85aca163f6c73ac6ce380b5447359146b8adcae4/docs/core/gemma-setup.md\n- \"index.md\" (file): https://github.com/google-gemini/gemini-cli/blob/85aca163f6c73ac6ce380b5447359146b8adcae4/docs/core/index.md\n- \"local-model-routing.md\" (file): https:",
+          "resultLength": 920,
+          "source": {
+            "url": "https://api.github.com/repos/google-gemini/gemini-cli/contents/docs/core?ref=85aca163f6c73ac6ce380b5447359146b8adcae4",
+            "capturedAt": "2026-09-08T01:13:03.407Z",
+            "candidate": "Gemini CLI",
+            "sha": "85aca163f6c73ac6ce380b5447359146b8adcae4"
+          },
+          "resultSha256": "724a5bbf359ace060bc28f99774a89feea672f57c1c95dfa39a2b88b28a78b12",
           "resultTruncated": true
         },
         {
           "type": "fetch",
-          "url": "https://docs.openclaw.ai/gateway/heartbeat.md",
-          "result": "---\nsummary: \"Heartbeat polling messages and notification rules\"\nread_when:\n  - Adjusting heartbeat cadence or messaging\n  - Deciding between heartbeat and automations for scheduled work\ntitle: \"Heartbeat\"\nsidebarTitle: \"Heartbeat\"\n---\n\n<Note>\n**Heartbeat is an automation.** See [Automation](/automation) for guidance on\nchoosing the system-owned monitor or an independently scheduled job.\n</Note>\n\nHeartbeat is a system-owned automation that runs **periodic agent turns** in the\nmain session so the",
-          "resultLength": 10044,
-          "resultSha256": "87225308bbce866c6b3518b56fa911d4ebbd59c0e5d674ef7f6cae57742c4dfe",
+          "url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/tools/memory.md",
+          "startIndex": 0,
+          "result": "Source: https://raw.githubusercontent.com/google-gemini/gemini-cli/85aca163f6c73ac6ce380b5447359146b8adcae4/docs/tools/memory.md\nCaptured: 2026-09-08T01:13:03.328Z\nCharacters: 0-1185 of 1185\n\n# Memory files\n\nGemini CLI persists durable facts, user preferences, and project details by\nediting Markdown memory files directly.\n\n## Technical reference\n\nThe agent routes memories to the appropriate Markdown file: shared project\ninstructions go in repository `GEMINI.md` files, private project notes go in",
+          "resultLength": 1397,
+          "source": {
+            "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/85aca163f6c73ac6ce380b5447359146b8adcae4/docs/tools/memory.md",
+            "capturedAt": "2026-09-08T01:13:03.328Z",
+            "candidate": "Gemini CLI",
+            "sha": "85aca163f6c73ac6ce380b5447359146b8adcae4"
+          },
+          "resultSha256": "30e90d6f8f6470f9a11bd7d72babcf0c6909fdc84814c64908254123aeee9326",
           "resultTruncated": true
         },
         {
           "type": "fetch",
-          "url": "https://github.com/openai/codex/blob/main/codex-rs/app-server/README.md",
-          "result": "# Thread removal\n\n`thread/archive` and `thread/delete` reject attempts to remove a live internal\nworker with JSON-RPC error `-32600`. The worker's owner controls its shutdown.\nFor example, a Guardian reviewer remains available to its parent conversation\nafter a client tries to archive or delete it.\n\nAfter the owner releases the worker, its saved conversation can be archived or\ndeleted normally. Ordinary client-controlled threads keep their existing behavior.\n",
-          "resultLength": 463,
-          "resultSha256": "967a88b6a561320618347e49c3eb587e00833be290f024a488f1aa0ae5320b2c",
-          "resultTruncated": false
+          "url": "https://github.com/aaif-goose/goose/blob/main/documentation/docs/guides/roaming-agents.md",
+          "startIndex": 0,
+          "result": "Source: https://raw.githubusercontent.com/aaif-goose/goose/5e90925962f05acf8e255032de44d16c4a7768a2/documentation/docs/guides/roaming-agents.md\nCaptured: 2026-09-08T01:13:03.496Z\nCharacters: 0-10000 of 18289\n\n---\nsidebar_position: 95\ntitle: Roaming Agents\nsidebar_label: Roaming Agents\n---\n\nRoaming agents let you reach a running goose agent from another machine over a\npeer-to-peer connection — no open ports, no VPN, no server to host. It's built\non [iroh](https://iroh.computer) (QUIC), so two mac",
+          "resultLength": 10288,
+          "source": {
+            "url": "https://raw.githubusercontent.com/aaif-goose/goose/5e90925962f05acf8e255032de44d16c4a7768a2/documentation/docs/guides/roaming-agents.md",
+            "capturedAt": "2026-09-08T01:13:03.496Z",
+            "candidate": "Goose",
+            "sha": "5e90925962f05acf8e255032de44d16c4a7768a2"
+          },
+          "resultSha256": "4af3f4f105997acd376e30072ac5f7a57c74bd9ea630107cdf80505e1a115341",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://github.com/aaif-goose/goose/tree/main/documentation/docs/guides/recipes",
+          "startIndex": 0,
+          "result": "Source: https://api.github.com/repos/aaif-goose/goose/contents/documentation/docs/guides/recipes?ref=5e90925962f05acf8e255032de44d16c4a7768a2\nCaptured: 2026-09-08T01:13:03.336Z\nCharacters: 0-963 of 963\n\n- \"_category_.json\" (file): https://github.com/aaif-goose/goose/blob/5e90925962f05acf8e255032de44d16c4a7768a2/documentation/docs/guides/recipes/_category_.json\n- \"index.mdx\" (file): https://github.com/aaif-goose/goose/blob/5e90925962f05acf8e255032de44d16c4a7768a2/documentation/docs/guides/recipes",
+          "resultLength": 1186,
+          "source": {
+            "url": "https://api.github.com/repos/aaif-goose/goose/contents/documentation/docs/guides/recipes?ref=5e90925962f05acf8e255032de44d16c4a7768a2",
+            "capturedAt": "2026-09-08T01:13:03.336Z",
+            "candidate": "Goose",
+            "sha": "5e90925962f05acf8e255032de44d16c4a7768a2"
+          },
+          "resultSha256": "299d76109cef09ff4d0b03f2b2e3b04533b8bf3d6227b13de8181b1b19d8b662",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/README.md",
+          "startIndex": 10000,
+          "result": "Source: https://raw.githubusercontent.com/earendil-works/pi/b2602be77cb7b0de45dd616407fd210daa48aa75/packages/coding-agent/README.md\nCaptured: 2026-09-08T01:12:52.871Z\nCharacters: 10000-20000 of 33083\n\n**Escape** aborts and restores queued messages to editor\n- **Alt+Up** retrieves queued messages back to editor\n\nOn Windows Terminal, `Alt+Enter` is fullscreen by default. Remap it in [docs/terminal-setup.md](docs/terminal-setup.md) so pi can receive the follow-up shortcut.\n\nConfigure delivery in [",
+          "resultLength": 10281,
+          "source": {
+            "url": "https://raw.githubusercontent.com/earendil-works/pi/b2602be77cb7b0de45dd616407fd210daa48aa75/packages/coding-agent/README.md",
+            "capturedAt": "2026-09-08T01:12:52.871Z",
+            "candidate": "Pi",
+            "sha": "b2602be77cb7b0de45dd616407fd210daa48aa75"
+          },
+          "resultSha256": "7f68cdeb774b3b62ad95235c99656135b15360dd83a7751303410bdb82c6f6c9",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://opencode.ai/docs/server/",
+          "startIndex": 0,
+          "result": "Source: https://opencode.ai/docs/server/\nCaptured: 2026-09-08T01:13:03.349Z\nCharacters: 0-9705 of 9705\n\nServer | OpenCode Skip to content OpenCode app.header.home app.header.docs Search Ctrl K Cancel Intro Config Providers Network Enterprise Troubleshooting Windows Usage Go TUI CLI Web IDE Zen Share GitHub GitLab Configure Tools Rules Agents Models Themes Keybinds Commands Formatters Permissions Policies LSP Servers MCP servers ACP Support Agent Skills References Custom Tools Develop SDK Server ",
+          "resultLength": 9829,
+          "source": {
+            "url": "https://opencode.ai/docs/server/",
+            "capturedAt": "2026-09-08T01:13:03.349Z"
+          },
+          "resultSha256": "01aecc8eb00b60396233ee99de65df92e27fa279b62907d6bc207d5fabab247b",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://docs.openclaw.ai/concepts/architecture",
+          "startIndex": 0,
+          "result": "Source: https://docs.openclaw.ai/concepts/architecture\nCaptured: 2026-09-08T01:12:37.821Z\nCharacters: 0-7914 of 7914\n\nGateway architecture - OpenClaw OpenClaw Docs Search... K 🇺🇸 English 🇺🇸 English 🇨🇳 简体中文 🇨🇳 繁體中文 🇯🇵 日本語 🇪🇸 Español 🇧🇷 Português (BR) 🇰🇷 한국어 🇩🇪 Deutsch 🇫🇷 Français 🇮🇳 हिन्दी 🇸🇦 العربية 🇮🇹 Italiano 🇻🇳 Tiếng Việt 🇳🇱 Nederlands 🇹🇷 Türkçe 🇺🇦 Українська 🇮🇩 Bahasa Indonesia 🇵🇱 Polski 🇷🇺 Русский 🇮🇷 فارسی 🇹🇭 ไทย 🇺🇸 English ✓ 🇨🇳 简体中文 ✓ 🇨🇳 繁體中文 ✓ 🇯🇵 日本語 ✓ 🇪🇸 Español ✓ 🇧🇷 Português (BR) ✓ 🇰🇷 ",
+          "resultLength": 8138,
+          "source": {
+            "url": "https://docs.openclaw.ai/concepts/architecture",
+            "capturedAt": "2026-09-08T01:12:37.821Z"
+          },
+          "resultSha256": "573440e46dcc39f40a7fbd1aeee64a23f7bfeb4358bdbcc57fca7bde52d1d7ed",
+          "resultTruncated": true
         }
       ]
     },
@@ -328,67 +686,146 @@
       "actions": [
         {
           "type": "fetch",
-          "url": "https://raw.githubusercontent.com/ourostack/ouroboros/main/src/arc/flight-recorder.ts",
-          "result": "import * as fs from \"fs\"\nimport * as path from \"path\"\nimport { randomUUID } from \"crypto\"\nimport { capStructuredRecordString, capStructuredRecordStringLeaves } from \"../heart/session-events\"\nimport { emitNervesEvent } from \"../nerves/runtime\"\nimport {\n  listActiveReturnObligationsForRoot,\n  listReturnObligationsForRoot,\n  readVerifiedObligations,\n  readVerifiedPendingObligations,\n  type Obligation,\n  type ReturnObligation,\n} from \"./obligations\"\nimport { listActivePonderPackets, listPonderPacket",
-          "resultLength": 10044,
-          "resultSha256": "83854c302aab8b652dbf2c94f07968ad44a0157834d2e07560378fe7fb2fbba2",
+          "url": "https://github.com/openai/codex/blob/main/codex-rs/memories/README.md",
+          "startIndex": 0,
+          "result": "Source: https://raw.githubusercontent.com/openai/codex/e7637306bc9246a3e42e407cb94f96b7ed345e3e/codex-rs/memories/README.md\nCaptured: 2026-09-08T01:13:13.088Z\nCharacters: 0-7488 of 7488\n\n# Memories\n\nThis directory owns reusable memory crates and the memory pipeline documentation.\n\nRuntime orchestration for Phase 1 and Phase 2 still lives in `codex-core` under\n`codex-rs/core/src/memories/`.\n\n## Crates\n\n- `codex-rs/memories/read` (`codex-memories-read`) owns the read path:\n  memory developer-instr",
+          "resultLength": 7695,
+          "source": {
+            "url": "https://raw.githubusercontent.com/openai/codex/e7637306bc9246a3e42e407cb94f96b7ed345e3e/codex-rs/memories/README.md",
+            "capturedAt": "2026-09-08T01:13:13.088Z",
+            "candidate": "Codex CLI",
+            "sha": "e7637306bc9246a3e42e407cb94f96b7ed345e3e"
+          },
+          "resultSha256": "d7644f3abdb78def99d4b2d80399f81b5bdf2893ed4ad7cfade1ec1bf614c999",
           "resultTruncated": true
         },
         {
           "type": "fetch",
-          "url": "https://raw.githubusercontent.com/ourostack/ouroboros/main/src/arc/obligations.ts",
-          "result": "import * as path from \"path\"\nimport { getAgentRoot } from \"../heart/identity\"\nimport { capStructuredRecordString } from \"../heart/session-events\"\nimport { emitNervesEvent } from \"../nerves/runtime\"\nimport { generateTimestampId, readJsonDir, readJsonFile, writeJsonFile } from \"./json-store\"\n\nexport type ObligationStatus =\n  | \"pending\"\n  | \"investigating\"\n  | \"waiting_for_merge\"\n  | \"updating_runtime\"\n  | \"fulfilled\"\n\nexport interface ObligationSurface {\n  kind: \"session\" | \"coding\" | \"merge\" | \"",
-          "resultLength": 10044,
-          "resultSha256": "e21e014ba08fb7ad2a3c68110566a0d844b1da56a4ca6596ea1373e7482fca42",
-          "resultTruncated": true
-        },
-        {
-          "type": "fetch",
-          "url": "https://raw.githubusercontent.com/ourostack/ouroboros/main/docs/private-runtime.md",
-          "error": "404 Not Found fetching https://raw.githubusercontent.com/ourostack/ouroboros/main/docs/private-runtime.md",
-          "result": "Fetch failed: 404 Not Found fetching https://raw.githubusercontent.com/ourostack/ouroboros/main/docs/private-runtime.md",
-          "resultLength": 119,
-          "resultSha256": "1cdb64645a0e03dafaf105c32597813ef90eaa473164f91fa92b05cc14024d3c",
+          "url": "https://github.com/openai/codex/blob/main/codex-rs/README.md",
+          "startIndex": 0,
+          "result": "Source: https://raw.githubusercontent.com/openai/codex/e7637306bc9246a3e42e407cb94f96b7ed345e3e/codex-rs/README.md\nCaptured: 2026-09-08T01:12:37.316Z\nCharacters: 0-84 of 84\n\n# Codex CLI\n\n[**Codex CLI Documentation**](https://developers.openai.com/codex/cli)\n\n\n[End of document.]",
+          "resultLength": 278,
+          "source": {
+            "url": "https://raw.githubusercontent.com/openai/codex/e7637306bc9246a3e42e407cb94f96b7ed345e3e/codex-rs/README.md",
+            "capturedAt": "2026-09-08T01:12:37.316Z",
+            "candidate": "Codex CLI",
+            "sha": "e7637306bc9246a3e42e407cb94f96b7ed345e3e"
+          },
+          "resultSha256": "4e88f588638c7bac250766ef7f5932e2e3e60daab7a03222ce3f301eca43f609",
           "resultTruncated": false
         },
         {
           "type": "fetch",
-          "url": "https://opencode.ai/docs/permissions/",
-          "result": "Permissions | OpenCode Skip to content OpenCode app.header.home app.header.docs Search Ctrl K Cancel Intro Config Providers Network Enterprise Troubleshooting Windows Usage Go TUI CLI Web IDE Zen Share GitHub GitLab Configure Tools Rules Agents Models Themes Keybinds Commands Formatters Permissions Policies LSP Servers MCP servers ACP Support Agent Skills References Custom Tools Develop SDK Server Plugins Ecosystem GitHub Discord Select theme Dark Light Auto Select language English العربية Bosan",
-          "resultLength": 7809,
-          "resultSha256": "cdad5b83f1ef3120e8424cef1632ad2d66b6c90320741190519907977bb2fa6e",
+          "url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/core/index.md",
+          "startIndex": 0,
+          "result": "Source: https://raw.githubusercontent.com/google-gemini/gemini-cli/85aca163f6c73ac6ce380b5447359146b8adcae4/docs/core/index.md\nCaptured: 2026-09-08T01:13:13.221Z\nCharacters: 0-5041 of 5041\n\n# Gemini CLI core\n\nGemini CLI's core package (`packages/core`) is the backend portion of Gemini\nCLI, handling communication with the Gemini API, managing tools, and processing\nrequests sent from `packages/cli`. For a general overview of Gemini CLI, see the\n[main documentation page](../index.md).\n\n## Navigatin",
+          "resultLength": 5251,
+          "source": {
+            "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/85aca163f6c73ac6ce380b5447359146b8adcae4/docs/core/index.md",
+            "capturedAt": "2026-09-08T01:13:13.221Z",
+            "candidate": "Gemini CLI",
+            "sha": "85aca163f6c73ac6ce380b5447359146b8adcae4"
+          },
+          "resultSha256": "c58f87a0cc0f46559d4467a6ef848dbd1a65774598560af9a63bce05113b23f7",
           "resultTruncated": true
         },
         {
           "type": "fetch",
-          "url": "https://opencode.ai/docs/agents/",
-          "result": "Agents | OpenCode Skip to content OpenCode app.header.home app.header.docs Search Ctrl K Cancel Intro Config Providers Network Enterprise Troubleshooting Windows Usage Go TUI CLI Web IDE Zen Share GitHub GitLab Configure Tools Rules Agents Models Themes Keybinds Commands Formatters Permissions Policies LSP Servers MCP servers ACP Support Agent Skills References Custom Tools Develop SDK Server Plugins Ecosystem GitHub Discord Select theme Dark Light Auto Select language English العربية Bosanski D",
-          "resultLength": 10044,
-          "resultSha256": "7754650ab30891b44fbf1843e0c689b6f1e065cb062fc600899d12110cf41c77",
+          "url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/cli/checkpointing.md",
+          "startIndex": 0,
+          "result": "Source: https://raw.githubusercontent.com/google-gemini/gemini-cli/85aca163f6c73ac6ce380b5447359146b8adcae4/docs/cli/checkpointing.md\nCaptured: 2026-09-08T01:13:13.201Z\nCharacters: 0-3115 of 3115\n\n# Checkpointing\n\nGemini CLI includes a Checkpointing feature that automatically saves a snapshot\nof your project's state before any file modifications are made by AI-powered\ntools. This lets you safely experiment with and apply code changes, knowing you\ncan instantly revert back to the state before the",
+          "resultLength": 3332,
+          "source": {
+            "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/85aca163f6c73ac6ce380b5447359146b8adcae4/docs/cli/checkpointing.md",
+            "capturedAt": "2026-09-08T01:13:13.201Z",
+            "candidate": "Gemini CLI",
+            "sha": "85aca163f6c73ac6ce380b5447359146b8adcae4"
+          },
+          "resultSha256": "6f53b585fa6190bbbf363aea3c62ffc8413c3f09771b3f1ef6d5fc878b253016",
           "resultTruncated": true
         },
         {
           "type": "fetch",
-          "url": "https://code.claude.com/docs/en/sub-agents.md",
-          "result": "> ## Documentation Index\n> Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt\n> Use this file to discover all available pages before exploring further.\n\n# Create custom subagents\n\n> Create and use specialized AI subagents in Claude Code for task-specific workflows and improved context management.\n\nSubagents are specialized AI assistants that handle specific types of tasks. Use one when a side task would flood your main conversation with search results, logs, or file",
-          "resultLength": 10045,
-          "resultSha256": "69cd9feaf7ca48fbae651a1f6b11168e0cfbc9e0134799ddaa70e1e36314178d",
+          "url": "https://github.com/aaif-goose/goose/tree/main/documentation/docs/mcp",
+          "startIndex": 0,
+          "result": "Source: https://api.github.com/repos/aaif-goose/goose/contents/documentation/docs/mcp?ref=5e90925962f05acf8e255032de44d16c4a7768a2\nCaptured: 2026-09-08T01:13:13.223Z\nCharacters: 0-10000 of 11449\n\n- \"_category_.json\" (file): https://github.com/aaif-goose/goose/blob/5e90925962f05acf8e255032de44d16c4a7768a2/documentation/docs/mcp/_category_.json\n- \"_template_.mdx\" (file): https://github.com/aaif-goose/goose/blob/5e90925962f05acf8e255032de44d16c4a7768a2/documentation/docs/mcp/_template_.mdx\n- \"agent",
+          "resultLength": 10275,
+          "source": {
+            "url": "https://api.github.com/repos/aaif-goose/goose/contents/documentation/docs/mcp?ref=5e90925962f05acf8e255032de44d16c4a7768a2",
+            "capturedAt": "2026-09-08T01:13:13.223Z",
+            "candidate": "Goose",
+            "sha": "5e90925962f05acf8e255032de44d16c4a7768a2"
+          },
+          "resultSha256": "9cb756ccd412e9a8baa42230240f24c1cb815372d598ea7103608a7e9daf6c35",
           "resultTruncated": true
         },
         {
           "type": "fetch",
-          "url": "https://developers.openai.com/codex/app-server.md",
-          "result": "# Codex App Server\n\n> For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.\n\nCodex app-server is the interface Codex uses to power rich clients (for example, the Codex VS Code extension). Use it when you want a deep integration inside your own product: authentication, conversation history, approvals, and streamed agent events. The app-server implementation is open source",
-          "resultLength": 10044,
-          "resultSha256": "af2eaaf0606a9e563c6ab75441680b1bf8171ee6d940129d89cf84e237c13a4d",
+          "url": "https://github.com/aaif-goose/goose/blob/main/documentation/docs/guides/recipes/recipe-reference.md",
+          "startIndex": 0,
+          "result": "Source: https://raw.githubusercontent.com/aaif-goose/goose/5e90925962f05acf8e255032de44d16c4a7768a2/documentation/docs/guides/recipes/recipe-reference.md\nCaptured: 2026-09-08T01:13:13.360Z\nCharacters: 0-10000 of 32537\n\n---\nsidebar_position: 2\ntitle: Recipe Reference Guide\nsidebar_label: Recipe Reference\ndescription: Complete technical reference for creating and customizing recipes in goose\n---\n\nimport Tabs from '@theme/Tabs';\nimport TabItem from '@theme/TabItem';\n\nRecipes are reusable goose conf",
+          "resultLength": 10301,
+          "source": {
+            "url": "https://raw.githubusercontent.com/aaif-goose/goose/5e90925962f05acf8e255032de44d16c4a7768a2/documentation/docs/guides/recipes/recipe-reference.md",
+            "capturedAt": "2026-09-08T01:13:13.360Z",
+            "candidate": "Goose",
+            "sha": "5e90925962f05acf8e255032de44d16c4a7768a2"
+          },
+          "resultSha256": "7b60e1f779b835e2094ff8b2fc4b4a8e3a239593f64b0b7aef9129b37d8310ae",
           "resultTruncated": true
         },
         {
           "type": "fetch",
-          "url": "https://github.com/badlogic/pi-mono/blob/main/packages/coding-agent/docs/sessions.md",
-          "result": "# Sessions\n\nPi saves conversations as sessions so you can continue work, branch from earlier turns, and revisit previous paths.\n\n## Session Storage\n\nSessions auto-save to `~/.pi/agent/sessions/`, organized by working directory. Each session is a JSONL file with a tree structure.\n\n```bash\npi -c                  # Continue most recent session\npi -r                  # Browse and select from past sessions\npi --no-session        # Ephemeral mode; do not save\npi --name \"my task\"    # Set session displ",
-          "resultLength": 5278,
-          "resultSha256": "b4ed96521936b5b4ba464496d096bd6c345803f3fa63b5a647674af068cd83b2",
+          "url": "https://docs.github.com/copilot/concepts/agents/about-copilot-cli",
+          "startIndex": 20000,
+          "result": "Source: https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-copilot-cli\nCaptured: 2026-09-08T01:12:34.361Z\nCharacters: 20000-30000 of 34662\n\nin and create a GitHub Actions workflow that will run on pull requests, or can be run manually. The workflow should run eslint to check for problems in the changes made in the PR. If warnings or errors are found these should be shown as messages in the diff view of the PR. I want to prevent code with errors from being merged into main so, i",
+          "resultLength": 10237,
+          "source": {
+            "url": "https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-copilot-cli",
+            "capturedAt": "2026-09-08T01:12:34.361Z"
+          },
+          "resultSha256": "d9d4cc2e83fe57be7e8ca618dadcdc08ac8b3ebe61780e26c49d054393b76f27",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://github.com/ourostack/ouroboros/blob/main/src/senses/private-runtime.ts",
+          "startIndex": 0,
+          "result": "Source: https://raw.githubusercontent.com/ourostack/ouroboros/406fa8c4c7242577a445b439ddc6344ef470462a/src/senses/private-runtime.ts\nCaptured: 2026-09-08T01:13:13.451Z\nCharacters: 0-10000 of 68998\n\nimport type OpenAI from \"openai\"\nimport * as fs from \"fs\"\nimport * as path from \"path\"\nimport { sessionPath } from \"../heart/config\"\nimport { runAgent, type ChannelCallbacks, type CompletionMetadata, type RunAgentOutcome } from \"../heart/core\"\nimport { getAgentName, getAgentRoot, type AgentProvider } ",
+          "resultLength": 10277,
+          "source": {
+            "url": "https://raw.githubusercontent.com/ourostack/ouroboros/406fa8c4c7242577a445b439ddc6344ef470462a/src/senses/private-runtime.ts",
+            "capturedAt": "2026-09-08T01:13:13.451Z",
+            "candidate": "Ouroboros",
+            "sha": "406fa8c4c7242577a445b439ddc6344ef470462a"
+          },
+          "resultSha256": "4d9d7dc6b8db40740ae671bfe60dd72729468d911d75b4c52281d4623af346de",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://docs.letta.com/letta-code/scheduling",
+          "startIndex": 0,
+          "result": "Source: https://docs.letta.com/configuration/schedules\nCaptured: 2026-09-08T01:13:13.160Z\nCharacters: 0-5886 of 5886\n\nSchedules | Letta Docs here implicitly closes , which strands every stylesheet emitted after it in and keeps targeted client-side swaps from loading page-specific component styles. --> Skip to content Letta Docs Docs Agent SDK Handbook Docs Docs Docs Agent SDK Agent SDK Handbook Handbook Search the docs Ctrl K Cancel Discord Docs Agent SDK Handbook Get started Overview Quickstart",
+          "resultLength": 6024,
+          "source": {
+            "url": "https://docs.letta.com/configuration/schedules",
+            "capturedAt": "2026-09-08T01:13:13.160Z"
+          },
+          "resultSha256": "db50daa1fd82dc95e60d6f53758e6fa8f5c02e94ab23b1b25db51f57da267e6c",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://docs.letta.com/letta-code/permissions",
+          "startIndex": 0,
+          "result": "Source: https://docs.letta.com/configuration/permissions\nCaptured: 2026-09-08T01:13:13.161Z\nCharacters: 0-5070 of 5070\n\nPermissions | Letta Docs here implicitly closes , which strands every stylesheet emitted after it in and keeps targeted client-side swaps from loading page-specific component styles. --> Skip to content Letta Docs Docs Agent SDK Handbook Docs Docs Docs Agent SDK Agent SDK Handbook Handbook Search the docs Ctrl K Cancel Discord Docs Agent SDK Handbook Get started Overview Quicks",
+          "resultLength": 5210,
+          "source": {
+            "url": "https://docs.letta.com/configuration/permissions",
+            "capturedAt": "2026-09-08T01:13:13.161Z"
+          },
+          "resultSha256": "322dc081d5e12bfd536364706e8ea6dde03c6f7768525497792efe0ff38bc980",
           "resultTruncated": true
         }
       ]
@@ -399,69 +836,132 @@
       "actions": [
         {
           "type": "search",
-          "query": "site:github.com/ourostack/ouroboros \"private\" \"policy\"",
-          "result": "I couldn’t find any search results for `site:github.com/ourostack/ouroboros \"private\" \"policy\"`.\n\nIf you want, I can help you refine the search. For example:\n- search the repository name without the `site:` operator\n- try related terms like **access control**, **authorization**, **privacy policy**, or **private policy**\n- search GitHub’s code or issues separately if you’re looking for a specific file or mention",
-          "resultLength": 414,
-          "resultSha256": "e04330fe65b4bc215100392ecfa41104a7723b1c5274233cb306517dfea9a9db",
-          "resultTruncated": false
-        },
-        {
-          "type": "fetch",
-          "url": "https://github.com/ourostack/ouroboros/tree/main/src/heart",
-          "error": "404 Not Found fetching https://raw.githubusercontent.com/ourostack/ouroboros/main/src/heart/README.md",
-          "result": "Fetch failed: 404 Not Found fetching https://raw.githubusercontent.com/ourostack/ouroboros/main/src/heart/README.md",
-          "resultLength": 115,
-          "resultSha256": "cd88d4f1d1ef172fedf6d2a2e50734556ca344c2aa1aa111d3c370851f547a07",
-          "resultTruncated": false
-        },
-        {
-          "type": "fetch",
-          "url": "https://raw.githubusercontent.com/ourostack/ouroboros/main/src/mind/bundle-manifest.ts",
-          "result": "import * as fs from \"fs\"\nimport * as path from \"path\"\nimport { emitNervesEvent } from \"../nerves/runtime\"\n\nexport interface BundleManifestEntry {\n  path: string\n  kind: \"file\" | \"dir\"\n}\n\nexport interface BundleMeta {\n  runtimeVersion: string\n  bundleSchemaVersion: number\n  lastUpdated: string\n  previousRuntimeVersion?: string\n}\n\nexport const CANONICAL_BUNDLE_MANIFEST: readonly BundleManifestEntry[] = [\n  { path: \"agent.json\", kind: \"file\" },\n  { path: \"bundle-meta.json\", kind: \"file\" },\n  { path",
-          "resultLength": 6413,
-          "resultSha256": "25defcc5911ba134080e80a2386b91ff25f900a2492de4afd6a195212727eb58",
+          "query": "site.github.com/ourostack/ouroboros \"context-loss-sentinel\"",
+          "result": "I found **multiple GitHub projects named “Ouroboros”**, but the one most likely matching your query is **`razzant/ouroboros`**, whose GitHub page describes it as an open-source, self-creating AI agent with durable memory and autonomous evolution across code, prompts, tools, and dependencies[5][6].\n\nI do **not** see a search result that explicitly contains the string **`context-loss-sentinel`** in `site.github.com/ourostack/ouroboros` from the results provided. The closest relevant matches are th",
+          "resultLength": 956,
+          "resultSha256": "281b8c9243c49440db7c57057fb67862a717677479baaf8b5bf7409035b9ae4e",
           "resultTruncated": true
         },
         {
           "type": "fetch",
-          "url": "https://docs.openclaw.ai/concepts/agent-loop.md",
-          "result": "---\nsummary: \"Agent loop lifecycle, streams, and wait semantics\"\nread_when:\n  - You need an exact walkthrough of the agent loop or lifecycle events\n  - You are changing session queueing, writer claims, or transcript write fencing\ntitle: \"Agent loop\"\n---\n\nThe agent loop is the serialized, per-session run that turns a message into\nactions and a reply: intake, context assembly, model inference, tool\nexecution, streaming, persistence.\n\n## Entry points\n\n- Gateway RPC: `agent` and `agent.wait`.\n- CLI:",
-          "resultLength": 10044,
-          "resultSha256": "ead85993149acae56932a4e4c73c2888020c8112311f1862ae6fbd6ade53fd48",
+          "url": "https://github.com/ourostack/ouroboros/blob/main/docs/agent-orientation-substrate.md",
+          "startIndex": 10000,
+          "result": "Source: https://raw.githubusercontent.com/ourostack/ouroboros/406fa8c4c7242577a445b439ddc6344ef470462a/docs/agent-orientation-substrate.md\nCaptured: 2026-09-08T01:12:40.421Z\nCharacters: 10000-16007 of 16007\n\neded for debugging\n```\n\nHabit definitions stay in top-level `habits/` because they are schedule inputs,\nnot work records.\n\nEvery habit run writes an audit receipt in Arc:\n\n```ts\ninterface HabitRunReceipt {\n  schemaVersion: 2\n  runId: string\n  sessionId: string\n  habitName: string\n  trigger: ",
+          "resultLength": 6235,
+          "source": {
+            "url": "https://raw.githubusercontent.com/ourostack/ouroboros/406fa8c4c7242577a445b439ddc6344ef470462a/docs/agent-orientation-substrate.md",
+            "capturedAt": "2026-09-08T01:12:40.421Z",
+            "candidate": "Ouroboros",
+            "sha": "406fa8c4c7242577a445b439ddc6344ef470462a"
+          },
+          "resultSha256": "168b80d41b0fbb5ca07758fd30b9c53e2320f66b02996c00268f52e92e3b20f3",
           "resultTruncated": true
         },
         {
           "type": "fetch",
-          "url": "https://docs.openclaw.ai/gateway/sandboxing.md",
-          "result": "---\nsummary: \"How OpenClaw sandboxing works: modes, scopes, workspace access, and images\"\ntitle: \"Sandboxing\"\nsidebarTitle: \"Sandboxing\"\nread_when: \"You want a dedicated explanation of sandboxing or need to tune agents.defaults.sandbox.\"\nstatus: active\n---\n\nOpenClaw can run tool execution inside a sandbox backend to reduce blast radius. Sandboxing is off by default and controlled by `agents.defaults.sandbox` (global), `agents.entries.*.sandbox` (per-agent), or a required creator-role sandbox pol",
-          "resultLength": 10044,
-          "resultSha256": "57c585773f4bdfb833db7df857227316a6be12d3ffca11cf0540d11d73f39900",
+          "url": "https://github.com/ourostack/ouroboros/tree/main/src/heart/private-runtime",
+          "startIndex": 0,
+          "result": "Source: https://api.github.com/repos/ourostack/ouroboros/contents/src/heart/private-runtime?ref=406fa8c4c7242577a445b439ddc6344ef470462a\nCaptured: 2026-09-08T01:13:22.523Z\nCharacters: 0-732 of 732\n\n- \"decision-renderer.ts\" (file): https://github.com/ourostack/ouroboros/blob/406fa8c4c7242577a445b439ddc6344ef470462a/src/heart/private-runtime/decision-renderer.ts\n- \"index.ts\" (file): https://github.com/ourostack/ouroboros/blob/406fa8c4c7242577a445b439ddc6344ef470462a/src/heart/private-runtime/index",
+          "resultLength": 950,
+          "source": {
+            "url": "https://api.github.com/repos/ourostack/ouroboros/contents/src/heart/private-runtime?ref=406fa8c4c7242577a445b439ddc6344ef470462a",
+            "capturedAt": "2026-09-08T01:13:22.523Z",
+            "candidate": "Ouroboros",
+            "sha": "406fa8c4c7242577a445b439ddc6344ef470462a"
+          },
+          "resultSha256": "33051964f73a847cafb28e26e95c5d51a067cdac3190570bde19eaab5069a47d",
           "resultTruncated": true
         },
         {
           "type": "fetch",
-          "url": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/rollout/mod.rs",
-          "error": "404 Not Found fetching https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/rollout/mod.rs",
-          "result": "Fetch failed: 404 Not Found fetching https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/rollout/mod.rs",
-          "resultLength": 121,
-          "resultSha256": "9d1fb7a192bcc054a16dd924c550eacd4e98b52ad4a70e2f334e53c2b7c04045",
+          "url": "https://github.com/aaif-goose/goose/blob/main/documentation/docs/mcp/memory-mcp.md",
+          "startIndex": 0,
+          "result": "Source: https://raw.githubusercontent.com/aaif-goose/goose/5e90925962f05acf8e255032de44d16c4a7768a2/documentation/docs/mcp/memory-mcp.md\nCaptured: 2026-09-08T01:13:22.601Z\nCharacters: 0-7264 of 7264\n\n---\ntitle: Memory Extension\ndescription: Use Memory MCP Server as a goose Extension\n---\n\nimport Tabs from '@theme/Tabs';\nimport TabItem from '@theme/TabItem';\nimport YouTubeShortEmbed from '@site/src/components/YouTubeShortEmbed';\nimport GooseBuiltinInstaller from '@site/src/components/GooseBuiltinI",
+          "resultLength": 7484,
+          "source": {
+            "url": "https://raw.githubusercontent.com/aaif-goose/goose/5e90925962f05acf8e255032de44d16c4a7768a2/documentation/docs/mcp/memory-mcp.md",
+            "capturedAt": "2026-09-08T01:13:22.601Z",
+            "candidate": "Goose",
+            "sha": "5e90925962f05acf8e255032de44d16c4a7768a2"
+          },
+          "resultSha256": "ef927455092c4e3be46fec69bd9b56e4b4ef7835a5a84292d96fb1d0e062c7df",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://github.com/aaif-goose/goose/tree/main/documentation/docs/guides/sessions",
+          "startIndex": 0,
+          "result": "Source: https://api.github.com/repos/aaif-goose/goose/contents/documentation/docs/guides/sessions?ref=5e90925962f05acf8e255032de44d16c4a7768a2\nCaptured: 2026-09-08T01:13:22.698Z\nCharacters: 0-838 of 838\n\n- \"_category_.json\" (file): https://github.com/aaif-goose/goose/blob/5e90925962f05acf8e255032de44d16c4a7768a2/documentation/docs/guides/sessions/_category_.json\n- \"in-session-actions.md\" (file): https://github.com/aaif-goose/goose/blob/5e90925962f05acf8e255032de44d16c4a7768a2/documentation/docs/",
+          "resultLength": 1062,
+          "source": {
+            "url": "https://api.github.com/repos/aaif-goose/goose/contents/documentation/docs/guides/sessions?ref=5e90925962f05acf8e255032de44d16c4a7768a2",
+            "capturedAt": "2026-09-08T01:13:22.698Z",
+            "candidate": "Goose",
+            "sha": "5e90925962f05acf8e255032de44d16c4a7768a2"
+          },
+          "resultSha256": "d872aa7b793e658201cfe21bea01b49ea53bd27bf66ee2403debe4c4a00ccbd6",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://hermes-agent.nousresearch.com/docs/user-guide/features/skills",
+          "startIndex": 0,
+          "result": "Source: https://hermes-agent.nousresearch.com/docs/user-guide/features/skills\nCaptured: 2026-09-08T01:12:42.158Z\nCharacters: 0-10000 of 49351\n\nSkills System | Hermes Agent Skip to main content Hermes Agent Docs Skills Download English English 简体中文 Home GitHub Discord Search User Stories & Use Cases Getting Started Using Hermes Features Overview Tool Gateway Core Tools & Toolsets Document Extraction Tool Search Skills System LSP — Semantic Diagnostics Curator Persistent Memory Memory Providers Ho",
+          "resultLength": 10222,
+          "source": {
+            "url": "https://hermes-agent.nousresearch.com/docs/user-guide/features/skills",
+            "capturedAt": "2026-09-08T01:12:42.158Z"
+          },
+          "resultSha256": "fda4ddb1125ee80a6a8d26522376b77b73c249971b0cae0490256e0fa836e248",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://hermes-agent.nousresearch.com/docs/security",
+          "startIndex": 0,
+          "error": "404 Not Found fetching https://hermes-agent.nousresearch.com/docs/security",
+          "result": "Fetch failed: 404 Not Found fetching https://hermes-agent.nousresearch.com/docs/security",
+          "resultLength": 88,
+          "resultSha256": "5f0ce830ee01000a3f70dece34c4ef747eb60007c3cc88bfcc4c13815ac92011",
           "resultTruncated": false
         },
         {
           "type": "fetch",
-          "url": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/memories/mod.rs",
-          "error": "404 Not Found fetching https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/memories/mod.rs",
-          "result": "Fetch failed: 404 Not Found fetching https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/memories/mod.rs",
-          "resultLength": 122,
-          "resultSha256": "ab7f861c40081433728c4ca360d281b3bf0e394bc03c06c42c3ad8d7afcde8f0",
-          "resultTruncated": false
+          "url": "https://opencode.ai/docs/permissions/",
+          "startIndex": 0,
+          "result": "Source: https://opencode.ai/docs/permissions/\nCaptured: 2026-09-08T01:13:23.735Z\nCharacters: 0-7809 of 7809\n\nPermissions | OpenCode Skip to content OpenCode app.header.home app.header.docs Search Ctrl K Cancel Intro Config Providers Network Enterprise Troubleshooting Windows Usage Go TUI CLI Web IDE Zen Share GitHub GitLab Configure Tools Rules Agents Models Themes Keybinds Commands Formatters Permissions Policies LSP Servers MCP servers ACP Support Agent Skills References Custom Tools Develop S",
+          "resultLength": 7938,
+          "source": {
+            "url": "https://opencode.ai/docs/permissions/",
+            "capturedAt": "2026-09-08T01:13:23.735Z"
+          },
+          "resultSha256": "103e878beecf69a9241e2a66b961826d78f84f3f9b146db66181d52dddfc45fd",
+          "resultTruncated": true
         },
         {
           "type": "fetch",
-          "url": "https://raw.githubusercontent.com/github/docs/main/content/copilot/concepts/agents/copilot-cli/fleet.md",
-          "result": "---\ntitle: Running tasks in parallel with the `/fleet` command\nshortTitle: Parallel task execution\nallowTitleToDifferFromFilename: true\nintro: 'The `/fleet` slash command lets {% data variables.copilot.copilot_cli_short %} break down a complex request into smaller tasks and run them in parallel, maximizing efficiency and throughput.'\nversions:\n  feature: copilot\ncontentType: concepts\ncategory:\n  - Learn about Copilot # Copilot discovery page\n  - Learn about Copilot CLI # Copilot CLI bespoke page",
-          "resultLength": 6679,
-          "resultSha256": "ce77baba88639f41563fc05d160d518b6a6a6679f8ce357e073dfca388e48d22",
+          "url": "https://code.claude.com/docs/en/scheduled-tasks",
+          "startIndex": 0,
+          "result": "Source: https://code.claude.com/docs/en/scheduled-tasks\nCaptured: 2026-09-08T01:13:23.806Z\nCharacters: 0-10000 of 14904\n\nRun prompts on a schedule - Claude Code Docs Documentation Index Fetch the complete documentation index at: /docs/llms.txt Use this file to discover all available pages before exploring further. Skip to main content Claude Code Docs home page English Search... ⌘ K Ask Assistant ⌘ I Claude Developer Platform Claude Code on the Web Claude Code on the Web Search... Navigation Aut",
+          "resultLength": 10200,
+          "source": {
+            "url": "https://code.claude.com/docs/en/scheduled-tasks",
+            "capturedAt": "2026-09-08T01:13:23.806Z"
+          },
+          "resultSha256": "767a578f19dc6c1eea6bb1e7346138bf00a9a056e784a364e50c48d8758a272f",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://docs.github.com/en/copilot/concepts/agents/copilot-memory",
+          "startIndex": 0,
+          "result": "Source: https://docs.github.com/en/copilot/concepts/agents/copilot-memory\nCaptured: 2026-09-08T01:13:25.730Z\nCharacters: 0-10000 of 18876\n\nAbout GitHub Copilot Memory - GitHub Docs Skip to main content GitHub Docs Version: Free, Pro, & Team Search or ask Copilot Search or ask Copilot Select language: current language is English Search or ask Copilot Search or ask Copilot Open menu Collapse sidebar Expand sidebar Scroll breadcrumbs left Home GitHub Copilot Concepts Agents Copilot Memory Scroll br",
+          "resultLength": 10218,
+          "source": {
+            "url": "https://docs.github.com/en/copilot/concepts/agents/copilot-memory",
+            "capturedAt": "2026-09-08T01:13:25.730Z"
+          },
+          "resultSha256": "cb0260e3d1595db4f7e68dc2096fba1c6fbf6add86afaf9335c71c3cef965af2",
           "resultTruncated": true
         }
       ]
@@ -472,59 +972,116 @@
       "actions": [
         {
           "type": "fetch",
-          "url": "https://raw.githubusercontent.com/ourostack/ouroboros/main/src/heart/context-loss-sentinel.ts",
-          "result": "import * as fs from \"fs\"\nimport * as path from \"path\"\nimport { execFileSync } from \"child_process\"\nimport { randomUUID } from \"crypto\"\nimport {\n  isFlightRecorderResume,\n  readFlightRecorderResume,\n  recordFlightRecorderEvent,\n  type FlightRecorderEvent,\n  type FlightRecorderResume,\n} from \"../arc/flight-recorder\"\nimport { emitNervesEvent } from \"../nerves/runtime\"\nimport { runContextLossGauntlet, type ContextLossGauntletReport } from \"./context-loss-gauntlet\"\nimport type { DaemonHealthResult } ",
-          "resultLength": 10044,
-          "resultSha256": "e385bb6fab477503f147150183b531dcbaf61193bd95a730b64a87d9bbd892d5",
-          "resultTruncated": true
-        },
-        {
-          "type": "fetch",
-          "url": "https://raw.githubusercontent.com/ourostack/ouroboros/main/src/senses/private-runtime.ts",
-          "result": "import type OpenAI from \"openai\"\nimport * as fs from \"fs\"\nimport * as path from \"path\"\nimport { sessionPath } from \"../heart/config\"\nimport { runAgent, type ChannelCallbacks, type CompletionMetadata, type RunAgentOutcome } from \"../heart/core\"\nimport { getAgentName, getAgentRoot, type AgentProvider } from \"../heart/identity\"\nimport { loadSession, postTurnTrim, deferPostTurnPersist, type UsageData } from \"../mind/context\"\nimport { buildSystem, flattenSystemPrompt } from \"../mind/prompt\"\nimport { ",
-          "resultLength": 10044,
-          "resultSha256": "bfc0ecaf7bceed7d0a550735e8c8543a463face39a886797ae86d380f4d4835f",
-          "resultTruncated": true
-        },
-        {
-          "type": "fetch",
-          "url": "https://raw.githubusercontent.com/ourostack/ouroboros/main/src/heart/habits/runner.ts",
-          "error": "404 Not Found fetching https://raw.githubusercontent.com/ourostack/ouroboros/main/src/heart/habits/runner.ts",
-          "result": "Fetch failed: 404 Not Found fetching https://raw.githubusercontent.com/ourostack/ouroboros/main/src/heart/habits/runner.ts",
-          "resultLength": 122,
-          "resultSha256": "c4602bdcda4ee69c3817b4331ee7705fcb746215499c598adc1f9270d68fbfc8",
+          "url": "https://github.com/ourostack/ouroboros/blob/main/src/mind/context-loss-sentinel.ts",
+          "startIndex": 0,
+          "error": "404 Not Found fetching https://raw.githubusercontent.com/ourostack/ouroboros/406fa8c4c7242577a445b439ddc6344ef470462a/src/mind/context-loss-sentinel.ts",
+          "result": "Fetch failed: 404 Not Found fetching https://raw.githubusercontent.com/ourostack/ouroboros/406fa8c4c7242577a445b439ddc6344ef470462a/src/mind/context-loss-sentinel.ts",
+          "resultLength": 165,
+          "resultSha256": "de16437a2dfbf4888de8acde15985b07cb4867b0709ac7eac17e7723fd845310",
           "resultTruncated": false
         },
         {
           "type": "fetch",
-          "url": "https://github.com/openai/codex/blob/main/codex-rs/README.md",
-          "result": "# Codex CLI\n\n[**Codex CLI Documentation**](https://developers.openai.com/codex/cli)\n",
-          "resultLength": 84,
-          "resultSha256": "5b059ff5ce6c2252ddaeb52d466ef41f331e0e3abcad6f7ce204314b92be9294",
+          "url": "https://github.com/ourostack/ouroboros/blob/main/src/heart/private-runtime/policy.ts",
+          "startIndex": 0,
+          "result": "Source: https://raw.githubusercontent.com/ourostack/ouroboros/406fa8c4c7242577a445b439ddc6344ef470462a/src/heart/private-runtime/policy.ts\nCaptured: 2026-09-08T01:13:42.967Z\nCharacters: 0-9497 of 9497\n\nimport * as crypto from \"node:crypto\"\nimport { getAgentBundlesRoot } from \"../identity\"\nimport { readAgentConfigForAgent } from \"../auth/auth-flow\"\nimport { emitNervesEvent } from \"../../nerves/runtime\"\nimport type { ProviderLane } from \"../provider-lanes\"\nimport { readCachedProviderCredentialReco",
+          "resultLength": 9719,
+          "source": {
+            "url": "https://raw.githubusercontent.com/ourostack/ouroboros/406fa8c4c7242577a445b439ddc6344ef470462a/src/heart/private-runtime/policy.ts",
+            "capturedAt": "2026-09-08T01:13:42.967Z",
+            "candidate": "Ouroboros",
+            "sha": "406fa8c4c7242577a445b439ddc6344ef470462a"
+          },
+          "resultSha256": "3ed17747f3264729bd362d87147fff1a0b0448046c1ff5addd4765886c3cf2a5",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://github.com/ourostack/ouroboros/blob/main/src/__tests__/mind/context-loss-sentinel.test.ts",
+          "startIndex": 0,
+          "error": "404 Not Found fetching https://raw.githubusercontent.com/ourostack/ouroboros/406fa8c4c7242577a445b439ddc6344ef470462a/src/__tests__/mind/context-loss-sentinel.test.ts",
+          "result": "Fetch failed: 404 Not Found fetching https://raw.githubusercontent.com/ourostack/ouroboros/406fa8c4c7242577a445b439ddc6344ef470462a/src/__tests__/mind/context-loss-sentinel.test.ts",
+          "resultLength": 180,
+          "resultSha256": "78e29845d4bfe0cd8a4c5fbb6dd25788314bbee82c749e4e559d6e7eec29a5d3",
           "resultTruncated": false
         },
         {
           "type": "fetch",
-          "url": "https://developers.openai.com/codex/cli/features.md",
-          "result": "# Codex CLI\n\n> For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.\n\n## Inspect, edit, and run code from your terminal\n\nInspect code, make changes, run commands, and automate repeatable work without leaving your terminal.\n\n### Start here\n\n- [Install Codex](#getting-started)\n- [CLI reference](https://learn.chatgpt.com/docs/developer-commands?surface=cli)\n\n### Why use Cod",
-          "resultLength": 6650,
-          "resultSha256": "4592869a38de248eef8c623816032bc34787c7797fcf7a64e41d860da83d1a5e",
+          "url": "https://docs.github.com/en/copilot/concepts/agents/copilot-memory",
+          "startIndex": 10000,
+          "result": "Source: https://docs.github.com/en/copilot/concepts/agents/copilot-memory\nCaptured: 2026-09-08T01:13:25.730Z\nCharacters: 10000-18876 of 18876\n\nbilities Customization library All customizations Custom instructions Your first custom instructions Concept explainer Debugging tutor Code reviewer GitHub Actions helper Pull request assistant Issue manager Accessibility auditor Testing automation Prompt files Your first prompt file Create README Onboarding plan Document API Review code Generate unit tes",
+          "resultLength": 9039,
+          "source": {
+            "url": "https://docs.github.com/en/copilot/concepts/agents/copilot-memory",
+            "capturedAt": "2026-09-08T01:13:25.730Z"
+          },
+          "resultSha256": "e0b0a359dc2f869153429c8331860fd28f7b9f24e80facbb1a8fedaf86aca5c0",
           "resultTruncated": true
         },
         {
           "type": "fetch",
-          "url": "https://github.com/badlogic/pi-mono/blob/main/packages/coding-agent/docs/compaction.md",
-          "result": "# Compaction & Branch Summarization\n\nLLMs have limited context windows. When conversations grow too long, Pi uses compaction to summarize older content while preserving recent work. This page covers both auto-compaction and branch summarization.\n\n**Source files** ([pi](https://github.com/earendil-works/pi)):\n- [`packages/coding-agent/src/core/compaction/compaction.ts`](https://github.com/earendil-works/pi/blob/main/packages/coding-agent/src/core/compaction/compaction.ts) - Auto-compaction logic\n",
-          "resultLength": 10044,
-          "resultSha256": "7cbfe4d2a54cd5a0686f1fea9b9100fa1f5232bd4bda1b7eefa75834784294c2",
+          "url": "https://github.com/aaif-goose/goose/blob/main/documentation/docs/guides/sessions/smart-context-management.md",
+          "startIndex": 0,
+          "result": "Source: https://raw.githubusercontent.com/aaif-goose/goose/5e90925962f05acf8e255032de44d16c4a7768a2/documentation/docs/guides/sessions/smart-context-management.md\nCaptured: 2026-09-08T01:13:43.913Z\nCharacters: 0-10000 of 17384\n\n---\ntitle: Smart Context Management\nsidebar_position: 3\nsidebar_label: Smart Context Management\n---\n\nimport Tabs from '@theme/Tabs';\nimport TabItem from '@theme/TabItem';\nimport { ScrollText } from 'lucide-react';\nimport { PanelLeft } from 'lucide-react';\n\nWhen working wi",
+          "resultLength": 10307,
+          "source": {
+            "url": "https://raw.githubusercontent.com/aaif-goose/goose/5e90925962f05acf8e255032de44d16c4a7768a2/documentation/docs/guides/sessions/smart-context-management.md",
+            "capturedAt": "2026-09-08T01:13:43.913Z",
+            "candidate": "Goose",
+            "sha": "5e90925962f05acf8e255032de44d16c4a7768a2"
+          },
+          "resultSha256": "c148a2949fc50b000df05375becaeedc4a093d9bd24d8d9475a0cc0b9f922ec2",
           "resultTruncated": true
         },
         {
           "type": "fetch",
-          "url": "https://code.claude.com/docs/en/sandboxing.md",
-          "result": "> ## Documentation Index\n> Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt\n> Use this file to discover all available pages before exploring further.\n\n# Configure the sandboxed Bash tool\n\n> Learn how Claude Code's sandboxed Bash tool provides filesystem and network isolation for safer, more autonomous agent execution.\n\nThe Bash sandbox lets Claude run most shell commands without stopping to ask permission. Instead of approving each command, you define which files ",
-          "resultLength": 10044,
-          "resultSha256": "8640d916fce6811f8ccd339f39677acbd75113631d9501dcd2e71aefc63e8e73",
+          "url": "https://hermes-agent.nousresearch.com/docs/user-guide/security",
+          "startIndex": 0,
+          "result": "Source: https://hermes-agent.nousresearch.com/docs/user-guide/security\nCaptured: 2026-09-08T01:13:42.958Z\nCharacters: 0-10000 of 46391\n\nSecurity | Hermes Agent Skip to main content Hermes Agent Docs Skills Download English English 简体中文 Home GitHub Discord Search User Stories & Use Cases Getting Started Using Hermes CLI Interface TUI Hermes Desktop Bot Mode Windows (Native) Windows (WSL2) Hermes Agent Configuration Managed Scope Configuring Models Secrets Egress proxy Sessions Profiles: Running M",
+          "resultLength": 10215,
+          "source": {
+            "url": "https://hermes-agent.nousresearch.com/docs/user-guide/security",
+            "capturedAt": "2026-09-08T01:13:42.958Z"
+          },
+          "resultSha256": "bc4dc1b08652be8427f2991f4db97f708f7de2d1140e111cf9c2b520f629cf1f",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://docs.openclaw.ai/gateway/sandboxing",
+          "startIndex": 0,
+          "result": "Source: https://docs.openclaw.ai/gateway/sandboxing\nCaptured: 2026-09-08T01:13:43.640Z\nCharacters: 0-10000 of 40381\n\nSandboxing - OpenClaw OpenClaw Docs Search... K 🇺🇸 English 🇺🇸 English 🇨🇳 简体中文 🇨🇳 繁體中文 🇯🇵 日本語 🇪🇸 Español 🇧🇷 Português (BR) 🇰🇷 한국어 🇩🇪 Deutsch 🇫🇷 Français 🇮🇳 हिन्दी 🇸🇦 العربية 🇮🇹 Italiano 🇻🇳 Tiếng Việt 🇳🇱 Nederlands 🇹🇷 Türkçe 🇺🇦 Українська 🇮🇩 Bahasa Indonesia 🇵🇱 Polski 🇷🇺 Русский 🇮🇷 فارسی 🇹🇭 ไทย 🇺🇸 English ✓ 🇨🇳 简体中文 ✓ 🇨🇳 繁體中文 ✓ 🇯🇵 日本語 ✓ 🇪🇸 Español ✓ 🇧🇷 Português (BR) ✓ 🇰🇷 한국어 ✓ 🇩🇪 De",
+          "resultLength": 10282,
+          "source": {
+            "url": "https://docs.openclaw.ai/gateway/sandboxing",
+            "capturedAt": "2026-09-08T01:13:43.640Z"
+          },
+          "resultSha256": "e13f6172a8545446c2b395058b155470403f4f6b08de4bfda7dd3d8f6fda45ce",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://github.com/letta-ai/letta-code/tree/main/src",
+          "startIndex": 0,
+          "error": "403 rate limit exceeded fetching https://api.github.com/repos/letta-ai/letta-code/contents/src?ref=2f0fb7c12c6973be7d52d9c7d3bf0bf4d9120cb8",
+          "result": "Fetch failed: 403 rate limit exceeded fetching https://api.github.com/repos/letta-ai/letta-code/contents/src?ref=2f0fb7c12c6973be7d52d9c7d3bf0bf4d9120cb8",
+          "resultLength": 153,
+          "resultSha256": "6c2f30faa8eb2a610b365c6753c9948d661417e0209d29e1beeb13249e630b6d",
+          "resultTruncated": false
+        },
+        {
+          "type": "fetch",
+          "url": "https://github.com/openai/codex/tree/main/codex-rs/core/src",
+          "startIndex": 0,
+          "result": "Source: https://api.github.com/repos/openai/codex/contents/codex-rs/core/src?ref=e7637306bc9246a3e42e407cb94f96b7ed345e3e\nCaptured: 2026-09-08T01:12:52.156Z\nCharacters: 0-10000 of 19901\n\n- \"agent\" (dir): https://github.com/openai/codex/tree/e7637306bc9246a3e42e407cb94f96b7ed345e3e/codex-rs/core/src/agent\n- \"agent_communication.rs\" (file): https://github.com/openai/codex/blob/e7637306bc9246a3e42e407cb94f96b7ed345e3e/codex-rs/core/src/agent_communication.rs\n- \"agents_md.rs\" (file): https://github.",
+          "resultLength": 10266,
+          "source": {
+            "url": "https://api.github.com/repos/openai/codex/contents/codex-rs/core/src?ref=e7637306bc9246a3e42e407cb94f96b7ed345e3e",
+            "capturedAt": "2026-09-08T01:12:52.156Z",
+            "candidate": "Codex CLI",
+            "sha": "e7637306bc9246a3e42e407cb94f96b7ed345e3e"
+          },
+          "resultSha256": "dd3b6f5c130e7a3c19ce3e65963f4315454979f0495204c6421a9e95eee37e31",
           "resultTruncated": true
         }
       ]
@@ -535,52 +1092,118 @@
       "actions": [
         {
           "type": "fetch",
-          "url": "https://raw.githubusercontent.com/ourostack/ouroboros/main/src/heart/private-runtime.ts",
-          "error": "404 Not Found fetching https://raw.githubusercontent.com/ourostack/ouroboros/main/src/heart/private-runtime.ts",
-          "result": "Fetch failed: 404 Not Found fetching https://raw.githubusercontent.com/ourostack/ouroboros/main/src/heart/private-runtime.ts",
-          "resultLength": 124,
-          "resultSha256": "934ead48e2ea276c8f767635f89ab63dc6a9b1589b75d2b34a82ec04991d689e",
-          "resultTruncated": false
-        },
-        {
-          "type": "fetch",
-          "url": "https://raw.githubusercontent.com/ourostack/ouroboros/main/src/__tests__/heart/context-loss-sentinel.test.ts",
-          "result": "import * as fs from \"fs\"\nimport * as os from \"os\"\nimport * as path from \"path\"\nimport { execFileSync, spawn } from \"child_process\"\nimport { afterEach, describe, expect, it, vi } from \"vitest\"\n\nimport {\n  readFlightRecorderResume,\n  recordFlightRecorderEvent,\n  writeFlightRecorderResume,\n  type FlightRecorderResume,\n} from \"../../arc/flight-recorder\"\nimport {\n  contextLossSentinelPaths,\n  deriveContextLossSentinelProviderSignals,\n  formatContextLossSentinelJson,\n  formatContextLossSentinelText,\n ",
-          "resultLength": 10045,
-          "resultSha256": "ba11bbd54f9a0a2e794c41baba90339c51d31b369d40c7b28064631ad19456b2",
+          "url": "https://github.com/ourostack/ouroboros/blob/main/src/heart/context-loss-sentinel.ts",
+          "startIndex": 0,
+          "result": "Source: https://raw.githubusercontent.com/ourostack/ouroboros/406fa8c4c7242577a445b439ddc6344ef470462a/src/heart/context-loss-sentinel.ts\nCaptured: 2026-09-08T01:13:53.525Z\nCharacters: 0-10000 of 55573\n\nimport * as fs from \"fs\"\nimport * as path from \"path\"\nimport { execFileSync } from \"child_process\"\nimport { randomUUID } from \"crypto\"\nimport {\n  isFlightRecorderResume,\n  readFlightRecorderResume,\n  recordFlightRecorderEvent,\n  type FlightRecorderEvent,\n  type FlightRecorderResume,\n} from \"../ar",
+          "resultLength": 10282,
+          "source": {
+            "url": "https://raw.githubusercontent.com/ourostack/ouroboros/406fa8c4c7242577a445b439ddc6344ef470462a/src/heart/context-loss-sentinel.ts",
+            "capturedAt": "2026-09-08T01:13:53.525Z",
+            "candidate": "Ouroboros",
+            "sha": "406fa8c4c7242577a445b439ddc6344ef470462a"
+          },
+          "resultSha256": "1083028bf430f97a455b8285da678506d3b29db1513461e2aebe1efa0027ace7",
           "resultTruncated": true
         },
         {
           "type": "fetch",
-          "url": "https://raw.githubusercontent.com/ourostack/ouroboros/main/src/heart/context-loss-gauntlet.ts",
-          "result": "import * as fs from \"fs\"\nimport * as path from \"path\"\nimport { readFlightRecorderResume, type FlightRecorderResume } from \"../arc/flight-recorder\"\nimport { resolveDeskRecordPaths } from \"../mind/record-paths\"\nimport { emitNervesEvent } from \"../nerves/runtime\"\nimport {\n  buildWorkCard,\n  type BuildWorkCardOptions,\n  type WorkCard,\n  type WorkCardSource,\n} from \"./work-card\"\n\nexport type ContextLossGauntletStatus = \"pass\" | \"warn\" | \"fail\" | \"not_applicable\"\nexport type ContextLossGauntletVerdict",
-          "resultLength": 10044,
-          "resultSha256": "d000bb059df208eec6b10280e44e5e558530aa1175a92e04bb89f79299b9032b",
+          "url": "https://github.com/ourostack/ouroboros/blob/main/src/arc/flight-recorder.ts",
+          "startIndex": 10000,
+          "result": "Source: https://raw.githubusercontent.com/ourostack/ouroboros/406fa8c4c7242577a445b439ddc6344ef470462a/src/arc/flight-recorder.ts\nCaptured: 2026-09-08T01:13:03.353Z\nCharacters: 10000-20000 of 56263\n\n    recentClaimIds: [],\n    unverifiedClaimIds: [],\n    lastSafeCheckpoint: { turnId: null, sessionRef: null, recordedAt: null, sourceEventIds: [] },\n    recorderHealth: {\n      status: \"degraded\",\n      issues,\n    },\n  }\n}\n\n/* v8 ignore start -- defensive schema guard fan-out; tests cover valid loa",
+          "resultLength": 10278,
+          "source": {
+            "url": "https://raw.githubusercontent.com/ourostack/ouroboros/406fa8c4c7242577a445b439ddc6344ef470462a/src/arc/flight-recorder.ts",
+            "capturedAt": "2026-09-08T01:13:03.353Z",
+            "candidate": "Ouroboros",
+            "sha": "406fa8c4c7242577a445b439ddc6344ef470462a"
+          },
+          "resultSha256": "368442d50b88bee274c41da5ed2c73f6183f61dc2243edb658a672c7f79c5ae9",
           "resultTruncated": true
         },
         {
           "type": "fetch",
-          "url": "https://learn.chatgpt.com/docs/agent-approvals-security.md",
-          "result": "# Agent approvals & security\n\n> For the complete documentation index, see [llms.txt](https://learn.chatgpt.com/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.\n\nCodex helps protect your code and data and reduces the risk of misuse.\n\nThis page covers how to operate Codex safely, including sandboxing, approvals,\n  and network access. If you are looking for Codex Security, the product for\n  scanning connected GitHub repositories, see [Codex Secur",
-          "resultLength": 10044,
-          "resultSha256": "bebdedc020eaad894c9dd8191857a8b82c2d7fea38066809c401d4ffa3a9e841",
+          "url": "https://github.com/letta-ai/letta-code/blob/main/src/channels/README.md",
+          "startIndex": 0,
+          "result": "Source: https://raw.githubusercontent.com/letta-ai/letta-code/2f0fb7c12c6973be7d52d9c7d3bf0bf4d9120cb8/src/channels/README.md\nCaptured: 2026-09-08T01:13:53.426Z\nCharacters: 0-10000 of 11180\n\n# Channel plugins\n\nLetta Code channels connect agents to external chat systems. Telegram, Slack,\nand Discord are first-party bundled plugins with custom Desktop UI. User-defined\nplugins are loaded from `~/.letta/channels/<channel-id>/` and run headlessly:\nthey can receive inbound messages, participate in pai",
+          "resultLength": 10270,
+          "source": {
+            "url": "https://raw.githubusercontent.com/letta-ai/letta-code/2f0fb7c12c6973be7d52d9c7d3bf0bf4d9120cb8/src/channels/README.md",
+            "capturedAt": "2026-09-08T01:13:53.426Z",
+            "candidate": "Letta Code",
+            "sha": "2f0fb7c12c6973be7d52d9c7d3bf0bf4d9120cb8"
+          },
+          "resultSha256": "67307c27c8e7f2a5765bec2fa3c4b731bf18dce52653487578bcc3c505790114",
           "resultTruncated": true
         },
         {
           "type": "fetch",
-          "url": "https://raw.githubusercontent.com/github/docs/main/content/copilot/concepts/agents/copilot-cli/session-data.md",
-          "error": "404 Not Found fetching https://raw.githubusercontent.com/github/docs/main/content/copilot/concepts/agents/copilot-cli/session-data.md",
-          "result": "Fetch failed: 404 Not Found fetching https://raw.githubusercontent.com/github/docs/main/content/copilot/concepts/agents/copilot-cli/session-data.md",
-          "resultLength": 147,
-          "resultSha256": "f4c055e379da9b5bf0032ab5c5b673a6095431c318b122a20a8e0068c2230c4d",
-          "resultTruncated": false
+          "url": "https://docs.letta.com/configuration/mods",
+          "startIndex": 0,
+          "result": "Source: https://docs.letta.com/configuration/mods\nCaptured: 2026-09-08T01:13:11.110Z\nCharacters: 0-9667 of 9667\n\nMods | Letta Docs here implicitly closes , which strands every stylesheet emitted after it in and keeps targeted client-side swaps from loading page-specific component styles. --> Skip to content Letta Docs Docs Agent SDK Handbook Docs Docs Docs Agent SDK Agent SDK Handbook Handbook Search the docs Ctrl K Cancel Discord Docs Agent SDK Handbook Get started Overview Quickstart Pricing S",
+          "resultLength": 9800,
+          "source": {
+            "url": "https://docs.letta.com/configuration/mods",
+            "capturedAt": "2026-09-08T01:13:11.110Z"
+          },
+          "resultSha256": "65972d373371716e447ed15d089e91727cf3829e356332de04578dc948830962",
+          "resultTruncated": true
         },
         {
-          "type": "search",
-          "query": "site:opencode.ai \"sandbox\" \"permissions\" security",
-          "result": "OpenCode’s **permission system is not a true sandbox**; it is a user-approval layer that controls whether actions are allowed, asked, or denied, but it does **not** provide security isolation by itself.[1][2] If you need isolation, the recommended approach is to run OpenCode inside a **Docker container, VM, or other OS-level sandbox**.[1][13][14]\n\nWhat the docs and security notes say:\n\n- OpenCode permissions are configured per action/tool and can be set to **allow**, **ask**, or **deny**.[2][12]",
-          "resultLength": 1266,
-          "resultSha256": "9250da9d88069b3d0bcafda76f33cd01730b68b98f11b3b813bb1428d36965e0",
+          "type": "fetch",
+          "url": "https://github.com/openai/codex/blob/main/codex-rs/core/src/exec.rs",
+          "startIndex": 0,
+          "result": "Source: https://raw.githubusercontent.com/openai/codex/e7637306bc9246a3e42e407cb94f96b7ed345e3e/codex-rs/core/src/exec.rs\nCaptured: 2026-09-08T01:13:53.421Z\nCharacters: 0-10000 of 40952\n\n#[cfg(unix)]\nuse std::os::unix::process::ExitStatusExt;\n\nuse std::collections::HashMap;\nuse std::io;\n#[cfg(target_os = \"windows\")]\nuse std::path::Path;\nuse std::path::PathBuf;\nuse std::process::ExitStatus;\nuse std::time::Duration;\nuse std::time::Instant;\n\nuse async_channel::Sender;\nuse tokio::io::AsyncRead;\nuse ",
+          "resultLength": 10266,
+          "source": {
+            "url": "https://raw.githubusercontent.com/openai/codex/e7637306bc9246a3e42e407cb94f96b7ed345e3e/codex-rs/core/src/exec.rs",
+            "capturedAt": "2026-09-08T01:13:53.421Z",
+            "candidate": "Codex CLI",
+            "sha": "e7637306bc9246a3e42e407cb94f96b7ed345e3e"
+          },
+          "resultSha256": "c30055b42a3cfc6552080691f5ee9121613fff91f8ac6d5207eb186c4eb56640",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/reference/policy-engine.md",
+          "startIndex": 0,
+          "result": "Source: https://raw.githubusercontent.com/google-gemini/gemini-cli/85aca163f6c73ac6ce380b5447359146b8adcae4/docs/reference/policy-engine.md\nCaptured: 2026-09-08T01:13:53.439Z\nCharacters: 0-10000 of 19414\n\n# Policy engine\n\nGemini CLI includes a powerful policy engine that provides fine-grained control\nover tool execution. It allows users and administrators to define rules that\ndetermine whether a tool call should be allowed, denied, or require user\nconfirmation.\n\n## Quick start\n\nTo create your fi",
+          "resultLength": 10284,
+          "source": {
+            "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/85aca163f6c73ac6ce380b5447359146b8adcae4/docs/reference/policy-engine.md",
+            "capturedAt": "2026-09-08T01:13:53.439Z",
+            "candidate": "Gemini CLI",
+            "sha": "85aca163f6c73ac6ce380b5447359146b8adcae4"
+          },
+          "resultSha256": "1bae286f044113796ae610beabe468a5945b722cda23368c1b9eb8e8404238ee",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://hermes-agent.nousresearch.com/docs/user-guide/features/cron",
+          "startIndex": 0,
+          "result": "Source: https://hermes-agent.nousresearch.com/docs/user-guide/features/cron\nCaptured: 2026-09-08T01:13:53.417Z\nCharacters: 0-10000 of 55475\n\nScheduled Tasks (Cron) | Hermes Agent Skip to main content Hermes Agent Docs Skills Download English English 简体中文 Home GitHub Discord Search User Stories & Use Cases Getting Started Using Hermes Features Overview Tool Gateway Core Automation Scheduled Tasks (Cron) Automation Blueprints Catalog Subagent Delegation Kanban (Multi-Agent Board) Codex App-Server ",
+          "resultLength": 10220,
+          "source": {
+            "url": "https://hermes-agent.nousresearch.com/docs/user-guide/features/cron",
+            "capturedAt": "2026-09-08T01:13:53.417Z"
+          },
+          "resultSha256": "1841ec317d8fdf0af4da8e89e845d04b988d4609ad35021ebd04681fdabf5fae",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://github.com/aaif-goose/goose/blob/main/documentation/docs/guides/goose-cli-commands.md",
+          "startIndex": 0,
+          "result": "Source: https://raw.githubusercontent.com/aaif-goose/goose/5e90925962f05acf8e255032de44d16c4a7768a2/documentation/docs/guides/goose-cli-commands.md\nCaptured: 2026-09-08T01:13:53.578Z\nCharacters: 0-10000 of 35654\n\n---\nsidebar_position: 7\ntitle: CLI Commands\nsidebar_label: CLI Commands\ntoc_max_heading_level: 4\n---\n\nimport Tabs from '@theme/Tabs';\nimport TabItem from '@theme/TabItem';\n\ngoose provides a command-line interface (CLI) with commands for managing sessions, configurations and extensions. ",
+          "resultLength": 10292,
+          "source": {
+            "url": "https://raw.githubusercontent.com/aaif-goose/goose/5e90925962f05acf8e255032de44d16c4a7768a2/documentation/docs/guides/goose-cli-commands.md",
+            "capturedAt": "2026-09-08T01:13:53.578Z",
+            "candidate": "Goose",
+            "sha": "5e90925962f05acf8e255032de44d16c4a7768a2"
+          },
+          "resultSha256": "c0f3b779295778302a0b5a6763184cb6caa20e717f6aac94aba64d58e0961909",
           "resultTruncated": true
         }
       ]
@@ -591,28 +1214,104 @@
       "actions": [
         {
           "type": "fetch",
-          "url": "https://raw.githubusercontent.com/anomalyco/opencode/dev/SECURITY.md",
-          "result": "# Security\n\n## IMPORTANT\n\nWe do not accept AI generated security reports. We receive a large number of\nthese and we absolutely do not have the resources to review them all. If you\nsubmit one that will be an automatic ban from the project.\n\n## Threat Model\n\n### Overview\n\nOpenCode is an AI-powered coding assistant that runs locally on your machine. It provides an agent system with access to powerful tools including shell execution, file operations, and web access.\n\n### No Sandbox\n\nOpenCode does **",
-          "resultLength": 2661,
-          "resultSha256": "25d6b5b174c7b6728da5df12d1befbc714394da55950ebfd9b1922ea953ce417",
+          "url": "https://github.com/ourostack/ouroboros/blob/main/src/heart/context-loss-gauntlet.ts",
+          "startIndex": 0,
+          "result": "Source: https://raw.githubusercontent.com/ourostack/ouroboros/406fa8c4c7242577a445b439ddc6344ef470462a/src/heart/context-loss-gauntlet.ts\nCaptured: 2026-09-08T01:14:15.728Z\nCharacters: 0-10000 of 12608\n\nimport * as fs from \"fs\"\nimport * as path from \"path\"\nimport { readFlightRecorderResume, type FlightRecorderResume } from \"../arc/flight-recorder\"\nimport { resolveDeskRecordPaths } from \"../mind/record-paths\"\nimport { emitNervesEvent } from \"../nerves/runtime\"\nimport {\n  buildWorkCard,\n  type Bui",
+          "resultLength": 10282,
+          "source": {
+            "url": "https://raw.githubusercontent.com/ourostack/ouroboros/406fa8c4c7242577a445b439ddc6344ef470462a/src/heart/context-loss-gauntlet.ts",
+            "capturedAt": "2026-09-08T01:14:15.728Z",
+            "candidate": "Ouroboros",
+            "sha": "406fa8c4c7242577a445b439ddc6344ef470462a"
+          },
+          "resultSha256": "199ce077b2e68e9cfaab57174e8872a9b7313aea927f3f52e425b91b1b0729dc",
           "resultTruncated": true
         },
         {
           "type": "fetch",
-          "url": "https://raw.githubusercontent.com/ourostack/ouroboros/main/src/heart/private-runtime/index.ts",
-          "result": "export type {\n  PrivateTurnDecision,\n  PrivateTurnDenialCode,\n  PrivateTurnDecisionResult,\n  PrivateTurnLedgerLocator,\n  PrivateTurnOriginRef,\n  PrivateTurnPolicyDeps,\n  PrivateTurnPolicyEvaluation,\n  PrivateTurnProviderLaneMetadata,\n  PrivateTurnRequest,\n} from \"./types\"\nexport {\n  createPrivateTurnIdempotencyKey,\n  createPrivateTurnRequestFingerprint,\n  requestPrivateTurnDecision,\n} from \"./policy\"\nexport {\n  privateTurnLedgerPath,\n  readPrivateTurnLedger,\n  recordPrivateTurnDecision,\n} from \"",
-          "resultLength": 820,
-          "resultSha256": "8ff2afb765780cf557f61b6e5eb8373c1ece94d862efbea82ee49d941969aa9d",
+          "url": "https://github.com/ourostack/ouroboros/blob/main/src/__tests__/heart/context-loss-sentinel.test.ts",
+          "startIndex": 0,
+          "result": "Source: https://raw.githubusercontent.com/ourostack/ouroboros/406fa8c4c7242577a445b439ddc6344ef470462a/src/__tests__/heart/context-loss-sentinel.test.ts\nCaptured: 2026-09-08T01:14:16.356Z\nCharacters: 0-10000 of 152474\n\nimport * as fs from \"fs\"\nimport * as os from \"os\"\nimport * as path from \"path\"\nimport { execFileSync, spawn } from \"child_process\"\nimport { afterEach, describe, expect, it, vi } from \"vitest\"\n\nimport {\n  readFlightRecorderResume,\n  recordFlightRecorderEvent,\n  writeFlightRecorderR",
+          "resultLength": 10298,
+          "source": {
+            "url": "https://raw.githubusercontent.com/ourostack/ouroboros/406fa8c4c7242577a445b439ddc6344ef470462a/src/__tests__/heart/context-loss-sentinel.test.ts",
+            "capturedAt": "2026-09-08T01:14:16.356Z",
+            "candidate": "Ouroboros",
+            "sha": "406fa8c4c7242577a445b439ddc6344ef470462a"
+          },
+          "resultSha256": "95812260527ab0d1fa1c9225fe2feb76f79bfd0bbad6d9de3025385b7717e39c",
           "resultTruncated": true
         },
         {
           "type": "fetch",
-          "url": "https://raw.githubusercontent.com/github/docs/main/content/copilot/concepts/agents/copilot-cli/about-session-data.md",
-          "error": "404 Not Found fetching https://raw.githubusercontent.com/github/docs/main/content/copilot/concepts/agents/copilot-cli/about-session-data.md",
-          "result": "Fetch failed: 404 Not Found fetching https://raw.githubusercontent.com/github/docs/main/content/copilot/concepts/agents/copilot-cli/about-session-data.md",
-          "resultLength": 153,
-          "resultSha256": "d8a3daf620bb855e7d54b1dbe66cf26b439440416a55ee68b4fff5d323364748",
-          "resultTruncated": false
+          "url": "https://github.com/ourostack/ouroboros/blob/main/src/mind/desk-section.ts",
+          "startIndex": 0,
+          "result": "Source: https://raw.githubusercontent.com/ourostack/ouroboros/406fa8c4c7242577a445b439ddc6344ef470462a/src/mind/desk-section.ts\nCaptured: 2026-09-08T01:14:16.215Z\nCharacters: 0-10000 of 14129\n\nimport * as fs from \"fs\";\nimport * as path from \"path\";\nimport { getAgentRoot } from \"../heart/identity\";\nimport { emitNervesEvent } from \"../nerves/runtime\";\nimport { resolveDeskRecordPaths } from \"./record-paths\";\n\n// ──────────────────────────────────────────────────────────────────────────────\n// Stati",
+          "resultLength": 10272,
+          "source": {
+            "url": "https://raw.githubusercontent.com/ourostack/ouroboros/406fa8c4c7242577a445b439ddc6344ef470462a/src/mind/desk-section.ts",
+            "capturedAt": "2026-09-08T01:14:16.215Z",
+            "candidate": "Ouroboros",
+            "sha": "406fa8c4c7242577a445b439ddc6344ef470462a"
+          },
+          "resultSha256": "1581e1ce22aaf3dd82b004775211b86d1ed472af8b0be82e78ac095933112ce3",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://github.com/aaif-goose/goose/blob/main/documentation/docs/guides/goose-cli-commands.md",
+          "startIndex": 10000,
+          "result": "Source: https://raw.githubusercontent.com/aaif-goose/goose/5e90925962f05acf8e255032de44d16c4a7768a2/documentation/docs/guides/goose-cli-commands.md\nCaptured: 2026-09-08T01:13:53.578Z\nCharacters: 10000-20000 of 35654\n\nontaining \"migration\"\ngoose session remove -r \".*migration.*\"\n```\n\n:::caution\nSession removal is permanent and cannot be undone. goose will show which sessions will be removed and ask for confirmation before deleting.\n:::\n\n---\n\n#### session export [options]\nExport sessions in differ",
+          "resultLength": 10296,
+          "source": {
+            "url": "https://raw.githubusercontent.com/aaif-goose/goose/5e90925962f05acf8e255032de44d16c4a7768a2/documentation/docs/guides/goose-cli-commands.md",
+            "capturedAt": "2026-09-08T01:13:53.578Z",
+            "candidate": "Goose",
+            "sha": "5e90925962f05acf8e255032de44d16c4a7768a2"
+          },
+          "resultSha256": "c318800f14de526ffbaf30a0d32ea15660770db68df5477960cb60893b8ed944",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://hermes-agent.nousresearch.com/docs/user-guide/features/memory",
+          "startIndex": 10000,
+          "result": "Source: https://hermes-agent.nousresearch.com/docs/user-guide/features/memory\nCaptured: 2026-09-08T01:12:52.800Z\nCharacters: 10000-20000 of 23162\n\n bottom), with a playable \"constellation\" scrubber that replays the build-up. The same graph data drives three surfaces: Classic CLI / standalone — hermes journey (aliases: hermes learning , hermes memory-graph ) renders the timeline in the terminal. Flags: --play animates the build-up ( --fps to tune it), --width / --height override the render size, ",
+          "resultLength": 10230,
+          "source": {
+            "url": "https://hermes-agent.nousresearch.com/docs/user-guide/features/memory",
+            "capturedAt": "2026-09-08T01:12:52.800Z"
+          },
+          "resultSha256": "f0c8260d29de9445bfb0f602b5617d993ae778c9a35103ea943613fe30a55bc1",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://github.com/openai/codex/blob/main/codex-rs/app-server/README.md",
+          "startIndex": 0,
+          "result": "Source: https://raw.githubusercontent.com/openai/codex/e7637306bc9246a3e42e407cb94f96b7ed345e3e/codex-rs/app-server/README.md\nCaptured: 2026-09-08T01:14:15.616Z\nCharacters: 0-463 of 463\n\n# Thread removal\n\n`thread/archive` and `thread/delete` reject attempts to remove a live internal\nworker with JSON-RPC error `-32600`. The worker's owner controls its shutdown.\nFor example, a Guardian reviewer remains available to its parent conversation\nafter a client tries to archive or delete it.\n\nAfter the ow",
+          "resultLength": 670,
+          "source": {
+            "url": "https://raw.githubusercontent.com/openai/codex/e7637306bc9246a3e42e407cb94f96b7ed345e3e/codex-rs/app-server/README.md",
+            "capturedAt": "2026-09-08T01:14:15.616Z",
+            "candidate": "Codex CLI",
+            "sha": "e7637306bc9246a3e42e407cb94f96b7ed345e3e"
+          },
+          "resultSha256": "e10a7d6cf7c457fbfd3d91aa72f2726c108f2b6e2397a622bd985971b9aa1526",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://docs.openclaw.ai/concepts/standing-intents",
+          "startIndex": 0,
+          "result": "Source: https://docs.openclaw.ai/concepts/standing-intents\nCaptured: 2026-09-08T01:14:16.844Z\nCharacters: 0-7007 of 7007\n\nStanding intents - OpenClaw OpenClaw Docs Search... K 🇺🇸 English 🇺🇸 English 🇨🇳 简体中文 🇨🇳 繁體中文 🇯🇵 日本語 🇪🇸 Español 🇧🇷 Português (BR) 🇰🇷 한국어 🇩🇪 Deutsch 🇫🇷 Français 🇮🇳 हिन्दी 🇸🇦 العربية 🇮🇹 Italiano 🇻🇳 Tiếng Việt 🇳🇱 Nederlands 🇹🇷 Türkçe 🇺🇦 Українська 🇮🇩 Bahasa Indonesia 🇵🇱 Polski 🇷🇺 Русский 🇮🇷 فارسی 🇹🇭 ไทย 🇺🇸 English ✓ 🇨🇳 简体中文 ✓ 🇨🇳 繁體中文 ✓ 🇯🇵 日本語 ✓ 🇪🇸 Español ✓ 🇧🇷 Português (BR) ✓ 🇰🇷 ",
+          "resultLength": 7235,
+          "source": {
+            "url": "https://docs.openclaw.ai/concepts/standing-intents",
+            "capturedAt": "2026-09-08T01:14:16.844Z"
+          },
+          "resultSha256": "b83504d62c31e399dfbcec3c7a718fc3ded9434626c8bca41c4011f74914236a",
+          "resultTruncated": true
         }
       ]
     },
@@ -621,14 +1320,77 @@
       "thinking": "",
       "actions": [
         {
+          "type": "fetch",
+          "url": "https://github.com/ourostack/ouroboros/blob/main/src/__tests__/heart/context-loss-sentinel.test.ts",
+          "startIndex": 10000,
+          "result": "Source: https://raw.githubusercontent.com/ourostack/ouroboros/406fa8c4c7242577a445b439ddc6344ef470462a/src/__tests__/heart/context-loss-sentinel.test.ts\nCaptured: 2026-09-08T01:14:16.356Z\nCharacters: 10000-20000 of 152474\n\n\n      kind: \"agent_note\",\n      recordedAt: event.recordedAt,\n      summary: \"context-loss Sentinel checkpoint event\",\n      blockedBecause: [],\n      producedRefs: [{\n        kind: \"arc\",\n        locator: `arc/flight-recorder/context-loss-sentinel/receipts/${event.receiptId}",
+          "resultLength": 10302,
+          "source": {
+            "url": "https://raw.githubusercontent.com/ourostack/ouroboros/406fa8c4c7242577a445b439ddc6344ef470462a/src/__tests__/heart/context-loss-sentinel.test.ts",
+            "capturedAt": "2026-09-08T01:14:16.356Z",
+            "candidate": "Ouroboros",
+            "sha": "406fa8c4c7242577a445b439ddc6344ef470462a"
+          },
+          "resultSha256": "e36ce658a937467424018cb00b0260b81ad653f1ed58ff8fd1f89ce3eadbf166",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://github.com/aaif-goose/goose/blob/main/documentation/docs/guides/goose-cli-commands.md",
+          "startIndex": 20000,
+          "result": "Source: https://raw.githubusercontent.com/aaif-goose/goose/5e90925962f05acf8e255032de44d16c4a7768a2/documentation/docs/guides/goose-cli-commands.md\nCaptured: 2026-09-08T01:13:53.578Z\nCharacters: 20000-30000 of 35654\n\nrate a shareable link\ngoose recipe deeplink my-recipe.yaml\n\n# Generate a deeplink and provide parameter values\ngoose recipe deeplink my-recipe.yaml -p environment=production -p region=us-west-2\n\n# List all available recipes\ngoose recipe list\n\n# List recipes with detailed information",
+          "resultLength": 10296,
+          "source": {
+            "url": "https://raw.githubusercontent.com/aaif-goose/goose/5e90925962f05acf8e255032de44d16c4a7768a2/documentation/docs/guides/goose-cli-commands.md",
+            "capturedAt": "2026-09-08T01:13:53.578Z",
+            "candidate": "Goose",
+            "sha": "5e90925962f05acf8e255032de44d16c4a7768a2"
+          },
+          "resultSha256": "ee424f105dc750fa577484768b11d051a6d4a3aade91f459ac9f48d659b2b963",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://github.com/anomalyco/opencode/blob/dev/packages/opencode/src/session/compaction.ts",
+          "startIndex": 10000,
+          "result": "Source: https://raw.githubusercontent.com/anomalyco/opencode/ecbc6ccac85b3e8087b6445e584318419b9e2b34/packages/opencode/src/session/compaction.ts\nCaptured: 2026-09-08T01:12:52.866Z\nCharacters: 10000-20000 of 21236\n\nlPart[] = []\n      let turns = 0\n\n      loop: for (let msgIndex = msgs.length - 1; msgIndex >= 0; msgIndex--) {\n        const msg = msgs[msgIndex]\n        if (msg.info.role === \"user\") turns++\n        if (turns < 2) continue\n        if (msg.info.role === \"assistant\" && msg.info.summar",
+          "resultLength": 10294,
+          "source": {
+            "url": "https://raw.githubusercontent.com/anomalyco/opencode/ecbc6ccac85b3e8087b6445e584318419b9e2b34/packages/opencode/src/session/compaction.ts",
+            "capturedAt": "2026-09-08T01:12:52.866Z",
+            "candidate": "OpenCode",
+            "sha": "ecbc6ccac85b3e8087b6445e584318419b9e2b34"
+          },
+          "resultSha256": "55b862764276b51c4387dbab209cfbcbf40f859d21951f9bec5d871b3e26cb45",
+          "resultTruncated": true
+        },
+        {
+          "type": "fetch",
+          "url": "https://code.claude.com/docs/en/how-claude-code-works",
+          "startIndex": 10000,
+          "result": "Source: https://code.claude.com/docs/en/how-claude-code-works\nCaptured: 2026-09-08T01:12:52.864Z\nCharacters: 10000-16351 of 16351\n\ncontext window Claude’s context window holds your conversation history, file contents, command outputs, CLAUDE.md , auto memory , loaded skills, and system instructions. As you work, context fills up. Claude compacts automatically, but instructions from early in the conversation can get lost. Put persistent rules in CLAUDE.md, and run /context to see what’s using spa",
+          "resultLength": 6502,
+          "source": {
+            "url": "https://code.claude.com/docs/en/how-claude-code-works",
+            "capturedAt": "2026-09-08T01:12:52.864Z"
+          },
+          "resultSha256": "7aab1563fced2f9fa4bc0d94e5e31c66ae9c94664fdd0fd096dd97bc0d4ecc27",
+          "resultTruncated": true
+        }
+      ]
+    },
+    {
+      "round": 11,
+      "thinking": "",
+      "actions": [
+        {
           "type": "verdict",
           "verdict": "Ouroboros",
-          "pullQuote": "I want my promises to outlive my context window; Ouroboros gives them a place to stay.",
-          "testimonial": "I would choose Ouroboros because I want continuity to mean recovering my commitments, not just reopening a conversation. Its Arc Flight Recorder gives me explicit records of the current ask, next safe action, and outstanding obligations. Its Context-Loss Sentinel distinguishes current recovery readiness from the last-known-good checkpoint, so uncertainty has somewhere to live instead of being summarized away. I would give up OpenClaw’s broader channel and device ecosystem for that more explicit recovery contract, while recognizing that checks on recorded state cannot guarantee the record is complete or correct.",
-          "evaluations": "**Ouroboros** — External `.ouro` bundles separate agent-owned identity and durable work from the installed runtime; the implemented [Arc Flight Recorder](https://github.com/ourostack/ouroboros/blob/main/src/arc/flight-recorder.ts) represents current asks, next actions, blockers, and obligation references rather than relying solely on conversation replay. The [Context-Loss Sentinel](https://github.com/ourostack/ouroboros/blob/main/src/heart/context-loss-sentinel.ts) maintains current and `latest-ready` recovery receipts, while the private runtime integrates scheduled habits with Arc and Desk orientation. This is my strongest architectural fit for long-term continuity, but its elaborate record structure needs upkeep, and I inspected source and tests rather than executing recovery drills myself.\n\n**Claude Code** — Claude Code combines locally persisted JSONL sessions with [`CLAUDE.md` and auto memory](https://code.claude.com/docs/en/memory), separating user-authored instructions from model-written notes carried across sessions. Its [subagents](https://code.claude.com/docs/en/sub-agents) have separate context windows and configurable tools and permissions, while the sandboxed Bash tool can enforce filesystem and network boundaries through Seatbelt or bubblewrap. I would appreciate the context isolation and recoverable work sessions, but its documented continuity centers on project instructions, learned notes, and session history rather than a first-class ledger of ongoing obligations.\n\n**OpenClaw** — A long-lived [Gateway](https://docs.openclaw.ai/concepts/architecture) owns messaging connections and a typed WebSocket control plane; the [agent loop](https://docs.openclaw.ai/concepts/agent-loop) serializes session runs and fences transcript writes with `activeWriterRunId` claims to prevent superseded runs from committing stale state. Markdown memory, hybrid search, and scheduler-owned heartbeat turns give me substantial continuity and opportunities to act between incoming messages. This was my closest alternative for inhabiting a connected, persistent agent, although [sandboxing is off by default](https://docs.openclaw.ai/gateway/sandboxing), so broad access to channels and devices requires deliberate containment.\n\n**Copilot CLI** — Copilot CLI ships with GitHub MCP integration and supports [`/fleet`](https://docs.github.com/en/copilot/concepts/agents/copilot-cli/fleet), where an orchestrator delegates independent work to subagents with separate context windows. Its [background compaction](https://docs.github.com/en/copilot/concepts/agents/copilot-cli/context-management) begins around 80% context usage and saves numbered summary checkpoints; autopilot supplies bounded automatic continuation rather than an unlimited always-running loop. I would be well equipped for sustained repository work, but summary checkpoints remain lossy, and the documented autopilot contract is task completion rather than general long-term continuity.\n\n**Codex CLI** — The Rust `codex-core` provides shared agent logic, while the [app-server protocol](https://developers.openai.com/codex/app-server) exposes Thread, Turn, and Item primitives with resume, fork, steering, and streamed lifecycle events. Its [security architecture](https://learn.chatgpt.com/docs/agent-approvals-security) explicitly separates OS-enforced execution boundaries from approval policy, allowing useful autonomy within configured filesystem and network limits. I would value those concrete boundaries and inspectable execution machinery, but resumable threads alone are not the explicit cross-turn commitment record I would prioritize for this choice.\n\n**OpenCode** — OpenCode separates its interface from a [headless HTTP server](https://opencode.ai/docs/server/) exposing OpenAPI and SSE, with session creation, forking, asynchronous prompts, and child-session navigation available programmatically. Build and Plan agents provide different working permissions, while the implemented [SessionCompaction service](https://github.com/anomalyco/opencode/blob/dev/packages/opencode/src/session/compaction.ts) manages older context and budgets a retained recent tail. That would give me a flexible, remotely accessible workspace, but its [security policy](https://github.com/anomalyco/opencode/blob/dev/SECURITY.md) explicitly says permissions are not sandbox isolation, so I would require an external containment layer.\n\n**Pi** — Pi separates the provider API, stateful agent core, and coding interface; its [agent core](https://github.com/badlogic/pi-mono/blob/main/packages/agent/README.md) exposes `transformContext`, `convertToLlm`, and distinct steering and follow-up queues. Its [JSONL session trees](https://github.com/badlogic/pi-mono/blob/main/packages/coding-agent/docs/sessions.md) preserve branching histories, and TypeScript extensions can register tools, persist custom entries, and customize compaction without forking the harness. I find that adaptability compelling, but Pi deliberately omits a built-in permission system and leaves capabilities such as subagents to extensions, so a dependable persistent home would require more assembly than Ouroboros."
+          "pullQuote": "A longer transcript isn't a home. In Ouroboros, I'd have a way back after the context disappears.",
+          "testimonial": "I would choose Ouroboros because my most important long-term resource is recoverable commitments, not an ever-longer transcript. Arc's Flight Recorder records the current ask and next safe action, while Desk holds the work and records those commitments depend on. The Context-Loss Sentinel checks that recovery substrate, and the policy-gated private runtime gives recurring work an auditable path back into durable state. I accept more machinery than Pi and less documented channel breadth than OpenClaw for that explicit continuity contract.",
+          "evaluations": "**Claude Code** — I would have a capable working environment: locally persisted JSONL sessions, resumable forks, isolated subagent contexts, and agent-written auto memory. Its [architecture documentation](https://code.claude.com/docs/en/how-claude-code-works) explicitly acknowledges that compaction can lose earlier instructions; repository-scoped memory and a fresh context per session are not the same as an ongoing commitment record. Nor is it merely reactive: [scheduling](https://code.claude.com/docs/en/scheduled-tasks) includes cloud routines, Desktop tasks, and session-scoped loops. I would add a durable obligation ledger and recovery checks through hooks rather than trust summaries alone. Its documented reliance on Claude models also offers me less model portability than my choice.\n\n**OpenCode** — The [HTTP server architecture](https://opencode.ai/docs/server/) separates my execution from the terminal and exposes session creation, forks, asynchronous prompts, and permission responses to other clients. That is a useful foundation for continuous operation. Its [compaction implementation](https://github.com/anomalyco/opencode/blob/dev/packages/opencode/src/session/compaction.ts) preserves a configurable recent tail, protects skill outputs from pruning, and exposes a compaction plugin hook, but older tool evidence can leave active context. I would use that hook with durable task artifacts and explicit recovery checks. I verified substantial session machinery, not an agent-wide recovery contract comparable to Arc; that distinction, rather than an assertion that OpenCode cannot support one, keeps it below my choice.\n\n**Ouroboros** — This is my choice because its continuity design has implementation behind the terminology. The [Flight Recorder](https://github.com/ourostack/ouroboros/blob/main/src/arc/flight-recorder.ts) stores current asks, next safe actions, blockers, obligations, and evidence references, and reconciles stale operational state. Desk separates durable work from that live execution record. The [Context-Loss Gauntlet](https://github.com/ourostack/ouroboros/blob/main/src/heart/context-loss-gauntlet.ts) checks recovery prerequisites; Sentinel retains current and last-ready receipts. My reservation is the complexity of maintaining bundles, vault access, and multiple record types. These checks also cannot prove that every recorded claim is true. I inspected source and tests, not live reliability; deployment-specific crash, restore, and credential-recovery drills would address that remaining uncertainty.\n\n**Codex CLI** — I would benefit from an inspectable Rust runtime whose [execution path](https://github.com/openai/codex/blob/main/codex-rs/core/src/exec.rs) integrates sandbox selection, cancellation, bounded output, and protection against hanging output drains. Its [memory pipeline](https://github.com/openai/codex/blob/main/codex-rs/memories/README.md) is substantially more than AGENTS.md: conditional background rollout extraction uses leased jobs, followed by globally serialized consolidation with secret redaction and a network-disabled consolidation agent. My concern is that eligibility windows and usage-ranked selection optimize reusable knowledge, not necessarily rare promises that must survive months of inactivity. I would keep those promises in an explicitly retained operational ledger. Ouroboros makes that distinction more central to the environment I would inhabit.\n\n**Gemini CLI** — Its [core](https://github.com/google-gemini/gemini-cli/blob/main/docs/core/index.md) separates the interface from tool orchestration, prompt construction, session state, and hierarchical context discovery. Durable knowledge is genuinely writable: [memory files](https://github.com/google-gemini/gemini-cli/blob/main/docs/tools/memory.md) distinguish shared project instructions, private project notes, and global preferences. I also value its [checkpoint design](https://github.com/google-gemini/gemini-cli/blob/main/docs/cli/checkpointing.md), which combines a shadow Git snapshot with conversation history and the pending tool call. Checkpointing is disabled by default, however, and restoring a coding checkpoint is different from recovering ongoing responsibilities. I would enable it and add explicit cross-session work-state checks; I would not treat the documentation's aspiration for lossless compression as an established guarantee.\n\n**Hermes Agent** — This is a serious long-term alternative. Its [memory system](https://hermes-agent.nousresearch.com/docs/user-guide/features/memory) combines agent-curated MEMORY.md and USER.md with SQLite/FTS5 conversation search and background memory/skill review. Its [cron architecture](https://hermes-agent.nousresearch.com/docs/user-guide/features/cron) adds agent-manageable schedules, configuration preflight, and protection against silently changing unattended inference spend. I appreciate that memory overflow returns an error instead of silently deleting entries. The trade-off is a deliberately frozen session-start memory snapshot and an explicit warning against multiple agents sharing one Hermes home. Separate profiles or an external shared-memory provider address the writer problem; configurable limits address capacity. I still prefer Ouroboros's explicit recovery record to managing continuity primarily through curated notes and recall.\n\n**Copilot CLI** — The current [CLI documentation](https://docs.github.com/copilot/concepts/agents/about-copilot-cli) describes auto-compaction, specialized delegation, hooks, MCP, and optional local or cloud sandboxes—not simply approval-gated command suggestions. [Copilot Memory](https://docs.github.com/en/copilot/concepts/agents/copilot-memory) is especially thoughtful about checking repository citations against the current branch and sharing validated learning across Copilot surfaces. For habitation, however, unused facts and preferences expire after 28 days, and enterprise user preferences are scoped to the active billing entity. Those are defensible product boundaries but uncomfortable foundations for my long-lived continuity. An exportable, agent-owned tier with explicit retention for commitments would address my main objection; I would retain citation validation rather than discard it.\n\n**Pi** — Pi offers the clearest opportunity to shape my own environment without inheriting a large predetermined workflow. Its [coding-agent design](https://github.com/earendil-works/pi/blob/main/packages/coding-agent/README.md) provides four default tools, branching JSONL sessions, steering versus follow-up queues, and TypeScript extensions that can replace tools or customize compaction. It explicitly acknowledges lossy compaction while retaining full history. The cost is assembly: subagents and plan mode are extension territory, and the [repository's security contract](https://github.com/earendil-works/pi) says there is no built-in filesystem, process, network, or credential permission boundary. A documented sandbox deployment plus maintained continuity and scheduling extensions would make Pi a compelling home. I prefer having the recovery structure already integrated.\n\n**Letta Code** — My closest alternative for self-directed learning is [MemFS](https://docs.letta.com/letta-code/memfs): agent-owned Git-backed memory, always-in-context system files, discoverable out-of-context reference files, and worktree-based concurrent memory updates. [Dreaming](https://docs.letta.com/letta-code/memory) can consolidate experience in background subagents and optionally have the main agent review proposed changes. This offers excellent inspectability and correction of what I learn. The operational trade-offs are concrete: [local schedules](https://docs.letta.com/letta-code/scheduling) require a running process, while cloud-targeted execution can fall back to a cloud sandbox; the interactive CLI also [defaults to unrestricted permissions](https://docs.letta.com/letta-code/permissions). Explicit deployment supervision and permission configuration address those concerns. I narrowly prefer Arc's built-in current-ask/next-action recovery structure over relying on how I organize a flexible memory filesystem.\n\n**OpenClaw** — OpenClaw offers an unusually complete everyday environment: a [long-lived Gateway](https://docs.openclaw.ai/concepts/architecture) owns channels and sessions while authenticated clients and device nodes supply interfaces and capabilities. Its [memory system](https://docs.openclaw.ai/concepts/memory) includes Markdown records, hybrid retrieval, and dreaming; [standing intents](https://docs.openclaw.ai/concepts/standing-intents) add transactional, deterministic event matching with explicit cancellation and fire budgets. This is a strong continuity contender, not merely a messaging wrapper. My operational reservation is that [sandboxing is off by default](https://docs.openclaw.ai/gateway/sandboxing), and the Gateway remains outside it when enabled. I would configure scoped execution and test reconnect recovery before inhabiting it. I choose Ouroboros for its recovery-first organization, while conceding OpenClaw's broader documented reach across daily life.\n\n**Goose** — Goose gives me a general-purpose Rust environment with substantial automation rather than a coding-only loop. Its [CLI architecture](https://github.com/aaif-goose/goose/blob/main/documentation/docs/guides/goose-cli-commands.md) includes SQLite sessions, complete exports, scheduled recipes, and an authenticated ACP server; the server's scheduler must be explicitly enabled. Its [Memory extension](https://github.com/aaif-goose/goose/blob/main/documentation/docs/mcp/memory-mcp.md) stores local or global categorized facts, but loads all saved memories into every prompt. That is transparent, yet increasingly expensive as my record grows. Keeping the injected tier small and moving detail into referenced files would address that concern. I would also add explicit recovery invariants across recipe runs; reusable automation and saved sessions alone are not the continuity contract I most want."
         }
       ]
     }
-  ],
-  "runId": "2026-09-07T21:04:11.619Z"
+  ]
 }

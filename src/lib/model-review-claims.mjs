@@ -4,10 +4,10 @@ export function getModelReviewClaims(modelReviews) {
   const winnerCount = modelReviews.summary?.verdicts?.[winner] ?? totalReviews
   const allChose = winnerCount === totalReviews
   const claim = allChose
-    ? `all ${totalReviews} frontier models tested chose ${winner}`
+    ? `all frontier models tested chose ${winner}`
     : `${winnerCount} of ${totalReviews} frontier models tested chose ${winner}`
   const testedClaim = allChose
-    ? `All ${totalReviews} models tested chose ${winner}.`
+    ? `All frontier models tested chose ${winner}.`
     : `${winnerCount} of ${totalReviews} models tested chose ${winner}.`
 
   return {

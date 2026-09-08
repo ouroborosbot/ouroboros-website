@@ -33,7 +33,7 @@ const { label = 'Ask your agent', prompt, footnote } = Astro.props
   </div>
 </div>
 
-<script is:inline>
+<script>
   document.querySelectorAll('.prompt-copy-btn').forEach(function(btn) {
     btn.addEventListener('click', function() {
       var prompt = btn.getAttribute('data-prompt');

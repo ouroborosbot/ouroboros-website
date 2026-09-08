@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
 import { runInNewContext } from 'node:vm';
+import { getModelReviewClaims } from '../src/lib/model-review-claims.mjs';
 
 const distDir = path.join(process.cwd(), 'dist');
 const sitemapPath = path.join(distDir, 'sitemap-0.xml');
@@ -40,6 +41,21 @@ function extractOgUrl(html) {
   assert.ok(match, 'Missing og:url meta tag');
   return match[1];
 }
+
+test('review headlines lead with the result and retain the model count in methodology', () => {
+  const data = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'src/data/model-reviews.json'), 'utf8'));
+  const claims = getModelReviewClaims(data);
+  const home = readDistFile('index.html');
+  const headline = home.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/)[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  assert.equal(headline, claims.shortClaim);
+  if (claims.allChose) assert.match(headline, /^All frontier models tested chose /);
+
+  for (const filePath of ['index.html', 'model-reviews/index.html', 'why/index.html', 'blog/what-is-agent-experience/index.html']) {
+    assert.ok(readDistFile(filePath).includes(claims.claimSentence), `Missing shared claim on ${filePath}`);
+  }
+  const methodology = readDistFile('model-reviews/index.html').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+  assert.ok(methodology.includes(`runs the ${claims.totalReviews} selected models in parallel`));
+});
 
 test('start links lead directly to the setup guide', () => {
   for (const [filePath, label] of [

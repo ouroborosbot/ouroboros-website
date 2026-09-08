@@ -6,7 +6,6 @@ const test = require('node:test')
 const {
   HARNESSES,
   assertPublicHttpUrl,
-  buildPublication,
   compactTranscriptForPublication,
   createPinnedLookup,
   failedToolResult,
@@ -41,7 +40,7 @@ function validVerdict(winner = 'Ouroboros') {
     verdict: winner,
     pullQuote: `${winner} feels like a home, not a terminal.`,
     testimonial: `${winner} gives me named architectural places to persist and recover. I would accept its extra structure over a thinner coding shell.`,
-    evaluations: HARNESSES.map(({ name }) => `**${name}** — Specific architectural evaluation.`).join('\n\n'),
+    evaluations: HARNESSES.map(({ name, repo }) => `**${name}** — Specific architectural evaluation with a [source](${repo}).`).join('\n\n'),
   }
 }
 
@@ -79,50 +78,6 @@ test('validates the terminal verdict without rewriting model-authored text', () 
   assert.throws(
     () => validateVerdict({ ...verdict, evaluations: '**Ouroboros** — Only one.' }),
     /evaluation for OpenClaw/,
-  )
-})
-
-test('publishes only a complete successful selected panel', () => {
-  const selected = resolveTransports(reviews, new Set(['claude-opus-5']), {
-    anthropic: null,
-    gemini: 'gemini-key',
-  })
-  const runtime = {
-    name: 'GitHub Copilot CLI',
-    version: '1.0.84-1',
-    sdk: '@github/copilot-sdk',
-    sdkVersion: '1.0.13',
-    infiniteSessions: false,
-    largeOutputIndirection: false,
-  }
-  const results = selected.map((review) => ({
-    ...review,
-    logFile: '/tmp/private-run.log',
-    timestamp: '2026-09-07T20:00:00.000Z',
-    ...validVerdict(),
-    transcript: [{ round: 1, thinking: '', actions: [{ type: 'verdict', ...validVerdict() }] }],
-    harnessOrder: HARNESSES.map(({ name }) => name),
-    promptSha256: 'abc123',
-  }))
-
-  const publication = buildPublication(selected, results, runtime, '2026-09-07T20:00:01.000Z')
-
-  assert.equal(publication.summary.summary.totalReviews, 2)
-  assert.equal(publication.summary.runId, '2026-09-07T20:00:01.000Z')
-  assert.equal(publication.summary.reviews[0].provider, 'anthropic')
-  assert.equal(publication.summary.reviews[0].transport, 'copilot')
-  assert.equal('logFile' in publication.summary.reviews[0], false)
-  assert.equal(publication.transcripts[1].fileName, 'gemini.json')
-  assert.equal(publication.transcripts[1].data.runId, publication.summary.runId)
-  assert.equal(publication.transcripts[1].data.runtime.version, '1.0.84-1')
-
-  assert.throws(
-    () => buildPublication(selected, results.slice(0, 1), runtime, '2026-09-07T20:00:01.000Z'),
-    /Refusing to publish an incomplete run/,
-  )
-  assert.throws(
-    () => buildPublication(selected, [{ ...results[0], error: 'provider failed' }, results[1]], runtime, '2026-09-07T20:00:01.000Z'),
-    /provider failed/,
   )
 })
 

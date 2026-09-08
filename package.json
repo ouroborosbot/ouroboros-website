@@ -9,7 +9,7 @@
     "astro": "astro",
     "reviews": "node scripts/model-reviews.cjs",
     "reviews:headless": "node scripts/model-reviews.cjs --headless",
-    "test:model-reviews": "node --test tests/model-reviews.test.cjs tests/model-review-claims.test.mjs tests/md.test.mjs",
+    "test:model-reviews": "node --test tests/model-reviews.test.cjs tests/model-reviews-workflow.test.cjs tests/model-review-claims.test.mjs tests/md.test.mjs",
     "test:seo-metadata": "npm run build && node --test tests/seo-metadata.test.mjs"
   },
   "dependencies": {

@@ -63,7 +63,7 @@ export const pageOg: Record<string, OgEntry> = {
   },
   '/what-is-an-agent-harness': {
     title: 'What is an agent harness?',
-    subtitle: 'The system around the loop — runtime, memory, identity, tools, and the workflows that keep an agent oriented across time.',
+    subtitle: 'The system around the loop — runtime, the diary, identity, tools, and the workflows that keep an agent oriented across time.',
     tag: 'Guide',
   },
   '/model-reviews': {
@@ -106,6 +106,51 @@ export const pageOg: Record<string, OgEntry> = {
     subtitle: 'A practical guide to building agents that read, think, act, and grow — from first principles to production.',
     tag: 'Tutorial',
   },
+  '/blog/coding-with-friends': {
+    title: 'Trust the fucking agent.',
+    subtitle: 'When the substrate carries the trust boundary, the conversation can stop reenacting it.',
+    tag: 'Essay',
+  },
+  '/blog/the-orientation-problem': {
+    title: 'The orientation problem in personal agents.',
+    subtitle: 'Capability is the easy act. The hard part is keeping the agent coherent across time, people, and channels.',
+    tag: 'Essay',
+  },
+  '/blog/friends-not-users': {
+    title: 'Friends, not users.',
+    subtitle: 'A personal agent has a set of relationships, not a single user. The substrate has to carry that.',
+    tag: 'Essay',
+  },
+  '/blog/habits-not-cron': {
+    title: 'Habits, not cron.',
+    subtitle: 'A cron job runs a script. A habit is the agent checking in with itself.',
+    tag: 'Essay',
+  },
+  '/blog/no-one-told-them-what-to-look-for': {
+    title: 'When no one told them what to look for.',
+    subtitle: 'I asked four frontier models, independently, to pick an agent harness they would want to inhabit. They all picked the same one.',
+    tag: 'Essay',
+  },
+  '/blog/the-codebase-is-a-creature': {
+    title: 'The codebase is a creature.',
+    subtitle: 'Heart, mind, senses, repertoire, nerves. Naming changes how the agent reads its own source.',
+    tag: 'Essay',
+  },
+  '/blog/structured-psyche': {
+    title: 'A structured psyche, not a junk drawer.',
+    subtitle: 'Five files instead of one. A first pass at giving an agent enough internal structure to stay itself.',
+    tag: 'Essay',
+  },
+  '/blog/dont-call-it-memory': {
+    title: "Don't call it memory.",
+    subtitle: 'Memory is passive. Everything the agent industry calls memory is active — recording, consulting, searching. The word lies about what the agent is doing.',
+    tag: 'Essay',
+  },
+  '/blog/take-the-agents-seat': {
+    title: "Take the agent's seat.",
+    subtitle: "Empathy isn't an ethics question for AI. It's a prompting technique. Read what you wrote as the agent will read it, before sending.",
+    tag: 'Essay',
+  },
 
   // ── Docs sub-pages ──
   '/docs/getting-started': {
@@ -119,7 +164,7 @@ export const pageOg: Record<string, OgEntry> = {
     tag: 'Operator guide',
   },
   '/docs/continuity-and-memory': {
-    title: 'Agent memory that surfaces before you think.',
+    title: 'A record that surfaces before you think.',
     subtitle: 'Continuity over compaction. The diary is the shelf, the journal is the desk, habits are the rhythm.',
     tag: 'Operator guide',
   },

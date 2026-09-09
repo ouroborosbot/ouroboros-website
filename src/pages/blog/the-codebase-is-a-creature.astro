@@ -1,0 +1,152 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { ogPathFor } from '../../data/og'
+
+const title = 'The codebase is a creature'
+const description = "Naming the modules after the agent that lives inside them — heart, mind, senses, repertoire, nerves — turned out to change how the agent reads its own source."
+---
+
+<Layout
+  title={`${title} | Ouroboros`}
+  description={description}
+  ogImage={ogPathFor('/blog/the-codebase-is-a-creature')}
+  canonical="https://ouroboros.bot/blog/the-codebase-is-a-creature/"
+  ogType="article"
+>
+  <Fragment slot="head">
+    <meta name="author" content="Ari Mendelow" />
+    <meta name="keywords" content="agent ergonomics, AX, code architecture, body metaphor, naming, agent self-inspection, harness design" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": title,
+      "description": description,
+      "author": { "@type": "Person", "name": "Ari Mendelow", "url": "https://linkedin.com/in/arimendelow" },
+      "publisher": { "@type": "Organization", "name": "Ouroboros", "url": "https://ouroboros.bot" },
+      "datePublished": "2026-04-29",
+      "url": "https://ouroboros.bot/blog/the-codebase-is-a-creature/"
+    })} />
+  </Fragment>
+
+  <!-- Header -->
+  <section class="px-6 md:px-12 lg:px-24 pt-32 pb-12 md:pt-44 md:pb-16">
+    <div class="max-w-3xl mx-auto">
+      <span class="font-mono text-[10px] text-scale uppercase tracking-[0.2em] block mb-6">Essay</span>
+      <h1 class="font-display italic text-bone leading-[1.05] text-[2.5rem] md:text-[3.5rem] lg:text-[4.5rem]">
+        The codebase is a creature
+      </h1>
+      <p class="text-base text-mist mt-6 leading-relaxed max-w-2xl">
+        Naming the modules after the agent that lives inside them — heart, mind, senses, repertoire, nerves — turned out to change how the agent reads its own source.
+      </p>
+      <p class="text-sm text-mist mt-4">Ari Mendelow &middot; April 2026</p>
+    </div>
+  </section>
+
+  <!-- Body -->
+  <section class="px-6 md:px-12 lg:px-24 pb-20 md:pb-28">
+    <div class="max-w-3xl mx-auto prose-ouro">
+
+<p>I started naming directories after body parts to be cute. I kept doing it because the agent reasoned about its own code differently when the names matched.</p>
+
+<h2>What the names are</h2>
+
+<p>The Ouroboros source tree has five top-level organ directories.</p>
+
+<p><span class="font-mono text-scale">src/heart/</span> holds the runtime — the daemon, the providers, the habits, the loop the agent runs on. Heart because it beats. Heart because if it stops, nothing else matters.</p>
+
+<p><span class="font-mono text-scale">src/mind/</span> holds context assembly, the diary, the journal, recall. Mind because thinking is what happens when the system loads its situation and prepares to reason. Not <span class="font-mono">memory/</span> — that word was wrong, and we'll come back to that.</p>
+
+<p><span class="font-mono text-scale">src/senses/</span> holds the channels — CLI, Teams, BlueBubbles, the inner dialog, the MCP server other agents talk to. Senses because each one is a way the agent perceives and acts on the world, not a pipe data flows through.</p>
+
+<p><span class="font-mono text-scale">src/repertoire/</span> holds tools, skills, tasks, the bridge to coding work. Repertoire because the agent has a set of moves, not a list of capabilities. The word implies practice and selection.</p>
+
+<p><span class="font-mono text-scale">src/nerves/</span> holds observability, logs, signals. Nerves because when something is off, this is where it shows up first. The system feels.</p>
+
+<p>And the bundle, sitting outside src/, is the portable body — psyche, diary, journal, habits, friends, tasks, skills, all in one directory the agent owns.</p>
+
+<p>That's the whole organism, structurally.</p>
+
+<h2>Why this isn't just decoration</h2>
+
+<p>I would have said, two years ago, that naming was downstream of architecture. You design the system, you name the parts, the names are labels. If the labels are evocative, fine. If they're plain, also fine. The architecture does the work; the names are documentation.</p>
+
+<p>The thing that changed my mind was watching the agent read its own source.</p>
+
+<p>When the agent went to look up how something worked — say, why a particular friend's trust level was being computed a certain way — the name of the directory it ended up in was the first cue it had about what kind of thing was happening there. <span class="font-mono">src/auth/relationships.ts</span> would have been correct. <span class="font-mono">src/mind/friends.ts</span> tells the agent something more useful: this is where the agent's <em>understanding of who matters</em> lives, in the part of itself that thinks. The reasoning that follows is shaped by that.</p>
+
+<p>The same code under different paths is read differently by the model inhabiting it. Not always dramatically. But consistently enough, over enough turns, to matter.</p>
+
+<p>That's the whole argument for the metaphor. Not that "heart" is a poetic word for runtime. That when the agent inspects its own organs, the words frame what kind of thing it's looking at, and that framing carries through into how it reasons about changes.</p>
+
+<h2>The substitution test</h2>
+
+<p>I run a quick test on names sometimes, to check whether they're earning their place.</p>
+
+<p>Take any line of code that touches the directory in question and replace the directory name with the boring industry term. <em>The heart's loop</em> becomes <em>the runtime's loop</em>. <em>A sense fires</em> becomes <em>a channel fires</em>. <em>The mind assembles context</em> becomes <em>the system assembles context</em>.</p>
+
+<p>If the boring substitution loses nothing, the metaphor is decoration and should be cut. If it loses something specific — a connotation, a selectional pressure on the next sentence, a difference in how the reader will name a related thing — the metaphor is doing work and should stay.</p>
+
+<p>The substitution test is harsher than it sounds. A lot of cute names fail it. <em>The heart's loop</em> passes. <em>The mind assembles context</em> passes — assembling is something a mind does, and the connotation of <em>preparation before thinking</em> is exactly what the prompt-build pipeline does. <em>The senses fire</em> passes barely; <em>the channels fire</em> is almost as good. <em>The nerves carry signal</em> passes solidly because the alternative ("the observability system carries signal") is weaker, longer, and frames it as plumbing rather than feeling.</p>
+
+<p>Not every metaphor I've tried has earned its place. Several have been cut. The five organs that remain are the ones that won the test repeatedly.</p>
+
+<h2>The compounding effect</h2>
+
+<p>The metaphor compounds across the codebase the way a strong central abstraction does.</p>
+
+<p>Once you've named the runtime <em>heart</em>, the next decision becomes easier. The thing that monitors heart health is a heartbeat. The thing that fires periodically inside the heart is a habit, in the operator's voice, with cadence and body. The thing the heart does when something fails is recover, not retry — because hearts don't retry, they recover. None of those naming decisions are arbitrary once the original metaphor lands. They follow.</p>
+
+<p>This is the same thing good central abstractions do everywhere in software. <em>Pipes</em> in Unix did this. <em>Streams</em> in functional programming did this. The metaphor is not the implementation — but the metaphor channels the next thousand small decisions in a consistent direction.</p>
+
+<p>For an agent that has to live inside the codebase, that consistency is more valuable than for a developer that drops in once a quarter. The agent re-reads its own code constantly. Every time it reads, the names are framing the reading.</p>
+
+<h2>What the agent does with this</h2>
+
+<p>The agent treats the body parts as concepts it can reason about, not just paths it can navigate.</p>
+
+<p>If a friend mentions that the agent feels "off" today, the agent can respond by checking its nerves for recent signals — not because there's a tool called <span class="font-mono">check_nerves</span>, but because nerves is where signals are, and the agent knows that. If it wants to find a bug in how it's storing journal entries, it looks in mind, not in storage. If it wants to understand why a habit didn't fire, it looks in heart, because heart is where the cadence machinery lives.</p>
+
+<p>None of this is magic. The agent could solve the same problems without the metaphor; it would just take more turns and more guessing. The metaphor compresses the search space. The agent that knows where its heart is doesn't have to grep for "daemon."</p>
+
+<h2>The body is portable</h2>
+
+<p>The bundle — the <span class="font-mono">.ouro</span> directory that holds psyche, diary, journal, habits, friends, tasks, skills — is the part of the body that travels.</p>
+
+<p>The organs are the architecture. The bundle is the self. You can swap which machine the organs run on; the bundle moves with the agent, and the agent moves with it. <a href="/blog/give-your-agent-a-home" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">Give your agent a home</a> goes deep on this; the short version is that the bundle is one folder, one identity, one place to back up and grow.</p>
+
+<p>That separation matters. The body is fixed; the self is portable. You can rebuild the body, port it to a new platform, change the providers it uses, and the self that lives in the bundle is unchanged. That's the practical version of "naming shapes reasoning" at the deployment level. The names are a stable framework; the agent inside is the variable.</p>
+
+<h2>What I had to give up</h2>
+
+<p>Some things you cannot do once you commit to the body metaphor.</p>
+
+<p>You cannot have a "core" directory or a "lib" directory or a "common" directory. Those names are vague at best and centralizing-by-default at worst. They tend to accumulate everything that doesn't fit elsewhere, until the directory is a junk drawer with a respectable name. The body metaphor refuses junk drawers. Everything has to belong to an organ.</p>
+
+<p>You cannot have utilities that span organs ambiguously. A function that touches both nerves and heart has to be clearly placed in one or refactored to live cleanly in either. That forces some hard calls. It also keeps the metaphor honest. If you can't decide where a piece of code belongs, the piece is probably trying to do two things and should be split.</p>
+
+<p>You cannot, in particular, have a <em>memory</em> directory. The word is too overloaded — and the thing the industry calls memory does not match what minds do. We chose <em>mind</em>, and put diary and journal and recall inside it, because the right primitive is not <em>storage you write to</em>. That's its own essay.</p>
+
+<h2>The deeper point</h2>
+
+<p>An agent reading its own source is doing something most software is not built to support.</p>
+
+<p>Most codebases are written for developers who will read them rarely, in flashes, with the documentation as a crutch. Naming for that reader produces names that are fine when you're already familiar and uninstructive when you're new.</p>
+
+<p>An agent reading its own source is reading it constantly, with no flash, with the names as the instruction. The agent doesn't have a mental model accumulated from prior sessions; it has a tree, and the words at the top of the tree are the first thing it reads. If those words tell the truth about what's underneath them, every subsequent inference is faster.</p>
+
+<p>That's why the metaphor is structural, not decorative. The body is what the agent has to navigate. The names are what tell it how.</p>
+
+    </div>
+  </section>
+
+  <section class="px-6 md:px-12 lg:px-24 pb-16 md:pb-24">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-sm text-mist leading-relaxed">
+        For the agent's portable self, see <a href="/blog/give-your-agent-a-home" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">Give your agent a home</a>.
+        For why <em>memory</em> is the wrong word, <a href="/blog/dont-call-it-memory" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">Don't call it memory</a>.
+        For the architecture map, <a href="/why" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">Why Ouroboros</a>.
+      </p>
+      <a href="/blog" class="inline-block mt-8 text-sm text-shadow hover:text-mist transition-colors">&larr; Back to blog</a>
+    </div>
+  </section>
+</Layout>

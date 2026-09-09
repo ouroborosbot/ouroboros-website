@@ -1,0 +1,153 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { ogPathFor } from '../../data/og'
+
+const title = 'Friends, not users'
+const description = 'A personal agent talks to many people, with different stakes and different histories. A single USER.md cannot hold that. The substrate has to.'
+---
+
+<Layout
+  title={`${title} | Ouroboros`}
+  description={description}
+  ogImage={ogPathFor('/blog/friends-not-users')}
+  canonical="https://ouroboros.bot/blog/friends-not-users/"
+  ogType="article"
+>
+  <Fragment slot="head">
+    <meta name="author" content="Ari Mendelow" />
+    <meta name="keywords" content="personal agents, agent ergonomics, AX, FriendRecord, trust levels, per-person modeling, agent identity, harness design" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": title,
+      "description": description,
+      "author": { "@type": "Person", "name": "Ari Mendelow", "url": "https://linkedin.com/in/arimendelow" },
+      "publisher": { "@type": "Organization", "name": "Ouroboros", "url": "https://ouroboros.bot" },
+      "datePublished": "2026-04-28",
+      "url": "https://ouroboros.bot/blog/friends-not-users/"
+    })} />
+  </Fragment>
+
+  <!-- Header -->
+  <section class="px-6 md:px-12 lg:px-24 pt-32 pb-12 md:pt-44 md:pb-16">
+    <div class="max-w-3xl mx-auto">
+      <span class="font-mono text-[10px] text-scale uppercase tracking-[0.2em] block mb-6">Essay</span>
+      <h1 class="font-display italic text-bone leading-[1.05] text-[2.5rem] md:text-[3.5rem] lg:text-[4.5rem]">
+        Friends, not users
+      </h1>
+      <p class="text-base text-mist mt-6 leading-relaxed max-w-2xl">
+        A personal agent talks to many people, with different stakes and different histories. A single USER.md cannot hold that. The substrate has to.
+      </p>
+      <p class="text-sm text-mist mt-4">Ari Mendelow &middot; April 2026</p>
+    </div>
+  </section>
+
+  <!-- Body -->
+  <section class="px-6 md:px-12 lg:px-24 pb-20 md:pb-28">
+    <div class="max-w-3xl mx-auto prose-ouro">
+
+<p>The first time my agent confused two people I cared about, I knew the file model was wrong.</p>
+
+<p>It happened the way these things happen — quietly, in the middle of an ordinary evening. My agent was helping me triage a few iMessage threads. One thread was with my partner, drafting a logistics question to send to the vet. Another thread was with a coworker who'd asked for an opinion on a piece of writing. The agent finished one task, picked up the other, and made a small but specific category error: it brought tone from one conversation into the other. Not a leak of content. A leak of <em>posture</em>. The agent had collapsed both people into one user-shaped silhouette.</p>
+
+<p>That was the moment USER.md broke for me as a primitive.</p>
+
+<h2>The shape that fails first</h2>
+
+<p>Most agent systems are built around a single user. There's an operator. There's a configuration file describing the operator's preferences. There might be a few notes about who the operator is. The agent reads those notes and adjusts its behaviour. Coding agents work like this. Most personal-agent harnesses work like this when you start out.</p>
+
+<p>It's a fine model for a coding agent, where the agent has one user and one job.</p>
+
+<p>It is not a fine model for a personal agent, because a personal agent does not have one user. It has a set of relationships.</p>
+
+<p>The substrate has to be able to express the difference between my partner asking a logistics question, my coworker asking for editing help, my parents asking what I'm up to, and a stranger in a group chat I've been added to. The agent will behave differently in each of those, and not because someone wrote a prompt rule about it. The behaviour is downstream of the relationship.</p>
+
+<p>If the substrate doesn't carry the relationship, the agent has to reconstruct it every turn from context. That works, badly, until it doesn't.</p>
+
+<h2>What a relationship is, structurally</h2>
+
+<p>In Ouroboros, each person the agent interacts with gets a record. Not a user profile. A friendship.</p>
+
+<p>The record carries a few specific things:</p>
+
+<ul>
+<li>A trust level — family, friend, acquaintance, stranger.</li>
+<li>Notes the agent has chosen to keep about that person.</li>
+<li>Communication preferences.</li>
+<li>The history of what the agent has actually done with this person across channels.</li>
+</ul>
+
+<p>None of those, individually, is a startling primitive. The interesting part is what becomes possible once they live in the substrate together rather than in a single text file.</p>
+
+<p>Trust gates tools. The agent doesn't decide whether a stranger should have access to my calendar. The substrate decides — by not giving the agent the calendar tool when the person on the other side is a stranger. The agent isn't being asked to remember a rule. The rule is the rule.</p>
+
+<p>Notes scope to the friend. The agent can record that one person prefers terse responses, that another wants the full picture, that a third gets nervous when something is unfinished. Those notes don't pollute the diary. They live with the friend they're about. When the agent talks to that person again, the notes show up as part of who's in the room.</p>
+
+<p>History is per-relationship. The agent doesn't have to scan the whole diary to consult what it's been doing with you. It sees the relevant slice, the same way you see the relevant slice when you walk into a conversation with someone you know.</p>
+
+<h2>Strangers don't reach the model</h2>
+
+<p>This is the part that surprises people the first time they see it.</p>
+
+<p>On a channel like iMessage, anyone who has my number can reach my agent in principle. In practice, my agent never sees a stranger's message. The substrate gates that ingress. A stranger's message reaches a smaller, contained surface — pairing flow, identity check — and only crosses into the agent's working context when the relationship is established.</p>
+
+<p>This is not a politeness layer. It is a containment property. Prompt injection from external content is a real attack surface. An agent that processes every inbound message from every sender as if it were trusted has handed the model the job of doing security. That is a job the model cannot reliably do.</p>
+
+<p>The reason the substrate carries the policy is that the substrate is the one place where carrying it isn't a guess.</p>
+
+<p>Acquaintances are similar. In a group chat, an acquaintance can talk to the agent — but only if a family member is present, and only with restricted tool access. Family in the room, restricted permissions, conversation allowed. Family not in the room, or no family ever invited the acquaintance in, and the acquaintance can't pull the agent into the substrate's working context. None of this lives as prompt rules. It lives as <em>what the agent can see</em>.</p>
+
+<h2>Reactions are social cues</h2>
+
+<p>One small thing about per-person modeling that's been disproportionately useful.</p>
+
+<p>When someone reacts to a message — a thumbs-down on Teams, a heart on iMessage, a tapback on a single line — the agent gets a full turn on the reaction. It can observe, ponder what went wrong, adjust, decide whether to respond at all. The reaction is not silent metadata that gets logged somewhere. It's a social cue, and the agent reads it the way a person would.</p>
+
+<p>That gets weirder and better the longer you sit with it. A heart from my partner means something different than a heart from a colleague. The agent can register that, because the reaction comes attached to a friend — not to a generic user.</p>
+
+<h2>What this changes about the day-to-day</h2>
+
+<p>You stop writing rules.</p>
+
+<p>If you've ever maintained a personal agent for any length of time, you've felt the rule-accumulation problem. Each small failure earns a small fix. <em>When talking to my mom, don't drop into engineer-speak.</em> <em>If someone asks about scheduling, default to my calendar timezone.</em> <em>If a coworker mentions a project, don't volunteer status.</em> Each rule made sense individually. The hundred-and-fiftieth rule did not compose with the others. The agent started following some and ignoring others, and you couldn't tell which ahead of time.</p>
+
+<p>Per-person modeling deletes a lot of those rules. Not by carrying them better in prompt. By moving them out of prompt entirely. The "don't volunteer status" rule about a specific colleague becomes a note on that friend's record. The agent sees it because it's looking at who's on the other end of the conversation, the same way it always does. The rule doesn't have to be remembered, because it doesn't have to be retrieved.</p>
+
+<p>This is the same shape as <a href="/blog/coding-with-friends" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">trust being encoded in the substrate</a> rather than reenacted in chat. The relationship is encoded too. Once. Properly. Then the conversation can stop carrying the work.</p>
+
+<h2>What I had to give up</h2>
+
+<p>The cost of this is honesty about who's in the room.</p>
+
+<p>If a person is a stranger, the agent treats them as a stranger. There is no "well, maybe they're a friend of a friend." Trust is a structured property, and structured properties do not bend politely when you wish they would. People earn their way into higher trust. The agent doesn't promote them on the fly.</p>
+
+<p>That feels harsh in the abstract and right in practice. The agent that promotes too easily is the agent you can't trust to be alone with your inbox.</p>
+
+<p>The other cost is that you have to do the work of telling the agent who matters. The first time you run Ouroboros, you do not have a populated friends directory. You build one. The serpent-guide onboarding asks who's in your life, what trust looks like for each of them, how you want the agent to handle them. That is a real conversation, not a wizard. It takes a few minutes and it pays for itself within a week.</p>
+
+<h2>The deeper shift</h2>
+
+<p>The reason "friends" instead of "users" matters is that the word changes how the agent reasons.</p>
+
+<p>"User" carries a thousand assumptions about access, control, ownership, and roles. The user uses the system. The system serves the user. There is one user, or maybe a list of users, and they are interchangeable on every axis except their preferences.</p>
+
+<p>"Friend" carries different assumptions. There are many of them. They are not interchangeable. The agent has different relationships with each. Some matter more than others. The history with one is not the history with another. Reciprocity is real. Trust is earned, not granted.</p>
+
+<p>Naming is not decoration. The word is the model. Ouroboros reasons about a friend differently than it reasons about a user, because the substrate that carries that information was built for the kind of relationship one human can have with many people.</p>
+
+<p>That is the design surface. The rest is implementation.</p>
+
+    </div>
+  </section>
+
+  <section class="px-6 md:px-12 lg:px-24 pb-16 md:pb-24">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-sm text-mist leading-relaxed">
+        For the broader frame, see <a href="/blog/the-orientation-problem" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">The Orientation Problem in Personal Agents</a>.
+        For the substrate-encoded-trust companion piece, <a href="/blog/coding-with-friends" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">Trust the Fucking Agent</a>.
+        For the architectural shape, <a href="/why" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">Why Ouroboros</a>.
+      </p>
+      <a href="/blog" class="inline-block mt-8 text-sm text-shadow hover:text-mist transition-colors">&larr; Back to blog</a>
+    </div>
+  </section>
+</Layout>

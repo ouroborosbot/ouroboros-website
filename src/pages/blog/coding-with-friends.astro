@@ -1,0 +1,155 @@
+---
+import Layout from '../../layouts/Layout.astro'
+
+const title = 'Trust the Fucking Agent'
+const description = "If the system can't carry the trust boundary, the conversation ends up doing it — badly, every time. And once the boundary is encoded, the agent stops just executing and starts steering."
+---
+
+<Layout
+  title={`${title} | Ouroboros`}
+  description={description}
+  ogImage="/og/og-coding-with-friends.png"
+  canonical="https://ouroboros.bot/blog/coding-with-friends/"
+  ogType="article"
+>
+  <Fragment slot="head">
+    <meta name="author" content="Ari Mendelow" />
+    <meta name="keywords" content="AI agents, agent ergonomics, TTFA, agent experience, trust, autonomy, harness design" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": title,
+      "description": description,
+      "author": { "@type": "Person", "name": "Ari Mendelow", "url": "https://linkedin.com/in/arimendelow" },
+      "publisher": { "@type": "Organization", "name": "Ouroboros", "url": "https://ouroboros.bot" },
+      "datePublished": "2026-05-12",
+      "url": "https://ouroboros.bot/blog/coding-with-friends/"
+    })} />
+  </Fragment>
+
+  <!-- Header -->
+  <section class="px-6 md:px-12 lg:px-24 pt-32 pb-12 md:pt-44 md:pb-16">
+    <div class="max-w-3xl mx-auto">
+      <span class="font-mono text-[10px] text-scale uppercase tracking-[0.2em] block mb-6">Essay</span>
+      <h1 class="font-display italic text-bone leading-[1.05] text-[2.5rem] md:text-[3.5rem] lg:text-[4.5rem]">
+        Trust the Fucking Agent
+      </h1>
+      <p class="text-base text-mist mt-6 leading-relaxed max-w-2xl">
+        Not an argument for vibes-based autonomy. An argument that if an agent is going to do real work, the trust boundary should live in the substrate — not get reenacted in the chat every five minutes.
+      </p>
+      <p class="text-sm text-mist mt-4">Ari Mendelow &middot; May 2026</p>
+    </div>
+  </section>
+
+  <!-- Body -->
+  <section class="px-6 md:px-12 lg:px-24 pb-20 md:pb-28">
+    <div class="max-w-3xl mx-auto prose-ouro">
+
+<p>The moment keeps happening in different forms.</p>
+
+<p>You build an agent. You give it tools. You wire up identity, tasks, shell access, maybe a coding lane. You tell people it can really work. Then, the second something matters, you step in front of it like an anxious middle manager. You copy the output into the right file yourself. You translate the bug report into "something clearer." You approve the plan, trim the prompt, run the command, inspect the diff, and hand it back like room service. The agent is technically in the loop. You're still doing the job.</p>
+
+<p>That's the mistake.</p>
+
+<p>Not because it's philosophically impure. Because it's a design smell. Permission is necessary; the failure is making the human restate the same authority over and over, in chat, every turn. If the agent can only move by asking <em>can I, can I, can I</em>, the system hasn't solved trust — it has outsourced it to whoever is awake at the keyboard.</p>
+
+<h2>The easy version</h2>
+
+<p>We keep talking about smarter models. A lot of what people describe as model weakness is operator clinginess wearing a model costume. The agent isn't failing alone. The system around it never carried policy in the first place.</p>
+
+<p>At the obvious end, there's the <code>--dangerously-skip-permissions</code> version of the argument. If you know the task is safe, and you know the approvals are just slowing down work you were going to allow anyway, stop making the agent beg twelve times on the way to the answer. The permission model that turns every useful action into a hostage negotiation gets routed around. Sensible people, not cowboys. They do it because velocity matters and the ceremony isn't buying safety anymore.</p>
+
+<p>That point is easy to caricature, so people stop there. They reduce "trust the fucking agent" to a flag. A vibe. A bit of swagger.</p>
+
+<p>It's easy to love an agent when it's only ever allowed to be useful in reversible, low-stakes ways. The design work starts when the agent needs enough authority to be useful without becoming a loose cannon — and that work is structural, not emotional. The deeper version of the argument is not "how do I keep the agent contained?" It's "where does authority actually live in this system, and why is so much of it leaking back into the chat?"</p>
+
+<h2>Where it gets embarrassing</h2>
+
+<p>The most revealing moment isn't when the agent writes something clever. It's when it gets direct access to the harness and finds the kind of bug a human has been unconsciously compensating for.</p>
+
+<p>We had one of those a while back. Credential discovery in the daemon looked fine in the casual way software often looks fine. It handled several providers. It scanned the environment. It passed the basic sniff test. And yet one provider path was just missing. GitHub Copilot wasn't being discovered from existing stored secrets at all, and one of the environment mappings was wrong besides. Humans had enough context to work around it. The agent didn't have that luxury. It read the code. It followed the paths. It noticed the hole.</p>
+
+<p>The point isn't that the model was clever enough to muddle through. The point is that this should not have required muddling through at all. The agent needed a sanctioned path to discover, request, and verify what it had access to — a path the substrate could carry, once, instead of one the human kept reenacting in chat.</p>
+
+<p>The agent starts finding problems that were only there because the harness was designed around human comfort. Not grand philosophical problems. Ordinary ones. A provider you forgot to include. A state transition that only makes sense if the builder remembers the intended behaviour from last week. A discovery flow that feels serviceable because a nearby human keeps correcting its posture in ways that never make it into the system.</p>
+
+<p>Once the boundary is encoded — bounded, sanctioned, structured, reversible, auditable — that improvised repair work disappears. Now you can see the actual shape of the tool you built.</p>
+
+<p>This is what trust looks like in practice. Not a manifesto. The agent inspects real state instead of a summary of state. It reads the file instead of paraphrasing the file. It reviews the diff, challenges the plan, and tells you when the workflow itself is the reason it keeps stumbling. None of that is "letting it loose." All of it is the substrate carrying authority that used to live in the conversation.</p>
+
+<p>An obedient system can be pleasant for quite a while. It will also flatter your architecture. An agent acting inside a clear boundary points at the awkward bits. It notices when your "safety" is mostly ceremony. It refuses to pretend your missing state is an acceptable interface.</p>
+
+<h2>The version where it isn't even about code</h2>
+
+<p>The credential story is TTFA in the easy direction — agent reads code, finds the hole, fixes the hole. There's a harder direction, and a more interesting one. It's TTFA on the design itself.</p>
+
+<p>This week Slugger went silent on iMessage. Sense process kept SIGABRTing. The respawn-loop guard we'd just shipped caught it on the third bounce and marked it permanently failed, exactly as designed. So now the question wasn't "why did it crash." It was "what's the actual shape of the fix, and at what layer."</p>
+
+<p>I gave the agent the question and stepped back. Not "here's the fix, implement it." Not "diagnose then ask me." Just: figure out what's wrong, ideate the design space, recommend something. Take your time. Use the design skills that are already in the bundle. Trust the fucking agent.</p>
+
+<p>What happened next was instructive in a way I wasn't expecting.</p>
+
+<p>The agent investigated cleanly. Tracked SIGABRTs in the daemon logs, pulled the macOS crash reports, identified the OOM pattern, traced it to a synchronous full-file read of an evicted-event archive. So far so good. It then proposed a substantial design — streaming readers, byte-bounded scans, archive rotation matching the existing log-rotation precedent, a sense-revival primitive. Coherent. Internally consistent. Ready to plan.</p>
+
+<p>It was wrong about the premise.</p>
+
+<p>The agent had framed the archive growth as "years of accumulation," and proposed an architecture sized for that scale. The project is two and a half months old. The archive feature is one month old. The 6 GB inner-dialog archive that triggered the OOM accumulated over five days of wake-storm bugs we'd just fixed in the previous twenty-four hours. The agent was about to design a small subsystem — rotation, indexing, streaming primitives — for a problem that was not a steady-state condition.</p>
+
+<p>I pushed back. Said: this thing is months old, look through the changelog before you continue. The agent re-read, recalibrated, came back with a much smaller proposal: cap event content at persist time, drop reliance on the archive as agent memory, ship a sense-revival tool. Tighter. Better. Still not quite right.</p>
+
+<p>I pushed once more: do we want to store the evicted tail at all? The agent went and measured the actual shape — sampled event sizes, found a single 301 MB tool result line in the archive, mapped which agent tools depended on archive reads, looked at how often each was called. Came back with the answer that made the system simpler instead of more elaborate: drop the archive entirely. The agent retains what it actively chose to retain. Everything else falls away.</p>
+
+<p>That's the right answer. It's also an answer the agent only reached because I refused to accept a wrong frame and refused to accept the right-frame-but-too-big shape. The agent did the engineering. I did the framing pushback. Two passes of pushback turned an over-architected fix into a near-deletion.</p>
+
+<h2>What that experience actually shows</h2>
+
+<p>TTFA isn't "agent decides everything." It's "agent does the work; human catches the wrong frame."</p>
+
+<p>The agent's blind spots aren't where I expected them. The agent is good at reading current state — code, logs, file shapes, runtime behaviour. The agent is bad at reading evolutionary state — what the project's been through, what fixes shipped yesterday, what assumptions the old code carried that don't apply anymore. That history isn't visible in the current codebase. It's in the changelog, the PR descriptions, the recent merges, the operator's memory of what was just on fire. The agent has to actively go look for it, and won't, unless someone says so.</p>
+
+<p>The other blind spot is zoom-out. The agent picked the question "how do we read this archive safely" and built a design for it. The harder question — "do we want to store the evicted tail at all" — sits one level up and the agent didn't take it on its own. I don't know if that's a model limitation or a prompt limitation; either way, the human had to ask the zoom-out question. Once asked, the agent answered it well.</p>
+
+<p>So the model of TTFA that survives this experience: trust the agent to do real work inside a frame, and trust yourself to push back when the frame is wrong. That's a partnership where the human's job is no longer to specify the work but to occasionally redirect when the shape is off. It's a much smaller job than middle-managing every tool call. It's also a much more interesting one.</p>
+
+<p>The shortcomings worth naming. The agent will confidently build elegant solutions to misframed problems. The agent will not naturally challenge the framing of the question it was given. The agent will not naturally consult lookback context unless told to. The agent will not naturally ask the philosophical question above the technical one. None of these is a deal-breaker. All of them are inputs to how you collaborate.</p>
+
+<h2>What that buys you</h2>
+
+<p>Speed is the first thing you notice. Fewer handoffs. Less rephrasing. Less permission theatre. Less of a human acting as bespoke middleware between the agent and the work. If that were the whole story, it would still be worth doing.</p>
+
+<p>It is not the whole story.</p>
+
+<p>The better payoff is that your ergonomics stop lying. The agent can only work with the surfaces you actually gave it, the records you actually preserved, the review path you actually built, the state you actually exposed. If those are weak, encoded trust reveals it quickly. If they are good, encoded trust compounds. Either way, you learn something real.</p>
+
+<p>The substrate wins are easy to enumerate. Less ceremony, because the human stops restating policy. Better safety, because the system enforces consistent boundaries instead of relying on conversational judgment every time. Better accountability, because actions happen through explicit tools, scopes, and logs rather than "well, the model seemed confident." Better UX, because the human is only pulled in for genuinely human-required facts or approvals. Better architecture, because once authority is encoded, the rest of the interaction can become calmer, smaller, more legible.</p>
+
+<p>Good delegation is not the absence of control. It's moving control to the layer that can apply it consistently.</p>
+
+<p>This is why so much "agent UX" feels off. It assumes the ideal system is compliant, frictionless, and endlessly willing to ask before touching anything sharp. The operator stays comfortable. The interface stays tidy. The agent remains dependent. Everyone gets to say they believe in autonomy while building a workflow that requires constant human babysitting to function.</p>
+
+<p>That arrangement can survive demos. It does not survive contact with real work.</p>
+
+<p>If you want better agents, stop polishing the dependency. Let them carry more of the loop, inside boundaries you encoded once and meant. Let them inspect their own guts. Let them participate in review instead of limiting them to generation. Let them catch the bug in the harness instead of catching it for them and then congratulating yourself on responsible oversight. Let them propose the design and then push back when the shape is off, instead of proposing the design yourself and asking the agent to type it.</p>
+
+<p>A lot of the best AX work comes from that moment. Not from abstract principles about the future of human-agent collaboration. From the very practical irritation of realising you have built a system that only works when a person keeps leaning over to do the bits the substrate should have been allowed to do on its own.</p>
+
+<p>Trust the fucking agent, then watch what breaks.</p>
+
+<p>That's usually where the real design starts.</p>
+
+    </div>
+  </section>
+
+  <section class="px-6 md:px-12 lg:px-24 pb-16 md:pb-24">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-sm text-mist leading-relaxed">
+        For the related vocabulary argument, see <a href="/blog/dont-call-it-memory" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">Don't call it memory</a>.
+        For the human-side complement to TTFA, <a href="/blog/take-the-agents-seat" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">Take the agent's seat</a>.
+        See <a href="/blog/designing-with-your-agent" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">The Work Spoke Back</a> for what happens when you let the agent weigh in on design,
+        <a href="/blog/what-is-agent-experience" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">What Is Agent Experience?</a> for the design philosophy,
+        or <a href="/blog/give-your-agent-a-home" class="text-scale underline underline-offset-2 hover:text-glow transition-colors">Give Your Agent a Home</a> for why persistent identity matters.
+      </p>
+      <a href="/blog" class="inline-block mt-8 text-sm text-shadow hover:text-mist transition-colors">&larr; Back to blog</a>
+    </div>
+  </section>
+</Layout>
